@@ -733,6 +733,55 @@ main {
 .sc-r { color: #15803d; font-weight: 800; }
 .sc-w { color: #b91c1c; font-weight: 800; }
 
+/* ── Activity chart ──────────────────────────────── */
+.activity-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.125rem 1.25rem 0.875rem;
+  margin-bottom: 1.75rem;
+}
+
+.activity-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.activity-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.activity-legend {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  font-size: 0.8125rem;
+  color: var(--muted);
+}
+
+.activity-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 0.3rem;
+  flex-shrink: 0;
+}
+
+.activity-svg { width: 100%; display: block; }
+
+.activity-empty {
+  text-align: center;
+  padding: 1.5rem 1rem;
+  color: var(--muted);
+  font-size: 0.9375rem;
+  font-style: italic;
+}
+
 /* ── Tier indicators ─────────────────────────────── */
 
 /* Left nav badge colored by tier */

@@ -79,7 +79,8 @@ function countCards(dir) {
 
 // Progress is stored in a single root-level progress.json, keyed by "domainId/setId".
 // This keeps it completely outside the content folders so git operations never touch it.
-const PROGRESS_FILE = path.join(ROOT, 'progress.json');
+const PROGRESS_FILE  = path.join(ROOT, 'progress.json');
+const ACTIVITY_FILE  = path.join(ROOT, 'activity.json');
 
 function loadAllProgress() {
   try { return JSON.parse(fs.readFileSync(PROGRESS_FILE, 'utf8')); }
@@ -88,6 +89,20 @@ function loadAllProgress() {
 
 function saveAllProgress(data) {
   fs.writeFileSync(PROGRESS_FILE, JSON.stringify(data, null, 2), 'utf8');
+}
+
+function localDateStr() {
+  const d = new Date();
+  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+}
+
+function loadActivity() {
+  try { return JSON.parse(fs.readFileSync(ACTIVITY_FILE, 'utf8')); }
+  catch { return {}; }
+}
+
+function saveActivity(data) {
+  fs.writeFileSync(ACTIVITY_FILE, JSON.stringify(data, null, 2), 'utf8');
 }
 
 // GET /api/nav  — full tree for the left sidebar (one request on load)
@@ -212,11 +227,33 @@ app.post('/api/domains/:domain/sets/:set/progress', (req, res) => {
     const entry = all[key][question] || { right: 0, wrong: 0, lastSeen: '' };
     if (result === 'right') entry.right++;
     else entry.wrong++;
-    entry.lastSeen = new Date().toISOString().slice(0, 10);
+    entry.lastSeen = localDateStr();
     all[key][question] = entry;
     saveAllProgress(all);
+
+    const today = localDateStr();
+    const activity = loadActivity();
+    if (!activity[today]) activity[today] = { answered: 0, right: 0 };
+    activity[today].answered++;
+    if (result === 'right') activity[today].right++;
+    saveActivity(activity);
+
     res.json({ ok: true, entry });
   } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+// GET /api/activity?days=7  — per-day activity counts for the last N days
+app.get('/api/activity', (req, res) => {
+  const days = Math.min(parseInt(req.query.days, 10) || 7, 90);
+  const activity = loadActivity();
+  const result = [];
+  for (let i = days - 1; i >= 0; i--) {
+    const d = new Date();
+    d.setDate(d.getDate() - i);
+    const date = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+    result.push({ date, ...(activity[date] || { answered: 0, right: 0 }) });
+  }
+  res.json(result);
 });
 
 // GET /api/progress  — per-set progress summaries for all sets that have data

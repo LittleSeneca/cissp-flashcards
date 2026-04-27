@@ -253,6 +253,71 @@ function applyFilter(cards, progress, filterId) {
   return cards.filter(c => f.match(progress[c.question]));
 }
 
+// ── Activity chart ────────────────────────────────────────────────────────────
+function buildActivityChart(days) {
+  const maxAnswered = Math.max(...days.map(d => d.answered), 0);
+
+  if (maxAnswered === 0) {
+    return `<div class="activity-empty">No activity yet — start studying to see your progress here.</div>`;
+  }
+
+  const W = 560, H = 160;
+  const ml = 32, mr = 16, mt = 10, mb = 34;
+  const pw = W - ml - mr;
+  const ph = H - mt - mb;
+
+  function niceMax(n) {
+    if (n <= 5)  return 5;
+    if (n <= 10) return 10;
+    if (n <= 20) return 20;
+    if (n <= 50) return 50;
+    return Math.ceil(n / 10) * 10;
+  }
+
+  const top  = niceMax(maxAnswered);
+  const n    = days.length;
+  const xOf  = i => ml + (n > 1 ? (i / (n - 1)) * pw : pw / 2);
+  const yOf  = v => mt + ph - (v / top) * ph;
+  const base = yOf(0);
+
+  const tPts = days.map((d, i) => `${xOf(i)},${yOf(d.answered)}`).join(' ');
+  const rPts = days.map((d, i) => `${xOf(i)},${yOf(d.right)}`).join(' ');
+
+  // Filled areas under each line
+  const tArea = `M ${xOf(0)} ${base} ` + days.map((d, i) => `L ${xOf(i)} ${yOf(d.answered)}`).join(' ') + ` L ${xOf(n-1)} ${base} Z`;
+  const rArea = `M ${xOf(0)} ${base} ` + days.map((d, i) => `L ${xOf(i)} ${yOf(d.right)}`).join(' ')     + ` L ${xOf(n-1)} ${base} Z`;
+
+  // Grid lines at 0, 50%, 100% of top
+  const gridVals = [0, Math.round(top / 2), top];
+  const grid = gridVals.map(v => {
+    const y = yOf(v);
+    return `<line x1="${ml}" y1="${y}" x2="${W - mr}" y2="${y}" stroke="#f3f4f6" stroke-width="1"/>
+            <text x="${ml - 5}" y="${y + 4}" text-anchor="end" font-size="9" fill="#9ca3af">${v}</text>`;
+  }).join('');
+
+  const xLabels = days.map((d, i) => {
+    const [yr, mo, dy] = d.date.split('-').map(Number);
+    const label = new Date(yr, mo - 1, dy).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+    return `<text x="${xOf(i)}" y="${H - 4}" text-anchor="middle" font-size="9" fill="#9ca3af">${label}</text>`;
+  }).join('');
+
+  const tDots = days.map((d, i) => d.answered > 0
+    ? `<circle cx="${xOf(i)}" cy="${yOf(d.answered)}" r="3" fill="#6366f1"/>` : '').join('');
+  const rDots = days.map((d, i) => d.right > 0
+    ? `<circle cx="${xOf(i)}" cy="${yOf(d.right)}" r="3" fill="#16a34a"/>` : '').join('');
+
+  return `<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" class="activity-svg">
+    ${grid}
+    <line x1="${ml}" y1="${base}" x2="${W - mr}" y2="${base}" stroke="#e5e7eb" stroke-width="1"/>
+    <path d="${tArea}" fill="#6366f1" fill-opacity="0.08"/>
+    <path d="${rArea}" fill="#16a34a" fill-opacity="0.12"/>
+    <polyline points="${tPts}" fill="none" stroke="#6366f1" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+    <polyline points="${rPts}" fill="none" stroke="#16a34a" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+    ${tDots}${rDots}
+    ${xLabels}
+  </svg>`;
+}
+
 // ── Pie chart ─────────────────────────────────────────────────────────────────
 const PIE_SEGMENTS = [
   { id: 'unseen',     label: 'Unseen',     color: '#d1d5db', test: (p) => !p || (p.right === 0 && p.wrong === 0) },
@@ -318,13 +383,27 @@ async function showHome() {
   crumbs([]);
   appEl.innerHTML = '<p class="loading">Loading…</p>';
   try {
-    const [domains] = await Promise.all([
+    const [domains, activityDays] = await Promise.all([
       api('/api/domains'),
+      api('/api/activity?days=7').catch(() => []),
       refreshProgress(),
     ]);
+
+    const activityChart = `
+      <div class="activity-card">
+        <div class="activity-header">
+          <span class="activity-title">Activity — Last 7 Days</span>
+          <div class="activity-legend">
+            <span class="activity-dot" style="background:#6366f1"></span>Answered
+            <span class="activity-dot" style="background:#16a34a"></span>Got right
+          </div>
+        </div>
+        ${buildActivityChart(activityDays)}
+      </div>`;
+
     appEl.innerHTML = `
       <h1 class="view-title">CISSP Domains</h1>
-      <p class="view-sub">Eight domains — select one to explore flashcard sets.</p>
+      ${activityChart}
       <div class="grid">
         ${domains.map(d => {
           const [num, ...rest] = d.name.split(': ');
