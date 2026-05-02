@@ -1,338 +1,122 @@
 [
   {
-    "question": "A security engineer is designing physical security for a new corporate headquarters. The design calls for progressively stronger controls from the parking lot to server rooms, with each layer requiring additional authentication. Which physical security principle does this BEST represent?",
+    "question": "A security architect is designing the physical security for a new data center. Which of the following is the BEST example of 'Defense-in-Depth' in a physical security context?",
     "options": [
-      "Least privilege access",
-      "Separation of duties",
-      "Defense in depth",
-      "Need-to-know"
+      "Installing a high-resolution CCTV system with 24/7 monitoring",
+      "Using a combination of a perimeter fence, a badge-access lobby, and mantraps for server room entry",
+      "Implementing a single, highly secure biometric scanner at the main entrance",
+      "Deploying a team of armed guards to patrol the facility perimeter"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: **Defense-in-Depth** involves layering multiple independent security controls so that if one fails, others remain to protect the asset. The combination of a fence (perimeter), lobby access (internal), and mantraps (restricted area) represents this layered approach. **Why A is wrong**: CCTV is a single detective control, not a layered defense. **Why C is wrong**: A single control, no matter how strong, represents a single point of failure. **Why D is wrong**: Guards are a single layer of defense.",
+    "category": "Physical Security"
+  },
+  {
+    "question": "An organization is landscaping its new headquarters to improve security. They decide to use low-lying shrubs and ensure clear lines of sight from the building to the parking lot. Which CPTED principle are they PRIMARILY applying?",
+    "options": [
+      "Natural Access Control",
+      "Territorial Reinforcement",
+      "Natural Surveillance",
+      "Target Hardening"
     ],
     "correct": 2,
-    "explanation": "**Why C is correct**: **Defense in depth** applied to physical security means layering multiple independent controls so that defeating any single control does not grant full access. Requiring increasing authentication from the perimeter inward (parking lot → lobby → office floor → server room → data center cage) ensures an attacker must defeat each successive layer. **Why A is wrong**: Least privilege is an access control principle limiting permissions to what is required; while relevant to who can access each zone, it does not describe the layered architecture concept. **Why B is wrong**: Separation of duties divides critical tasks among multiple individuals to prevent fraud or error by a single person; it is not a physical zoning architecture principle. **Why D is wrong**: Need-to-know governs information access based on operational necessity; it informs who should access each zone but does not describe the layered zoning architecture.",
+    "explanation": "**Why C is correct**: **Natural Surveillance** involves designing the environment to maximize visibility, making it difficult for intruders to act without being seen. Clear lines of sight and low landscaping are classic examples. **Why A is wrong**: Access control focuses on guiding people to specific entry points. **Why B is wrong**: Territorial reinforcement uses physical markers (like fences or pavement changes) to define ownership. **Why D is wrong**: Target hardening involves physical barriers like locks or reinforced doors.",
     "category": "Physical Security"
   },
   {
-    "question": "A visitor arrives at a high-security facility claiming to be an HVAC technician dispatched for emergency maintenance. The receptionist is under pressure to allow access quickly. The visitor has no appointment and presents only a business card. What is the MOST appropriate response?",
+    "question": "Which of the following physical security controls is MOST effective at preventing tailgating or piggybacking into a high-security area?",
     "options": [
-      "Allow access immediately since HVAC emergencies can cause critical system failures",
-      "Escort the visitor to the HVAC room and wait nearby",
-      "Deny access, verify the service request with the HVAC company using a number from official records, and require the visitor to be escorted if authorized",
-      "Issue a temporary badge and allow unescorted access since the work is technical in nature"
+      "A standard proximity card reader",
+      "A mantrap (access control vestibule)",
+      "A high-definition CCTV camera at the entrance",
+      "A turnstile with a security guard"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: A **mantrap** is a small space with two interlocked doors; the first must close before the second can open. This physically limits entry to one person at a time and is the most effective way to prevent tailgating. **Why A is wrong**: Proximity cards are easily bypassed if an authorized person holds the door open. **Why C is wrong**: CCTV is a detective control; it might record the tailgating but won't prevent it. **Why D is wrong**: While a turnstile helps, a mantrap provides a higher level of physical assurance and is more difficult to circumvent.",
+    "category": "Physical Security"
+  },
+  {
+    "question": "A data center needs a fire suppression system that is safe for both sensitive electronic equipment and human occupants. Which of the following is the BEST choice?",
+    "options": [
+      "Wet-pipe sprinkler system",
+      "Carbon Dioxide (CO2) system",
+      "FM-200 or Novec 1230 (Clean Agent)",
+      "Dry-pipe sprinkler system"
     ],
     "correct": 2,
-    "explanation": "**Why C is correct**: This scenario is a classic **social engineering / pretexting** attack. The appropriate response is to **verify identity independently** (calling the HVAC company using a phone number from official records, not one provided by the visitor), confirm there is an actual service request, and follow the organization's visitor management policy — which requires an escort for any uncleared visitor. The time pressure is a manipulation tactic. **Why A is wrong**: Urgency is a common social engineering technique to bypass security controls; allowing unverified access is precisely what an attacker exploiting this scenario hopes to achieve. **Why B is wrong**: Escorting is better than unescorted access, but the identity and legitimacy of the work order must be verified first; escorting a malicious actor into a restricted area still enables physical access. **Why D is wrong**: Issuing a temporary badge based on an unverified claim violates visitor management policy and could grant an attacker unsupervised physical access.",
+    "explanation": "**Why C is correct**: **Clean Agents** like FM-200 or Novec 1230 are gaseous suppressants that do not leave residue, are non-conductive (safe for electronics), and are generally safe for humans at design concentrations. **Why A and D are wrong**: Water-based systems (wet or dry pipe) can cause significant damage to electronic equipment. **Why B is wrong**: CO2 systems are lethal to humans because they displace oxygen; they are not used in normally occupied spaces.",
     "category": "Physical Security"
   },
   {
-    "question": "A data center fire suppression system uses FM-200 (HFC-227ea). What is the PRIMARY reason this agent is preferred over water-based suppression in a data center environment?",
-    "options": [
-      "FM-200 is cheaper to install than water-based systems",
-      "FM-200 suppresses fire without damaging electronic equipment, leaves no residue, and is safe for occupied spaces",
-      "FM-200 is more effective against electrical fires than halon",
-      "FM-200 requires no pressurized storage cylinders"
-    ],
-    "correct": 1,
-    "explanation": "**Why B is correct**: **FM-200** is a clean-agent gaseous suppression system. It suppresses fire by absorbing heat and interrupting the combustion chain reaction, leaves **no residue** (unlike dry chemical or water), does not conduct electricity, and is safe for use in occupied spaces at normal firefighting concentrations. This makes it ideal for data centers where water damage to electronics would be as catastrophic as the fire itself. **Why A is wrong**: Clean-agent systems like FM-200 are generally more expensive to install and refill than water-based systems; cost is not the primary driver. **Why B is correct** as stated. **Why C is wrong**: Halon was historically the benchmark clean agent for electronics protection. FM-200 was developed as a halon replacement when halon was banned under the Montreal Protocol due to ozone depletion; FM-200's effectiveness profile is comparable, not categorically superior. **Why D is wrong**: FM-200 is stored under pressure in cylinders; it absolutely requires pressurized storage.",
-    "category": "Physical Security"
-  },
-  {
-    "question": "An employee badges through a secured door and holds it open for a colleague who follows closely behind without badging. The colleague's badge is actually revoked. What type of physical security attack has occurred?",
-    "options": [
-      "Piggybacking",
-      "Shoulder surfing",
-      "Masquerading",
-      "Dumpster diving"
-    ],
-    "correct": 0,
-    "explanation": "**Why A is correct**: **Piggybacking** (sometimes used interchangeably with 'tailgating,' though some references distinguish them) occurs when an unauthorized individual gains access to a controlled area by following an authorized user through a secured door with the authorized user's knowledge or passive permission. Tailgating typically implies the unauthorized person follows without the authorized user's awareness. The scenario describes the authorized user holding the door, which fits the piggybacking definition. **Why B is wrong**: Shoulder surfing is observing someone entering a PIN, password, or other sensitive information; it is not a physical access bypass technique. **Why C is wrong**: Masquerading involves pretending to be an authorized user, typically using stolen credentials; the attacker here is not impersonating anyone but exploiting social courtesy. **Why D is wrong**: Dumpster diving involves searching through discarded materials (trash, recycling) for sensitive information; it is not an access bypass technique.",
-    "category": "Physical Security"
-  },
-  {
-    "question": "A data center is evaluating power resilience controls. The facility wants to ensure that in the event of a utility power failure, critical systems remain operational for at least 72 hours. Which combination of controls is MOST appropriate?",
-    "options": [
-      "Dual utility power feeds from the same substation",
-      "UPS (Uninterruptible Power Supply) for ride-through, paired with diesel generators for extended operation",
-      "UPS alone with 72-hour battery runtime",
-      "Power distribution units (PDUs) with automatic failover"
-    ],
-    "correct": 1,
-    "explanation": "**Why B is correct**: A **UPS** provides immediate, seamless power conditioning and **ride-through** power (typically seconds to minutes) during the transition from utility power to backup generation — protecting systems from brief outages and voltage irregularities. **Diesel generators** provide sustained power for hours or days, limited only by fuel supply. Together they cover the complete outage scenario: UPS bridges the gap while generators start, and generators sustain power for 72+ hours. **Why A is wrong**: Dual feeds from the same substation do not protect against a substation-level failure or a regional grid outage — both feeds fail simultaneously if the shared substation fails. Diverse feeds from separate substations are required for true redundancy. **Why C is wrong**: Commercially practical UPS battery systems do not provide 72 hours of runtime for data center loads; battery systems are sized for minutes to perhaps an hour, not days. **Why D is wrong**: PDUs distribute power within a facility but do not generate or store power; they provide no protection against a utility outage.",
-    "category": "Physical Security"
-  },
-  {
-    "question": "A security manager is reviewing the physical access control system for a high-security research lab. The requirement is to ensure that only one person can enter at a time and that an individual cannot enter unless their access was granted at the outer door first. Which physical control satisfies these requirements?",
-    "options": [
-      "Turnstile with tailgating detection",
-      "Mantrap (airlock / access control vestibule)",
-      "Proximity card reader with PIN",
-      "Biometric lock with audit logging"
-    ],
-    "correct": 1,
-    "explanation": "**Why B is correct**: A **mantrap** (also called an airlock or access control vestibule) is a physical space with two interlocked doors: the first door must close and the person's identity verified before the second door will open. This enforces **one-person-at-a-time entry** and prevents tailgating — an individual cannot enter the inner door unless successfully authenticated at the outer door. It is the standard control for high-security areas such as server rooms, vaults, and research labs. **Why A is wrong**: A turnstile with tailgating detection can prevent or alert on unauthorized follow-through but does not enforce the sequential two-door authentication and interlocking described in the requirement. **Why C is wrong**: A proximity card with PIN secures a single door but does not provide the two-stage sequential access or physical isolation that a mantrap provides. **Why D is wrong**: A biometric lock with audit logging secures a single door and provides attribution; it does not enforce single-occupancy entry or the sequential authentication requirement.",
-    "category": "Physical Security"
-  },
-  {
-    "question": "A data center is considering replacing halogenated fire suppression agents due to environmental regulations. The replacement agent must be safe for personnel, leave no residue, and suppress fires in the Class C (electrical) category. Which agent is the MOST appropriate replacement?",
-    "options": [
-      "Wet pipe sprinkler system",
-      "Dry chemical powder system",
-      "FM-200 or Novec 1230 clean agent system",
-      "Carbon dioxide (CO2) total flooding system"
-    ],
-    "correct": 2,
-    "explanation": "**Why C is correct**: **FM-200 (HFC-227ea) and Novec 1230 (FK-5-1-12)** are the primary modern clean-agent replacements for halon. Both suppress fire without damaging electronics, leave no residue, are non-conductive, and are safe for occupied spaces at design concentrations. Novec 1230 has a lower global warming potential than FM-200 and is increasingly preferred. **Why A is wrong**: Water-based sprinkler systems cause extensive collateral damage to electronic equipment and create shock hazards in energized environments — unacceptable for an electronics-dense data center. **Why B is wrong**: Dry chemical powder suppresses fires effectively but leaves a corrosive, electrically conductive residue that can destroy electronic equipment. It is also not safe for personnel in enclosed spaces at firefighting concentrations. **Why D is wrong**: CO2 total flooding systems are highly effective for Class C fires and leave no residue, but **CO2 is lethal** at concentrations used for fire suppression (over 30%). They require mandatory evacuation and are not safe for occupied spaces, making them unsuitable for most data center applications without strict safety interlocks.",
-    "category": "Physical Security"
-  },
-  {
-    "question": "A physical security team is deploying CCTV cameras in a parking garage to identify individuals at entry and exit points. Which camera characteristic is MOST critical for capturing usable facial images at distances of 20–30 feet in variable lighting conditions?",
-    "options": [
-      "Pan-tilt-zoom (PTZ) capability",
-      "Wide dynamic range (WDR) and sufficient resolution for facial identification",
-      "Infrared (IR) illuminators rated for 200-foot range",
-      "Fisheye lens for maximum area coverage"
-    ],
-    "correct": 1,
-    "explanation": "**Why B is correct**: **Wide Dynamic Range (WDR)** is critical in environments with high-contrast lighting (such as parking garage entrances where bright outside light meets darker interior) — it prevents overexposure and underexposure in the same frame, which would otherwise render faces unidentifiable. Combined with adequate **resolution** (typically 2MP or higher for facial identification at 20–30 feet), WDR ensures usable images in variable lighting. **Why A is wrong**: PTZ cameras provide operational flexibility for manual tracking and wide-area coverage, but PTZ capability alone does not ensure image quality for facial identification; a PTZ camera with poor WDR will still produce unusable images in high-contrast lighting. **Why C is wrong**: IR illuminators extend range in complete darkness, but a 200-foot-rated IR system is overspecified for a 20–30-foot identification requirement; more importantly, IR does not address the high-contrast WDR problem at a daylight-to-interior transition point. **Why D is wrong**: Fisheye lenses maximize coverage area but introduce severe barrel distortion and reduce effective resolution at any given point; facial identification at 20–30 feet with a fisheye lens is generally impractical.",
-    "category": "Physical Security"
-  },
-  {
-    "question": "A financial institution's server room uses proximity card readers. A red team discovers that badge serial numbers can be read and cloned with a device hidden in a backpack at a distance of a few inches without the cardholder's knowledge. What attack is this, and what is the BEST countermeasure?",
-    "options": [
-      "Shoulder surfing; counter with PIN pads on every reader",
-      "RFID skimming; counter with shielded (RFID-blocking) badge holders and transition to multi-factor physical access",
-      "Card cloning via direct contact; counter with chip-and-PIN smart cards",
-      "Replay attack; counter with one-time-password tokens"
-    ],
-    "correct": 1,
-    "explanation": "**Why B is correct**: **RFID skimming** exploits the fact that contactless proximity cards (especially older 125 kHz HID prox cards) transmit their serial numbers unencrypted and can be read by covert antennas at close range. The attacker clones the card to a blank programmable card and uses it for unauthorized entry. **RFID-blocking badge holders** (Faraday cages) prevent passive skimming, and transitioning to **multi-factor physical access** (card + PIN, card + biometric) ensures a cloned card alone is insufficient. **Why A is wrong**: Shoulder surfing involves visually observing PINs or passwords being entered; the described attack reads card data wirelessly without any visual component. **Why C is wrong**: The attack is wireless, not contact-based; smart chip cards can also have contactless interfaces and may be vulnerable if not properly implemented, though contactless smart cards with cryptographic mutual authentication are far more resistant than basic proximity cards. **Why D is wrong**: A replay attack captures and retransmits a valid authentication exchange; RFID skimming is specifically about reading and cloning the static serial number, not replaying a dynamic challenge-response.",
-    "category": "Physical Security"
-  },
-  {
-    "question": "A data center manager is specifying environmental controls for a new server room. What is the PRIMARY purpose of maintaining temperature and humidity within ASHRAE-recommended ranges?",
-    "options": [
-      "To satisfy fire suppression system requirements for optimal agent deployment",
-      "To prevent electrostatic discharge (ESD), condensation, corrosion, and thermal stress that degrade or damage equipment",
-      "To comply with OSHA worker comfort standards for data center personnel",
-      "To reduce cooling costs by maximizing free cooling hours"
-    ],
-    "correct": 1,
-    "explanation": "**Why B is correct**: HVAC environmental controls in data centers serve a critical equipment protection function. **Low humidity** increases the risk of electrostatic discharge (ESD), which can destroy semiconductors. **High humidity** causes condensation and corrosion on circuit boards. **High temperature** causes thermal throttling, accelerated component degradation, and failures. **Temperature cycling** creates thermal stress on solder joints and connectors. ASHRAE TC 9.9 defines thermal guidelines specifically to prevent these failure modes. **Why A is wrong**: Fire suppression agent deployment is designed to function within a range of environmental conditions; while temperature can affect suppression effectiveness, HVAC specifications are not driven primarily by suppression system requirements. **Why C is wrong**: OSHA worker comfort is a secondary benefit; data center environmental specs are driven by equipment protection requirements, not worker comfort standards (data centers are often not continuously staffed). **Why D is wrong**: Optimizing for free cooling hours is an energy efficiency goal, but it is a secondary operational benefit; the primary driver of ASHRAE compliance is equipment reliability and lifespan.",
-    "category": "Physical Security"
-  },
-  {
-    "question": "An organization has implemented a visitor management system requiring all visitors to present government-issued ID, sign a non-disclosure agreement, receive a distinctly colored temporary badge, and be escorted at all times. A visitor is observed walking unescorted in the office. What is the CORRECT immediate response by an employee who notices this?",
-    "options": [
-      "Ignore it; the visitor has a valid badge so they have been through security",
-      "Politely challenge the visitor, verify their escort is nearby, and report the situation to the security desk",
-      "Call law enforcement immediately since the visitor may be a trespasser",
-      "Ask the visitor to return to the lobby and wait for their host"
-    ],
-    "correct": 1,
-    "explanation": "**Why B is correct**: A **polite challenge** is the appropriate first response. Employees should be trained to challenge unescorted visitors in a non-confrontational manner, verify that an escort is present or expected, and notify security. This implements the human element of visitor management controls without unnecessary escalation. The colored badge makes visitors visually identifiable precisely to enable this response. **Why A is wrong**: A badge proves the visitor went through the entry process; it does not authorize unescorted access. Ignoring policy violations enables social engineering and tailgating attacks. **Why C is wrong**: Immediately calling law enforcement is a significant escalation inappropriate for a first observation of an unescorted visitor; the person may simply have become separated from their escort. Security staff should handle initial response. **Why D is wrong**: Asking the visitor to self-navigate back to the lobby without escort guidance defeats the purpose of escorted access; the employee should accompany or alert security rather than sending the visitor away unaccompanied.",
-    "category": "Physical Security"
-  },
-  {
-    "question": "A perimeter security design includes concrete posts embedded in the ground in front of a building entrance to prevent vehicle-ramming attacks while maintaining pedestrian access. What are these barriers called?",
+    "question": "To prevent vehicle-ramming attacks while still allowing pedestrian flow into a building, which of the following should a security manager install?",
     "options": [
       "Jersey barriers",
-      "Berms",
       "Bollards",
-      "Crash beams"
+      "Fences with concertina wire",
+      "Speed bumps"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: **Bollards** are sturdy, short vertical posts designed to stop vehicles while allowing pedestrians to pass between them. They are the standard for protecting building perimeters from vehicle attacks. **Why A is wrong**: Jersey barriers are large concrete blocks that also block pedestrian flow. **Why C is wrong**: Fences don't stop the momentum of a vehicle effectively and block pedestrians. **Why D is wrong**: Speed bumps only slow vehicles; they don't stop them from ramming a building.",
+    "category": "Physical Security"
+  },
+  {
+    "question": "A security guard is evaluating a fire involving energized electrical equipment. According to the standard classification, which class of fire is this, and what is the MOST appropriate suppression agent?",
+    "options": [
+      "Class A; Water",
+      "Class B; Foam",
+      "Class C; Non-conductive agent (e.g., CO2 or Halon alternative)",
+      "Class D; Dry powder"
     ],
     "correct": 2,
-    "explanation": "**Why C is correct**: **Bollards** are short, sturdy vertical posts (typically concrete, steel, or stone) installed at or near building entrances to prevent vehicle-borne attacks while allowing foot traffic. They are rated by crash test standards (e.g., ASTM F2656, PAS 68) for their ability to stop vehicles of specified weights at specified speeds. They are widely used in front of government buildings, embassies, and critical infrastructure. **Why A is wrong**: Jersey barriers are large concrete barriers commonly used as highway median dividers or construction zone barriers; while they can provide vehicle protection, they are not the purpose-built perimeter security post the question describes. **Why B is wrong**: Berms are earthen mounds used as passive barriers or landscaping elements; they can slow vehicles but are not the discrete vertical posts the question describes. **Why D is wrong**: Crash beams (or anti-ram beams) are horizontal barrier systems typically used at vehicle gates or checkpoints; they are not the vertical post configuration described.",
+    "explanation": "**Why C is correct**: **Class C** fires involve energized electrical equipment. The suppression agent must be non-conductive to avoid electrocuting the operator or causing further damage. **Why A is wrong**: Class A is for ordinary combustibles (wood/paper); water is conductive and dangerous for electrical fires. **Why B is wrong**: Class B is for flammable liquids. **Why D is wrong**: Class D is for combustible metals.",
     "category": "Physical Security"
   },
   {
-    "question": "Outdoor security lighting around a facility perimeter serves two primary security functions. Which statement BEST captures both purposes?",
+    "question": "Which of the following CPTED principles uses features like fences, pavement textures, and signage to clearly differentiate between public and private spaces?",
     "options": [
-      "Lighting enables CCTV cameras to capture higher-resolution images and reduces electricity costs through sensor-controlled activation",
-      "Lighting deters potential intruders by eliminating concealment opportunities and supports security personnel and CCTV in detecting and identifying threats",
-      "Lighting reduces insider threats by ensuring employees are visible at all times during night shifts",
-      "Lighting satisfies OSHA requirements for safe working conditions at outdoor loading docks"
+      "Natural Surveillance",
+      "Territorial Reinforcement",
+      "Natural Access Control",
+      "Target Hardening"
     ],
     "correct": 1,
-    "explanation": "**Why B is correct**: Perimeter lighting serves two security functions: **deterrence** (well-lit areas deny shadows and concealment, discouraging would-be intruders who rely on darkness) and **detection support** (enabling security guards and CCTV cameras to observe, identify, and respond to threats). These are the two core security purposes cited in standards such as ASIS Physical Security guidelines. **Why A is wrong**: While lighting does improve CCTV image quality, the claim that it 'reduces electricity costs' is incorrect — lighting increases energy consumption; sensor-controlled activation is a cost-efficiency measure but not a security purpose. **Why C is wrong**: While visible employees are a secondary benefit, insider threat reduction is not a primary design driver for perimeter lighting, which focuses on external threats. **Why D is wrong**: OSHA compliance for working conditions may be a co-benefit, but it is not the primary security rationale for perimeter lighting design.",
+    "explanation": "**Why B is correct**: **Territorial Reinforcement** is the CPTED principle that uses physical design to create a sense of ownership and clearly define the boundaries of a property, discouraging unauthorized entry. **Why A is wrong**: Surveillance focuses on visibility. **Why C is wrong**: Access control focuses on the flow of people. **Why D is wrong**: Target hardening is about the physical strength of barriers.",
     "category": "Physical Security"
   },
   {
-    "question": "A security team is reviewing a building's access control logs and discovers that a specific badge was used to access the server room at 2:47 AM, but the badge owner was on vacation and logged into the VPN from another country at the same time. What type of physical access threat does this MOST likely indicate?",
+    "question": "A facility uses a 'Passive Infrared' (PIR) sensor as part of its intrusion detection system. What is the PRIMARY disadvantage of a PIR sensor?",
     "options": [
-      "Piggybacking by a known employee",
-      "Badge cloning or credential theft used for unauthorized physical access",
-      "A system clock synchronization error producing false timestamps",
-      "Social engineering of the security guard on duty"
+      "It emits high levels of radiation",
+      "It is prone to false alarms from changes in light intensity",
+      "It only detects motion that crosses its field of view, not motion directly toward it",
+      "It requires a clear line of sight and can be affected by rapid temperature changes"
     ],
-    "correct": 1,
-    "explanation": "**Why B is correct**: The simultaneous use of the same badge credential in two geographically impossible locations (physical server room access while the owner is abroad on VPN) is a classic indicator of **badge cloning or credential theft**. The attacker duplicated the badge to gain physical access while the legitimate owner's VPN activity in another country creates an alibi conflict. This is an impossible travel anomaly applied to physical access credentials. **Why A is wrong**: Piggybacking involves an unauthorized person following an authorized person through a door; the log would show the legitimate cardholder's badge used in a location consistent with their presence, not simultaneously in two different locations. **Why C is wrong**: A clock synchronization error might cause logging discrepancies, but it would not explain the geographic impossibility of the same person being in two locations simultaneously, especially with corroborating VPN evidence from an international IP. **Why D is wrong**: Social engineering a guard might allow unauthorized entry, but would not explain why the server room access log shows the vacationing employee's specific badge number being read by the reader.",
+    "correct": 3,
+    "explanation": "**Why D is correct**: **PIR sensors** detect changes in infrared (heat) signatures. They require a clear line of sight and can be triggered by non-human heat sources, such as sunlight or HVAC vents, leading to false alarms. **Why A is wrong**: PIR sensors are passive; they don't emit anything. **Why B is wrong**: They detect heat, not visible light. **Why C is wrong**: While they are more sensitive to lateral motion, the primary operational challenge is environmental heat interference.",
     "category": "Physical Security"
   },
   {
-    "question": "A campus security designer applies **Crime Prevention Through Environmental Design (CPTED)** principles to a new office park. Which design element is a direct application of CPTED's **natural surveillance** concept?",
+    "question": "A security team is reviewing their 'Delay' controls in the physical security program. Which of the following is the BEST example of a delay control?",
     "options": [
-      "Installing motion-activated alarm sensors on all ground-floor windows",
-      "Positioning reception desks and common areas with clear sightlines to building entrances and parking lots, using low landscaping that does not obstruct views",
-      "Requiring all employees to use proximity cards for building entry",
-      "Deploying a perimeter fence with concertina wire to define the property boundary"
+      "A CCTV camera",
+      "A motion sensor",
+      "A reinforced door with a high-security lock",
+      "A security guard patrol"
     ],
-    "correct": 1,
-    "explanation": "**Why B is correct**: **CPTED natural surveillance** is the design principle of placing features to maximize visibility, making it difficult for offenders to act without being observed. This includes low-trimmed hedges, transparent lobby walls, windows facing parking areas, and reception desks positioned to observe entry points. The intent is to increase the perception that people can be seen, deterring criminal behavior through the built environment rather than electronic or human guards. **Why A is wrong**: Motion-activated alarm sensors are electronic/technical controls — they provide detection but are not a CPTED natural surveillance design element, which specifically refers to using the physical environment (architecture, landscaping, lighting) to maximize human visibility. **Why C is wrong**: Proximity card access control is an access control / physical security technology, not a CPTED design principle. CPTED focuses on environmental design, not authentication mechanisms. **Why D is wrong**: Perimeter fencing with concertina wire is a CPTED **territorial reinforcement** element (defining boundaries and ownership), not natural surveillance. The question specifically asks about natural surveillance.",
+    "correct": 2,
+    "explanation": "**Why C is correct**: Physical security aims to Detect, Delay, and Respond. **Delay** controls, like reinforced doors or fences, are intended to slow down an intruder long enough for a response team to arrive. **Why A and B are wrong**: These are detective controls. **Why D is wrong**: This is a response or deterrent control.",
     "category": "Physical Security"
   },
   {
-    "question": "During a **physical penetration test**, the consultant successfully enters a corporate data center by following a legitimate employee through a mantrap, presenting a fake badge to the inner door reader using a cloned credential, and then accessing server racks without being challenged. Which control failure MOST contributed to the consultant reaching the server racks undetected?",
+    "question": "When designing a server room, where is the MOST appropriate location for it within a building to minimize environmental and physical threats?",
     "options": [
-      "The CCTV system did not have night-vision capability",
-      "The mantrap's inner door accepted a cloned proximity credential without requiring a second authentication factor, and personnel did not challenge an unfamiliar individual inside the controlled area",
-      "The data center lacked a perimeter fence to prevent unauthorized vehicle access",
-      "The fire suppression system was not activated during the test"
+      "In the basement near the water main for cooling",
+      "On the top floor to maximize wireless signal strength",
+      "In the center of the building, away from exterior walls and windows",
+      "Near the loading dock for easy equipment delivery"
     ],
-    "correct": 1,
-    "explanation": "**Why B is correct**: Two failures compounded: (1) the **mantrap accepted a single-factor cloned credential** — adding a PIN, biometric, or multi-factor requirement would prevent cloned cards from working alone; (2) **personnel failed to challenge an unfamiliar individual** inside a restricted area — even with the mantrap defeated, an employee noticing an unknown person and demanding identification or escort could have stopped the intrusion. Physical security is a combination of technical controls and **human vigilance**. **Why A is wrong**: Night-vision CCTV addresses low-light recording capability; a well-lit data center with standard cameras would have recorded the intrusion. The failure was not a camera limitation but authentication and personnel response. **Why C is wrong**: The consultant was already inside the building when accessing the data center — a perimeter fence addresses external vehicle threats, not an insider who has already passed building entry. **Why D is wrong**: Fire suppression systems suppress fires; they play no role in detecting or deterring unauthorized human access to server racks.",
-    "category": "Physical Security"
-  },
-  {
-    "question": "A **PIR (Passive Infrared) motion sensor** is installed in a secure storage room. During testing, the sensor fails to detect an intruder who moves very slowly across the room. What is the MOST likely technical reason for this failure?",
-    "options": [
-      "The PIR sensor requires the intruder to produce audible sound to trigger",
-      "PIR sensors detect changes in infrared radiation patterns; an intruder moving very slowly produces insufficient rate-of-change across detection zones to trigger the sensor",
-      "The PIR sensor's infrared beam was blocked by the intruder stepping between emitter and receiver",
-      "PIR sensors only function in complete darkness and failed because the storage room had ambient lighting"
-    ],
-    "correct": 1,
-    "explanation": "**Why B is correct**: **PIR (Passive Infrared) sensors** detect the **change in infrared radiation** as a warm body (human) moves across the sensor's detection zones. They are differential sensors — they measure the rate of change as a heat source moves between sensing elements. A person moving **very slowly** produces an insufficient rate of infrared change to cross the detection threshold, potentially defeating the sensor. This is a known limitation exploited in physical penetration testing. **Why A is wrong**: PIR sensors detect infrared radiation (heat), not sound; they are entirely silent and entirely passive — they emit nothing and do not require sound from the intruder. **Why C is wrong**: The description of blocking an emitter/receiver beam describes an **active IR beam sensor** (like a photoelectric beam), not a passive infrared sensor. PIR sensors are passive — they do not emit a beam to be blocked. **Why D is wrong**: PIR sensors function in both light and dark environments; they detect infrared radiation (heat) not visible light. Ambient room lighting has no effect on PIR operation.",
-    "category": "Physical Security"
-  },
-  {
-    "question": "A security manager is specifying **safe ratings** for a vault that will store bearer bonds and negotiable instruments. The organization requires a safe rated to resist a tool attack for at least 30 minutes. Which Underwriters Laboratories (UL) **TL rating** meets this requirement?",
-    "options": [
-      "TL-15, which provides resistance to tool attack for 15 minutes",
-      "TL-30, which provides resistance to tool attack for 30 minutes",
-      "RSC (Residential Security Container), which provides 5 minutes of resistance",
-      "TL-30x6, which provides 30 minutes of resistance on all six sides"
-    ],
-    "correct": 1,
-    "explanation": "**Why B is correct**: **UL TL-30** (Tool-Resistant Safe, 30-minute rating) certifies that the safe withstands a 30-minute attack using common and electric hand tools against the front door face. This exactly meets the stated minimum of 30 minutes of tool resistance. For high-value negotiable instruments, TL-30 is a common minimum specification. **Why A is wrong**: **TL-15** provides only 15 minutes of tool-resistance — it does not meet the 30-minute requirement. **Why C is wrong**: **RSC (Residential Security Container)** provides only 5 minutes of resistance against hand tools and is intended for residential use — it is far below the requirement for bearer bonds and negotiable instruments in a commercial vault. **Why D is wrong**: **TL-30x6** provides 30 minutes of resistance on all six sides (door, top, bottom, and all four walls), which exceeds the minimum requirement. While it is an acceptable option that exceeds the requirement, TL-30 (front door only) directly meets the stated minimum and is more cost-effective for this application; TL-30x6 is the correct answer if the requirement specifies all-sided protection.",
-    "category": "Physical Security"
-  },
-  {
-    "question": "An organization implements a **server room** in a converted office space and a separate purpose-built **data center** in an adjacent building. Which statement BEST describes the security distinction between a server room and a data center?",
-    "options": [
-      "Server rooms require ISO 27001 certification; data centers require SOC 2 Type II certification",
-      "A server room is typically a smaller, less formally controlled space for localized IT equipment, while a data center is purpose-built with enterprise-grade power, cooling, physical security, and operational controls at scale",
-      "Server rooms cannot house network equipment, only compute servers; data centers may contain both",
-      "Data centers are only operated by third-party cloud providers; server rooms are operated by enterprises"
-    ],
-    "correct": 1,
-    "explanation": "**Why B is correct**: A **server room** is typically a localized space within a building allocated to IT equipment — it may have basic cooling and UPS but generally lacks the formal operational controls, redundant power, raised flooring, N+1 cooling, and comprehensive physical security of an enterprise data center. A **data center** is purpose-built infrastructure with enterprise-grade specifications: tiered redundancy (Uptime Institute Tier I–IV), fire suppression, comprehensive physical access controls, environmental monitoring, and often 24/7 on-site staff. The distinction is one of scale, formality, and operational resilience. **Why A is wrong**: Neither ISO 27001 nor SOC 2 is specifically tied to server rooms vs. data centers — both are information security management certifications applicable to either environment. **Why C is wrong**: Both server rooms and data centers typically contain network equipment, storage, and compute resources; there is no equipment-category restriction distinguishing them. **Why D is wrong**: Enterprise organizations routinely operate their own data centers; the term 'data center' is not restricted to cloud or third-party providers.",
-    "category": "Physical Security"
-  },
-  {
-    "question": "A security architect is evaluating **rack security controls** for a co-location data center where multiple organizations share the same floor space. Which combination of controls MOST effectively prevents unauthorized access to a specific organization's rack?",
-    "options": [
-      "Painting the racks a distinctive color and posting signage indicating the organization's name",
-      "Individual rack locking (keyed or electronic locks), cage enclosures around the organization's rack row, and per-rack access logging tied to identity",
-      "Requiring all visitors to sign a log book at the facility reception desk",
-      "Installing a single combination lock on the data center main entrance shared by all tenants"
-    ],
-    "correct": 1,
-    "explanation": "**Why B is correct**: In a co-location environment, multiple tenants share the facility. Effective rack security requires **layered controls**: individual **rack locks** (keyed or electronic) prevent unauthorized opening even for someone on the same floor; **cage enclosures** create a physical perimeter around the tenant's rack row, providing an additional barrier and clear territorial boundary; **per-rack access logging** tied to identity creates an audit trail for accountability and incident investigation. This combination provides defense in depth for multi-tenant environments. **Why A is wrong**: Color coding and signage are informational aids, not security controls — they do not physically prevent unauthorized access to the rack. **Why C is wrong**: A sign-in log at reception is an administrative detective control for building entry; it does not provide any physical protection for individual racks in a shared floor space. **Why D is wrong**: A single shared combination lock on the main entrance provides access to the entire data center floor but no per-tenant isolation — once through the door, any tenant can access any other tenant's rack.",
-    "category": "Physical Security"
-  },
-  {
-    "question": "A security consultant is assessing a facility and notes that landscaping includes tall dense bushes directly against building walls, poorly lit alcoves near loading docks, and trees with low branches adjacent to second-floor windows. These features represent failures in which **CPTED** principle?",
-    "options": [
-      "Natural access control — the landscaping fails to channel movement to controlled entry points",
-      "Natural surveillance — the landscaping creates concealment opportunities that reduce visibility and make criminal activity harder to observe",
-      "Territorial reinforcement — the landscaping fails to define boundaries of private vs. public space",
-      "Target hardening — the landscaping reduces the effectiveness of intrusion detection sensors"
-    ],
-    "correct": 1,
-    "explanation": "**Why B is correct**: **CPTED natural surveillance** is violated when the physical environment provides **concealment opportunities** — dense bushes against walls hide an intruder crouching there, poorly lit alcoves provide cover for activities that should be observable, and low branches allow climbing concealed from view. Natural surveillance design removes hiding spots and maximizes visibility from multiple vantage points. **Why A is wrong**: **Natural access control** uses design features to guide legitimate users to designated entry points and deny easy access to others (e.g., fences, paths, signage). The scenario describes concealment failures, not access channeling failures. **Why C is wrong**: **Territorial reinforcement** uses design to mark boundaries between public, semi-public, and private space (e.g., low fences, changes in paving, signage). Landscaping providing concealment is a surveillance failure, not a territorial boundary failure. **Why D is wrong**: **Target hardening** refers to physical strengthening of potential targets (locks, reinforced doors, shatter-resistant glass). CPTED is specifically about environmental design for natural security, not about hardening targets.",
-    "category": "Physical Security"
-  },
-  {
-    "question": "A data center's physical security policy requires that all removable storage media containing sensitive data be stored in a **media storage vault** when not in use. Which environmental and physical requirements should a media vault MOST include?",
-    "options": [
-      "The vault should be at room temperature with standard office humidity and secured with a standard deadbolt lock",
-      "The vault should maintain controlled temperature and humidity, be rated for fire resistance (e.g., Class 350 media rated safe), provide access control with logging, and be located away from magnetic field sources",
-      "The vault should be located in the server room for convenient access and use standard filing cabinet locks",
-      "The vault requires only a combination padlock rated for residential use since media is always encrypted"
-    ],
-    "correct": 1,
-    "explanation": "**Why B is correct**: A **media storage vault** must protect against multiple threat categories: **fire** (Class 350 fire-rated safes protect magnetic media from heat damage; standard fire-rated safes protect paper to 350°F but that temperature destroys magnetic media — media-rated safes maintain interior below 125°F and 80% RH); **environmental damage** (controlled temperature and humidity prevent media degradation); **electromagnetic interference** (magnetic fields can erase or corrupt magnetic media); **unauthorized access** (access control with logging for accountability). **Why A is wrong**: Room temperature with standard humidity and a deadbolt is inadequate — deadbolts provide minimal attack resistance, and no environmental controls are specified for media that degrades in heat, humidity fluctuations, or magnetic fields. **Why C is wrong**: Locating a media vault in the server room collocates it with a fire and environmental risk area; vaults should be in a separate, fire-resistant location. Standard filing cabinet locks are trivially defeated. **Why D is wrong**: Encryption protects data confidentiality if media is stolen, but it does not protect the physical media from fire, heat, humidity, or environmental damage. Encrypted media destroyed by fire is still a data loss event.",
-    "category": "Physical Security"
-  },
-  {
-    "question": "A physical security program describes the **four Ds** of a guard force's role: deter, detect, delay, and respond. An intruder defeats a fence (delay), is photographed by a CCTV camera (detect), and a guard is dispatched (respond), but the intruder reaches a server room before the guard arrives. Which function did the fence PRIMARILY provide, and what additional control would increase the response window?",
-    "options": [
-      "The fence provided deterrence; adding guard patrol routes would increase the response window",
-      "The fence provided delay; adding additional physical barriers (e.g., a second fence or locked intermediate door) would extend the delay and give the guard more response time",
-      "The fence provided detection; adding more CCTV cameras would increase the response window",
-      "The fence provided response capability; a guard booth at the fence would eliminate the response gap"
-    ],
-    "correct": 1,
-    "explanation": "**Why B is correct**: In the physical security **detection-delay-response** model, **delay** mechanisms slow the intruder's progress, creating a window for responders to arrive. A single fence provides a finite delay. Adding **additional barriers** (a second perimeter fence, locked intermediate rooms, mantrap, or reinforced doors) extends the cumulative delay beyond the response time required for guards to arrive. The goal is: detection time + delay time > response time. **Why A is wrong**: While a fence does provide some deterrent value, its primary physical security function in the D-model is **delay** — it physically impedes progress. Deterrence is psychological and is a benefit of the fence, not its primary mechanical function. Guard patrol routes improve response time, not delay time. **Why C is wrong**: The fence does not provide detection; the **CCTV camera** is the detection element in this scenario. Adding more cameras improves detection coverage, not the response window. **Why D is wrong**: A fence does not provide response capability — response is provided by the guard force. A guard booth at the fence would improve response time, not add delay capability. The question asks what the fence primarily provided.",
-    "category": "Physical Security"
-  },
-  {
-    "question": "A security manager is evaluating **lock types** for a new high-security server room. The room previously used standard pin tumbler locks and experienced several incidents of lock picking. Which lock type is MOST resistant to lock picking and bumping attacks?",
-    "options": [
-      "Wafer tumbler lock — uses flat wafer tumblers instead of pin stacks",
-      "Disc detainer lock — uses rotating discs requiring a specialized key that is very difficult to pick with standard lock picks",
-      "Pin tumbler lock with security pins — adds spool or serrated pins to the standard design",
-      "Standard padlock with a laminated steel body"
-    ],
-    "correct": 1,
-    "explanation": "**Why B is correct**: **Disc detainer locks** use a series of rotating discs (rather than pins or wafers) that must each be individually rotated to the correct angle for the lock to open. This mechanism is significantly more resistant to standard pin-picking tools, raking, and bump keys than pin tumbler designs, because conventional picking tools cannot engage the disc mechanism. They are commonly used in high-security and automotive applications. **Why A is wrong**: Wafer tumbler locks are generally considered **less** secure than pin tumbler locks — the simpler wafer mechanism is often easier to pick than a properly designed pin tumbler. They are used in low-security applications like file cabinets. **Why C is wrong**: Security pins (spool, serrated) make pin tumbler locks harder to pick by creating false sets, but they do not eliminate vulnerability to bump attacks or highly skilled pickers with the right tools. They improve over standard pin tumblers but are less resistant than disc detainer designs. **Why D is wrong**: A laminated steel body resists physical attack (sawing, cutting) but the lock cylinder — whether pin tumbler or other mechanism — still determines pick resistance. The body material does not change the picking resistance of the mechanism.",
-    "category": "Physical Security"
-  },
-  {
-    "question": "A government facility undergoes a **physical penetration test**. The tester successfully accesses the parking lot by tailgating a vehicle through the automated gate, then enters the lobby pretending to be a job candidate, obtains an unescorted temporary badge by social engineering the receptionist, and ultimately accesses a second-floor office by claiming to be conducting a fire safety inspection. Which security awareness training concept does each of these social engineering vectors MOST directly represent?",
-    "options": [
-      "All three represent technical attacks that can only be prevented by upgraded electronic access control systems",
-      "Vehicle tailgating — physical control bypass; false pretense (job candidate) — pretexting/identity deception; false authority (fire inspector) — authority exploitation, all of which require a trained human response as the last line of defense",
-      "Vehicle tailgating — a CPTED failure; false pretense — a background check failure; false authority — a visitor management system failure, all requiring policy changes only",
-      "All three are insider threat scenarios because an authorized person facilitated each access"
-    ],
-    "correct": 1,
-    "explanation": "**Why B is correct**: Physical social engineering attacks exploit human psychology rather than technical vulnerabilities: **tailgating** bypasses physical access controls by exploiting the human tendency to hold doors for vehicles; **pretexting** (posing as a job candidate) establishes a false but plausible identity to obtain access legitimately; **authority exploitation** (posing as a fire inspector) triggers compliance by invoking a perceived authority figure. **Security awareness training** that teaches employees to challenge all unescorted individuals, verify identities independently, and resist urgency/authority pressure is the primary countermeasure for all three vectors. **Why A is wrong**: Technical controls (better gates, biometric readers) can reduce some vectors, but social engineering exploits people, not technology. An attacker who successfully deceives a human will bypass the next technical control as well. **Why C is wrong**: While CPTED, background checks, and visitor management are relevant, the immediate countermeasure for in-the-moment social engineering is trained human response — not policy changes alone, which do not help if employees lack the awareness to apply them. **Why D is wrong**: These are external attacker scenarios using social engineering against employees — not insider threats. Insiders already have legitimate access; these attackers are outsiders gaining access through deception.",
-    "category": "Physical Security"
-  },
-  {
-    "question": "A **smart lock** (electronic lock with Bluetooth and app-based access) is installed on the server room door of a startup company. A security consultant flags this as a risk. Which concern about smart locks in high-security environments is MOST significant from a CISSP perspective?",
-    "options": [
-      "Smart locks are more expensive to install and maintain than traditional mechanical locks",
-      "Smart locks introduce a digital attack surface — they may be vulnerable to Bluetooth spoofing, firmware vulnerabilities, app credential theft, or cloud service dependencies that mechanical locks do not have",
-      "Smart locks cannot generate audit logs of who accessed the door and when",
-      "Smart locks are prohibited by NIST guidelines for any federally regulated facility"
-    ],
-    "correct": 1,
-    "explanation": "**Why B is correct**: Smart locks combine physical security with a **digital attack surface** that traditional mechanical locks lack entirely: Bluetooth communication can be intercepted or spoofed; firmware may contain vulnerabilities exploitable remotely; app credentials can be phished or stolen; cloud-based lock management services create a dependency on internet availability and the security posture of a third-party cloud provider. A physical control that can be defeated digitally from a distance represents a qualitative risk increase compared to a mechanical lock that requires physical contact. **Why A is wrong**: Cost is an operational concern, not a security concern. Higher cost does not make a control less secure — in fact, costlier implementations are often more secure. **Why C is wrong**: Smart locks typically generate more detailed audit logs than mechanical locks, not fewer — access events are timestamped and identity-linked, which is a security advantage, not a risk. **Why D is wrong**: NIST guidelines do not categorically prohibit smart locks; specific implementations may be prohibited in certain classified environments, but there is no blanket NIST prohibition.",
-    "category": "Physical Security"
-  },
-  {
-    "question": "An organization is implementing a **drone threat** mitigation program after discovering that a competitor's industrial espionage team used a commercial drone equipped with a high-resolution camera and directional microphone to observe sensitive meetings through office windows. Which combination of controls MOST effectively addresses this threat?",
-    "options": [
-      "Implement a social media monitoring program to detect photos of the facility posted by drones",
-      "Install RF drone detection systems to identify unauthorized drones in the airspace, use window films that prevent external observation, enforce meeting room policies for sensitive discussions (interior rooms away from windows), and report incidents to aviation authorities",
-      "Place prominent signage around the facility boundary warning that drone photography is prohibited",
-      "Deploy a counter-drone jamming system to disable approaching drones"
-    ],
-    "correct": 1,
-    "explanation": "**Why B is correct**: Drone-based physical espionage requires a **layered response**: **RF detection** provides early warning of unauthorized drones in the vicinity; **window films** (privacy or IR-blocking) prevent optical and thermal observation through glass; **meeting room policies** (using interior rooms without windows for sensitive meetings) reduce exposure even if a drone is present; **aviation authority reporting** enables law enforcement action against operators. This addresses detection, protection, and response. **Why A is wrong**: Social media monitoring may detect after-the-fact posting but does nothing to prevent the real-time espionage event or identify the operator in time to respond. **Why C is wrong**: Signage is a deterrent (and may have legal value establishing intent) but provides no technical protection against a determined adversary who is already willing to break airspace regulations. **Why D is wrong**: Counter-drone jamming systems typically involve radio frequency interference, which is **heavily regulated or illegal** in most jurisdictions without specific federal authorization (FCC, FAA). Deploying unlicensed RF jamming equipment exposes the organization to significant legal liability. Authorized anti-drone systems are available only to certain government and critical infrastructure operators.",
-    "category": "Physical Security"
-  },
-  {
-    "question": "A security manager is establishing a policy for **cable locks and device tethering** for laptop computers used in open-plan office spaces where employees occasionally leave their desks. Which statement BEST describes the role of cable locks in the overall physical security program?",
-    "options": [
-      "Cable locks provide complete protection against laptop theft because they cannot be defeated without specialized tools",
-      "Cable locks are a deterrent and delay control — they discourage opportunistic theft and require additional time and tools to defeat, but determined thieves with appropriate tools can cut the cable",
-      "Cable locks eliminate the need for full-disk encryption because the device cannot be removed from the premises",
-      "Cable locks are only appropriate for desktop computers; laptops should be stored in locked drawers when unattended"
-    ],
-    "correct": 1,
-    "explanation": "**Why B is correct**: **Cable locks** (e.g., Kensington-style locks) serve as **deterrent and delay** controls: they discourage casual, opportunistic theft (a thief who wants a quick grab will move on to an unlocked device) and require tools and time to defeat (cutting the cable, defeating the lock mechanism). However, they can be defeated — cables can be cut with bolt cutters, and lock mechanisms can be picked or bypassed by determined attackers. They are one layer in a defense-in-depth program, not an absolute control. **Why A is wrong**: Cable locks can be defeated; claiming they provide 'complete protection' overstates their strength. Security claims that a control cannot be defeated are almost always wrong. **Why C is wrong**: Cable locks prevent physical removal but do not protect data if the device is accessed in place (e.g., a logged-in unattended screen) or defeated. **Full-disk encryption** protects data if the device is stolen or accessed while powered off — cable locks and full-disk encryption are complementary, not substitutes. **Why D is wrong**: Cable locks are widely and appropriately used for laptops; the Kensington Lock Standard was specifically designed for portable computers. Locking in drawers is an alternative but not a replacement policy for open-plan environments.",
+    "correct": 2,
+    "explanation": "**Why C is correct**: Placing the server room in the **core of the building** provides natural protection from exterior threats (explosions, vehicle ramming, weather) and reduces the risk of unauthorized entry through windows. **Why A is wrong**: Basements are at high risk for flooding. **Why B is wrong**: Top floors are vulnerable to roof leaks and external aerial threats. **Why D is wrong**: Loading docks are high-traffic areas with lower security control over personnel movement.",
     "category": "Physical Security"
   }
 ]

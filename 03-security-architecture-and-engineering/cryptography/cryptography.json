@@ -1,362 +1,122 @@
 [
   {
-    "question": "A security architect is designing a system that requires confidentiality for bulk data at rest. The system must process gigabytes of data quickly using hardware acceleration. Which algorithm and mode is most appropriate?",
+    "question": "An organization needs to encrypt large volumes of data at rest on a storage area network (SAN). Which cryptographic algorithm is the MOST appropriate choice for this requirement?",
     "options": [
-      "AES-256 in GCM mode",
-      "RSA-2048 with OAEP padding",
-      "3DES in CBC mode",
-      "RC4 stream cipher"
-    ],
-    "correct": 0,
-    "explanation": "**Why A is correct**: AES-256 in GCM mode is a modern symmetric block cipher that supports hardware acceleration (AES-NI), provides authenticated encryption, and is suitable for bulk data encryption. It is the industry standard for data at rest. **Why B is wrong**: RSA is an asymmetric algorithm designed for key exchange and digital signatures, not bulk data encryption — it is computationally expensive and impractical for large datasets. **Why C is wrong**: 3DES (Triple DES) has an effective key length of 112 bits, is deprecated by NIST as of 2023, and is significantly slower than AES on modern hardware. **Why D is wrong**: RC4 is a stream cipher with well-known cryptanalytic weaknesses and has been deprecated; it is prohibited in TLS and should not be used for data at rest.",
-    "category": "Cryptography"
-  },
-  {
-    "question": "During a TLS 1.3 handshake, which mechanism ensures that compromise of the server's long-term private key does not allow decryption of previously recorded sessions?",
-    "options": [
-      "Certificate pinning",
-      "Perfect forward secrecy using ephemeral Diffie-Hellman key exchange",
-      "HMAC-based message authentication",
-      "RSA key encapsulation"
+      "RSA-4096",
+      "AES-256",
+      "Diffie-Hellman",
+      "MD5"
     ],
     "correct": 1,
-    "explanation": "**Why B is correct**: **Perfect forward secrecy (PFS)** is achieved through ephemeral Diffie-Hellman (DHE or ECDHE) key exchange. Each session uses a unique, short-lived key pair; the session key is never stored, so even if the long-term private key is later compromised, past sessions cannot be decrypted. **Why A is wrong**: Certificate pinning prevents fraudulent certificates from being accepted by a client but does not protect confidentiality of recorded sessions. **Why C is wrong**: HMAC provides message integrity and authentication but has no role in protecting the confidentiality of past sessions against key compromise. **Why D is wrong**: RSA key encapsulation (used in TLS 1.2 and earlier) does NOT provide forward secrecy — the session key is encrypted with the server's static RSA public key, so compromise of that key exposes all past sessions.",
+    "explanation": "**Why B is correct**: **AES (Advanced Encryption Standard)** is a symmetric block cipher specifically designed for high-speed, high-volume bulk data encryption. AES-256 is the current industry standard for protecting data at rest. **Why A is wrong**: RSA is an asymmetric algorithm and is far too computationally expensive for bulk data encryption; it is typically used for key exchange or digital signatures. **Why C is wrong**: Diffie-Hellman is a key agreement protocol, not an encryption algorithm. **Why D is wrong**: MD5 is a hashing function used for integrity, not a cipher used for confidentiality.",
     "category": "Cryptography"
   },
   {
-    "question": "An organization's certificate authority issues a certificate to an employee. The employee later leaves under adverse circumstances and the security team suspects credential misuse. What is the MOST immediate control to invalidate trust in that certificate before it expires?",
+    "question": "A security engineer is implementing a digital signature for a sensitive document. Which of the following describes the CORRECT process for creating a digital signature?",
     "options": [
-      "Delete the employee's account in Active Directory",
-      "Publish the certificate serial number to the Certificate Revocation List (CRL) or update OCSP",
-      "Re-issue certificates to all remaining employees",
-      "Change the CA's root certificate"
+      "Encrypting the document with the recipient's public key",
+      "Hashing the document and encrypting the hash with the sender's private key",
+      "Encrypting the document with the sender's private key",
+      "Hashing the document and encrypting the hash with the sender's public key"
     ],
     "correct": 1,
-    "explanation": "**Why B is correct**: **Certificate revocation** via CRL or OCSP is the PKI mechanism designed specifically to invalidate a certificate before its natural expiry. Relying parties checking revocation status will reject the certificate once it appears on the CRL or OCSP returns a 'revoked' status. **Why A is wrong**: Disabling an AD account addresses authentication for network resources but does not invalidate the X.509 certificate itself; systems using certificate-based authentication that do not check AD status remain vulnerable. **Why C is wrong**: Re-issuing all certificates is operationally disruptive, costly, and unnecessary — revocation handles individual certificates without affecting others. **Why D is wrong**: Replacing the root CA certificate would break trust for all certificates issued by that CA, causing widespread disruption and is grossly disproportionate for a single compromised certificate.",
+    "explanation": "**Why B is correct**: A **digital signature** is created by taking a **hash** of the message and then encrypting that hash with the **sender's private key**. This provides integrity, authentication, and non-repudiation. **Why A is wrong**: Encrypting with the recipient's public key provides confidentiality, not a digital signature. **Why C is wrong**: Encrypting the entire document with a private key is computationally inefficient and does not follow the standard digital signature process. **Why D is wrong**: Encrypting with a public key is used for confidentiality (so only the private key holder can read it), not for proving the sender's identity.",
     "category": "Cryptography"
   },
   {
-    "question": "A developer needs to verify the integrity of a software package and confirm its origin. Which cryptographic construct achieves BOTH goals simultaneously?",
+    "question": "Two parties who have never met wish to securely exchange a symmetric key over an unencrypted public network. Which protocol is BEST suited for this initial key agreement?",
     "options": [
-      "SHA-256 hash of the package",
-      "AES-encrypted hash of the package",
-      "Digital signature using the publisher's private key",
-      "HMAC using a shared secret key"
+      "Advanced Encryption Standard (AES)",
+      "Diffie-Hellman (DH)",
+      "Secure Hash Algorithm (SHA-256)",
+      "Elliptic Curve Digital Signature Algorithm (ECDSA)"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: **Diffie-Hellman** is a key agreement protocol that allows two parties to establish a shared secret over an insecure channel. This secret can then be used as a symmetric encryption key. **Why A is wrong**: AES is a symmetric cipher; it requires both parties to already have the key. **Why C is wrong**: SHA-256 is a hashing algorithm used for integrity. **Why D is wrong**: ECDSA is used for digital signatures, not for establishing a shared secret key.",
+    "category": "Cryptography"
+  },
+  {
+    "question": "A developer is storing user passwords in a database. Which of the following is the BEST practice to protect these passwords against rainbow table attacks?",
+    "options": [
+      "Encrypting the passwords using 3DES",
+      "Hashing the passwords using MD5",
+      "Salting the passwords before hashing them with a strong algorithm like bcrypt or Argon2",
+      "Using a standard Initialization Vector (IV) for all password hashes"
     ],
     "correct": 2,
-    "explanation": "**Why C is correct**: A **digital signature** — created by hashing the package and encrypting the hash with the publisher's private key — provides both **integrity** (any modification invalidates the signature) and **authentication/non-repudiation** (only the private key holder could have created it). The recipient verifies using the publisher's public key. **Why A is wrong**: A standalone hash verifies integrity but provides no assurance of origin — anyone can compute a SHA-256 hash and substitute a malicious package with a matching hash posted alongside it. **Why B is wrong**: AES-encrypting a hash adds confidentiality but still does not bind the hash to a specific identity, since the symmetric key could be shared with many parties. **Why C is correct** as stated. **Why D is wrong**: HMAC provides integrity and authentication but requires both parties to share the same secret key, making it unsuitable for public verification of origin — it does not scale for software distribution.",
+    "explanation": "**Why C is correct**: **Salting** involves adding unique, random data to each password before hashing. This ensures that identical passwords result in different hashes, effectively defeating **rainbow table** attacks. Using modern slow-hashing algorithms like bcrypt or Argon2 further protects against brute-force. **Why A is wrong**: 3DES is a legacy encryption algorithm and is not appropriate for password storage. **Why B is wrong**: MD5 is fast and collision-prone, making it vulnerable to modern cracking techniques. **Why D is wrong**: An IV is used in block ciphers, not hashing; using a 'standard' (non-unique) IV or salt defeats the purpose of the control.",
     "category": "Cryptography"
   },
   {
-    "question": "An analyst discovers that a legacy financial application uses MD5 to store password hashes. What is the PRIMARY cryptographic concern with this approach?",
+    "question": "Which cryptographic property ensures that a sender cannot later deny having sent a specific message?",
     "options": [
-      "MD5 produces too short a digest for password storage",
-      "MD5 is a stream cipher, not suitable for hashing",
-      "MD5 is computationally fast and collision-prone, making brute-force and rainbow table attacks practical",
-      "MD5 lacks support for HMAC construction"
+      "Confidentiality",
+      "Integrity",
+      "Non-repudiation",
+      "Availability"
     ],
     "correct": 2,
-    "explanation": "**Why C is correct**: MD5's **speed** is a liability for password storage — attackers can compute billions of MD5 hashes per second on commodity hardware. Additionally, MD5 has known **collision vulnerabilities** and is preimage-attackable in weakened scenarios. Modern GPU-based attacks and precomputed rainbow tables make MD5 password hashes trivially crackable. **Why A is wrong**: While MD5's 128-bit output is considered short by modern standards, the primary concern for password storage is speed and collision resistance, not digest length alone. **Why B is wrong**: MD5 is a cryptographic hash function, not a stream cipher. **Why D is wrong**: MD5 does technically support HMAC construction, though it is not recommended; HMAC-MD5 is still used in some legacy protocols. The absence of HMAC support is not the concern here.",
+    "explanation": "**Why C is correct**: **Non-repudiation** is the assurance that the author of a statement or signer of a document cannot successfully deny their authorship or the validity of the signature. It is typically achieved through digital signatures. **Why A is wrong**: Confidentiality ensures data is not disclosed to unauthorized parties. **Why B is wrong**: Integrity ensures data has not been modified. **Why D is wrong**: Availability ensures systems and data are accessible when needed.",
     "category": "Cryptography"
   },
   {
-    "question": "Two parties need to establish a shared secret over an untrusted public channel without prior key exchange. Neither party has the other's public key certificate. Which protocol addresses this scenario?",
+    "question": "An organization is transitioning from RSA to Elliptic Curve Cryptography (ECC). What is the PRIMARY advantage of ECC over RSA?",
     "options": [
-      "RSA key transport",
-      "Diffie-Hellman key exchange",
-      "AES key wrapping",
-      "Kerberos ticket granting"
+      "ECC is a symmetric algorithm and therefore faster",
+      "ECC provides equivalent security with much smaller key sizes",
+      "ECC is immune to quantum computing attacks",
+      "ECC does not require a Public Key Infrastructure (PKI)"
     ],
     "correct": 1,
-    "explanation": "**Why B is correct**: **Diffie-Hellman (DH)** key exchange allows two parties to independently compute the same shared secret over a public channel using public parameters, without ever transmitting the secret itself or requiring pre-shared certificates. This is the foundational protocol for key agreement in TLS, IKE/IPsec, and SSH. **Why A is wrong**: RSA key transport requires the sender to already possess the recipient's RSA public key (typically via a certificate), which contradicts the scenario of no prior key exchange. **Why C is wrong**: AES key wrapping is a mechanism to encrypt (wrap) an already-known key using another key — it does not establish a new shared secret between unknown parties. **Why D is wrong**: Kerberos relies on a trusted third party (KDC) and requires both parties to already have accounts and shared secrets with the KDC.",
+    "explanation": "**Why B is correct**: **ECC (Elliptic Curve Cryptography)** is much more efficient than RSA, providing the same level of security with significantly **smaller key sizes** (e.g., a 256-bit ECC key is roughly equivalent to a 3072-bit RSA key). **Why A is wrong**: ECC is an asymmetric (public-key) algorithm, not symmetric. **Why C is wrong**: ECC, like RSA, is vulnerable to future quantum computing attacks (specifically Shor's algorithm). **Why D is wrong**: ECC still requires a PKI (certificates, CAs) for trust management in most enterprise scenarios.",
     "category": "Cryptography"
   },
   {
-    "question": "A security team wants to ensure that API payloads between microservices have not been tampered with in transit, and that the receiver can verify the sender's identity using a shared secret. Which primitive is MOST appropriate?",
+    "question": "During a Public Key Infrastructure (PKI) operation, which entity is PRIMARILY responsible for verifying the identity of a certificate applicant?",
     "options": [
-      "SHA-512 hash appended to each payload",
-      "HMAC-SHA256 with a shared secret key",
-      "AES-128-CBC encryption of the payload",
-      "RSA digital signature"
+      "Certificate Authority (CA)",
+      "Registration Authority (RA)",
+      "Certificate Revocation List (CRL)",
+      "Online Certificate Status Protocol (OCSP)"
     ],
     "correct": 1,
-    "explanation": "**Why B is correct**: **HMAC (Hash-based Message Authentication Code)** combines a cryptographic hash with a shared secret key, providing both **integrity** (tampering invalidates the MAC) and **authentication** (only parties with the shared key can produce or verify a valid HMAC). It is computationally efficient, making it ideal for high-throughput microservice communication. **Why A is wrong**: An unauthenticated hash provides integrity only — any attacker who can modify the payload can also recompute and replace the hash, providing no protection. **Why C is wrong**: Encryption provides confidentiality but does not inherently guarantee integrity or authenticate the sender without an accompanying MAC or AEAD mode. **Why D is wrong**: RSA signatures are asymmetric and computationally expensive relative to HMAC; they are appropriate when non-repudiation is needed or when the parties do not share a secret, but are overkill for internal microservice communication with a shared secret.",
+    "explanation": "**Why B is correct**: The **Registration Authority (RA)** acts as the 'front office' for a CA. Its primary role is to verify the identity of entities requesting certificates before the CA actually signs and issues them. **Why A is wrong**: While the CA ultimately issues the certificate, the RA handles the identity verification task. **Why C and D are wrong**: CRL and OCSP are mechanisms used to check the revocation status of certificates, not for issuing them.",
     "category": "Cryptography"
   },
   {
-    "question": "An organization is migrating from RSA-2048 to elliptic curve cryptography for its VPN certificates. What is the PRIMARY advantage of ECC at equivalent security levels?",
+    "question": "A security analyst discovers that a legacy application uses a block cipher in Electronic Codebook (ECB) mode. Why is this considered a significant security weakness?",
     "options": [
-      "ECC keys are immune to man-in-the-middle attacks",
-      "ECC provides equivalent security strength with significantly smaller key sizes and lower computational overhead",
-      "ECC supports symmetric encryption natively, eliminating the need for AES",
-      "ECC certificates are not subject to revocation requirements"
-    ],
-    "correct": 1,
-    "explanation": "**Why B is correct**: **ECC (Elliptic Curve Cryptography)** achieves equivalent security to RSA with dramatically smaller keys — a 256-bit ECC key provides roughly the same security as a 3072-bit RSA key. This translates to faster handshakes, lower CPU usage, and smaller certificate sizes, which is particularly valuable for constrained devices and high-throughput VPN gateways. **Why A is wrong**: ECC does not inherently prevent MITM attacks; proper certificate validation, revocation checking, and PKI trust anchors are still required regardless of the algorithm used. **Why C is wrong**: ECC is an asymmetric algorithm used for key exchange and digital signatures; it does not perform symmetric encryption and still works in conjunction with algorithms like AES for bulk data. **Why D is wrong**: ECC certificates are X.509 certificates subject to the same revocation mechanisms (CRL, OCSP) as RSA certificates.",
-    "category": "Cryptography"
-  },
-  {
-    "question": "A forensic investigator suspects that confidential information is being exfiltrated hidden within innocent-looking image files posted to a public forum. Which technique does this describe?",
-    "options": [
-      "Cryptographic obfuscation",
-      "Steganography",
-      "Digital watermarking for DLP",
-      "Covert channel via encryption padding"
-    ],
-    "correct": 1,
-    "explanation": "**Why B is correct**: **Steganography** is the practice of concealing secret data within ordinary, non-secret data (such as images, audio, or video) so that the very existence of the hidden message is not apparent. Unlike encryption, which makes data unreadable, steganography hides the fact that a secret message exists at all. **Why A is wrong**: Cryptographic obfuscation refers to hiding the workings of a cryptographic algorithm or key, not to hiding data inside carrier files. **Why C is wrong**: Digital watermarking is used to embed ownership or tracking information into media, typically for rights management — it is a defensive control, not an exfiltration technique. **Why D is wrong**: While covert channels can exist in protocol padding, the scenario specifically describes data hidden in image files posted publicly, which is the classic definition of steganography.",
-    "category": "Cryptography"
-  },
-  {
-    "question": "NIST has warned that sufficiently large quantum computers will be able to break which category of currently used cryptographic algorithms, requiring migration to post-quantum alternatives?",
-    "options": [
-      "Symmetric algorithms such as AES-256, which will become completely broken",
-      "Hash functions such as SHA-256, which will become fully reversible",
-      "Asymmetric algorithms based on integer factorization and discrete logarithm problems, such as RSA and ECC",
-      "All HMAC constructions, regardless of underlying hash function"
+      "ECB requires a very large Initialization Vector (IV)",
+      "ECB is a stream cipher and lacks block-level integrity",
+      "ECB encrypts identical blocks of plaintext into identical blocks of ciphertext, revealing patterns",
+      "ECB is incompatible with the AES algorithm"
     ],
     "correct": 2,
-    "explanation": "**Why C is correct**: **Shor's algorithm**, executable on a sufficiently powerful quantum computer, can solve the integer factorization problem (breaking RSA) and the discrete logarithm problem (breaking ECC and DH) in polynomial time, rendering these **asymmetric algorithms** broken. NIST has initiated a post-quantum cryptography standardization process specifically to address this threat. **Why A is wrong**: Symmetric algorithms like AES-256 are threatened by **Grover's algorithm**, which reduces the effective security by half (to ~128-bit equivalence for AES-256) — concerning but not catastrophic; doubling key length mitigates the threat. **Why B is wrong**: Quantum computers weaken hash functions by roughly halving effective collision resistance via Grover's algorithm, but this does not make SHA-256 fully reversible; SHA-512 or similar provides adequate post-quantum security for hashing. **Why D is wrong**: HMAC security depends on the underlying hash function; as noted, hash functions are weakened but not broken by quantum attacks.",
+    "explanation": "**Why C is correct**: **ECB (Electronic Codebook)** mode lacks 'diffusion'. It encrypts each block independently with the same key. This means identical plaintext blocks produce identical ciphertext blocks, allowing an attacker to discern patterns in the data (the 'Tux penguin' example). **Why A is wrong**: ECB does not use an IV at all, which is part of its weakness. **Why B is wrong**: ECB is a mode for block ciphers, not a stream cipher. **Why D is wrong**: AES can be used in ECB mode, although it is highly discouraged.",
     "category": "Cryptography"
   },
   {
-    "question": "During a security review, an auditor finds that a web application uses DES for encrypting stored credit card data. Which statement BEST characterizes the risk?",
+    "question": "Which of the following is the MOST secure method for a web browser to verify if a TLS certificate has been revoked in near real-time?",
     "options": [
-      "DES is adequate because it uses a 56-bit key, which exceeds PCI DSS minimums",
-      "DES is vulnerable to brute-force attacks due to its 56-bit key length and has been deprecated",
-      "DES is only weak against quantum computer attacks and remains secure against classical adversaries",
-      "DES risk is mitigated if data is also protected by TLS in transit"
+      "Checking a local Certificate Revocation List (CRL)",
+      "Using the Online Certificate Status Protocol (OCSP)",
+      "Relying on the certificate's expiration date",
+      "Verifying the Certificate Authority's public key"
     ],
     "correct": 1,
-    "explanation": "**Why B is correct**: **DES (Data Encryption Standard)** uses a 56-bit key, which is insufficient by modern standards. It was publicly demonstrated as broken in 1999 (the EFF's Deep Crack cracked DES in under 24 hours). NIST withdrew DES as a federal standard, and PCI DSS explicitly prohibits it for cardholder data protection. Brute-force attacks are entirely practical with modern hardware. **Why A is wrong**: PCI DSS does not permit DES; it requires 'strong cryptography,' explicitly excluding DES. A 56-bit key does not meet any modern cryptographic minimum. **Why C is wrong**: DES is vulnerable to classical brute-force attacks using readily available hardware, not just theoretical quantum attacks. Its weakness is present-day and practical. **Why D is wrong**: TLS protects data in transit but has no bearing on the strength of at-rest encryption. Separately weak at-rest encryption remains a significant risk regardless of transport security.",
+    "explanation": "**Why B is correct**: **OCSP** provides a real-time way to check the status of a specific certificate. It is more efficient than CRLs, which require downloading a potentially large list of all revoked certificates. **Why A is wrong**: CRLs can be large and are often cached, meaning they may not reflect the absolute most recent revocations. **Why C is wrong**: Expiration only tells you if the certificate is old; it doesn't tell you if it was revoked *before* it expired. **Why D is wrong**: Verifying the CA's key confirms who issued the certificate but not its current status.",
     "category": "Cryptography"
   },
   {
-    "question": "A PKI administrator is evaluating whether to use CRL or OCSP for certificate revocation status checking. Which statement MOST accurately describes a key operational difference?",
+    "question": "An attacker intercepts a ciphertext and manages to find a different plaintext that produces the same hash value as the original message. What type of cryptographic attack has occurred?",
     "options": [
-      "CRL provides real-time per-certificate status, while OCSP distributes a full list of revoked certificates",
-      "OCSP allows clients to query the revocation status of a specific certificate in near-real-time, while CRL requires downloading the entire revocation list",
-      "OCSP is only available for root CA certificates; CRL is used for end-entity certificates",
-      "CRL is preferred for high-volume environments because it reduces load on the CA"
+      "Replay attack",
+      "Collision attack",
+      "Known-plaintext attack",
+      "Man-in-the-Middle attack"
     ],
     "correct": 1,
-    "explanation": "**Why B is correct**: **OCSP (Online Certificate Status Protocol)** allows a client to send a request for a specific certificate's status and receive a real-time signed response ('good,' 'revoked,' or 'unknown'), transferring only minimal data. **CRL (Certificate Revocation List)** is a signed list of all currently revoked certificate serial numbers that clients must download in its entirety, which can become large and stale between publication intervals. **Why A is wrong**: This reverses the definitions — CRL is the full list, OCSP provides per-certificate queries. **Why C is wrong**: Both OCSP and CRL are used for end-entity certificates; neither is restricted to root CAs. OCSP Stapling is commonly used for end-entity TLS certificates. **Why D is wrong**: CRL distribution can actually increase load on CDN/distribution points when lists are large, and introduces staleness risk. OCSP Stapling shifts revocation checking load to the server and is often preferred in high-volume web environments.",
-    "category": "Cryptography"
-  },
-  {
-    "question": "A cipher encrypts data one bit or byte at a time using a keystream generated from the key, making it suitable for streaming data where the total length is unknown in advance. What type of cipher is this?",
-    "options": [
-      "Block cipher in CBC mode",
-      "Block cipher in ECB mode",
-      "Stream cipher",
-      "Feistel cipher"
-    ],
-    "correct": 2,
-    "explanation": "**Why C is correct**: A **stream cipher** generates a pseudo-random keystream and XORs it with plaintext one bit or byte at a time. This makes it ideal for encrypting continuous or variable-length data streams (e.g., real-time communications) where the total data length is unknown. RC4 is a classic example; ChaCha20 is a modern, secure stream cipher. **Why A is wrong**: CBC (Cipher Block Chaining) is a mode for **block ciphers** that processes fixed-size blocks (e.g., 128 bits for AES) and requires padding to a block boundary — it is less naturally suited to arbitrary-length streams. **Why B is wrong**: ECB (Electronic Codebook) is also a block cipher mode that encrypts each block independently; it is actually the weakest block cipher mode and reveals patterns in data. **Why D is wrong**: A Feistel cipher (e.g., DES) is a structural design for block ciphers, not a type of stream cipher.",
-    "category": "Cryptography"
-  },
-  {
-    "question": "A browser is configured to reject certificates from a specific website unless they match a pre-configured known-good certificate or public key. This protection prevents attacks from rogue or compromised Certificate Authorities. What is this mechanism called?",
-    "options": [
-      "Certificate transparency logging",
-      "OCSP stapling",
-      "Certificate pinning",
-      "Cross-certification"
-    ],
-    "correct": 2,
-    "explanation": "**Why C is correct**: **Certificate pinning** (also called public key pinning) associates a specific certificate or public key with a particular host. The client refuses to connect if the certificate presented does not match the pinned value, even if it is signed by a trusted CA. This defeats attacks where an adversary uses a fraudulent certificate issued by a compromised or malicious CA. **Why A is wrong**: **Certificate Transparency (CT)** is a public audit log of all issued certificates that helps detect misissuance after the fact; it does not actively block rogue certificates at connection time. **Why B is wrong**: OCSP stapling is a mechanism by which the server sends a cached OCSP response during the TLS handshake to prove the certificate is not revoked; it does not protect against rogue CA-issued certificates. **Why D is wrong**: Cross-certification is a PKI architecture where two CA hierarchies mutually trust each other; it has no role in preventing rogue certificate use.",
-    "category": "Cryptography"
-  },
-  {
-    "question": "An organization's Registration Authority (RA) has been compromised. In a PKI hierarchy, what is the MOST significant risk from this compromise?",
-    "options": [
-      "The attacker can directly forge digital signatures on behalf of any user",
-      "The attacker may be able to fraudulently request certificate issuance or revocation from the CA on behalf of legitimate users",
-      "All previously issued certificates are immediately invalid",
-      "The root CA's private key is exposed"
-    ],
-    "correct": 1,
-    "explanation": "**Why B is correct**: The **Registration Authority (RA)** is responsible for verifying certificate applicants' identities and forwarding approved requests to the CA for issuance. A compromised RA can submit fraudulent issuance requests (obtaining certificates for identities the attacker does not control) or fraudulent revocation requests (denying legitimate users their certificates), effectively abusing its trusted intermediary role. **Why A is wrong**: The RA does not hold signing keys; it cannot forge digital signatures. Certificate signing is performed by the CA using its private key. **Why C is wrong**: RA compromise does not automatically invalidate existing certificates; those remain valid until they expire or are explicitly revoked. **Why D is wrong**: The RA does not have access to the CA's private key; these are architecturally separated. CA key compromise is a separate, more severe scenario.",
-    "category": "Cryptography"
-  },
-  {
-    "question": "A financial institution is evaluating an **HSM (Hardware Security Module)** to protect cryptographic keys used to sign high-value transactions. Which property of an HSM PRIMARILY justifies its use over software-only key storage?",
-    "options": [
-      "HSMs generate stronger random numbers than software PRNGs in all cases",
-      "HSMs physically protect private keys from extraction even by privileged OS users, providing tamper-evident and tamper-resistant key storage",
-      "HSMs eliminate the need for key rotation by automatically refreshing keys on a schedule",
-      "HSMs are required by PCI DSS for any encryption of cardholder data"
-    ],
-    "correct": 1,
-    "explanation": "**Why B is correct**: The defining value of an **HSM** is that private keys are generated, stored, and used entirely within tamper-resistant hardware. Even an attacker with root OS access, a rogue administrator, or a compromised hypervisor cannot extract raw key material — the HSM performs cryptographic operations internally and returns only the result. This is the foundation of high-assurance key protection for signing keys, CA keys, and payment HSMs. **Why A is wrong**: While HSMs typically include hardware True Random Number Generators (TRNGs), software HSRNGs and OS entropy sources can also be cryptographically strong; the PRNG quality argument is not the primary justification. **Why C is wrong**: HSMs do not automatically rotate keys on a schedule; key lifecycle management (including rotation) still requires policy implementation by the organization. **Why D is wrong**: PCI DSS requires HSMs for specific PIN-processing functions (PTS HSMs), but not for all cardholder data encryption. The statement is too broad.",
-    "category": "Cryptography"
-  },
-  {
-    "question": "An organization's key management policy requires that no single individual can ever have access to a complete cryptographic key used to protect classified data. This is implemented by dividing the key into components held by separate custodians, each required for reconstruction. Which principle does this implement?",
-    "options": [
-      "Key escrow",
-      "Key wrapping",
-      "Split knowledge (M-of-N key splitting)",
-      "Key derivation"
-    ],
-    "correct": 2,
-    "explanation": "**Why C is correct**: **Split knowledge** (commonly implemented as M-of-N threshold schemes, such as Shamir's Secret Sharing) divides a cryptographic key into N components distributed to separate custodians, requiring at least M components to reconstruct the key. No single custodian can access the full key alone. This satisfies the dual-control and separation-of-duties requirement for high-value key management (e.g., CA root keys, payment processing keys). **Why A is wrong**: **Key escrow** is the practice of depositing a copy of a key with a trusted third party for recovery purposes — it does not prevent any single party from having the complete key; the escrow agent holds it in full. **Why B is wrong**: **Key wrapping** is encrypting a key with another key (Key Encryption Key) for safe transport or storage; it does not divide knowledge across multiple custodians. **Why D is wrong**: **Key derivation** generates a new key from a master key using a KDF (e.g., PBKDF2, HKDF); it is a generation technique, not a key-sharing control.",
-    "category": "Cryptography"
-  },
-  {
-    "question": "A PKI architect is designing a hierarchy for a global enterprise. She places the root CA offline in a vault, issues intermediate CAs for each region, and end-entity certificates are issued by the intermediate CAs. What is the PRIMARY reason for keeping the root CA offline?",
-    "options": [
-      "An offline root CA cannot issue certificates with incorrect validity periods",
-      "Compromise of an intermediate CA can be contained by revoking it from the root without losing the entire PKI trust anchor",
-      "Offline root CAs are required by RFC 5280 for compliance with X.509 standards",
-      "Offline storage prevents the root CA from being included in certificate transparency logs"
-    ],
-    "correct": 1,
-    "explanation": "**Why B is correct**: The **root CA's private key** is the ultimate trust anchor — if it is compromised, the entire PKI hierarchy must be rebuilt from scratch and all certificates re-issued. Keeping the root offline dramatically reduces its attack surface. If an intermediate CA is compromised, the root can revoke that intermediate CA's certificate, limiting blast radius while the rest of the PKI continues operating. This is the fundamental design rationale for hierarchical PKI. **Why A is wrong**: Certificate validity periods are a configuration and policy matter, not a consequence of online vs. offline status. An online CA can also be correctly configured for validity periods. **Why C is wrong**: RFC 5280 defines X.509 certificate format and PKI rules but does not require root CAs to be offline; offline root CA is a best practice, not an RFC mandate. **Why D is wrong**: Certificate transparency logging is performed by CAs when issuing certificates; offline status does not prevent CT log submission — many offline root CAs still log intermediate CA certificates when issuing them.",
-    "category": "Cryptography"
-  },
-  {
-    "question": "An organization discovers that their VPN gateway is using **IPSec in transport mode** instead of tunnel mode for a site-to-site connection between two corporate offices. What is the MOST significant security implication of this configuration?",
-    "options": [
-      "Transport mode cannot provide authentication, only encryption",
-      "Transport mode exposes original IP headers, revealing source and destination addresses of the communicating hosts",
-      "Transport mode does not support the AH (Authentication Header) protocol",
-      "Transport mode is incompatible with NAT traversal, breaking the VPN entirely"
-    ],
-    "correct": 1,
-    "explanation": "**Why B is correct**: In **IPSec transport mode**, only the payload (upper-layer data) is protected; the original IP header remains in the clear. An eavesdropper can see the actual source and destination IP addresses of the communicating hosts. In **tunnel mode**, the entire original IP packet (including the original header) is encapsulated within a new IP packet, hiding internal network addressing — which is essential for site-to-site VPN gateways where internal host addresses must be protected. **Why A is wrong**: IPSec transport mode supports both confidentiality (ESP) and authentication (AH); the mode does not restrict which security services are available. **Why C is wrong**: AH is supported in both transport and tunnel modes; mode selection does not affect protocol availability. **Why D is wrong**: NAT traversal (NAT-T) challenges affect IPSec generally (particularly AH, since NAT modifies IP headers) but are not unique to transport mode; tunnel mode also requires NAT-T in NAT environments.",
-    "category": "Cryptography"
-  },
-  {
-    "question": "A software vendor signs its installation packages using a **code signing certificate**. A user downloads the installer six months after its release. The vendor's certificate has since expired. Which mechanism allows the user to still verify the signature as valid at the time of signing?",
-    "options": [
-      "Certificate pinning in the operating system's trust store",
-      "A timestamping authority (TSA) that countersigned the code signature at the time of signing",
-      "Re-signing the package with the current certificate before distribution",
-      "Publishing the expired certificate's serial number to the CRL"
-    ],
-    "correct": 1,
-    "explanation": "**Why B is correct**: A **Timestamping Authority (TSA)** countersigns the code signature with a trusted timestamp at the moment of signing, proving the signature was created while the certificate was valid. Verification tools use this timestamp to check that the certificate was valid at signing time, not at verification time. This is the standard mechanism (RFC 3161) that allows long-lived software to remain verifiable even after the signing certificate expires. **Why A is wrong**: Certificate pinning is a client-side mechanism for TLS certificates to prevent MITM attacks; it does not provide a mechanism for validating code signatures after certificate expiry. **Why C is wrong**: Re-signing with a current certificate changes the signature — it does not prove the original package was unchanged. It also introduces an operational burden that TSA is designed to eliminate. **Why D is wrong**: Publishing an expired certificate to the CRL is for revoked certificates; an expired certificate is simply expired, not revoked, and CRL entries do not provide backward validity proof.",
-    "category": "Cryptography"
-  },
-  {
-    "question": "An enterprise deploys **S/MIME** for email security. An employee sends a confidential email and wants to ensure the recipient can verify the sender's identity AND that only the recipient can read the message. Which combination of S/MIME operations achieves both goals?",
-    "options": [
-      "Encrypt with the sender's public key; sign with the recipient's private key",
-      "Sign with the sender's private key; encrypt with the recipient's public key",
-      "Sign with the sender's public key; encrypt with the sender's private key",
-      "Encrypt with a shared symmetric key negotiated via Diffie-Hellman"
-    ],
-    "correct": 1,
-    "explanation": "**Why B is correct**: In S/MIME, **signing** uses the sender's **private key** — the recipient verifies with the sender's public key, confirming identity and non-repudiation. **Encryption** uses the recipient's **public key** — only the recipient can decrypt with their private key, ensuring confidentiality. Applying both provides authenticated confidentiality. **Why A is wrong**: Encrypting with the sender's public key means only the sender can decrypt — the recipient cannot read the message. Signing with the recipient's private key cannot be verified as proving the sender's identity. **Why C is wrong**: Signing with the sender's public key is cryptographically invalid — public keys verify signatures, private keys create them. Encrypting with the sender's private key allows anyone with the sender's public key to decrypt, providing no confidentiality. **Why D is wrong**: S/MIME does use symmetric session keys internally (hybrid encryption), but the S/MIME standard establishes the session key by encrypting it with the recipient's public key — the DH framing described is not the standard S/MIME operation model.",
-    "category": "Cryptography"
-  },
-  {
-    "question": "A security engineer is configuring a new TLS 1.3 deployment. Management asks why TLS 1.3 is preferred over TLS 1.2. Which improvement is UNIQUE to TLS 1.3 and NOT present in TLS 1.2?",
-    "options": [
-      "TLS 1.3 supports AES-GCM for authenticated encryption",
-      "TLS 1.3 mandates ephemeral key exchange for all sessions, eliminating static RSA key exchange and enforcing forward secrecy by default",
-      "TLS 1.3 introduced certificate-based mutual authentication",
-      "TLS 1.3 added support for SHA-256 in the PRF"
-    ],
-    "correct": 1,
-    "explanation": "**Why B is correct**: **TLS 1.3** removed all cipher suites that do not provide forward secrecy — specifically, static RSA key exchange (where the session key is encrypted with the server's long-term RSA key) is gone entirely. Every TLS 1.3 session uses ephemeral Diffie-Hellman (ECDHE or DHE), making **forward secrecy mandatory and automatic**. TLS 1.2 optionally supported ephemeral DH but also allowed static RSA, leaving forward secrecy as a configuration choice. **Why A is wrong**: AES-GCM was available in TLS 1.2; it is not unique to TLS 1.3, though TLS 1.3 further reduced cipher suite options. **Why C is wrong**: Certificate-based mutual (client) authentication has existed since SSL/TLS early versions; it is not a TLS 1.3 innovation. **Why D is wrong**: SHA-256 in the PRF was introduced in TLS 1.2 (replacing MD5/SHA-1 combinations); TLS 1.3 uses HKDF, which is a different construction — but SHA-256 in the PRF is not a TLS 1.3-unique feature.",
-    "category": "Cryptography"
-  },
-  {
-    "question": "A researcher proposes using **homomorphic encryption** to allow a cloud provider to perform computations on encrypted medical records without ever decrypting the data. Which statement BEST describes the current practical limitation of fully homomorphic encryption (FHE)?",
-    "options": [
-      "FHE is theoretically impossible because any computation requires decryption",
-      "FHE schemes exist and are theoretically sound, but are currently orders of magnitude slower than plaintext computation, limiting practical deployment",
-      "FHE is only applicable to addition operations and cannot perform multiplication on ciphertext",
-      "FHE provides no security guarantees because the cloud provider can always reverse the computation"
-    ],
-    "correct": 1,
-    "explanation": "**Why B is correct**: **Fully Homomorphic Encryption (FHE)** is real and theoretically well-founded (Craig Gentry's 2009 breakthrough). It allows arbitrary computations on ciphertext with results that, when decrypted, match the computation on plaintext. However, FHE remains **orders of magnitude slower** than plaintext computation — practical deployments involve minutes-to-hours of processing for operations that take milliseconds unencrypted. Active research (e.g., TFHE, CKKS, BFV schemes) is improving performance, but FHE is not yet practical for general-purpose cloud computing at scale. **Why A is wrong**: FHE is theoretically possible and has been demonstrated — the 2009 construction proved it achievable. **Why C is wrong**: Modern FHE schemes support both addition and multiplication on ciphertext (both operations are required for Turing-completeness). Early partial HE schemes were limited, but FHE is not. **Why D is wrong**: FHE security is based on well-studied hardness assumptions (lattice problems, LWE); the cloud provider performing computations cannot reverse the encryption without the key.",
-    "category": "Cryptography"
-  },
-  {
-    "question": "An organization implements a **key escrow** program, depositing copies of employee encryption keys with a designated third-party escrow agent. A regulator requests access to a specific employee's encrypted files during an investigation. Which statement BEST describes the role of key escrow in this scenario?",
-    "options": [
-      "Key escrow prevents the organization from complying with lawful access requests by creating a legal barrier",
-      "Key escrow enables authorized recovery of encrypted data by providing a copy of the key to authorized parties, supporting lawful access and business continuity",
-      "Key escrow eliminates the need for the organization to maintain any backup of encryption keys",
-      "Key escrow is only valid for asymmetric keys and cannot be applied to symmetric session keys"
-    ],
-    "correct": 1,
-    "explanation": "**Why B is correct**: **Key escrow** deposits key copies with a trusted party specifically to enable **authorized recovery** — whether for business continuity (employee loses key or leaves), lawful government access, or litigation hold. The escrow agent releases keys only upon proper authorization. This is the policy rationale behind government-proposed key escrow programs and corporate key recovery systems. **Why A is wrong**: Key escrow facilitates lawful access, not prevents it — that is precisely why law enforcement agencies have historically advocated for key escrow programs. **Why C is wrong**: Key escrow is a recovery mechanism but does not replace key backup or lifecycle management. Organizations still need to manage key rotation, expiry, and secure storage of the escrow copy itself. **Why D is wrong**: Key escrow can be applied to any key type — symmetric session keys, asymmetric private keys, or file encryption keys. The escrow mechanism is independent of key type.",
-    "category": "Cryptography"
-  },
-  {
-    "question": "A **Certificate Transparency (CT)** log was introduced to address which specific PKI vulnerability?",
-    "options": [
-      "Certificates being issued with weak RSA key sizes by end entities",
-      "Fraudulent or misissued certificates going undetected because no public record of all issued certificates existed",
-      "CRL download failures causing browsers to accept revoked certificates",
-      "Root CAs being offline and unable to respond to OCSP queries in real time"
-    ],
-    "correct": 1,
-    "explanation": "**Why B is correct**: Before **Certificate Transparency**, a CA could issue a fraudulent certificate for any domain (e.g., through compromise or coercion) and it might never be discovered, since no public audit trail existed. CT requires CAs to submit all issued certificates to publicly auditable, append-only logs. Domain owners and monitors can watch these logs for unexpected certificates issued for their domains, detecting misissuance quickly. The DigiNotar and CNNIC incidents drove adoption of CT. **Why A is wrong**: Weak key sizes in end-entity certificates are a policy and CA/Browser Forum baseline requirement issue, not what CT was designed to address; CT logs contain certificate metadata regardless of key strength. **Why C is wrong**: CRL failures and soft-fail OCSP are revocation checking problems, distinct from the misissuance detection problem CT solves. **Why D is wrong**: Offline root CAs are an architectural best practice; CT logs are operated by independent entities (Google, Cloudflare, etc.) and have no dependency on root CA availability.",
-    "category": "Cryptography"
-  },
-  {
-    "question": "During the **key generation** phase of the cryptographic key lifecycle, which practice MOST directly prevents an attacker who later gains access to key generation logs from recovering private keys?",
-    "options": [
-      "Using a FIPS 140-2 validated HSM to generate keys internally, ensuring key material never appears in plaintext outside the HSM",
-      "Logging all key generation events to a SIEM for audit purposes",
-      "Generating keys on the administrator's workstation and immediately uploading them to a key management server",
-      "Using AES-256 to encrypt all keys immediately after generation before storing them"
-    ],
-    "correct": 0,
-    "explanation": "**Why A is correct**: Generating keys inside a **FIPS 140-2 validated HSM** ensures that private key material is created and remains within tamper-resistant hardware — it never exists in plaintext in OS memory, log files, or any external medium. This eliminates the risk of key recovery through log analysis, memory forensics, or storage inspection. **Why B is wrong**: Audit logging of key generation events is a good accountability practice but does not protect key material. Logging key values (which should never be done) would be a severe vulnerability. **Why C is wrong**: Generating keys on a workstation exposes them to OS-level compromise, memory dumps, and any software running on that system — even brief plaintext exposure is a significant risk for high-value keys. **Why D is wrong**: Encrypting keys at rest is a key-storage-phase control that is important but separate from the generation-phase exposure. If keys were generated in plaintext on a workstation, encrypting them afterward does not erase the initial exposure risk.",
-    "category": "Cryptography"
-  },
-  {
-    "question": "A network engineer is configuring an IPSec VPN between two branch offices. The tunnel must protect both the data payload AND the original IP header to hide the internal network topology from traffic analysis by eavesdroppers on the internet. Which IPSec mode and protocol combination is MOST appropriate?",
-    "options": [
-      "Transport mode with AH (Authentication Header)",
-      "Tunnel mode with ESP (Encapsulating Security Payload)",
-      "Transport mode with ESP",
-      "Tunnel mode with AH only"
-    ],
-    "correct": 1,
-    "explanation": "**Why B is correct**: **IPSec tunnel mode with ESP** encapsulates the entire original IP packet (including the original header) inside a new IP datagram and then encrypts the original packet using ESP. The outer IP header uses the VPN gateway addresses, completely hiding the internal source and destination addresses. ESP provides both confidentiality (encryption) and integrity/authentication. This is the standard mode for site-to-site VPN gateways. **Why A is wrong**: **Transport mode** does not encapsulate the original IP header — the original source and destination IP addresses remain visible to eavesdroppers on the internet, defeating the topology-hiding requirement. AH also provides no encryption. **Why C is wrong**: **Transport mode with ESP** encrypts the payload but still exposes the original IP header, failing to hide internal network topology. Transport mode is designed for host-to-host communication, not gateway-to-gateway tunneling. **Why D is wrong**: **AH (Authentication Header)** provides integrity and authentication but **no encryption** — it does not hide the payload contents. Using AH only means the data is authenticated but readable by eavesdroppers.",
-    "category": "Cryptography"
-  },
-  {
-    "question": "A **blockchain** is described in security literature as an 'immutable append-only ledger.' An organization is evaluating blockchain for maintaining audit logs of configuration changes to critical systems. Which cryptographic property of blockchain PRIMARILY provides the immutability guarantee?",
-    "options": [
-      "Symmetric encryption of each block using AES-256, preventing unauthorized reading of log entries",
-      "Each block contains the cryptographic hash of the previous block, forming a chain where retroactive modification of any block invalidates all subsequent blocks' hashes",
-      "Blockchain uses public key infrastructure to authenticate each transaction, preventing unauthorized writes",
-      "Blockchain stores copies of all data in a central database protected by a trusted certificate authority"
-    ],
-    "correct": 1,
-    "explanation": "**Why B is correct**: The **immutability** of a blockchain derives from its **chained hash structure**: each block contains a cryptographic hash of the preceding block. Retroactively altering any block changes its hash, which then mismatches the hash stored in the next block, which changes that block's hash, and so on — invalidating every subsequent block in the chain. In a distributed blockchain, this modification would need to be replicated to a majority of participating nodes before it could be accepted, making retroactive alteration computationally infeasible. **Why A is wrong**: AES encryption in blockchain (where used) provides confidentiality, not immutability. Encryption prevents reading, not retroactive modification. Blockchain transparency often means entries are NOT encrypted. **Why C is wrong**: PKI authentication prevents unauthorized writes (new entries) to the current state but does not prevent retroactive modification of historical entries — that is the chained hash's function. **Why D is wrong**: Blockchain is specifically designed to be **decentralized**, not centrally stored in a trusted database. A central database with a CA is a traditional PKI-protected system, not a blockchain.",
-    "category": "Cryptography"
-  },
-  {
-    "question": "An organization must choose between using **WEP**, **WPA2-Personal**, and **WPA3-Personal** for wireless network security. From a current best-practice perspective, which represents the correct security hierarchy and the primary reason WEP is unacceptable?",
-    "options": [
-      "WEP > WPA2 > WPA3, because WEP's RC4 stream cipher is faster on legacy hardware",
-      "WPA3 > WPA2 > WEP; WEP is unacceptable because its static 40/104-bit keys and flawed IV (Initialization Vector) implementation allow passive eavesdropping to recover the key in minutes",
-      "WPA2 > WPA3 > WEP; WPA3 is too new to be considered secure by NIST",
-      "WEP and WPA2 are equivalent; only WPA3 provides meaningful wireless security"
-    ],
-    "correct": 1,
-    "explanation": "**Why B is correct**: **WPA3** is the most current standard, adding Simultaneous Authentication of Equals (SAE) replacing PSK, protection against offline dictionary attacks, and forward secrecy. **WPA2** (using AES-CCMP) is strong and widely deployed but vulnerable to offline brute-force attacks on weak passphrases. **WEP** is completely broken: its RC4-based implementation reuses Initialization Vectors predictably, and tools like Aircrack-ng can recover WEP keys by capturing as few as 40,000–85,000 packets — a matter of minutes on a busy network. WEP must not be used for any security purpose. **Why A is wrong**: Ranking WEP above WPA2 and WPA3 is factually incorrect and contrary to every cryptographic standard body's guidance. **Why C is wrong**: WPA3 was standardized in 2018 and is actively recommended by the Wi-Fi Alliance and NIST; it is not 'too new to be considered secure.' WPA2 remains acceptable but WPA3 is preferred. **Why D is wrong**: WEP and WPA2 are not equivalent — WPA2 with a strong passphrase and AES-CCMP provides meaningful security; WEP provides none.",
-    "category": "Cryptography"
-  },
-  {
-    "question": "A security architect is designing a system to allow a cloud provider to process encrypted sensitive data without ever learning the plaintext. The architect notes that this property — performing computations on ciphertext that produce encrypted results, which when decrypted match the result of the same computation on plaintext — is called **homomorphic encryption**. Separately, she considers a scheme where data is split into shares distributed to multiple non-colluding parties, any subset of k parties can reconstruct the secret, but fewer than k reveal nothing. What is this second scheme called?",
-    "options": [
-      "Key wrapping and key escrow",
-      "Threshold cryptography / Shamir's Secret Sharing",
-      "Public key infrastructure with multiple intermediate CAs",
-      "Multi-party computation with zero-knowledge proofs"
-    ],
-    "correct": 1,
-    "explanation": "**Why B is correct**: The scheme described — splitting a secret into N shares such that any k shares reconstruct the secret and fewer than k reveal nothing — is **Shamir's Secret Sharing**, a foundational algorithm in **threshold cryptography**. It is used in practice for high-assurance key management (e.g., splitting HSM master keys among multiple custodians) and is the cryptographic foundation for the **split knowledge** physical security principle. **Why A is wrong**: Key wrapping (encrypting a key with another key) and key escrow (depositing a key copy with a trusted third party) do not provide the k-of-N threshold property where fewer than k shares reveal nothing. Both involve a single complete key at some point. **Why C is wrong**: Multiple intermediate CAs distribute certificate issuance responsibility but do not implement a threshold secret-sharing scheme — each intermediate CA independently holds its full private key. **Why D is wrong**: Multi-party computation (MPC) with zero-knowledge proofs is a related but distinct cryptographic technique where parties compute a joint function without revealing their inputs; it is not the same as Shamir's Secret Sharing, though both appear in advanced key management systems.",
+    "explanation": "**Why B is correct**: A **Collision** occurs when two different inputs produce the same hash output. A collision attack specifically looks for these occurrences to undermine the integrity of a hashing algorithm. **Why A is wrong**: A replay attack involves resending a valid transmission. **Why C is wrong**: A known-plaintext attack involves having access to both the plaintext and its corresponding ciphertext to derive the key. **Why D is wrong**: A Man-in-the-Middle attack involves intercepting communication between two parties.",
     "category": "Cryptography"
   }
 ]
