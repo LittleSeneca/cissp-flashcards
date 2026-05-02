@@ -1,11 +1,9 @@
----
-tier: 1
-domain: Security and Risk Management (Domain 1)
-exam_weight: ~16%
-status: built
----
-
 # GDPR for the CISSP Exam
+
+> **Tier:** 1  
+> **Domain:** Security and Risk Management (Domain 1)  
+> **Exam Weight:** ~16%  
+> **Status:** Built
 
 A study-oriented overview of how the General Data Protection Regulation (Regulation (EU) 2016/679) is treated on the CISSP exam, what kinds of questions are asked, and which traps the item writers consistently set. Use this alongside `gdpr.tsv` in this folder.
 

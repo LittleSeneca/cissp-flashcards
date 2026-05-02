@@ -1,11 +1,9 @@
----
-tier: 1
-domain: Security and Risk Management (Domain 1)
-exam_weight: ~16%
-status: built
----
-
 # Quantitative Risk Management for the CISSP Exam
+
+> **Tier:** 1  
+> **Domain:** Security and Risk Management (Domain 1)  
+> **Exam Weight:** ~16%  
+> **Status:** Built
 
 A study-oriented overview of the quantitative risk management question family on the CISSP, covering the formulas, treatment options, and conceptual distinctions that examiners test most heavily. Use alongside `risk-management.tsv` in this folder.
 

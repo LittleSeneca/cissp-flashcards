@@ -1,11 +1,9 @@
----
-tier: 1
-domain: Identity and Access Management (Domain 5)
-exam_weight: ~13%
-status: built
----
-
 # Access Control Models & IAM Workflow for the CISSP Exam
+
+> **Tier:** 1  
+> **Domain:** Identity and Access Management (Domain 5)  
+> **Exam Weight:** ~13%  
+> **Status:** Built
 
 A study-oriented overview of the access control and IAM question family on the CISSP. This is the dominant content area inside Domain 5 (Identity and Access Management), one of the most heavily tested domains on the 2026 exam. Use alongside `access-control-and-iam.tsv` in this folder.
 

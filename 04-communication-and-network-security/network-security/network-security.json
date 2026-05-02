@@ -1,0 +1,362 @@
+[
+  {
+    "question": "A security engineer is reviewing a packet capture and notices that a firewall is only checking the source and destination IP address and port of each packet independently, without retaining any information about previous packets in the same session. Which firewall type is in use?",
+    "options": [
+      "Packet-filtering firewall",
+      "Stateful inspection firewall",
+      "Application-layer proxy firewall",
+      "Next-generation firewall (NGFW)"
+    ],
+    "correct": 0,
+    "explanation": "**Why A is correct**: A **packet-filtering firewall** evaluates each packet in isolation using static rules based on IP address, port, and protocol. It maintains no session state. **Why B is wrong**: A **stateful inspection firewall** tracks the state of active connections and allows or denies packets based on context within an established session. **Why C is wrong**: A **proxy firewall** terminates connections at the application layer, fully inspecting payload content, and acts as an intermediary between client and server. **Why D is wrong**: An **NGFW** combines stateful inspection with deep packet inspection, application awareness, and often IPS functionality — far beyond simple header-based filtering.",
+    "category": "Network Security"
+  },
+  {
+    "question": "A company's web server sits in a DMZ. An external attacker has compromised it and is attempting to pivot into the internal network. Which DMZ design most limits the blast radius of this compromise?",
+    "options": [
+      "Single firewall with three interfaces (one for internet, one for DMZ, one for internal)",
+      "Dual firewall architecture with the DMZ placed between two separate firewalls from different vendors",
+      "A flat network with ACLs applied to the DMZ VLAN",
+      "A host-based firewall on the web server only"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: A **dual-firewall (screened subnet) architecture** places the DMZ between two firewalls, ideally from different vendors. An attacker who compromises the outer firewall still faces the inner firewall before reaching the internal network, and differing vendor stacks reduce the likelihood that the same exploit works on both. **Why A is wrong**: A **three-legged single firewall** provides logical separation but a single point of failure — compromise of the firewall itself (or a misconfiguration) exposes both the DMZ and internal segments simultaneously. **Why C is wrong**: **ACLs on a VLAN** provide weak isolation; they are insufficient if the attacker can manipulate VLAN tags or exploits a misconfigured trunk port. **Why D is wrong**: A **host-based firewall** on the web server only protects that one host; it does not restrict outbound traffic from the DMZ toward the internal network once the host is compromised.",
+    "category": "Network Security"
+  },
+  {
+    "question": "An organization wants to allow remote workers to access internal resources securely. The solution must work without installing a separate VPN client application and must operate through standard HTTPS ports to traverse restrictive hotel firewalls. Which VPN approach best satisfies these requirements?",
+    "options": [
+      "IPSec tunnel mode with IKEv2",
+      "SSL/TLS VPN (clientless web-based portal)",
+      "Site-to-site IPSec VPN",
+      "L2TP over IPSec"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: An **SSL/TLS VPN in clientless mode** uses a standard web browser over port 443, requiring no additional client software, and traverses nearly all firewalls because HTTPS is universally permitted. **Why A is wrong**: **IPSec with IKEv2** requires a VPN client and uses UDP 500/4500, which many restrictive hotel or corporate firewalls block. **Why C is wrong**: **Site-to-site IPSec** connects two fixed networks and is not designed for individual remote-user access. **Why D is wrong**: **L2TP over IPSec** requires a VPN client and uses UDP 1701 and 500/4500, which are frequently blocked by restrictive firewalls and cannot be established through a browser alone.",
+    "category": "Network Security"
+  },
+  {
+    "question": "A network administrator captures DNS responses and discovers that the resolved IP address for a critical banking site has been altered in the local resolver's cache to point to an attacker-controlled server. Which attack and countermeasure pair correctly describes this scenario?",
+    "options": [
+      "DNS amplification attack; implement rate limiting on authoritative servers",
+      "DNS cache poisoning; deploy DNSSEC to cryptographically validate DNS responses",
+      "BGP hijacking; deploy RPKI to validate route origin",
+      "ARP spoofing; enable Dynamic ARP Inspection on switches"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: **DNS cache poisoning** (Kaminsky-style attack) forges a DNS response so that a resolver caches a malicious IP mapping. **DNSSEC** signs DNS records with public-key cryptography, allowing resolvers to detect tampered responses. **Why A is wrong**: **DNS amplification** is a volumetric DDoS technique that abuses open resolvers to flood a victim with traffic; the attack here targets record integrity, not volume. **Why C is wrong**: **BGP hijacking** involves advertising illegitimate prefixes to redirect routing at the ISP level, not poisoning local resolver caches. **Why D is wrong**: **ARP spoofing** manipulates Layer 2 MAC-to-IP mappings on the local subnet; the described attack is at the DNS (application) layer.",
+    "category": "Network Security"
+  },
+  {
+    "question": "An IDS sensor is placed on a SPAN port and generates an alert whenever it detects an exploit attempt. Later analysis shows the targeted host runs a fully patched OS that is not vulnerable to the reported exploit. Which IDS outcome does this represent?",
+    "options": [
+      "True positive",
+      "False positive",
+      "True negative",
+      "False negative"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: A **false positive** occurs when the IDS generates an alert for traffic that does not represent an actual successful attack. The exploit signature matched, but the host was not vulnerable, so no real threat existed. **Why A is wrong**: A **true positive** would require both an alert and an actual, exploitable threat to be present. **Why C is wrong**: A **true negative** means no alert was generated and no threat existed — the opposite of this scenario. **Why D is wrong**: A **false negative** is the most dangerous outcome: a real attack occurs but the IDS fails to generate any alert.",
+    "category": "Network Security"
+  },
+  {
+    "question": "An organization's security policy requires that all inbound traffic be inspected and that malicious traffic be automatically dropped before reaching internal hosts. The security team has limited staff to manually review alerts. Which deployment best meets these requirements?",
+    "options": [
+      "Passive network IDS connected to a SPAN port",
+      "Host-based IDS installed on each internal server",
+      "Inline IPS positioned between the perimeter firewall and the internal network",
+      "SIEM collecting logs from all perimeter devices"
+    ],
+    "correct": 2,
+    "explanation": "**Why C is correct**: An **inline IPS** sits directly in the traffic path, inspects packets in real time, and can automatically drop or reset malicious sessions without human intervention — satisfying both the inspection and automatic blocking requirements. **Why A is wrong**: A **passive IDS on a SPAN port** can only detect and alert; it cannot block traffic because it is out of the traffic path. **Why B is wrong**: A **host-based IDS** on individual servers generates alerts per host but does not inspect or block network traffic before it reaches those hosts. **Why D is wrong**: A **SIEM** aggregates and correlates log data for analysis but has no capability to inspect or drop live network traffic.",
+    "category": "Network Security"
+  },
+  {
+    "question": "A network engineer must design an IP addressing scheme that supports 500 hosts on a single subnet while wasting the fewest addresses. Which subnet mask achieves this?",
+    "options": [
+      "/22 (255.255.252.0)",
+      "/23 (255.255.254.0)",
+      "/24 (255.255.255.0)",
+      "/21 (255.255.248.0)"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: A **/23** subnet provides 2^9 - 2 = **510 usable host addresses**, which is the smallest power-of-two block that accommodates 500 hosts while minimizing wasted space. **Why A is wrong**: A **/22** subnet yields 2^10 - 2 = 1022 usable addresses — more than double what is needed, wasting approximately 520 addresses. **Why C is wrong**: A **/24** subnet provides only 2^8 - 2 = 254 usable addresses, which is insufficient for 500 hosts. **Why D is wrong**: A **/21** subnet yields 2^11 - 2 = 2046 usable addresses — far more capacity than required and the least efficient option listed.",
+    "category": "Network Security"
+  },
+  {
+    "question": "A penetration tester discovers that two VLANs that should be isolated can communicate with each other by crafting a frame with two 802.1Q tags. Which attack technique and primary mitigation correctly describe this finding?",
+    "options": [
+      "MAC flooding; enable port security with MAC address limits",
+      "VLAN double-tagging (VLAN hopping); set all trunk ports' native VLAN to an unused VLAN ID",
+      "STP manipulation; enable BPDU Guard on access ports",
+      "ARP spoofing; enable Dynamic ARP Inspection (DAI)"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: **VLAN double-tagging** exploits the behavior of switches that strip only the outer 802.1Q tag when forwarding on trunk ports whose native VLAN matches the attacker's outer tag. The inner tag then directs the frame to the target VLAN. The primary mitigation is to **set the native VLAN to an unused, dedicated VLAN ID** so no access port traffic is untagged on trunks. **Why A is wrong**: **MAC flooding** fills the CAM table to force a switch into hub-like mode; port security limits MAC addresses per port but does not address double-tagging. **Why C is wrong**: **STP manipulation** targets the spanning-tree election process to become the root bridge; BPDU Guard prevents unauthorized switches from participating but is unrelated to VLAN tagging exploits. **Why D is wrong**: **ARP spoofing** operates at Layer 2/3 to poison ARP caches; DAI validates ARP packets but does not prevent VLAN hopping via crafted 802.1Q frames.",
+    "category": "Network Security"
+  },
+  {
+    "question": "A wireless network assessment reveals that an access point is broadcasting an SSID identical to the corporate SSID, is not listed in the approved AP inventory, and has stronger signal strength than legitimate APs near the lobby. Users are unknowingly connecting to it. Which attack is being described?",
+    "options": [
+      "Deauthentication flood",
+      "Evil twin access point",
+      "Wardriving",
+      "Rogue access point installed by an employee"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: An **evil twin** is an attacker-controlled AP that mimics the SSID (and often the BSSID) of a legitimate network to intercept traffic from clients that auto-associate based on SSID name and signal strength. **Why A is wrong**: A **deauthentication flood** is a denial-of-service attack that sends spoofed 802.11 management frames to disconnect clients; it does not involve impersonating an AP to capture traffic. **Why C is wrong**: **Wardriving** is the passive activity of scanning for wireless networks from a moving vehicle; it is a reconnaissance technique, not an active impersonation attack. **Why D is wrong**: While a **rogue AP installed by an employee** is a real threat category, the distinguishing characteristic here — identical SSID, stronger signal, positioned to intercept — describes an adversarial evil twin rather than a naive employee installing an unauthorized AP for convenience.",
+    "category": "Network Security"
+  },
+  {
+    "question": "An organization is deploying 802.1X on its wired network to ensure that only authenticated devices gain network access. After a device authenticates successfully, traffic is still segregated by role. Which component in the 802.1X framework enforces access and applies the VLAN assignment?",
+    "options": [
+      "Supplicant",
+      "Authentication server (RADIUS)",
+      "Authenticator (network access switch)",
+      "Certificate Authority (CA)"
+    ],
+    "correct": 2,
+    "explanation": "**Why C is correct**: In 802.1X, the **authenticator** (typically a managed switch or wireless controller) controls physical access to the network. It relays credentials between the supplicant and the authentication server and, upon receiving an Access-Accept from RADIUS, enforces the policy — including placing the port into the authorized VLAN. **Why A is wrong**: The **supplicant** is the end-device software that provides credentials; it does not make access decisions or assign VLANs. **Why B is wrong**: The **RADIUS server** makes the authentication decision and may return VLAN attributes in its Access-Accept response, but it is the authenticator that physically applies those attributes to the port. **Why D is wrong**: The **CA** issues certificates used for EAP-TLS authentication but plays no direct role in enforcing network access or VLAN assignments at runtime.",
+    "category": "Network Security"
+  },
+  {
+    "question": "A company running BGP with its ISP wants to prevent its Autonomous System from being used as a transit network for routes it did not originate, and wants to ensure it only announces its own prefixes to the internet. Which BGP security practice addresses both concerns?",
+    "options": [
+      "Deploy DNSSEC on the company's authoritative DNS servers",
+      "Implement inbound and outbound BGP prefix filters and configure RPKI route origin validation",
+      "Enable OSPF authentication on all internal routers",
+      "Apply MD5 authentication to BGP sessions only"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: **BGP prefix filters** (inbound to block unwanted transit routes; outbound to limit announcements to owned prefixes) combined with **RPKI (Resource Public Key Infrastructure)** route origin validation cryptographically bind prefixes to their legitimate Autonomous System numbers, protecting against both accidental route leaks and BGP hijacking. **Why A is wrong**: **DNSSEC** validates DNS responses and has no relationship to BGP routing table integrity. **Why C is wrong**: **OSPF authentication** secures an interior routing protocol within the organization; it does not affect what is advertised externally via BGP. **Why D is wrong**: **MD5 authentication on BGP sessions** authenticates the BGP peer (preventing session hijacking) but does nothing to validate the correctness or ownership of the prefixes being exchanged.",
+    "category": "Network Security"
+  },
+  {
+    "question": "An enterprise is moving from traditional perimeter-based security to a zero trust architecture. A developer asks why they must re-authenticate and pass device posture checks every time they access a new internal microservice, even though they are already on the corporate VPN. Which zero trust principle best explains this requirement?",
+    "options": [
+      "Defense in depth",
+      "Least privilege",
+      "Never trust, always verify — trust is not implicit based on network location",
+      "Need to know"
+    ],
+    "correct": 2,
+    "explanation": "**Why C is correct**: The foundational zero trust principle is **'never trust, always verify'** — no implicit trust is granted based on network segment, IP address, or existing VPN connection. Every access request is evaluated against identity, device health, and context regardless of where the request originates. **Why A is wrong**: **Defense in depth** describes layering multiple security controls; it explains why multiple controls exist but does not specifically address why VPN presence does not confer trust. **Why B is wrong**: **Least privilege** ensures users and systems have only the minimum access needed, which is complementary to zero trust but does not directly explain why VPN presence is insufficient for trust. **Why D is wrong**: **Need to know** is an access control principle applied to classified or sensitive information; it addresses what data a user may access, not the continuous verification model.",
+    "category": "Network Security"
+  },
+  {
+    "question": "A large data center operator wants to limit the ability of a compromised virtual machine to communicate with other VMs in the same hypervisor cluster, even if those VMs share the same subnet. Which network security approach most directly achieves workload isolation at this granularity?",
+    "options": [
+      "Perimeter firewall with DMZ segmentation",
+      "Microsegmentation using software-defined networking (SDN) policies",
+      "Network IDS deployed at the core switch",
+      "Implementing RFC 1918 private addressing internally"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: **Microsegmentation** (typically implemented via SDN) applies granular, identity- or workload-based firewall policies at the virtual network interface level, enforcing east-west traffic controls between individual VMs even on the same subnet — something traditional network perimeter controls cannot do. **Why A is wrong**: A **perimeter firewall with DMZ** controls north-south traffic at the network edge; it has no visibility into VM-to-VM communication within the same cluster. **Why C is wrong**: A **network IDS at the core switch** may detect suspicious traffic but cannot block east-west communication between VMs without additional inline enforcement mechanisms. **Why D is wrong**: **RFC 1918 private addressing** defines non-routable IP space; it has no effect on communication between hosts within the same private network.",
+    "category": "Network Security"
+  },
+  {
+    "question": "During a wireless security audit, the auditor notes that the corporate network uses WPA2-Personal with a pre-shared key that has not changed in three years and is known to most employees, including several who have since left the company. Which option represents the most significant security improvement?",
+    "options": [
+      "Enable SSID hiding to prevent casual discovery of the network",
+      "Upgrade to WPA3-Personal to gain forward secrecy via Simultaneous Authentication of Equals (SAE)",
+      "Switch to WPA2-Enterprise with 802.1X and per-user credentials or certificates",
+      "Reduce the wireless transmit power to limit the signal's physical range"
+    ],
+    "correct": 2,
+    "explanation": "**Why C is correct**: **WPA2-Enterprise with 802.1X** eliminates the shared secret entirely. Each user authenticates with individual credentials or certificates, so revoking a departed employee's access requires only disabling their account — no network-wide key rotation is needed. It also provides per-session encryption keys. **Why A is wrong**: **SSID hiding** is a cosmetic measure that does not meaningfully improve security; SSIDs are trivially discoverable with any wireless scanner. **Why B is wrong**: **WPA3-SAE** improves resistance to offline dictionary attacks and provides forward secrecy, but it still relies on a shared passphrase, leaving the core problem (departed employees retaining knowledge of the key) unresolved. **Why D is wrong**: **Reducing transmit power** may slightly shrink the coverage footprint but does not revoke access for former employees who already know the PSK.",
+    "category": "Network Security"
+  },
+  {
+    "question": "A systems architect is designing a solution where internal hosts use private RFC 1918 addresses and must communicate with internet hosts. The solution must also allow the security team to track which internal host initiated each external session. Which technology satisfies both requirements?",
+    "options": [
+      "Static NAT (one-to-one mapping for every internal host)",
+      "NAT with PAT (Port Address Translation) using a single public IP, combined with connection logging",
+      "Proxy ARP on the perimeter router",
+      "IPv6 with globally unique addresses for all internal hosts"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: **PAT (overloaded NAT)** maps many private IP addresses to a single public IP by differentiating sessions via source port numbers. **Connection logging** on the NAT device records the internal IP-to-port binding for each session, enabling attribution. **Why A is wrong**: **Static NAT** requires a unique public IP per internal host, which defeats address conservation and is impractical at scale. **Why C is wrong**: **Proxy ARP** allows a router to respond to ARP requests on behalf of hosts on another subnet; it is a Layer 2/3 technique unrelated to internet address translation or session tracking. **Why D is wrong**: **IPv6 with globally unique addresses** eliminates the need for NAT but does not inherently provide session attribution logging, and migrating the entire internal network to globally routable IPv6 is a far larger architectural change than required.",
+    "category": "Network Security"
+  },
+  {
+    "question": "A threat analyst observes that an attacker on the local subnet is sending gratuitous ARP replies mapping the default gateway's IP address to the attacker's MAC address. Workstations have begun sending all outbound traffic to the attacker's machine. Which attack is underway and which control most directly prevents it?",
+    "options": [
+      "MAC flooding; enable port security",
+      "ARP poisoning (ARP spoofing); enable Dynamic ARP Inspection (DAI) on the switch",
+      "ICMP redirect attack; disable IP source routing on routers",
+      "STP root bridge manipulation; enable BPDU Guard"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: **ARP poisoning** sends forged ARP replies to overwrite legitimate MAC-to-IP bindings in hosts' ARP caches, redirecting traffic through the attacker for man-in-the-middle interception. **Dynamic ARP Inspection (DAI)** validates ARP packets against the DHCP snooping binding table and drops replies whose MAC-IP pair is unauthorized. **Why A is wrong**: **MAC flooding** overflows the switch's CAM table; port security limits MAC addresses per port, which addresses flooding but not ARP-level spoofing of a specific IP. **Why C is wrong**: **ICMP redirect** messages instruct hosts to use a different router for certain destinations — a distinct Layer 3 technique; disabling IP source routing prevents a different attack (source-routed packets). **Why D is wrong**: **STP root bridge manipulation** is a Layer 2 attack on spanning-tree topology; BPDU Guard is the correct control for that threat, not for ARP cache poisoning.",
+    "category": "Network Security"
+  },
+  {
+    "question": "An attacker sends a continuous stream of TCP SYN packets to a web server using spoofed source IP addresses, consuming all available half-open connection slots and making the server unresponsive to legitimate clients. Which attack and primary mitigation are described?",
+    "options": [
+      "Smurf attack; disable directed broadcast forwarding on routers",
+      "Fragmentation attack; implement IP fragment reassembly limits",
+      "SYN flood; enable TCP SYN cookies on the server",
+      "UDP reflection amplification; implement ingress BCP38 filtering"
+    ],
+    "correct": 2,
+    "explanation": "**Why C is correct**: A **SYN flood** exhausts the TCP backlog queue by generating thousands of half-open connections that the server holds while waiting for an ACK that never arrives. **SYN cookies** eliminate the backlog queue entirely — the server encodes connection state into the sequence number and only allocates resources when a legitimate ACK is received. **Why A is wrong**: A **Smurf attack** uses ICMP echo requests sent to a broadcast address with a spoofed victim source IP, generating amplified responses; the mitigation is disabling directed broadcasts, not applicable here. **Why B is wrong**: A **fragmentation attack** (e.g., teardrop) sends overlapping or malformed IP fragments to crash or exhaust reassembly buffers — a different DoS vector. **Why D is wrong**: **UDP reflection/amplification** abuses protocols like DNS or NTP to send large responses to a spoofed victim IP; ingress filtering (BCP38) stops spoofed traffic at its source, but it does not address the TCP backlog exhaustion described.",
+    "category": "Network Security"
+  },
+  {
+    "question": "An organization uses a CDN to serve its public website. The security team is evaluating risks introduced by the CDN. Which threat is unique to CDN architectures compared with direct-origin hosting?",
+    "options": [
+      "The origin server is directly exposed to all internet traffic",
+      "Shared infrastructure means a misconfiguration could expose cached content from one customer to another (CDN cache poisoning or cross-tenant data leakage)",
+      "TLS certificates cannot be issued for CDN-hosted domains",
+      "CDNs cannot enforce DDoS mitigation controls"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: CDNs are **multi-tenant shared platforms**. Misconfigurations in cache-control headers or routing rules can cause a CDN edge node to serve one customer's cached responses (including authenticated content) to another customer's requests — a form of **CDN cache poisoning or cross-tenant leakage** that does not exist in single-tenant origin hosting. **Why A is wrong**: A core CDN benefit is that the **origin server is shielded** — it is not directly exposed; only CDN edge nodes receive end-user traffic. **Why C is wrong**: CDNs routinely issue and manage **TLS certificates** for customer domains, either via their own CA or via services like Let's Encrypt; this is a standard and well-supported feature. **Why D is wrong**: **DDoS mitigation** is one of the primary value propositions of CDNs; they absorb volumetric attacks across their distributed edge network before traffic reaches the origin.",
+    "category": "Network Security"
+  },
+  {
+    "question": "A network architect is evaluating SD-WAN to replace MPLS links. The security team raises concerns about traffic leaving over the public internet. Which SD-WAN security control most directly addresses the confidentiality and integrity of traffic traversing untrusted transport?",
+    "options": [
+      "Application-aware routing to prefer low-latency paths",
+      "Centralized SD-WAN controller with zero-touch provisioning",
+      "IPSec or TLS overlay tunnels encrypting all branch-to-branch and branch-to-cloud traffic",
+      "Bandwidth aggregation across multiple ISP connections"
+    ],
+    "correct": 2,
+    "explanation": "**Why C is correct**: SD-WAN deployments over public internet links require **encrypted overlay tunnels (IPSec or TLS)** to protect traffic confidentiality and integrity across untrusted transport networks. Without encryption, traffic traversing commodity internet links is exposed to eavesdropping and tampering by any intermediate party. **Why A is wrong**: **Application-aware routing** optimizes performance by selecting the best path for each traffic class; it has no bearing on encryption or data protection. **Why B is wrong**: **Zero-touch provisioning** simplifies device deployment and reduces human error during configuration, but it addresses operational efficiency, not traffic confidentiality. **Why D is wrong**: **Bandwidth aggregation** improves throughput and resilience by bonding multiple ISP links; it does not encrypt or otherwise protect the data traversing those links.",
+    "category": "Network Security"
+  },
+  {
+    "question": "An organization deploys 802.1X for initial network admission. After authentication, a laptop is granted access to the corporate VLAN. Three hours later, a NAC system detects that the laptop's antivirus signatures are now out of date. Which NAC capability would allow the system to automatically move the laptop to a remediation VLAN without requiring the user to re-authenticate?",
+    "options": [
+      "Pre-admission quarantine at the 802.1X authenticator",
+      "Post-admission continuous assessment with dynamic VLAN reassignment",
+      "Agent-based endpoint compliance scanning at login only",
+      "RADIUS accounting stop message triggered by the supplicant"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: **Post-admission NAC** continuously monitors endpoints after initial authentication. When a compliance violation is detected (e.g., stale AV signatures), the NAC system instructs the switch via RADIUS Change of Authorization (CoA) to dynamically reassign the port to a remediation VLAN without requiring a new authentication cycle. **Why A is wrong**: **Pre-admission quarantine** checks device posture before granting any access during the initial 802.1X exchange; it does not monitor devices during an active session. **Why C is wrong**: **Agent-based scanning at login only** assesses posture at authentication time but does not provide continuous monitoring or trigger mid-session VLAN changes. **Why D is wrong**: A **RADIUS accounting stop** message signals the end of a session (e.g., when the device disconnects); it reflects session termination and does not trigger in-session policy changes based on posture drift.",
+    "category": "Network Security"
+  },
+  {
+    "question": "A large enterprise deploys a **transparent proxy** for all outbound web traffic. Users are unaware the proxy exists. An employee attempts to access a site and receives an SSL error because the proxy is intercepting HTTPS connections. Which design element causes this error, and what is required to resolve it?",
+    "options": [
+      "The proxy is configured as a reverse proxy; switch to a forward proxy mode",
+      "The proxy performs TLS inspection and re-signs traffic with its own CA certificate; the proxy CA must be trusted by client browsers",
+      "The proxy strips all HTTPS headers, converting connections to HTTP; enable HSTS on the proxy",
+      "The proxy uses SNI blocking; configure the firewall to allow TLS 1.3 traffic"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: A **TLS-inspecting transparent proxy** terminates the client's TLS session, inspects the plaintext, then re-encrypts toward the server. It presents a dynamically generated certificate signed by the **proxy's own CA**. If the proxy CA certificate is not installed in the client's trust store, the browser cannot validate the re-signed certificate and displays a certificate error. **Why A is wrong**: **Reverse proxies** sit in front of servers to protect them; a proxy intercepting outbound user traffic is a forward proxy. Switching modes does not address the certificate trust issue. **Why C is wrong**: A well-configured TLS-inspecting proxy does not downgrade HTTPS to HTTP; HSTS is an HTTP response header mechanism that prevents protocol downgrade but is unrelated to certificate trust errors. **Why D is wrong**: **SNI blocking** is a technique to block connections by hostname without decryption; it does not cause certificate errors — it would cause connection failures or resets, not SSL trust errors.",
+    "category": "Network Security"
+  },
+  {
+    "question": "An organization wants to validate that its email domain cannot be spoofed by verifying that sending mail servers are authorized, that message headers have not been tampered with in transit, and that receiving mail servers know what to do with messages that fail checks. Which combination of email security controls satisfies all three requirements?",
+    "options": [
+      "SPF only — it authorizes sending IP addresses and specifies reject policy",
+      "SPF to authorize sending servers, DKIM to sign message integrity, and DMARC to specify enforcement policy",
+      "DKIM only — it cryptographically signs headers and provides reject policy",
+      "S/MIME certificates for all senders combined with a gateway spam filter"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: **SPF (Sender Policy Framework)** publishes authorized sending IP ranges in DNS. **DKIM (DomainKeys Identified Mail)** adds a cryptographic signature to message headers, detecting in-transit tampering. **DMARC (Domain-based Message Authentication, Reporting, and Conformance)** ties SPF and DKIM together and specifies what receiving servers should do with failures (none, quarantine, or reject) — satisfying all three requirements. **Why A is wrong**: **SPF alone** authorizes sending IPs but does not sign message content for integrity, and its policy only applies to the envelope sender — not the visible From header that users see. **Why C is wrong**: **DKIM alone** signs headers but does not publish an authorized sender list and does not provide a policy directive to receivers for handling failures. **Why D is wrong**: **S/MIME** provides end-to-end encryption and signing between individual senders and recipients; it does not protect domain-level spoofing at the mail server level and requires per-user certificate infrastructure.",
+    "category": "Network Security"
+  },
+  {
+    "question": "A security architect is designing a **honeypot** strategy. The team wants to detect internal lateral movement after a breach and gather attacker TTPs without any risk of the honeypot being used to attack production systems. Which deployment choice best meets these goals?",
+    "options": [
+      "High-interaction production honeypot with outbound internet access to monitor C2 activity",
+      "Low-interaction internal honeypot with no real services, placed on the internal network and isolated from production via strict egress firewall rules",
+      "Honeynet of full production-equivalent servers in the DMZ exposed to the internet",
+      "A canary token embedded in a public-facing web application"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: A **low-interaction internal honeypot** emulates just enough service behavior to attract and log attacker activity without providing a real exploitable OS. Placing it on the internal network allows detection of lateral movement, and **strict egress controls** prevent the honeypot from being used as a pivot or a launch pad for outbound attacks. **Why A is wrong**: A **high-interaction honeypot with outbound internet access** provides rich data but creates significant risk — a compromised system with unrestricted internet access could be weaponized to attack third parties. **Why C is wrong**: A **honeynet in the DMZ exposed to the internet** targets external attackers, not internal lateral movement, and internet-facing high-interaction systems carry the highest risk of being leveraged offensively. **Why D is wrong**: **Canary tokens** in web applications detect exfiltration or unauthorized access to specific documents/URLs but do not capture network-level lateral movement tactics.",
+    "category": "Network Security"
+  },
+  {
+    "question": "During a network forensics investigation, an analyst is examining a full-packet capture (pcap) file. They observe short, evenly timed TCP connections to an external IP carrying very small, consistent payloads in the data field of each packet. No known application uses this pattern. Which threat should the analyst investigate first?",
+    "options": [
+      "A DDoS botnet sending SYN flood traffic",
+      "A covert channel using TCP payload fields to exfiltrate data or communicate with C2 infrastructure",
+      "Normal keepalive traffic from a monitoring application",
+      "BGP route update flooding between two peers"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: **Covert channels** over legitimate network protocols (e.g., data encoded in TCP sequence numbers, payload fields, or timing intervals) exhibit exactly this pattern: regular, small transfers to an unexpected external host, with a payload structure inconsistent with any known application. This is a classic indicator of C2 beacon traffic or data exfiltration via a **protocol-based covert channel**. **Why A is wrong**: A **SYN flood** generates a high volume of incomplete TCP handshakes (SYN packets only, no established sessions); it does not involve established connections with consistent small payloads. **Why C is wrong**: **Application keepalives** are expected and tied to a known application port and vendor; the absence of any known application mapping, combined with external destination, is inconsistent with benign keepalives. **Why D is wrong**: **BGP route updates** use TCP port 179 between known AS peer addresses; they are not small-payload communications to arbitrary external IPs and would be identifiable by port and peer address.",
+    "category": "Network Security"
+  },
+  {
+    "question": "A security engineer is hardening an IPv6 deployment and compares risks with the legacy IPv4 network. Which security difference specific to IPv6 requires the engineer to update existing security controls?",
+    "options": [
+      "IPv6 eliminates the need for NAT, which reduces attack surface because all hosts use private addresses",
+      "IPv6 Neighbor Discovery Protocol (NDP) is susceptible to spoofing attacks analogous to ARP poisoning, requiring deployment of RA Guard and SEND",
+      "IPv6 uses a longer header, making deep packet inspection impossible for NGFWs",
+      "IPv6 requires IPSec for all communications, eliminating the need for TLS"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: IPv6 replaces ARP with **Neighbor Discovery Protocol (NDP)**, which uses ICMPv6 messages (Neighbor Solicitations/Advertisements and Router Advertisements). NDP is vulnerable to **spoofing attacks** similar to ARP poisoning — malicious Router Advertisements (RA) can redirect traffic. Mitigations include **RA Guard** (blocks unauthorized RA messages on switch ports) and **SEND (Secure Neighbor Discovery)**, which cryptographically signs NDP messages. **Why A is wrong**: IPv6's elimination of NAT actually **increases exposure** because every host has a globally unique address that may be directly reachable from the internet, removing the implicit obscurity that RFC 1918 addressing provided (though NAT was never a real security control). **Why C is wrong**: NGFWs and DPI tools fully support IPv6; the **extended fixed header** is well-understood, and extension headers are parseable by modern inspection engines. **Why D is wrong**: IPv6 **supports** IPSec but does not mandate its use for all communications — IPSec is optional in IPv6 deployments, just as in IPv4. TLS remains necessary for application-layer security.",
+    "category": "Network Security"
+  },
+  {
+    "question": "A hospital's IT department manages critical biomedical devices using a dedicated **out-of-band (OOB) management network** that is physically separate from the patient-care network. A security reviewer questions the value of this architecture. Which is the most compelling security justification?",
+    "options": [
+      "Out-of-band networks eliminate the need for encryption on management traffic",
+      "Physical separation ensures that even if the patient-care network is compromised, attackers cannot reach management interfaces or disrupt device administration",
+      "Out-of-band networks are required by HIPAA's Security Rule for all medical devices",
+      "A separate management network reduces bandwidth consumption on the primary network"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: An **out-of-band management network** is physically isolated from production traffic. If the patient-care network is breached, attackers cannot pivot to management interfaces (IPMI, console servers, device admin portals) because those interfaces are only reachable via the separate OOB path. This provides resilience for both security and availability — administrators can still manage devices during a network incident. **Why A is wrong**: Physical separation does **not** eliminate the need for management traffic encryption; credentials and configuration commands transmitted in clear text on the OOB network are still vulnerable to insider threats or physical taps. **Why C is wrong**: **HIPAA's Security Rule** does not specifically mandate out-of-band management networks; the requirement is to implement reasonable and appropriate safeguards, which OOB management satisfies. The statement overstates the regulatory requirement. **Why D is wrong**: While OOB management does reduce production traffic, **bandwidth conservation** is an operational benefit, not the security justification that motivates the architecture.",
+    "category": "Network Security"
+  },
+  {
+    "question": "A security architect is comparing **mesh** and **star** network topologies for a new branch office design. The branch has 30 workstations, one server, and strict uptime requirements. Which assessment of the security and availability tradeoffs is most accurate?",
+    "options": [
+      "Mesh is preferred because it has a single central point that can be secured and monitored",
+      "Star topology is preferred for this scenario because it simplifies traffic monitoring, enables centralized security enforcement at the switch, and is cost-effective; a full mesh of 30 nodes would require 435 links and offer negligible security benefit for a LAN",
+      "Bus topology provides the best security because all traffic is visible on the shared medium",
+      "Ring topology is preferred because it has no central point of failure"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: A **star topology** concentrates all traffic through a central switch, making it straightforward to deploy port security, 802.1X, SPAN-based monitoring, and VLAN segmentation in one place. For a 30-node LAN, a **full mesh would require n(n-1)/2 = 435 dedicated links**, which is prohibitively expensive with no meaningful security advantage over a centrally monitored star. **Why A is wrong**: This description inverts the topologies — a **star** has a central point (the switch), not a mesh. A full mesh has no single central point, which makes monitoring and enforcement harder. **Why C is wrong**: A **bus topology** (shared medium) is a significant security liability because all hosts can passively capture all traffic; it is also obsolete in modern switched networks. **Why D is wrong**: While a **ring topology** can tolerate a single link failure with dual-counter-rotating rings (e.g., FDDI, SONET), it is not a standard LAN topology for Ethernet workstations, and the security properties of a ring (shared medium in classic implementations) are inferior to a switched star.",
+    "category": "Network Security"
+  },
+  {
+    "question": "An attacker connected to a local subnet sends forged ICMP redirect messages to a victim host, instructing it to use the attacker's machine as the next-hop router for a specific destination. Which attack is being performed, and which control best mitigates it?",
+    "options": [
+      "ICMP redirect attack; configure hosts and routers to ignore ICMP redirect messages",
+      "Smurf amplification attack; disable directed broadcast forwarding on routers",
+      "IP fragmentation overlap attack; enforce minimum fragment size limits on firewalls",
+      "OSPF route injection; enable OSPF MD5 authentication"
+    ],
+    "correct": 0,
+    "explanation": "**Why A is correct**: An **ICMP redirect** message is a legitimate mechanism for a router to tell a host there is a better next-hop for a destination. Attackers abuse it to silently redirect a victim's traffic through an attacker-controlled hop for man-in-the-middle interception. The mitigation is to **configure hosts and border routers to ignore ICMP redirect messages**, which is the default hardened posture on modern OS distributions. **Why B is wrong**: A **Smurf attack** sends ICMP echo requests to a broadcast address with a spoofed victim source; disabling directed broadcasts prevents amplification but is unrelated to ICMP redirect spoofing. **Why C is wrong**: **IP fragmentation overlap attacks** (e.g., teardrop) exploit reassembly logic by sending overlapping fragment offsets; minimum fragment enforcement mitigates those, not redirect spoofing. **Why D is wrong**: **OSPF route injection** targets the routing protocol between routers; MD5 authentication secures OSPF adjacencies, which is unrelated to host-level ICMP redirect handling.",
+    "category": "Network Security"
+  },
+  {
+    "question": "A security team is evaluating **multicast** traffic on their enterprise network. They discover that hosts can join multicast groups without authentication, and any host on the subnet can receive multicast streams intended for privileged management consoles. Which security concern is most significant, and what control addresses it?",
+    "options": [
+      "Multicast traffic cannot be encrypted; replace all multicast with unicast streams",
+      "Unauthenticated IGMP group membership allows any host to receive sensitive multicast streams; implement IGMP snooping and restrict multicast group subscriptions to authorized VLANs",
+      "Multicast routing protocols cannot be secured; disable PIM-SM throughout the network",
+      "Multicast traffic saturates bandwidth; implement traffic shaping on all uplinks"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: **IGMP (Internet Group Management Protocol)** allows hosts to join multicast groups without authentication. Any host on the subnet can send an IGMP join and receive the multicast stream — including streams from privileged management or video systems. **IGMP snooping** on switches constrains multicast forwarding to only ports where a legitimate subscriber has joined, and restricting group subscriptions to authorized VLANs further limits exposure. **Why A is wrong**: Multicast traffic **can be encrypted** (e.g., using IPSec in tunnel mode or application-layer encryption); replacing all multicast with unicast is operationally disruptive and unnecessary when access controls can be applied. **Why C is wrong**: **PIM-SM (Protocol Independent Multicast — Sparse Mode)** is the multicast routing protocol; it can be secured with authentication. Disabling it entirely eliminates legitimate multicast functionality rather than securing it. **Why D is wrong**: **Bandwidth saturation** is an operational concern; the scenario describes an unauthorized information disclosure risk, not a capacity problem.",
+    "category": "Network Security"
+  },
+  {
+    "question": "A security operations team discovers that sensitive internal data is being exfiltrated via **DNS TXT record queries** to an attacker-controlled domain. Queries contain Base64-encoded data in the subdomain label of each lookup. The DNS traffic is permitted outbound because the organization has no DNS egress controls. Which detection and prevention technique is most effective against this **DNS tunneling** technique?",
+    "options": [
+      "Block all outbound UDP traffic; DNS tunneling requires TCP",
+      "Deploy a DNS firewall or RPZ (Response Policy Zone) that blocks queries to newly registered or uncategorized domains, and use behavioral analytics to flag high query volume or anomalously long DNS labels",
+      "Switch to DNS over HTTPS (DoH) to encrypt DNS queries and prevent inspection",
+      "Increase the TTL values of internal DNS records to reduce query frequency"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: **DNS tunneling** encodes data in query subdomains or TXT records sent to an attacker-controlled authoritative server. Two complementary controls address it: a **DNS firewall / RPZ** can block queries to newly registered, uncategorized, or known-malicious domains (cutting off C2 and exfiltration destinations), while **behavioral analytics** detect the anomalous patterns of DNS tunneling — high query rates, unusually long subdomain labels, and high entropy in label content — even for novel domains. **Why A is wrong**: DNS primarily uses **UDP 53** but falls back to TCP for large responses; blocking all UDP would cripple legitimate DNS. DNS tunneling works over UDP, and blocking TCP alone would not stop it. **Why C is wrong**: **DNS over HTTPS (DoH)** encrypts DNS queries to prevent on-path inspection — this would actually **prevent** detection of DNS tunneling by the security team's monitoring tools, worsening the problem. **Why D is wrong**: **Increasing TTL values** affects how long DNS responses are cached by resolvers; it does not impact the exfiltration technique, which generates new unique subdomains for each data chunk, bypassing caching entirely.",
+    "category": "Network Security"
+  }
+]

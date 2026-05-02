@@ -1,0 +1,362 @@
+[
+  {
+    "question": "A government agency is procuring a commercial-off-the-shelf operating system for processing classified information. They require an independently evaluated assurance that the product meets a defined set of security requirements appropriate for their environment. Which framework provides this evaluation and mutual recognition across participating nations?",
+    "options": [
+      "TCSEC (Orange Book)",
+      "Common Criteria (ISO/IEC 15408)",
+      "FIPS 140-2",
+      "NIST SP 800-53"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: **Common Criteria (CC)**, standardized as ISO/IEC 15408, is the international framework for independent security evaluation of IT products. It is recognized under the Common Criteria Recognition Arrangement (CCRA), allowing evaluations by one member nation to be accepted by others. It replaced TCSEC for US government procurements and is the current standard for evaluated product assurance. **Why A is wrong**: TCSEC (the Orange Book) was the predecessor US standard, withdrawn in favor of Common Criteria in 2000; it is no longer used for current evaluations. **Why C is wrong**: FIPS 140-2 (and its successor, FIPS 140-3) evaluates cryptographic modules specifically — it is not a general security evaluation framework for operating systems or applications. **Why D is wrong**: NIST SP 800-53 is a catalog of security controls for US federal information systems; it is a controls framework, not a product evaluation scheme.",
+    "category": "Evaluation Criteria"
+  },
+  {
+    "question": "A vendor is seeking Common Criteria certification for a firewall product. The vendor writes a document specifying the exact security functions the product provides, the threats it addresses, the security objectives, and the specific assurance requirements it will be evaluated against. What is this document called?",
+    "options": [
+      "Protection Profile (PP)",
+      "Security Target (ST)",
+      "Evaluation Assurance Level (EAL)",
+      "Target of Evaluation (TOE)"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: A **Security Target (ST)** is the vendor-written document that defines what a specific product (the TOE) claims to do, the threats it addresses, security objectives, and the security functional and assurance requirements it will be evaluated against. It is product-specific and becomes the basis for the evaluation. **Why A is wrong**: A **Protection Profile (PP)** is written by a consumer or standards body to describe security requirements for a class of products (e.g., 'firewalls' or 'smart cards') without reference to a specific implementation; it is implementation-independent and reusable. **Why C is wrong**: An **EAL (Evaluation Assurance Level)** is not a document — it is a numeric rating (EAL1–EAL7) describing the depth and rigor of the evaluation methodology applied, not a product specification. **Why D is wrong**: The **Target of Evaluation (TOE)** is the product or system being evaluated — the hardware, software, or firmware subject to the evaluation — not a document.",
+    "category": "Evaluation Criteria"
+  },
+  {
+    "question": "An evaluating lab completes a Common Criteria assessment of a database management system. The evaluation involved formal mathematical verification of the design and implementation. Which EAL level does this MOST likely represent?",
+    "options": [
+      "EAL1 — functionally tested",
+      "EAL3 — methodically tested and checked",
+      "EAL4 — methodically designed, tested, and reviewed",
+      "EAL7 — formally verified design and tested"
+    ],
+    "correct": 3,
+    "explanation": "**Why D is correct**: **EAL7** is the highest Common Criteria assurance level and requires **formal mathematical verification** of the TOE design and implementation — meaning the security properties are mathematically proven, not just tested. EAL7 is extremely rare and expensive to achieve, reserved for the most critical systems such as cryptographic processors or high-security kernels. **Why A is wrong**: EAL1 is the lowest level, involving only functional testing with minimal documentation review; no formal analysis is involved. **Why C is wrong**: EAL3 involves systematic testing, developer search for vulnerabilities, and some independent testing; it does not involve formal mathematical verification. **Why D is correct** as stated. EAL4 is the highest level commercially practical for most products, involving independent testing and vulnerability analysis, but it stops well short of formal mathematical proof required for EAL7.",
+    "category": "Evaluation Criteria"
+  },
+  {
+    "question": "Under the Bell-LaPadula confidentiality model, a subject cleared at SECRET classification attempts to read a document labeled TOP SECRET and to write data to a file labeled CONFIDENTIAL. Which of these operations does the model PERMIT?",
+    "options": [
+      "Read the TOP SECRET document only",
+      "Write to the CONFIDENTIAL file only",
+      "Neither operation is permitted",
+      "Both operations are permitted"
+    ],
+    "correct": 2,
+    "explanation": "**Why C is correct**: The **Bell-LaPadula model** enforces two core rules for **confidentiality**: (1) **Simple Security Property (no read up)** — a subject may not read objects at a higher classification level. A SECRET-cleared subject cannot read TOP SECRET. (2) **Star Property / *-property (no write down)** — a subject may not write to objects at a lower classification level, to prevent leaking sensitive information downward. A SECRET-cleared subject cannot write to a CONFIDENTIAL file. Therefore, **neither operation is permitted**. **Why A is wrong**: Reading TOP SECRET violates the 'no read up' rule (Simple Security Property). **Why B is wrong**: Writing to CONFIDENTIAL violates the 'no write down' rule (*-property). **Why D is wrong**: Both operations violate Bell-LaPadula rules.",
+    "category": "Evaluation Criteria"
+  },
+  {
+    "question": "The Biba integrity model is described as the 'inverse' of Bell-LaPadula. A subject at integrity level MEDIUM attempts to read a document at integrity level LOW and to write to a document at integrity level HIGH. Which operations does Biba's Simple Integrity Property and *-Integrity Property PERMIT?",
+    "options": [
+      "Read LOW and write HIGH — both are permitted",
+      "Read LOW is denied (no read down); write HIGH is denied (no write up)",
+      "Read LOW is permitted; write HIGH is denied",
+      "Read LOW is denied; write HIGH is permitted"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: The **Biba model** enforces integrity through two rules: (1) **Simple Integrity Property (no read down)** — a subject may not read objects at a lower integrity level (to prevent contamination of the subject's integrity by low-integrity data). A MEDIUM subject cannot read LOW documents. (2) **Integrity *-Property (no write up)** — a subject may not write to objects at a higher integrity level (to prevent corruption of high-integrity objects by lower-integrity subjects). A MEDIUM subject cannot write to a HIGH document. Both operations are denied. **Why A is wrong**: Both operations violate Biba's rules. **Why C is wrong**: Reading LOW violates the Simple Integrity Property (no read down). **Why D is wrong**: Writing HIGH violates the Integrity *-Property (no write up).",
+    "category": "Evaluation Criteria"
+  },
+  {
+    "question": "A security model designed for commercial banking environments separates duties by preventing an analyst who has worked with data for one client (Bank A) from working with data for a competing client (Bank B). This rule is dynamically determined by the analyst's history of data access. Which model describes this?",
+    "options": [
+      "Bell-LaPadula",
+      "Biba",
+      "Clark-Wilson",
+      "Brewer-Nash (Chinese Wall)"
+    ],
+    "correct": 3,
+    "explanation": "**Why D is correct**: The **Brewer-Nash model** (commonly called the **Chinese Wall** model) is designed for commercial environments where conflicts of interest must be prevented. Access rules are **dynamic** — once a user accesses data from one company within a conflict-of-interest class (e.g., a banking client), they are automatically barred from accessing data from competing companies in the same class. This models real-world financial analyst and consulting firm regulations. **Why A is wrong**: Bell-LaPadula addresses **confidentiality** in military/government classification schemes; access decisions are based on static security labels, not access history. **Why B is wrong**: Biba addresses **integrity** through integrity level hierarchies; it has no concept of conflict-of-interest classes or history-based access decisions. **Why C is wrong**: Clark-Wilson addresses **integrity** through well-formed transactions and separation of duties in commercial systems; it does not model conflict-of-interest based on competitive relationships.",
+    "category": "Evaluation Criteria"
+  },
+  {
+    "question": "An integrity model requires that data can only be modified through a limited set of authorized programs (transformation procedures), and that the system enforces separation of duties by ensuring that users who enter data cannot also verify it. Which model does this describe?",
+    "options": [
+      "Bell-LaPadula",
+      "Biba",
+      "Clark-Wilson",
+      "Graham-Denning"
+    ],
+    "correct": 2,
+    "explanation": "**Why C is correct**: The **Clark-Wilson model** addresses **commercial data integrity** through two mechanisms: (1) **Well-formed transactions** — data (CDIs, Constrained Data Items) may only be modified by authorized programs called **Transformation Procedures (TPs)**, ensuring data changes are made in a controlled, auditable manner. (2) **Separation of duties** — enforced through the structure of Access Control Triples (user-TP-CDI), preventing the same user from both entering and approving data. This maps directly to real-world accounting and financial system controls. **Why A is wrong**: Bell-LaPadula addresses confidentiality through classification labels; it has no concept of transformation procedures or commercial separation of duties. **Why B is wrong**: Biba addresses integrity through hierarchical integrity levels and read/write rules; it does not define transformation procedures or separate data entry from verification. **Why D is wrong**: Graham-Denning is a model focused on **access control rights** — defining rules for how subjects create, delete, and transfer access rights between objects — not on data integrity via transactions.",
+    "category": "Evaluation Criteria"
+  },
+  {
+    "question": "In the x86 hardware ring architecture used by modern operating systems, where does the operating system kernel execute, and why is this significant for Trusted Computing Base (TCB) design?",
+    "options": [
+      "Ring 3; the kernel is isolated from user applications and cannot be accessed directly",
+      "Ring 0; the kernel has the highest privilege level and direct access to hardware, making its integrity critical to the entire system's security",
+      "Ring 1; the kernel shares a privilege ring with device drivers for performance optimization",
+      "Ring 2; the kernel operates between device drivers (Ring 1) and user space (Ring 3)"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: In the x86 ring architecture, **Ring 0** is the most privileged ring with unrestricted access to hardware instructions and memory. The operating system kernel executes in Ring 0, giving it complete control over the system. This is architecturally significant because the **TCB** (Trusted Computing Base) — the combination of hardware, firmware, and software responsible for enforcing security policy — must include the kernel. Any compromise of Ring 0 code compromises the entire security of the system; the integrity of Ring 0 is paramount to TCB security. **Why A is wrong**: Ring 3 is where **user-mode applications** execute — it is the least privileged ring, specifically designed to isolate untrusted user code from the kernel, not where the kernel runs. **Why C is wrong**: Ring 1 is typically unused in modern x86 OS designs (Windows and Linux use only rings 0 and 3); historically it was assigned to device drivers in some designs, but the kernel itself is in Ring 0. **Why D is wrong**: Ring 2 is also effectively unused in modern mainstream operating systems; it was defined architecturally but rarely implemented.",
+    "category": "Evaluation Criteria"
+  },
+  {
+    "question": "Under the TCSEC (Orange Book) classification system, which class requires discretionary access control, object reuse protection, audit capabilities, and trusted path mechanisms, representing the minimum baseline for a multi-user system handling sensitive data?",
+    "options": [
+      "Class D — Minimal protection",
+      "Class C1 — Discretionary Security Protection",
+      "Class C2 — Controlled Access Protection",
+      "Class B1 — Labeled Security Protection"
+    ],
+    "correct": 2,
+    "explanation": "**Why C is correct**: **TCSEC Class C2 (Controlled Access Protection)** builds on C1 and adds: **object reuse protection** (clearing memory/disk before reuse to prevent data leakage between users), **audit capabilities** (logging security-relevant events), and **trusted path** (ensuring users interact directly with the TCB without interception). C2 was the practical commercial baseline for US government procurement (e.g., Windows NT 3.5 achieved C2). **Why A is wrong**: Class D is for systems that have been evaluated but failed to meet any higher category requirements — the lowest possible rating, meaning essentially no security protections. **Why B is wrong**: C1 requires only basic Discretionary Access Control (DAC) with user/group-based access and password protection; it lacks the object reuse, audit, and trusted path requirements that define C2. **Why D is wrong**: B1 introduces **mandatory access controls (MAC)** with sensitivity labels — a significantly higher bar than C2, beyond what the question describes as the minimum baseline.",
+    "category": "Evaluation Criteria"
+  },
+  {
+    "question": "A secure operating system is designed so that all security-relevant access decisions are made by a single, always-invoked, tamper-proof mechanism that is small enough to be analyzed and tested completely. This concept describes which component of trusted system design?",
+    "options": [
+      "Reference Monitor",
+      "Security Kernel",
+      "Trusted Computing Base (TCB)",
+      "Protection Profile"
+    ],
+    "correct": 0,
+    "explanation": "**Why A is correct**: The **Reference Monitor** is a conceptual model describing a mechanism that: (1) is **always invoked** on every access (complete mediation), (2) is **tamper-proof**, and (3) is **small enough to be analyzed and tested** (verifiable). It mediates all access of subjects to objects according to the security policy. The Security Kernel is the hardware/software implementation of the reference monitor concept. **Why B is wrong**: The **Security Kernel** is the actual implementation of the reference monitor — the hardware and software components that realize the reference monitor's properties. It is a more concrete term than the conceptual reference monitor. **Why C is wrong**: The **TCB (Trusted Computing Base)** is the totality of protection mechanisms within a system — hardware, firmware, and software — responsible for enforcing the security policy. It is broader than the reference monitor, which is one specific mechanism within the TCB. **Why D is wrong**: A **Protection Profile** is a Common Criteria document describing security requirements for a class of products; it is not a system security mechanism.",
+    "category": "Evaluation Criteria"
+  },
+  {
+    "question": "Which TCSEC Orange Book class is the FIRST to require mandatory access controls based on security labels, building on the discretionary controls of the C classes?",
+    "options": [
+      "C2 — Controlled Access Protection",
+      "B1 — Labeled Security Protection",
+      "B2 — Structured Protection",
+      "A1 — Verified Design"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: **TCSEC Class B1 (Labeled Security Protection)** is the first class to introduce **mandatory access controls (MAC)** based on sensitivity labels assigned to subjects and objects. The system enforces a defined security policy based on these labels, supplementing (not replacing) the discretionary controls carried forward from the C classes. B1 corresponds roughly to the beginning of the 'B' (mandatory protection) tier. **Why A is wrong**: C2 provides only discretionary access controls — object-reuse protection, audit, and trusted path — but no mandatory label-based controls. **Why C is wrong**: B2 builds on B1 by requiring a more structured security policy model, formal security policy model documentation, and trusted path; it is not the first MAC class. **Why D is wrong**: A1 is the highest Orange Book class, requiring formal verification of the design; it does not introduce MAC controls (those begin at B1).",
+    "category": "Evaluation Criteria"
+  },
+  {
+    "question": "The Graham-Denning model defines eight specific rules for managing access rights in a system. Which of the following BEST characterizes the focus of this model compared to Bell-LaPadula and Biba?",
+    "options": [
+      "Graham-Denning focuses on preventing information flow that would compromise confidentiality in military systems",
+      "Graham-Denning focuses on maintaining data integrity through well-formed transactions in commercial environments",
+      "Graham-Denning focuses on how subjects and objects are created, deleted, and how access rights are transferred between them",
+      "Graham-Denning focuses on preventing conflict-of-interest by tracking the history of subject access to data sets"
+    ],
+    "correct": 2,
+    "explanation": "**Why C is correct**: The **Graham-Denning model** defines eight protection rules governing the basic operations of a secure system: create/delete objects, create/delete subjects, read/grant/delete access rights, and transfer access rights. Its focus is on the **mechanics of access right administration** — how a system safely manages the creation and delegation of access rights, rather than on confidentiality levels or data integrity. **Why A is wrong**: Preventing confidentiality violations based on classification levels is the domain of **Bell-LaPadula**, not Graham-Denning. **Why B is wrong**: Maintaining integrity through well-formed transactions and separation of duties is the domain of **Clark-Wilson**. **Why D is wrong**: Preventing conflict-of-interest through access history tracking is the domain of **Brewer-Nash (Chinese Wall)**.",
+    "category": "Evaluation Criteria"
+  },
+  {
+    "question": "A CISSP candidate is reviewing security models and notes that one model allows a subject to read up (high to low) but not write up, while another model prohibits both reading down and writing up. Which models are being described in order?",
+    "options": [
+      "Biba (read up allowed), Bell-LaPadula (read down and write up prohibited)",
+      "Bell-LaPadula (read up allowed, write down prohibited), Biba (read down and write up prohibited)",
+      "Clark-Wilson (read up allowed), Brewer-Nash (read down and write up prohibited)",
+      "Bell-LaPadula (read up allowed), Graham-Denning (read down and write up prohibited)"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: In **Bell-LaPadula** (focused on confidentiality): subjects CAN read at or below their classification ('read up is permitted' in the sense that they may NOT read up, but MAY read at equal or lower — the model's rule is no read up, write down is also restricted). More precisely, Bell-LaPadula allows subjects to **read objects at or below their level** and **write objects at or above their level** (to protect confidentiality — you can write high but not leak down). In **Biba** (focused on integrity): no read down (subjects cannot read lower-integrity objects) and no write up (subjects cannot write to higher-integrity objects). Biba thus prohibits both reading down and writing up. **Why A is wrong**: This reverses the model descriptions. **Why C is wrong**: Clark-Wilson and Brewer-Nash are not described by these read/write rules. **Why D is wrong**: Graham-Denning defines access right administration rules, not the read-down/write-up access flow rules described.",
+    "category": "Evaluation Criteria"
+  },
+  {
+    "question": "In Common Criteria terminology, which term refers to the hardware, software, and firmware that is the subject of a security evaluation?",
+    "options": [
+      "Protection Profile (PP)",
+      "Security Target (ST)",
+      "Target of Evaluation (TOE)",
+      "Evaluation Assurance Level (EAL)"
+    ],
+    "correct": 2,
+    "explanation": "**Why C is correct**: The **Target of Evaluation (TOE)** is the specific IT product or system — including all hardware, software, and firmware — that is the subject of the Common Criteria evaluation. The TOE is what is actually being tested and certified. **Why A is wrong**: A Protection Profile is a reusable document defining security requirements for a class of products; it is not the product itself. **Why B is wrong**: A Security Target is the vendor's specification document for a specific product's claimed security properties; it describes the TOE but is not the TOE itself. **Why D is wrong**: An EAL is a scale rating the rigor of the evaluation methodology applied to the TOE; it is not the product being evaluated.",
+    "category": "Evaluation Criteria"
+  },
+  {
+    "question": "A security architect argues that a system's assurance should be distinguished from its functionality. In the context of the Common Criteria and trusted system design, which statement BEST captures this distinction?",
+    "options": [
+      "Functionality describes what a system does; assurance describes how confident we can be that the system actually does what it claims, based on evidence from evaluation",
+      "Functionality refers to encryption algorithms; assurance refers to key lengths and algorithm strength",
+      "Assurance is determined solely by the EAL level; functionality is irrelevant to security evaluation",
+      "Higher assurance always means more security features are implemented in the product"
+    ],
+    "correct": 0,
+    "explanation": "**Why A is correct**: In trusted system design, **functionality** describes the security features and behaviors the system provides (e.g., access control, audit, identification). **Assurance** is the confidence, backed by evidence, that the system actually implements those features correctly and completely — derived through evaluation activities such as testing, design review, and formal analysis. A highly functional but unvalidated system may have greater actual assurance than a simply functional but carefully evaluated one. **Why B is wrong**: Functionality and assurance are not specific to encryption; they are meta-concepts that apply to all aspects of system security, not just cryptographic algorithms. **Why C is wrong**: EAL describes the rigor of evaluation methods applied, but assurance encompasses the entire body of evidence supporting confidence in the TOE; functionality is the foundational set of security requirements being evaluated and is very much relevant. **Why D is wrong**: Higher assurance means greater confidence that implemented features work as intended — it does not mean more features are present. A system with few but well-verified features may have higher assurance than a feature-rich but poorly evaluated system.",
+    "category": "Evaluation Criteria"
+  },
+  {
+    "question": "The **Common Criteria Recognition Arrangement (CCRA)** allows a government agency in one participating nation to procure a product evaluated in another participating nation without requiring a new evaluation. Which term describes the document that enables this mutual recognition for a specific class of products, written by a national body rather than a vendor?",
+    "options": [
+      "Security Target (ST)",
+      "Evaluation Assurance Level (EAL)",
+      "Protection Profile (PP)",
+      "Assurance Maintenance Report (AMR)"
+    ],
+    "correct": 2,
+    "explanation": "**Why C is correct**: A **Protection Profile (PP)** is an implementation-independent document written by a user community, national body, or standards organization that describes security requirements for a category of products (e.g., 'Network Devices,' 'Operating Systems,' 'Smart Cards'). When a vendor's Security Target claims conformance to a PP, evaluations under CCRA can be mutually recognized by participating nations because all parties are measuring the product against the same standardized requirements. PPs are the mechanism for interoperability of evaluations across national boundaries. **Why A is wrong**: A **Security Target** is vendor-written and product-specific; it may claim conformance to a PP but is not the document that enables mutual recognition across national evaluations. **Why B is wrong**: An **EAL** is a numeric assurance scale (1–7); it is not a document and not the vehicle for mutual recognition of specific product category requirements. **Why D is wrong**: An **Assurance Maintenance Report** is a post-evaluation document tracking changes to a certified TOE; it is not the vehicle for enabling cross-border evaluation mutual recognition.",
+    "category": "Evaluation Criteria"
+  },
+  {
+    "question": "An organization procuring a smart card product for government ID issuance requires a **FIPS 140-2 Level 3** validated cryptographic module. Which capability distinguishes Level 3 from Level 2?",
+    "options": [
+      "Level 3 requires formal mathematical proof of the module's cryptographic algorithms",
+      "Level 3 adds physical tamper resistance with identity-based authentication, requiring the module to zeroize keys upon attempted physical intrusion",
+      "Level 3 permits only software-only implementations without hardware security requirements",
+      "Level 3 is equivalent to EAL4 in the Common Criteria framework and uses the same test methodology"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: **FIPS 140-2 Level 3** adds **physical tamper resistance** (attempted intrusion triggers automatic key zeroization) and **identity-based authentication** (the operator must authenticate to the module using identity-based mechanisms, not just role-based). Level 2 requires only tamper-evidence (evidence of intrusion attempts, e.g., tamper-evident coatings or seals) but not active tamper response. Level 3 goes further with physical countermeasures that actively destroy key material if the enclosure is breached. **Why A is wrong**: Formal mathematical proof is not a FIPS 140-2 requirement at any level; it is associated with **EAL7** in Common Criteria. FIPS 140-2 focuses on physical and operational security of cryptographic modules, not formal algorithm proofs. **Why C is wrong**: FIPS 140-2 Level 3 requires hardware security features (tamper resistance) — software-only implementations at Level 3 are generally not achievable. Level 1 is where software-only implementations are most common. **Why D is wrong**: FIPS 140-2 and Common Criteria EAL are separate evaluation frameworks with different scopes (cryptographic modules vs. general IT products); they use different methodologies and their levels are not directly equivalent.",
+    "category": "Evaluation Criteria"
+  },
+  {
+    "question": "A security team is applying Saltzer and Schroeder's design principle of **Economy of Mechanism** to a new authentication module. Which design decision BEST demonstrates this principle?",
+    "options": [
+      "Implementing the authentication module to check credentials against three separate identity stores for redundancy",
+      "Designing the authentication module to be as small and simple as possible, relying on well-established, well-tested mechanisms rather than novel, complex logic",
+      "Ensuring the authentication module enforces the least-privilege principle by granting only minimum required permissions after login",
+      "Requiring the authentication module to be verified through formal mathematical proof before deployment"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: **Economy of Mechanism** (one of Saltzer and Schroeder's eight design principles) states that security mechanisms should be as **simple as possible**. Complexity introduces obscure flaws and makes analysis difficult. A small, simple authentication module using well-tested existing libraries (rather than a novel, complex implementation) is easier to verify, easier to test, and has fewer opportunities for hidden bugs. **Why A is wrong**: Checking three identity stores is a redundancy pattern that actually increases complexity; Economy of Mechanism specifically argues against unnecessary complexity, even for resilience purposes. **Why C is wrong**: Granting minimum permissions after login describes the **Least Privilege** principle (also from Saltzer and Schroeder), not Economy of Mechanism. These are related but distinct principles. **Why D is wrong**: Formal mathematical proof is an **assurance** technique associated with Verification in trusted system design or Common Criteria EAL7; it is not a design simplicity principle.",
+    "category": "Evaluation Criteria"
+  },
+  {
+    "question": "A system enforces access control by checking permissions on every access attempt, including repeated reads to the same file within a single session — never caching a positive authorization decision. Which Saltzer and Schroeder design principle does this implement?",
+    "options": [
+      "Open Design",
+      "Psychological Acceptability",
+      "Complete Mediation",
+      "Separation of Privilege"
+    ],
+    "correct": 2,
+    "explanation": "**Why C is correct**: **Complete Mediation** requires that every access to every object be checked against the access control mechanism — no cached authorization decisions, no shortcut paths, no remembered approvals from prior accesses. If a user's permissions change after an initial access grant, the next access check will reflect the new state. This is computationally expensive but provides the strongest access control guarantee. **Why A is wrong**: **Open Design** holds that the security of a mechanism should not depend on the secrecy of its design — it is about transparency of design, not frequency of access checks. **Why B is wrong**: **Psychological Acceptability** states that security mechanisms should not make the system so difficult to use that users circumvent them; it is a usability principle unrelated to access check frequency. **Why D is wrong**: **Separation of Privilege** requires that access to a sensitive operation or object require more than one condition to be satisfied (e.g., two keys to open a safe); it concerns multi-condition authorization, not the frequency of authorization checks.",
+    "category": "Evaluation Criteria"
+  },
+  {
+    "question": "A cryptographic algorithm's design is publicly published, peer-reviewed, and standardized. The organization's security team argues that publishing the algorithm weakens security because adversaries can study it. A security architect disagrees. Which Saltzer and Schroeder principle supports the architect's position?",
+    "options": [
+      "Economy of Mechanism — simplicity makes the algorithm easier to understand",
+      "Open Design — security should not depend on keeping the algorithm secret; strength must come from the key, not algorithm obscurity",
+      "Least Privilege — the algorithm should operate with minimum computational resources",
+      "Fail-Safe Defaults — if the algorithm fails, it should default to a secure state"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: **Open Design** is the principle that a security mechanism's protection should not rely on the secrecy of its design or implementation. Kerckhoffs' Principle (the cryptographic equivalent) states that a cryptosystem should be secure even if everything about the system except the key is public knowledge. Public review enables expert scrutiny that uncovers weaknesses — a proprietary 'secret' algorithm is more likely to have undetected flaws. AES, RSA, and other standards are strong precisely because they have withstood decades of public cryptanalysis. **Why A is wrong**: Economy of Mechanism advocates simplicity to reduce flaws; it does not address whether an algorithm's design should be secret or public. **Why C is wrong**: Least Privilege concerns minimizing permissions granted to processes and users; it has no relevance to whether an algorithm's design is public. **Why D is wrong**: Fail-Safe Defaults concerns what state a system assumes when a failure occurs (default deny vs. default allow); it does not address algorithm publication.",
+    "category": "Evaluation Criteria"
+  },
+  {
+    "question": "An organization adopts a **zero trust architecture** for its enterprise network. Which statement BEST describes how zero trust differs from the traditional perimeter-based (castle-and-moat) security model, from an assurance perspective?",
+    "options": [
+      "Zero trust eliminates the need for encryption because all traffic is authenticated",
+      "Zero trust assumes no implicit trust based on network location; every access request is continuously verified regardless of whether the requestor is inside or outside the network perimeter",
+      "Zero trust is only applicable to cloud environments and cannot be implemented on-premises",
+      "Zero trust replaces all firewalls with software-defined networking, eliminating network security controls"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: **Zero trust architecture** (ZTA) rejects the assumption that anything inside the corporate network boundary is trustworthy. Every access request — from any user, device, or service, whether on-premises or remote — is **continuously verified** based on identity, device health, context, and least-privilege access. This closes the gap exploited by lateral movement: in traditional perimeter security, a compromised insider or a breached VPN user has broad network access once 'inside the wall.' **Why A is wrong**: Zero trust requires strong encryption of all traffic (micro-segmentation with TLS, etc.) because no path is trusted by default — encryption is more important in zero trust, not less. **Why C is wrong**: Zero trust is an architectural philosophy applicable to on-premises, cloud, and hybrid environments. Many organizations implement ZTA in on-premises data centers using micro-segmentation and identity-aware proxies. **Why D is wrong**: Zero trust does not eliminate firewalls; it redefines where and how they are applied. Micro-segmentation and next-generation firewalls are often components of a zero trust implementation, not casualties of it.",
+    "category": "Evaluation Criteria"
+  },
+  {
+    "question": "The **TCSEC Orange Book Trusted Network Interpretation (TNI)**, also known as the Red Book, extended TCSEC requirements to which type of environment?",
+    "options": [
+      "Database management systems handling classified data",
+      "Networked and distributed systems, addressing how TCSEC security requirements apply across network communications and components",
+      "Physical security controls for data centers processing classified information",
+      "Cryptographic modules used within TCSEC-evaluated systems"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: The **Trusted Network Interpretation (TNI)**, published as the Red Book in the Rainbow Series, extended TCSEC's trusted system requirements to **networked environments**. It addressed how security labels, access controls, and assurance requirements apply when systems communicate across networks — covering network-specific threats like packet interception, unauthorized routing, and distributed TCB components. The Orange Book addressed standalone systems; the Red Book addressed interconnected ones. **Why A is wrong**: Database management systems were addressed by the **Trusted Database Interpretation (TDI)**, a different Rainbow Series document (the Lavender Book), not the TNI/Red Book. **Why C is wrong**: Physical security for data centers was not the subject of a separate Rainbow Series interpretation; TCSEC itself included physical security requirements within its evaluation criteria. **Why D is wrong**: Cryptographic module evaluation was eventually standardized through FIPS 140, not a TCSEC Rainbow Series extension.",
+    "category": "Evaluation Criteria"
+  },
+  {
+    "question": "An evaluator applying **Common Criteria** is assessing a product at EAL4. Which activities are included at EAL4 that are NOT required at EAL2?",
+    "options": [
+      "Functional testing by the developer and independent testing by the evaluation lab",
+      "Independent vulnerability analysis and a search for potential vulnerabilities, plus a more rigorous design description (low-level design)",
+      "Formal mathematical proof of the security policy model",
+      "Penetration testing with specialized attack tools not available commercially"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: **EAL4** is the highest level that is generally commercially practical without redesigning from scratch. Compared to EAL2, EAL4 adds: **independent vulnerability analysis** (the evaluator searches for known vulnerabilities), a comprehensive **low-level design** (describing the TSF in terms of its internal implementation), and more rigorous configuration management and delivery/installation procedures. EAL2 involves limited independent testing and basic vulnerability analysis; EAL4 raises the depth of design documentation and the thoroughness of vulnerability analysis significantly. **Why A is wrong**: Functional testing by the developer and some independent testing by the evaluator begin at EAL1/EAL2; they are not unique to EAL4 vs. EAL2. **Why C is wrong**: **Formal mathematical proof** of the security policy model begins at EAL5 (semi-formal) and EAL7 (fully formal); EAL4 does not require formal proofs. **Why D is wrong**: Penetration testing using specialized tools beyond what is commercially available is associated with EAL5+ evaluations; EAL4 vulnerability analysis uses methodical search techniques but not specialized attack tooling.",
+    "category": "Evaluation Criteria"
+  },
+  {
+    "question": "The principle of **Separation of Privilege** as defined by Saltzer and Schroeder states that a system should require more than one condition to be satisfied before granting access to a sensitive operation. Which real-world security control is the BEST example of this principle?",
+    "options": [
+      "Encrypting sensitive data at rest using AES-256",
+      "Requiring both a physical smart card and a PIN to authenticate before granting access to a privileged system",
+      "Implementing a deny-by-default firewall rule that blocks all inbound traffic not explicitly permitted",
+      "Logging all access attempts to sensitive files for post-hoc audit review"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: **Separation of Privilege** requires that access to a sensitive function depend on **more than one independent condition**. Requiring both a **smart card (something you have)** and a **PIN (something you know)** means that compromise of one factor alone is insufficient — the attacker needs both. This is Saltzer and Schroeder's Separation of Privilege instantiated in multi-factor authentication. **Why A is wrong**: AES-256 encryption implements confidentiality but is a single mechanism — it does not require multiple independent conditions to be satisfied. It addresses data protection, not privileged access control. **Why C is wrong**: A deny-by-default firewall implements the **Fail-Safe Defaults** principle (default to the secure state of deny), not Separation of Privilege. It is a single condition (matching a permit rule), not multiple independent conditions. **Why D is wrong**: Logging for audit implements **auditability/accountability**; it is a detective control and does not enforce Separation of Privilege, which is a preventive design principle.",
+    "category": "Evaluation Criteria"
+  },
+  {
+    "question": "A **defense in depth** security architecture is described as implementing multiple independent security layers such that compromise of any single layer does not result in complete system failure. Which Saltzer and Schroeder principle does this MOST closely reflect at the design level?",
+    "options": [
+      "Economy of Mechanism — each layer should be as simple as possible",
+      "Psychological Acceptability — layers should not burden users with repeated authentication",
+      "No single principle; defense in depth is an architectural strategy that combines multiple principles simultaneously",
+      "Least Common Mechanism — minimize shared mechanisms that could allow one layer's failure to cascade"
+    ],
+    "correct": 3,
+    "explanation": "**Why D is correct**: **Least Common Mechanism** (also from Saltzer and Schroeder) states that mechanisms used to access resources should not be shared between users or processes with different privilege levels, because shared mechanisms can provide covert channels or allow one subject's failure/compromise to affect others. In defense in depth, making each security layer **independent** (not sharing mechanisms across layers) ensures that a failure in one layer does not automatically compromise another — directly instantiating Least Common Mechanism. **Why A is wrong**: Economy of Mechanism advocates simplicity of individual mechanisms, which complements defense in depth but does not describe the architectural rationale for why layers should be independent. **Why B is wrong**: Psychological Acceptability is a usability principle; minimizing authentication burden is a valid concern in multi-layer architectures but is not the design principle that justifies defense in depth. **Why C is wrong**: Defense in depth does have a direct Saltzer and Schroeder correspondence in Least Common Mechanism; claiming no single principle applies is factually incorrect for this question's framing.",
+    "category": "Evaluation Criteria"
+  },
+  {
+    "question": "A **Protection Profile (PP)** for network access control devices was developed by a national standards body. A vendor produces a product claiming conformance to this PP. How does a Common Criteria evaluator use the PP during the evaluation?",
+    "options": [
+      "The PP replaces the Security Target; the vendor does not need to write a separate ST if a conformant PP exists",
+      "The evaluator verifies that the vendor's Security Target claims conformance to the PP and that the TOE satisfies all security functional and assurance requirements specified in the PP",
+      "The PP establishes the EAL level automatically; a PP-conformant product is automatically certified at EAL4",
+      "The PP is used only for marketing purposes and has no binding effect on the evaluation methodology"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: When a vendor claims PP conformance in their **Security Target**, the Common Criteria evaluator verifies two things: (1) the ST correctly claims conformance to the PP (all PP requirements appear in the ST), and (2) the TOE actually satisfies those requirements through evaluation activities. The PP provides a standardized baseline that enables buyers to compare products evaluated against the same requirements. This is the mechanism enabling mutual recognition under CCRA. **Why A is wrong**: A PP does **not** replace the Security Target. The vendor must write an ST that claims PP conformance; the ST adds product-specific detail beyond what the PP specifies. Both documents are required. **Why C is wrong**: PP conformance does not automatically determine the EAL level. The EAL is determined by the assurance requirements in the ST (which may or may not be specified by the PP). A PP may require a minimum EAL, but conformance itself does not grant any specific level. **Why D is wrong**: PPs have binding effect on the evaluation — an evaluator uses them to verify that the TOE meets all claimed PP requirements. They are technical documents, not marketing materials.",
+    "category": "Evaluation Criteria"
+  },
+  {
+    "question": "Saltzer and Schroeder's principle of **Psychological Acceptability** states that security mechanisms should not make the system harder to use than it would be without security. Which design decision BEST violates this principle, potentially causing users to circumvent the security control?",
+    "options": [
+      "Requiring 12-character passwords with complexity rules renewed every 90 days, causing users to write passwords on sticky notes attached to their monitors",
+      "Using certificate-based authentication that automatically authenticates users based on a smart card inserted in their workstation",
+      "Implementing transparent disk encryption that operates without user interaction after boot",
+      "Deploying a single sign-on (SSO) system that authenticates users once for all corporate applications"
+    ],
+    "correct": 0,
+    "explanation": "**Why A is correct**: Onerous password complexity and rotation requirements that exceed users' ability to memorize passwords violate **Psychological Acceptability** — users circumvent them by writing passwords on sticky notes, choosing predictable patterns, or reusing passwords. This is empirically demonstrated: NIST SP 800-63B now recommends against mandatory periodic rotation precisely because it degrades security in practice by inducing these behaviors. The security mechanism becomes counterproductive because it is psychologically unacceptable. **Why B is wrong**: Certificate-based authentication with a smart card insert is transparent and requires minimal user action (insert card); it is an example of high security that does NOT violate Psychological Acceptability because the user interaction is minimal and intuitive. **Why C is wrong**: Transparent disk encryption requiring no user interaction after boot is explicitly designed to satisfy Psychological Acceptability — the security operates invisibly without burdening the user. **Why D is wrong**: SSO reduces authentication friction by requiring only one login for all applications, directly improving Psychological Acceptability by making security more convenient than the alternative of maintaining separate credentials per application.",
+    "category": "Evaluation Criteria"
+  },
+  {
+    "question": "An evaluator conducting a Common Criteria **vulnerability analysis** for a product at EAL4 discovers that the TOE's web management interface has a cross-site scripting (XSS) vulnerability accessible from the network. How does this finding affect the evaluation?",
+    "options": [
+      "The finding is documented in the evaluation report but does not affect the EAL rating because XSS is an application security issue, not an OS security issue",
+      "The vulnerability must be remediated or the vendor must demonstrate a compensating measure before the EAL4 certification can be granted, since EAL4 requires that no exploitable vulnerabilities with low attack potential exist in the evaluated configuration",
+      "The finding automatically elevates the product to EAL5 because the evaluator discovered the vulnerability through independent testing",
+      "The finding is outside the scope of Common Criteria evaluation, which only addresses access control and audit mechanisms"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: At **EAL4**, the Common Criteria evaluation includes independent vulnerability analysis requiring that the TOE has no exploitable vulnerabilities with a **low attack potential** in the evaluated configuration. An XSS vulnerability in the web management interface — accessible from the network and potentially exploitable with basic attacker skills — would have low attack potential and would be identified as a flaw that must be addressed before certification. The vendor must either remediate the vulnerability in the evaluated build or apply a compensating measure acknowledged in the Security Target. **Why A is wrong**: Common Criteria evaluations assess the TOE's security functions holistically — a web management interface vulnerability is within scope if the web interface is part of the TOE. Application security issues in the TOE are absolutely relevant to the evaluation. **Why C is wrong**: Finding vulnerabilities through independent testing does not elevate the EAL level — EAL levels describe the depth and rigor of evaluation methodology applied by the vendor during development, not the number of vulnerabilities found by the evaluator. **Why D is wrong**: Common Criteria evaluates all security-relevant aspects of the TOE, not just specific mechanisms. A management interface that can be compromised defeats the entire security posture of the evaluated product.",
+    "category": "Evaluation Criteria"
+  },
+  {
+    "question": "The **ITSEC (Information Technology Security Evaluation Criteria)**, the European predecessor to Common Criteria, introduced a key structural innovation compared to TCSEC. Which ITSEC concept, later incorporated into Common Criteria, separated what a product does from how confident we are it does it correctly?",
+    "options": [
+      "ITSEC introduced the concept of Protection Profiles, allowing reusable security requirements across products",
+      "ITSEC separated **functionality classes** (what security functions the product provides) from **assurance levels** (E1–E6), allowing independent specification of functional requirements and evaluation depth",
+      "ITSEC introduced the concept of the Target of Evaluation (TOE) to describe the product under evaluation",
+      "ITSEC required formal mathematical verification at all evaluation levels, unlike TCSEC which only required it at class A1"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: ITSEC's key architectural innovation was **separating functionality from assurance**. TCSEC combined both in a single hierarchical rating (D, C1, C2, B1, B2, B3, A1) — a higher rating meant both more features AND more assurance. ITSEC decoupled them: a product could be evaluated for any functional class at any assurance level (E1–E6). This recognized that a product might need high assurance of a simple function, or lower assurance of many functions. Common Criteria adopted this separation as the distinction between Security Functional Requirements (SFRs) and Security Assurance Requirements (SARs). **Why A is wrong**: Protection Profiles were introduced in Common Criteria, not ITSEC. ITSEC's contribution was the functionality/assurance separation, not PPs. **Why C is wrong**: The TOE concept was formalized in Common Criteria; ITSEC used similar concepts but the specific terminology and formal structure of TOE as a CC term came with CC. **Why D is wrong**: ITSEC's E6 (highest assurance) required formal verification, but lower levels did not. ITSEC did not require formal verification at all levels — the range E1 (least rigorous) through E6 (most rigorous) is analogous to CC's EAL1–EAL7.",
+    "category": "Evaluation Criteria"
+  },
+  {
+    "question": "Saltzer and Schroeder's principle of **Fail-Safe Defaults** states that access decisions should default to denial in the absence of explicit permission. Which scenario MOST directly illustrates a violation of this principle?",
+    "options": [
+      "A system denies all network connections unless they match an explicit firewall allow rule",
+      "A file system grants read access to all users by default unless the file owner has set explicit deny permissions, causing new files to be world-readable until permissions are configured",
+      "An authentication system locks accounts after five failed login attempts",
+      "A database returns an error message when a query fails due to a syntax error"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: **Fail-Safe Defaults** requires that the default access decision be **denial**, not permission. A file system that grants world-readable access by default inverts this principle — new resources are accessible to everyone until someone explicitly restricts them. In practice, administrators create files with sensitive data before setting permissions, creating a window of exposure. The correct implementation is deny-by-default: no one has access until explicitly granted. **Why A is wrong**: A firewall that denies all connections not matching explicit allow rules is a **correct implementation** of Fail-Safe Defaults — the default is deny, and access requires explicit positive authorization. This is the textbook example of the principle done correctly. **Why C is wrong**: Account lockout after failed attempts is a control against brute-force attacks; it implements a fail-secure authentication mechanism and is not related to access defaulting. **Why D is wrong**: Returning an error message on query failure is appropriate error handling; it does not involve an access control default decision and is unrelated to Fail-Safe Defaults.",
+    "category": "Evaluation Criteria"
+  }
+]

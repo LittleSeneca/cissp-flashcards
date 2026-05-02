@@ -1,0 +1,362 @@
+[
+  {
+    "question": "A financial services firm requires that access decisions for its trading platform be based on a combination of the user's job title, the data classification of the resource, the time of day, and the geographic location of the login. Which access control model is most appropriate?",
+    "options": [
+      "Mandatory Access Control (MAC)",
+      "Role-Based Access Control (RBAC)",
+      "Discretionary Access Control (DAC)",
+      "Attribute-Based Access Control (ABAC)"
+    ],
+    "correct": 3,
+    "explanation": "**Why D is correct**: **ABAC** evaluates access by combining multiple attributes — user attributes (job title), resource attributes (classification), and environmental attributes (time, location) — making it uniquely suited to fine-grained, context-sensitive policies. **Why A is wrong**: **MAC** uses sensitivity labels and clearance levels assigned by the system owner; it does not natively incorporate environmental or contextual attributes like time or location. **Why B is wrong**: **RBAC** grants permissions based on a user's assigned role; it handles job-title-based access but cannot natively incorporate dynamic environmental factors without complex role proliferation. **Why C is wrong**: **DAC** allows resource owners to set permissions at their own discretion; it provides the least centralized control and no mechanism for enforcing policy-level environmental constraints.",
+    "category": "Identity and Access Management"
+  },
+  {
+    "question": "An employee's laptop is stolen. The employee's account uses a single password for all corporate systems. The security team is most concerned about the risk introduced by which authentication weakness?",
+    "options": [
+      "The password is stored using a weak hashing algorithm",
+      "Single-factor authentication with no additional verification layer",
+      "Lack of account lockout policy",
+      "The session token is not bound to the client IP address"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: **Single-factor authentication** means that possession of the password alone (which may be found on the device, in a browser, or guessed) is sufficient to fully authenticate. Adding a **second factor** (something the user has or is) would require the attacker to compromise an additional independent element even after obtaining the password. **Why A is wrong**: A **weak hashing algorithm** is a risk to the stored credential database, not directly to the stolen laptop scenario; the password in question is the live credential, not a hashed value being attacked offline. **Why C is wrong**: While an **account lockout policy** limits brute-force attempts, it does not protect against an attacker who already knows or recovers the correct password. **Why D is wrong**: **IP-binding of session tokens** limits session hijacking after authentication but does not prevent initial authentication with a known password.",
+    "category": "Identity and Access Management"
+  },
+  {
+    "question": "A developer integrates a third-party application with the corporate identity provider. The integration must allow the third-party app to verify the user's identity and receive basic profile information without giving the app the user's password. The corporate IdP supports OpenID Connect. Which component carries the user's identity claims to the third-party application?",
+    "options": [
+      "SAML assertion",
+      "OAuth 2.0 access token",
+      "OpenID Connect ID token (JWT)",
+      "Kerberos service ticket"
+    ],
+    "correct": 2,
+    "explanation": "**Why C is correct**: **OpenID Connect** extends OAuth 2.0 specifically for authentication. The **ID token**, formatted as a signed JWT, contains identity claims (sub, email, name, etc.) and is issued by the authorization server to communicate who the user is to the relying party. **Why A is wrong**: A **SAML assertion** is an XML-based identity token used in SAML 2.0 federation; it is a different protocol from OIDC and would require a SAML integration, not an OIDC one. **Why B is wrong**: An **OAuth 2.0 access token** is an authorization credential intended for accessing APIs (the 'what you can do'); it does not inherently carry identity claims about the user and is not meant for authentication. **Why D is wrong**: A **Kerberos service ticket** is part of the Kerberos protocol suite used in on-premises Active Directory environments; it is not applicable to an OIDC-based federation with a third-party web application.",
+    "category": "Identity and Access Management"
+  },
+  {
+    "question": "A Kerberos authentication exchange is described as follows: a user submits credentials and receives a ticket that can later be exchanged for access to specific services. What is the name of this initial ticket, and which Kerberos component issues it?",
+    "options": [
+      "Service ticket; issued by the Ticket Granting Service (TGS)",
+      "Ticket Granting Ticket (TGT); issued by the Authentication Service (AS)",
+      "Session key; issued by the Key Distribution Center (KDC) master database",
+      "Principal ticket; issued by the realm controller"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: In Kerberos, after the user's initial credentials are verified, the **Authentication Service (AS)** — one half of the KDC — issues a **Ticket Granting Ticket (TGT)**. The client later presents the TGT to the **Ticket Granting Service (TGS)** to obtain service tickets without re-entering credentials. **Why A is wrong**: A **service ticket** is issued by the **TGS**, not the AS, and only after the client has already obtained a TGT. It grants access to a specific service, not the ability to request further tickets. **Why C is wrong**: A **session key** is a symmetric key embedded in tickets to enable encrypted communication; it is not itself a ticket and is not independently issued by the master database. **Why D is wrong**: 'Principal ticket' and 'realm controller' are not standard Kerberos terminology; the components are the AS, TGS, and KDC.",
+    "category": "Identity and Access Management"
+  },
+  {
+    "question": "A security auditor finds that a production database is accessed using a shared 'dbadmin' account whose password is embedded in multiple application configuration files. Which IAM deficiency does this most directly represent?",
+    "options": [
+      "Failure to enforce separation of duties",
+      "Lack of privileged access management controls for shared service accounts",
+      "Insufficient audit logging on the database",
+      "Absence of multi-factor authentication on the database"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: A **shared service account with a static embedded password** is a classic **PAM deficiency**. Proper privileged access management requires unique, vaulted, and rotated credentials per application or service, with individual accountability — eliminating shared accounts and hard-coded secrets. **Why A is wrong**: **Separation of duties** requires that no single person can complete a sensitive transaction alone; the problem here is credential sharing and lack of vaulting, not an SoD design flaw. **Why C is wrong**: **Insufficient audit logging** is a related concern but is not the primary deficiency; even with perfect logging, a shared account makes it impossible to attribute database actions to a specific individual. **Why D is wrong**: **MFA on the database** would add a verification layer, but the root cause — a hard-coded, shared privileged credential — would remain unaddressed.",
+    "category": "Identity and Access Management"
+  },
+  {
+    "question": "An organization adopts a policy that administrators receive elevated privileges only at the moment they need them and for the duration of the task, after which privileges are automatically revoked. Which PAM concept describes this practice?",
+    "options": [
+      "Role explosion mitigation",
+      "Zero standing privilege / just-in-time (JIT) access",
+      "Separation of duties",
+      "Least privilege"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: **Zero standing privilege (ZSP)** combined with **just-in-time (JIT) access** means administrators hold no persistent elevated rights; privileges are granted on-demand, time-bound, and automatically revoked after the task window closes, dramatically shrinking the attack surface from compromised privileged accounts. **Why A is wrong**: **Role explosion mitigation** refers to managing the proliferation of roles in RBAC to avoid unmanageable role complexity; it is a governance concern, not a time-bound privilege model. **Why C is wrong**: **Separation of duties** divides critical tasks among multiple people to prevent fraud or error by a single actor; it is complementary to JIT but describes task division, not time-limited privilege elevation. **Why D is wrong**: **Least privilege** is the broader principle of minimizing access rights; ZSP/JIT is a specific implementation technique that achieves least privilege dynamically over time, but the answer describes the practice itself.",
+    "category": "Identity and Access Management"
+  },
+  {
+    "question": "A security engineer is selecting a password hashing algorithm for a new credential store. The requirements specify resistance to GPU-accelerated brute-force attacks and the ability to tune computational cost over time as hardware improves. Which algorithm best meets these requirements?",
+    "options": [
+      "SHA-256 with a random salt",
+      "MD5 with a static application-wide pepper",
+      "bcrypt",
+      "HMAC-SHA1"
+    ],
+    "correct": 2,
+    "explanation": "**Why C is correct**: **bcrypt** is a password-specific hashing function that incorporates a **cost factor** (work factor), making it intentionally slow. As hardware improves, the cost factor can be increased to maintain brute-force resistance. It also natively includes per-password salting. **Why A is wrong**: **SHA-256 with a salt** is a general-purpose cryptographic hash designed to be fast; speed is the enemy of password hashing because it enables high-throughput GPU attacks even with salts. **Why B is wrong**: **MD5 with a pepper** is cryptographically broken and trivially fast to compute; it is wholly unsuitable for password storage regardless of additional mitigations. **Why D is wrong**: **HMAC-SHA1** is a message authentication code used for integrity verification and API authentication, not for password storage; it is fast by design and does not include a tunable cost factor.",
+    "category": "Identity and Access Management"
+  },
+  {
+    "question": "A biometric system at a high-security facility is configured to minimize the risk of an unauthorized individual being granted access. As a result, many legitimate employees are rejected and must use an alternate entry process. Which biometric error rates describe this trade-off?",
+    "options": [
+      "Low FAR (False Acceptance Rate) and low FRR (False Rejection Rate)",
+      "High FAR and low FRR",
+      "Low FAR and high FRR",
+      "Equal FAR and FRR at the Crossover Error Rate (CER)"
+    ],
+    "correct": 2,
+    "explanation": "**Why C is correct**: A **low FAR** means very few unauthorized individuals are falsely accepted — the primary security goal in a high-security environment. The trade-off is a **high FRR**: many legitimate users are incorrectly rejected, causing inconvenience and the need for alternate processes. **Why A is wrong**: **Low FAR and low FRR** simultaneously would represent an ideal system; in practice, the two rates are inversely related and cannot both be minimized by adjusting a single threshold. **Why B is wrong**: **High FAR** means unauthorized individuals are frequently granted access — the exact opposite of a high-security posture. **Why D is wrong**: The **CER (Crossover Error Rate)** is where FAR and FRR are equal; it is used as a benchmark to compare systems but is not the configuration described — the scenario explicitly increases security by accepting more false rejections.",
+    "category": "Identity and Access Management"
+  },
+  {
+    "question": "An enterprise deploys SAML 2.0 for SSO between its corporate identity provider and multiple SaaS applications. An employee authenticates once and then seamlessly accesses all integrated applications. In the SAML trust model, what roles do the corporate IdP and the SaaS applications play respectively?",
+    "options": [
+      "Service Provider (SP) and Identity Provider (IdP)",
+      "Relying Party (RP) and OpenID Provider (OP)",
+      "Identity Provider (IdP) and Service Provider (SP)",
+      "Authorization Server and Resource Server"
+    ],
+    "correct": 2,
+    "explanation": "**Why C is correct**: In SAML 2.0, the **Identity Provider (IdP)** authenticates the user and issues signed SAML assertions. The **Service Providers (SPs)** — in this case the SaaS applications — consume those assertions and grant access based on the IdP's assertion. **Why A is wrong**: This reverses the roles; the corporate system performing authentication is the IdP, not the SP. **Why B is wrong**: **Relying Party (RP)** and **OpenID Provider (OP)** are OpenID Connect terminology, not SAML 2.0 terminology. **Why D is wrong**: **Authorization Server** and **Resource Server** are OAuth 2.0 roles; they relate to API access delegation, not to the SAML-based SSO federation described.",
+    "category": "Identity and Access Management"
+  },
+  {
+    "question": "A departing employee's manager submits a termination request. HR processes the offboarding, but the employee's Active Directory account, VPN access, and SaaS application licenses are not revoked for two weeks because there is no automated workflow. Which phase of the IAM lifecycle has failed?",
+    "options": [
+      "Access provisioning",
+      "Access recertification / periodic review",
+      "Access deprovisioning / offboarding",
+      "Privileged access request approval"
+    ],
+    "correct": 2,
+    "explanation": "**Why C is correct**: **Deprovisioning** is the IAM lifecycle phase that covers the timely removal of all access rights when an employee leaves or changes roles. The scenario explicitly describes a failure to revoke access promptly after termination. **Why A is wrong**: **Provisioning** is the process of granting initial access when a user joins or changes roles; that process is not the one that failed here. **Why B is wrong**: **Access recertification** is the periodic review of existing entitlements (e.g., quarterly access reviews); it might eventually catch stale accounts but is not the process responsible for immediate termination-driven removal. **Why D is wrong**: **Privileged access request approval** governs how elevated permissions are requested and authorized; it is unrelated to the offboarding workflow failure described.",
+    "category": "Identity and Access Management"
+  },
+  {
+    "question": "A company stores user passwords using Argon2id. A database breach exposes the password table. The attacker has significant computing resources. Which property of Argon2id most directly impedes a large-scale offline cracking attempt?",
+    "options": [
+      "Use of a cryptographic salt unique per user",
+      "Configurable memory hardness that makes parallel GPU attacks expensive",
+      "Compliance with FIPS 140-2 standards",
+      "Integration with hardware security modules (HSMs)"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: **Argon2id's memory-hard design** requires that each hash computation allocate a configurable amount of memory. GPUs are computationally parallel but have limited per-thread memory bandwidth; the memory cost makes massively parallel cracking extremely expensive and slow. **Why A is wrong**: A **per-user salt** prevents precomputed rainbow table attacks and ensures that two users with the same password produce different hashes, but it does not prevent direct brute-force attempts on individual hashes. Argon2id uses salts, but the primary differentiator against GPU cracking is memory hardness. **Why C is wrong**: **FIPS 140-2 compliance** is a certification standard for cryptographic modules; Argon2 is not FIPS-certified (bcrypt and PBKDF2-SHA256 may be used in FIPS contexts). This property does not impede cracking. **Why D is wrong**: **HSM integration** protects keys and can protect certain secrets at rest; it is not a feature of Argon2id itself and is not what limits offline cracking after a database dump is obtained.",
+    "category": "Identity and Access Management"
+  },
+  {
+    "question": "An organization implements a MAC system where sensitivity labels are assigned to all data objects and all users hold a clearance level. A Secret-cleared user attempts to write a document to a folder labeled Unclassified. The system denies the write operation. Which property of the Bell-LaPadula model enforces this?",
+    "options": [
+      "Simple Security Property (no read up)",
+      "The *-Property (star property — no write down)",
+      "Discretionary Security Property",
+      "Strong Tranquility Property"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: The **Bell-LaPadula *-Property** (star property) states that a subject may **not write to an object at a lower classification level** than the subject's clearance ('no write down'). This prevents a Secret-cleared user from downgrading information by copying it to an Unclassified container. **Why A is wrong**: The **Simple Security Property** governs read access: a subject may not read an object classified above their clearance ('no read up'). The scenario involves a write operation, not a read. **Why C is wrong**: The **Discretionary Security Property** requires that access also comply with an access control matrix set by the owner; it is a supplementary rule and does not specifically address the write-down restriction. **Why D is wrong**: The **Strong Tranquility Property** prohibits changing security labels while the system is operating; it is a policy-stability rule, not the property that blocks the write operation.",
+    "category": "Identity and Access Management"
+  },
+  {
+    "question": "A cloud-based HR system uses LDAP to authenticate corporate users against the on-premises Active Directory. A security review finds that the LDAP service account has read access to the entire directory, including privileged group memberships and password hashes. Which is the most appropriate remediation?",
+    "options": [
+      "Enable LDAP signing and channel binding on the domain controllers",
+      "Scope the LDAP service account to the minimum required OUs and attributes, and use LDAPS for transport encryption",
+      "Replace LDAP with Kerberos for all HR application authentication",
+      "Implement a PAM vault to rotate the LDAP service account password daily"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: The two distinct problems are **excessive access** (service account reads the entire directory including sensitive attributes) and **cleartext exposure** (LDAP over port 389 is unencrypted). The correct remediation addresses both: **scope the account** to only the OUs and attributes needed by the HR application, and use **LDAPS (LDAP over TLS, port 636)** or StartTLS to encrypt directory queries. **Why A is wrong**: **LDAP signing and channel binding** protect against LDAP relay and man-in-the-middle attacks on authentication but do not restrict what the service account can read from the directory. **Why C is wrong**: **Kerberos** is an authentication protocol, not a directory protocol; replacing LDAP with Kerberos does not provide directory query capability for attribute lookups that the HR system requires, and it does not fix the over-permissioned account. **Why D is wrong**: **Rotating the service account password daily** reduces the window of exposure if the credential is compromised but does not address the over-permissioned access scope, which is the primary finding.",
+    "category": "Identity and Access Management"
+  },
+  {
+    "question": "During an access review, an auditor discovers that a user in the finance department also holds the ability to create vendor records, approve purchase orders, and release payment batches — all within the same ERP system. Which control deficiency does this represent?",
+    "options": [
+      "Excessive privilege accumulation violating separation of duties (SoD)",
+      "Failure to implement two-person integrity",
+      "Lack of mandatory vacation / forced leave policy",
+      "Absence of a privileged access management solution"
+    ],
+    "correct": 0,
+    "explanation": "**Why A is correct**: **Separation of duties (SoD)** requires that no single individual controls all phases of a sensitive transaction — particularly in financial processes. The ability to create vendors, approve orders, and release payments is a textbook **SoD violation** that could enable fraudulent transactions without external collusion. This is also an example of **privilege accumulation (permission creep)** over time. **Why B is wrong**: **Two-person integrity** requires that two authorized individuals must be present to perform a specific action (e.g., launching nuclear weapons or accessing a secure vault); it is a specific physical or procedural control, not the access control concept violated here. **Why C is wrong**: A **mandatory vacation policy** can help detect ongoing fraud by requiring someone else to cover duties, but it does not address the underlying SoD violation. **Why D is wrong**: A **PAM solution** manages privileged (administrative) accounts such as root or domain admin; the ERP business-function roles described are application-level entitlements, not IT privileged accounts.",
+    "category": "Identity and Access Management"
+  },
+  {
+    "question": "An organization's identity governance program requires that all user access entitlements be reviewed by line managers every 90 days. During a review cycle, a manager clicks 'approve all' for their team without examining individual entitlements. Which risk does this behavior introduce?",
+    "options": [
+      "Orphaned accounts from employees who never completed onboarding",
+      "Rubber-stamping that allows privilege creep and stale entitlements to persist undetected",
+      "Unauthorized provisioning of service accounts outside the IAM workflow",
+      "Credential stuffing attacks on accounts with weak passwords"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: **Rubber-stamping access reviews** defeats the purpose of periodic recertification. When managers approve all entitlements without scrutiny, **privilege creep** — the accumulation of access rights beyond what a role requires, often from past role changes or project assignments — is never caught and remediated. **Why A is wrong**: **Orphaned accounts** arise when employee termination is not reflected in the access control system; they represent a deprovisioning failure, not a consequence of inattentive review approvals. **Why C is wrong**: **Unauthorized service account provisioning** is a provisioning governance issue; it is unrelated to a manager's behavior during a user access review. **Why D is wrong**: **Credential stuffing** exploits stolen credential lists against login portals; it is an authentication-layer threat unrelated to the access review process.",
+    "category": "Identity and Access Management"
+  },
+  {
+    "question": "A government agency is enrolling citizens for an online benefits portal. Applicants must verify their identity by appearing in person with two forms of government-issued ID and having a trained officer confirm their documents. Which NIST SP 800-63A **Identity Assurance Level** does this process satisfy?",
+    "options": [
+      "IAL1 — no identity proofing required, self-asserted attributes only",
+      "IAL2 — remote or in-person proofing with documentary evidence",
+      "IAL3 — in-person proofing with verified physical documents and biometric collection",
+      "IAL0 — anonymous access with no identity binding"
+    ],
+    "correct": 2,
+    "explanation": "**Why C is correct**: **IAL3** requires **in-person identity proofing** where the applicant presents acceptable physical documents that are verified by a trained representative, and biometric data (e.g., fingerprint or photograph) is collected for binding. The scenario — in-person appearance, two government-issued IDs, trained officer verification — is characteristic of IAL3's stronger evidence and in-person requirements. **Why A is wrong**: **IAL1** requires no identity proofing; it allows self-asserted attributes without documentary verification. The in-person, document-based process clearly exceeds IAL1. **Why B is wrong**: **IAL2** permits remote proofing with documentary evidence (e.g., uploading a photo ID) or in-person proofing; the in-person officer verification with multiple documents could meet IAL2, but the combination of in-person proofing with trained personnel verifying multiple physical documents maps to the higher IAL3 standard. **Why D is wrong**: **IAL0** is not a defined level in NIST SP 800-63A; the framework defines IAL1, IAL2, and IAL3.",
+    "category": "Identity and Access Management"
+  },
+  {
+    "question": "An organization is adopting phishing-resistant MFA for all privileged accounts. The security architect must choose between TOTP authenticator apps and FIDO2/WebAuthn hardware security keys. Which statement correctly distinguishes their **Authenticator Assurance Levels** under NIST SP 800-63B?",
+    "options": [
+      "Both TOTP apps and FIDO2 keys satisfy AAL3 because both require a physical device",
+      "TOTP apps satisfy AAL2; FIDO2/WebAuthn hardware security keys can satisfy AAL3 when combined with a PIN or biometric and verifier impersonation resistance",
+      "TOTP apps satisfy AAL3 because they use HMAC-based one-time passwords",
+      "FIDO2 keys satisfy AAL1 because they replace passwords with a single factor"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: Under NIST SP 800-63B, **TOTP (software authenticator)** satisfies **AAL2** — it provides a second factor but is susceptible to real-time phishing (an attacker can relay the OTP before it expires). **FIDO2/WebAuthn hardware security keys** satisfy **AAL3** when combined with a PIN or biometric, because they provide hardware-backed key storage and **verifier impersonation resistance** (the key is cryptographically bound to the origin, making real-time phishing ineffective). **Why A is wrong**: **TOTP apps** are software-based; they do not meet AAL3 because they lack hardware-protected keys and are vulnerable to phishing relay attacks. **Why C is wrong**: **HOTP/TOTP** are time- or counter-based OTPs; despite using HMAC, they are software secrets that can be phished in real time, limiting them to AAL2. **Why D is wrong**: **FIDO2 keys** replace passwords with a cryptographic challenge-response mechanism that requires user verification (PIN/biometric), making them multi-factor at AAL3, not single-factor at AAL1.",
+    "category": "Identity and Access Management"
+  },
+  {
+    "question": "An organization deploys a FIDO2 hardware token (YubiKey) for privileged admin accounts and a TOTP app for general staff. Attackers begin targeting general staff with fake login pages that capture TOTP codes in real time and immediately replay them. Which MFA vulnerability is being exploited, and what control would eliminate it?",
+    "options": [
+      "MFA fatigue; implement push notification rate limiting",
+      "Real-time OTP phishing (adversary-in-the-middle); replace TOTP with FIDO2/WebAuthn for all accounts requiring phishing resistance",
+      "SIM swapping; migrate from SMS OTP to authenticator apps",
+      "Brute-force of TOTP codes; increase the TOTP time window to 60 seconds"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: **TOTP codes are valid for a short window** (typically 30 seconds) — long enough for an attacker operating an adversary-in-the-middle (AiTM) proxy to capture and relay the code to the real site before it expires. This is **real-time OTP phishing**. **FIDO2/WebAuthn** eliminates this attack because the cryptographic assertion is origin-bound — the key will not sign a challenge from a fake domain. **Why A is wrong**: **MFA fatigue** involves flooding users with push approval notifications until they accidentally or frustratedly approve one; it targets push-based MFA (e.g., Duo Push), not TOTP codes. **Why C is wrong**: **SIM swapping** attacks SMS-based OTP delivery by porting the victim's phone number to an attacker-controlled SIM; the scenario describes TOTP (authenticator app), not SMS delivery. **Why D is wrong**: **Increasing the TOTP time window** would make the attack easier by giving attackers more time to replay the code; it does not address the fundamental vulnerability that TOTP is replayable within its validity window.",
+    "category": "Identity and Access Management"
+  },
+  {
+    "question": "A user enrolled in push-notification MFA receives dozens of approval requests in a short period. Fatigued by the alerts, they tap 'approve' to stop the notifications, granting an attacker access. Which attack technique is described, and which control is specifically designed to prevent it?",
+    "options": [
+      "Credential stuffing; implement CAPTCHA on the login page",
+      "MFA fatigue (push bombing); enable number matching or additional context in push notifications",
+      "Adversary-in-the-middle phishing; deploy FIDO2 hardware tokens",
+      "Brute-force authentication; implement account lockout after five failed attempts"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: **MFA fatigue (push bombing)** is a social engineering technique where an attacker repeatedly triggers push MFA requests until the victim approves one to stop the noise. **Number matching** (requiring the user to enter a code displayed on the login page into the push notification) and **additional context** (showing the login location/app) ensure that a legitimate user must consciously confirm the request matches their own login attempt, neutralizing passive approval. **Why A is wrong**: **Credential stuffing** replays stolen username/password pairs; CAPTCHA reduces automated stuffing attempts but does not address an attacker who already has valid credentials and is abusing the MFA push mechanism. **Why C is wrong**: **AiTM phishing** captures credentials and session tokens in real time via a proxy; deploying FIDO2 addresses phishing but is not the targeted control for push bombing scenarios. **Why D is wrong**: **Account lockout** stops brute-force password attempts; the attacker in this scenario already authenticated with valid credentials and is exploiting the push notification step, not guessing passwords.",
+    "category": "Identity and Access Management"
+  },
+  {
+    "question": "A large enterprise deploys an **Identity Governance and Administration (IGA)** platform to manage access across 200 applications. The platform automates joiner-mover-leaver workflows, runs quarterly access certifications, and detects SoD violations. Which statement best describes how IGA differs from a traditional **Privileged Access Management (PAM)** solution?",
+    "options": [
+      "IGA and PAM are functionally identical; both vault privileged credentials and provide session recording",
+      "IGA governs the full lifecycle of all user identities and entitlements across applications; PAM specifically secures and controls access to privileged (administrative) accounts and sessions",
+      "PAM manages all application access through role-based workflows; IGA only records privileged sessions for audit",
+      "IGA is a subset of PAM that handles non-privileged user provisioning within PAM vaults"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: **IGA (Identity Governance and Administration)** provides visibility and control over the entire identity lifecycle — provisioning, recertification, SoD policy enforcement, and role management — across all user populations and applications. **PAM** focuses narrowly on securing, vaulting, and monitoring access to privileged accounts (root, domain admin, service accounts) through credential vaulting, session proxying, and just-in-time access. They are complementary but distinct disciplines. **Why A is wrong**: PAM specializes in **privileged credential vaulting and session recording**; IGA does not vault credentials or proxy sessions — it manages entitlements and access governance at a policy level. **Why C is wrong**: This inverts the capabilities — **IGA** runs role-based provisioning workflows across all applications; **PAM** focuses on privileged session recording and credential management, not general application access governance. **Why D is wrong**: IGA is **not a subset of PAM**; IGA is a broader identity governance discipline that spans all users, while PAM is a narrower solution focused on privileged accounts.",
+    "category": "Identity and Access Management"
+  },
+  {
+    "question": "A PAM solution is deployed for all privileged access to production servers. Every privileged session is proxied through the PAM gateway, and a full video and keystroke recording is stored for 90 days. An administrator objects, stating the recordings violate privacy. Which is the most accurate security justification for **PAM session recording**?",
+    "options": [
+      "Session recordings are primarily used to replay administrator actions for efficiency",
+      "Session recording creates an immutable audit trail that enables forensic investigation of privileged activity, supports compliance requirements, and deters insider misuse",
+      "Session recordings replace the need for log management on the target servers",
+      "Session recordings are only legally permissible with written consent from every administrator"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: **PAM session recording** provides an **immutable audit trail** of all privileged actions. If a security incident occurs — whether from an insider threat, compromised admin account, or vendor access abuse — forensic investigators can review exactly what commands were run, what data was accessed, and in what sequence. It also deters misuse because administrators know their actions are recorded. Many compliance frameworks (PCI DSS, SOX, HIPAA) mandate privileged access audit trails. **Why A is wrong**: Session recordings are **not used for efficiency replay**; they are forensic and compliance artifacts, not operational tools for repeating administrative actions. **Why C is wrong**: Session recordings **complement** server-side log management but do not replace it; server logs capture system-level events (process execution, file access) that session recordings may not fully capture, and logs are needed even when a PAM gateway is unavailable. **Why D is wrong**: **Employer monitoring of corporate system use** — including recording privileged administrative sessions on company infrastructure — is generally lawful when disclosed in an acceptable use policy; blanket written consent from every administrator is not universally required by law.",
+    "category": "Identity and Access Management"
+  },
+  {
+    "question": "A security architect is designing account lockout policies for a web application. A high lockout threshold (e.g., 50 failed attempts) reduces user friction but a low threshold (e.g., 3 attempts) reduces brute-force risk. A new requirement emerges: the lockout must not enable denial-of-service attacks against legitimate users. Which design best balances these competing concerns?",
+    "options": [
+      "Permanent account lockout after 3 failed attempts, requiring an admin to unlock",
+      "Temporary lockout with progressive back-off delays and alerting, combined with CAPTCHA after the first few failures, rather than hard lockout",
+      "No lockout at all; rely solely on password complexity requirements",
+      "Lockout after 50 failed attempts with a 24-hour reset window"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: **Progressive back-off** (increasing delay between attempts rather than permanent lockout) limits brute-force throughput without allowing an attacker to permanently lock out a legitimate user's account. **CAPTCHA** after initial failures distinguishes automated attacks from human users without locking accounts. **Alerting** notifies the user and security team of suspicious activity. This approach prevents both brute-force and account-lockout DoS. **Why A is wrong**: **Permanent lockout after 3 failures** is trivially weaponizable as a DoS attack — an adversary who knows a valid username can lock it out almost instantly by making 3 failed attempts, denying access to the legitimate user. **Why C is wrong**: **No lockout with complexity-only controls** allows unlimited brute-force attempts; even a complex password will eventually fall to a sufficiently persistent automated attack with no rate limiting. **Why D is wrong**: A **50-attempt threshold with a 24-hour reset** provides a wide window for automated brute-force attacks (50 attempts is meaningful for shorter passwords) and the long reset period is both user-unfriendly and inconsistent with a security-first posture.",
+    "category": "Identity and Access Management"
+  },
+  {
+    "question": "A cloud-native company issues **X.509 certificates** to all workloads as their primary form of identity for service-to-service authentication in a zero trust architecture. A security engineer asks how to handle certificate rotation without service disruption. Which practice is most aligned with modern certificate-based machine identity management?",
+    "options": [
+      "Issue certificates with 10-year validity periods to minimize rotation overhead",
+      "Use a short-lived certificate (24-hour validity) issued by an automated internal CA with ACME protocol or SPIFFE/SPIRE, rotating automatically before expiry",
+      "Embed a self-signed certificate in each container image at build time",
+      "Rely on pre-shared keys instead, since certificates introduce PKI complexity"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: **Short-lived certificates** (hours to a day) minimize the window of compromise if a certificate or private key is stolen — they expire before an attacker can misuse them. **Automated issuance via ACME or SPIFFE/SPIRE** ensures workloads receive fresh certificates before the current ones expire, enabling continuous rotation without manual intervention or service disruption. This is the foundation of **non-person entity (NPE) certificate-based identity** in zero trust. **Why A is wrong**: **10-year validity** maximizes the misuse window for compromised keys and defeats the purpose of short-lived credential security; it is the opposite of modern zero trust guidance. **Why C is wrong**: **Self-signed certificates embedded at build time** are static, difficult to rotate, create PKI trust chain problems (no central CA to revoke them), and tie certificate lifetime to container rebuild cycles. **Why D is wrong**: **Pre-shared keys** have their own management complexity at scale, offer no revocation mechanism, and are not a modern solution for machine identity in dynamic cloud-native environments; PKI complexity is solved by automation, not by abandoning certificates.",
+    "category": "Identity and Access Management"
+  },
+  {
+    "question": "An organization's security operations team detects that a service account that normally accesses only a single database has suddenly queried 15 databases across multiple business units, created new user accounts, and downloaded large volumes of data — all within two hours. Which emerging IAM discipline is specifically designed to detect and respond to this type of identity-based threat?",
+    "options": [
+      "Identity Governance and Administration (IGA)",
+      "Privileged Access Management (PAM)",
+      "Identity Threat Detection and Response (ITDR)",
+      "Security Information and Event Management (SIEM)"
+    ],
+    "correct": 2,
+    "explanation": "**Why C is correct**: **Identity Threat Detection and Response (ITDR)** is a security discipline that focuses specifically on detecting attacks targeting identity systems and credentials — including compromised service accounts, lateral movement via identity, and abuse of legitimate credentials. ITDR combines behavioral analytics, threat intelligence, and response playbooks focused on identity-layer attacks, which is exactly what this scenario describes. **Why A is wrong**: **IGA** manages the lifecycle and governance of identities (provisioning, certifications, SoD); it does not provide real-time detection of anomalous runtime behavior by active accounts. **Why B is wrong**: **PAM** controls and audits privileged account access; it may log the activity but is not specifically designed with the threat detection and response workflows that ITDR provides for lateral movement and credential abuse scenarios. **Why D is wrong**: A **SIEM** can ingest and correlate logs to surface the anomaly, but SIEM is a broad log aggregation and correlation platform — it is not specifically architected around identity attack patterns. ITDR builds on SIEM data but adds identity-specific threat models, attack path analysis, and response capabilities.",
+    "category": "Identity and Access Management"
+  },
+  {
+    "question": "A company's conditional access policy states: 'Allow access to the corporate email portal only if the user is MFA-compliant AND the device is enrolled in MDM AND the login originates from an approved country.' A user's MDM enrollment lapses. Which outcome does this policy enforce, and which IAM concept does it exemplify?",
+    "options": [
+      "Access is granted because MFA and country conditions are still met; this exemplifies role-based access control",
+      "Access is denied because all conditions must be satisfied simultaneously; this exemplifies attribute-based, context-aware access control via conditional access policy",
+      "Access is granted with reduced permissions; this exemplifies discretionary access control",
+      "Access is denied permanently until an admin manually re-evaluates the policy; this exemplifies mandatory access control"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: **Conditional access policies** enforce a logical AND across all specified conditions — MFA compliance, MDM enrollment, and location. When the MDM enrollment lapses, the device condition fails and **access is denied regardless of the other conditions being met**. This exemplifies **attribute-based, context-aware access control** where real-time device posture is an evaluated attribute, not a static entitlement. **Why A is wrong**: The policy specifies AND logic — partial condition satisfaction does not grant access. **Role-based access control** uses static role assignments, not dynamic device posture conditions. **Why C is wrong**: **Reduced permissions on partial compliance** describes a step-down or limited access model; the scenario's policy does not describe graduated access, and DAC allows owners to set permissions discretionarily — not the policy-driven enforcement described. **Why D is wrong**: The denial is **condition-driven, not permanent** — once MDM enrollment is restored, the condition is satisfied and access can be granted automatically without admin intervention. The policy does not describe a MAC label system.",
+    "category": "Identity and Access Management"
+  },
+  {
+    "question": "A bank deploys a **continuous authentication** system that monitors mouse movement patterns, keystroke dynamics, and navigation behavior throughout a user's session. If the behavioral profile deviates significantly from the user's baseline, the session is stepped up to re-authentication. Which term describes the underlying authentication technique, and what is its primary limitation?",
+    "options": [
+      "Knowledge-based authentication; the primary limitation is that security questions are guessable",
+      "Behavioral biometrics; the primary limitation is that behavioral patterns vary legitimately (e.g., stress, injury, new device) leading to false positives and user friction",
+      "Possession-based authentication; the primary limitation is device theft",
+      "Hard biometrics (fingerprint/iris); the primary limitation is enrollment failure rate"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: **Behavioral biometrics** uses patterns of behavior (keystroke dynamics, mouse movement, gait) as continuous identity signals. Unlike static biometrics, behavior changes legitimately — a user typing on a mobile device vs. a desktop, under time pressure, or recovering from a hand injury will exhibit different patterns. This creates **false positive re-authentication prompts** that disrupt legitimate users, which is the primary operational limitation. **Why A is wrong**: **Knowledge-based authentication (KBA)** uses questions about personal facts (mother's maiden name, first car); it is a separate technique unrelated to behavioral monitoring. **Why C is wrong**: **Possession-based authentication** (something you have — a token or phone) is a discrete authentication factor, not a continuous monitoring technique based on behavior patterns. **Why D is wrong**: **Hard biometrics** (fingerprint, iris, face) are captured at discrete authentication moments; they are not continuously monitored throughout a session and are not affected by the behavioral variability limitation described.",
+    "category": "Identity and Access Management"
+  },
+  {
+    "question": "An organization's federation agreement allows employees from Partner Company A to access a shared research portal using their Partner A credentials. The partner's IdP is trusted by the portal's service provider. A security officer asks how the portal ensures that only authorized Partner A employees — not all Partner A users — can access the portal. Which federation mechanism enforces this scoped access?",
+    "options": [
+      "The portal relies solely on the fact that Partner A's IdP authenticated the user",
+      "SAML attribute mapping combined with authorization rules — the IdP includes group membership or role claims in the assertion, and the portal's SP enforces access policy based on those claims",
+      "The portal maintains a shadow account for every Partner A employee and validates credentials locally",
+      "The TLS certificate of Partner A's IdP restricts which users can receive assertions"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: **Federation trust** verifies that a user was authenticated by a trusted IdP, but **authorization** — who among the IdP's users may access the SP — is enforced through **attribute mapping**. The IdP includes group membership, department, or role claims in the SAML assertion or OIDC token. The SP's **authorization policy** evaluates those claims (e.g., 'must be in Research group') before granting access, limiting entry to authorized Partner A employees only. **Why A is wrong**: Relying solely on IdP authentication would allow **all Partner A users** to access the portal — the federation establishes that the user is who they claim to be, but authorization is a separate decision the SP must make based on claims. **Why C is wrong**: Maintaining **shadow accounts** defeats the purpose of federation — it reintroduces local account management overhead and creates synchronization and deprovisioning challenges. **Why D is wrong**: The **TLS certificate of the IdP** establishes the identity and trustworthiness of the IdP itself (server authentication); it does not encode anything about which end-users are permitted to access the SP.",
+    "category": "Identity and Access Management"
+  },
+  {
+    "question": "A DevOps pipeline uses a **service account** with a static API key stored in a CI/CD environment variable to authenticate to a cloud secrets manager. A security engineer classifies this as a **non-person entity (NPE)** identity risk. Which control most directly addresses the lifecycle and security of this NPE credential?",
+    "options": [
+      "Apply the same MFA requirements to the service account that are applied to human accounts",
+      "Replace the static API key with a short-lived, dynamically issued credential from a workload identity provider (e.g., OIDC federation or cloud IAM roles for service accounts)",
+      "Store the API key in source code and rely on repository access controls to protect it",
+      "Rotate the static API key manually every 90 days and update environment variables"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: **Non-person entity (NPE) identity** best practice eliminates long-lived static credentials entirely. Using **workload identity federation** (e.g., OIDC tokens from the CI/CD provider exchanged for short-lived cloud IAM role credentials) means no secret is stored in the environment — the pipeline's identity is asserted dynamically, the credential is scoped and expires after minutes, and there is nothing to steal or rotate. **Why A is wrong**: **MFA for service accounts** is generally not applicable — service accounts are automated processes with no human to approve a second-factor challenge; applying MFA would break automation. **Why C is wrong**: Storing secrets in **source code** is a critical vulnerability; even with access controls, the secret is exposed in git history, clones, forks, and any developer with repository access. **Why D is wrong**: **Manual 90-day rotation** reduces the exposure window compared to never rotating, but it still maintains a long-lived static credential that can be stolen and misused for up to 90 days. Dynamic short-lived credentials are categorically superior.",
+    "category": "Identity and Access Management"
+  },
+  {
+    "question": "An organization's identity governance team is asked to distinguish between **identity governance** and **identity management** when justifying their IGA investment to executive leadership. Which statement most accurately describes the difference?",
+    "options": [
+      "Identity management and identity governance are the same discipline with different vendor marketing names",
+      "Identity management handles the operational mechanics of provisioning and authenticating users; identity governance adds policy enforcement, risk visibility, compliance reporting, and business-owner decision-making over entitlements",
+      "Identity governance focuses only on privileged accounts; identity management covers all standard users",
+      "Identity management is a manual process; identity governance automates it via IGA platforms"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: **Identity management** encompasses the operational functions — creating accounts, synchronizing directories, managing passwords, and authenticating users. **Identity governance** extends this with a policy and risk lens: it defines who should have what access, enforces SoD policies, runs certification campaigns for business owners to review and approve entitlements, and produces compliance reports. Governance requires business stakeholders to make access decisions, not just IT administrators. **Why A is wrong**: While they are closely related and often combined in IGA platforms, they represent **distinct layers** — operational mechanics vs. policy oversight. Treating them as identical misrepresents the governance value to auditors and compliance teams. **Why C is wrong**: Identity governance applies to **all user populations** — it governs entitlements for regular employees, privileged admins, contractors, and third parties. Privileged account governance is a subset. **Why D is wrong**: Both disciplines can be manual or automated; the distinguishing factor is **scope and purpose** (operational mechanics vs. policy and risk oversight), not the level of automation.",
+    "category": "Identity and Access Management"
+  },
+  {
+    "question": "A HOTP (HMAC-based One-Time Password) token is assigned to a field technician who uses it infrequently. After returning from a long leave, the technician attempts to authenticate but the server rejects the OTP. No brute-force lockout has occurred. What is the most likely cause, and how is it resolved?",
+    "options": [
+      "The HOTP token's battery has died, resetting its counter to zero; replace the battery",
+      "The server's counter has advanced beyond the token's counter due to the technician generating OTPs offline without authentication; re-synchronize the token counter between the client and server",
+      "HOTP requires internet connectivity to fetch a time-synchronized value; restore network access",
+      "The HOTP secret has expired per the 90-day rotation policy; issue a new token"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: **HOTP** generates OTPs based on a **counter** that increments with each button press. If the technician pressed the button multiple times (e.g., to check it, or accidentally) without successfully authenticating, the **client-side counter advances** while the server-side counter stays at its last authenticated value. When the gap exceeds the server's look-ahead window, the token appears to not generate valid codes. Resolution is **counter re-synchronization** — the administrator advances the server counter to match the token. **Why A is wrong**: HOTP tokens are typically battery-operated, but a **dead battery** would prevent the device from functioning at all, not cause a counter mismatch; and replacing a battery does not reset the counter in hardware tokens. **Why C is wrong**: **HOTP is counter-based, not time-based** — it does not require network connectivity or time synchronization. TOTP (Time-based OTP) requires accurate time; HOTP does not. **Why D is wrong**: HOTP **secrets do not expire on a calendar schedule** in standard implementations; the secret is a shared key provisioned at enrollment. The counter drift, not secret expiry, is the characteristic HOTP operational failure mode.",
+    "category": "Identity and Access Management"
+  }
+]

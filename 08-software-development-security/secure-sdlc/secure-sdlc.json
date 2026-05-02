@@ -1,0 +1,362 @@
+[
+  {
+    "question": "A developer constructs a SQL query by directly concatenating a user-supplied search term into the query string: SELECT * FROM users WHERE name = '\" + input + \"'. An attacker submits the value ' OR '1'='1. What attack is being exploited and what is the PRIMARY defense?",
+    "options": [
+      "Cross-site scripting; output encoding",
+      "SQL injection; parameterized queries with prepared statements",
+      "Command injection; input length validation",
+      "Path traversal; allowlist file extension validation"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: The attacker is exploiting SQL injection by injecting SQL syntax into a user-controlled field that is concatenated directly into a query. The primary defense is parameterized queries (prepared statements), which separate SQL code from data so user input is always treated as a literal value, never executable SQL. **Why A is wrong**: XSS involves injecting client-side scripts into web output; the scenario describes database query manipulation. Output encoding addresses XSS, not SQL injection. **Why C is wrong**: Command injection targets OS command execution; the scenario targets the database layer. Length validation alone does not prevent SQL injection. **Why D is wrong**: Path traversal involves manipulating file system paths; it is unrelated to database query construction. File extension allowlisting does not prevent SQL injection.",
+    "category": "Secure SDLC"
+  },
+  {
+    "question": "An attacker injects a malicious script into a product review field in a web store. Every visitor who views the product page executes the script in their browser, which steals their session cookies. This attack is classified as:",
+    "options": [
+      "Reflected XSS",
+      "Stored XSS",
+      "DOM-based XSS",
+      "CSRF"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: Stored XSS (persistent XSS) occurs when malicious script is permanently stored on the server (in a database, comment field, etc.) and served to every user who views the affected page — exactly as described. The script persists and affects multiple victims without re-injection. **Why A is wrong**: Reflected XSS requires the attacker to trick each victim into clicking a crafted URL that reflects the malicious script back in the response; the script is not stored and each victim requires a separate attack vector. **Why C is wrong**: DOM-based XSS manipulates the client-side DOM using JavaScript without the malicious payload ever reaching the server; it does not involve server-side storage. **Why D is wrong**: CSRF (Cross-Site Request Forgery) tricks authenticated users into submitting unauthorized requests; it does not inject scripts into pages.",
+    "category": "Secure SDLC"
+  },
+  {
+    "question": "A web application allows authenticated users to change their email address. An attacker crafts a malicious webpage that, when visited by a logged-in user, silently submits a form to the application's email-change endpoint using the victim's active session. What attack is this, and what is the PRIMARY defense?",
+    "options": [
+      "Stored XSS; Content Security Policy",
+      "Clickjacking; X-Frame-Options header",
+      "CSRF; synchronizer token pattern (anti-CSRF tokens)",
+      "Session hijacking; HttpOnly cookie flag"
+    ],
+    "correct": 2,
+    "explanation": "**Why C is correct**: Cross-Site Request Forgery (CSRF) exploits the browser's automatic inclusion of session cookies with cross-origin requests, causing the victim's browser to submit authenticated requests the victim did not intend. The synchronizer token pattern — embedding a unique, secret, per-session token in forms that the server validates — prevents CSRF because the attacker cannot read or predict the token. **Why A is wrong**: XSS involves injecting scripts into trusted pages; CSRF abuses the trust the server places in the user's browser. CSP mitigates XSS, not CSRF. **Why B is wrong**: Clickjacking overlays transparent frames to trick users into clicking hidden elements; it is a distinct attack. X-Frame-Options prevents framing but not cross-origin form submission. **Why D is wrong**: Session hijacking involves stealing the session token itself; the HttpOnly flag prevents JavaScript access to cookies but does not prevent the browser from sending cookies with cross-site requests.",
+    "category": "Secure SDLC"
+  },
+  {
+    "question": "A web application fetches internal resources based on user-supplied URLs. An attacker submits http://169.254.169.254/latest/meta-data/ and receives AWS EC2 instance metadata including IAM credentials. This is an example of:",
+    "options": [
+      "Cross-Site Request Forgery (CSRF)",
+      "XML External Entity (XXE) injection",
+      "Server-Side Request Forgery (SSRF)",
+      "Insecure Direct Object Reference (IDOR)"
+    ],
+    "correct": 2,
+    "explanation": "**Why C is correct**: Server-Side Request Forgery (SSRF) occurs when an attacker can cause the server to make HTTP requests to attacker-controlled destinations — in this case, the AWS instance metadata service accessible only from the instance itself. The attacker leverages the server's network position to access resources the attacker cannot reach directly. **Why A is wrong**: CSRF tricks a user's browser into making requests to a server using the user's credentials; SSRF manipulates the server itself into making requests to internal resources. **Why B is wrong**: XXE injection exploits XML parsers to read local files or make server-side requests through maliciously crafted XML input; the described attack uses a URL parameter, not XML processing. **Why D is wrong**: IDOR allows direct access to objects (database records, files) by manipulating object identifiers; it does not involve the server making requests to internal network services.",
+    "category": "Secure SDLC"
+  },
+  {
+    "question": "A program copies a user-supplied input string into a fixed-size stack buffer without checking the input length. An attacker supplies 1,000 bytes for a 100-byte buffer. Which memory protection technology specifically randomizes the memory address layout to make exploit development harder?",
+    "options": [
+      "Stack canaries",
+      "Data Execution Prevention (DEP) / NX bit",
+      "Address Space Layout Randomization (ASLR)",
+      "Control Flow Integrity (CFI)"
+    ],
+    "correct": 2,
+    "explanation": "**Why C is correct**: ASLR randomizes the base addresses of stack, heap, and libraries each time a process starts, making it difficult for attackers to predict where injected shellcode or return-oriented programming (ROP) gadgets reside in memory — a key mitigation for buffer overflow exploitation. **Why A is wrong**: Stack canaries place a random sentinel value between the buffer and the return address; if overwritten, execution is halted. Canaries detect overwrites but do not randomize memory layout. **Why B is wrong**: DEP/NX marks memory pages as either executable or writable (but not both), preventing shellcode execution in data regions; it does not randomize layout. **Why D is wrong**: CFI restricts valid control flow transfers to legitimate targets defined at compile time; it hardens against ROP chains but does not randomize memory layout.",
+    "category": "Secure SDLC"
+  },
+  {
+    "question": "OWASP Top 10 2021 lists A04:2021 as Insecure Design. Which of the following BEST represents this category as distinct from implementation flaws?",
+    "options": [
+      "A developer stores passwords in plaintext in the database",
+      "An application uses a vulnerable third-party library with a known CVE",
+      "A password reset flow that allows an account to be taken over because it never required verification of the original owner's identity was never designed in",
+      "An application fails to validate JWT signature before granting access"
+    ],
+    "correct": 2,
+    "explanation": "**Why C is correct**: Insecure Design captures missing or ineffective security controls at the design/requirements phase — the security control was never specified, not merely coded incorrectly. A password reset flow that fundamentally lacks identity verification is a design failure, not an implementation bug. **Why A is wrong**: Storing passwords in plaintext is a cryptographic implementation failure (OWASP A02:2021 Cryptographic Failures); a secure design that was poorly coded. **Why B is wrong**: Using a vulnerable library is covered by OWASP A06:2021 Vulnerable and Outdated Components; it is a dependency management failure, not a design flaw. **Why D is wrong**: Failing to validate JWT signatures is an authentication implementation error (OWASP A07:2021 Identification and Authentication Failures); the design likely specified authentication, but the code failed to implement it correctly.",
+    "category": "Secure SDLC"
+  },
+  {
+    "question": "An organization deploys a web application firewall and calls its application 'secure' without having performed threat modeling, security requirements definition, or code review. From a secure SDLC perspective, this approach MOST directly reflects which risk?",
+    "options": [
+      "Insufficient runtime monitoring",
+      "Security added only at the end (shift-right), missing vulnerabilities that should have been addressed in design and development phases",
+      "Inadequate patch management",
+      "Failure to implement defense in depth"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: Relying solely on a WAF at deployment represents a 'shift-right' or 'bolt-on security' approach — adding security controls late in the lifecycle instead of integrating them from requirements through design, coding, and testing. This misses architectural flaws and coding vulnerabilities that a WAF cannot remediate. **Why A is wrong**: Insufficient runtime monitoring would mean not collecting logs or alerts from the deployed application; deploying a WAF actually addresses some monitoring, even if inadequate for the whole SDLC. **Why C is wrong**: Patch management addresses known vulnerabilities in deployed components; it is not the core failure described. **Why D is wrong**: While a WAF alone lacks depth, the more fundamental issue is the absence of security activities throughout the development lifecycle, not just the number of deployed controls.",
+    "category": "Secure SDLC"
+  },
+  {
+    "question": "BSIMM (Building Security In Maturity Model) and OWASP SAMM are both software security frameworks. The fundamental difference in their design philosophy is:",
+    "options": [
+      "BSIMM is for large enterprises; OWASP SAMM is for small organizations",
+      "BSIMM is descriptive (measures what organizations actually do); OWASP SAMM is prescriptive (defines what organizations should do)",
+      "BSIMM focuses on infrastructure security; OWASP SAMM focuses on application security",
+      "BSIMM is open source; OWASP SAMM requires a paid license"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: BSIMM is empirical and descriptive — it was built by observing what real software security programs actually do, producing a benchmark against which organizations can compare themselves. OWASP SAMM is prescriptive — it defines a target model of practices organizations should adopt to improve their security posture, with maturity levels and a roadmap. **Why A is wrong**: Both frameworks are used by organizations of varying sizes; there is no size restriction in their scope. **Why C is wrong**: Both frameworks focus on software/application security across the SDLC; neither is focused on infrastructure security. **Why D is wrong**: Both BSIMM and OWASP SAMM are available as open resources; BSIMM is freely available from Synopsys.",
+    "category": "Secure SDLC"
+  },
+  {
+    "question": "A financial services company receives a third-party software component and wants a machine-readable inventory of all libraries, frameworks, and their versions included in the component. This artifact is called a:",
+    "options": [
+      "Software Composition Analysis (SCA) report",
+      "Software Bill of Materials (SBOM)",
+      "Common Vulnerability Scoring System (CVSS) report",
+      "Security assessment report"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: An SBOM (Software Bill of Materials) is a formal, structured inventory of all software components — libraries, frameworks, modules — and their versions included in a software product. It enables recipients to identify vulnerable components and track supply chain risks. US Executive Order 14028 mandates SBOMs for federal software supply chains. **Why A is wrong**: SCA is the process/tooling used to generate an SBOM and identify known vulnerabilities in components; the SBOM is the output artifact, not the analysis process. **Why C is wrong**: CVSS is a scoring system for rating the severity of known vulnerabilities; it is not an inventory of components. **Why D is wrong**: A security assessment report documents findings from a security evaluation; it is not a structured component inventory.",
+    "category": "Secure SDLC"
+  },
+  {
+    "question": "In December 2020, attackers compromised the build system of a widely used network management software vendor and inserted malicious code into digitally signed software updates distributed to thousands of organizations. This attack is categorized as a:",
+    "options": [
+      "Zero-day exploit",
+      "Supply chain attack",
+      "Watering hole attack",
+      "Man-in-the-middle attack"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: The SolarWinds Orion attack is the canonical example of a software supply chain attack — adversaries compromised the vendor's build pipeline (CI/CD environment) and injected the SUNBURST backdoor into legitimate, digitally signed software updates, distributing malware through trusted update channels to ~18,000 organizations. **Why A is wrong**: A zero-day exploit targets an unpatched, previously unknown vulnerability; the SolarWinds attack involved compromising the build system and trojanizing software, not exploiting a software vulnerability in victims' systems. **Why C is wrong**: A watering hole attack compromises websites frequented by a target group; it is delivered through web browsing, not through a trusted software vendor's update mechanism. **Why D is wrong**: A man-in-the-middle attack intercepts communications between two parties; the SolarWinds attack modified the source software before distribution, not communications in transit.",
+    "category": "Secure SDLC"
+  },
+  {
+    "question": "NIST SP 800-218 (Secure Software Development Framework, SSDF) organizes secure development practices into four practice groups. Which of the following is NOT one of the SSDF practice groups?",
+    "options": [
+      "Prepare the Organization (PO)",
+      "Protect the Software (PS)",
+      "Produce Well-Secured Software (PW)",
+      "Perform Continuous Penetration Testing (PT)"
+    ],
+    "correct": 3,
+    "explanation": "**Why D is correct**: The four SSDF practice groups are: Prepare the Organization (PO), Protect the Software (PS), Produce Well-Secured Software (PW), and Respond to Vulnerabilities (RV). 'Perform Continuous Penetration Testing' is not an SSDF practice group — while testing is addressed within PW, continuous penetration testing is not a standalone practice group. **Why A is wrong**: PO (Prepare the Organization) is a genuine SSDF practice group covering security roles, requirements, and tool definitions. **Why B is wrong**: PS (Protect the Software) is a genuine SSDF practice group covering software integrity, access control to pipelines, and protecting development environments. **Why C is wrong**: PW (Produce Well-Secured Software) is a genuine SSDF practice group covering design, coding, testing, and security tooling throughout development.",
+    "category": "Secure SDLC"
+  },
+  {
+    "question": "A developer accidentally commits an AWS access key and secret to a public GitHub repository. The BEST immediate remediation is:",
+    "options": [
+      "Delete the GitHub repository to remove public access",
+      "Revoke the exposed credentials immediately and rotate to new credentials",
+      "Change the repository visibility to private",
+      "Add the credentials to .gitignore to prevent future exposure"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: Once credentials are pushed to a public repository, they must be treated as fully compromised — automated bots scan GitHub for exposed credentials within seconds of commit. The only safe response is to immediately revoke the exposed key in the AWS IAM console and generate new credentials. All other actions address future prevention but do not neutralize the current exposure. **Why A is wrong**: Deleting the repository does not help because the credentials were already publicly visible; bots may have already captured them, and git history can persist in forks or caches. **Why C is wrong**: Making the repository private closes future access but does not revoke the already-exposed credentials; anyone who saw or copied them can still use them. **Why D is wrong**: Adding to .gitignore prevents future accidental commits of new files but does not remove already-committed secrets from git history or revoke the current credentials.",
+    "category": "Secure SDLC"
+  },
+  {
+    "question": "The SLSA (Supply-chain Levels for Software Artifacts) framework uses numbered levels to describe integrity guarantees of software build processes. An organization achieves SLSA Level 3 for a build pipeline. The PRIMARY additional guarantee SLSA 3 provides over SLSA 2 is:",
+    "options": [
+      "All source code is open source and publicly auditable",
+      "The build platform itself is hardened and cannot be influenced by the build instructions",
+      "Automated vulnerability scanning is performed on all dependencies",
+      "The final artifact is digitally signed with a code signing certificate"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: SLSA Level 3 requires that the build platform be hosted on a hardened, trustworthy infrastructure that is isolated from developer influence — specifically, the build environment must be ephemeral and the build definition must not be able to interfere with the build platform's security controls. This is the key advancement over SLSA 2 (which requires a hosted build service but does not guarantee build platform hardening). **Why A is wrong**: SLSA does not require open-source code; it focuses on build integrity and provenance regardless of source code visibility. **Why B is correct as stated above.** **Why C is wrong**: Dependency vulnerability scanning is a software composition analysis practice; it is not a SLSA level requirement. **Why D is wrong**: Artifact signing with provenance attestation is introduced at SLSA Level 2; it is not the distinguishing feature of Level 3.",
+    "category": "Secure SDLC"
+  },
+  {
+    "question": "A Java application deserializes a user-supplied byte stream without validation. An attacker crafts a malicious serialized object that, when deserialized, executes an OS command on the server. OWASP Top 10 2021 categorizes this vulnerability under:",
+    "options": [
+      "A03:2021 Injection",
+      "A05:2021 Security Misconfiguration",
+      "A08:2021 Software and Data Integrity Failures",
+      "A04:2021 Insecure Design"
+    ],
+    "correct": 2,
+    "explanation": "**Why C is correct**: OWASP A08:2021 Software and Data Integrity Failures covers insecure deserialization — scenarios where an application deserializes data from untrusted sources without integrity verification, allowing attackers to manipulate serialized objects to achieve code execution or privilege escalation. This category replaced the former A08:2017 Insecure Deserialization. **Why A is wrong**: A03:2021 Injection covers SQL injection, command injection, LDAP injection, and similar code injection flaws through interpreter-processed input; insecure deserialization is a distinct vulnerability class. **Why B is wrong**: A05:2021 Security Misconfiguration covers default credentials, unnecessary features enabled, improperly configured permissions — not vulnerability classes related to data processing. **Why D is wrong**: A04:2021 Insecure Design covers missing security controls in the design phase; the described vulnerability is an implementation-level failure in how deserialized data is handled.",
+    "category": "Secure SDLC"
+  },
+  {
+    "question": "A security engineer reviews input validation for a web form and recommends using an allowlist approach rather than a denylist. What is the primary reason allowlist validation is preferred?",
+    "options": [
+      "Allowlists are easier to maintain than denylists",
+      "Denylists cannot block all possible attack strings because attackers can use encoding, obfuscation, and novel payloads not in the list",
+      "Allowlists improve application performance by reducing processing overhead",
+      "Denylists are prohibited by OWASP secure coding guidelines"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: Denylist (blocklist) validation tries to enumerate all known-bad inputs — an inherently incomplete approach because attackers can bypass denylists using encoding variations (URL encoding, Unicode escaping, double encoding), alternate representations, and novel attack strings not yet in the list. Allowlist (safelist) validation defines exactly what is permitted and rejects everything else, providing a complete constraint that cannot be bypassed by unknown variations. **Why A is wrong**: Denylists are often simpler to initially implement; allowlists can require more careful specification of legitimate inputs, especially for complex fields. The reason to prefer allowlists is effectiveness, not maintenance simplicity. **Why C is wrong**: Input validation overhead is negligible in either approach; performance is not the security rationale for preferring allowlists. **Why D is wrong**: OWASP recommends allowlists (positive validation) as a best practice but does not 'prohibit' denylists; the recommendation is based on security effectiveness, not prohibition.",
+    "category": "Secure SDLC"
+  },
+  {
+    "question": "A development team practices **Scrum** and wants to integrate security into sprint ceremonies rather than conducting security reviews at the end of a release. Which practice BEST embeds security into Agile sprint ceremonies?",
+    "options": [
+      "Conducting a penetration test after every sprint to verify all new code",
+      "Adding security acceptance criteria to user stories, including security items in sprint backlog, and conducting brief security review during sprint retrospectives",
+      "Replacing all unit tests with SAST scans in the CI/CD pipeline",
+      "Scheduling a quarterly threat modeling workshop separate from sprints"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: Integrating security into Agile means embedding it in existing ceremonies — adding security acceptance criteria to user stories (so developers know when a story is securely done), adding security tasks (e.g., threat modeling a feature, updating SAST rules) to the sprint backlog, and reviewing security metrics/issues during retrospectives. This ensures security is continuous, not a gate at the end. **Why A is wrong**: Penetration testing after every sprint is impractical (high cost and time), and it would not address security design issues early — it would still be a late-stage gate rather than embedded security. **Why C is wrong**: Replacing all unit tests with SAST scans removes functional testing coverage; SAST should complement unit tests, not replace them. **Why D is wrong**: A quarterly threat modeling workshop disconnected from sprints violates the shift-left principle; threat modeling should occur at the feature design stage within relevant sprints.",
+    "category": "Secure SDLC"
+  },
+  {
+    "question": "A DevSecOps team integrates **threat modeling** into their CI/CD pipeline so that when a developer merges a new feature branch, an automated step prompts for threat model updates and runs data flow diagram consistency checks. The PRIMARY goal of this automation is:",
+    "options": [
+      "To replace manual security architecture reviews entirely",
+      "To ensure threat models are kept current as code changes and security considerations are not deferred until after deployment",
+      "To generate CVSS scores for all application components automatically",
+      "To enforce code signing on all merged commits"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: Threat models become stale quickly in agile environments where code changes rapidly. Integrating threat model prompts and consistency checks into the merge pipeline ensures developers revisit security assumptions when the feature changes — keeping the threat model synchronized with the actual code and catching new attack surfaces early. **Why A is wrong**: Automated checks assist with consistency but cannot replace the nuanced human judgment required in threat modeling — identifying novel attack paths, evaluating business context, and making risk decisions. **Why C is wrong**: CVSS scores are assigned to known vulnerabilities, not to application components; threat modeling identifies potential threats and mitigations, not CVSS scoring. **Why D is wrong**: Code signing enforces commit integrity and authenticates the developer's identity; it is a separate supply chain integrity control unrelated to threat modeling.",
+    "category": "Secure SDLC"
+  },
+  {
+    "question": "A DevOps team scans Docker container images in their CI/CD registry before deployment. The scanner finds a critical vulnerability in a base OS layer (e.g., Ubuntu 20.04). The team updates the base image and rebuilds. What does this scanning practice primarily address in the context of container security?",
+    "options": [
+      "Runtime container escape vulnerabilities",
+      "Vulnerable packages and libraries baked into image layers that would be deployed to production without detection",
+      "Misconfigured Kubernetes RBAC policies",
+      "Exposed secrets in container environment variables"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: Container image scanning analyzes the layers of a Docker image against vulnerability databases (CVE/NVD) to identify vulnerable OS packages, libraries, and application dependencies that are embedded in the image at build time. Without scanning, vulnerable packages baked into images would reach production and running containers. **Why A is wrong**: Runtime container escape vulnerabilities involve kernel-level flaws exploited by running containers; they are addressed through kernel patching, seccomp profiles, and AppArmor/SELinux — not image layer scanning. **Why C is wrong**: Kubernetes RBAC (Role-Based Access Control) policy misconfiguration is a cluster configuration concern addressed by Kubernetes configuration scanning (e.g., kube-bench), not container image scanning. **Why D is wrong**: Exposed secrets in environment variables are detected by secret scanning tools (e.g., GitLeaks, TruffleHog) or by scanning image metadata and entrypoint configurations — image vulnerability scanners focus on package CVEs, not secret detection.",
+    "category": "Secure SDLC"
+  },
+  {
+    "question": "A Kubernetes cluster deployment violates the **principle of least privilege** by running all pods under a service account with cluster-admin rights. The MOST appropriate Kubernetes security control to remediate this is:",
+    "options": [
+      "Enabling Kubernetes network policies to restrict pod-to-pod traffic",
+      "Implementing Kubernetes RBAC to assign each workload a dedicated service account with only the permissions required for its function",
+      "Deploying a pod security admission controller to block privileged containers",
+      "Encrypting etcd to protect stored secrets"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: Kubernetes RBAC (Role-Based Access Control) allows administrators to create fine-grained roles and bind them to specific service accounts, ensuring each workload has only the API permissions it needs (e.g., a pod that reads ConfigMaps does not also have permission to delete pods or access secrets). This directly addresses the cluster-admin over-permission issue. **Why A is wrong**: Network policies restrict network traffic between pods; they do not control which Kubernetes API actions a pod's service account can perform. **Why C is wrong**: Pod Security Admission controls whether containers run with elevated OS-level privileges (e.g., root, hostPID); it does not restrict Kubernetes API permissions granted to a service account. **Why D is wrong**: etcd encryption protects secrets stored in the cluster's backing store at rest; it does not address which permissions a running workload's service account has.",
+    "category": "Secure SDLC"
+  },
+  {
+    "question": "An attacker targets a REST API that is missing object-level authorization checks. By changing the numeric ID in the request (e.g., GET /api/v1/orders/1234 → GET /api/v1/orders/1235), the attacker accesses another user's order. This vulnerability is listed first in the **OWASP API Security Top 10** as:",
+    "options": [
+      "API2:2023 Broken Authentication",
+      "API1:2023 Broken Object Level Authorization (BOLA)",
+      "API3:2023 Broken Object Property Level Authorization",
+      "API5:2023 Broken Function Level Authorization"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: Broken Object Level Authorization (BOLA) — also known as IDOR (Insecure Direct Object Reference) in the web context — is the #1 OWASP API Security vulnerability. It occurs when an API endpoint fails to verify that the authenticated user is authorized to access the specific object being requested, allowing horizontal privilege escalation by manipulating object identifiers. **Why A is wrong**: API2 Broken Authentication involves flaws in authentication mechanisms (weak tokens, missing MFA, improper session management) — not authorization checks on specific objects. **Why C is wrong**: API3 Broken Object Property Level Authorization involves returning or accepting more object properties than authorized (e.g., exposing internal fields or allowing mass assignment) — a distinct issue from accessing another user's object entirely. **Why D is wrong**: API5 Broken Function Level Authorization involves unauthorized access to admin or privileged API functions (e.g., a regular user calling a DELETE /users endpoint); it is about function-level access, not object-level access.",
+    "category": "Secure SDLC"
+  },
+  {
+    "question": "A developer builds a GraphQL API. An attacker sends a deeply nested query with circular references that causes the server to recursively resolve hundreds of thousands of database calls for a single request. This attack exploits a GraphQL-specific vulnerability known as:",
+    "options": [
+      "SQL injection through GraphQL resolvers",
+      "GraphQL introspection abuse",
+      "Batching and query depth/complexity attacks (GraphQL injection via deeply nested queries)",
+      "CSRF against the GraphQL endpoint"
+    ],
+    "correct": 2,
+    "explanation": "**Why C is correct**: GraphQL's flexible query language allows clients to request nested relationships to arbitrary depth. Without query depth limits and complexity analysis, an attacker can craft a single malicious query with deeply nested or circular relationships that forces the server to execute an exponentially growing number of database operations — a denial-of-service attack specific to GraphQL. Defenses include query depth limiting, query complexity analysis, and query timeout enforcement. **Why A is wrong**: SQL injection through GraphQL resolvers is a possible vulnerability if resolver input is not parameterized, but it is a separate issue from the query complexity attack described. **Why B is wrong**: GraphQL introspection abuse involves querying the schema to enumerate all types and fields, enabling reconnaissance — a different issue from causing server overload via complex queries. **Why D is wrong**: CSRF attacks exploit authenticated cross-origin requests; they are not specific to GraphQL and do not relate to query depth or complexity attacks.",
+    "category": "Secure SDLC"
+  },
+  {
+    "question": "A JavaScript application uses a user-supplied object to merge properties into a prototype. An attacker submits `{\"__proto__\": {\"isAdmin\": true}}` and subsequently every new object in the application inherits `isAdmin: true`. This attack is known as:",
+    "options": [
+      "Insecure Direct Object Reference",
+      "Prototype pollution",
+      "Object injection deserialization",
+      "Mass assignment vulnerability"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: Prototype pollution is a JavaScript-specific vulnerability where an attacker manipulates the `__proto__` or `constructor.prototype` property through unsafe object merging or cloning operations, injecting malicious properties into the Object prototype. Since all JavaScript objects inherit from this prototype, the injected properties affect every subsequent object — enabling privilege escalation, security bypass, or denial of service. **Why A is wrong**: IDOR involves accessing unauthorized objects by manipulating identifiers; it does not involve JavaScript prototype chain manipulation. **Why C is wrong**: Object injection deserialization involves manipulating serialized object streams (common in PHP, Java, Ruby); prototype pollution is specific to JavaScript's prototype inheritance model. **Why D is wrong**: Mass assignment (parameter binding) occurs when a framework automatically maps HTTP request parameters to object properties, potentially setting internal fields; it is distinct from the prototype chain manipulation described.",
+    "category": "Secure SDLC"
+  },
+  {
+    "question": "An application parses user-supplied XML and the XML processor attempts to fetch an external DTD: `<!DOCTYPE foo [<!ENTITY xxe SYSTEM \"file:///etc/passwd\">]>`. This is an **XXE (XML External Entity)** injection attack. The MOST effective defense is:",
+    "options": [
+      "Validating the XML against a schema (XSD) before processing",
+      "Disabling external entity processing and DTD loading in the XML parser configuration",
+      "Encoding all XML output before rendering to users",
+      "Running the XML parser in a sandboxed process"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: XXE exploits the XML parser's ability to resolve external entity references. The most effective defense is to disable external entity processing (FEATURE_EXTERNAL_GENERAL_ENTITIES and FEATURE_EXTERNAL_PARAMETER_ENTITIES) and DTD loading entirely in the parser configuration. If the parser cannot resolve external entities, XXE attacks cannot succeed. **Why A is wrong**: XSD schema validation checks document structure and data types; it does not prevent the parser from resolving external entities before or during validation — the entity resolution happens at parse time before schema validation. **Why C is wrong**: Output encoding prevents XSS by escaping dangerous characters in output; it has no effect on how the XML parser processes input entities during parsing. **Why D is wrong**: Sandboxing limits the damage if an XXE attack succeeds but does not prevent the attack; the goal is to neutralize the attack vector, not merely contain its impact.",
+    "category": "Secure SDLC"
+  },
+  {
+    "question": "A web application renders user-supplied data into a server-side template (e.g., Jinja2 in Python). An attacker submits `{{7*7}}` in a name field and the application returns `Hello, 49`. This is an example of:",
+    "options": [
+      "Server-Side Request Forgery (SSRF)",
+      "Command injection",
+      "Server-Side Template Injection (SSTI)",
+      "Reflected XSS"
+    ],
+    "correct": 2,
+    "explanation": "**Why C is correct**: Server-Side Template Injection (SSTI) occurs when user input is concatenated into a server-side template and evaluated by the template engine. The `{{7*7}}` expression being evaluated and returned as `49` confirms that the template engine processed the user's input — an attacker can escalate this to read files, environment variables, or achieve Remote Code Execution by crafting template expressions that invoke OS commands. **Why A is wrong**: SSRF manipulates the server into making HTTP requests to internal resources; it does not involve template engines or expression evaluation. **Why B is wrong**: Command injection directly executes OS commands through unsanitized input passed to system shells; SSTI operates through the template engine's expression language, not the OS shell (though SSTI often leads to command execution). **Why D is wrong**: Reflected XSS injects JavaScript that executes in the victim's browser; SSTI is server-side — the malicious expression executes on the server, not the client.",
+    "category": "Secure SDLC"
+  },
+  {
+    "question": "A security architect requires that all pages on a high-security web application set the **HTTP Strict Transport Security (HSTS)** header. The header is: `Strict-Transport-Security: max-age=31536000; includeSubDomains; preload`. What does the `preload` directive accomplish?",
+    "options": [
+      "It causes the browser to preload the page content for faster rendering",
+      "It instructs the browser to cache the HSTS policy for the max-age duration",
+      "It submits the domain for inclusion in browser-maintained HSTS preload lists, enforcing HTTPS before the first connection is ever made",
+      "It enables HTTP/2 server push for static resources"
+    ],
+    "correct": 2,
+    "explanation": "**Why C is correct**: The `preload` directive indicates the domain owner's consent to include the domain in browser-maintained HSTS preload lists (hardcoded into Chrome, Firefox, Edge, Safari). Preloaded domains are forced to HTTPS by the browser before any connection is made — eliminating the vulnerability window that exists when a browser visits a domain for the first time over HTTP before receiving the HSTS header. **Why A is wrong**: Page content preloading is a browser optimization feature (e.g., `<link rel='preload'>`); the HSTS `preload` directive is unrelated to rendering performance. **Why B is wrong**: The `max-age` directive controls how long the browser caches the HSTS policy; the `preload` directive is specifically about preload list inclusion, not local caching duration. **Why D is wrong**: HTTP/2 server push is a protocol-level feature configured at the web server; it is not related to HSTS headers or the `preload` directive.",
+    "category": "Secure SDLC"
+  },
+  {
+    "question": "A web application API uses **CORS** (Cross-Origin Resource Sharing) and returns the header `Access-Control-Allow-Origin: *` along with `Access-Control-Allow-Credentials: true`. Why is this combination a security misconfiguration?",
+    "options": [
+      "Wildcard origins work only with GET requests and block POST requests",
+      "Browsers do not allow `Access-Control-Allow-Origin: *` combined with `Access-Control-Allow-Credentials: true`; the specification prohibits credentials with wildcard origins, but some servers misconfigure this expecting it to work",
+      "Using a wildcard allows any origin to read the API response with the user's cookies, enabling cross-origin data theft from authenticated sessions",
+      "CORS headers should only be set by the browser, not by the server"
+    ],
+    "correct": 2,
+    "explanation": "**Why C is correct**: The dangerous CORS misconfiguration occurs when a server dynamically reflects the request's Origin header in `Access-Control-Allow-Origin` (or uses overly broad origins) while also setting `Access-Control-Allow-Credentials: true`. This allows any malicious website to make cross-origin requests that include the victim's cookies, and then read the response — enabling cross-origin data theft. With a proper wildcard (`*`), browsers block credentials per spec, but reflection-based CORS misconfigurations achieve the same dangerous effect. **Why A is wrong**: CORS restrictions apply to all HTTP methods; the issue is not method-specific. **Why B is wrong**: The specification does prohibit credentials with literal `*`, and browsers enforce this — but the dangerous misconfiguration is reflected-origin CORS (where the server echoes back the attacker's origin), not the literal wildcard. **Why D is wrong**: CORS headers are legitimately set by servers to grant cross-origin access; the problem is overly permissive configuration, not the server setting these headers.",
+    "category": "Secure SDLC"
+  },
+  {
+    "question": "An attacker obtains a valid JWT and modifies the algorithm field in the header from `RS256` to `none`, then removes the signature. A vulnerable server accepts the token and grants access. This attack exploits a flaw in which JWT security mechanism?",
+    "options": [
+      "Weak HMAC secret key",
+      "Missing token expiration (`exp` claim)",
+      "The `alg:none` vulnerability — the server fails to reject tokens with no signature algorithm",
+      "JWT header injection via the `kid` (key ID) parameter"
+    ],
+    "correct": 2,
+    "explanation": "**Why C is correct**: The `alg:none` attack exploits JWT libraries that allow the 'none' algorithm, indicating an unsigned (unverified) token. If a server accepts `alg:none` tokens without requiring a valid signature, an attacker can forge any payload by simply setting `alg:none` and omitting the signature. The defense is to explicitly configure the JWT library to reject the `none` algorithm and only accept expected algorithms (e.g., RS256 or HS256). **Why A is wrong**: A weak HMAC secret allows brute-force cracking of HS256-signed tokens; the attack described involves removing the signature entirely rather than cracking it. **Why B is wrong**: Missing expiration claims allow token replay attacks after the session should have ended; they do not relate to the algorithm manipulation described. **Why D is wrong**: `kid` (key ID) header injection can enable SQL injection or path traversal to force the server to use an attacker-controlled key; it is a separate JWT attack class from the `alg:none` vulnerability.",
+    "category": "Secure SDLC"
+  },
+  {
+    "question": "The **OAuth 2.0 implicit grant flow**, which returns access tokens directly in the URL fragment, has been deprecated in OAuth 2.1. The PRIMARY security reason for this deprecation is:",
+    "options": [
+      "Implicit flow tokens expire too quickly for single-page applications",
+      "URL fragments containing access tokens are exposed in browser history, referrer headers, and server logs — enabling token theft without the protections of the authorization code flow",
+      "Implicit flow requires a client secret which single-page applications cannot securely store",
+      "OAuth 2.1 mandates JWT tokens only, and implicit flow uses opaque tokens"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: The implicit flow returns the access token as a URL fragment (e.g., `#access_token=...`), which is visible in browser history, can be leaked through the Referrer header to third-party resources, and may appear in web server access logs if not properly handled. The authorization code flow with PKCE (Proof Key for Code Exchange) provides a more secure alternative by never exposing the token in the URL. **Why A is wrong**: Token lifetime is configurable regardless of grant type; expiration is not the reason implicit flow was deprecated. **Why C is wrong**: The implicit flow was designed specifically for public clients (SPAs) that cannot store client secrets — the absence of a client secret is a feature, not a flaw. The deprecation reason is the URL exposure risk. **Why D is wrong**: OAuth 2.1 does not mandate JWT tokens; access tokens can be opaque or JWT regardless of grant type. Token format is orthogonal to the grant flow selection.",
+    "category": "Secure SDLC"
+  },
+  {
+    "question": "A web application accepts a URL parameter to redirect users after login: `https://example.com/login?next=https://example.com/dashboard`. An attacker modifies this to `?next=https://evil.com` and tricks a user into clicking the link. After logging in legitimately, the user is silently sent to the attacker's site. This attack is called:",
+    "options": [
+      "CSRF (Cross-Site Request Forgery)",
+      "Open redirect",
+      "Reflected XSS",
+      "Clickjacking"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: An open redirect occurs when a web application accepts an untrusted URL as a redirect target and forwards users to it without validation — allowing attackers to use the trusted site as a launchpad for phishing (the victim sees a legitimate URL in the link but ends up on a malicious site). The defense is to validate redirect destinations against an allowlist of permitted URLs or use indirect reference maps. **Why A is wrong**: CSRF tricks an authenticated user's browser into making unauthorized state-changing requests; it does not redirect the user to a different website after login. **Why C is wrong**: Reflected XSS injects JavaScript executed in the browser; the described attack redirects the browser to a different URL without script injection. **Why D is wrong**: Clickjacking overlays transparent frames to hijack user clicks; it does not manipulate URL redirect parameters.",
+    "category": "Secure SDLC"
+  },
+  {
+    "question": "An attacker requests the URL `https://example.com/download?file=../../../../etc/passwd`. The server resolves the path and returns the contents of `/etc/passwd`. This attack is known as **path traversal** (directory traversal). The MOST effective defense is:",
+    "options": [
+      "Rejecting requests containing the string `../` using a denylist filter",
+      "Canonicalizing the requested path using the OS-resolved absolute path and verifying it starts with the permitted base directory before opening the file",
+      "Storing all downloadable files in a database rather than the file system",
+      "Requiring authentication before allowing any file downloads"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: The correct defense against path traversal is to resolve the user-supplied file path to its canonical (absolute) form using the operating system (e.g., `realpath()` in C, `Path.toRealPath()` in Java, `os.path.realpath()` in Python) and then verify that the resolved path begins with the permitted base directory. This approach is bypass-proof because it resolves all `../`, URL encoding, double encoding, and null byte tricks before the check. **Why A is wrong**: Denylist filtering for `../` is bypassable through URL encoding (`%2e%2e%2f`), Unicode encoding, double encoding, and OS-specific path separators; it is an incomplete defense. **Why C is wrong**: Storing files in a database eliminates file system path traversal for those files but is not always practical and does not address the root cause for other file operations. **Why D is wrong**: Authentication controls who can access the download feature but does not prevent an authenticated user from traversing outside the permitted directory.",
+    "category": "Secure SDLC"
+  }
+]

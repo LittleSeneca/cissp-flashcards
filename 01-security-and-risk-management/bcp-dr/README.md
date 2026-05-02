@@ -1,11 +1,9 @@
----
-tier: 1
-domain: Security and Risk Management (Domain 1) + Security Operations (Domain 7)
-exam_weight: ~16% + ~13%
-status: built
----
-
 # BCP/DR Metrics & Lifecycle for the CISSP Exam
+
+> **Tier:** 1  
+> **Domain:** Security and Risk Management (Domain 1) + Security Operations (Domain 7)  
+> **Exam Weight:** ~16% + ~13%  
+> **Status:** Built
 
 A study-oriented overview of business continuity planning and disaster recovery on the CISSP exam. This family spans Domain 1 (where business continuity requirements are identified and prioritized) and Domain 7 (where disaster recovery operations are tested and executed). Use alongside `bcp-dr.tsv` in this folder.
 

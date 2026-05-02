@@ -1,0 +1,362 @@
+[
+  {
+    "question": "A European e-commerce company wants to send marketing emails to existing customers without asking for new consent. The legal team argues this is permissible under GDPR. Which lawful basis best supports this position?",
+    "options": [
+      "Consent, because marketing always requires explicit opt-in consent under GDPR",
+      "Legal obligation, because consumer protection laws require companies to communicate with customers",
+      "Contract performance, because customers entered a purchase agreement with the company",
+      "Legitimate interest, provided the processing is necessary, proportionate, and customers are given an easy opt-out"
+    ],
+    "correct": 3,
+    "explanation": "**Why A is correct**: **Legitimate interest** (Article 6(1)(f)) can support direct marketing to existing customers, provided the company passes the three-part balancing test (purpose, necessity, override check) and honors opt-out rights. Recital 47 explicitly names direct marketing as a legitimate interest. **Why B is wrong**: **Consent** is one lawful basis but is not the only one—GDPR provides six bases and marketing does not automatically require consent when legitimate interest applies. **Why C is wrong**: **Contract performance** covers processing needed to fulfill the specific contract (e.g., shipping the order), not downstream marketing communications. **Why D is wrong**: **Legal obligation** covers compliance with laws that require processing, not commercial marketing activities.",
+    "category": "GDPR"
+  },
+  {
+    "question": "A data subject submits a Subject Access Request (SAR) to a UK-based controller on March 1. The controller's team discovers the request on March 3 and begins processing it. On what date must the response be provided at the latest?",
+    "options": [
+      "April 3, because the clock starts when the organization begins processing the request",
+      "April 1, because the one-month clock starts from the date the request was received, not when it was discovered",
+      "May 1, because the controller has a three-month window for complex requests by default",
+      "March 31, because responses must always be provided within the same calendar month"
+    ],
+    "correct": 1,
+    "explanation": "**Why A is correct**: Under GDPR Article 12(3), the **one-month period runs from receipt of the request**—March 1—not from when an internal team discovers or begins working on it. The deadline is therefore April 1 (or the next business day if it falls on a weekend/holiday). **Why B is wrong**: The clock is not paused while the request awaits internal discovery; the controller bears responsibility for timely receipt and routing of data subject requests. **Why C is wrong**: A **three-month extension** exists only for complex or numerous requests, but it still begins from the original receipt date, and the subject must be notified within the first month that an extension is being taken. **Why D is wrong**: The rule is one calendar month from receipt, not the end of the same calendar month—\"March 1 + one month\" is April 1, not March 31.",
+    "category": "GDPR"
+  },
+  {
+    "question": "An organization discovers that an employee accidentally emailed a spreadsheet containing names, email addresses, and medical diagnoses of 4,000 patients to the wrong external recipient. The recipient has confirmed deletion. What is the organization's notification obligation under GDPR Article 33?",
+    "options": [
+      "No notification is required because the recipient confirmed deletion and the risk has been remediated",
+      "Notify the supervisory authority within 30 days, as 72 hours applies only to intentional breaches",
+      "Notify affected individuals only, because the breach did not originate from a malicious actor",
+      "Notify the supervisory authority within 72 hours of becoming aware, because health data is special category data and the risk to individuals is likely high"
+    ],
+    "correct": 3,
+    "explanation": "**Why A is correct**: Article 33 requires notification to the supervisory authority **within 72 hours** of becoming aware of a breach that is likely to result in a risk to individuals' rights and freedoms. Medical diagnoses are **special category data** under Article 9, making the risk assessment very likely to meet this threshold even with confirmed deletion, since the exposure already occurred. **Why B is wrong**: Subsequent remediation (recipient deleting the data) does not eliminate the original breach or the notification obligation—the exposure already happened and must be assessed and reported. **Why C is wrong**: The nature of the actor (malicious vs. accidental) is irrelevant to Article 33 notification obligations; any unauthorized disclosure of personal data that risks harm triggers the duty. **Why D is wrong**: The **72-hour deadline** is a hard GDPR requirement for all qualifying breaches, not limited to intentional ones; there is no 30-day general window.",
+    "category": "GDPR"
+  },
+  {
+    "question": "A SaaS company processes customer personal data strictly on documented instructions from its clients. The company never determines the purposes or means of processing. Under GDPR, how is this company classified?",
+    "options": [
+      "Controller, because it holds the data on its servers and has technical access to it",
+      "Processor, because it processes personal data on behalf of controllers without determining the purpose or means",
+      "Data Protection Officer, because it manages data on behalf of multiple organizations",
+      "Joint controller, because both the SaaS company and its clients have access to the same data"
+    ],
+    "correct": 1,
+    "explanation": "**Why A is correct**: Article 4(8) defines a **processor** as any entity that processes personal data on behalf of a controller. The defining characteristic is that the processor acts only on the controller's instructions and does not determine the purposes or means of processing. A Data Processing Agreement (DPA) under Article 28 must govern this relationship. **Why B is wrong**: Physical or technical possession of data does not make an entity a controller—what matters is whether it **determines the purposes and means** of processing, which this company does not. **Why C is wrong**: **Joint controllers** under Article 26 jointly determine purposes and means; here the SaaS company has no role in determining either. **Why D is wrong**: A **Data Protection Officer** is a person or role within an organization, not an organizational classification for data processing relationships.",
+    "category": "GDPR"
+  },
+  {
+    "question": "A controller is building a new customer portal that will collect date of birth. An internal review reveals that date of birth is only used to display a birthday greeting and is not needed for any other purpose. Under the principle of data protection by design and by default, what is the most appropriate action?",
+    "options": [
+      "Conduct a DPIA before collecting date of birth to ensure compliance",
+      "Obtain explicit consent for collecting date of birth, which satisfies data protection by default requirements",
+      "Collect date of birth but apply strong encryption at rest to satisfy data protection by design",
+      "Remove date of birth from the data collected, or replace it with a simple yes/no field confirming the user is of legal age if age verification is the actual need"
+    ],
+    "correct": 3,
+    "explanation": "**Why A is correct**: **Data protection by design and by default** (Article 25) requires controllers to implement data minimization by default—collecting only personal data that is necessary for the specified purpose. If the actual need is age verification, collecting a full date of birth exceeds that need; a boolean age-gate collects less data and is more proportionate. **Why B is wrong**: Encryption protects data already collected but does not address **data minimization**—the privacy-by-design requirement is to not collect unnecessary data in the first place, not merely to secure it. **Why C is wrong**: Consent provides a lawful basis for processing but does not override the Article 25 obligation to minimize data collection by default; consent does not make unnecessary collection compliant. **Why D is wrong**: A **DPIA** (Article 35) is required for high-risk processing and is a valuable tool, but it does not substitute for actually implementing data minimization—it is an assessment process, not a remediation.",
+    "category": "GDPR"
+  },
+  {
+    "question": "A multinational company headquartered in the EU wants to transfer personal data to a service provider in a country that does not have an EU adequacy decision. What is the most commonly used transfer mechanism to make this transfer lawful?",
+    "options": [
+      "Standard Contractual Clauses (SCCs) adopted by the European Commission, supplemented by a transfer impact assessment",
+      "An Article 49 derogation such as contractual necessity, which can be used as a routine transfer mechanism",
+      "The Privacy Shield framework, which covers transfers to all third countries",
+      "Binding Corporate Rules (BCRs), which are available to any organization for any cross-border transfer"
+    ],
+    "correct": 0,
+    "explanation": "**Why A is correct**: **Standard Contractual Clauses** (Article 46(2)(c)) are the most widely used mechanism for international transfers where no adequacy decision exists. Following the Schrems II ruling, they must be supplemented with a **transfer impact assessment (TIA)** to confirm the destination country's laws do not undermine the SCCs' protections. **Why B is wrong**: **Binding Corporate Rules** require approval from a lead supervisory authority and are designed for **intra-group transfers** within multinational organizations—they are not available to unrelated third-party providers. **Why C is wrong**: The **EU-US Privacy Shield** was invalidated by the CJEU in Schrems II (2020) and cannot be used; it also only covered the US, not all third countries. **Why D is wrong**: Article 49 **derogations** are for occasional, non-repetitive transfers and cannot be used as a **routine** mechanism for ongoing operational transfers to third-country processors.",
+    "category": "GDPR"
+  },
+  {
+    "question": "A hospital plans to implement a new AI-based diagnostic tool that will process genetic data, mental health records, and location data for all patients. Which GDPR requirement is triggered before this system goes live?",
+    "options": [
+      "A Data Protection Impact Assessment (DPIA) must be completed before processing begins, because the processing is likely to result in high risk to individuals",
+      "The hospital must appoint a Data Protection Officer solely for this project before any processing occurs",
+      "Explicit consent must be obtained from all patients before any data is collected, regardless of other lawful bases",
+      "The hospital must obtain prior authorization from the European Data Protection Board before processing special category data"
+    ],
+    "correct": 0,
+    "explanation": "**Why A is correct**: Article 35 requires a **DPIA before processing begins** when processing is likely to result in high risk. The EDPB's guidelines identify several triggers—including processing **special category data at large scale**, **systematic processing of sensitive data**, and **new technologies**—all of which apply here. The DPIA must be completed before launch, not after. **Why B is wrong**: Appointing a **DPO** (Article 37) is an organizational obligation tied to the controller's overall activities, not a per-project appointment requirement; many healthcare organizations already have a mandatory DPO. **Why C is wrong**: While special category health data requires an Article 9 condition (which can include explicit consent), **public health** or **legitimate health care delivery** bases may apply—explicit consent from every patient is not automatically the only lawful basis. **Why D is wrong**: **EDPB prior authorization** is not a general GDPR requirement; supervisory authority consultation (Article 36) is only required if the DPIA concludes the residual risk remains high and cannot be mitigated.",
+    "category": "GDPR"
+  },
+  {
+    "question": "A user requests that an online platform erase all personal data held about them. The platform's legal team notes that some of the user's transaction data must be retained for seven years to comply with tax law. What is the correct response?",
+    "options": [
+      "Erase data that has no legal retention basis and retain only the transaction data required by tax law, informing the user of the legal obligation justifying partial retention",
+      "Erase all data immediately including transaction records, because the right to erasure is absolute under GDPR",
+      "Deny the entire erasure request because the user has an open transaction history on the platform",
+      "Request that the supervisory authority approve the partial erasure before responding to the user"
+    ],
+    "correct": 0,
+    "explanation": "**Why A is correct**: The **right to erasure** (Article 17) is not absolute. Article 17(3)(b) specifically exempts data retained for compliance with a **legal obligation** such as tax record-keeping laws. The correct approach is to erase data that has no overriding legal basis and retain only what is strictly required by law, communicating this clearly to the user. **Why B is wrong**: An existing transaction history does not justify blanket denial of the erasure request—only data subject to a specific legal retention obligation can be withheld. **Why C is wrong**: The right to erasure has **explicit exceptions** enumerated in Article 17(3); overriding legal obligations are among them, so unconditional erasure of legally mandated records is not required and could itself be unlawful. **Why D is wrong**: Controllers do not need supervisory authority approval to apply standard GDPR exceptions; handling erasure requests and invoking lawful retention grounds is within the controller's own responsibility.",
+    "category": "GDPR"
+  },
+  {
+    "question": "A technology company collects consent from users to send newsletters. To be valid under GDPR, which combination of consent characteristics is required?",
+    "options": [
+      "Consent is only needed for special category data; regular email addresses can be used for newsletters under legitimate interest without any consent mechanism",
+      "A pre-ticked checkbox combined with a clear privacy policy link is sufficient to demonstrate consent",
+      "Consent must be in writing and notarized to be enforceable under GDPR Article 7",
+      "Freely given, specific, informed, and unambiguous indication of agreement—obtained through a clear affirmative act"
+    ],
+    "correct": 3,
+    "explanation": "**Why A is correct**: Article 7 and Recital 32 require consent to be **freely given, specific, informed, and unambiguous**. It must be demonstrated by a **clear affirmative act** (e.g., actively ticking an empty box or clicking an opt-in button)—silence, pre-ticked boxes, or inactivity do not constitute valid consent. **Why B is wrong**: **Pre-ticked checkboxes** are explicitly prohibited under GDPR Recital 32 as they do not constitute an unambiguous affirmative act; a privacy policy link alone does not make passive acceptance valid consent. **Why C is wrong**: While **legitimate interest** can support some direct marketing, it is subject to the balancing test and the user's right to object; it is not a blanket alternative to consent, and claiming it for newsletters without any opt-out mechanism would likely fail the balancing test. **Why D is wrong**: GDPR does not require consent to be **notarized or in a specific written form**; it requires that the controller be able to demonstrate consent was obtained, which can be achieved through electronic records.",
+    "category": "GDPR"
+  },
+  {
+    "question": "A company appoints a Data Protection Officer (DPO). Which of the following correctly describes the DPO's role under GDPR?",
+    "options": [
+      "The DPO must be an external consultant and cannot be an existing employee to avoid conflicts of interest",
+      "The DPO advises the organization on GDPR obligations, monitors compliance, and acts as a contact point for the supervisory authority, but does not bear personal liability for the organization's GDPR violations",
+      "The DPO determines the lawful basis for each processing activity and approves all new data collection initiatives",
+      "The DPO is personally liable for GDPR fines if the organization commits a data breach during their tenure"
+    ],
+    "correct": 1,
+    "explanation": "**Why A is correct**: Articles 38–39 define the DPO as an **advisor and monitor**, not a decision-maker or personal guarantor. The DPO informs and advises, monitors compliance, provides advice on DPIAs, cooperates with supervisory authorities, and acts as a contact point—but **the controller and processor remain responsible** for GDPR compliance, not the DPO personally. **Why B is wrong**: GDPR fines are imposed on **controllers and processors**, not individual DPOs. The DPO cannot be penalized for the organization's compliance failures under Article 83 provisions. **Why C is wrong**: **Determining lawful bases** is a controller decision, not a DPO function. The DPO advises on whether a chosen basis is appropriate but does not unilaterally approve or set processing decisions. **Why D is wrong**: GDPR Article 37(6) explicitly permits a DPO to be a **staff member** (internal) or fulfill the role on the basis of a service contract (external); both are valid arrangements.",
+    "category": "GDPR"
+  },
+  {
+    "question": "An online gaming platform wants to collect and process data from users who may be under 16. Under GDPR Article 8, what is required?",
+    "options": [
+      "Children must provide written consent witnessed by a parent, but no age verification is required from the platform",
+      "The platform may process children's data without parental consent as long as it is necessary for contract performance with the child",
+      "Children under 18 cannot use online services under GDPR, so the platform must block all underage users",
+      "For users under 16 (or a lower age set by member state law, with a minimum of 13), the platform must obtain verifiable parental or guardian consent before processing"
+    ],
+    "correct": 3,
+    "explanation": "**Why A is correct**: Article 8 sets the age of digital consent at **16**, with member states permitted to lower this to **no younger than 13**. For children below the applicable threshold, the controller must make **reasonable efforts to verify** that parental or guardian consent has been obtained. **Why B is wrong**: GDPR does not prohibit **all** data processing involving children under 18—it sets specific consent requirements for children under the applicable age threshold for information society services, not a blanket ban. **Why C is wrong**: **Contract performance** (Article 6(1)(b)) can be a valid basis for processing adults' data to deliver a service, but Article 8 specifically overrides general lawful bases for children's data in the context of information society services, requiring parental consent below the threshold age. **Why D is wrong**: GDPR requires **verifiable** parental consent but does not mandate written, witnessed consent; it also places the verification obligation on the **platform** (controller), not on the child or parent to self-certify.",
+    "category": "GDPR"
+  },
+  {
+    "question": "A data subject contacts a company and asks for a copy of all personal data held about them, the purposes for which it is being processed, and the recipients with whom it has been shared. Which GDPR right is being exercised?",
+    "options": [
+      "Right of access (Article 15), which entitles data subjects to a copy of their personal data and information about how it is being processed",
+      "Right to rectification (Article 16), which allows data subjects to correct inaccurate personal data",
+      "Right to restriction of processing (Article 18), which requires the controller to pause all processing",
+      "Right to data portability (Article 20), which requires the controller to transmit data directly to another controller"
+    ],
+    "correct": 0,
+    "explanation": "**Why A is correct**: **Article 15 (Right of Access)** entitles data subjects to confirmation of whether their data is processed, a copy of that data, and supplementary information including the purposes, categories of data, recipients, retention periods, and their other rights. This is exactly what the subject is requesting. **Why B is wrong**: **Data portability** (Article 20) is a specific right to receive data in a structured, machine-readable format and to have it transmitted to another controller; it applies to data processed by automated means on the basis of consent or contract—the question describes a broader access request. **Why C is wrong**: **Rectification** (Article 16) is the right to have inaccurate data corrected or incomplete data completed; the subject here is not claiming data is wrong, they want to know what is held. **Why D is wrong**: **Restriction** (Article 18) is the right to limit processing in specific circumstances (e.g., while accuracy is contested); it is not a request for information about what data is held.",
+    "category": "GDPR"
+  },
+  {
+    "question": "A marketing manager argues that because the company has a legitimate interest in profiling customers for targeted advertising, no further steps are needed before conducting the profiling. What is the most significant flaw in this reasoning?",
+    "options": [
+      "Legitimate interest only applies to special category data and cannot be used for general marketing activities",
+      "The company must first obtain an adequacy decision from the European Commission before profiling its own customers",
+      "Legitimate interest requires a three-part balancing test, and the interests of data subjects in controlling how their data is used for profiling may override the company's commercial interest",
+      "Legitimate interest can never be used for profiling under GDPR; explicit consent is always required"
+    ],
+    "correct": 2,
+    "explanation": "**Why A is correct**: Article 6(1)(f) requires that the controller's legitimate interests are not **overridden by the interests or fundamental rights of the data subject**. Profiling for targeted advertising is specifically flagged in GDPR recitals as an area where the balancing test may not favor the controller, particularly when processing is intensive or unexpected by the data subject. The manager has skipped the balancing test entirely. **Why B is wrong**: GDPR does not categorically prohibit using legitimate interest for profiling—it is a permissible basis in principle, subject to the balancing test. Article 22 applies additional rules to solely **automated decision-making** with significant effects, not profiling generally. **Why C is wrong**: An **adequacy decision** relates to international data transfers, not to the lawfulness of profiling existing customers' data within the EU. **Why D is wrong**: Legitimate interest is not limited to special category data—Article 6(1)(f) applies to any personal data processing where the three-part test is satisfied.",
+    "category": "GDPR"
+  },
+  {
+    "question": "A company receives a request from a data subject to receive their data in a portable, machine-readable format to transfer to a competing service. Under GDPR Article 20, which condition must be met for this right to apply?",
+    "options": [
+      "The data subject must demonstrate a legitimate reason for switching to another service provider",
+      "The right applies to all personal data held by the controller regardless of the lawful basis used",
+      "The data must be special category data, and the transfer must be to a controller in the same industry",
+      "The processing must be based on consent or contract, and carried out by automated means"
+    ],
+    "correct": 3,
+    "explanation": "**Why A is correct**: Article 20(1) limits the right to data portability to situations where processing is based on **consent (Article 6(1)(a) or Article 9(2)(a)) or on a contract (Article 6(1)(b))**, and the processing is carried out by **automated means**. Data processed under other bases (e.g., legal obligation or public task) is not subject to portability. **Why B is wrong**: **Special category data** is not required—the right applies to any personal data meeting the lawful basis and automated processing conditions, whether ordinary or sensitive. There is no requirement that the receiving controller be in the same industry. **Why C is wrong**: The data subject does not need to **justify or demonstrate a reason** for exercising portability—it is an unconditional right where the conditions in Article 20(1) are met. **Why D is wrong**: The right explicitly **does not apply to all data** regardless of lawful basis; it is specifically limited to consent- and contract-based processing, which is a narrower subset of all processing activities.",
+    "category": "GDPR"
+  },
+  {
+    "question": "Following a ransomware attack, a company determines that personal data was encrypted by the attacker but cannot confirm whether data was exfiltrated. The risk to individuals is assessed as moderate. What is the correct GDPR breach response sequence?",
+    "options": [
+      "Wait until the forensic investigation is complete before notifying anyone, to avoid providing inaccurate information to regulators",
+      "Notify the supervisory authority within 72 hours of awareness, document the breach in the internal breach register, and assess whether the moderate risk level requires individual notification",
+      "No notification is required because the data was encrypted and therefore protected",
+      "Notify all affected individuals immediately, before notifying the supervisory authority, because individual rights take priority"
+    ],
+    "correct": 1,
+    "explanation": "**Why A is correct**: Article 33 requires **supervisory authority notification within 72 hours** of becoming aware of a breach likely to result in risk—uncertainty about exfiltration does not delay this obligation; the notification can be phased and updated. Article 33(5) requires maintaining a **breach register** regardless of notification outcome. Individual notification (Article 34) is required only if the breach is likely to result in **high risk**, so a moderate-risk assessment may not trigger it, but this must be documented. **Why B is wrong**: Waiting for forensic completion is not permitted under GDPR—Article 33 allows for **phased notifications** with information provided in phases as it becomes available. Uncertainty does not override the 72-hour clock. **Why C is wrong**: The notification sequence in GDPR is **supervisory authority first** (Article 33), then affected individuals when there is high risk (Article 34)—individual notification does not take precedence. **Why D is wrong**: Encryption by an attacker does not eliminate the breach—the **availability** of data has been compromised, and potential exfiltration cannot be ruled out. An attacker encrypting data constitutes a breach of availability at minimum.",
+    "category": "GDPR"
+  },
+  {
+    "question": "A data subject informs a controller that they are withdrawing the consent they previously gave for processing their personal data for direct marketing. Under GDPR Article 7(3), what must happen?",
+    "options": [
+      "Processing must cease for the purpose based on that consent, the withdrawal must be as easy as giving consent, and prior processing based on consent before withdrawal remains lawful",
+      "The controller may continue processing for 30 days after withdrawal to wind down marketing campaigns in progress",
+      "Withdrawal of consent is only valid if the data subject provides a written reason explaining why they are withdrawing",
+      "The controller must delete all personal data about the subject immediately upon receiving the withdrawal"
+    ],
+    "correct": 0,
+    "explanation": "**Why A is correct**: Article 7(3) establishes three key rules for consent withdrawal: (1) the data subject has the right to withdraw **at any time**; (2) withdrawal must be **as easy as giving consent**—a complex opt-out process where consent was given by a single click violates this; (3) withdrawal does **not affect the lawfulness of processing** that took place before withdrawal, so historical marketing based on that consent is not rendered unlawful retroactively. Processing for the purpose tied to that consent must stop going forward. **Why B is wrong**: There is no GDPR grace period of 30 days after withdrawal—the controller must **stop processing for that purpose** once consent is withdrawn. Ongoing campaigns that rely solely on that consent must halt. **Why C is wrong**: Withdrawal of consent does not automatically require deletion of all data—the controller may have **other lawful bases** for retaining or using some data (e.g., contract performance, legal obligation). Deletion is governed by the right to erasure (Article 17), which is a separate right with its own conditions. **Why D is wrong**: GDPR places no requirement on data subjects to provide **reasons for withdrawing consent**. Withdrawal is an unconditional right and may not be made subject to justification.",
+    "category": "GDPR"
+  },
+  {
+    "question": "A data subject asks a controller to restrict processing of their personal data while they contest its accuracy. Under GDPR Article 18, what does restriction of processing mean in practice?",
+    "options": [
+      "Restriction means reducing the number of employees who have access to the data to a minimum of two people",
+      "The controller must immediately delete the data and recreate it only if the accuracy dispute is resolved in the controller's favor",
+      "The data is retained but marked so that active processing is suspended—it may only be processed for limited purposes such as establishing, exercising, or defending legal claims, or with the data subject's consent",
+      "The controller must anonymize the disputed data so that it can no longer be linked to the data subject during the dispute"
+    ],
+    "correct": 2,
+    "explanation": "**Why A is correct**: Article 18 defines restriction of processing as a state where data is **stored but not actively processed**. It is typically achieved by marking or tagging the data to block normal processing flows. During restriction, the controller may only process the data for: establishing, exercising, or defending legal claims; protecting the rights of another natural or legal person; reasons of important public interest; or with the data subject's explicit consent. This preserves the data while disputes are resolved. **Why B is wrong**: Restriction does **not require deletion**—in fact, it is the opposite: the data must be **retained** (not deleted) while processing is suspended. Deletion would defeat the purpose of restriction, which is to preserve disputed data pending resolution. **Why C is wrong**: Restriction is a **processing state** applied to data, not an access control measure. It is not defined by headcount of employees with access; it refers to the nature of what may be done with the data. **Why D is wrong**: **Anonymization** would permanently alter the data and is irreversible—it would prevent the controller from fulfilling its obligations if the data subject's dispute is resolved and the data is found to be accurate. Restriction preserves the data in identifiable form under limited processing.",
+    "category": "GDPR"
+  },
+  {
+    "question": "An insurance company uses a fully automated algorithm to decide whether to approve or reject individual applications, with no human involvement in the decision. The decisions produce legal and similarly significant effects. Under GDPR Article 22, which statement is correct?",
+    "options": [
+      "Automated decision-making is always prohibited under GDPR regardless of the safeguards in place",
+      "Data subjects have the right not to be subject to solely automated decisions with legal or similarly significant effects, and the controller must provide a meaningful human review mechanism upon request",
+      "Article 22 only applies when the automated decision is based on special category data such as health information",
+      "The controller satisfies Article 22 by publishing a general explanation of how its algorithm works in its privacy notice"
+    ],
+    "correct": 1,
+    "explanation": "**Why A is correct**: Article 22(1) gives data subjects the right **not to be subject to a decision based solely on automated processing** that produces legal or similarly significant effects. However, this right is not absolute—Article 22(2) permits such processing if it is necessary for a contract, authorized by law, or based on explicit consent. In all permitted cases, Article 22(3) requires the controller to implement **suitable safeguards**, including the right for the data subject to **obtain human intervention, express their point of view, and contest the decision**. **Why B is wrong**: Automated decision-making is **not categorically prohibited**—it may occur under the three exceptions in Article 22(2). The GDPR restricts it and requires safeguards rather than banning it outright. **Why C is wrong**: Article 22(1) applies to **any** automated decisions with legal or similarly significant effects, regardless of data category. When the decision is based on **special category data**, Article 22(4) imposes **additional** restrictions—but the base right applies to all such decisions. **Why D is wrong**: Publishing a **general algorithm description** in a privacy notice does not satisfy the Article 22(3) obligation to provide human review on request. The safeguard is an operational mechanism that must be activated and delivered at the individual level, not merely described in a policy document.",
+    "category": "GDPR"
+  },
+  {
+    "question": "Two organizations co-determine the purposes and means of a joint customer loyalty program in which both share participant data. Under GDPR, how must they structure their relationship?",
+    "options": [
+      "They may each act as independent controllers and are individually responsible for their own processing without any joint arrangement required",
+      "Joint processing of any kind requires supervisory authority approval before the program can launch",
+      "As joint controllers under Article 26, they must establish a transparent arrangement defining their respective responsibilities and make the essence of that arrangement available to data subjects",
+      "One organization must be designated the sole controller and the other must sign a processor agreement, even if both determine processing purposes"
+    ],
+    "correct": 2,
+    "explanation": "**Why A is correct**: Article 26 applies when two or more controllers **jointly determine the purposes and means** of processing. Joint controllers must enter into an **arrangement** (which can be a contract) that allocates GDPR responsibilities between them—including which party handles data subject rights requests, who provides privacy notices, and who is responsible for each obligation. The **essence** of this arrangement must be made available to data subjects, even if the full agreement is confidential. **Why B is wrong**: A processor agreement (Article 28) is only appropriate when one party acts purely on the other's instructions without determining purposes. If both parties **jointly determine purposes**, they are joint controllers regardless of what the contract says—mislabeling the relationship does not change the legal classification or obligations. **Why C is wrong**: Independent controller status applies when each organization determines the purposes and means of its own separate processing. When they **jointly determine purposes** for the shared program, the joint controller framework mandates a coordinated arrangement—they cannot simply act independently. **Why D is wrong**: Article 26 does not require **supervisory authority approval** before joint processing commences. The supervisory authority may review the arrangement in the context of complaints or investigations, but prior authorization is not a general requirement.",
+    "category": "GDPR"
+  },
+  {
+    "question": "A controller wants to engage a new cloud provider to process personal data on its behalf. Under GDPR Article 28, which requirement must be satisfied before the processing begins?",
+    "options": [
+      "A binding Data Processing Agreement (DPA) must be in place that specifies the subject matter, duration, nature, purpose, type of personal data, and the processor's obligations and rights",
+      "The controller must conduct a DPIA for every new processor engagement regardless of the type of data processed",
+      "The processor must be certified under an approved GDPR certification scheme before the controller may engage them",
+      "The controller must notify the supervisory authority of the new processor relationship at least 30 days in advance"
+    ],
+    "correct": 0,
+    "explanation": "**Why A is correct**: Article 28(3) requires that processing by a processor be governed by a **contract or other legal act** that is **binding** on the processor with regard to the controller. The agreement must specify: the subject matter and duration of processing, the nature and purpose of processing, the type of personal data and categories of data subjects, and the **obligations and rights of the controller**. Without this DPA, the controller cannot lawfully engage the processor. **Why B is wrong**: GDPR does not require **supervisory authority notification** before engaging a processor. The accountability framework requires maintaining records of processing activities (Article 30) and ensuring the DPA is in place—no advance notification to authorities is mandated for routine processor engagements. **Why C is wrong**: While Article 42 establishes a voluntary **certification mechanism**, GDPR does not make certification a **prerequisite** for engagement. Certification is evidence of compliance but not a mandatory gate for all processor relationships. **Why D is wrong**: A **DPIA** (Article 35) is required when processing is **likely to result in high risk** based on the nature, scope, context, and purposes of processing—not for every new processor engagement. Many routine processor relationships do not trigger a DPIA obligation.",
+    "category": "GDPR"
+  },
+  {
+    "question": "A supervisory authority investigates a large platform that violated GDPR by processing personal data without any lawful basis for a commercial profiling operation affecting millions of users across the EU. What is the maximum administrative fine the authority can impose under Article 83(5)?",
+    "options": [
+      "EUR 100 million, which is a fixed cap regardless of company size",
+      "Fines are unlimited and calculated solely on the basis of the harm caused to data subjects",
+      "EUR 20 million or 4% of the undertaking's total worldwide annual turnover of the preceding financial year, whichever is higher",
+      "EUR 10 million or 2% of global annual turnover, whichever is higher, because this is the standard maximum for all GDPR violations"
+    ],
+    "correct": 2,
+    "explanation": "**Why A is correct**: Article 83(5) prescribes the **higher tier of administrative fines** for the most serious infringements, including violations of the basic principles of processing (Articles 5–7, 9) and data subjects' rights (Articles 12–22). The maximum is **EUR 20 million or 4% of total worldwide annual turnover** of the preceding year, whichever is **higher**. For large platforms, this means the turnover-based cap (4%) typically exceeds the fixed EUR 20 million cap. **Why B is wrong**: The **EUR 10 million / 2% tier** (Article 83(4)) applies to a different, lower category of violations—such as breaches of data protection by design, processor obligations, and certification requirements—not to fundamental principle violations. Processing without a lawful basis falls under the higher tier. **Why C is wrong**: There is **no fixed EUR 100 million cap** in GDPR. The regulation uses a two-tier structure with caps expressed as the greater of a fixed amount or a percentage of global turnover. **Why D is wrong**: GDPR fines are **not unlimited**—Articles 83(4) and 83(5) establish explicit maximum caps. The authority considers factors including harm caused, but the fine cannot exceed the statutory maximum regardless of harm.",
+    "category": "GDPR"
+  },
+  {
+    "question": "A research organization replaces all direct identifiers (names, email addresses, SSNs) in a dataset with random tokens, but retains a separately stored mapping table that allows re-identification. Under GDPR, how is this dataset classified?",
+    "options": [
+      "Anonymised data, because a technical process was applied to the dataset to remove identifying fields",
+      "Anonymous data, because the direct identifiers have been removed and the dataset no longer contains names or email addresses",
+      "Pseudonymised personal data, because re-identification remains possible using the separately held additional information, so it still falls within the scope of GDPR",
+      "Special category data, because removing identifiers makes the data more sensitive under Article 9"
+    ],
+    "correct": 2,
+    "explanation": "**Why A is correct**: **Pseudonymisation** is defined in Article 4(5) as processing personal data in such a manner that it can no longer be attributed to a specific data subject **without the use of additional information**—provided that additional information is kept separately. Critically, Recital 26 confirms that pseudonymised data **remains personal data** and is subject to GDPR, because the additional information (the mapping table) still makes re-identification possible. GDPR treats pseudonymisation as a security measure and risk-reduction technique, not as a route out of GDPR's scope. **Why B is wrong**: Removing direct identifiers does **not automatically create anonymous data** if a re-identification pathway exists. The dataset is pseudonymous, not anonymous, because the organization holds the means to reverse the process. **Why C is wrong**: Removing identifiers does **not change the nature of the underlying data** to make it special category data under Article 9. Special category status depends on the **type of information** (health, race, biometrics, etc.), not on whether direct identifiers have been stripped. **Why D is wrong**: **Anonymisation** under GDPR (Recital 26) requires that re-identification be **reasonably impossible** given all means available. Retaining a mapping table means re-identification is entirely feasible, so the data is pseudonymous, not anonymous—the distinction has significant compliance implications.",
+    "category": "GDPR"
+  },
+  {
+    "question": "A controller experiences a personal data breach that is unlikely to result in any risk to affected individuals' rights and freedoms. What is the controller's GDPR obligation?",
+    "options": [
+      "No action is required—breaches with no risk to individuals may be disregarded entirely",
+      "Notify the supervisory authority within 72 hours even when there is no risk, because all breaches must be reported",
+      "Document the breach in the internal breach register with details of the facts, effects, and remedial actions taken, but no notification to the supervisory authority or individuals is required",
+      "Notify affected individuals within 72 hours and the supervisory authority within 30 days"
+    ],
+    "correct": 2,
+    "explanation": "**Why A is correct**: Article 33(1) requires supervisory authority notification only when a breach is **likely to result in a risk** to individuals' rights and freedoms. Article 33(5) requires that **all breaches be documented** in an internal breach register, regardless of whether they meet the notification threshold—the register records facts, effects, and remedial actions. A no-risk breach does not trigger external notification, but the documentation obligation is unconditional and enables regulators to verify the controller's risk assessment if scrutinized later. **Why B is wrong**: The 72-hour supervisory authority notification is **conditioned on likely risk** to individuals. For genuinely no-risk breaches, notification is not required. Requiring notification of every breach regardless of risk would be disproportionate and is inconsistent with Article 33's explicit language. **Why C is wrong**: Individual notification under Article 34 is required only when a breach is **likely to result in high risk**—a threshold above the supervisory authority notification threshold. Neither notification obligation applies to a no-risk breach. **Why D is wrong**: Completely ignoring a no-risk breach violates Article 33(5)'s **unconditional documentation obligation**. Even when external notification is not required, the controller must record the breach internally. Failing to document it leaves the organization unable to demonstrate its compliance assessment process.",
+    "category": "GDPR"
+  },
+  {
+    "question": "Under GDPR Article 38, a Data Protection Officer must be able to perform their duties independently. An organization wants to ensure the DPO's independence. Which situation most clearly violates DPO independence requirements?",
+    "options": [
+      "The DPO has access to all internal records and systems necessary to perform monitoring tasks",
+      "The DPO reports directly to the highest management level rather than to a middle manager",
+      "The DPO also serves as the organization's Chief Information Security Officer and reports to the CEO, creating a conflict between operational security decisions and the DPO's monitoring role",
+      "The DPO is an external consultant retained on a multi-year service contract"
+    ],
+    "correct": 2,
+    "explanation": "**Why A is correct**: Article 38(6) prohibits the DPO from receiving **instructions** regarding their tasks and from being dismissed or penalized for performing their duties. Critically, Article 38(6) also states the DPO must not hold a position that causes a **conflict of interest**. The EDPB Guidelines on DPOs identify dual roles that give the DPO decision-making authority over data processing purposes and means as incompatible. A CISO who decides what security controls to apply (determining means of processing) has a structural conflict with the DPO's role of independently monitoring those very decisions. **Why B is wrong**: Reporting to the **highest management level** (CEO, board) is explicitly recommended by Article 38(3) to ensure independence and adequate resources. This is a best practice, not a violation. **Why C is wrong**: Article 37(6) explicitly permits an **external DPO** on a service contract. External DPOs may in fact have greater independence from organizational pressure than internal employees. **Why D is wrong**: Article 38(2) requires the controller and processor to **ensure the DPO has access** to personal data, processing operations, and resources necessary for their tasks. Granting this access supports independence and fulfills the controller's obligation—it is not a violation.",
+    "category": "GDPR"
+  },
+  {
+    "question": "A company collects personal data about its website visitors through analytics cookies and processes it to build detailed behavioral profiles for advertising. A visitor to the website objects to this processing. Under GDPR Article 21, what is the controller's obligation when an objection to processing based on legitimate interest is received?",
+    "options": [
+      "The controller may continue processing for 30 days to assess the objection before deciding whether to comply",
+      "The right to object does not apply to legitimate interest processing; it is only available when processing is based on consent",
+      "The controller must cease processing for that purpose unless it can demonstrate compelling legitimate grounds that override the data subject's interests, rights, and freedoms",
+      "The objection is only valid if the data subject provides documented evidence of harm caused by the processing"
+    ],
+    "correct": 2,
+    "explanation": "**Why A is correct**: Article 21(1) grants data subjects the right to object to processing based on legitimate interest (Article 6(1)(f)), including profiling based on those grounds. Upon receiving an objection, the controller must **stop processing** unless it can demonstrate **compelling legitimate grounds** for processing that override the data subject's interests, rights, and freedoms, or for the establishment, exercise, or defense of legal claims. The burden shifts to the controller to justify continuing. **Why B is wrong**: GDPR does not provide a **30-day assessment window** for objections. Article 12(3) requires the controller to respond to rights requests within one month, but the processing obligation upon a valid objection is to cease immediately unless compelling grounds apply—not to continue while reviewing. **Why C is wrong**: The data subject does **not need to prove harm** to exercise the right to object. The right is unconditional in the sense that the data subject need only exercise it—the controller then bears the burden of justifying continued processing if it chooses not to comply. **Why D is wrong**: The right to object under Article 21(1) explicitly **applies to legitimate interest processing**—this is one of its primary use cases. It does not apply to processing based on contract or legal obligation, but it directly addresses legitimate interest and public task bases.",
+    "category": "GDPR"
+  },
+  {
+    "question": "An organization wants to transfer personal data to a third country that has no EU adequacy decision. Rather than using Standard Contractual Clauses, the organization's legal team proposes relying on the Article 49 derogation of 'explicit consent of the data subject' for all routine international data transfers. What is the most significant problem with this approach?",
+    "options": [
+      "The organization must obtain consent in writing with a wet signature for each international transfer to satisfy Article 49 requirements",
+      "Article 49 derogations are intended for occasional, non-repetitive transfers and cannot be used as the primary mechanism for routine, systematic transfers—explicit consent for this purpose must not be the standard solution for ongoing operations",
+      "Explicit consent is never a valid derogation for international transfers; only SCCs or BCRs may be used when no adequacy decision exists",
+      "Using consent as a transfer mechanism removes the data subject's ability to withdraw consent for other processing activities"
+    ],
+    "correct": 1,
+    "explanation": "**Why A is correct**: The EDPB's Guidelines on Article 49 derogations explicitly state that derogations are **exception mechanisms** for specific situations, not a general basis for routine data transfers. Recital 111 confirms that transfers under Article 49 should be **occasional and non-repetitive**. Using explicit consent as a systematic transfer mechanism for all routine international data flows is a misuse of the derogation framework and would not withstand regulatory scrutiny. Systematic transfers require a proper transfer mechanism under Article 46. **Why B is wrong**: Explicit consent **is** a valid Article 49 derogation for international transfers—it is listed in Article 49(1)(a). The problem is not that consent is legally invalid as a transfer mechanism; it is that it cannot be used **routinely and systematically** as the primary transfer mechanism. **Why C is wrong**: GDPR does not require **written, wet-signature consent** for any purpose. Consent requirements are that it be freely given, specific, informed, and unambiguous—electronic or other forms of clear affirmative action are valid. **Why D is wrong**: Withdrawing consent for an international transfer and withdrawing consent for other processing activities are **separate acts**. Exercising or withdrawing one consent does not automatically affect other unrelated consent purposes. The right to withdraw is purpose-specific.",
+    "category": "GDPR"
+  },
+  {
+    "question": "A controller intends to process personal data under Article 6(1)(f) (legitimate interest). The organization's privacy counsel advises conducting a Legitimate Interest Assessment (LIA) before relying on this basis. Which three steps does the LIA require?",
+    "options": [
+      "Consent test (determine if consent is available), DPIA test (assess whether a DPIA is required), and notification test (confirm the privacy notice adequately describes the processing)",
+      "Purpose test (identify a legitimate interest), necessity test (confirm processing is necessary and proportionate), and balancing test (assess whether the controller's interest is overridden by the data subject's interests or fundamental rights)",
+      "Controller test (confirm who controls the data), processor test (identify all processors involved), and transfer test (assess whether cross-border transfers are involved)",
+      "Lawfulness test (confirm a lawful basis exists), accuracy test (verify the data is accurate), and retention test (confirm the retention period is justified)"
+    ],
+    "correct": 1,
+    "explanation": "**Why A is correct**: The EDPB's Guidelines on legitimate interest (WP29 Opinion 06/2014) define the Legitimate Interest Assessment as a **three-part test**: (1) **Purpose test**—the interest must be legitimate (lawful, clearly articulated, real and present, not speculative); (2) **Necessity test**—the processing must be necessary for the identified purpose, using the least privacy-invasive means; (3) **Balancing test**—the controller must weigh its interests against the reasonable expectations and fundamental rights of data subjects, considering the nature of the data, potential harm, and whether the data subject would expect the processing. **Why B is wrong**: The three components described (consent test, DPIA test, notification test) are not the LIA framework—they are separate GDPR compliance considerations. A DPIA is a risk assessment; the LIA is the lawful basis assessment for legitimate interest specifically. **Why C is wrong**: The lawfulness test, accuracy test, and retention test relate to three different GDPR principles (Article 5(1)(a), 5(1)(d), and 5(1)(e) respectively). They are general data quality and compliance principles, not the three steps of the LIA methodology. **Why D is wrong**: Identifying controllers, processors, and transfers is a **data mapping and records of processing activity** exercise under Article 30, not the LIA framework. These are important compliance activities but are separate from the legitimate interest assessment.",
+    "category": "GDPR"
+  },
+  {
+    "question": "A retailer's website processes orders and uses a single sign-on solution. A data subject submits a portability request under Article 20, asking for all personal data including purchase history, browsing behavior tracked by analytics cookies, and data inferred by the retailer's recommendation algorithm. Which data must the controller provide?",
+    "options": [
+      "Only the data the data subject explicitly entered into forms on the website, because portability applies only to directly inputted data",
+      "Purchase history (provided by the data subject under a contract) and browsing behavior if tracked under consent, but not inferred data or derived insights created by the controller's own analysis",
+      "No data, because portability rights do not apply to e-commerce transactions since they are not information society services covered by Article 20",
+      "All data including inferred profiles, because the data subject provided the raw inputs that enabled the algorithm to generate them"
+    ],
+    "correct": 1,
+    "explanation": "**Why A is correct**: Article 20 applies to personal data **provided by the data subject** that is processed by **automated means** on the basis of **consent or contract**. The EDPB's Guidelines on portability clarify that 'provided by' includes data actively provided (e.g., form inputs) and data **observed** by the controller about the data subject (e.g., browsing behavior, activity logs). However, **inferred or derived data**—insights generated by the controller's own analysis (such as a predicted preference score or credit risk rating)—are **not subject to portability** because they were created by the controller, not provided by the data subject. **Why B is wrong**: The fact that raw inputs were provided by the data subject does not make **derived insights** portable. The controller's proprietary analytical work product (the recommendation profile) is a creation of the controller, not data provided by the data subject—even if it is about the data subject. **Why C is wrong**: EDPB guidelines explicitly include **observed data** (behavioral tracking, usage logs) as data 'provided by' the data subject in the sense of Article 20, provided the lawful basis and automated processing conditions are met. Portability is not limited to form-inputted data only. **Why D is wrong**: E-commerce websites are **information society services** within the meaning of Article 20—they are precisely the type of digital service that portability was designed to address. The right applies fully to consumer e-commerce platforms.",
+    "category": "GDPR"
+  },
+  {
+    "question": "An organization's accountability documentation program includes Records of Processing Activities (RoPAs) under Article 30. Which organizations are exempt from the Article 30 RoPA obligation?",
+    "options": [
+      "There is no exemption from Article 30—all controllers and processors must maintain full Records of Processing Activities regardless of size",
+      "Non-profit organizations are exempt from Article 30 because they do not process personal data for commercial purposes",
+      "Organizations with fewer than 250 employees are generally exempt, unless their processing is likely to result in a risk to the rights and freedoms of data subjects, is not occasional, or includes special category data or criminal conviction data",
+      "All small and medium enterprises (SMEs) are fully exempt from Article 30 regardless of the nature of their processing activities"
+    ],
+    "correct": 2,
+    "explanation": "**Why A is correct**: Article 30(5) provides an exemption for organizations with **fewer than 250 employees**, but this exemption is **conditional**. It does not apply if the processing: (a) is **likely to result in a risk** to data subjects' rights and freedoms; (b) is **not occasional** (i.e., it is regular or systematic); or (c) includes **special category data** (Article 9) or data relating to **criminal convictions** (Article 10). In practice, most organizations process employment data (HR records) at minimum on an ongoing basis, so the exemption is narrower than it appears. **Why B is wrong**: The exemption is **not blanket for all SMEs**—it is specifically for organizations under 250 employees **and** only for processing that is occasional, low-risk, and does not include special category data. A 200-person company that regularly processes health data for its employees cannot claim the exemption. **Why C is wrong**: Non-profit status does not create an Article 30 exemption. Non-profits that process personal data as controllers or processors have the same GDPR obligations as commercial entities. There is no sector-based exemption from accountability requirements. **Why D is wrong**: Article 30(5) explicitly creates a **size-based conditional exemption**—claiming there is no exemption at all is incorrect. The exemption is real but narrow, and the conditions under which it does not apply mean it captures most organizations in practice.",
+    "category": "GDPR"
+  },
+  {
+    "question": "A controller sends personal data to a third-country organization located in a country where local surveillance laws require local companies to provide government authorities with access to foreign companies' data. The controller is relying on Standard Contractual Clauses for the transfer. Following the Schrems II judgment, what additional step is required?",
+    "options": [
+      "The controller must switch from SCCs to Binding Corporate Rules before transferring data to any country with surveillance laws",
+      "The transfer is automatically prohibited and no mechanism can authorize it once surveillance laws are identified in the destination country",
+      "No additional steps are required because SCCs are approved by the European Commission and automatically satisfy all transfer requirements regardless of local laws",
+      "The controller must conduct a Transfer Impact Assessment (TIA) to evaluate whether the SCCs can be effective given the destination country's legal framework, and implement supplementary measures if necessary"
+    ],
+    "correct": 3,
+    "explanation": "**Why A is correct**: The CJEU's Schrems II judgment (C-311/18, 2020) invalidated Privacy Shield and imposed a new obligation on controllers using SCCs: they must conduct a **Transfer Impact Assessment (TIA)** to verify that the destination country's law does not undermine the SCCs' protections in practice. If local surveillance laws would prevent the processor from honoring the SCCs (e.g., by requiring disclosure without notifying the controller), the controller must implement **supplementary measures** (technical, contractual, or organizational) or suspend the transfer. **Why B is wrong**: Schrems II explicitly rejected the argument that European Commission approval of SCCs automatically guarantees transfer lawfulness. The CJEU ruled that controllers have an **independent obligation** to assess whether SCCs can be effective given local laws—Commission approval creates a presumption but not an absolute guarantee. **Why C is wrong**: **BCRs** are an alternative transfer mechanism for intra-group transfers—not a required replacement for SCCs in all cases involving surveillance-law jurisdictions. Schrems II applies to all transfer mechanisms, including BCRs. The requirement is to assess and address risks, not to mandatorily switch mechanisms. **Why D is wrong**: Transfers to countries with surveillance laws are **not automatically prohibited**. Schrems II requires a case-by-case assessment. If supplementary measures can close the gap (e.g., strong end-to-end encryption where the processor never holds decryption keys), the transfer may proceed. Blanket prohibition was not the Schrems II holding.",
+    "category": "GDPR"
+  }
+]

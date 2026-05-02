@@ -1,0 +1,362 @@
+[
+  {
+    "question": "A developer reviews a new feature that allows users to reset passwords via an emailed token. She identifies that an attacker could intercept the token and use it to gain unauthorized access to another user's account, assuming the identity of that user. Which STRIDE category does this threat belong to?",
+    "options": [
+      "Elevation of Privilege",
+      "Spoofing",
+      "Tampering",
+      "Repudiation"
+    ],
+    "correct": 1,
+    "explanation": "**Why C is correct**: **Spoofing** in STRIDE refers to an attacker falsely claiming to be another entity — in this case, using a stolen token to authenticate as a different user. Impersonation of identity is the hallmark of the Spoofing category. **Why A is wrong**: **Tampering** involves unauthorized modification of data (e.g., altering the token value itself or changing database records), not impersonating a user. **Why B is wrong**: **Repudiation** refers to the ability to deny having performed an action, typically due to insufficient logging — not credential theft. **Why D is wrong**: **Elevation of Privilege** means gaining capabilities beyond what is authorized (e.g., a regular user gaining admin rights) — while related, the primary threat here is identity impersonation, not privilege escalation.",
+    "category": "Threat Modeling"
+  },
+  {
+    "question": "A security architect reviews an application's audit logs and discovers that a privileged user has been deleting transaction records after the fact, making it impossible to reconstruct what actions were taken. Which STRIDE threat category does this represent?",
+    "options": [
+      "Information Disclosure",
+      "Repudiation",
+      "Tampering",
+      "Spoofing"
+    ],
+    "correct": 1,
+    "explanation": "**Why C is correct**: **Repudiation** is the ability of a user to deny performing an action, enabled by weak or absent audit controls. Deleting transaction records destroys the non-repudiation evidence needed to prove the user's actions occurred. **Why A is wrong**: **Spoofing** involves impersonation of another identity — no false identity claim is described here. **Why B is wrong**: **Tampering** involves modifying data to corrupt its integrity; while deleting records is destructive, the STRIDE threat here is specifically about the ability to deny actions — repudiation. In practice both could apply, but the audit trail destruction maps most directly to Repudiation. **Why D is wrong**: **Information Disclosure** is the unauthorized exposure of data to parties who should not have it — the opposite of hiding data.",
+    "category": "Threat Modeling"
+  },
+  {
+    "question": "During a threat modeling session, the team diagrams a system where a public API calls an internal microservice. They identify a location where external untrusted data enters the internal trusted processing environment. What is this boundary called in threat modeling terminology?",
+    "options": [
+      "Trust boundary",
+      "Attack surface",
+      "Data flow diagram node",
+      "Privilege boundary"
+    ],
+    "correct": 0,
+    "explanation": "**Why B is correct**: A **trust boundary** is the line in a data flow diagram (DFD) where data crosses from one trust level to another — in this case, from the untrusted external API to the trusted internal microservice. Trust boundaries are where threat modelers focus their STRIDE analysis. **Why A is wrong**: **Attack surface** refers to the total set of exposure points through which an attacker can interact with a system — a broader concept, not specifically the crossing point between trust levels. **Why C is wrong**: A **DFD node** (process, data store, or external entity) is a component within the diagram, not the line separating trust zones. **Why D is wrong**: 'Privilege boundary' is not standard threat modeling terminology; it conflates privilege escalation concepts with the structural trust boundary concept.",
+    "category": "Threat Modeling"
+  },
+  {
+    "question": "A threat modeling team at a software company is analyzing a mobile banking application by first defining business objectives and security requirements, then decomposing the application into attack scenarios from the attacker's perspective, and finally simulating attacks to enumerate countermeasures. Which threat modeling methodology are they following?",
+    "options": [
+      "DREAD",
+      "STRIDE",
+      "PASTA",
+      "LINDDUN"
+    ],
+    "correct": 2,
+    "explanation": "**Why C is correct**: **PASTA (Process for Attack Simulation and Threat Analysis)** is a seven-stage, risk-centric methodology that begins with defining business objectives, then performs application decomposition, and culminates in attack simulation and countermeasure analysis — aligning threats directly with business impact. **Why A is wrong**: **STRIDE** is a threat categorization mnemonic, not a full methodology with staged business-objective alignment and attack simulation phases. **Why B is wrong**: **DREAD** is a risk-scoring model (Damage, Reproducibility, Exploitability, Affected users, Discoverability) used to prioritize threats after identification, not a full modeling process. **Why D is wrong**: **LINDDUN** is a privacy-focused threat modeling framework that enumerates privacy threats (Linkability, Identifiability, etc.) — not an attack simulation methodology.",
+    "category": "Threat Modeling"
+  },
+  {
+    "question": "A security engineer scores a newly discovered web vulnerability using DREAD. She assigns: Damage=8, Reproducibility=6, Exploitability=7, Affected Users=5, Discoverability=4. What is the DREAD score, and how is it interpreted?",
+    "options": [
+      "Score = 30; highest possible total, meaning critical severity",
+      "Score = 6; the average rating, used to prioritize the threat against others",
+      "Score = 7; the median value, representing moderate risk",
+      "Score = 8; the maximum single-category score, used as the overall rating"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: **DREAD** scoring averages the five category scores: (8+6+7+5+4) ÷ 5 = **6.0**. The resulting average is used to rank and prioritize threats relative to each other — higher averages warrant faster remediation. **Why A is wrong**: The sum of 30 is not the DREAD score; DREAD produces an average (0–10 scale), not a raw total. **Why C is wrong**: The maximum single-category score (8 for Damage) does not represent the overall DREAD rating; all five dimensions must be averaged. **Why D is wrong**: The median of {4,5,6,7,8} is 6, not 7 — and even so, DREAD uses the mean, not the median.",
+    "category": "Threat Modeling"
+  },
+  {
+    "question": "A team is threat modeling a payment processing system and creates a diagram showing all data flows between external entities, processes, and data stores, with labeled arrows indicating data movement. What type of diagram are they producing?",
+    "options": [
+      "Sequence diagram",
+      "Attack tree",
+      "Entity-relationship diagram",
+      "Data flow diagram"
+    ],
+    "correct": 3,
+    "explanation": "**Why B is correct**: A **data flow diagram (DFD)** is the foundational tool in threat modeling, showing external entities, processes, data stores, and the flows of data between them. STRIDE analysis is applied at trust boundaries and processes within the DFD. **Why A is wrong**: An **entity-relationship diagram (ERD)** models database table relationships and cardinality — not data flows or threat surfaces. **Why C is wrong**: A **sequence diagram** (UML) shows the time-ordered interactions between objects in a specific scenario — useful for protocol analysis but not the standard threat modeling representation. **Why D is wrong**: An **attack tree** models how an attacker can achieve a specific goal (root node) through a hierarchy of sub-goals — a separate analysis tool used after DFDs identify threats.",
+    "category": "Threat Modeling"
+  },
+  {
+    "question": "A security team wants to model how an attacker could gain administrative control of a web application server. They start with the goal 'Gain Admin Access' as the root node and decompose it into sub-goals such as 'Exploit SQL injection' OR 'Steal admin credentials', further breaking down each branch. What threat modeling technique are they using?",
+    "options": [
+      "PASTA Stage 6 attack simulation",
+      "Attack tree analysis",
+      "STRIDE categorization",
+      "Misuse case analysis"
+    ],
+    "correct": 1,
+    "explanation": "**Why C is correct**: **Attack trees** decompose an attacker's goal (root node) into sub-goals using AND/OR logic branches, systematically enumerating all paths to achieving that goal. They provide a structured way to visualize and analyze attacker strategies. **Why A is wrong**: **Misuse cases** (or abuse cases) are written from the attacker's perspective in the format of use cases — they describe attacker behavior narratively, not as a hierarchical AND/OR decomposition tree. **Why B is wrong**: **STRIDE categorization** classifies threats into six categories but does not produce a hierarchical goal-decomposition structure. **Why D is wrong**: PASTA Stage 6 is an attack simulation phase within the PASTA methodology — while it may use attack trees as a tool, 'attack tree analysis' is the specific technique name for what is described.",
+    "category": "Threat Modeling"
+  },
+  {
+    "question": "During agile software development, a product team asks when threat modeling should ideally be performed. According to secure SDLC best practices, what is the correct answer?",
+    "options": [
+      "During the design phase, before coding begins, so threats can be addressed architecturally",
+      "Only when a security incident occurs that reveals a new threat category",
+      "During the testing phase, after all features are coded, to ensure complete coverage",
+      "After deployment, using production logs to identify real-world threat patterns"
+    ],
+    "correct": 0,
+    "explanation": "**Why B is correct**: Threat modeling should occur during the **design phase** of the SDLC, before code is written. Identifying threats at design time is exponentially cheaper to address than retrofitting controls post-development, and allows architectural decisions to mitigate threats proactively (e.g., choosing encryption algorithms, defining trust boundaries). **Why A is wrong**: Performing threat modeling only after coding is complete misses the architectural window — major structural changes are costly and often impractical at that stage. **Why C is wrong**: Post-deployment threat identification based on production logs is reactive incident response, not proactive threat modeling. By this point, vulnerabilities may already have been exploited. **Why D is wrong**: Threat modeling should be a systematic, proactive practice integrated into every release cycle — not a reactive response triggered only by incidents.",
+    "category": "Threat Modeling"
+  },
+  {
+    "question": "A privacy engineer is threat modeling a healthcare analytics platform that aggregates de-identified patient data from multiple hospitals. She is concerned about threats such as re-identification of patients by combining datasets and unauthorized tracking of individuals across systems. Which threat modeling framework is specifically designed for this type of privacy threat?",
+    "options": [
+      "DREAD",
+      "LINDDUN",
+      "PASTA",
+      "STRIDE"
+    ],
+    "correct": 1,
+    "explanation": "**Why D is correct**: **LINDDUN** (Linkability, Identifiability, Non-repudiation, Detectability, Disclosure of information, Unawareness, Non-compliance) is a privacy-focused threat modeling framework designed specifically to identify privacy threats like re-identification, cross-system tracking, and data linkability — exactly the concerns described. **Why A is wrong**: **STRIDE** addresses security threats (spoofing, tampering, etc.) from an availability/integrity/confidentiality perspective but lacks privacy-specific threat categories like re-identification or linkability. **Why B is wrong**: **PASTA** is a risk-centric security methodology oriented around attack simulation and business impact — not specifically designed for privacy threat enumeration. **Why C is wrong**: **DREAD** is a scoring model for prioritizing identified threats, not a framework for enumerating privacy-specific threat categories.",
+    "category": "Threat Modeling"
+  },
+  {
+    "question": "In STRIDE threat modeling, a threat actor floods a financial services API with millions of authentication requests, consuming all available processing threads and preventing legitimate users from logging in. Which STRIDE category applies?",
+    "options": [
+      "Repudiation",
+      "Tampering",
+      "Denial of Service",
+      "Information Disclosure"
+    ],
+    "correct": 2,
+    "explanation": "**Why D is correct**: **Denial of Service (DoS)** in STRIDE refers to attacks that make a system or resource unavailable to legitimate users — consuming processing threads to prevent login is a textbook DoS scenario targeting availability. **Why A is wrong**: **Tampering** involves unauthorized data modification — overwhelming a server with requests does not alter stored data. **Why B is wrong**: **Repudiation** concerns the ability to deny actions due to missing audit trails — not resource exhaustion. **Why C is wrong**: **Information Disclosure** is the unauthorized exposure of data to parties who should not see it — a flooding attack does not expose data, it prevents access.",
+    "category": "Threat Modeling"
+  },
+  {
+    "question": "A threat modeling session identifies that a regular user of a multi-tenant SaaS application could manipulate a JWT token parameter to set their role to 'admin', gaining full access to administrative functions. Which STRIDE category best describes this threat?",
+    "options": [
+      "Elevation of Privilege",
+      "Spoofing",
+      "Repudiation",
+      "Tampering"
+    ],
+    "correct": 0,
+    "explanation": "**Why D is correct**: **Elevation of Privilege (EoP)** occurs when an actor gains capabilities or access beyond what they are authorized for. Manipulating a JWT to claim admin role converts a regular user into an administrator — a classic EoP scenario. **Why A is wrong**: **Spoofing** involves impersonating a different identity — the attacker is not pretending to be a specific other user, but rather claiming unauthorized privileges for their own account. **Why B is wrong**: **Tampering** involves modifying data to corrupt integrity (e.g., altering database records) — while the JWT is being manipulated, the goal and STRIDE classification is privilege escalation, not data corruption. **Why C is wrong**: **Repudiation** relates to denying actions due to audit failures — not privilege manipulation.",
+    "category": "Threat Modeling"
+  },
+  {
+    "question": "A requirements analyst documents a scenario from the perspective of a malicious actor: 'A disgruntled former employee attempts to log into the system using cached credentials to exfiltrate customer records.' This analysis technique, written in the style of a use case but describing attacker behavior, is called a:",
+    "options": [
+      "Attack tree leaf node",
+      "Threat scenario report",
+      "STRIDE threat statement",
+      "Misuse case"
+    ],
+    "correct": 3,
+    "explanation": "**Why C is correct**: A **misuse case** (also called an abuse case) is a use case written from the perspective of a malicious actor, describing how an attacker would interact with a system to cause harm. It directly mirrors the format of a normal use case but inverts the intent, making it a natural fit for security requirements elicitation during design. **Why A is wrong**: An **attack tree leaf node** is a specific atomic condition within a hierarchical attack tree decomposition — not a narrative use-case-style document. **Why B is wrong**: 'Threat scenario report' is not a defined threat modeling artifact; it is a generic term, not the specific structured technique described. **Why D is wrong**: A **STRIDE threat statement** categorizes a threat into one of six categories — it is not a narrative actor-perspective document in the style of a use case.",
+    "category": "Threat Modeling"
+  },
+  {
+    "question": "A threat modeling team is distinguishing between two concepts: the individual or group that has the motive, means, and opportunity to exploit a vulnerability, versus the general category of negative event or action that could harm the system. Which pair of terms correctly captures this distinction?",
+    "options": [
+      "Threat agent; threat",
+      "Threat; threat agent",
+      "Attack vector; threat source",
+      "Threat actor; vulnerability"
+    ],
+    "correct": 0,
+    "explanation": "**Why A is correct**: A **threat agent** (or threat actor) is the human or automated entity that initiates an attack — defined by motive, means, and opportunity (e.g., nation-state, insider, hacktivist). A **threat** is the potential occurrence of a harmful event or action (e.g., unauthorized data disclosure, system destruction). The agent causes the threat. **Why B is wrong**: The terms are reversed — the entity with motive and means is the threat agent, not simply 'the threat'. **Why C is wrong**: 'Attack vector' describes the method or path used to exploit a vulnerability; 'threat source' is sometimes synonymous with threat agent but the pairing does not accurately capture the agent-vs-event distinction. **Why D is wrong**: While 'threat actor' is a valid synonym for threat agent, pairing it with 'vulnerability' (a weakness, not a threat event) conflates two different risk elements.",
+    "category": "Threat Modeling"
+  },
+  {
+    "question": "A cloud security team discovers that an attacker accessed an internal metadata service endpoint (169.254.169.254) from a compromised EC2 instance, retrieving IAM role credentials. In STRIDE, the initial access to metadata using the compromised instance's trust represents which category, while using the retrieved credentials to call AWS APIs as a different identity represents which category?",
+    "options": [
+      "Elevation of Privilege; Spoofing",
+      "Denial of Service; Repudiation",
+      "Tampering; Elevation of Privilege",
+      "Information Disclosure; Spoofing"
+    ],
+    "correct": 3,
+    "explanation": "**Why B is correct**: Accessing the metadata endpoint to **retrieve IAM credentials** is an **Information Disclosure** threat — sensitive credential data is exposed to an unauthorized party. Subsequently **using those credentials to call AWS APIs as a different IAM role** is **Spoofing** — the attacker is impersonating another identity (the IAM role). **Why A is wrong**: Elevation of Privilege would apply if the attacker used the same identity to gain higher permissions, but the metadata retrieval is disclosure, not privilege elevation within the same identity context. **Why C is wrong**: Tampering involves modifying data — reading metadata credentials is not modification. **Why D is wrong**: Denial of Service and Repudiation are unrelated to credential theft and identity impersonation.",
+    "category": "Threat Modeling"
+  },
+  {
+    "question": "A security team completes a STRIDE analysis of a banking application and has a list of 47 identified threats. They need to prioritize which threats to address first given limited engineering resources. Which complementary technique should they apply to score and rank the threats?",
+    "options": [
+      "A misuse case workshop to rewrite each threat as an attacker scenario",
+      "PASTA Stage 2 to re-decompose the application architecture",
+      "DREAD scoring to calculate a numerical risk priority for each threat",
+      "LINDDUN analysis to re-categorize the threats by privacy impact"
+    ],
+    "correct": 2,
+    "explanation": "**Why B is correct**: **DREAD** (Damage, Reproducibility, Exploitability, Affected users, Discoverability) is specifically designed as a complementary scoring model to prioritize threats after they have been identified — such as by STRIDE. Each threat receives a numerical score allowing teams to rank and triage remediation efforts. **Why A is wrong**: **LINDDUN** is a separate privacy threat modeling framework; re-categorizing through LINDDUN would not prioritize the security threats already identified via STRIDE. **Why C is wrong**: PASTA Stage 2 (application decomposition) is an earlier phase in a different methodology — re-running it would not help rank the already-identified threats. **Why D is wrong**: A misuse case workshop generates narrative attacker scenarios during requirements analysis — it is an identification technique, not a prioritization/scoring technique for an existing threat list.",
+    "category": "Threat Modeling"
+  },
+  {
+    "question": "An intelligence analyst classifies a threat actor group that is sponsored by a foreign government, has significant technical resources, operates with long-term strategic objectives, and has demonstrated the ability to develop novel zero-day exploits. Which threat actor category best describes this group?",
+    "options": [
+      "Hacktivist",
+      "Organized criminal group",
+      "Script kiddie",
+      "Nation-state actor"
+    ],
+    "correct": 3,
+    "explanation": "**Why C is correct**: A **nation-state actor** (also called an Advanced Persistent Threat or APT) is characterized by government sponsorship, substantial resources, advanced technical capability, patience for long-term campaigns, and strategic rather than financial objectives. Zero-day development and prolonged espionage are hallmarks of this category. **Why A is wrong**: A **script kiddie** is an unsophisticated attacker who uses pre-built tools without deep technical understanding — the opposite of a zero-day-capable, government-sponsored group. **Why B is wrong**: A **hacktivist** is motivated by political or ideological goals and typically uses publicly available tools (DDoS, defacement) — they lack the technical depth and state backing of a nation-state actor. **Why D is wrong**: An **organized criminal group** is primarily financially motivated (ransomware, fraud) — while capable and well-resourced, they lack state sponsorship and strategic geopolitical objectives.",
+    "category": "Threat Modeling"
+  },
+  {
+    "question": "A threat intelligence team categorizes threat actors using three attributes: **capability** (technical skill and resources), **intent** (motivation and willingness to attack), and **opportunity** (access and timing). A competitor's disgruntled former employee with network access credentials, a personal grievance, and intermediate technical skills would score highest on which attribute?",
+    "options": [
+      "Capability, because of the intermediate technical skills",
+      "Opportunity, because of possession of active credentials",
+      "Intent, because of the personal grievance and motivation",
+      "All three attributes are equally high in this scenario"
+    ],
+    "correct": 1,
+    "explanation": "**Why C is correct**: **Opportunity** is the attribute most fully satisfied — the former employee possesses active credentials (access) and the timing is immediate. While intent is present (grievance) and some capability exists (intermediate skills), neither is as distinctly elevated as the near-complete opportunity created by valid credentials. **Why A is wrong**: Intermediate technical skills represent moderate capability — not the highest attribute in this scenario. A skilled attacker would rate higher on capability. **Why B is wrong**: Intent (grievance) is present but grievances alone are common; the unique, immediate risk factor here is the credentials providing ready access — opportunity is the most operationally significant attribute. **Why D is wrong**: The three attributes are clearly not equally high — opportunity (active credentials) is the most immediately exploitable factor, followed by intent, then capability.",
+    "category": "Threat Modeling"
+  },
+  {
+    "question": "A red team simulates a nation-state attack against a defense contractor. During the kill chain analysis, they note the phase where the attacker crafts a spear-phishing email with a malicious PDF attachment to be sent to a target executive. According to the Lockheed Martin Cyber Kill Chain, which phase does this represent?",
+    "options": [
+      "Weaponization",
+      "Delivery",
+      "Reconnaissance",
+      "Exploitation"
+    ],
+    "correct": 0,
+    "explanation": "**Why B is correct**: **Weaponization** is the kill chain phase where the attacker creates the attack tool — coupling a payload (malware) with an exploit into a deliverable weapon (e.g., a malicious PDF). The attacker has gathered information and is now building the weapon before sending it. **Why A is wrong**: **Reconnaissance** is the information-gathering phase (e.g., researching the executive's name, email, role) — it precedes weapon creation. **Why C is wrong**: **Delivery** is when the weapon is transmitted to the target (e.g., actually sending the phishing email) — the weapon must first be created in Weaponization before it can be delivered. **Why D is wrong**: **Exploitation** occurs when the delivered weapon executes and exploits a vulnerability on the target system — only possible after delivery.",
+    "category": "Threat Modeling"
+  },
+  {
+    "question": "A threat hunter queries the organization's SIEM for techniques matching **MITRE ATT&CK** tactics. She finds evidence of an adversary using built-in Windows tools (LOLBins) to execute commands and avoid triggering antivirus signatures. Under the MITRE ATT&CK framework, these evasion behaviors are organized under which type of classification?",
+    "options": [
+      "Mitigations, because they describe how defenders should respond",
+      "Procedures, because they describe the precise tool (LOLBins) and command used",
+      "Techniques, because they describe the specific method used to achieve a tactic",
+      "Tactics, because they describe the adversary's high-level objective"
+    ],
+    "correct": 2,
+    "explanation": "**Why B is correct**: In MITRE ATT&CK, **techniques** describe the specific methods adversaries use to accomplish a tactic (e.g., 'Living off the Land' using LOLBins falls under the Defense Evasion tactic as a technique). Techniques are the 'how' at a conceptual level — distinct from the tactic (what goal) and procedure (the exact implementation). **Why A is wrong**: **Tactics** in ATT&CK are the high-level adversarial goals (e.g., Initial Access, Execution, Defense Evasion) — the category under which techniques fall, not the specific behaviors themselves. **Why C is wrong**: **Procedures** are the specific, real-world implementations of a technique by a particular threat group — the exact commands and tools used (e.g., 'APT29 used mshta.exe to execute VBScript'). **Why D is wrong**: **Mitigations** in ATT&CK are defensive recommendations associated with techniques — they describe what defenders should do, not what adversaries are doing.",
+    "category": "Threat Modeling"
+  },
+  {
+    "question": "A DFD used in threat modeling contains four symbol types. A rectangle represents an entity outside the system boundary; a circle (or rounded rectangle) represents a transformation of data; a pair of parallel lines represents stored data; and a directed arrow represents data movement. An analyst places trust boundary lines on the diagram. Where should trust boundaries be drawn?",
+    "options": [
+      "Only around the external entity rectangles, because they are the only untrusted elements",
+      "Around every data store symbol, because stored data is always sensitive",
+      "On every data flow arrow, because all data in motion crosses a trust boundary",
+      "Between any two elements that operate at different trust levels, such as between an external entity and an internal process"
+    ],
+    "correct": 3,
+    "explanation": "**Why B is correct**: **Trust boundaries** are drawn wherever data crosses between different trust levels — e.g., between an external (untrusted) user and an internal (trusted) process, between the internet and a DMZ, or between two internal systems with different privilege levels. The boundary can fall anywhere trust levels differ. **Why A is wrong**: Not all data stores are at different trust levels from the processes accessing them — a database and the application server it serves may be in the same trust zone. Trust boundaries are not defined by data sensitivity alone. **Why C is wrong**: Trust boundaries are not exclusively around external entities — internal network segments can also have different trust levels (e.g., a privileged admin network vs. the general corporate LAN). **Why D is wrong**: Data flows within the same trust zone do not cross trust boundaries — only flows that move between zones of different privilege or trust require a boundary.",
+    "category": "Threat Modeling"
+  },
+  {
+    "question": "A security architect applies the **STRIDE-per-element** method to a DFD of an e-commerce checkout system. She systematically applies STRIDE to each element type. For a **data store** (e.g., the order database), which two STRIDE threats are most applicable by convention?",
+    "options": [
+      "Denial of Service and Spoofing",
+      "Repudiation and Denial of Service",
+      "Tampering and Information Disclosure",
+      "Spoofing and Elevation of Privilege"
+    ],
+    "correct": 2,
+    "explanation": "**Why B is correct**: In **STRIDE-per-element** methodology, data stores are primarily subject to **Tampering** (unauthorized modification of stored data) and **Information Disclosure** (unauthorized read access to stored data). These map directly to the integrity and confidentiality of the data at rest. **Why A is wrong**: Spoofing applies to processes and external entities (identity claims) — data stores do not authenticate; they hold data. Elevation of Privilege applies to processes that execute with elevated rights. **Why C is wrong**: Repudiation typically applies to processes (actions that can be denied); Denial of Service can apply to data stores (making data unavailable), but it is less primary than Tampering and Information Disclosure in the conventional STRIDE-per-element mapping. **Why D is wrong**: Spoofing does not naturally apply to data stores — stores do not claim identity. DoS is secondary; the primary threats to stored data are integrity (Tampering) and confidentiality (Information Disclosure).",
+    "category": "Threat Modeling"
+  },
+  {
+    "question": "A threat modeler notes that an attacker could combine individually non-sensitive data fields from multiple database queries — each permitted by access controls — to reconstruct a complete employee profile including location, salary, health status, and political affiliations. No single query reveals sensitive information, but the combination does. What type of threat is this?",
+    "options": [
+      "Replay attack",
+      "Escalation of privilege",
+      "Aggregation attack",
+      "Inference attack"
+    ],
+    "correct": 2,
+    "explanation": "**Why B is correct**: An **aggregation attack** occurs when an attacker combines multiple pieces of individually non-sensitive, permitted data to derive a sensitive whole that the access control policy did not intend to allow. Each individual query is authorized; the combination is not — a classic aggregation problem addressed in database security and threat modeling. **Why A is wrong**: An **inference attack** derives sensitive information from indirect observations or statistical patterns without direct access to the data — distinct from aggregating permitted query results. **Why C is wrong**: A **replay attack** captures and retransmits valid authentication tokens or messages to gain unauthorized access — it does not involve combining data fields. **Why D is wrong**: **Escalation of privilege** involves gaining capabilities beyond authorization — the attacker here is not elevating privileges but exploiting the cumulative sensitivity of combined permitted data.",
+    "category": "Threat Modeling"
+  },
+  {
+    "question": "The seven stages of the **PASTA** (Process for Attack Simulation and Threat Analysis) methodology in correct order begin with defining business objectives and end with which stage?",
+    "options": [
+      "Threat enumeration and categorization",
+      "Vulnerability and weakness analysis",
+      "Attack simulation and residual risk analysis",
+      "Application decomposition and analysis"
+    ],
+    "correct": 2,
+    "explanation": "**Why C is correct**: PASTA's seven stages are: (1) Define Objectives, (2) Define Technical Scope, (3) Application Decomposition, (4) Threat Analysis, (5) Vulnerability and Weakness Analysis, (6) Attack Modeling/Simulation, (7) **Risk and Impact Analysis** (including residual risk). The final stage synthesizes attack simulation results into business-aligned risk decisions — 'attack simulation and residual risk analysis' best describes this culminating phase. **Why A is wrong**: Threat enumeration is Stage 4 — a middle stage. PASTA ends with risk analysis, not enumeration. **Why B is wrong**: Application decomposition is Stage 3 — an early foundational stage, not the conclusion of the methodology. **Why D is wrong**: Vulnerability and weakness analysis is Stage 5 — it feeds into the attack simulation in Stage 6, but is not the final stage.",
+    "category": "Threat Modeling"
+  },
+  {
+    "question": "A physical security consultant warns that electromagnetic emanations from a classified government facility's monitors could be captured at a distance and used to reconstruct the displayed content without physical access. Which type of attack does this describe?",
+    "options": [
+      "TEMPEST attack exploiting electromagnetic emissions",
+      "Side-channel attack using power analysis",
+      "Man-in-the-middle interception of display signals",
+      "Shoulder surfing via optical surveillance"
+    ],
+    "correct": 0,
+    "explanation": "**Why B is correct**: A **TEMPEST attack** exploits unintentional electromagnetic emanations from electronic equipment (monitors, keyboards, CPUs) to remotely reconstruct information being processed. Government agencies use TEMPEST standards and shielding to prevent this. The attack requires no physical or logical access — only proximity to capture emissions. **Why A is wrong**: **Power analysis** is a side-channel attack that measures fluctuations in a device's power consumption to derive cryptographic keys — it requires physical or measurement access to power lines, not EM emission capture from a distance. **Why C is wrong**: **Shoulder surfing** is visual observation of a screen or keyboard — it requires line of sight, not EM capture equipment. **Why D is wrong**: A **man-in-the-middle attack** intercepts communication channels (network, cables) between two parties — not passive EM emanation capture from a standalone display.",
+    "category": "Threat Modeling"
+  },
+  {
+    "question": "A threat modeling team has identified 30 threats using STRIDE and scored them using DREAD. They now debate whether to build countermeasures for all 30. A senior architect argues they should first distinguish between the activity of listing all possible threats versus deciding which warrant investment. Which two distinct activities is she separating?",
+    "options": [
+      "Threat identification and threat categorization",
+      "Threat enumeration and risk prioritization",
+      "Attack surface analysis and vulnerability assessment",
+      "Threat modeling and penetration testing"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: **Threat enumeration** is the process of systematically identifying and listing all possible threats against a system (what STRIDE analysis produces). **Risk prioritization** is the subsequent process of ranking enumerated threats by risk score (what DREAD scoring enables) to determine which threats warrant investment. These are distinct activities — enumeration is exhaustive; prioritization is selective. **Why A is wrong**: Threat identification and categorization both fall within the enumeration activity — categorizing (STRIDE labels) is part of how threats are enumerated, not a separate decision-making phase. **Why C is wrong**: Attack surface analysis maps exposure points; vulnerability assessment identifies weaknesses — neither is the same as the enumeration/prioritization distinction being described. **Why D is wrong**: Threat modeling is the overarching process that includes both enumeration and prioritization; penetration testing is an active exploitation assessment — this framing does not capture the enumeration-vs-prioritization distinction.",
+    "category": "Threat Modeling"
+  },
+  {
+    "question": "An organization threat models a new microservices architecture. The **VAST** (Visual, Agile, and Simple Threat modeling) methodology is proposed as an alternative to STRIDE. Which statement best describes the primary design goal that distinguishes VAST from STRIDE?",
+    "options": [
+      "VAST replaces DFDs with attack trees as the primary modeling artifact",
+      "VAST is designed to scale across agile development pipelines and produce separate models for application and infrastructure threats",
+      "VAST is designed exclusively for privacy threat enumeration in GDPR-regulated systems",
+      "VAST uses a fixed six-category mnemonic identical to STRIDE but adds a seventh category for supply chain threats"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: **VAST** (Visual, Agile, and Simple Threat modeling) is specifically designed to integrate with agile and DevOps workflows at scale. It produces two model types — **application threat models** (process-flow diagrams for developers) and **operational threat models** (infrastructure/deployment diagrams for operations teams) — enabling threat modeling to be maintained continuously across large, rapidly changing environments. **Why A is wrong**: VAST is not a privacy-specific framework — that role belongs to LINDDUN. VAST targets scalable agile security integration across all threat types. **Why C is wrong**: VAST uses process-flow diagrams (not attack trees) as its primary artifact. Attack trees are a separate technique used in various methodologies. **Why D is wrong**: VAST does not use STRIDE's six-category mnemonic — it is a distinct methodology with its own modeling approach, not an extension of STRIDE.",
+    "category": "Threat Modeling"
+  },
+  {
+    "question": "A threat intelligence report describes a threat actor who is a former system administrator of the target organization. This actor has deep knowledge of internal network architecture and retains dormant VPN credentials that were not revoked at offboarding. Which threat actor category does this person represent, and why are they particularly dangerous?",
+    "options": [
+      "Hacktivist; because they are motivated by ideology against their former employer",
+      "Nation-state actor; because they can conduct advanced persistent threat campaigns",
+      "Insider threat; because they possess privileged knowledge and access that bypasses perimeter defenses",
+      "Script kiddie; because they have widespread tool access"
+    ],
+    "correct": 2,
+    "explanation": "**Why C is correct**: An **insider threat** is a threat actor who is (or was) a trusted member of the organization — in this case a former employee. The danger of insiders is that they bypass perimeter controls entirely: they know the network layout, have legitimate-looking credentials, and understand where sensitive assets reside. Unrevoaked credentials are a classic insider threat enabler. **Why A is wrong**: A **script kiddie** uses pre-built hacking tools without deep technical knowledge — the opposite of a former sysadmin with intimate network knowledge and valid credentials. **Why B is wrong**: A **hacktivist** attacks organizations for political or ideological reasons using publicly available tools — while a disgruntled former employee may have grievances, the defining characteristic here is insider access, not ideological motivation. **Why D is wrong**: A **nation-state actor** is government-sponsored with strategic geopolitical objectives and advanced custom tools — a single former sysadmin with retained credentials does not meet this definition.",
+    "category": "Threat Modeling"
+  },
+  {
+    "question": "A threat modeling team is applying STRIDE to a DFD of a healthcare application. They systematically evaluate each DFD element type against applicable STRIDE categories. For an **external entity** (e.g., a patient-facing web browser), which STRIDE threats are primarily applicable?",
+    "options": [
+      "Information Disclosure and Elevation of Privilege only",
+      "All six STRIDE categories apply equally to external entities",
+      "Spoofing and Repudiation",
+      "Tampering and Denial of Service only"
+    ],
+    "correct": 2,
+    "explanation": "**Why B is correct**: In **STRIDE-per-element** methodology, **external entities** are primarily subject to **Spoofing** (can the external entity claim a false identity?) and **Repudiation** (can the external entity deny actions taken?). External entities are the sources and sinks of data — their primary threats relate to identity authenticity and action accountability. **Why A is wrong**: Tampering and DoS are more relevant to data flows and processes — external entities themselves don't typically modify data in transit (that's a data flow threat) or exhaust resources (a process threat). **Why C is wrong**: Information Disclosure and Elevation of Privilege primarily apply to processes and data stores — not to the external entities that initiate interactions. **Why D is wrong**: While any STRIDE category could technically apply in edge cases, STRIDE-per-element specifically maps the two most applicable threats to each element type — for external entities, that is Spoofing and Repudiation.",
+    "category": "Threat Modeling"
+  },
+  {
+    "question": "During kill chain analysis, a red team documents the phase where a compromised endpoint establishes an encrypted outbound connection to an external C2 server, allowing the attacker to issue commands and receive exfiltrated data. According to the Lockheed Martin Cyber Kill Chain, which phase is this?",
+    "options": [
+      "Installation",
+      "Command and Control (C2)",
+      "Delivery",
+      "Exploitation"
+    ],
+    "correct": 1,
+    "explanation": "**Why D is correct**: The **Command and Control (C2)** phase of the kill chain is where the attacker establishes a communication channel back to the compromised system — typically via outbound encrypted connections to an external C2 server. This channel allows the attacker to issue commands, maintain persistence, and exfiltrate data. **Why A is wrong**: **Delivery** is the phase where the attack payload is transmitted to the target (e.g., phishing email sent) — it precedes exploitation and does not involve establishing post-compromise communication channels. **Why B is wrong**: **Exploitation** is when the delivered payload executes and exploits a vulnerability to gain initial access — it occurs before installation and C2 establishment. **Why C is wrong**: **Installation** is when the attacker installs a persistent backdoor or RAT on the compromised system — it directly precedes C2 establishment but is not the same as the ongoing communication channel itself.",
+    "category": "Threat Modeling"
+  },
+  {
+    "question": "A security analyst notes that the organization's threat model was created during initial system design and has never been updated. The production system has since added three new microservices, integrated a third-party payment processor, and migrated from on-premises to a hybrid cloud. Which threat modeling maintenance principle does this situation violate?",
+    "options": [
+      "Threat models should only be updated after a security breach to incorporate real-world findings",
+      "Threat models are one-time deliverables that capture the design-time threat landscape permanently",
+      "Threat models should be treated as living documents and updated whenever significant architectural changes occur",
+      "Threat model updates require full re-implementation of the application to be effective"
+    ],
+    "correct": 2,
+    "explanation": "**Why B is correct**: A **threat model is a living document** — it must be updated when the system changes, because new components, integrations, and deployment environments introduce new trust boundaries, attack surfaces, and threat categories. The three new microservices, third-party payment processor, and cloud migration each represent significant architectural changes that invalidate the original threat model. **Why A is wrong**: Updating threat models only after a breach is purely reactive — the value of threat modeling is proactive risk identification before exploitation occurs. Post-breach updates are too late to prevent the incident. **Why C is wrong**: Treating a threat model as a permanent one-time deliverable leads to security debt — as systems evolve, unmodeled components create unassessed blind spots that attackers can exploit. **Why D is wrong**: Threat model updates are documentation and analysis activities — they do not require re-implementing application code. The model is updated to reflect the new architecture, and new threats are assessed against existing or new controls.",
+    "category": "Threat Modeling"
+  }
+]

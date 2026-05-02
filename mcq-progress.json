@@ -1,0 +1,98 @@
+{
+  "01-security-and-risk-management/risk-management": {
+    "0": {
+      "right": 0,
+      "wrong": 1,
+      "lastSeen": "2026-05-02"
+    },
+    "1": {
+      "right": 1,
+      "wrong": 0,
+      "lastSeen": "2026-05-02"
+    }
+  },
+  "01-security-and-risk-management/bcp-dr": {
+    "0": {
+      "right": 3,
+      "wrong": 2,
+      "lastSeen": "2026-05-02"
+    }
+  },
+  "01-security-and-risk-management/governance-and-compliance": {
+    "0": {
+      "right": 2,
+      "wrong": 0,
+      "lastSeen": "2026-05-02"
+    },
+    "1": {
+      "right": 1,
+      "wrong": 0,
+      "lastSeen": "2026-05-02"
+    },
+    "2": {
+      "right": 1,
+      "wrong": 0,
+      "lastSeen": "2026-05-02"
+    },
+    "3": {
+      "right": 1,
+      "wrong": 1,
+      "lastSeen": "2026-05-02"
+    },
+    "4": {
+      "right": 1,
+      "wrong": 0,
+      "lastSeen": "2026-05-02"
+    },
+    "5": {
+      "right": 1,
+      "wrong": 0,
+      "lastSeen": "2026-05-02"
+    },
+    "6": {
+      "right": 1,
+      "wrong": 0,
+      "lastSeen": "2026-05-02"
+    },
+    "7": {
+      "right": 1,
+      "wrong": 0,
+      "lastSeen": "2026-05-02"
+    },
+    "8": {
+      "right": 1,
+      "wrong": 0,
+      "lastSeen": "2026-05-02"
+    },
+    "9": {
+      "right": 1,
+      "wrong": 0,
+      "lastSeen": "2026-05-02"
+    },
+    "10": {
+      "right": 1,
+      "wrong": 0,
+      "lastSeen": "2026-05-02"
+    },
+    "11": {
+      "right": 1,
+      "wrong": 0,
+      "lastSeen": "2026-05-02"
+    },
+    "12": {
+      "right": 1,
+      "wrong": 0,
+      "lastSeen": "2026-05-02"
+    },
+    "13": {
+      "right": 1,
+      "wrong": 0,
+      "lastSeen": "2026-05-02"
+    },
+    "14": {
+      "right": 1,
+      "wrong": 0,
+      "lastSeen": "2026-05-02"
+    }
+  }
+}

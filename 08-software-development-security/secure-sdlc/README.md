@@ -1,11 +1,9 @@
----
-tier: 2
-domain: Software Development Security (Domain 8)
-exam_weight: ~10%
-status: built
----
-
 # Secure SDLC & OWASP for the CISSP Exam
+
+> **Tier:** 2  
+> **Domain:** Software Development Security (Domain 8)  
+> **Exam Weight:** ~10%  
+> **Status:** Built
 
 A study-oriented overview of the secure SDLC and OWASP question family on the CISSP. This is Domain 8 (Software Development Security), weighted at roughly 10% of the exam. Use alongside `secure-sdlc.tsv` in this folder.
 

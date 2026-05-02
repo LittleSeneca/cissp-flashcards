@@ -1,11 +1,9 @@
----
-tier: 2
-domain: Asset Security (Domain 2)
-exam_weight: ~10%
-status: built
----
-
 # Asset Security & Data Lifecycle for the CISSP Exam
+
+> **Tier:** 2  
+> **Domain:** Asset Security (Domain 2)  
+> **Exam Weight:** ~10%  
+> **Status:** Built
 
 A study-oriented overview of the asset security question family on the CISSP. This is Domain 2, weighted at roughly 10% of the exam — the smallest of the eight domains, but with a tightly focused content area that produces predictable question patterns. Use alongside `asset-security.tsv` in this folder.
 

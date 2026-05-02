@@ -1,0 +1,362 @@
+[
+  {
+    "question": "A security analyst at a regional bank calculates that a flood has a 10% chance of occurring each year. A single flood event would damage servers worth $500,000, with an estimated 40% of that value lost per incident. What is the Annualized Loss Expectancy (ALE)?",
+    "options": [
+      "$500,000",
+      "$50,000",
+      "$20,000",
+      "$200,000"
+    ],
+    "correct": 2,
+    "explanation": "**Why A is correct**: ALE = SLE × ARO. SLE = Asset Value × Exposure Factor = $500,000 × 0.40 = $200,000. ARO = 0.10 (10% annual probability). ALE = $200,000 × 0.10 = $20,000. **Why B is wrong**: $50,000 would result from multiplying AV ($500,000) × ARO (0.10), ignoring the Exposure Factor entirely. **Why C is wrong**: $200,000 is the SLE — the loss per single event — not the annualized figure; it has not been multiplied by ARO. **Why D is wrong**: $500,000 is the raw asset value before any exposure factor or annual rate of occurrence is applied.",
+    "category": "Risk Management"
+  },
+  {
+    "question": "A CISO reviews a risk register and notes that after implementing firewall rules and patch management, a 5% residual probability of exploitation remains. The organization decides no further controls are cost-effective. Which term best describes the remaining 5% risk?",
+    "options": [
+      "Inherent risk",
+      "Residual risk",
+      "Transferred risk",
+      "Secondary risk"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: **Residual risk** is the risk that remains after controls have been applied. The 5% remaining after implementing firewall rules and patching is the residual risk the organization accepts. **Why A is wrong**: **Inherent risk** is the risk that exists before any controls are in place — the baseline exposure with no mitigations. **Why C is wrong**: **Secondary risk** is a new risk created as a side effect of implementing a risk response (e.g., a backup generator that introduces a fire hazard). **Why D is wrong**: **Transferred risk** (e.g., insurance or outsourcing) shifts financial liability to a third party; it does not describe a remaining probability after internal controls.",
+    "category": "Risk Management"
+  },
+  {
+    "question": "During an annual risk assessment, a financial institution identifies a new threat: insider trading enabled by privileged database access. The security team documents the threat actor, the vulnerable database, and potential regulatory fines. Which element of the risk formula is represented by the unpatched privilege escalation vulnerability in the database?",
+    "options": [
+      "Impact",
+      "Vulnerability",
+      "Asset",
+      "Threat"
+    ],
+    "correct": 1,
+    "explanation": "**Why C is correct**: A **vulnerability** is a weakness or gap in a system that a threat can exploit. The unpatched privilege escalation flaw is a weakness in the database that enables the threat to materialize. **Why A is wrong**: The **threat** is the insider (the threat agent) or the act of insider trading — the source of potential harm, not the weakness being exploited. **Why B is wrong**: The **asset** is the database itself (and its data), not the flaw within it. **Why D is wrong**: **Impact** refers to the consequence of a successful exploit (e.g., regulatory fines, data loss), not the exploitable condition.",
+    "category": "Risk Management"
+  },
+  {
+    "question": "A risk manager presents two analysis options to the executive team. The first produces dollar figures for expected losses; the second ranks risks as High, Medium, or Low using a scoring matrix. Which pair of terms correctly identifies these approaches?",
+    "options": [
+      "Quantitative analysis; qualitative analysis",
+      "Deterministic analysis; probabilistic analysis",
+      "Qualitative analysis; quantitative analysis",
+      "Exposure analysis; impact analysis"
+    ],
+    "correct": 0,
+    "explanation": "**Why B is correct**: **Quantitative risk analysis** assigns numerical monetary values (ALE, SLE) to risks, enabling cost-benefit decisions. **Qualitative risk analysis** uses descriptive scales (High/Medium/Low) and scoring matrices rather than precise dollar amounts. **Why A is wrong**: The order is reversed — dollar figures correspond to quantitative, not qualitative, analysis. **Why C is wrong**: Deterministic and probabilistic are modeling distinctions within quantitative methods, not the correct labels for these two approaches. **Why D is wrong**: 'Exposure analysis' and 'impact analysis' are not standard CISSP-defined risk analysis categories.",
+    "category": "Risk Management"
+  },
+  {
+    "question": "An e-commerce company decides to purchase cyber liability insurance to cover the financial impact of a data breach instead of investing in additional intrusion detection systems. Which risk response strategy does this represent?",
+    "options": [
+      "Risk mitigation",
+      "Risk transference",
+      "Risk avoidance",
+      "Risk acceptance"
+    ],
+    "correct": 1,
+    "explanation": "**Why C is correct**: **Risk transference** (also called risk sharing) shifts the financial consequences of a risk to a third party, such as an insurer. The company does not eliminate the risk but pays a premium to transfer monetary liability. **Why A is wrong**: **Risk avoidance** eliminates the risk entirely by stopping the activity that creates it (e.g., shutting down the e-commerce platform). **Why B is wrong**: **Risk mitigation** reduces the likelihood or impact through controls (e.g., deploying IDS/IPS), which is explicitly what the company chose not to do. **Why D is wrong**: **Risk acceptance** means knowingly absorbing the risk with no additional action or premium — not purchasing insurance.",
+    "category": "Risk Management"
+  },
+  {
+    "question": "A healthcare organization's board sets a policy that no single system failure may result in more than $1 million in regulatory fines. The security team separately establishes that controls must keep the probability of such a failure below 2% annually. Which terms best describe the board's limit and the security team's threshold, respectively?",
+    "options": [
+      "Risk appetite; risk tolerance",
+      "Risk tolerance; risk appetite",
+      "Inherent risk; residual risk",
+      "Risk capacity; risk threshold"
+    ],
+    "correct": 0,
+    "explanation": "**Why B is correct**: **Risk appetite** is the high-level, board-defined amount of risk an organization is willing to accept in pursuit of its objectives (the $1M fine limit). **Risk tolerance** is the more specific, operational deviation from that appetite that business units or security teams manage to (the 2% probability limit). **Why A is wrong**: The terms are swapped — appetite is the strategic, board-level statement; tolerance is the operational, measurable boundary. **Why C is wrong**: Inherent and residual risk describe states of risk before and after controls, not threshold-setting concepts. **Why D is wrong**: 'Risk capacity' and 'risk threshold' are not the standard CISSP pairing for these concepts.",
+    "category": "Risk Management"
+  },
+  {
+    "question": "A security team installs a new network monitoring solution to detect malware command-and-control traffic. After deployment, they discover the monitoring agent consumes excessive CPU cycles, degrading production server performance. What type of risk has emerged?",
+    "options": [
+      "Residual risk",
+      "Transferred risk",
+      "Secondary risk",
+      "Inherent risk"
+    ],
+    "correct": 2,
+    "explanation": "**Why C is correct**: **Secondary risk** is a new risk that arises as a direct result of implementing a risk response. The performance degradation was caused by the monitoring solution, which was itself a risk control. **Why A is wrong**: Residual risk is what remains of the original risk after controls are applied — it does not describe new risks introduced by the control itself. **Why B is wrong**: Inherent risk is the pre-control baseline risk level, not a consequence of implementing a response. **Why D is wrong**: Transferred risk involves shifting liability to a third party; it does not describe performance side-effects of a security tool.",
+    "category": "Risk Management"
+  },
+  {
+    "question": "During the NIST Risk Management Framework (RMF) process, a federal agency identifies that a newly deployed cloud storage system processes Controlled Unclassified Information. Which RMF step assigns the system an impact level that drives all subsequent control selection?",
+    "options": [
+      "Categorize",
+      "Select",
+      "Authorize",
+      "Implement"
+    ],
+    "correct": 0,
+    "explanation": "**Why B is correct**: The **Categorize** step (NIST SP 800-60) classifies the information system based on the potential impact (Low, Moderate, High) to confidentiality, integrity, and availability. This categorization drives all subsequent control baseline selection in the Select step. **Why A is wrong**: The **Implement** step is where selected security controls are actually deployed — it occurs after categorization and control selection. **Why C is wrong**: The **Select** step chooses appropriate controls from NIST SP 800-53 baselines, but those baselines depend on the impact level established during Categorize. **Why D is wrong**: The **Authorize** step is where a senior official accepts residual risk and grants an Authority to Operate — near the end of the RMF cycle.",
+    "category": "Risk Management"
+  },
+  {
+    "question": "A risk analyst is documenting all identified risks, their likelihood, impact ratings, owners, and current control status in a centralized spreadsheet updated quarterly. What is this document called in standard risk management practice?",
+    "options": [
+      "Risk register",
+      "System Security Plan",
+      "Business Impact Analysis",
+      "Threat model"
+    ],
+    "correct": 0,
+    "explanation": "**Why B is correct**: A **risk register** (also called a risk log) is the authoritative document that records identified risks, their likelihood, impact, risk owners, mitigation status, and residual risk. It is maintained throughout the risk management lifecycle. **Why A is wrong**: A **Business Impact Analysis (BIA)** focuses specifically on identifying critical business functions and quantifying the effect of disruptions — it is an input to BCP/DR, not a general risk tracking document. **Why C is wrong**: A **threat model** identifies threats and attack vectors against a specific system or application; it is narrower in scope and does not track organizational risk posture. **Why D is wrong**: A **System Security Plan (SSP)** documents security controls implemented for a specific information system (NIST framework); it is not a risk tracking register.",
+    "category": "Risk Management"
+  },
+  {
+    "question": "A manufacturing firm identifies a risk of production line downtime caused by ransomware. The firm decides to shut down its legacy OT network segment and migrate entirely to a modern, segmented ICS environment, eliminating the legacy exposure altogether. Which risk response strategy is being applied?",
+    "options": [
+      "Risk acceptance",
+      "Risk transference",
+      "Risk avoidance",
+      "Risk mitigation"
+    ],
+    "correct": 2,
+    "explanation": "**Why D is correct**: **Risk avoidance** eliminates the risk by discontinuing the activity or system that creates it. Shutting down the legacy OT segment removes the vulnerable attack surface entirely, avoiding the risk rather than reducing or transferring it. **Why A is wrong**: **Risk mitigation** would mean keeping the legacy network but adding controls (firewalls, IDS, patching) to reduce probability or impact — the risk would still exist in reduced form. **Why B is wrong**: **Risk transference** would involve insuring against ransomware losses or contracting a managed security provider to accept liability. **Why C is wrong**: **Risk acceptance** means acknowledging the risk and taking no protective action — the opposite of the proactive architectural change described.",
+    "category": "Risk Management"
+  },
+  {
+    "question": "An organization completes a quantitative risk analysis and determines that a web application firewall costing $30,000 annually would reduce the ALE of SQL injection attacks from $120,000 to $40,000. What is the value of this control, and should it be implemented based purely on cost-benefit?",
+    "options": [
+      "The control value is $120,000; yes, it should be implemented",
+      "The control value is $40,000; no, it should not be implemented",
+      "The control value is $50,000; no, it should not be implemented",
+      "The control value is $80,000; yes, it should be implemented"
+    ],
+    "correct": 3,
+    "explanation": "**Why A is correct**: Control value = ALE before control − ALE after control = $120,000 − $40,000 = **$80,000** risk reduction. Since the control costs $30,000 and saves $80,000, the net benefit is $50,000 annually — a clear positive return, so it should be implemented. **Why B is wrong**: $120,000 is the original ALE, not the value of the control. The control value is the reduction achieved, not the starting exposure. **Why C is wrong**: $50,000 is the net benefit after subtracting control cost from risk reduction — a positive figure that supports implementation, not a reason to reject it. **Why D is wrong**: $40,000 is the residual ALE after the control is in place, not the value the control provides.",
+    "category": "Risk Management"
+  },
+  {
+    "question": "The six steps of the NIST Risk Management Framework in correct sequential order are:",
+    "options": [
+      "Prepare → Categorize → Select → Implement → Assess → Authorize",
+      "Categorize → Implement → Select → Assess → Authorize → Monitor",
+      "Categorize → Select → Implement → Assess → Authorize → Monitor",
+      "Select → Categorize → Implement → Assess → Monitor → Authorize"
+    ],
+    "correct": 2,
+    "explanation": "**Why A is correct**: The NIST RMF (SP 800-37 Rev 2) follows: **Prepare** (often considered step 0) then **Categorize → Select → Implement → Assess → Authorize → Monitor**. Option A correctly lists the six core operational steps in order. **Why B is wrong**: Select cannot precede Categorize — controls are chosen based on the impact category established in the Categorize step. **Why C is wrong**: Implement before Select is logically impossible; you must choose controls before deploying them. **Why D is wrong**: Option D inserts 'Prepare' as step 1 and omits 'Monitor', truncating the cycle — Monitor is a critical ongoing step in the RMF.",
+    "category": "Risk Management"
+  },
+  {
+    "question": "A security manager at a logistics company is told by leadership that the organization will accept any risk whose ALE is under $10,000 without requiring additional controls, but risks above that threshold require documented treatment plans. This $10,000 threshold is an example of which concept?",
+    "options": [
+      "Residual risk threshold",
+      "Risk capacity",
+      "Risk appetite",
+      "Risk tolerance"
+    ],
+    "correct": 3,
+    "explanation": "**Why C is correct**: **Risk tolerance** is a specific, measurable boundary that defines acceptable deviation — in this case, a quantitative dollar threshold ($10,000 ALE) below which no treatment is required. It translates the broader risk appetite into an operational decision rule. **Why A is wrong**: **Risk capacity** refers to the maximum risk an organization can absorb before threatening its survival — a broader financial concept, not a specific treatment-trigger threshold. **Why B is wrong**: **Risk appetite** is the high-level strategic statement of how much risk leadership is willing to accept in pursuit of objectives. The $10,000 figure is the operationalized form of that appetite — i.e., the tolerance. **Why D is wrong**: 'Residual risk threshold' is not a standard CISSP term; residual risk is the remaining risk after controls, not a management decision boundary.",
+    "category": "Risk Management"
+  },
+  {
+    "question": "A penetration tester exploits a buffer overflow vulnerability in a web server, gaining root access. In the context of risk analysis, the buffer overflow is best classified as which element?",
+    "options": [
+      "Threat agent",
+      "Vulnerability",
+      "Threat",
+      "Exposure"
+    ],
+    "correct": 1,
+    "explanation": "**Why C is correct**: A **vulnerability** is a flaw or weakness that can be exploited. The buffer overflow is a coding defect in the web server — a weakness that the penetration tester (threat agent) exploits. **Why A is wrong**: The **threat agent** (or threat actor) is the penetration tester — the human entity that carries out the exploit. **Why B is wrong**: The **threat** is the potential for the buffer overflow to be exploited (the action or event), not the flaw itself. The distinction: vulnerability = the weakness; threat = the potential for harm via that weakness. **Why D is wrong**: **Exposure** refers to the condition of being susceptible to loss — it describes the state created by a vulnerability, not the vulnerability itself.",
+    "category": "Risk Management"
+  },
+  {
+    "question": "An organization's risk register lists a risk as having inherent risk of 'Critical' and residual risk of 'Low' after applying DLP software, endpoint encryption, and user training. A new cloud migration project is proposed that would bypass the DLP controls. Which risk management concept is most directly threatened by this proposal?",
+    "options": [
+      "The ALE calculation for the risk",
+      "The risk tolerance threshold",
+      "The control environment supporting the residual risk rating",
+      "The risk appetite statement"
+    ],
+    "correct": 2,
+    "explanation": "**Why C is correct**: The residual risk rating of 'Low' depends entirely on the **control environment** (DLP, encryption, training) being in place. Bypassing DLP removes a key control, which would increase residual risk — potentially back toward the inherent 'Critical' level. The control environment is what is directly threatened. **Why A is wrong**: The risk appetite statement is a high-level policy document; while the change may eventually violate it, the immediate technical concern is the integrity of the controls. **Why B is wrong**: While ALE would also change if controls are removed, the question is about the qualitative risk register context ('Critical' to 'Low'), not a specific ALE formula. **Why D is wrong**: The risk tolerance threshold defines acceptable deviation levels; it is not directly threatened by the bypass — the control effectiveness is.",
+    "category": "Risk Management"
+  },
+  {
+    "question": "A risk register entry for a critical payment system lists the following attributes: risk owner, risk description, likelihood rating, impact rating, current controls, control effectiveness, residual risk score, and next review date. A new audit finding requires the team to add the documented management decision about what to do with this risk. Which attribute is missing?",
+    "options": [
+      "Risk treatment plan",
+      "Annualized Rate of Occurrence",
+      "Asset value",
+      "Threat source"
+    ],
+    "correct": 0,
+    "explanation": "**Why B is correct**: A **risk treatment plan** (also called a risk response plan) documents the formal management decision — accept, mitigate, transfer, or avoid — along with the specific actions, timelines, and responsible parties. It is a required attribute of a mature risk register entry that records accountability for risk disposition. **Why A is wrong**: Threat source may be captured in the risk description or as a separate field, but it is not the missing element described — the audit finding is about documenting the management decision, not the source of the threat. **Why C is wrong**: Asset value is an input to quantitative calculations (SLE, ALE) but is not the documented management decision field that the audit is requiring. **Why D is wrong**: ARO is an element of ALE calculation; while useful, the question specifically identifies the absence of a documented management decision, which is the risk treatment plan.",
+    "category": "Risk Management"
+  },
+  {
+    "question": "A CISO presents risk information to the board of directors and uses the phrase: 'If we do nothing, we expect to lose approximately $2.4 million per year on average from credential theft incidents.' The board asks what the probability of a catastrophic $50 million breach is in any single year. To answer this probabilistic range question most rigorously, which quantitative technique should the risk team apply?",
+    "options": [
+      "Qualitative risk matrix scoring",
+      "Monte Carlo simulation",
+      "Delphi technique",
+      "SWOT analysis"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: **Monte Carlo simulation** runs thousands of randomized iterations using probability distributions for variables (threat frequency, loss magnitude) to produce a probability distribution of outcomes — directly answering questions about the likelihood of losses across a range of scenarios, including tail-risk events like a $50M breach. **Why A is wrong**: The **Delphi technique** is a structured expert-elicitation method for reaching consensus on estimates when hard data is unavailable — it produces point estimates, not probability distributions of outcomes. **Why C is wrong**: **SWOT analysis** identifies strengths, weaknesses, opportunities, and threats at a strategic level — it does not produce quantitative probability distributions of financial loss. **Why D is wrong**: **Qualitative risk matrix scoring** produces ordinal ratings (High/Medium/Low) — it cannot answer probabilistic questions about specific dollar thresholds.",
+    "category": "Risk Management"
+  },
+  {
+    "question": "An organization's risk team cannot agree on the probability of a zero-day exploit targeting their legacy ERP system because no historical data exists. The team lead decides to poll each expert independently, share the anonymized results, and repeat the process until the group converges on a consensus estimate. Which technique is being used?",
+    "options": [
+      "Delphi technique",
+      "FAIR model analysis",
+      "Monte Carlo simulation",
+      "Bow-tie analysis"
+    ],
+    "correct": 0,
+    "explanation": "**Why C is correct**: The **Delphi technique** is an iterative, structured expert-elicitation method where participants respond anonymously, results are aggregated and shared, and the process repeats until consensus is reached. It minimizes groupthink by keeping responses anonymous and is used when empirical data is unavailable. **Why A is wrong**: **Monte Carlo simulation** uses probability distributions as inputs to run randomized iterations — it requires inputs (even estimated ones) rather than producing them through expert consensus. **Why B is wrong**: The **FAIR (Factor Analysis of Information Risk) model** is a quantitative framework for analyzing risk in terms of threat event frequency and loss magnitude — it structures analysis but does not describe a consensus-building process. **Why D is wrong**: **Bow-tie analysis** maps causes and consequences around a central risk event using barrier controls — it is a risk visualization technique, not an expert elicitation method.",
+    "category": "Risk Management"
+  },
+  {
+    "question": "A security governance committee reviews the organization's risk management program and notes that risk identification, analysis, and control assessments only happen during the annual audit cycle. The committee recommends a shift to ongoing risk tracking between audits. Which concept describes this recommended approach?",
+    "options": [
+      "Continuous risk monitoring",
+      "Risk framing",
+      "Control gap analysis",
+      "Risk avoidance"
+    ],
+    "correct": 0,
+    "explanation": "**Why B is correct**: **Continuous risk monitoring** (described in NIST SP 800-137) establishes ongoing awareness of information security risk by automating control assessments, tracking risk indicators, and updating the risk posture in near-real time — rather than relying solely on periodic point-in-time audits. **Why A is wrong**: **Risk framing** establishes the context, constraints, and assumptions under which the organization manages risk — it is a foundational step in the risk management process, not an ongoing monitoring approach. **Why C is wrong**: **Risk avoidance** is a risk response strategy that eliminates a risk by stopping the associated activity — it is not a monitoring concept. **Why D is wrong**: **Control gap analysis** compares current controls against a target framework to identify deficiencies — it is a point-in-time assessment tool, not an ongoing monitoring methodology.",
+    "category": "Risk Management"
+  },
+  {
+    "question": "A risk manager is asked to define the context, scope, assumptions, and constraints that will govern how the organization approaches risk management decisions — including risk tolerances, the regulatory environment, and which assets are in scope. According to NIST SP 800-39, this activity is called:",
+    "options": [
+      "Risk assessment",
+      "Risk framing",
+      "Risk response",
+      "Risk monitoring"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: **Risk framing** is the first component of the NIST SP 800-39 risk management process. It establishes the context for all subsequent risk decisions — defining risk tolerances, assumptions, constraints, organizational priorities, and the risk management strategy that will be applied. **Why A is wrong**: **Risk assessment** is the process of identifying threats, vulnerabilities, likelihoods, and impacts for specific risks — it occurs within the context established by risk framing, not before it. **Why C is wrong**: **Risk response** involves selecting and implementing a treatment (accept, mitigate, transfer, avoid) for assessed risks — it follows assessment and is informed by the frame. **Why D is wrong**: **Risk monitoring** involves tracking changes in risk, control effectiveness, and compliance over time — it is the ongoing phase that follows response.",
+    "category": "Risk Management"
+  },
+  {
+    "question": "A vendor risk manager at a bank discovers that a critical payment processing vendor has never had a security audit, stores customer card data in plaintext, and is not contractually required to notify the bank of breaches. The bank has no alternative vendor. Which risk management concept describes the bank's exposure due to this vendor relationship?",
+    "options": [
+      "Secondary risk from control implementation",
+      "Third-party risk management gap",
+      "Residual risk after mitigation",
+      "Risk transfer to the vendor"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: **Third-party risk management (TPRM)** encompasses the processes of assessing, monitoring, and contractually managing risks introduced by vendors, suppliers, and partners. The absence of audits, plaintext storage, and missing breach notification clauses are all TPRM failures — gaps in vendor oversight that expose the bank to breaches it cannot detect or control. **Why A is wrong**: **Secondary risk** arises from implementing a risk control — the vendor relationship predates any control implementation, so this is not a secondary risk scenario. **Why C is wrong**: **Residual risk** is what remains after controls are applied. The issue here is that no adequate controls exist over the vendor — this is a gap in the vendor oversight program, not a residual risk calculation. **Why D is wrong**: Outsourcing a function does not transfer all risk — legal, reputational, and regulatory risk remains with the bank. The description highlights missing safeguards, not a completed risk transfer.",
+    "category": "Risk Management"
+  },
+  {
+    "question": "A CISO presents the board with a risk report showing that SQL injection attacks have spiked 40% in the past quarter and that the organization's unpatched web applications now have a 60% higher likelihood of compromise compared to last year. The metric being tracked — the measurable indicator that signals increasing risk before a loss event occurs — is best called a:",
+    "options": [
+      "Key Risk Indicator (KRI)",
+      "Control Objective",
+      "Key Performance Indicator (KPI)",
+      "Key Goal Indicator (KGI)"
+    ],
+    "correct": 0,
+    "explanation": "**Why C is correct**: A **Key Risk Indicator (KRI)** is a forward-looking metric that signals the likelihood or magnitude of a risk increasing — providing early warning before an actual loss event. The spike in SQL injection attempts and increased likelihood of compromise are exactly what KRIs are designed to capture and communicate. **Why A is wrong**: A **KPI (Key Performance Indicator)** measures how well a process or objective is being achieved — it is retrospective and performance-focused, not specifically a risk-signaling metric. **Why B is wrong**: A **KGI (Key Goal Indicator)** measures whether strategic goals have been achieved — it is outcome-oriented, not a leading risk signal. **Why D is wrong**: A **Control Objective** is a statement of desired control outcomes — it describes what a control should achieve, not a measurable indicator of risk trend.",
+    "category": "Risk Management"
+  },
+  {
+    "question": "An organization uses the **FAIR (Factor Analysis of Information Risk)** model to quantify risk. The analyst decomposes the risk into 'Loss Event Frequency' and 'Loss Magnitude.' Under FAIR, Loss Event Frequency is further broken down into which two factors?",
+    "options": [
+      "Asset value and exposure factor",
+      "Threat event frequency and vulnerability",
+      "Inherent risk and residual risk",
+      "Likelihood and impact"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: In the **FAIR model**, Loss Event Frequency = Threat Event Frequency × Vulnerability (the probability that a threat event results in a loss). Threat Event Frequency captures how often threats act against assets; Vulnerability captures the probability that the asset is harmed when a threat acts. **Why A is wrong**: Asset value and exposure factor are components of the traditional SLE formula (ALE = SLE × ARO), not the FAIR decomposition of Loss Event Frequency. **Why C is wrong**: Likelihood and impact are generic qualitative risk language — FAIR specifically decomposes frequency and magnitude into quantifiable sub-factors, not these high-level descriptors. **Why D is wrong**: Inherent risk and residual risk describe control-adjusted states of overall risk — they are not sub-components of Loss Event Frequency in the FAIR taxonomy.",
+    "category": "Risk Management"
+  },
+  {
+    "question": "An organization's security controls are assessed and found to be effective at reducing risk from 'High' to 'Medium.' However, the risk assessment framework requires 'Low' residual risk for systems holding sensitive PII. The difference between where controls currently bring risk ('Medium') and where they need to be ('Low') is best described as:",
+    "options": [
+      "Control risk",
+      "Residual risk",
+      "Inherent risk",
+      "Control gap"
+    ],
+    "correct": 3,
+    "explanation": "**Why D is correct**: A **control gap** is the difference between the current control posture and the required or target control posture — in this case, the distance between the achieved 'Medium' residual risk and the required 'Low' residual risk. Control gap analysis identifies where additional or stronger controls are needed. **Why A is wrong**: **Inherent risk** is risk before any controls are applied — not the distance between current and target control effectiveness. **Why B is wrong**: **Residual risk** is the risk level after existing controls — the 'Medium' rating. It describes the current state, not the gap between current and required. **Why C is wrong**: **Control risk** refers to the risk that controls will fail to prevent or detect errors — a concept from auditing — not the structural gap between achieved and required risk levels.",
+    "category": "Risk Management"
+  },
+  {
+    "question": "A risk owner documents that the organization accepts a known risk of an unpatched legacy system because remediation would cost $2 million and the ALE is only $15,000. The risk owner signs a formal document acknowledging this decision. What is this document called?",
+    "options": [
+      "System Security Plan",
+      "Risk acceptance memo (or accepted risk record)",
+      "Risk treatment plan",
+      "Residual risk certificate"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: When an organization formally chooses to **accept** a risk, best practice requires a signed **risk acceptance memo** (sometimes called an accepted risk record or exception document) from an authorized risk owner. This creates accountability, documents the cost-benefit rationale, and provides an audit trail showing the decision was made consciously, not by oversight. **Why A is wrong**: A **risk treatment plan** documents the action steps for mitigating, transferring, or avoiding a risk — not the decision to accept it without further action. **Why C is wrong**: A **System Security Plan** documents all security controls for a system (NIST framework) — it is not specifically a risk acceptance authorization document. **Why D is wrong**: 'Residual risk certificate' is not a standard industry term for this document — the standard term is a risk acceptance memo, exception approval, or accepted risk record.",
+    "category": "Risk Management"
+  },
+  {
+    "question": "A security control prevents a payroll clerk from accessing HR records outside their job function. This control operates by blocking the action before it can occur. According to CISSP control category classification, what type of control is this?",
+    "options": [
+      "Corrective control",
+      "Deterrent control",
+      "Detective control",
+      "Preventive control"
+    ],
+    "correct": 3,
+    "explanation": "**Why D is correct**: A **preventive control** stops an undesired event from occurring — in this case, access control rules block the payroll clerk from accessing records outside their authorization before any unauthorized action succeeds. **Why A is wrong**: A **detective control** identifies and alerts on events that have already occurred (e.g., audit logs, IDS alerts) — it does not prevent the action. **Why B is wrong**: A **corrective control** restores systems or processes after an incident has occurred (e.g., restoring from backup, applying a patch) — it acts after the fact. **Why C is wrong**: A **deterrent control** discourages threat actors from attempting an action (e.g., warning banners, security cameras as visible deterrents) but does not technically block the action if the actor proceeds.",
+    "category": "Risk Management"
+  },
+  {
+    "question": "An organization cannot fully remediate a critical vulnerability in a legacy industrial control system because applying the patch would require taking production offline for six weeks. Instead, they implement additional network segmentation, enhanced monitoring, and mandatory multi-person access to compensate. These measures are collectively called:",
+    "options": [
+      "Compensating controls",
+      "Deterrent controls",
+      "Corrective controls",
+      "Administrative controls"
+    ],
+    "correct": 0,
+    "explanation": "**Why B is correct**: **Compensating controls** are alternative controls implemented when primary controls cannot be applied — they provide an equivalent level of risk reduction through different means. Network segmentation, enhanced monitoring, and multi-person access compensate for the inability to patch the ICS system. **Why A is wrong**: **Corrective controls** restore systems or correct damage after an incident (e.g., patching after exploitation, restoring backups) — they are reactive, not substitute preventive measures. **Why C is wrong**: **Deterrent controls** discourage attackers by signaling consequences (e.g., visible cameras, warning notices) — they do not provide technical mitigation for an unpatched vulnerability. **Why D is wrong**: **Administrative controls** are policy-based (e.g., procedures, training) — while multi-person access has an administrative component, the collective set described is specifically functioning as compensating controls for an unmitigable technical risk.",
+    "category": "Risk Management"
+  },
+  {
+    "question": "A security manager is preparing to brief the executive team on the organization's current risk posture. The executives have no technical background and need to understand which risks require immediate budget decisions. Which risk communication approach is most appropriate for this audience?",
+    "options": [
+      "Provide a full technical penetration test report with all findings and exploit code references",
+      "Translate technical risks into business impact language, using financial exposure figures and likelihood expressed as simple probabilities or expected annual loss",
+      "Present raw CVSS scores and CVE identifiers for all open vulnerabilities",
+      "Present a detailed network topology diagram annotated with vulnerability scanner output"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: **Risk communication to executives** must translate technical findings into business terms — financial exposure (ALE, potential fines, reputation cost), likelihood expressed as plain probabilities, and prioritized decisions tied to organizational objectives. Executives are responsible for risk appetite and resource allocation, not technical remediation details. **Why A is wrong**: CVSS scores and CVE identifiers are meaningful to security engineers but opaque to business executives — this approach fails to connect risks to business consequences and does not support budget decision-making. **Why C is wrong**: A full penetration test report contains technical detail (exploit code, vulnerability details) appropriate for security teams, not for executive briefings where brevity and business impact are essential. **Why D is wrong**: Network topology diagrams with scanner output are operational artifacts — they provide no context about business value, financial exposure, or prioritization that executives need to make risk investment decisions.",
+    "category": "Risk Management"
+  },
+  {
+    "question": "A risk analyst uses the formula: **Total Risk = Threats × Vulnerabilities × Asset Value**. After implementing a set of controls, the formula is modified to reflect the impact of those controls. Which formula correctly expresses **Residual Risk** in this context?",
+    "options": [
+      "Residual Risk = Threats × Asset Value only, ignoring vulnerabilities",
+      "Residual Risk = Total Risk × (1 − Control Effectiveness)",
+      "Residual Risk = Total Risk + Controls",
+      "Residual Risk = Total Risk − Controls"
+    ],
+    "correct": 3,
+    "explanation": "**Why C is correct**: The standard CISSP formula for **Residual Risk = Total Risk − Controls** (or equivalently, the risk remaining after the countermeasure gap is closed). Controls reduce total risk — residual risk is what is left over after subtracting the protection value of implemented safeguards. **Why A is wrong**: Adding controls to total risk would increase residual risk — the opposite of what controls accomplish. Controls reduce, not increase, risk. **Why B is wrong**: While 'Total Risk × (1 − Control Effectiveness)' is a reasonable proportional model, it is not the standard CISSP formula. The classic CISSP expression is the subtraction form: Residual Risk = Total Risk − Controls. **Why D is wrong**: Ignoring vulnerabilities removes a critical component of the risk formula — vulnerabilities amplify the likelihood that a threat can exploit an asset. Removing them from the formula would misrepresent actual risk.",
+    "category": "Risk Management"
+  },
+  {
+    "question": "An auditor reviews a company's security program and finds that while firewall and IDS controls are excellent, there are no documented policies for acceptable use, no security awareness training records, and no vendor access agreements. The auditor notes that one entire class of controls is missing. Which control category is absent?",
+    "options": [
+      "Technical (logical) controls",
+      "Physical controls",
+      "Administrative (managerial) controls",
+      "Corrective controls"
+    ],
+    "correct": 2,
+    "explanation": "**Why C is correct**: **Administrative controls** (also called managerial or operational controls) include policies, procedures, standards, guidelines, security awareness training, background checks, and vendor agreements — the governance and human-factor layer of security. The missing elements (acceptable use policies, training records, vendor agreements) are all administrative controls. **Why A is wrong**: **Technical controls** are hardware and software safeguards — firewalls, IDS, encryption, access controls. The auditor notes these are excellent, so technical controls are present. **Why B is wrong**: **Physical controls** protect the physical environment — locks, cameras, guards, badge readers. The findings describe policy and training gaps, not physical security deficiencies. **Why D is wrong**: **Corrective controls** are a functional category (controls that restore after an incident) — not a separate administrative domain. The missing controls span the administrative category, not just corrective function.",
+    "category": "Risk Management"
+  }
+]

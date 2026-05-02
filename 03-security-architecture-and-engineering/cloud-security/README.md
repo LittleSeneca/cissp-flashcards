@@ -1,11 +1,9 @@
----
-tier: 3
-domain: Security Architecture and Engineering (Domain 3) + Security Operations (Domain 7)
-exam_weight: ~5-8% (growing emphasis in 2024 outline)
-status: built
----
-
 # Cloud Security for the CISSP Exam
+
+> **Tier:** 3  
+> **Domain:** Security Architecture and Engineering (Domain 3) + Security Operations (Domain 7)  
+> **Exam Weight:** ~5-8% (growing emphasis in 2024 outline)  
+> **Status:** Built
 
 A study-oriented overview of the cloud security question family on the CISSP. Cloud security spans Domain 3 (architecture and shared responsibility), Domain 4 (cloud network security), Domain 6 (cloud assessment), and Domain 7 (cloud operations and incident response). The 2024 outline refresh significantly expanded cloud security emphasis. Use alongside `cloud-security.tsv` in this folder.
 

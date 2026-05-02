@@ -1,11 +1,9 @@
----
-tier: 1
-domain: Security Operations (Domain 7) + Security and Risk Management (Domain 1)
-exam_weight: ~13% + ~16%
-status: built
----
-
 # Incident Response & Breach Handling for the CISSP Exam
+
+> **Tier:** 1  
+> **Domain:** Security Operations (Domain 7) + Security and Risk Management (Domain 1)  
+> **Exam Weight:** ~13% + ~16%  
+> **Status:** Built
 
 A study-oriented overview of the incident response and breach handling question family on the CISSP. This family lives primarily in Domain 7 (Security Operations) but crosses into Domain 1 for breach notification and regulatory reporting requirements. Use alongside `incident-response.tsv` in this folder.
 

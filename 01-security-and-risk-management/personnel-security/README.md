@@ -1,11 +1,9 @@
----
-tier: 3
-domain: Security and Risk Management (Domain 1)
-exam_weight: ~3-5% within Domain 1
-status: built
----
-
 # Personnel Security for the CISSP Exam
+
+> **Tier:** 3  
+> **Domain:** Security and Risk Management (Domain 1)  
+> **Exam Weight:** ~3-5% within Domain 1  
+> **Status:** Built
 
 A study-oriented overview of the personnel security question family on the CISSP. Personnel security lives in Domain 1 (Security and Risk Management) under "Contribute to and enforce personnel security policies and procedures." Use alongside `personnel-security.tsv` in this folder.
 
