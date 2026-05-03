@@ -18,6 +18,17 @@ A key theme throughout: **know when to use what, and what authorization is requi
 
 Understanding the differences between assessment types is the core exam competency for this domain.
 
+```mermaid
+flowchart TD
+    subgraph TYPES[Assessment Type Comparison]
+        VS[Vulnerability Scanning<br/>Automated - finds known vulns<br/>Does NOT exploit<br/>Lower authorization bar]
+        PT[Penetration Testing<br/>Authorized simulated attack<br/>Actively exploits vulnerabilities<br/>Requires written Rules of Engagement]
+        RT[Red Team Exercise<br/>Full-scope adversarial simulation<br/>Tests detection and response<br/>Emulates real threat actors]
+        BB[Bug Bounty<br/>Crowdsourced continuous testing<br/>Researchers paid per finding<br/>Broad ongoing coverage]
+    end
+    VS --> PT --> RT
+```
+
 ### Vulnerability Scanning
 
 - **What it is:** Automated scanning of systems to identify known vulnerabilities, misconfigurations, missing patches, and default credentials.
@@ -31,18 +42,43 @@ Understanding the differences between assessment types is the core exam competen
 
 - **What it is:** A simulated attack conducted by authorized testers who attempt to *exploit* vulnerabilities to determine the real-world impact.
 - **Critical requirement: Written authorization (Rules of Engagement / Statement of Work) must exist before any testing begins.** This is a firm CISSP exam point — no exceptions.
-- **Phases of a penetration test:**
-  1. **Reconnaissance** — Passive or active information gathering (OSINT, DNS lookups, social engineering research)
-  2. **Scanning / Enumeration** — Active probing to map open ports, services, versions, and potential entry points
-  3. **Exploitation** — Attempting to compromise systems using identified vulnerabilities
-  4. **Post-Exploitation** — Establishing persistence, pivoting to other systems, escalating privileges, exfiltrating data (within agreed scope)
-  5. **Reporting** — Documenting findings, evidence, risk ratings, and remediation recommendations
+
+```mermaid
+flowchart LR
+    A[Reconnaissance<br/>Passive and active OSINT<br/>DNS lookups social engineering] --> B[Scanning and Enumeration<br/>Port scanning service versions<br/>Potential entry points]
+    B --> C[Exploitation<br/>Attempt to compromise<br/>using identified vulns]
+    C --> D[Post-Exploitation<br/>Persistence pivoting<br/>Privilege escalation data exfil]
+    D --> E[Reporting<br/>Findings evidence<br/>Risk ratings remediation recs]
+    style A fill:#e0e7ff,stroke:#6366f1
+    style B fill:#e0e7ff,stroke:#6366f1
+    style C fill:#fca5a5,stroke:#dc2626
+    style D fill:#fca5a5,stroke:#dc2626
+    style E fill:#d1fae5,stroke:#059669
+```
 
 ### Red Team Exercises
 
 - **What it is:** A full-scope, adversarial simulation where a red team emulates a real threat actor — including physical intrusion, social engineering, and multi-vector attack chains — to test the organization's *detection and response* capability.
 - **Key distinction from pen testing:** Red teams test whether the *blue team (defenders)* can detect and respond; pen tests focus on finding exploitable vulnerabilities.
 - **Purple teaming:** Red and blue teams work collaboratively to improve detection logic in real time.
+
+```mermaid
+flowchart LR
+    subgraph RED[Red Team - Attackers]
+        R1[Emulate threat actors<br/>Multi-vector attacks]
+        R2[Physical intrusion<br/>Social engineering<br/>Technical exploitation]
+    end
+    subgraph BLUE[Blue Team - Defenders]
+        B1[Detect and respond<br/>Use SIEM and EDR]
+        B2[Contain and recover<br/>Update detections]
+    end
+    subgraph PURPLE[Purple Team - Collaborative]
+        P1[Red and Blue work together<br/>Improve detection in real time]
+    end
+    RED -->|attacks| BLUE
+    RED --> PURPLE
+    BLUE --> PURPLE
+```
 
 ### Bug Bounty Programs
 
@@ -57,6 +93,17 @@ Understanding the differences between assessment types is the core exam competen
 | **Black box** | No prior knowledge of the target | External attacker with no insider access |
 | **White box** | Full knowledge (architecture, source code, credentials) | Insider or auditor with full access |
 | **Grey box** | Partial knowledge (some credentials, network diagrams) | Partially trusted insider or attacker who has done reconnaissance |
+
+```mermaid
+flowchart LR
+    BB[Black Box<br/>No knowledge<br/>Most realistic attacker view<br/>May miss hidden issues]
+    GB[Grey Box<br/>Partial knowledge<br/>Practical balance<br/>Common in real engagements]
+    WB[White Box<br/>Full knowledge<br/>Most thorough coverage<br/>Best for finding all vulns]
+    BB --> GB --> WB
+    style BB fill:#fca5a5,stroke:#dc2626
+    style GB fill:#fef9c3,stroke:#ca8a04
+    style WB fill:#d1fae5,stroke:#059669
+```
 
 **Exam cue:** Black box = most realistic attacker simulation. White box = most thorough coverage (best for finding all vulnerabilities). Grey box = balanced — common in practice.
 
@@ -86,9 +133,19 @@ SOC reports are produced by independent auditors evaluating a service organizati
 | **SOC 2** | Controls based on Trust Service Criteria (Security, Availability, Processing Integrity, Confidentiality, Privacy) | Management, security teams, business partners |
 | **SOC 3** | Public-facing summary of SOC 2 — no detailed test results | General public, marketing use |
 
-**Type I vs. Type II:**
-- **Type I** — Point-in-time assessment of whether controls are *suitably designed*
-- **Type II** — Assessment over a period (typically 6–12 months) of whether controls *operated effectively*
+```mermaid
+flowchart TD
+    subgraph TYPE1[Type I - Point in Time]
+        T1[Snapshot assessment<br/>Are controls suitably DESIGNED?<br/>As of a single date]
+    end
+    subgraph TYPE2[Type II - Period of Time]
+        T2[6 to 12 month assessment<br/>Did controls OPERATE EFFECTIVELY?<br/>Over the full period]
+    end
+    T1 -->|More rigorous version| T2
+    Note[SOC 2 Type II is the gold standard<br/>for third-party vendor assurance]
+    style T2 fill:#d1fae5,stroke:#059669
+    style Note fill:#fef9c3,stroke:#ca8a04
+```
 
 **SSAE 18** (Statements on Standards for Attestation Engagements No. 18) is the AICPA standard under which SOC reports are issued. Superseded SSAE 16.
 
@@ -120,6 +177,15 @@ Metrics translate security activities into business-relevant measurements.
 - **Vulnerability density** — Number of vulnerabilities per unit of code or per system
 - **False positive rate** — High rates degrade analyst trust in alerting systems and cause alert fatigue
 - **Control effectiveness** — Percentage of controls passing validation in audits or assessments
+
+```mermaid
+flowchart LR
+    Event[Security Event Occurs] -->|time passes| Detect[Detection<br/>MTTD measured here]
+    Detect -->|time passes| Respond[Response and Containment<br/>MTTR measured here]
+    Respond --> Resolve[Resolution and Recovery]
+    Resolve --> Improve[Improve controls<br/>Reduce MTTD and MTTR]
+    Improve -.->|better detection| Event
+```
 
 Metrics should be **actionable** (they drive decisions), **accurate** (based on reliable data), and **communicated** to the right audience (operational vs. executive).
 

@@ -29,6 +29,23 @@ The OSI model is the single most tested framework in Domain 4. You must know all
 - **Mnemonic (top-down):** "All People Seem To Need Data Processing"
 - Devices operate at specific layers: hubs at Layer 1, switches at Layer 2, routers at Layer 3, firewalls typically Layer 3–7
 
+```mermaid
+flowchart TD
+    L7[Layer 7 - Application<br/>HTTP HTTPS DNS SMTP<br/>Attacks: SQLi XSS Phishing]
+    L6[Layer 6 - Presentation<br/>TLS negotiation Encoding<br/>Attack: SSL Stripping]
+    L5[Layer 5 - Session<br/>NetBIOS RPC SIP<br/>Attack: Session Hijacking]
+    L4[Layer 4 - Transport<br/>TCP UDP Ports<br/>Attack: SYN Flood]
+    L3[Layer 3 - Network<br/>IP ICMP Routing<br/>Attack: IP Spoofing]
+    L2[Layer 2 - Data Link<br/>Ethernet ARP 802.11<br/>Attack: ARP Poisoning MAC Flooding]
+    L1[Layer 1 - Physical<br/>Cables Hubs Signals<br/>Attack: Tapping Jamming]
+    L7 --> L6 --> L5 --> L4 --> L3 --> L2 --> L1
+    style L7 fill:#e0e7ff,stroke:#6366f1
+    style L4 fill:#fef9c3,stroke:#ca8a04
+    style L3 fill:#fef9c3,stroke:#ca8a04
+    style L2 fill:#fed7aa,stroke:#ea580c
+    style L1 fill:#fed7aa,stroke:#ea580c
+```
+
 ---
 
 ## TCP/IP Protocol Suite
@@ -41,6 +58,17 @@ TCP/IP is the operational model for modern networks. The exam occasionally maps 
 - **DNS** — Translates hostnames to IPs; operates on UDP port 53; target of poisoning and amplification attacks
 - **DHCP** — Assigns IP addresses dynamically; rogue DHCP servers are a common MITM setup
 
+```mermaid
+sequenceDiagram
+    participant C as Client
+    participant S as Server
+    Note over C,S: TCP 3-Way Handshake
+    C->>S: SYN (I want to connect)
+    S->>C: SYN-ACK (Acknowledged, ready)
+    C->>S: ACK (Connection established)
+    Note over C,S: SYN Flood Attack - attacker sends many SYN packets<br/>and never completes the handshake,<br/>exhausting the server connection table
+```
+
 Key port numbers to know: SSH (22), SMTP (25), DNS (53), HTTP (80), HTTPS (443), LDAP (389), LDAPS (636), RDP (3389), SNMP (161/162)
 
 ---
@@ -49,10 +77,22 @@ Key port numbers to know: SSH (22), SMTP (25), DNS (53), HTTP (80), HTTPS (443),
 
 Each device type has a security role and corresponding attack surface.
 
-- **Hub** — Layer 1; broadcasts all traffic to all ports; passive eavesdropping is trivial — never use in secure environments
-- **Switch** — Layer 2; forwards frames by MAC address; can be attacked via MAC flooding (turns it into a hub) or VLAN hopping
-- **Router** — Layer 3; routes packets by IP; enforces ACLs; target of routing protocol attacks
-- **Firewall** — Packet filtering (stateless), stateful inspection, or application-layer (next-gen); positioned at network boundaries
+```mermaid
+flowchart LR
+    Hub[Hub<br/>Layer 1<br/>Broadcasts to all ports<br/>Never use in secure environments]
+    Switch[Switch<br/>Layer 2<br/>Forwards by MAC address<br/>Attack: MAC flooding VLAN hopping]
+    Router[Router<br/>Layer 3<br/>Routes by IP address<br/>Enforces ACLs]
+    FW[Firewall<br/>Layer 3 to 7<br/>Packet filter / Stateful / NGFW<br/>Boundary enforcement]
+    IDS[IDS<br/>Passive detection only<br/>Alerts but does not block]
+    IPS[IPS<br/>Inline active blocking<br/>Must be tuned to avoid false positives]
+    WAF[WAF<br/>Layer 7<br/>Protects web apps<br/>SQLi XSS CSRF]
+
+    Hub --> Switch --> Router --> FW
+    FW --> IDS
+    FW --> IPS
+    FW --> WAF
+```
+
 - **IDS (Intrusion Detection System)** — Passive; detects and alerts; signature-based or anomaly-based; can produce false positives
 - **IPS (Intrusion Prevention System)** — Inline; can block traffic in real time; must be tuned carefully to avoid blocking legitimate traffic
 - **Proxy / Reverse Proxy** — Intermediates connections; can enforce policy and cache content; WAF is a specialized reverse proxy
@@ -76,8 +116,42 @@ The exam will ask which protocol is appropriate for a given secure communication
 | **SNMPv3** | Network device management | 161/162 | Adds authentication and encryption; v1/v2c are plaintext |
 | **DNSSEC** | DNS record integrity | 53 | Signs DNS responses; does not encrypt queries |
 
+```mermaid
+flowchart LR
+    subgraph INSECURE[Replace These - Insecure Protocols]
+        Telnet[Telnet<br/>Plaintext remote admin]
+        FTP[FTP<br/>Plaintext file transfer]
+        HTTP[HTTP<br/>Plaintext web traffic]
+        SNMPv1[SNMPv1 and v2<br/>Plaintext management]
+    end
+    subgraph SECURE[Use These - Secure Replacements]
+        SSH[SSH port 22<br/>Encrypted remote admin]
+        SFTP[SFTP or FTPS<br/>Encrypted file transfer]
+        HTTPS[HTTPS port 443<br/>TLS encrypted web]
+        SNMPv3[SNMPv3<br/>Authenticated and encrypted]
+    end
+    Telnet -->|replace with| SSH
+    FTP -->|replace with| SFTP
+    HTTP -->|replace with| HTTPS
+    SNMPv1 -->|replace with| SNMPv3
+```
+
 - **IPSec components:** AH (Authentication Header) for integrity, ESP (Encapsulating Security Payload) for confidentiality + integrity; IKE for key exchange
 - SSL is deprecated — the exam may use "SSL" colloquially but the correct protocol is TLS
+
+---
+
+## IPSec Modes
+
+```mermaid
+flowchart LR
+    subgraph TRANSPORT[Transport Mode - Host to Host]
+        H1[Host A] -->|Encrypts payload only<br/>Original IP header intact| H2[Host B]
+    end
+    subgraph TUNNEL[Tunnel Mode - Gateway to Gateway]
+        GW1[Gateway A] -->|Encrypts entire original packet<br/>New IP header added<br/>Site-to-site VPN| GW2[Gateway B]
+    end
+```
 
 ---
 
@@ -85,10 +159,17 @@ The exam will ask which protocol is appropriate for a given secure communication
 
 Wireless introduces significant attack surface due to the broadcast nature of radio frequency transmission.
 
-- **WEP** — Fundamentally broken; static keys, weak IV reuse, cracks in minutes; never use
-- **WPA** — Transitional; uses TKIP; improved over WEP but still vulnerable to TKIP attacks
-- **WPA2** — Uses AES-CCMP; strong when combined with 802.1X; still vulnerable to KRACK attack in some implementations
-- **WPA3** — Current standard; uses SAE (Simultaneous Authentication of Equals) replacing PSK handshake; resistant to offline dictionary attacks
+```mermaid
+flowchart LR
+    WEP[WEP<br/>Broken - never use<br/>Static keys weak IV] -->|replaced by| WPA[WPA<br/>TKIP transitional<br/>Vulnerable to TKIP attacks]
+    WPA -->|replaced by| WPA2[WPA2<br/>AES-CCMP<br/>Vulnerable to KRACK]
+    WPA2 -->|replaced by| WPA3[WPA3<br/>SAE replaces PSK<br/>Resistant to offline dictionary attacks<br/>Current standard]
+    style WEP fill:#fca5a5,stroke:#dc2626
+    style WPA fill:#fed7aa,stroke:#ea580c
+    style WPA2 fill:#fef9c3,stroke:#ca8a04
+    style WPA3 fill:#d1fae5,stroke:#059669
+```
+
 - **802.1X** — Port-based Network Access Control (NAC); requires an authentication server (RADIUS); provides per-user/device authentication
 - **EAP methods:** EAP-TLS (mutual certificate authentication — strongest), PEAP (tunneled, uses server cert + password), EAP-TTLS
 - **Rogue AP** — Unauthorized access point; mitigated by wireless IDS and 802.1X
@@ -114,6 +195,18 @@ Understand the attack mechanism, the OSI layer it operates on, and the appropria
 ## Network Segmentation
 
 Segmentation limits blast radius and enforces least privilege at the network level.
+
+```mermaid
+flowchart TD
+    Internet[Internet] --> FW1[Outer Firewall]
+    FW1 --> DMZ[DMZ<br/>Public-facing servers<br/>Web Mail DNS]
+    DMZ --> FW2[Inner Firewall]
+    FW2 --> Internal[Internal Network]
+    Internal --> VLAN1[VLAN - Finance]
+    Internal --> VLAN2[VLAN - Engineering]
+    Internal --> VLAN3[VLAN - HR]
+    Internal --> Restricted[Restricted Zone<br/>Critical systems<br/>Microsegmentation]
+```
 
 - **VLAN (Virtual LAN)** — Logical network segments on shared physical infrastructure; Layer 2; enforced by switches; attack: VLAN hopping via double-tagging
 - **DMZ (Demilitarized Zone)** — Network segment between the internet and internal network; hosts public-facing services (web servers, mail relays); dual-firewall architecture is strongest

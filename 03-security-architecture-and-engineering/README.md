@@ -25,6 +25,17 @@ These foundational principles appear in scenario questions where you must identi
 - **Open design** — Security should not depend on secrecy of the design (distinct from secrecy of keys)
 - **Psychological acceptability** — Security controls must be usable enough that people don't circumvent them
 
+```mermaid
+flowchart TD
+    subgraph DESIGN[Core Secure Design Principles]
+        A[Defense in Depth<br/>Multiple layered controls] --- B[Fail-Safe Defaults<br/>Deny unless explicitly permitted]
+        B --- C[Least Privilege<br/>Minimum access needed]
+        C --- D[Separation of Privilege<br/>Multiple conditions to authorize]
+        D --- E[Economy of Mechanism<br/>Keep it simple]
+        E --- F[Complete Mediation<br/>Check every access every time]
+    end
+```
+
 ---
 
 ## Security Models
@@ -40,6 +51,22 @@ Formal security models provide mathematical proof that a system enforces a secur
 | **Graham-Denning** | Access control | Defines 8 rules for creating/deleting subjects and objects |
 | **Harrison-Ruzzo-Ullman (HRU)** | Access control | Formal model for access rights; proves safety is undecidable in general |
 
+```mermaid
+flowchart LR
+    subgraph BLP[Bell-LaPadula - Confidentiality]
+        direction TB
+        TS2[Top Secret] --- S2[Secret] --- C2[Confidential] --- U2[Unclassified]
+        RU[No Read Up<br/>Cannot read above clearance level]
+        WD[No Write Down<br/>Cannot write to lower level]
+    end
+    subgraph BIBA[Biba - Integrity]
+        direction TB
+        H[High Integrity] --- M[Medium] --- L[Low Integrity]
+        RD[No Read Down<br/>Cannot read lower integrity]
+        WU[No Write Up<br/>Cannot write to higher integrity]
+    end
+```
+
 - **Bell-LaPadula** is the classic military model — think classified documents
 - **Biba** is the integrity-first complement — think financial transaction systems
 - **Clark-Wilson** uses the concept of *constrained data items (CDIs)* and *transformation procedures (TPs)*
@@ -53,13 +80,17 @@ Evaluation frameworks provide a standardized way to assess how trustworthy a sys
 - **TCSEC (Orange Book)** — U.S. DoD standard; ratings from D (minimal) to A1 (verified design); focused on confidentiality; now largely superseded
 - **ITSEC** — European equivalent to TCSEC; introduced the concept of separate *functionality* and *assurance* ratings
 - **Common Criteria (CC / ISO 15408)** — International standard; defines **Protection Profiles (PP)** and **Security Targets (ST)**; produces **Evaluation Assurance Levels (EAL 1–7)**:
-  - EAL1 — Functionally tested
-  - EAL2 — Structurally tested
-  - EAL3 — Methodically tested and checked
-  - EAL4 — Methodically designed, tested, and reviewed *(most common commercial level)*
-  - EAL5 — Semiformally designed and tested
-  - EAL6 — Semiformally verified design and tested
-  - EAL7 — Formally verified design and tested
+
+```mermaid
+flowchart LR
+    EAL1[EAL 1<br/>Functionally Tested] --> EAL2[EAL 2<br/>Structurally Tested]
+    EAL2 --> EAL3[EAL 3<br/>Methodically Tested<br/>and Checked]
+    EAL3 --> EAL4[EAL 4<br/>Methodically Designed<br/>Tested and Reviewed<br/>Most common commercial]
+    EAL4 --> EAL5[EAL 5<br/>Semiformally Designed<br/>and Tested]
+    EAL5 --> EAL6[EAL 6<br/>Semiformally Verified<br/>Design and Tested]
+    EAL6 --> EAL7[EAL 7<br/>Formally Verified<br/>Design and Tested]
+    style EAL4 fill:#e0e7ff,stroke:#6366f1
+```
 
 Higher EAL means more rigorous assurance, **not** necessarily a more secure product.
 
@@ -80,6 +111,22 @@ Cryptography is the largest subtopic within Domain 3. Expect 4–8 questions spa
 - **ECC (Elliptic Curve Cryptography)** — Equivalent strength to RSA with much shorter keys (256-bit ECC ≈ 3072-bit RSA)
 - **Diffie-Hellman** — Key exchange protocol; does not provide authentication on its own
 
+```mermaid
+flowchart TD
+    subgraph SYM[Symmetric Encryption]
+        SK[Single Shared Key] --> ENC_S[Encrypt Data]
+        ENC_S --> DEC_S[Decrypt Data<br/>Same key]
+        SK -.->|Key exchange problem<br/>How to share safely?| KE[Use Asymmetric<br/>for key exchange]
+    end
+    subgraph ASYM[Asymmetric Encryption]
+        PUB[Recipient Public Key] --> ENC_A[Encrypt Message]
+        PRIV[Recipient Private Key] --> DEC_A[Decrypt Message]
+        ENC_A --> DEC_A
+        PRIV2[Sender Private Key] --> SIGN[Sign - Create Signature]
+        PUB2[Sender Public Key] --> VERIFY[Verify Signature]
+    end
+```
+
 ### Hashing
 - One-way; produces a fixed-length digest; used for integrity and digital signatures
 - **MD5** — 128-bit; broken for collision resistance; avoid for security purposes
@@ -91,6 +138,15 @@ Cryptography is the largest subtopic within Domain 3. Expect 4–8 questions spa
 - **Certificate Authority (CA)** issues X.509 certificates binding a public key to an identity
 - **Registration Authority (RA)** handles identity verification on behalf of the CA
 - **CRL** (Certificate Revocation List) and **OCSP** (Online Certificate Status Protocol) handle revocation
+
+```mermaid
+flowchart TD
+    RootCA[Root CA<br/>Highest trust anchor<br/>Offline for security] --> IntCA[Intermediate CA<br/>Issues end-entity certs<br/>Online]
+    IntCA --> Cert[End-Entity Certificate<br/>Binds public key to identity]
+    RA[Registration Authority<br/>Verifies identity] -->|vouches for| IntCA
+    Cert --> CRL[CRL - Certificate Revocation List<br/>Periodic batch revocation]
+    Cert --> OCSP[OCSP - Online Certificate Status Protocol<br/>Real-time revocation check]
+```
 
 ### Key Management
 - Key length, algorithm strength, and key lifecycle (generation, distribution, storage, rotation, destruction) all matter
@@ -109,6 +165,14 @@ Physical security is the first line of defense. No technical control compensates
 - **Environmental controls** — HVAC, fire suppression (Halon alternatives: FM-200, CO₂), UPS, raised floors for cable management
 - **Fire classes**: A (ordinary), B (liquid), C (electrical), D (metals); suppression agent must match class
 
+```mermaid
+flowchart LR
+    Outside[Outside Perimeter<br/>Fences lighting bollards] --> Outer[Outer Building<br/>Badges CCTV guards]
+    Outer --> Inner[Inner Zones<br/>Mantraps biometrics]
+    Inner --> Sensitive[Sensitive Areas<br/>Two-person integrity<br/>No-lone-zone policy]
+    Sensitive --> Assets[Critical Assets<br/>Servers HSMs classified data]
+```
+
 ---
 
 ## Cloud Security
@@ -120,6 +184,23 @@ Cloud introduces shared responsibility — knowing *who* owns each layer is crit
 | **IaaS** | Hardware, virtualization, networking | OS, middleware, apps, data |
 | **PaaS** | Hardware through runtime | Applications, data |
 | **SaaS** | Everything | Data configuration, user access |
+
+```mermaid
+flowchart TD
+    subgraph SAAS[SaaS - Provider manages everything]
+        SA[Application] --> SP[Platform] --> SI[Infrastructure]
+    end
+    subgraph PAAS[PaaS - Customer owns app and data]
+        PA[Customer: Application and Data]
+        PP[Provider: Platform and Infrastructure]
+        PA --> PP
+    end
+    subgraph IAAS[IaaS - Customer owns OS upward]
+        IA[Customer: OS / Middleware / Apps / Data]
+        II[Provider: Hardware and Virtualization]
+        IA --> II
+    end
+```
 
 - The **shared responsibility model** does not eliminate customer accountability — security *of* the cloud vs. security *in* the cloud
 - **Hypervisor security** is unique to cloud: VM escape attacks target the hypervisor layer

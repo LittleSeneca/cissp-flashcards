@@ -28,6 +28,24 @@ Every security control ultimately exists to protect an asset. This domain define
 - **Sensitive** — data requiring extra care (e.g., legal matters, medical)
 - **Public** — information approved for public release
 
+```mermaid
+flowchart TD
+    subgraph GOV[Government Classification]
+        TS[Top Secret<br/>Exceptionally grave damage]
+        S[Secret<br/>Serious damage]
+        C[Confidential<br/>Damage]
+        U[Unclassified]
+        TS --> S --> C --> U
+    end
+    subgraph COM[Commercial Classification]
+        CP[Confidential / Proprietary<br/>Trade secrets and PII]
+        PV[Private<br/>Employee or customer data]
+        SE[Sensitive<br/>Legal and medical]
+        PB[Public<br/>Approved for release]
+        CP --> PV --> SE --> PB
+    end
+```
+
 **Key principle:** Classification level should be based on the **impact of unauthorized disclosure**, not on how the data is stored or who currently holds it. Data should be classified at the **highest sensitivity of any element it contains** — a report mixing public and confidential data is classified Confidential.
 
 **Declassification** occurs when data no longer requires its current level of protection. In government contexts this is a formal process; in commercial contexts it is managed through data lifecycle policies.
@@ -37,6 +55,20 @@ Every security control ultimately exists to protect an asset. This domain define
 ## Data Ownership Roles
 
 This is one of the most tested concepts in Domain 2. Know each role's responsibilities precisely.
+
+```mermaid
+flowchart TD
+    Owner[Data Owner<br/>Senior business manager<br/>Sets classification and access policy<br/>Accountable for integrity and confidentiality]
+    Custodian[Data Custodian<br/>IT admin or system team<br/>Implements controls specified by owner<br/>Backups encryption patching]
+    Processor[Data Processor - GDPR<br/>Third party processing data<br/>on behalf of the controller]
+    Controller[Data Controller - GDPR<br/>Determines purposes and means<br/>Bears primary compliance responsibility]
+    User[Data User / Subject<br/>Accesses data in daily work<br/>Least-privilege access only]
+    SysOwner[System Owner<br/>Responsible for a specific IT system<br/>Manages security plan and risk acceptance]
+
+    Owner -->|delegates implementation to| Custodian
+    Controller -->|instructs| Processor
+    Owner -.->|distinct from| SysOwner
+```
 
 **Data Owner (Information Owner)**
 - Typically a senior business manager or executive
@@ -56,14 +88,6 @@ This is one of the most tested concepts in Domain 2. Know each role's responsibi
 **Data Controller** (GDPR context)
 - The entity that **determines the purposes and means** of processing personal data
 - Bears primary compliance responsibility under GDPR
-
-**Data User (Subject)**
-- Any individual who accesses and uses data in the course of their work
-- Must handle data according to policy; has least-privilege access
-
-**System Owner**
-- Responsible for a specific IT system, including its security plan and risk acceptance
-- Distinct from data owner — one system may process data owned by multiple business units
 
 ---
 
@@ -95,14 +119,18 @@ Data that outlives its usefulness becomes a liability. Proper disposal is both a
 
 **Data remanence** — residual data that remains on storage media after deletion. Standard "delete" operations do not remove data; they only remove the pointer to it.
 
-**Sanitization methods (in order of increasing thoroughness):**
+**Sanitization methods — in order of increasing thoroughness:**
 
-| Method | Description | Reuse possible? |
-|---|---|---|
-| **Clearing** | Overwriting data with non-sensitive data (e.g., zeros); protects against casual recovery | Yes |
-| **Purging** | More rigorous overwriting or degaussing; protects against lab-level recovery | Yes (sometimes) |
-| **Degaussing** | Exposing magnetic media to a strong magnetic field to destroy data | No (for HDDs); SSDs are not affected |
-| **Destruction** | Physical destruction — shredding, incineration, disintegration | No |
+```mermaid
+flowchart LR
+    A[Clearing<br/>Overwrite with zeros<br/>Protects against casual recovery<br/>Media reusable] --> B[Purging<br/>Rigorous overwriting or degaussing<br/>Protects against lab recovery<br/>Media sometimes reusable]
+    B --> C[Degaussing<br/>Strong magnetic field<br/>Destroys HDD data<br/>Does NOT work on SSDs]
+    C --> D[Destruction<br/>Shred incinerate disintegrate<br/>No reuse possible<br/>Highest assurance]
+    style A fill:#d1fae5,stroke:#059669
+    style B fill:#fef9c3,stroke:#ca8a04
+    style C fill:#fed7aa,stroke:#ea580c
+    style D fill:#ef4444,stroke:#b91c1c,color:#fff
+```
 
 **NIST SP 800-88** ("Guidelines for Media Sanitization") is the authoritative reference. Know that SSDs and flash storage require different treatment than magnetic media — degaussing does not work on SSDs.
 
@@ -114,13 +142,20 @@ Data that outlives its usefulness becomes a liability. Proper disposal is both a
 
 Data does not live forever — it passes through predictable stages, each with different security requirements.
 
-**Typical data lifecycle:**
-1. **Create/Collect** — classify at creation; apply controls immediately
-2. **Store** — encryption at rest, access controls, backup
-3. **Use** — enforce least privilege; monitor access
-4. **Share/Transmit** — encryption in transit; need-to-know verification
-5. **Archive** — long-term storage with integrity verification; retention policy applies
-6. **Destroy** — sanitize per policy using methods appropriate to media type and sensitivity
+```mermaid
+flowchart LR
+    A[Create / Collect<br/>Classify at creation<br/>Apply controls immediately] --> B[Store<br/>Encrypt at rest<br/>Access controls and backup]
+    B --> C[Use<br/>Enforce least privilege<br/>Monitor access]
+    C --> D[Share / Transmit<br/>Encrypt in transit<br/>Need-to-know check]
+    D --> E[Archive<br/>Long-term storage<br/>Integrity verification]
+    E --> F[Destroy<br/>Sanitize per policy<br/>Method matched to media type]
+    style A fill:#e0e7ff,stroke:#6366f1
+    style B fill:#e0e7ff,stroke:#6366f1
+    style C fill:#e0e7ff,stroke:#6366f1
+    style D fill:#e0e7ff,stroke:#6366f1
+    style E fill:#e0e7ff,stroke:#6366f1
+    style F fill:#fca5a5,stroke:#dc2626
+```
 
 **Scoping and tailoring** refers to adjusting baseline security controls (e.g., from NIST SP 800-53 or ISO 27001 Annex A) to match the specific context of an asset — removing controls that don't apply and strengthening those that do based on the asset's classification and risk profile.
 

@@ -22,13 +22,31 @@ BCP ensures an organization can continue critical operations during disruptions.
 - **MTD/MTO (Maximum Tolerable Downtime/Outage)** — the absolute upper limit before business harm becomes unacceptable; RTO must always be less than MTD
 - **BIA (Business Impact Analysis)** — the process of identifying critical functions and quantifying the impact of their loss; it drives RTO/RPO targets
 
-**BCP testing types (know the order of rigor):**
-1. **Checklist review** — document review only
-2. **Tabletop exercise** — discussion-based walkthrough
-3. **Walkthrough/structured walkthrough** — step-by-step verbal simulation
-4. **Simulation** — rehearsal without activating actual recovery systems
-5. **Parallel test** — recovery systems brought online alongside production
-6. **Full interruption test** — production is actually shut down; highest risk, most realistic
+```mermaid
+flowchart LR
+    BIA[Business Impact Analysis<br/>Identify critical functions] --> RPO[Set RPO<br/>Max data loss]
+    BIA --> RTO[Set RTO<br/>Max downtime]
+    RPO --> MTD{RTO must be<br/>less than MTD}
+    RTO --> MTD
+    MTD --> Strategy[Choose Recovery Strategy<br/>Cold / Warm / Hot / Cloud]
+```
+
+**BCP testing types — in order of increasing rigor and cost:**
+
+```mermaid
+flowchart LR
+    A[Checklist Review<br/>Document only] --> B[Tabletop Exercise<br/>Discussion walkthrough]
+    B --> C[Structured Walkthrough<br/>Step-by-step verbal sim]
+    C --> D[Simulation<br/>Rehearsal without activation]
+    D --> E[Parallel Test<br/>Recovery systems online<br/>alongside production]
+    E --> F[Full Interruption Test<br/>Production shut down<br/>Highest risk and realism]
+    style A fill:#d1fae5,stroke:#059669
+    style B fill:#a7f3d0,stroke:#059669
+    style C fill:#fef9c3,stroke:#ca8a04
+    style D fill:#fed7aa,stroke:#ea580c
+    style E fill:#fca5a5,stroke:#dc2626
+    style F fill:#ef4444,stroke:#b91c1c,color:#fff
+```
 
 ---
 
@@ -56,6 +74,17 @@ Governance establishes accountability and direction for an organization's securi
 - **ISO/IEC 27001** — international standard for an Information Security Management System (ISMS). Certifiable. Annex A contains 93 controls organized into 4 themes (2022 revision).
 - **COBIT** — IT governance framework focused on aligning IT with business objectives. Emphasizes governance vs. management distinction.
 
+```mermaid
+flowchart LR
+    subgraph CSF[NIST Cybersecurity Framework]
+        ID[Identify<br/>Assets and risks] --> PR[Protect<br/>Safeguards]
+        PR --> DE[Detect<br/>Anomalies]
+        DE --> RS[Respond<br/>Incident response]
+        RS --> RC[Recover<br/>Restore operations]
+        RC -.->|improve| ID
+    end
+```
+
 **Due care vs. due diligence:** Due care is doing what a reasonable person would do (acting). Due diligence is researching and verifying before acting. Both are required to avoid negligence.
 
 ---
@@ -63,10 +92,15 @@ Governance establishes accountability and direction for an organization's securi
 ## ISC² Code of Ethics
 
 All CISSPs are bound by the Code of Ethics. The four canons in priority order:
-1. Protect society, the common good, necessary public trust and confidence, and the infrastructure
-2. Act honorably, honestly, justly, responsibly, and legally
-3. Provide diligent and competent service to principals
-4. Advance and protect the profession
+
+```mermaid
+flowchart TD
+    C1[Canon 1 - Highest Priority<br/>Protect society the common good<br/>public trust and infrastructure]
+    C2[Canon 2<br/>Act honorably honestly justly<br/>responsibly and legally]
+    C3[Canon 3<br/>Provide diligent and competent<br/>service to principals]
+    C4[Canon 4 - Lowest Priority<br/>Advance and protect<br/>the profession]
+    C1 --> C2 --> C3 --> C4
+```
 
 **Canon order matters on the exam.** When canons conflict, the higher-numbered canon yields to the lower. Society always comes first.
 
@@ -102,11 +136,26 @@ Risk management is the analytical heart of this domain. Think quantitatively whe
 - **ALE (Annualized Loss Expectancy)** = SLE × ARO
 - **ARO (Annualized Rate of Occurrence)** = how often a threat is expected to occur per year
 
+```mermaid
+flowchart TD
+    AV[Asset Value] --> SLE
+    EF[Exposure Factor<br/>Percentage of asset lost] --> SLE
+    SLE[SLE = Asset Value x Exposure Factor] --> ALE
+    ARO[ARO<br/>Annualized Rate of Occurrence] --> ALE
+    ALE[ALE = SLE x ARO] --> Decision{Control cost<br/>vs ALE}
+    Decision -->|Control cost is less than ALE| Implement[Implement Control]
+    Decision -->|Control cost exceeds ALE| Accept[Accept Risk]
+```
+
 **Risk treatment options (the four T's):**
-- **Transfer** — shift risk to a third party (insurance, contracts)
-- **Avoid** — eliminate the activity that creates the risk
-- **Mitigate (Reduce)** — implement controls to lower likelihood or impact
-- **Accept** — acknowledge and tolerate the residual risk (requires management sign-off)
+
+```mermaid
+flowchart TD
+    Risk[Identified Risk] --> T[Transfer<br/>Insurance or contracts]
+    Risk --> A[Avoid<br/>Eliminate the activity]
+    Risk --> M[Mitigate<br/>Implement controls]
+    Risk --> Ac[Accept<br/>Management sign-off<br/>on residual risk]
+```
 
 **Qualitative analysis** uses subjective ratings (High/Medium/Low) and expert judgment. Useful when data is unavailable or cost to quantify exceeds value.
 
@@ -126,6 +175,17 @@ Threat modeling is a structured approach to identifying threats during the desig
 **DREAD** — risk-rating model scoring: Damage, Reproducibility, Exploitability, Affected users, Discoverability. Now considered dated but still testable.
 
 **VAST** — scales threat modeling across DevOps pipelines.
+
+```mermaid
+flowchart LR
+    subgraph STRIDE[STRIDE Threat Categories]
+        S[Spoofing<br/>Identity] --- T[Tampering<br/>Data integrity]
+        T --- R[Repudiation<br/>Deny actions]
+        R --- I[Info Disclosure<br/>Confidentiality]
+        I --- D[Denial of Service<br/>Availability]
+        D --- E[Elevation of Privilege<br/>Authorization]
+    end
+```
 
 ---
 

@@ -16,6 +16,17 @@ IAM sits at the intersection of security policy and technical implementation. Th
 
 **Provisioning and deprovisioning** are lifecycle events — creating, modifying, and removing accounts as employees join, change roles, or leave. Timely deprovisioning is critical; orphaned accounts are a major attack surface.
 
+```mermaid
+flowchart LR
+    Hire[New Employee Hired] --> Proof[Identity Proofing<br/>Verify who they are]
+    Proof --> Prov[Provisioning<br/>Create accounts and assign roles]
+    Prov --> Active[Active Employment<br/>Access reviews recertification]
+    Active --> Change[Role Change<br/>Modify access - remove old add new]
+    Active --> Term[Termination<br/>Immediate deprovisioning]
+    Change --> Active
+    Term --> Audit[Audit and Archive<br/>Log access history]
+```
+
 - **Identity proofing** establishes that a person is who they claim to be before an account is created (e.g., NIST SP 800-63A levels of assurance)
 - **Directory services** (e.g., Microsoft Active Directory, LDAP) are the authoritative source for identity attributes
 - **Identity federation** allows users from one organization (or identity provider) to authenticate to a partner system without a separate account — enabling cross-domain trust
@@ -39,6 +50,20 @@ Authentication answers: **"Are you who you claim to be?"** The CISSP exam tests 
 
 **Multi-Factor Authentication (MFA)** requires two or more *different* factor types. Two passwords = single factor. Password + OTP = MFA.
 
+```mermaid
+flowchart TD
+    subgraph MFA[Multi-Factor Authentication]
+        Know[Something You Know<br/>Password PIN Passphrase]
+        Have[Something You Have<br/>Smart Card Token Phone OTP]
+        Are[Something You Are<br/>Fingerprint Retina Voice]
+        Where[Somewhere You Are<br/>GPS Location IP Range]
+    end
+    Know --- Have
+    Have --- Are
+    Are --- Where
+    Note[MFA requires TWO or more DIFFERENT factor types<br/>Two passwords = single factor, NOT MFA]
+```
+
 ### Key Authentication Protocols
 
 - **Kerberos** — ticket-based protocol used in Windows/Active Directory environments. Uses a **Key Distribution Center (KDC)** with two components: **Authentication Server (AS)** and **Ticket Granting Server (TGS)**. Subject to pass-the-ticket attacks. Relies on synchronized clocks (default 5-minute skew tolerance).
@@ -49,7 +74,45 @@ Authentication answers: **"Are you who you claim to be?"** The CISSP exam tests 
 - **OAuth 2.0** — An **authorization** framework (not authentication). Allows third-party apps to access resources on behalf of a user without sharing credentials. Uses access tokens.
 - **OpenID Connect (OIDC)** — An **authentication** layer built on top of OAuth 2.0. Returns an **ID token** (JWT) that asserts the user's identity. OIDC = who you are; OAuth = what you can do.
 
+```mermaid
+sequenceDiagram
+    participant U as User
+    participant C as Client App
+    participant IdP as Identity Provider
+    participant SP as Service Provider
+    Note over U,SP: SAML SSO Flow
+    U->>C: Access protected resource
+    C->>SP: Request resource
+    SP->>C: Redirect to IdP for authentication
+    C->>IdP: Authentication request
+    IdP->>U: Prompt for credentials
+    U->>IdP: Provide credentials
+    IdP->>C: SAML Assertion (signed XML)
+    C->>SP: Present SAML Assertion
+    SP->>U: Grant access to resource
+```
+
 > **CISSP trap:** OAuth is authorization, not authentication. When the question asks about identity verification, the answer is OIDC or SAML — not OAuth alone.
+
+---
+
+## Kerberos Authentication Flow
+
+```mermaid
+sequenceDiagram
+    participant U as User
+    participant AS as Authentication Server (AS)
+    participant TGS as Ticket Granting Server (TGS)
+    participant SV as Service
+    Note over U,SV: Kerberos KDC = AS + TGS
+    U->>AS: Request TGT (username)
+    AS->>U: TGT encrypted with user key
+    U->>TGS: Present TGT - request service ticket
+    TGS->>U: Service Ticket encrypted with service key
+    U->>SV: Present Service Ticket
+    SV->>U: Access Granted
+    Note over U,SV: Clock skew tolerance = 5 minutes<br/>Pass-the-ticket attacks steal TGTs or service tickets
+```
 
 ---
 
@@ -57,19 +120,35 @@ Authentication answers: **"Are you who you claim to be?"** The CISSP exam tests 
 
 Authorization answers: **"What are you allowed to do?"** The exam heavily tests when to apply each model.
 
-- **Mandatory Access Control (MAC)** — Access decisions are enforced by the **system** based on labels/classifications (e.g., Top Secret, Secret). Users cannot override. Used in military and government environments. Bell-LaPadula model enforces MAC for confidentiality.
-- **Discretionary Access Control (DAC)** — The **resource owner** controls access (e.g., file permissions in Windows/Linux). Flexible but harder to manage at scale; susceptible to Trojan horse attacks.
-- **Role-Based Access Control (RBAC)** — Access is assigned to **roles**, and users are assigned to roles. Simplifies administration in large organizations; supports least privilege through role design.
-- **Attribute-Based Access Control (ABAC)** — Access decisions use **multiple attributes** of the user, resource, and environment (e.g., "contractors in building A during business hours"). Most flexible and granular; complex to implement.
-- **Rule-Based Access Control** — Access determined by **static rules** configured by an admin (e.g., firewall ACLs). Different from RBAC — the rules apply regardless of role.
+```mermaid
+flowchart TD
+    subgraph MODELS[Access Control Models]
+        MAC[MAC - Mandatory Access Control<br/>System enforces labels<br/>No read up no write down<br/>Government and military]
+        DAC[DAC - Discretionary Access Control<br/>Resource owner sets permissions<br/>File system permissions<br/>Susceptible to Trojan horse]
+        RBAC[RBAC - Role-Based Access Control<br/>Access assigned to roles<br/>Users assigned to roles<br/>Large enterprise standard]
+        ABAC[ABAC - Attribute-Based Access Control<br/>Policy uses multiple attributes<br/>User resource and environment<br/>Most flexible and granular]
+        Rule[Rule-Based Access Control<br/>Static admin-configured rules<br/>Firewall ACLs<br/>Different from RBAC]
+    end
+```
 
-**Exam cue:** MAC = government/military, labels required. RBAC = large enterprise, role-based simplicity. ABAC = dynamic, contextual decisions needed.
+- **MAC** — exam cue: government/military, labels required
+- **RBAC** — exam cue: large enterprise, role-based simplicity
+- **ABAC** — exam cue: dynamic contextual decisions needed (time of day, location, device posture)
 
 ---
 
 ## Privileged Access Management (PAM)
 
 Privileged accounts (admins, service accounts, root) are the highest-value targets for attackers. PAM controls and monitors this elevated access.
+
+```mermaid
+flowchart LR
+    Request[Admin needs<br/>elevated access] --> PAM[PAM Solution<br/>Vault checks out credentials]
+    PAM --> JIT[JIT Access Granted<br/>Time-limited privilege]
+    JIT --> Session[Privileged Session<br/>Recorded for audit]
+    Session --> Revoke[Auto-Revoke<br/>Credentials rotated after use]
+    Revoke --> Audit[Full Audit Trail<br/>Who accessed what and when]
+```
 
 - **Just-in-Time (JIT) access** — Privileges are granted only when needed and automatically revoked afterward. Reduces standing privileges.
 - **Password vaulting** — Privileged credentials are stored in a secure vault; users check them out rather than knowing them permanently.
@@ -101,6 +180,17 @@ Identity governance ensures that access rights remain appropriate over time.
 ## Zero Trust
 
 **Zero Trust** is an architecture philosophy: **"Never trust, always verify."** No user or device is inherently trusted based on network location.
+
+```mermaid
+flowchart LR
+    subgraph ZT[Zero Trust Architecture]
+        User[User or Device] --> PEP[Policy Enforcement Point<br/>Intercepts all requests]
+        PEP --> PE[Policy Engine<br/>Evaluates trust signals]
+        PE --> PA[Policy Administrator<br/>Grants or denies access]
+        PA --> Resource[Protected Resource]
+    end
+    Signals[Trust Signals<br/>Identity Device Health<br/>Location Behavior Risk Score] --> PE
+```
 
 Key principles:
 - Verify explicitly — always authenticate and authorize based on all available data points
