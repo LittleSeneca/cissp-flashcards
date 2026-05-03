@@ -1,13 +1,13 @@
 // ── Domain descriptions (home page cards) ────────────────────────────────────
 const DOMAIN_DESCRIPTIONS = {
-  '01-security-and-risk-management': 'Covers risk management frameworks, governance, legal and regulatory compliance, business continuity planning, and the ISC² Code of Ethics. The heaviest domain at ~15% of the exam.',
-  '02-asset-security': 'Focuses on classifying and protecting information assets throughout their lifecycle, including data ownership roles, privacy requirements, retention policies, and secure disposal.',
-  '03-security-architecture-and-engineering': 'Covers security models, cryptography, PKI, physical security, cloud architecture, and applying engineering principles such as defense in depth and least privilege to systems design.',
-  '04-communication-and-network-security': 'Addresses secure network design across all OSI layers, including firewalls, VPNs, wireless protocols, network attacks, and protecting data in transit.',
-  '05-identity-and-access-management': 'Covers authentication factors, authorization models (MAC, DAC, RBAC, ABAC), identity federation, SSO, MFA, and privileged access management.',
-  '06-security-assessment-and-testing': 'Focuses on vulnerability assessments, penetration testing methodologies, security audits, code review techniques, and building a continuous testing program.',
-  '07-security-operations': 'Covers the incident response lifecycle, digital forensics, evidence handling, SIEM and logging, patch and configuration management, and disaster recovery operations.',
-  '08-software-development-security': 'Addresses secure SDLC integration, DevSecOps practices, OWASP Top 10 vulnerabilities, SAST/DAST tooling, and supply chain security.',
+  '01-security-and-risk-management': 'The heaviest domain at 15% of the exam, covering risk frameworks (NIST, ISO 27001), governance structures, legal and regulatory compliance, BCP/DRP planning, threat modeling, and the ISC² Code of Ethics. Expect scenario questions on risk treatment decisions — accept, transfer, mitigate, avoid — and the precise order of BCP phases.',
+  '02-asset-security': 'At 10%, this domain tests your ability to classify information assets, assign ownership roles (owner, custodian, user), apply retention and disposal policies, and meet privacy requirements like GDPR and CCPA. Questions often hinge on distinguishing who is responsible for classification versus who enforces it.',
+  '03-security-architecture-and-engineering': 'Spanning 13% of the exam, this domain covers security models (Bell-LaPadula, Biba, Clark-Wilson), cryptography (symmetric, asymmetric, PKI, hashing), physical security controls, cloud architecture patterns, and secure engineering principles like least privilege and defense in depth. Crypto math and model application are perennial deep-dives.',
+  '04-communication-and-network-security': 'At 13%, expect questions mapping protocols to OSI layers, selecting appropriate firewall topologies, distinguishing VPN types (IPSec vs TLS), securing wireless networks (WPA3, EAP variants), and recognizing network-layer attacks. Microsegmentation, SDN, and zero-trust network architecture are increasingly tested.',
+  '05-identity-and-access-management': 'Covering 13% of the exam, this domain tests authentication factors, authorization models (MAC, DAC, RBAC, ABAC), identity federation (SAML, OAuth, OIDC), SSO, MFA, and privileged access management. The key skill is choosing the right access control model for a given organizational scenario.',
+  '06-security-assessment-and-testing': 'At 12%, this domain focuses on when and how to apply vulnerability scans, penetration tests, code reviews, and audit types. Know the difference between assessment and audit, black/gray/white-box testing, and how SOC 1/2/3 reports differ — these distinctions drive many exam distractors.',
+  '07-security-operations': 'Spanning 13%, this domain covers the full incident response lifecycle, digital forensics and evidence handling (order of volatility, chain of custody), SIEM and log management, patch cycles, and DR operations. Scenario questions frequently test IR phase sequencing and the legal requirements around evidence preservation.',
+  '08-software-development-security': 'At 11%, this domain addresses integrating security into every SDLC phase, DevSecOps pipelines, the OWASP Top 10, SAST vs DAST tooling, and supply chain risks. Questions test when security activities belong in each phase and how to threat-model software designs during architecture — not just at testing.',
 };
 
 // ── Icons (inline SVG) ────────────────────────────────────────────────────────
@@ -892,6 +892,22 @@ async function showDomain(domainId) {
     const totalQ = sets.reduce((n, s) => n + s.cardCount + (s.mcqCount ?? 0), 0);
     const agg    = domainProgressAgg(domainId);
     const unseen = Math.max(0, totalQ - agg.studied);
+
+    const completePct  = totalQ > 0 ? Math.round(agg.studied / totalQ * 100) : 0;
+    const masteryPct   = agg.studied > 0 ? Math.round(agg.mastered / agg.studied * 100) : 0;
+    const needReview   = agg.shaky + agg.struggling;
+    const scoreColor   = masteryPct >= 80 ? 'ov-green' : masteryPct >= 50 ? 'ov-amber' : '';
+
+    const notStarted   = sets.filter(s => {
+      const pKey = `${domainId}/${s.id}`;
+      const fc  = progressSummary?.[pKey];
+      const mcq = mcqProgressSummary?.[pKey];
+      return (fc?.studied ?? 0) + (mcq?.studied ?? 0) === 0;
+    }).length;
+    const calloutParts = [];
+    if (notStarted > 0) calloutParts.push(`${notStarted} section${notStarted > 1 ? 's' : ''} not started`);
+    if (needReview  > 0) calloutParts.push(`${needReview} card${needReview > 1 ? 's' : ''} need review`);
+    if (calloutParts.length === 0 && agg.studied > 0) calloutParts.push('All sections started · looking good');
     const domPieSegs = [
       { id: 'unseen',     label: 'Unseen',     color: '#d1d5db', value: unseen         },
       { id: 'mastered',   label: 'Mastered',   color: '#16a34a', value: agg.mastered   },
@@ -912,6 +928,10 @@ async function showDomain(domainId) {
               <span class="ov-val">${agg.studied}</span>
               <span class="ov-label">Answered</span>
             </div>
+            <div class="ov-stat">
+              <span class="ov-val">${unseen}</span>
+              <span class="ov-label">Unseen</span>
+            </div>
             <div class="ov-stat ov-green">
               <span class="ov-val">${agg.mastered}</span>
               <span class="ov-label">Right</span>
@@ -924,8 +944,21 @@ async function showDomain(domainId) {
               <span class="ov-val">${agg.mostlyWrong}</span>
               <span class="ov-label">Mostly Wrong</span>
             </div>
+            <div class="ov-stat ${scoreColor} ov-stat-score">
+              <span class="ov-val">${agg.studied > 0 ? masteryPct + '%' : '—'}</span>
+              <span class="ov-label">Score</span>
+            </div>
           </div>
           ${progressBarHtml(agg, totalQ, 'domain-overview-bar')}
+          <div class="ov-derived-stats">
+            <span class="ov-derived-item"><span class="ov-derived-val">${completePct}%</span> complete</span>
+            <span class="ov-derived-sep">·</span>
+            <span class="ov-derived-item"><span class="ov-derived-val ${masteryPct >= 80 ? 'ov-derived-green' : masteryPct >= 50 ? 'ov-derived-amber' : 'ov-derived-muted'}">${masteryPct}%</span> mastery rate</span>
+            <span class="ov-derived-sep">·</span>
+            <span class="ov-derived-item"><span class="ov-derived-val ${needReview > 0 ? 'ov-derived-red' : 'ov-derived-muted'}">${needReview}</span> need review</span>
+          </div>
+          ${calloutParts.length > 0 ? `<div class="ov-callout">${calloutParts.join(' · ')}</div>` : ''}
+          ${DOMAIN_DESCRIPTIONS[domainId] ? `<p class="ov-desc">${esc(DOMAIN_DESCRIPTIONS[domainId])}</p>` : ''}
         </div>
       </div>`;
     appEl.innerHTML = `
@@ -933,7 +966,7 @@ async function showDomain(domainId) {
         ${domOverview}
         <div id="tag-cloud-mount" class="domain-top-aside"></div>
       </div>
-      <div class="domain-list">
+      <div class="domain-list section-list">
         ${sets.length === 0
           ? '<p class="empty">No sections yet.</p>'
           : sets.map(s => {
