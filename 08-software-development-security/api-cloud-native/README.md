@@ -3,41 +3,69 @@ tier: 2
 exam_weight: "10%"
 ---
 
-# Modern API & Cloud-Native Security
+# Modern API & Cloud-Native Security for the CISSP Exam
 
-This section explores the security challenges and controls associated with modern, distributed architectures, including microservices, containers, and serverless computing.
+Cloud-native security focuses on protecting distributed architectures, including microservices, containers, and serverless functions.
 
-## Key Topics
+## Microservices & API Security
 
-### 1. API Security (REST vs. SOAP)
-- **REST (Representational State Transfer)**: 
-  - Uses standard HTTP methods (GET, POST, etc.).
-  - Lightweight, typically uses JSON.
-  - Security relies on TLS and tokens (JWT/OAuth).
-- **SOAP (Simple Object Access Protocol)**:
-  - Protocol-based, uses XML.
-  - Supports **WS-Security** for message-level encryption and signatures.
-  - Often used in legacy or high-assurance enterprise environments.
+```mermaid
+graph LR
+    User((User)) --> Gateway[API Gateway / WAF]
+    Gateway --> ServiceA[Service A]
+    Gateway --> ServiceB[Service B]
+    ServiceA -- "mTLS" --> ServiceB
+    ServiceB -- "Query" --> DB[(Database)]
+```
+
+### 1. API Security
+-   **REST (Representational State Transfer)**: Uses standard HTTP; lightweight and typically uses JSON.
+-   **SOAP (Simple Object Access Protocol)**: Uses XML; supports **WS-Security** for message-level encryption.
+-   **Authentication**: Typically handled via **JWT (JSON Web Tokens)** or OAuth 2.0.
+-   **mTLS (Mutual TLS)**: Ensuring that not only the client trusts the server, but the server also trusts the client (essential for service-to-service communication).
 
 ### 2. JSON Web Tokens (JWT)
-- **Structure**: Header, Payload, Signature.
-- **Security Use**: Enables **stateless authentication**, where the server doesn't need to store session state.
-- **Risks**: Sensitive data in payload (it's only encoded, not encrypted by default), weak signing keys, and the 'alg: none' vulnerability.
+-   **Header**: Specifies the algorithm (e.g., RS256).
+-   **Payload**: Contains the "claims" (e.g., user ID, roles).
+-   **Signature**: Proves the token hasn't been tampered with.
+-   **Security Risk**: The payload is only **encoded**, not encrypted. Never put sensitive PII in a JWT payload unless using JWE (JSON Web Encryption).
 
-### 3. Container Security
-- **Namespaces**: Provide resource **isolation** (visibility).
-- **Cgroups (Control Groups)**: Provide resource **limiting** (CPU, RAM).
-- **Security Best Practices**:
-  - Use minimal base images (e.g., Alpine).
-  - Avoid 'privileged' containers.
-  - Scan images for vulnerabilities (SCA).
-  - Use Immutable infrastructure (replace, don't patch).
+## Container Security
 
-### 4. Serverless / FaaS (Function as a Service)
-- **Shared Responsibility**: 
-  - **Provider**: Secures the host OS, runtime environment, and physical security.
-  - **Customer**: Secures the function code, IAM roles, and input validation.
-- **Challenges**: Short execution times make traditional monitoring difficult; increased 'attack surface' due to many small, interconnected functions.
+Containers provide isolation at the OS level using Linux primitives.
 
-## CISSP Context
-Domain 8 requires an understanding of how traditional software security principles (like input validation and least privilege) apply to modern, highly automated environments. Focus on the **Shared Responsibility Model** and the technical mechanisms (Namespaces, cgroups, mTLS) that enable cloud isolation.
+```mermaid
+graph TD
+    subgraph "Container Host"
+    Kernel[Host Kernel]
+    Namespaces[Namespaces: Visibility Isolation]
+    Cgroups[Cgroups: Resource Limiting]
+    ContainerA[Container A]
+    ContainerB[Container B]
+    end
+
+    Kernel --- Namespaces
+    Kernel --- Cgroups
+    Namespaces --- ContainerA
+    Namespaces --- ContainerB
+```
+
+-   **Namespaces**: Provide **visibility isolation** (Processes, Network, Mounts). A process in one namespace cannot see processes in another.
+-   **Cgroups (Control Groups)**: Provide **resource limiting** (CPU, Memory, I/O). Prevents a single container from starving the host.
+-   **Image Scanning**: Scanning container images for vulnerabilities (SCA) before they are deployed.
+
+## Serverless / FaaS (Function as a Service)
+-   **Shared Responsibility**: 
+    -   **Provider**: Secures the host, runtime, and physical infrastructure.
+    -   **Customer**: Secures the **function code**, IAM roles, and data.
+-   **Key Risk**: The attack surface is huge due to the number of small, interconnected functions. Least privilege for IAM roles is critical.
+
+## CISSP Relevance
+-   **East-West Traffic**: Communication between internal services. Requires mTLS and microsegmentation.
+-   **North-South Traffic**: Communication from the internet to the application. Handled by API Gateways and WAFs.
+-   **Immutable Infrastructure**: The practice of replacing components rather than modifying them.
+
+## Exam Traps
+-   **JWT Payload**: It is **not** secret. Anyone with the token can read the payload (Base64).
+-   **Privileged Containers**: Never run containers as 'privileged' or 'root' unless absolutely necessary, as it allows for container breakout.
+-   **Namespaces vs. Cgroups**: Namespaces = **Who can I see?**; Cgroups = **How much can I use?**

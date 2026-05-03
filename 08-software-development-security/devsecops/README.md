@@ -3,38 +3,64 @@ tier: 2
 exam_weight: "10%"
 ---
 
-# DevSecOps & CI/CD Security
+# DevSecOps & CI/CD Security for the CISSP Exam
 
-This section covers the integration of security into the modern software development lifecycle, focusing on automation, early detection, and the 'shared responsibility' model.
+DevSecOps is the evolution of DevOps that treats security as an integral, automated part of the continuous integration and continuous delivery (CI/CD) pipeline.
 
-## Key Topics
+## The CI/CD Pipeline with Security (Shift-Left)
 
-### 1. Shift Left
-- **Definition**: Integrating security early in the SDLC (requirements, design, and coding phases).
-- **Benefit**: Reduces the cost and complexity of fixing vulnerabilities compared to finding them in production.
-- **Activities**: Threat modeling, secure coding training, SAST, and SCA.
+```mermaid
+graph LR
+    Plan[Plan] --> Code[Code]
+    Code --> Build[Build]
+    Build --> Test[Test]
+    Test --> Release[Release]
+    Release --> Deploy[Deploy]
+    
+    subgraph "Security Integrations"
+    TM[Threat Modeling] -.-> Plan
+    SAST[SAST/Secrets] -.-> Code
+    SCA[SCA/Binary Scan] -.-> Build
+    DAST[DAST/IAST] -.-> Test
+    Hard[Hardening] -.-> Deploy
+    end
+```
 
-### 2. Security as Code (SaC)
-- **Concept**: Security policies and controls are treated like application code.
-- **Implementation**: 
-  - Version-controlled security scripts.
-  - Automated compliance checks (e.g., OPA - Open Policy Agent).
-  - Infrastructure as Code (IaC) scanning (e.g., Terraform, CloudFormation).
+### Key Concepts
+-   **Shift-Left**: Moving security activities as early as possible in the development lifecycle (e.g., SAST in the IDE).
+-   **Security as Code (SaC)**: Defining security policies, configurations, and tests in machine-readable code (e.g., Terraform scans, OPA policies).
+-   **Continuous Monitoring**: Real-time observability of the application and infrastructure in production.
 
-### 3. Secret Scanning
-- **Goal**: Prevent the accidental leakage of sensitive credentials in code repositories.
-- **Workflow**: 
-  - Pre-commit hooks to block secrets before they are pushed.
-  - Periodic scanning of history to find 'leaked' secrets.
-  - **Response**: If a secret is found, it must be **revoked and rotated**.
+## Secure Pipeline Controls
+1.  **Pre-commit Hooks**: Automated checks that run on a developer's machine before code is pushed (e.g., checking for hardcoded API keys).
+2.  **Ephemeral Runners**: Using short-lived, isolated environments for builds to prevent "poisoning" the build environment.
+3.  **Artifact Signing**: Cryptographically signing build artifacts (images, binaries) to ensure they aren't tampered with during deployment.
+4.  **Secrets Management**: Using a vault (e.g., HashiCorp Vault) rather than storing credentials in environment variables or code.
 
-### 4. Pipeline Hardening
-- **Objective**: Protect the 'factory' that builds the software.
-- **Controls**:
-  - **Least Privilege**: Build runners should have minimal permissions.
-  - **Ephemeral Runners**: Use short-lived environments for builds to prevent persistence.
-  - **Code Review**: Pipeline configuration changes (e.g., Jenkinsfile) must be reviewed.
-  - **Artifact Integrity**: Use checksums and signatures for all build artifacts.
+## The Shared Responsibility Model
 
-## CISSP Context
-In the CISSP exam, DevSecOps is often tested in the context of the **Software Development Life Cycle (Domain 8)**. Understand how automation replaces traditional 'gatekeeper' security and the importance of the CI/CD pipeline as a critical infrastructure component.
+```mermaid
+graph TD
+    subgraph "Responsibility Layers"
+    Code[Application Code: Developer]
+    Infra[Infrastructure: Ops/Cloud Provider]
+    Sec[Security Policy: Security Team]
+    end
+    
+    Code --- Sec
+    Infra --- Sec
+```
+
+-   **Developers**: Responsible for writing secure code and fixing vulnerabilities.
+-   **Operations**: Responsible for secure infrastructure (IaC) and pipeline availability.
+-   **Security**: Responsible for setting the standards, providing tools, and auditing compliance.
+
+## CISSP Relevance
+-   **Automation**: In DevSecOps, automation is the key to maintaining security at scale.
+-   **Immutable Infrastructure**: Replacing servers/containers rather than patching them in place.
+-   **Policy as Code**: Ensuring compliance is automatically enforced rather than manually checked.
+
+## Exam Traps
+-   **Secrets in Env Vars**: Env vars are often logged or exposed in process lists; use a **Vault** instead.
+-   **Shared Runners**: Shared build runners can lead to cross-job data leakage; use **isolated/ephemeral** runners.
+-   **Manual Gates**: While traditional SDLC uses manual gates, DevSecOps aims to replace them with **automated gates**.

@@ -3,38 +3,65 @@ tier: 2
 exam_weight: "16%"
 ---
 
-# Domain 1: Professional Ethics
+# Professional Ethics
 
-Ethics is a critical component of Domain 1 and the foundation of the CISSP certification. ISC2 requires all members to adhere to a specific Code of Ethics, and violations can lead to revocation of the credential.
+Ethics is the foundation of the CISSP certification. ISC2 requires all members to adhere to a specific Code of Ethics, and violations can lead to the permanent revocation of the credential.
 
-## The ISC2 Code of Ethics Canons
+## 1. ISC2 Code of Ethics Canons
+You **must** know these four canons and their **exact order of priority**. If canons conflict, the lower-numbered canon always wins.
 
-The canons are **ordered**, meaning that in the event of a conflict between them, the lower-numbered canon takes precedence.
+```mermaid
+graph TD
+    C1[1. Protect Society, Public Trust, and Infrastructure] --> C2[2. Act Honorably, Honestly, Legally]
+    C2 --> C3[3. Provide Diligent Service to Principals]
+    C3 --> C4[4. Advance and Protect the Profession]
+    
+    style C1 fill:#f96,stroke:#333,stroke-width:4px
+```
 
 1.  **Protect society, the common good, necessary public trust and confidence, and the infrastructure.**
-    - *Keywords:* Public safety, infrastructure, common good.
-    - *Priority:* Highest. Overrides duties to employers or the profession.
+    *   *Focus*: Safety of human life and the environment.
 2.  **Act honorably, honestly, justly, responsibly, and legally.**
-    - *Keywords:* Lawful behavior, honesty, expert testimony.
-    - *Note:* Requires reporting felony convictions and acting truthfully in all dealings.
+    *   *Focus*: Integrity and law-abiding behavior.
 3.  **Provide diligent and competent service to principals.**
-    - *Keywords:* Duty to employer/client, expertise, confidentiality.
-    - *Note:* Do not take on work for which you are not qualified.
+    *   *Focus*: Duty to your employer or client.
 4.  **Advance and protect the profession.**
-    - *Keywords:* Integrity of the CISSP brand, reporting violations, mentoring.
+    *   *Focus*: Integrity of the CISSP brand and mentoring others.
 
-## Key Ethics Standards
+## 2. Ethical Decision-Making
+When faced with an ethical dilemma, the CISSP must evaluate the situation based on the priority of the canons.
 
-- **ISC2 Code of Ethics:** The primary binding document for CISSPs.
-- **RFC 1087 (Ethics and the Internet):** An IAB (Internet Architecture Board) policy that defines unethical behavior on the internet.
-- **IAB Ethics:** Focuses on unauthorized access, disruption of services, wasting resources, and compromising privacy.
+```mermaid
+flowchart TD
+    Start[Ethical Dilemma] --> Lawful{Is it Legal?}
+    Lawful -- No --> Report[Refuse & Report]
+    Lawful -- Yes --> Public{Does it harm the Public?}
+    Public -- Yes --> Canon1[Prioritize Canon 1: Protect Public]
+    Public -- No --> Employer{Does it harm the Employer?}
+    Employer -- Yes --> Canon3[Prioritize Canon 3: Duty to Principal]
+    Employer -- No --> Final[Proceed Honestly]
+```
 
-## Common Exam Traps
+## 3. RFC 1087: Ethics and the Internet
+The Internet Architecture Board (IAB) defines unethical behavior on the internet in RFC 1087. An activity is considered unethical if it:
+*   Seeks to gain unauthorized access to the resources of the Internet.
+*   Disrupts the intended use of the Internet.
+*   Wastes resources (people, capacity, computer) through such actions.
+*   Destroys the integrity of computer-based information.
+*   Compromises the privacy of users.
 
-- **Prioritizing the Employer:** Many questions will create a scenario where an employer asks you to do something unethical (like hiding a vulnerability). The trap is choosing Canon III (Service to Principals). Remember: **Canon I (Public Safety) and Canon II (Legal/Honest) always win.**
-- **Ordering:** You must know the exact order of the canons.
-- **Reporting:** ISC2 emphasizes that protecting the profession means reporting known violations by other members.
+## 4. Computer Ethics Institute (CEI)
+The CEI developed the "Ten Commandments of Computer Ethics," which include:
+*   Thou shalt not use a computer to harm other people.
+*   Thou shalt not snoop in other people's computer files.
+*   Thou shalt not use a computer to steal.
+*   Thou shalt not use a computer to bear false witness.
+*   Thou shalt not use or copy software for which you have not paid.
 
-## Resources
-- [ISC2 Official Code of Ethics](https://www.isc2.org/ethics)
-- [RFC 1087 - Ethics and the Internet](https://datatracker.ietf.org/doc/html/rfc1087)
+## 5. Reporting Ethics Violations
+*   Violations of the ISC2 Code of Ethics should be reported to the **ISC2 Ethics Committee**.
+*   The report must be based on factual evidence, not hearsay.
+*   ISC2 will investigate and may take disciplinary action, including decertification.
+
+---
+*Sources: ISC2 Code of Ethics, RFC 1087, Computer Ethics Institute.*
