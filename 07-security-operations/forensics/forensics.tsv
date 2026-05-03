@@ -1,0 +1,10 @@
+Order of Volatility	The sequence in which evidence must be collected: Registers, Cache, RAM, Swap, Disk, Tapes.
+Chain of Custody	The chronological documentation showing who handled the evidence at all times to ensure integrity.
+Authentic (Rule of Evidence)	The evidence is what it purports to be and its origin can be verified.
+Admissible (Rule of Evidence)	The evidence must be relevant and gathered in a legally acceptable manner.
+Hearsay	An out-of-court statement offered to prove the truth of the matter; generally inadmissible in court.
+Best Evidence Rule	Preference for the original evidence (or an exact bit-stream image) over copies or summaries.
+Slack Space	The unused space in a disk cluster between the end of a file and the end of the cluster.
+Bit-stream Image	A bit-by-bit copy of a storage medium, including deleted files and slack space.
+Write Blocker	A hardware or software tool that prevents any data from being written to a disk during the imaging process.
+Standard of Proof (Criminal)	The requirement that evidence must prove guilt 'beyond a reasonable doubt'.

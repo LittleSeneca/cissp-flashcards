@@ -10,6 +10,19 @@ Software Development Security is where security meets the engineering process. T
 
 Security must be integrated at every phase of the SDLC, not bolted on at the end. Late-stage security fixes are dramatically more expensive: the **rule of ten** holds that a defect costs roughly 10x more to fix at each subsequent phase (a design flaw caught in requirements costs $1 to fix; the same flaw caught in production costs $1,000+).
 
+```mermaid
+flowchart LR
+    A[Requirements] --> B[Design] --> C[Development] --> D[Testing] --> E[Deployment] --> F[Maintenance]
+    style A fill:#d1fae5,stroke:#059669
+    style B fill:#a7f3d0,stroke:#059669
+    style C fill:#fef9c3,stroke:#ca8a04
+    style D fill:#fed7aa,stroke:#ea580c
+    style E fill:#fca5a5,stroke:#dc2626
+    style F fill:#ef4444,stroke:#b91c1c,color:#fff
+```
+
+The colour gradient above represents the **rule of ten**: cost to fix a defect escalates ~10x at each successive phase — cheapest at Requirements ($1), most expensive in Maintenance ($1,000+).
+
 **SDLC Phases and Security Integration:**
 
 - **Requirements** — Define security requirements alongside functional ones. Classify data, identify regulatory obligations, establish threat categories.
@@ -29,6 +42,26 @@ Different development models have different security implications:
 - **Agile** — Iterative sprints. Security must be embedded in each sprint (security stories, acceptance criteria). Risk: security is deferred as "tech debt" under time pressure.
 - **DevOps** — Continuous integration and delivery (CI/CD). Rapid release cycles demand automated security controls — manual gates don't scale.
 - **DevSecOps** — Security integrated into every DevOps stage. Key principle: **"shift left"** means moving security checks earlier (to development and design), not just automating them in deployment. Security is a shared responsibility across Dev, Sec, and Ops teams.
+
+```mermaid
+flowchart LR
+    subgraph DEV[Develop - Shift Left]
+        A[Write Code] --> B[IDE SAST]
+    end
+    subgraph CI[CI Pipeline]
+        C[Commit / PR] --> D[SAST Scan] --> E[SCA Scan] --> F[Build and Test]
+    end
+    subgraph CD[CD Pipeline]
+        G[Staging Deploy] --> H[DAST / IAST] --> I[Approval Gate] --> J[Production]
+    end
+    subgraph OPS[Operate]
+        K[Monitor] --> L[Patch and Update]
+    end
+    DEV --> CI --> CD --> OPS
+    L -.->|feedback loop| DEV
+```
+
+> **Exam tip:** "Shift left" is the driving principle of DevSecOps. On the exam, the best time to address a security issue is always the **earliest** feasible phase — requirements or design, not testing or production.
 
 ---
 
@@ -72,6 +105,30 @@ Four key tool categories, each finding different types of issues:
 - **IAST** (Interactive Application Security Testing) — Instruments the running application from within. Combines SAST accuracy with DAST runtime context. Lower false-positive rate but requires agent installation.
 - **SCA** (Software Composition Analysis) — Identifies known vulnerabilities in open-source and third-party dependencies by comparing against CVE databases. Critical for supply chain security.
 
+The diagram below shows where each tool fits in the pipeline and what it requires:
+
+```mermaid
+flowchart LR
+    subgraph EARLY[Early - Source Code Required]
+        SAST[SAST<br/>Static Analysis<br/>No execution needed]
+        SCA[SCA<br/>Dependency Scanning<br/>CVE database match]
+    end
+    subgraph LATE[Later - Running App Required]
+        DAST[DAST<br/>Black-Box Testing<br/>No source needed]
+        IAST[IAST<br/>Instrumented Runtime<br/>Lowest false-positive rate]
+    end
+    SAST --> DAST
+    SCA --> DAST
+    DAST --- IAST
+```
+
+**When each tool runs in the pipeline:**
+
+```mermaid
+flowchart LR
+    A[Developer IDE<br/>SAST Plugin] --> B[CI - Commit<br/>SAST + SCA] --> C[CI - Build<br/>Unit Tests] --> D[Staging<br/>DAST + IAST] --> E[Pre-Prod<br/>Pen Test] --> F[Production<br/>Runtime Monitor]
+```
+
 ---
 
 ## API Security
@@ -86,11 +143,30 @@ APIs are a primary attack surface in modern applications. Key controls:
 
 Common API vulnerabilities include **IDOR** (Insecure Direct Object Reference), **broken object-level authorization**, and **mass assignment** (API accepting fields it shouldn't).
 
+```mermaid
+flowchart LR
+    Client -->|HTTPS| GW[API Gateway<br/>Auth / Rate Limit / Logging]
+    GW -->|Validated Request| API[Application API<br/>Input Validation / AuthZ]
+    API --> DB[Database<br/>Parameterized Queries]
+    API --> Svc[Backend Services<br/>Internal mTLS]
+```
+
 ---
 
 ## Software Supply Chain Security
 
 Supply chain attacks (e.g., SolarWinds, Log4Shell) have made this a growing focus area.
+
+```mermaid
+flowchart TD
+    Dev[Developer Workstation<br/>Signed Commits] -->|git push| Repo[Source Repo<br/>Branch Protection / Reviews]
+    Repo -->|CI trigger| CI[CI Pipeline<br/>SAST + SCA + Build]
+    CI -->|signed artifact| Registry[Artifact Registry<br/>Signed and Immutable]
+    Registry -->|digest verification| Staging[Staging Deploy]
+    Staging -->|approved| Prod[Production Deploy]
+    SBOM[SBOM Generation] -.->|attached to artifact| Registry
+    SCA[Continuous CVE Scan] -.-> Registry
+```
 
 Key controls:
 - **Dependency pinning** — Pin libraries to known-good versions rather than using floating version ranges
@@ -111,6 +187,20 @@ Databases require specific security controls beyond general application security
 - **Encryption** of sensitive columns and full-disk encryption for database files
 - **Database activity monitoring (DAM)** for detecting anomalous query patterns
 
+**SQL Injection — vulnerable vs. secure:**
+
+```mermaid
+flowchart TD
+    subgraph VULN[Vulnerable - String Concatenation]
+        V1[User input: single-quote OR 1=1] --> V2[Query string is concatenated directly]
+        V2 --> V3[Returns ALL rows - authentication bypass]
+    end
+    subgraph SAFE[Secure - Parameterized Query]
+        S1[User input: single-quote OR 1=1] --> S2[Input bound to a placeholder parameter]
+        S2 --> S3[Input treated as data not code - 0 rows returned]
+    end
+```
+
 ---
 
 ## Change Management and Version Control
@@ -122,6 +212,16 @@ Databases require specific security controls beyond general application security
 - Store secrets in a **secrets manager** (HashiCorp Vault, AWS Secrets Manager), never in source code
 
 **Change management** for software follows the same principles as infrastructure: changes must be reviewed, tested, and approved before production deployment. Emergency changes require retroactive documentation.
+
+```mermaid
+flowchart LR
+    Dev[Developer Branch] -->|Pull Request| Review[Peer Review + SAST Gate]
+    Review -->|Approved| Main[Main Branch]
+    Main -->|CI trigger| Test[Automated Tests]
+    Test -->|Passed| CAB[Change Advisory Board]
+    CAB -->|Approved| Prod[Production Deploy]
+    CAB -->|Rejected| Dev
+```
 
 ---
 

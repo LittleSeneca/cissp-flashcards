@@ -1,0 +1,11 @@
+Question	Answer	Category
+What is the first ISC2 Code of Ethics canon?	**Protect society, the common good, necessary public trust and confidence, and the infrastructure.** (Highest priority)	Code of Ethics
+What is the second ISC2 Code of Ethics canon?	**Act honorably, honestly, justly, responsibly, and legally.**	Code of Ethics
+What is the third ISC2 Code of Ethics canon?	**Provide diligent and competent service to principals.**	Code of Ethics
+What is the fourth ISC2 Code of Ethics canon?	**Advance and protect the profession.** (Lowest priority in conflicts)	Code of Ethics
+How are the ISC2 canons prioritized in a conflict?	They are **ordered**. Earlier canons (I, II) always take precedence over later canons (III, IV) when an ethical conflict arises.	Code of Ethics
+What is RFC 1087?	An official statement from the IAB regarding **Ethics and the Internet**. It defines unethical behavior as gaining unauthorized access, disrupting use, wasting resources, or compromising privacy.	Ethics Standards
+To whom does a CISSP owe their primary duty according to the Code of Ethics Preamble?	**Society and the common good** (The safety and welfare of the public).	Code of Ethics
+What action must a CISSP take if they see another member violating the Code?	They should **report the violation** to the ISC2 Ethics Committee to protect the integrity of the profession.	Code of Ethics
+Does a felony conviction unrelated to security require reporting to ISC2?	**Yes.** Members must act legally (Canon II) and are required to report certain legal convictions for review by the ethics committee.	Code of Ethics
+What does "competent service" mean in Canon III?	Professionals should only perform work for which they have the **necessary knowledge and expertise**.	Code of Ethics

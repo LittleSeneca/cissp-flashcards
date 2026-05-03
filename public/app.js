@@ -16,6 +16,21 @@ const ICONS = {
   set:    `<svg class="nav-icon" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="3" y="5.5" width="10" height="8.5" rx="1.5"/><rect x="1" y="3.5" width="10" height="8.5" rx="1.5" opacity="0.28"/></svg>`,
 };
 
+// ── Mermaid diagram rendering ─────────────────────────────────────────────────
+// marked outputs mermaid fences as <pre><code class="language-mermaid">…</code></pre>.
+// We convert those nodes to <div class="mermaid"> and call mermaid.run() so they render.
+function renderMermaid() {
+  if (typeof mermaid === 'undefined') return;
+  document.querySelectorAll('code.language-mermaid').forEach(code => {
+    const div = document.createElement('div');
+    div.className = 'mermaid';
+    // .textContent decodes HTML entities that marked injected (&quot; → ", &lt; → <, etc.)
+    div.textContent = code.textContent;
+    (code.closest('pre') || code).replaceWith(div);
+  });
+  mermaid.run();
+}
+
 // ── State ─────────────────────────────────────────────────────────────────────
 let studyState          = null;
 let quizState           = null;
@@ -642,6 +657,7 @@ async function showDomain(domainId) {
           }).join('')}
       </div>
       ${readmeData?.html ? `<div class="domain-guide readme">${readmeData.html}</div>` : ''}`;
+  renderMermaid();
   } catch (e) {
     appEl.innerHTML = `<p class="error">Could not load domain: ${esc(e.message)}</p>`;
   }
@@ -777,6 +793,7 @@ async function showSet(domainId, setId) {
       ${readmeData.html
         ? `<div class="readme">${readmeData.html}</div>`
         : '<p class="empty">No study guide for this set yet.</p>'}`;
+  renderMermaid();
   } catch (e) {
     appEl.innerHTML = `<p class="error">Could not load set: ${esc(e.message)}</p>`;
   }

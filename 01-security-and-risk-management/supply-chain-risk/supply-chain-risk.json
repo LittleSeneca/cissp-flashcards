@@ -1,0 +1,72 @@
+[
+  {
+    "question": "Which of the following is the BEST way to ensure that a third-party vendor maintains the required security posture throughout the life of a contract?",
+    "options": ["Conducting a one-time security audit at the start of the contract", "Including a 'Right to Audit' clause and requiring periodic SOC 2 Type II reports", "Relying on the vendor's reputation and size", "Requiring the vendor to sign a Non-Disclosure Agreement (NDA)"],
+    "correct": 1,
+    "explanation": "**Why Right to Audit/SOC 2 is correct**: Continuous monitoring and the right to verify security controls are essential for managing third-party risk. A SOC 2 Type II report provides evidence of control effectiveness over a period of time. **Why others are wrong**: One-time audits are insufficient for ongoing assurance. Reputation is not a substitute for verification. An NDA protects confidentiality but doesn't ensure security posture.",
+    "category": "Supply Chain Risk Management"
+  },
+  {
+    "question": "What is the primary purpose of a Software Bill of Materials (SBOM)?",
+    "options": ["To list the price of each software component", "To provide a formal list of all components, libraries, and dependencies in a software package", "To serve as a user manual for the software", "To encrypt the source code of the application"],
+    "correct": 1,
+    "explanation": "**Why formal list is correct**: An SBOM provides transparency into the software supply chain by identifying all components, which helps in vulnerability management and license compliance. **Why others are wrong**: It is not a pricing list, a user manual, or an encryption mechanism.",
+    "category": "Supply Chain Risk Management"
+  },
+  {
+    "question": "An organization is concerned about counterfeit microchips being introduced into their high-security servers. This is an example of what type of risk?",
+    "options": ["Upstream Supply Chain Risk", "Downstream Supply Chain Risk", "Internal Process Risk", "Operational Risk"],
+    "correct": 0,
+    "explanation": "**Why Upstream is correct**: Upstream risk refers to risks associated with suppliers and the components they provide before they reach the organization. **Why others are wrong**: Downstream risk relates to the distribution and delivery of the final product to customers. Internal and operational risks are broader categories.",
+    "category": "Supply Chain Risk Management"
+  },
+  {
+    "question": "Which document establishes the minimum acceptable service levels and the penalties for failing to meet them between a customer and a provider?",
+    "options": ["Non-Disclosure Agreement (NDA)", "Master Service Agreement (MSA)", "Service Level Agreement (SLA)", "Business Impact Analysis (BIA)"],
+    "correct": 2,
+    "explanation": "**Why SLA is correct**: The SLA defines specific performance metrics and expectations. **Why others are wrong**: An NDA is for confidentiality. An MSA is a governing document for general terms. A BIA is a planning document for disaster recovery.",
+    "category": "Supply Chain Risk Management"
+  },
+  {
+    "question": "A company is selecting a cloud provider and wants to ensure that the provider's internal controls over financial reporting are sound. Which report should they request?",
+    "options": ["SOC 1", "SOC 2", "SOC 3", "ISO 27001"],
+    "correct": 0,
+    "explanation": "**Why SOC 1 is correct**: SOC 1 reports focus on controls relevant to the user entity's internal control over financial reporting (ICFR). **Why others are wrong**: SOC 2 and SOC 3 focus on security, availability, processing integrity, confidentiality, and privacy. ISO 27001 is a certification, not a report focused on ICFR.",
+    "category": "Supply Chain Risk Management"
+  },
+  {
+    "question": "What is the primary risk associated with 'Just-in-Time' (JIT) manufacturing from a security and resilience perspective?",
+    "options": ["Increased storage costs", "Vulnerability to supply chain disruptions", "Higher probability of insider threat", "Reduced product quality"],
+    "correct": 1,
+    "explanation": "**Why supply chain disruptions is correct**: JIT minimizes inventory, meaning any disruption in the supply chain can immediately stop production, reducing resilience. **Why others are wrong**: JIT actually decreases storage costs. It does not inherently increase insider threats or reduce quality.",
+    "category": "Supply Chain Risk Management"
+  },
+  {
+    "question": "When managing third-party risk, which phase of the vendor lifecycle is MOST critical for establishing security requirements?",
+    "options": ["Offboarding", "Operational Monitoring", "Selection and Onboarding", "Contract Renewal"],
+    "correct": 2,
+    "explanation": "**Why Selection/Onboarding is correct**: Security requirements must be established during selection and baked into the contract during onboarding. **Why others are wrong**: While other phases are important, the foundation is laid during onboarding.",
+    "category": "Supply Chain Risk Management"
+  },
+  {
+    "question": "Which term describes the process of ensuring that hardware components are authentic and have not been tampered with during transit?",
+    "options": ["Chain of Custody", "Hardware Root of Trust", "Supply Chain Integrity", "Secure Boot"],
+    "correct": 2,
+    "explanation": "**Why Supply Chain Integrity is correct**: This refers to the overall assurance that the products are genuine and unaltered. **Why others are wrong**: Chain of Custody is more specific to evidence. Hardware Root of Trust and Secure Boot are technical mechanisms within the device.",
+    "category": "Supply Chain Risk Management"
+  },
+  {
+    "question": "A 'Master Service Agreement' (MSA) is typically used to:",
+    "options": ["Detail specific technical configurations", "Provide a framework for future contracts and work orders", "Specify the daily tasks of a contractor", "List the software versions used by a vendor"],
+    "correct": 1,
+    "explanation": "**Why framework is correct**: An MSA simplifies the negotiation process for future transactions by defining the general terms and conditions that will govern all future work. **Why others are wrong**: It usually doesn't include granular technical details or daily task lists.",
+    "category": "Supply Chain Risk Management"
+  },
+  {
+    "question": "Which of the following is a DOWNSTREAM supply chain risk?",
+    "options": ["A component manufacturer goes bankrupt", "A software library has a known vulnerability", "A distributor of the final product experiences a data breach involving customer shipping info", "A raw material supplier increases prices"],
+    "correct": 2,
+    "explanation": "**Why distributor breach is correct**: Downstream refers to the path from the organization to the customer. A distributor breach is a downstream risk. **Why others are wrong**: Component manufacturers and library vulnerabilities are upstream risks. Raw material price increases are also upstream (cost) risks.",
+    "category": "Supply Chain Risk Management"
+  }
+]

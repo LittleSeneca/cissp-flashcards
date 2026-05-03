@@ -384,6 +384,23 @@ main {
 .readme code { background: var(--bg); padding: 0.1em 0.35em; border-radius: 3px; font-size: 0.875em; font-family: 'SF Mono', Menlo, Consolas, monospace; }
 .readme hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
 
+/* ── Mermaid diagrams ─────────────────────────────── */
+.readme .mermaid,
+.domain-guide .mermaid {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin: 1.25rem 0;
+  overflow-x: auto;
+  text-align: center;
+}
+.readme .mermaid svg,
+.domain-guide .mermaid svg {
+  max-width: 100%;
+  height: auto;
+}
+
 /* ── Domain guide card (large README below section grid) ── */
 .domain-guide {
   background: var(--surface);

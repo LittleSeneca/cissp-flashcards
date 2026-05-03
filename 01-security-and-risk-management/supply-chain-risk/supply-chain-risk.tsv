@@ -1,0 +1,10 @@
+Supply Chain Risk Management (SCRM)	The process of identifying, assessing, and mitigating risks to the integrity and availability of products and services.
+Software Bill of Materials (SBOM)	A nested inventory of software components, libraries, and dependencies.
+Service Level Agreement (SLA)	Contractual commitment defining service performance metrics (e.g., 99.9% uptime) and penalties.
+Master Service Agreement (MSA)	A foundational contract that governs future transactions and work orders between parties.
+Upstream Risk	Risks originating from suppliers or providers earlier in the supply chain (e.g., component manufacturers).
+Downstream Risk	Risks associated with the distribution and delivery of a product/service to the end customer.
+SOC 1 Report	Focuses on controls relevant to a user entity's internal control over financial reporting (ICFR).
+SOC 2 Report	Focuses on Trust Services Criteria: Security, Availability, Processing Integrity, Confidentiality, and Privacy.
+Right to Audit Clause	A contract provision that allows a customer to verify a vendor's compliance through inspections or audits.
+Counterfeit Parts	Unauthorized or fraudulent hardware components that can introduce vulnerabilities or failures.

@@ -1,0 +1,72 @@
+[
+  {
+    "question": "Which type of law is primarily concerned with the punishment of individuals who commit acts that are considered harmful to society as a whole?",
+    "options": ["Civil Law", "Administrative Law", "Criminal Law", "Common Law"],
+    "correct": 2,
+    "explanation": "**Why Criminal Law is correct**: Criminal law deals with conduct that is considered harmful to social order and is prohibited by statute. Punishments can include imprisonment and fines. **Why others are wrong**: Civil law (Tort law) deals with disputes between individuals or organizations. Administrative (Regulatory) law is enacted by government agencies. Common law is based on judicial decisions.",
+    "category": "Legal, Regulatory, and IP"
+  },
+  {
+    "question": "A software company wants to protect a unique algorithm that provides a significant competitive advantage but does not want to disclose the details to the public. Which form of intellectual property protection is BEST suited for this requirement?",
+    "options": ["Patent", "Copyright", "Trademark", "Trade Secret"],
+    "correct": 3,
+    "explanation": "**Why Trade Secret is correct**: Trade secrets protect proprietary information that provides a competitive edge and is kept secret. Unlike patents, they do not require public disclosure. **Why others are wrong**: Patents require public disclosure. Copyright protects the expression of an idea, not the algorithm itself. Trademarks protect brand identifiers.",
+    "category": "Legal, Regulatory, and IP"
+  },
+  {
+    "question": "Under U.S. copyright law, what is the standard duration of protection for a work created by an individual author?",
+    "options": ["20 years from the date of creation", "70 years from the date of creation", "The life of the author plus 70 years", "95 years from the date of publication"],
+    "correct": 2,
+    "explanation": "**Why 'Life + 70' is correct**: For individual authors, copyright lasts for the life of the author plus 70 years. **Why others are wrong**: 20 years is the standard term for a utility patent. 95 years from publication applies to works made for hire (corporate authorship).",
+    "category": "Legal, Regulatory, and IP"
+  },
+  {
+    "question": "A utility patent in the United States generally provides protection for how many years from the date of application?",
+    "options": ["10 years", "14 years", "20 years", "50 years"],
+    "correct": 2,
+    "explanation": "**Why 20 years is correct**: Utility patents provide protection for 20 years from the filing date. **Why others are wrong**: 14 years is for design patents. 10 years and 50 years are not standard patent terms for utility inventions.",
+    "category": "Legal, Regulatory, and IP"
+  },
+  {
+    "question": "Which regulation specifically mandates the protection of Personal Health Information (PHI) within the United States?",
+    "options": ["SOX", "GLBA", "HIPAA", "PCI DSS"],
+    "correct": 2,
+    "explanation": "**Why HIPAA is correct**: The Health Insurance Portability and Accountability Act (HIPAA) regulates the security and privacy of PHI. **Why others are wrong**: SOX (Sarbanes-Oxley) focuses on financial reporting and corporate governance. GLBA (Gramm-Leach-Bliley) focuses on financial institutions and PII. PCI DSS is a contractual standard for credit card data, not a federal law.",
+    "category": "Legal, Regulatory, and IP"
+  },
+  {
+    "question": "The Gramm-Leach-Bliley Act (GLBA) primarily affects which type of organizations?",
+    "options": ["Healthcare providers", "Financial institutions", "Publicly traded companies", "Government contractors"],
+    "correct": 1,
+    "explanation": "**Why Financial institutions is correct**: GLBA requires financial institutions to explain their information-sharing practices to customers and to safeguard sensitive data. **Why others are wrong**: Healthcare is HIPAA. Publicly traded companies are SOX. Government contractors often fall under FISMA or CMMC.",
+    "category": "Legal, Regulatory, and IP"
+  },
+  {
+    "question": "Which legislative act was passed in response to major corporate and accounting scandals, requiring strict financial record-keeping and internal controls?",
+    "options": ["FISMA", "SOX", "GLBA", "ECPA"],
+    "correct": 1,
+    "explanation": "**Why SOX is correct**: The Sarbanes-Oxley Act (SOX) was enacted to protect investors from fraudulent financial reporting by corporations. **Why others are wrong**: FISMA applies to federal agencies. GLBA applies to financial institutions. ECPA (Electronic Communications Privacy Act) governs wiretapping and electronic communication access.",
+    "category": "Legal, Regulatory, and IP"
+  },
+  {
+    "question": "The California Consumer Privacy Act (CCPA) provides California residents with which of the following rights?",
+    "options": ["The right to be forgotten in all jurisdictions", "The right to opt-out of the sale of their personal information", "The right to a free computer security audit", "The right to sue for any data breach regardless of negligence"],
+    "correct": 1,
+    "explanation": "**Why opt-out is correct**: CCPA grants California residents the right to know what personal data is being collected and the right to opt-out of its sale. **Why others are wrong**: The 'right to be forgotten' is more strictly defined in GDPR. CCPA does not mandate free audits or provide an absolute right to sue for any breach without specific criteria.",
+    "category": "Legal, Regulatory, and IP"
+  },
+  {
+    "question": "The OECD Privacy Guidelines are significant because they:",
+    "options": ["Provide a legally binding global privacy law", "Establish a framework for the protection of privacy and transborder flows of personal data", "Mandate the use of AES-256 for all data at rest", "Define the technical specifications for SSL/TLS"],
+    "correct": 1,
+    "explanation": "**Why OECD framework is correct**: The OECD Guidelines on the Protection of Privacy and Transborder Flows of Personal Data provide a non-binding but highly influential framework for international privacy. **Why others are wrong**: They are not legally binding as a global law. They do not specify technical encryption algorithms or protocol specifications.",
+    "category": "Legal, Regulatory, and IP"
+  },
+  {
+    "question": "Which intellectual property concept protects 'original works of authorship' including software code, music, and literature?",
+    "options": ["Patent", "Trademark", "Copyright", "Trade Secret"],
+    "correct": 2,
+    "explanation": "**Why Copyright is correct**: Copyright protects the expression of ideas in original works of authorship, which includes software source code. **Why others are wrong**: Patents protect inventions. Trademarks protect brands. Trade secrets protect confidential business information.",
+    "category": "Legal, Regulatory, and IP"
+  }
+]

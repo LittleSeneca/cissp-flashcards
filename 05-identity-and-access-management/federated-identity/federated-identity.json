@@ -1,0 +1,72 @@
+[
+  {
+    "question": "In a SAML-based federation, which entity is responsible for authenticating the user and issuing security assertions?",
+    "options": ["Service Provider (SP)", "Identity Provider (IdP)", "Relaying Party (RP)", "Authorization Server"],
+    "correct": 1,
+    "explanation": "**Why IdP is correct**: The Identity Provider (IdP) is the system that manages user identities and provides authentication services to the federation. **Why others are wrong**: The Service Provider (SP) (also known as the Relying Party) consumes the assertion to provide the service. An Authorization Server is an OAuth term.",
+    "category": "Federated Identity"
+  },
+  {
+    "question": "Which protocol is primarily designed for delegated AUTHORIZATION, allowing a third-party application to access resources without the user's password?",
+    "options": ["SAML 2.0", "OpenID Connect (OIDC)", "OAuth 2.0", "RADIUS"],
+    "correct": 2,
+    "explanation": "**Why OAuth 2.0 is correct**: OAuth 2.0 is specifically an authorization framework that uses tokens to grant access to resources. **Why others are wrong**: SAML is for XML-based authentication/authorization. OIDC is an authentication layer on top of OAuth. RADIUS is for centralized AAA.",
+    "category": "Federated Identity"
+  },
+  {
+    "question": "OpenID Connect (OIDC) provides an AUTHENTICATION layer on top of which underlying framework?",
+    "options": ["SAML", "OAuth 2.0", "Kerberos", "LDAP"],
+    "correct": 1,
+    "explanation": "**Why OAuth 2.0 is correct**: OIDC uses OAuth 2.0 for transport and adds an ID Token to provide identity information, making it an authentication protocol. **Why others are wrong**: It is not built on SAML, Kerberos, or LDAP.",
+    "category": "Federated Identity"
+  },
+  {
+    "question": "What is the primary purpose of 'Just-In-Time' (JIT) Provisioning in a federated environment?",
+    "options": ["To encrypt user passwords in transit", "To automatically create a user account in the Service Provider's system the first time they log in via the IdP", "To verify the user's physical identity via a background check", "To revoke access immediately when a user leaves the company"],
+    "correct": 1,
+    "explanation": "**Why JIT is correct**: JIT provisioning automates the creation of user profiles in the target application (SP) based on the attributes sent in the SAML assertion or OIDC token. **Why others are wrong**: It is not for encryption, background checks, or revocation (though it helps keep accounts in sync).",
+    "category": "Federated Identity"
+  },
+  {
+    "question": "A user logs into their corporate portal once and is then granted access to several different cloud-based SaaS applications without being prompted for credentials again. This is an example of:",
+    "options": ["Multifactor Authentication (MFA)", "Single Sign-On (SSO)", "Identity Proofing", "Mandatory Access Control (MAC)"],
+    "correct": 1,
+    "explanation": "**Why SSO is correct**: Single Sign-On allows a user to authenticate once and access multiple related but independent software systems. **Why others are wrong**: MFA is about multiple factors. Identity proofing is the initial verification. MAC is an access control model based on labels.",
+    "category": "Federated Identity"
+  },
+  {
+    "question": "In the context of SAML, what is an 'Assertion'?",
+    "options": ["A password reset request", "An XML document containing authentication and/or attribute statements about a user", "A digital certificate used for SSL/TLS", "A log entry recording a failed login"],
+    "correct": 1,
+    "explanation": "**Why Assertion is correct**: SAML assertions are the XML-based messages sent from the IdP to the SP that 'assert' that a user has been authenticated. **Why others are wrong**: It is not a password reset, a certificate, or a log entry.",
+    "category": "Federated Identity"
+  },
+  {
+    "question": "Which of the following is a common security risk associated with OAuth 2.0 implementations?",
+    "options": ["Buffer overflow", "Improper redirect URI validation", "SQL injection in the identity store", "Lack of AES encryption"],
+    "correct": 1,
+    "explanation": "**Why Redirect URI is correct**: If an OAuth implementation doesn't strictly validate the redirect URI, an attacker can steal authorization codes by redirecting them to a malicious site. **Why others are wrong**: While other risks exist, redirect URI validation is a specific and common OAuth-related vulnerability.",
+    "category": "Federated Identity"
+  },
+  {
+    "question": "What is the role of a 'Service Provider' (SP) in a SAML federation?",
+    "options": ["To store all user passwords", "To provide the actual application or resource the user wants to access", "To issue the SAML tokens", "To manage the user's MFA devices"],
+    "correct": 1,
+    "explanation": "**Why SP role is correct**: The SP (or Relying Party) is the application that trusts the IdP to authenticate users and provides the requested service. **Why others are wrong**: The IdP stores passwords and issues tokens.",
+    "category": "Federated Identity"
+  },
+  {
+    "question": "Federation differs from traditional SSO because it:",
+    "options": ["Requires more passwords", "Allows identity sharing across different organizations or security domains", "Is less secure than local authentication", "Only works with internal Windows systems"],
+    "correct": 1,
+    "explanation": "**Why federation difference is correct**: Federation extends the concept of SSO to allow users to use their credentials across different organizational boundaries. **Why others are wrong**: It actually reduces the number of passwords and is generally more secure and flexible than isolated silos.",
+    "category": "Federated Identity"
+  },
+  {
+    "question": "Which token type is specifically introduced by OpenID Connect to provide user identity information?",
+    "options": ["Access Token", "Refresh Token", "ID Token", "Bearer Token"],
+    "correct": 2,
+    "explanation": "**Why ID Token is correct**: OIDC introduces the ID Token (typically a JWT) to convey identity information about the authenticated user. **Why others are wrong**: Access and Refresh tokens are part of standard OAuth 2.0 for authorization.",
+    "category": "Federated Identity"
+  }
+]

@@ -1,0 +1,72 @@
+[
+  {
+    "question": "Which of the following BEST describes a Programmable Logic Controller (PLC) in an industrial environment?",
+    "options": ["A high-level server that manages the entire factory network", "A specialized digital computer used for automation of industrial electromechanical processes", "A software suite used for human-machine interface (HMI) design", "A network protocol used for communication between sensors"],
+    "correct": 1,
+    "explanation": "**Why PLC description is correct**: PLCs are ruggedized computers designed for real-time control of machinery and industrial processes. **Why others are wrong**: SCADA systems are higher-level; HMIs are the interfaces; and protocols like Modbus or DNP3 are the communication methods.",
+    "category": "ICS/SCADA and IoT"
+  },
+  {
+    "question": "What is the primary difference between Operational Technology (OT) and Information Technology (IT) in terms of security priorities?",
+    "options": ["IT prioritizes Availability, while OT prioritizes Confidentiality", "OT prioritizes Availability and Safety, while IT prioritizes Confidentiality", "There is no difference in priorities", "OT prioritizes Encryption, while IT prioritizes Firewalls"],
+    "correct": 1,
+    "explanation": "**Why OT priorities are correct**: In OT environments (like power plants or factories), the primary concern is the continuous and safe operation of the system (Availability and Safety). In IT, Confidentiality of data is often the top priority. **Why others are wrong**: IT usually prioritizes Confidentiality over Availability compared to OT.",
+    "category": "ICS/SCADA and IoT"
+  },
+  {
+    "question": "Which communication protocol is commonly used in the electric utility industry for communication between master stations and Remote Terminal Units (RTUs)?",
+    "options": ["HTTP", "SSH", "DNP3", "SMTP"],
+    "correct": 2,
+    "explanation": "**Why DNP3 is correct**: Distributed Network Protocol version 3 (DNP3) is a set of communications protocols used between components in process automation systems, highly common in the electric and water utilities. **Why others are wrong**: HTTP, SSH, and SMTP are standard IT protocols not specifically designed for industrial process control.",
+    "category": "ICS/SCADA and IoT"
+  },
+  {
+    "question": "A company is implementing 'Fog Computing' for their IoT deployment. What is the main benefit of this architecture?",
+    "options": ["Centralizing all data processing in a single cloud location", "Reducing latency by processing data closer to the edge of the network", "Increasing the storage capacity of end devices", "Simplifying the encryption of data at rest"],
+    "correct": 1,
+    "explanation": "**Why Fog Computing is correct**: Fog computing extends cloud computing to the edge of an enterprise's network, reducing latency by processing data locally before sending it to the cloud. **Why others are wrong**: Centralizing data is the opposite of Fog computing. It doesn't necessarily increase device storage or simplify encryption.",
+    "category": "ICS/SCADA and IoT"
+  },
+  {
+    "question": "What is a major security challenge with the Modbus protocol, traditionally used in ICS?",
+    "options": ["It uses too much bandwidth", "It lacks built-in authentication and encryption", "It is only compatible with Linux systems", "It requires specialized fiber optic cables"],
+    "correct": 1,
+    "explanation": "**Why Modbus challenge is correct**: Traditional Modbus was designed for isolated serial networks and lacks security features like authentication or encryption, making it vulnerable if exposed to modern networks. **Why others are wrong**: Modbus is very efficient (low bandwidth), OS-agnostic, and runs on standard cables.",
+    "category": "ICS/SCADA and IoT"
+  },
+  {
+    "question": "In a SCADA system, what is the role of the Human-Machine Interface (HMI)?",
+    "options": ["To automatically patch the PLC firmware", "To provide a graphical representation of the industrial process for human operators", "To act as the primary firewall for the OT network", "To store historical data in a relational database"],
+    "correct": 1,
+    "explanation": "**Why HMI role is correct**: The HMI allows operators to monitor and interact with the industrial process through a graphical interface. **Why others are wrong**: Patching, firewalling, and data historization are handled by other components (though a Historian often works with an HMI).",
+    "category": "ICS/SCADA and IoT"
+  },
+  {
+    "question": "Which term describes the concept of processing data directly on the IoT device itself?",
+    "options": ["Cloud Computing", "Fog Computing", "Edge Computing", "Grid Computing"],
+    "correct": 2,
+    "explanation": "**Why Edge Computing is correct**: Edge computing refers to data processing at the 'edge'—often directly on the device or sensor that collects the data. **Why others are wrong**: Fog computing is usually done at a local gateway/node. Cloud is centralized. Grid is distributed across many high-performance nodes.",
+    "category": "ICS/SCADA and IoT"
+  },
+  {
+    "question": "Which of the following represents a 'Cyber-Physical System'?",
+    "options": ["A web server running in a VM", "A smart thermostat that controls a building's HVAC system", "A database containing employee records", "A mobile app for social media"],
+    "correct": 1,
+    "explanation": "**Why Cyber-Physical is correct**: Cyber-physical systems (CPS) integrate sensing, computation, control, and networking into physical objects and infrastructure (like a smart thermostat or an autonomous vehicle). **Why others are wrong**: The other options are purely digital/IT systems.",
+    "category": "ICS/SCADA and IoT"
+  },
+  {
+    "question": "What is the primary security risk when an IoT device reaches its 'End of Life' (EoL)?",
+    "options": ["It will stop working immediately", "The manufacturer will no longer provide security patches for new vulnerabilities", "The device will automatically delete all data", "The device will consume more power"],
+    "correct": 1,
+    "explanation": "**Why EoL risk is correct**: Once a device is EoL, vulnerabilities discovered in its software/firmware will likely go unpatched, leaving it exposed. **Why others are wrong**: Devices often continue to function but are insecure.",
+    "category": "ICS/SCADA and IoT"
+  },
+  {
+    "question": "The 'Purdue Model' is primarily used for:",
+    "options": ["Designing web application architectures", "Segmenting Industrial Control System (ICS) networks", "Measuring the performance of cloud databases", "Encrypting mobile communications"],
+    "correct": 1,
+    "explanation": "**Why Purdue Model is correct**: The Purdue Enterprise Reference Architecture (PERA) is a model for ICS network segmentation, separating the OT levels (0-3) from the IT levels (4-5). **Why others are wrong**: It is not used for web apps, database performance, or mobile encryption.",
+    "category": "ICS/SCADA and IoT"
+  }
+]

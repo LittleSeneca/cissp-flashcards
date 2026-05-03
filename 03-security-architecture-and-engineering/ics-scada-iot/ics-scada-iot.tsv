@@ -1,0 +1,10 @@
+ICS (Industrial Control System)	General term for systems that monitor and control industrial processes (e.g., SCADA, DCS).
+SCADA (Supervisory Control and Data Acquisition)	High-level system for large-scale, geographically distributed industrial monitoring and control.
+PLC (Programmable Logic Controller)	Ruggedized computer used for real-time control of specific machinery in OT.
+RTU (Remote Terminal Unit)	Electronic device that connects sensors/actuators to a SCADA master station.
+OT (Operational Technology)	Hardware/software that detects or causes change through direct monitoring/control of physical devices.
+Modbus	Commonly used ICS serial protocol; lacks native authentication and encryption.
+DNP3 (Distributed Network Protocol)	Protocol used in utilities (electric/water) for communication between master and outstations.
+Fog Computing	Architecture extending cloud computing to the edge; processing at a local gateway/node.
+Edge Computing	Data processing performed at the immediate source of data (e.g., on the IoT device itself).
+HMI (Human-Machine Interface)	The graphical interface used by operators to interact with and monitor an industrial process.

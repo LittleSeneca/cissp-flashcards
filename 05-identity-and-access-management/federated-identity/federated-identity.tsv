@@ -1,0 +1,10 @@
+Federation	A system that allows for the sharing of identity information across multiple independent security domains or organizations.
+Identity Provider (IdP)	The entity in a federation that authenticates the user and issues identity assertions/tokens.
+Service Provider (SP)	The entity in a federation that provides the service or resource, relying on the IdP's authentication.
+SAML (Security Assertion Markup Language)	An XML-based framework for exchanging authentication and authorization data between an IdP and SP.
+SAML Assertion	The XML document sent from an IdP to an SP containing statements about a user's identity and permissions.
+OAuth 2.0	An industry-standard protocol for delegated authorization (uses Access Tokens).
+OpenID Connect (OIDC)	An authentication layer built on top of OAuth 2.0 (uses ID Tokens).
+Single Sign-On (SSO)	A mechanism allowing a user to authenticate once and gain access to multiple systems without re-authenticating.
+Just-In-Time (JIT) Provisioning	The automatic creation of a user account in a service provider the first time a user logs in via federation.
+JSON Web Token (JWT)	A compact, URL-safe means of representing claims to be transferred between two parties; commonly used in OIDC.
