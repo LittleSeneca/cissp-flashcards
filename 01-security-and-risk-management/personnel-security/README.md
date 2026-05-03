@@ -1,6 +1,6 @@
 ---
 tier: 1
-exam_weight: "16%"
+exam_weight: 16%
 ---
 
 # Personnel Security for the CISSP Exam

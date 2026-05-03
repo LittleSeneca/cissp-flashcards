@@ -9,7 +9,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **Parameterized queries** (or prepared statements) ensure that the database treats user input as data only, never as executable code. This is the primary and most effective defense against SQL injection. **Why A is wrong**: Denylists are easily bypassed with different encodings or novel attack strings. **Why C is wrong**: Output encoding is used to prevent Cross-Site Scripting (XSS), not SQL injection. **Why D is wrong**: Client-side validation is easily bypassed and should never be relied upon for security.",
-    "category": "Secure SDLC"
+    "category": "Secure SDLC, SQL Injection, Parameterized Queries"
   },
   {
     "question": "An attacker manages to inject a malicious script into a 'comment' field on a popular blog. Every user who later views that blog post executes the script in their own browser, leading to session cookie theft. Which type of attack has occurred?",
@@ -21,7 +21,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **Stored XSS** (also called Persistent XSS) occurs when the malicious script is permanently stored on the target server (e.g., in a database). **Why A is wrong**: **Reflected XSS** is non-persistent and requires the victim to click a specially crafted link. **Why C is wrong**: **DOM-based XSS** happens entirely on the client side without the payload necessarily being sent to the server. **Why D is wrong**: **CSRF** is an attack that tricks a user into performing an action they didn't intend, but it doesn't necessarily involve script injection.",
-    "category": "Secure SDLC"
+    "category": "Secure SDLC, XSS, Injection Attacks"
   },
   {
     "question": "A security architect is reviewing the Software Development Life Cycle (SDLC) and wants to 'shift left' by integrating security testing as early as possible. Which activity should be performed during the requirements and design phases to identify potential architectural flaws?",
@@ -33,7 +33,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: **Threat Modeling** is a structured activity performed during the design phase to identify potential threats and vulnerabilities in the application's architecture before any code is even written. **Why A, B, and D are wrong**: These activities require a running application or at least some source code, meaning they occur later in the SDLC.",
-    "category": "Secure SDLC"
+    "category": "Secure SDLC, Threat Modeling, Shift Left"
   },
   {
     "question": "Which memory protection technology randomizes the memory addresses used by a process's key areas (such as the stack, heap, and libraries) to make it more difficult for an attacker to predict the location of their injected shellcode?",
@@ -45,7 +45,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **ASLR** is specifically designed to randomize memory layouts, making buffer overflow and other memory-corruption exploits significantly more difficult to execute reliably. **Why A is wrong**: **DEP** (or NX bit) prevents code from being executed in data-only memory regions. **Why C is wrong**: A **Stack Canary** is a value placed on the stack to detect if a buffer overflow has occurred. **Why D is wrong**: **SafeSEH** is an exception handling protection.",
-    "category": "Secure SDLC"
+    "category": "Secure SDLC, ASLR, Memory Protection"
   },
   {
     "question": "An organization is using a maturity model to evaluate its software security program. They want a model that is based on real-world data from other organizations and allows them to benchmark themselves against their peers. Which model is the BEST choice?",
@@ -57,7 +57,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: **BSIMM** is a descriptive model based on data collected from real-world software security initiatives. It allows organizations to see what others are actually doing. **Why A is wrong**: **OWASP SAMM** is a prescriptive model (defining what you *should* do) and is not based on peer data in the same way. **Why B and D are wrong**: These are general security frameworks, not specific software security maturity models.",
-    "category": "Secure SDLC"
+    "category": "Secure SDLC, Maturity Models, BSIMM"
   },
   {
     "question": "A developer is using a function that copies data from a user-supplied input into a fixed-size buffer. If the input is larger than the buffer and the function does not perform bounds checking, what type of vulnerability is MOST likely to be introduced?",
@@ -69,7 +69,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: A **Buffer Overflow** occurs when a program writes more data to a buffer than it can hold, causing the excess data to overwrite adjacent memory. **Why A, C, and D are wrong**: These are web-based application-level vulnerabilities that do not involve memory corruption in the same way.",
-    "category": "Secure SDLC"
+    "category": "Secure SDLC, Buffer Overflow, Memory Safety"
   },
   {
     "question": "An organization wants to maintain an inventory of all third-party libraries and components used in its software products to quickly identify systems affected by newly discovered vulnerabilities (like Log4j). What is the name of this artifact?",
@@ -81,7 +81,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: A **Software Bill of Materials (SBOM)** is a formal, machine-readable record containing the details and supply chain relationships of various components used in building software. **Why A, C, and D are wrong**: These are other security artifacts that do not serve as a component inventory.",
-    "category": "Secure SDLC"
+    "category": "Secure SDLC, SBOM, Supply Chain Security"
   },
   {
     "question": "When a web application allows a user to access a file or database record by simply changing a numeric ID in the URL (e.g., changing 'accountID=100' to 'accountID=101') without verifying that the user is authorized to see that specific record, what is this vulnerability called?",
@@ -93,7 +93,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **IDOR** is a type of access control vulnerability where an application uses a direct reference to an object (like a primary key or filename) without performing an authorization check to ensure the user should have access to it. **Why A is wrong**: **CSRF** tricks a user's browser into performing an action. **Why C is wrong**: **SSRF** tricks the server into making a request. **Why D is wrong**: **SQL Injection** involves manipulating the database query logic.",
-    "category": "Secure SDLC"
+    "category": "Secure SDLC, IDOR, Broken Access Control"
   },
   {
     "question": "Which of the following is a security mechanism designed to prevent Cross-Site Request Forgery (CSRF) by ensuring that a request originated from the organization's own application and not from an external malicious site?",
@@ -105,7 +105,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: An **Anti-CSRF token** is a unique, secret, and unpredictable value that is embedded in server-side generated forms. The server validates this token upon form submission, ensuring the request was made intentionally from the legitimate page. **Why A is wrong**: **CSP** is primarily used to prevent XSS. **Why C is wrong**: **HSTS** forces the use of HTTPS. **Why D is wrong**: This header is for XSS protection and is largely deprecated.",
-    "category": "Secure SDLC"
+    "category": "Secure SDLC, CSRF, Session Management"
   },
   {
     "question": "In a DevSecOps environment, what is the PRIMARY goal of integrating security tools directly into the CI/CD (Continuous Integration/Continuous Deployment) pipeline?",
@@ -117,7 +117,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: The core philosophy of **DevSecOps** and 'shift left' is to automate security checks (like SAST, DAST, and SCA) within the pipeline so that vulnerabilities are caught and fixed early, when they are cheapest to resolve. **Why A is wrong**: Manual testing is still necessary for complex business logic. **Why C is wrong**: Security is a shared responsibility. **Why D is wrong**: DevSecOps aims to provide security *at speed*, not to slow down the process.",
-    "category": "Secure SDLC"
+    "category": "Secure SDLC, DevSecOps, Shift Left"
   },
   {
     "question": "An organization is following the Capability Maturity Model Integration (CMMI) for its software development process. They have established a set of standard processes across the entire organization, which are consistently followed. At which CMMI level is this organization operating?",
@@ -129,7 +129,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: At **Level 3 (Defined)**, processes are well characterized and understood, and are described in standards, procedures, tools, and methods. Organization-wide standards are established. **Why A is wrong**: Level 2 is project-specific. **Why C is wrong**: Level 4 involves statistical and quantitative control. **Why D is wrong**: Level 5 focuses on continuous process improvement.",
-    "category": "Secure SDLC"
+    "category": "Secure SDLC, CMMI, Process Maturity"
   },
   {
     "question": "A database administrator is implementing a security control where multiple versions of the same data record exist at different classification levels. This is done to prevent lower-level users from knowing that higher-level data exists. What is this technique called?",
@@ -141,7 +141,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: **Polyinstantiation** allows different versions of the same information to exist at different security levels, effectively hiding the existence of higher-level data from lower-level users and preventing inference. **Why A is wrong**: Aggregation is combining non-sensitive data to reveal sensitive info. **Why B is wrong**: Inference is using human intuition to deduce sensitive info. **Why D is wrong**: Normalization is for database efficiency.",
-    "category": "Secure SDLC"
+    "category": "Secure SDLC, Polyinstantiation, Database Security"
   },
   {
     "question": "During the maintenance phase of the SDLC, a critical vulnerability is discovered. The developers want to apply a quick fix without going through the full change management process. What is the GREATEST risk of this approach?",
@@ -153,7 +153,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: Bypassing **Change Management** (e.g., using 'hotfixes' or 'emergency patches' without testing) often leads to regressions or new security holes because the impact of the change wasn't properly analyzed. **Why A, C, and D are wrong**: While these are risks, the introduction of unknown vulnerabilities/system instability is the primary security concern.",
-    "category": "Secure SDLC"
+    "category": "Secure SDLC, Change Management, Hotfix"
   },
   {
     "question": "A security tester is providing random, malformed, or unexpected data as input to an application to see if it crashes or behaves unexpectedly. Which type of testing is being performed?",
@@ -165,7 +165,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **Fuzzing (Fuzz Testing)** is an automated software testing technique that involves providing invalid, unexpected, or random data as inputs to a computer program. **Why A is wrong**: Static analysis doesn't execute the code. **Why C is wrong**: Regression testing ensures new changes didn't break old functionality. **Why D is wrong**: Unit testing tests individual components.",
-    "category": "Secure SDLC"
+    "category": "Secure SDLC, Fuzzing, Dynamic Analysis"
   },
   {
     "question": "Which SDLC model is characterized by a series of iterations, where each iteration includes requirements, design, implementation, and risk analysis, effectively creating a series of 'mini-waterfalls'?",
@@ -177,7 +177,7 @@
     ],
     "correct": 0,
     "explanation": "**Why A is correct**: The **Spiral Model** is a risk-driven process model that combines the iterative nature of prototyping with the controlled and systematic aspects of the Waterfall model, focusing heavily on risk assessment. **Why B is wrong**: Waterfall is linear. **Why C is wrong**: Agile focuses on small increments and rapid feedback but is less 'risk-analysis' structured than Spiral. **Why D is wrong**: V-Model focuses on validation/verification mapping.",
-    "category": "Secure SDLC"
+    "category": "Secure SDLC, Spiral Model, Risk Management"
   },
   {
     "question": "An organization is decommissioning a legacy software application that processed highly sensitive PII. What is the MOST important security activity during the disposal phase?",
@@ -189,7 +189,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: Data sanitization (clearing, purging, or destroying) ensures that the sensitive data cannot be recovered from the storage media after the system is retired. **Why A is wrong**: Source code is important but data is the primary risk. **Why C is wrong**: This is a business process. **Why D is wrong**: Retention is important but doesn't address the immediate risk of data remnant.",
-    "category": "Secure SDLC"
+    "category": "Secure SDLC, Data Disposal, Sanitization"
   },
   {
     "question": "A developer is implementing a security control that prevents a user from performing both the 'request' and the 'approve' actions for a financial transaction within an application. Which principle is being applied?",
@@ -201,7 +201,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **Separation of Duties** (SoD) requires that high-risk tasks be split among multiple people to prevent fraud or error. **Why A is wrong**: Least Privilege is about limiting access. **Why C is wrong**: Need to Know is about data access. **Why D is wrong**: Dual control requires two people to perform a *single* action simultaneously (e.g., two keys for a vault).",
-    "category": "Secure SDLC"
+    "category": "Secure SDLC, Separation of Duties, SoD"
   },
   {
     "question": "Which type of software vulnerability occurs when an application uses an untrusted input to construct a file path, potentially allowing an attacker to access files outside the intended directory (e.g., ../../../etc/passwd)?",
@@ -213,7 +213,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **Path Traversal** involves using special characters (like '../') to navigate the file system outside of the intended directory. **Why A is wrong**: IDOR is broader and usually involves IDs in a database. **Why C is wrong**: SSRF makes the server fetch a URL. **Why D is wrong**: LFI is a specific result of path traversal where the file is *executed* or *included* by the application.",
-    "category": "Secure SDLC"
+    "category": "Secure SDLC, Path Traversal, Injection Attacks"
   },
   {
     "question": "A security architect wants to ensure that the production environment exactly matches the configuration that was tested in staging. Which practice is BEST for achieving this?",
@@ -225,7 +225,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **Infrastructure as Code** (IaC) allows for consistent, repeatable, and automated deployment of infrastructure, ensuring that development, staging, and production environments are identical and version-controlled. **Why A and C are wrong**: These lead to configuration drift. **Why D is wrong**: Golden images help but IaC provides more granular and dynamic control.",
-    "category": "Secure SDLC"
+    "category": "Secure SDLC, IaC, Configuration Management"
   },
   {
     "question": "In the context of database security, what is the risk when a user can combine several low-sensitivity data points to deduce a high-sensitivity fact that they are not authorized to know?",
@@ -237,7 +237,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **Inference** is the ability to derive information that is not explicitly available by analyzing other available data. **Why A is wrong**: **Aggregation** is the act of collecting multiple non-sensitive items into a sensitive collection (the collection itself is the risk). Inference is the *deduction* from that data. **Why C is wrong**: This is a countermeasure. **Why D is wrong**: This is a legitimate data analysis technique.",
-    "category": "Secure SDLC"
+    "category": "Secure SDLC, Inference, Database Security"
   },
   {
     "question": "An organization is using the 'Agile' development methodology. When should security requirements be identified and addressed?",
@@ -249,7 +249,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: In Agile, security must be integrated into the entire lifecycle (sprint planning, user stories, definition of done) to maintain speed and security simultaneously. **Why A is wrong**: Security shouldn't be a one-time event. **Why C and D are wrong**: These represent the 'Waterfall' mindset and create bottlenecks.",
-    "category": "Secure SDLC"
+    "category": "Secure SDLC, Agile, DevSecOps"
   },
   {
     "question": "A company wants to prevent 'DLL Hijacking' attacks on its Windows-based applications. Which developer practice is MOST effective?",
@@ -261,7 +261,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: By using **absolute paths**, the application specifies exactly where the DLL should be loaded from, preventing the OS from searching in insecure locations (like the current directory) where an attacker might have placed a malicious DLL. **Why A is wrong**: Input encoding doesn't affect DLL loading. **Why C is wrong**: This is 'security by obscurity'. **Why D is wrong**: This increases the risk.",
-    "category": "Secure SDLC"
+    "category": "Secure SDLC, DLL Hijacking, Binary Security"
   },
   {
     "question": "Which of the following describes a 'Time of Check to Time of Use' (TOCTOU) vulnerability?",
@@ -273,7 +273,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **TOCTOU** is a race condition where the security check (e.g., 'does this user have permission to write to this file?') is performed, but the state of the file changes before the actual write operation occurs. **Why A is wrong**: This is a memory corruption issue. **Why C is wrong**: This is session management. **Why D is wrong**: This is not a standard security term.",
-    "category": "Secure SDLC"
+    "category": "Secure SDLC, TOCTOU, Race Condition"
   },
   {
     "question": "An organization is implementing a Secure SDLC and wants to ensure that developers are using safe functions instead of known-vulnerable ones (e.g., using strncpy() instead of strcpy()). Which tool is BEST for enforcing this during the coding phase?",
@@ -285,7 +285,7 @@
     ],
     "correct": 0,
     "explanation": "**Why A is correct**: **SAST** tools analyze source code for patterns that match known-insecure functions or coding practices. **Why B, C, and D are wrong**: These require a running application and typically find vulnerabilities at a higher level, not specific line-of-code function choices.",
-    "category": "Secure SDLC"
+    "category": "Secure SDLC, SAST, Secure Coding"
   },
   {
     "question": "What is the primary security objective of 'Code Signing'?",
@@ -297,7 +297,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **Code Signing** uses digital signatures to provide assurance that the software has not been altered (integrity) and that it definitely came from the stated publisher (authenticity). **Why A is wrong**: It doesn't provide confidentiality. **Why C is wrong**: It identifies the publisher. **Why D is wrong**: It doesn't provide DRM.",
-    "category": "Secure SDLC"
+    "category": "Secure SDLC, Code Signing, PKI"
   },
   {
     "question": "A developer is using an Object-Relational Mapping (ORM) framework to interact with a database. How does this PRIMARILY help prevent SQL injection?",
@@ -309,7 +309,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: Most modern **ORMs** (like Entity Framework, Hibernate, or Django ORM) automatically use parameterized queries, which separates data from the query logic. **Why A is wrong**: Encryption is separate. **Why C is wrong**: SELECT is still used. **Why D is wrong**: ORMs are backend libraries.",
-    "category": "Secure SDLC"
+    "category": "Secure SDLC, ORM, SQL Injection"
   },
   {
     "question": "Which of the following testing types is MOST likely to identify a logic flaw that allows a user to bypass a payment screen and proceed directly to 'Order Confirmation'?",
@@ -321,7 +321,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: Logic flaws and business process bypasses are best found by exercising the running application, either through **DAST** (which can find some) or, more effectively, **Manual Penetration Testing**. **Why A and B are wrong**: These are better at finding technical flaws (like XSS or unpatched software). **Why D is wrong**: SCA is for library vulnerabilities.",
-    "category": "Secure SDLC"
+    "category": "Secure SDLC, Penetration Testing, Logic Flaws"
   },
   {
     "question": "An organization is using a 'Sandbox' for testing new software. What is the PRIMARY security benefit of this approach?",
@@ -333,7 +333,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: A **Sandbox** is an isolated environment where untrusted code can be executed without risking the security of the host system or the wider network. **Why A, C, and D are wrong**: Sandboxing is about isolation and security, not performance or automated bug fixing.",
-    "category": "Secure SDLC"
+    "category": "Secure SDLC, Sandboxing, Isolation"
   },
   {
     "question": "What is the name of the security vulnerability where an application takes a user-supplied input and uses it in a header that is then sent back to the user's browser, potentially allowing an attacker to inject additional headers or perform 'Session Fixation'?",
@@ -345,7 +345,7 @@
     ],
     "correct": 0,
     "explanation": "**Why A is correct**: **HTTP Response Splitting** occurs when untrusted data is included in an HTTP response header, allowing the attacker to inject CRLF characters to 'split' the response and inject their own content or headers. **Why B, C, and D are wrong**: These are different types of injection attacks.",
-    "category": "Secure SDLC"
+    "category": "Secure SDLC, Injection Attacks, HTTP Header Injection"
   },
   {
     "question": "A developer wants to ensure that their application is resilient against 'Side-Channel Attacks' (like timing attacks) when comparing cryptographic hashes. What is the BEST approach?",
@@ -357,6 +357,6 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **Constant-time comparison** ensures that the time taken to compare two values is the same regardless of whether they match or where the mismatch occurs, preventing an attacker from deducing information from timing differences. **Why A is wrong**: This doesn't fix the logic. **Why C is wrong**: Random delays can often be 'averaged out' by an attacker. **Why D is wrong**: This doesn't address the comparison timing.",
-    "category": "Secure SDLC"
+    "category": "Secure SDLC, Side-Channel Attack, Cryptography"
   }
 ]

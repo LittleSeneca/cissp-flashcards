@@ -1,25 +1,25 @@
-Create Phase	The first phase of the data lifecycle; involves generation or acquisition of new data.
-Store Phase	Lifecycle phase for data at rest; involves encryption and physical protection.
-Use Phase	Lifecycle phase where data is actively processed in memory or on screen.
-Share Phase	Lifecycle phase where data is transmitted (data in transit); protected by TLS or DLP.
-Archive Phase	Long-term storage of data no longer in active use; addresses media obsolescence.
-Destroy Phase	The final phase involving sanitization to prevent data remanence.
-Clearing	Sanitization level using software to overwrite data; protects against simple recovery.
-Purging	Advanced sanitization (e.g., Secure Erase) protecting against laboratory recovery.
-Destruction	Physical destruction (shredding, incineration) of media; the most secure method.
-Degaussing	Using strong magnets to destroy data on magnetic media (ineffective for SSDs/CDs).
-Crypto-shredding	De-identifying data by destroying its encryption keys; essential for cloud data.
-Data Remanence	The residual representation of data remaining on media after sanitization attempts.
-Legal Hold	Requirement to suspend data destruction when litigation is anticipated.
-DLP (Data Loss Prevention)	System that monitors and blocks unauthorized transfers of sensitive data.
-CASB	Cloud Access Security Broker; enforces security policies for cloud-based data.
-IRM (Information Rights Management)	Persistent protection that controls file usage (copy/paste, print) regardless of location.
-HSM	Hardware Security Module; a physical device that manages and stores encryption keys.
-Data at Rest	Data stored on persistent media (hard drives, tapes).
-Data in Transit	Data moving across a network (email, web traffic, SFTP).
-Data in Use	Data being actively processed in RAM or CPU caches.
-SSD Overprovisioning	SSD feature that can hide data from software-based overwriting tools.
-NIST SP 800-88	The primary US government guideline for media sanitization.
-E-discovery	The process of identifying, collecting, and producing electronic data for legal cases.
-EDRM	Electronic Discovery Reference Model; the standard framework for e-discovery.
-Remote Wipe	Capability to remotely sanitize a lost or stolen mobile device.
+Create Phase	The first phase of the data lifecycle; involves generation or acquisition of new data.	Data Lifecycle, Create Phase, Data Generation
+Store Phase	Lifecycle phase for data at rest; involves encryption and physical protection.	Data Lifecycle, Store Phase, Data at Rest
+Use Phase	Lifecycle phase where data is actively processed in memory or on screen.	Data Lifecycle, Use Phase, Data in Use
+Share Phase	Lifecycle phase where data is transmitted (data in transit); protected by TLS or DLP.	Data Lifecycle, Share Phase, Data in Transit
+Archive Phase	Long-term storage of data no longer in active use; addresses media obsolescence.	Data Lifecycle, Archive Phase, Media Obsolescence
+Destroy Phase	The final phase involving sanitization to prevent data remanence.	Data Lifecycle, Destroy Phase, Media Sanitization
+Clearing	Sanitization level using software to overwrite data; protects against simple recovery.	Media Sanitization, Clearing, Overwriting
+Purging	Advanced sanitization (e.g., Secure Erase) protecting against laboratory recovery.	Media Sanitization, Purging, Forensic Recovery
+Destruction	Physical destruction (shredding, incineration) of media; the most secure method.	Media Sanitization, Physical Destruction, Shredding
+Degaussing	Using strong magnets to destroy data on magnetic media (ineffective for SSDs/CDs).	Media Sanitization, Degaussing, Magnetic Media
+Crypto-shredding	De-identifying data by destroying its encryption keys; essential for cloud data.	Media Sanitization, Crypto-shredding, Key Management
+Data Remanence	The residual representation of data remaining on media after sanitization attempts.	Data Lifecycle, Data Remanence, Media Sanitization
+Legal Hold	Requirement to suspend data destruction when litigation is anticipated.	Data Lifecycle, Legal Hold, E-discovery
+DLP (Data Loss Prevention)	System that monitors and blocks unauthorized transfers of sensitive data.	Data Security, DLP, Data in Transit
+CASB	Cloud Access Security Broker; enforces security policies for cloud-based data.	Cloud Security, CASB, Data Security
+IRM (Information Rights Management)	Persistent protection that controls file usage (copy/paste, print) regardless of location.	Data Security, IRM, Persistent Protection
+HSM	Hardware Security Module; a physical device that manages and stores encryption keys.	Cryptography, HSM, Key Management
+Data at Rest	Data stored on persistent media (hard drives, tapes).	Data States, Data at Rest, Encryption
+Data in Transit	Data moving across a network (email, web traffic, SFTP).	Data States, Data in Transit, TLS
+Data in Use	Data being actively processed in RAM or CPU caches.	Data States, Data in Use, Memory Protection
+SSD Overprovisioning	SSD feature that can hide data from software-based overwriting tools.	Media Sanitization, SSD, Data Remanence
+NIST SP 800-88	The primary US government guideline for media sanitization.	Media Sanitization, NIST 800-88, Standards
+E-discovery	The process of identifying, collecting, and producing electronic data for legal cases.	Data Lifecycle, E-discovery, Legal Hold
+EDRM	Electronic Discovery Reference Model; the standard framework for e-discovery.	Data Lifecycle, EDRM, E-discovery
+Remote Wipe	Capability to remotely sanitize a lost or stolen mobile device.	Mobile Security, Remote Wipe, Media Sanitization

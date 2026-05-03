@@ -1,3 +1,7 @@
+---
+exam_weight: 13%
+---
+
 # Domain 4: Communication and Network Security
 
 **Exam Weight: ~13% | Questions: ~26 of 125–175**

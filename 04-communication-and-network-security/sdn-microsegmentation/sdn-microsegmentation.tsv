@@ -1,21 +1,21 @@
 Question	Answer	Category
-What are the three primary 'planes' of SDN?	**Control Plane, Data Plane (Forwarding), and Management Plane.**	SDN, Microsegmentation
-What is the function of the Control Plane?	It acts as the **"brain"** of the network, making decisions about routing, switching, and security policies.	SDN, Microsegmentation
-What is the function of the Data Plane?	It is the **"muscle"** that forwards packets based on the instructions (tables) received from the Control Plane.	SDN, Microsegmentation
-What is the function of the Management Plane?	It is used for **administrative tasks**, such as configuration, monitoring, and logging via a centralized controller.	SDN, Microsegmentation
-What is a Northbound API?	The interface between the **SDN Controller (Control Plane)** and **Applications/Services** (Application Plane).	SDN, Microsegmentation
-What is a Southbound API?	The interface between the **SDN Controller (Control Plane)** and **Network Devices** (Data Plane), e.g., OpenFlow.	SDN, Microsegmentation
-What is Microsegmentation?	The practice of dividing a data center into **logical, granular segments** (down to the workload/VM level) to apply specific security policies.	SDN, Microsegmentation
-How does Microsegmentation differ from traditional VLANs?	Microsegmentation is **workload-centric and granular**, whereas VLANs are network-centric and often allow lateral movement within the segment.	SDN, Microsegmentation
-What is VXLAN?	**Virtual Extensible LAN.** A protocol that encapsulates Layer 2 frames in Layer 3 UDP packets, enabling Layer 2 overlays on Layer 3 networks.	SDN, Microsegmentation, Protocols
-What is the primary security goal of Microsegmentation?	To **prevent lateral movement** (East-West traffic) by an attacker who has already breached the perimeter.	SDN, Microsegmentation
-What is an Underlay network?	The **physical infrastructure** (switches, routers, cabling) that provides the basic Layer 3 connectivity for the network.	SDN, Microsegmentation
-What is an Overlay network?	A **virtual network** (like VXLAN or NVGRE) built on top of the physical underlay, allowing for logical isolation and mobility.	SDN, Microsegmentation
-What is the difference between SDN and NFV?	- **SDN** virtualizes the **network control and forwarding**.\n- **NFV (Network Function Virtualization)** virtualizes **network services** like firewalls, load balancers, and IDS/IPS.	SDN, Microsegmentation
-What is the difference between East-West and North-South traffic?	- **East-West** is traffic moving **between workloads** inside the data center.\n- **North-South** is traffic moving **in and out** of the data center.	SDN, Microsegmentation
-What is OpenFlow?	The most common **Southbound protocol** used for communication between an SDN controller and network switches.	SDN, Microsegmentation, Protocols
-What is a Service Mesh?	An infrastructure layer (operating at **Layer 7**) that manages service-to-service communication, often providing microsegmentation for microservices.	SDN, Microsegmentation
-What is Intent-Based Networking (IBN)?	A system that uses **higher-level business policies (intent)** to automatically configure and manage the network fabric.	SDN, Microsegmentation
-What is the role of a CNI in Kubernetes?	The **Container Networking Interface** plugin (e.g., Calico) provides the SDN-like network and security policy enforcement for containers.	SDN, Microsegmentation
-What is the GREATEST security risk of a centralized SDN controller?	It acts as a **Single Point of Failure (SPOF)** and a highly lucrative target; if compromised, the attacker has control over the entire network.	SDN, Microsegmentation, Risk
-How does SDN support Zero Trust?	By enabling **identity-based segmentation** and micro-perimeters around every workload, rather than relying on a "trusted" internal network.	SDN, Microsegmentation, Zero Trust
+What are the three primary 'planes' of SDN?	**Control Plane, Data Plane (Forwarding), and Management Plane.**	SDN Architecture, Control Plane, Data Plane
+What is the function of the Control Plane?	It acts as the **"brain"** of the network, making decisions about routing, switching, and security policies.	SDN Architecture, Control Plane, Network Logic
+What is the function of the Data Plane?	It is the **"muscle"** that forwards packets based on the instructions (tables) received from the Control Plane.	SDN Architecture, Data Plane, Forwarding Plane
+What is the function of the Management Plane?	It is used for **administrative tasks**, such as configuration, monitoring, and logging via a centralized controller.	SDN Architecture, Management Plane, Configuration
+What is a Northbound API?	The interface between the **SDN Controller (Control Plane)** and **Applications/Services** (Application Plane).	SDN Architecture, Northbound API, Application Plane
+What is a Southbound API?	The interface between the **SDN Controller (Control Plane)** and **Network Devices** (Data Plane), e.g., OpenFlow.	SDN Architecture, Southbound API, OpenFlow
+What is Microsegmentation?	The practice of dividing a data center into **logical, granular segments** (down to the workload/VM level) to apply specific security policies.	Microsegmentation, Workload Isolation, Network Segmentation
+How does Microsegmentation differ from traditional VLANs?	Microsegmentation is **workload-centric and granular**, whereas VLANs are network-centric and often allow lateral movement within the segment.	Microsegmentation, VLAN, Network Abstraction
+What is VXLAN?	**Virtual Extensible LAN.** A protocol that encapsulates Layer 2 frames in Layer 3 UDP packets, enabling Layer 2 overlays on Layer 3 networks.	Overlay Networks, VXLAN, Layer 2 Overlay
+What is the primary security goal of Microsegmentation?	To **prevent lateral movement** (East-West traffic) by an attacker who has already breached the perimeter.	Microsegmentation, Lateral Movement, East-West Traffic
+What is an Underlay network?	The **physical infrastructure** (switches, routers, cabling) that provides the basic Layer 3 connectivity for the network.	SDN Architecture, Underlay Network, Physical Infrastructure
+What is an Overlay network?	A **virtual network** (like VXLAN or NVGRE) built on top of the physical underlay, allowing for logical isolation and mobility.	SDN Architecture, Overlay Network, Network Virtualization
+What is the difference between SDN and NFV?	- **SDN** virtualizes the **network control and forwarding**.\n- **NFV (Network Function Virtualization)** virtualizes **network services** like firewalls, load balancers, and IDS/IPS.	SDN, NFV, Network Function Virtualization
+What is the difference between East-West and North-South traffic?	- **East-West** is traffic moving **between workloads** inside the data center.\n- **North-South** is traffic moving **in and out** of the data center.	Network Traffic Patterns, East-West Traffic, North-South Traffic
+What is OpenFlow?	The most common **Southbound protocol** used for communication between an SDN controller and network switches.	SDN Protocols, OpenFlow, Southbound Interface
+What is a Service Mesh?	An infrastructure layer (operating at **Layer 7**) that manages service-to-service communication, often providing microsegmentation for microservices.	Service Mesh, Layer 7 Microsegmentation, Microservices Security
+What is Intent-Based Networking (IBN)?	A system that uses **higher-level business policies (intent)** to automatically configure and manage the network fabric.	Intent-Based Networking, Network Automation, Policy Abstraction
+What is the role of a CNI in Kubernetes?	The **Container Networking Interface** plugin (e.g., Calico) provides the SDN-like network and security policy enforcement for containers.	Container Security, CNI, Kubernetes Networking
+What is the GREATEST security risk of a centralized SDN controller?	It acts as a **Single Point of Failure (SPOF)** and a highly lucrative target; if compromised, the attacker has control over the entire network.	SDN Security, Centralized Controller, Single Point of Failure
+How does SDN support Zero Trust?	By enabling **identity-based segmentation** and micro-perimeters around every workload, rather than relying on a "trusted" internal network.	Zero Trust Architecture, SDN Security, Identity-Based Access

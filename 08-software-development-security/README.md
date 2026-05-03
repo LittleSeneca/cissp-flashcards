@@ -1,3 +1,7 @@
+---
+exam_weight: 10%
+---
+
 # Domain 8: Software Development Security
 
 **Exam Weighting: ~11% of the CISSP exam**
@@ -20,6 +24,8 @@ flowchart LR
     style E fill:#fca5a5,stroke:#dc2626
     style F fill:#ef4444,stroke:#b91c1c,color:#fff
 ```
+
+
 
 The colour gradient above represents the **rule of ten**: cost to fix a defect escalates ~10x at each successive phase — cheapest at Requirements ($1), most expensive in Maintenance ($1,000+).
 
@@ -61,6 +67,8 @@ flowchart LR
     L -.->|feedback loop| DEV
 ```
 
+
+
 > **Exam tip:** "Shift left" is the driving principle of DevSecOps. On the exam, the best time to address a security issue is always the **earliest** feasible phase — requirements or design, not testing or production.
 
 ---
@@ -81,18 +89,20 @@ Core principles that appear across CISSP questions:
 
 The **OWASP Top 10** is a critical reference for CISSP exam questions on application vulnerabilities:
 
-| Vulnerability | Key Concept |
-|---|---|
-| **SQL Injection** | Unsanitized input alters database queries. Prevent with parameterized queries and stored procedures. |
-| **Broken Authentication** | Weak session management, credential stuffing, missing MFA. |
-| **Cross-Site Scripting (XSS)** | Malicious scripts injected into pages viewed by other users. Prevent with output encoding. |
-| **Insecure Direct Object Reference** | Access to resources by guessing identifiers without authorization checks. |
-| **Security Misconfiguration** | Default credentials, open cloud storage, verbose error messages. |
-| **Sensitive Data Exposure** | Unencrypted data in transit or at rest; weak cryptography. |
-| **CSRF (Cross-Site Request Forgery)** | Tricks authenticated users into submitting malicious requests. Prevent with anti-CSRF tokens. |
-| **Insecure Deserialization** | Malicious objects crafted to exploit deserialization logic. |
-| **Using Components with Known Vulnerabilities** | Unpatched libraries, frameworks, and dependencies. Address with SCA tools. |
-| **Insufficient Logging and Monitoring** | Inability to detect breaches in progress. |
+
+| Vulnerability                                   | Key Concept                                                                                          |
+| ----------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| **SQL Injection**                               | Unsanitized input alters database queries. Prevent with parameterized queries and stored procedures. |
+| **Broken Authentication**                       | Weak session management, credential stuffing, missing MFA.                                           |
+| **Cross-Site Scripting (XSS)**                  | Malicious scripts injected into pages viewed by other users. Prevent with output encoding.           |
+| **Insecure Direct Object Reference**            | Access to resources by guessing identifiers without authorization checks.                            |
+| **Security Misconfiguration**                   | Default credentials, open cloud storage, verbose error messages.                                     |
+| **Sensitive Data Exposure**                     | Unencrypted data in transit or at rest; weak cryptography.                                           |
+| **CSRF (Cross-Site Request Forgery)**           | Tricks authenticated users into submitting malicious requests. Prevent with anti-CSRF tokens.        |
+| **Insecure Deserialization**                    | Malicious objects crafted to exploit deserialization logic.                                          |
+| **Using Components with Known Vulnerabilities** | Unpatched libraries, frameworks, and dependencies. Address with SCA tools.                           |
+| **Insufficient Logging and Monitoring**         | Inability to detect breaches in progress.                                                            |
+
 
 ---
 
@@ -122,12 +132,16 @@ flowchart LR
     DAST --- IAST
 ```
 
+
+
 **When each tool runs in the pipeline:**
 
 ```mermaid
 flowchart LR
     A[Developer IDE<br/>SAST Plugin] --> B[CI - Commit<br/>SAST + SCA] --> C[CI - Build<br/>Unit Tests] --> D[Staging<br/>DAST + IAST] --> E[Pre-Prod<br/>Pen Test] --> F[Production<br/>Runtime Monitor]
 ```
+
+
 
 ---
 
@@ -151,6 +165,8 @@ flowchart LR
     API --> Svc[Backend Services<br/>Internal mTLS]
 ```
 
+
+
 ---
 
 ## Software Supply Chain Security
@@ -168,7 +184,10 @@ flowchart TD
     SCA[Continuous CVE Scan] -.-> Registry
 ```
 
+
+
 Key controls:
+
 - **Dependency pinning** — Pin libraries to known-good versions rather than using floating version ranges
 - **Artifact signing** — Verify integrity of build artifacts and container images
 - **SBOM** (Software Bill of Materials) — A machine-readable inventory of all components in software. Required by US executive order for software sold to federal agencies
@@ -201,11 +220,14 @@ flowchart TD
     end
 ```
 
+
+
 ---
 
 ## Change Management and Version Control
 
 **Version control** (Git, SVN) provides traceability for all code changes. Security controls:
+
 - Require **code review and approval** before merging to main branches
 - Use **branch protection rules** to prevent direct commits to production branches
 - **Sign commits** cryptographically to verify author identity
@@ -223,6 +245,8 @@ flowchart LR
     CAB -->|Rejected| Dev
 ```
 
+
+
 ---
 
 ## Exam Tips
@@ -233,3 +257,4 @@ flowchart LR
 - **Threat modeling belongs in the design phase** — not after the code is written. CISSP questions about when to perform threat modeling have one right answer.
 - **DevSecOps is increasingly tested** — know that it integrates security into CI/CD pipelines and emphasizes shared responsibility, not a separate security team reviewing releases at the end.
 - **Supply chain and SBOM** are emerging topic areas — questions may describe a scenario where an attacker compromised a software vendor. The CISSP answer involves SCA tooling, vendor assessment, and artifact integrity verification.
+

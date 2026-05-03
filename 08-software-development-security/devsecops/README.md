@@ -1,6 +1,6 @@
 ---
 tier: 2
-exam_weight: "10%"
+exam_weight: 10%
 ---
 
 # DevSecOps & CI/CD Security

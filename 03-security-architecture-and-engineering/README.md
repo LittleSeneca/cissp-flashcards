@@ -1,3 +1,7 @@
+---
+exam_weight: 13%
+---
+
 # Domain 3: Security Architecture and Engineering
 
 **Exam Weight: ~13% | Questions: ~26 of 125–175**

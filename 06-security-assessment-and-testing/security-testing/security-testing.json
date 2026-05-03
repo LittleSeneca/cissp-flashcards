@@ -9,7 +9,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **SAST** analyzes the application's source code, bytecode, or binaries while at rest (without execution). It is ideal for identifying flaws like hardcoded credentials and SQL injection patterns early in the development process ('shifting left'). **Why A is wrong**: **DAST** requires a running application and tests it from the outside (black-box). **Why C is wrong**: **IAST** also requires a running application and uses sensors/agents inside the code to monitor behavior. **Why D is wrong**: **RASP** is a security technology that protects an application during runtime; it is not a testing methodology.",
-    "category": "Security Testing"
+    "category": "SAST, SDLC, Static Analysis, White-box Testing"
   },
   {
     "question": "An organization is conducting a penetration test where the testers are provided with no prior knowledge of the target system, simulating an external attack from the internet. Which type of testing does this BEST describe?",
@@ -21,7 +21,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: **Black-box testing** is performed without any prior knowledge of the internal structure or configuration of the target system, mimicking the perspective of an external attacker. **Why A is wrong**: **White-box testing** provides full access to source code and documentation. **Why B is wrong**: **Gray-box testing** provides partial knowledge (e.g., a low-privilege user account). **Why D is wrong**: **Crystal-box** is a synonym for white-box testing.",
-    "category": "Security Testing"
+    "category": "Black-box Testing, Penetration Testing, Security Assessment"
   },
   {
     "question": "An organization wants to evaluate its security posture by identifying known vulnerabilities on its network devices and servers, but they want to ensure that no systems are actually exploited or crashed during the process. Which activity should they perform?",
@@ -33,7 +33,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: A **Vulnerability Assessment** is a non-intrusive process that scans for and identifies known weaknesses but stops short of attempting to exploit them. **Why A is wrong**: A **Penetration Test** specifically involves attempting to exploit vulnerabilities to determine the level of risk. **Why C is wrong**: A **Red Team Exercise** is an advanced, multi-layered attack simulation. **Why D is wrong**: **Fuzz Testing** involves sending malformed data to an application to cause it to crash, which is highly intrusive.",
-    "category": "Security Testing"
+    "category": "Vulnerability Assessment, Vulnerability Management, Security Assessment"
   },
   {
     "question": "A SaaS provider is asked by a potential customer to provide a report that evaluates the operating effectiveness of its security controls over a six-month period. Which AICPA SOC report is the BEST choice to satisfy this request?",
@@ -45,7 +45,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: A **SOC 2 Type II** report evaluates the design and **operating effectiveness** of security controls over a specified period (typically 6-12 months). **Why A is wrong**: **SOC 1** is focused on financial reporting. **Why B is wrong**: A **Type I** report only evaluates the design of controls at a specific point in time, not their effectiveness over time. **Why D is wrong**: **SOC 3** is a public-facing summary report with less detail than a SOC 2.",
-    "category": "Security Testing"
+    "category": "SOC 2, SOC Type II, Third-party Auditing, Compliance"
   },
   {
     "question": "Which phase of a penetration test, according to common frameworks like NIST SP 800-115, involves gathering information about the target such as domain names, IP addresses, and employee details before active scanning begins?",
@@ -57,7 +57,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **Discovery** (or Reconnaissance) is the phase where information is gathered about the target. This can be passive (gathering public info) or active (scanning for open ports). **Why A is wrong**: **Planning** involves defining scope and rules of engagement. **Why C is wrong**: **Attack** is where the tester tries to bypass security controls. **Why D is wrong**: **Reporting** is the final phase where findings are documented.",
-    "category": "Security Testing"
+    "category": "Penetration Testing, Reconnaissance, NIST SP 800-115, Discovery"
   },
   {
     "question": "A security analyst is using a tool that sends random, malformed data into an application's input fields to see if it triggers an unexpected crash or memory leak. Which testing technique is being used?",
@@ -69,7 +69,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: **Fuzzing** is a dynamic testing technique that provides invalid, unexpected, or random data as inputs to a computer program to find software bugs and security vulnerabilities. **Why A is wrong**: **Static Analysis** doesn't execute the code. **Why B is wrong**: **Code Review** is a manual or automated inspection of source code. **Why D is wrong**: **Regression Testing** ensures that changes haven't broken existing functionality.",
-    "category": "Security Testing"
+    "category": "Fuzz Testing, Dynamic Analysis, Software Testing"
   },
   {
     "question": "An organization conducts an exercise where the 'Red Team' attempts to breach the network while the 'Blue Team' defends it. To maximize the learning outcome, they have a 'Purple Team' facilitate the session. What is the PRIMARY role of a Purple Team?",
@@ -81,7 +81,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: A **Purple Team** is not a separate permanent team but a functional role that ensures the insights from the Red Team (attackers) are effectively shared with the Blue Team (defenders) to improve overall security posture. **Why A is wrong**: Judges (if used) are often called White Teams. **Why B is wrong**: The Red Team performs its own exploits. **Why D is wrong**: This is administrative management, not the 'Purple Team' concept.",
-    "category": "Security Testing"
+    "category": "Red Teaming, Blue Teaming, Purple Teaming, Security Operations"
   },
   {
     "question": "A company wants to verify that its disaster recovery plan is effective without disrupting production operations. They gather key stakeholders to walk through a simulated disaster scenario and discuss their response steps. Which type of test is this?",
@@ -93,7 +93,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: A **Tabletop Exercise** (or structured walkthrough) involves a group discussion of a scenario to identify gaps in a plan without actually activating any systems. **Why A is wrong**: A **Checklist Review** is a simpler, more passive review by individuals. **Why C is wrong**: A **Parallel Test** involves activating the DR site while production is still running. **Why D is wrong**: A **Full-Interruption Test** involves shutting down production and moving to the DR site, which is highly disruptive.",
-    "category": "Security Testing"
+    "category": "Tabletop Exercise, BCP/DR Testing, Security Assessment"
   },
   {
     "question": "Which of the following metrics is the BEST 'Key Risk Indicator' (KRI) for a vulnerability management program?",
@@ -105,7 +105,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: A **Key Risk Indicator (KRI)** is a metric used to provide an early signal of increasing risk exposure. The number of stale, high-severity vulnerabilities directly indicates a high risk of compromise. **Why A and B are wrong**: These are **Key Performance Indicators (KPIs)**, which measure the efficiency or activity of a process but don't necessarily reflect the level of risk. **Why D is wrong**: This is a financial metric.",
-    "category": "Security Testing"
+    "category": "Key Risk Indicator, KRI, Vulnerability Management, Security Metrics"
   },
   {
     "question": "During a software development project, a group of developers sits down with a formal moderator to go through a colleague's code line-by-line, using a structured process to find defects. What is this formal process called?",
@@ -117,7 +117,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: A **Fagan Inspection** is a highly formal, structured review process with defined roles (moderator, author, reader, etc.) and specific entry/exit criteria. **Why A is wrong**: A **Walkthrough** is less formal and usually led by the author. **Why B is wrong**: **Peer Review** is a general term for many types of review. **Why D is wrong**: A **Desk Check** is an informal review performed by the author alone.",
-    "category": "Security Testing"
+    "category": "Fagan Inspection, Code Review, Static Analysis, SDLC"
   },
   {
     "question": "A security professional is performing a 'credentialed scan' of a server. What is the PRIMARY benefit of providing the scanner with administrative credentials?",
@@ -129,7 +129,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: A **credentialed scan** allows the tool to log into the target system and inspect it from the inside, identifying missing patches, insecure registry settings, and local configuration issues that are invisible to a network-based unauthenticated scan. **Why A is wrong**: Credentialed scans often take longer because they do more work. **Why C is wrong**: Scanners are still detectable by an IDS/IPS. **Why D is wrong**: Vulnerability scanners identify problems; they typically do not remediate them automatically.",
-    "category": "Security Testing"
+    "category": "Vulnerability Scanning, Credentialed Scanning, Security Assessment"
   },
   {
     "question": "Which NIST Special Publication provides the foundational framework for 'Information Security Continuous Monitoring (ISCM)'?",
@@ -141,7 +141,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: **NIST SP 800-137** is specifically titled 'Information Security Continuous Monitoring (ISCM) for Federal Information Systems and Organizations'. **Why A is wrong**: 800-30 is about risk assessments. **Why B is wrong**: 800-37 is the Risk Management Framework (RMF). **Why D is wrong**: 800-53 is the catalog of security controls.",
-    "category": "Security Testing"
+    "category": "Continuous Monitoring, ISCM, NIST SP 800-137, Compliance"
   },
   {
     "question": "In the context of software testing, what is the difference between 'Verification' and 'Validation'?",
@@ -153,7 +153,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **Verification** ensures that the software meets its specified requirements (doing things correctly). **Validation** ensures that the software actually meets the user's needs and intended use (doing the correct thing). **Why A, C, and D are wrong**: These are common misconceptions.",
-    "category": "Security Testing"
+    "category": "Software Testing, Verification, Validation, SDLC"
   },
   {
     "question": "An organization is hiring a third party to conduct a penetration test. The contract includes a 'get-out-of-jail-free' letter. What is the purpose of this document?",
@@ -165,7 +165,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: A **get-out-of-jail-free card** (or letter of authorization) is a critical document in a penetration test, especially for physical or social engineering tests. It contains the contact information of a senior executive who has authorized the testing, to be used if the testers are detained. **Why A is wrong**: You cannot contractually grant immunity from the law. **Why C and D are wrong**: These are not the purpose of the letter.",
-    "category": "Security Testing"
+    "category": "Penetration Testing, Rules of Engagement, Legal Authorization"
   },
   {
     "question": "A vulnerability management team is prioritizing vulnerabilities using the CVSS v3.1 system. They receive a base score for a vulnerability but decide to adjust it based on the fact that the vulnerable server is located behind a strict air-gapped network. Which CVSS score group are they modifying?",
@@ -177,7 +177,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: The **Environmental Score** allows an organization to modify the CVSS base score based on its own unique environment and the presence of mitigating controls (like an air gap). **Why A is wrong**: The **Base Score** is the inherent severity of the vulnerability as defined by the vendor/NVD. **Why B is wrong**: The **Temporal Score** reflects factors that change over time, like the availability of an exploit or a patch.",
-    "category": "Security Testing"
+    "category": "CVSS, Vulnerability Management, Environmental Score, Risk Assessment"
   },
   {
     "question": "When performing a web application security assessment, which category of the OWASP Top 10 is MOST likely being tested when an analyst tries to manipulate a URL to access another user's private profile page?",
@@ -189,7 +189,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: Accessing another user's data by manipulating identifiers (like a user ID in a URL) is a classic example of an Insecure Direct Object Reference (IDOR), which falls under the **Broken Access Control** category (currently #1 on the OWASP Top 10). **Why A is wrong**: Injection involves sending malicious commands. **Why C is wrong**: Cryptographic Failures involve weak encryption. **Why D is wrong**: This involves unpatched software.",
-    "category": "Security Testing"
+    "category": "OWASP Top 10, Broken Access Control, IDOR, Web Application Security"
   },
   {
     "question": "Which tool is BEST described as a comprehensive platform for managing penetration testing workflows, including selecting exploits, configuring payloads, and establishing listeners?",
@@ -201,7 +201,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: **Metasploit** is the industry-standard framework for exploitation. It provides a vast library of exploit modules and payloads (like Meterpreter). **Why A is wrong**: **Nmap** is for network discovery and port scanning. **Why B is wrong**: **Wireshark** is a packet sniffer. **Why D is wrong**: **Nessus** is a vulnerability scanner.",
-    "category": "Security Testing"
+    "category": "Penetration Testing, Metasploit, Exploitation Framework, Security Tools"
   },
   {
     "question": "An organization wants to conduct a 'log review' as part of its security assessment. Which of the following is the PRIMARY challenge when manually reviewing logs across a large enterprise?",
@@ -213,7 +213,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: The sheer **volume and velocity** of logs in a modern enterprise is the biggest hurdle. **SIEM (Security Information and Event Management)** tools are required to aggregate, normalize, and correlate this data to find meaningful security events. **Why A, B, and D are wrong**: These are generally incorrect assumptions.",
-    "category": "Security Testing"
+    "category": "Log Review, SIEM, Security Monitoring, Operations"
   },
   {
     "question": "A security professional is performing a 'Passive' reconnaissance exercise. Which of the following activities is the BEST example of passive reconnaissance?",
@@ -225,7 +225,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **Passive reconnaissance** involves gathering information without directly interacting with the target's systems (e.g., using OSINT). This minimizes the risk of detection. **Why A, C, and D are wrong**: These are **active** techniques because they involve sending traffic or messages directly to the target's infrastructure or personnel.",
-    "category": "Security Testing"
+    "category": "Reconnaissance, OSINT, Passive Analysis, Penetration Testing"
   },
   {
     "question": "Which component of the Security Content Automation Protocol (SCAP) provides a standard language for describing and checking the presence of vulnerabilities on a system?",
@@ -237,6 +237,6 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **OVAL** is an international, information security community standard to promote open and publicly available security content, and to standardize the transfer of this information across the entire spectrum of security tools and services. **Why A is wrong**: **CVE** is a naming system for vulnerabilities. **Why C is wrong**: **CVSS** is for scoring. **Why D is wrong**: **CCE** is for naming configuration settings.",
-    "category": "Security Testing"
+    "category": "SCAP, OVAL, Vulnerability Management, Security Standards"
   }
 ]

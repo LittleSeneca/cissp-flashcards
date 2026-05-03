@@ -9,7 +9,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: **Attribute-Based Access Control (ABAC)** is the most flexible model, as it evaluates attributes (characteristics) of the subject, object, and environment to make access decisions. This allows for highly granular and context-aware policies. **Why A is wrong**: **RBAC** grants access based on defined roles; while efficient for groups, it doesn't natively handle dynamic environmental factors as well as ABAC. **Why B is wrong**: **DAC** allows the owner of a resource to define access, which is not suitable for centrally managed, multi-factor policy enforcement. **Why D is wrong**: **MAC** uses fixed labels and clearances (lattice-based) and is typically less flexible than ABAC for handling diverse environmental attributes.",
-    "category": "IAM, Access Control"
+    "category": "Access Control Models, ABAC, Attribute-Based Access Control"
   },
   {
     "question": "A security professional is evaluating biometric systems for a high-security data center. They want to ensure that unauthorized individuals are almost never granted access, even if it means legitimate users are occasionally inconvenienced by false rejections. Which setting should the professional MOST likely prioritize?",
@@ -21,7 +21,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: In a high-security environment, the priority is to prevent unauthorized access. This means minimizing the **False Acceptance Rate (FAR)** (Type II error). The trade-off for a very low FAR is typically a higher **False Rejection Rate (FRR)** (Type I error), which inconveniences legitimate users but maintains the security posture. **Why A is wrong**: A **High FAR** would mean more unauthorized people are admitted, which is the opposite of the goal. **Why B is wrong**: A **Low FRR** means fewer legitimate users are rejected, but this often leads to a higher FAR, increasing security risk. **Why D is wrong**: The **CER** is the point where FAR and FRR are equal; while it measures overall system accuracy, a high-security facility will usually tune the system specifically to favor a lower FAR over the CER balance.",
-    "category": "IAM, Access Control"
+    "category": "Biometrics, False Acceptance Rate, False Rejection Rate"
   },
   {
     "question": "When a user logs into a Windows domain, they provide credentials to the Domain Controller and receive a ticket that allows them to request access to specific resources without re-authenticating for a set period. In Kerberos terminology, what is the name of this initial ticket and which service issues it?",
@@ -33,7 +33,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: In the Kerberos protocol, the user first authenticates to the **Authentication Service (AS)** (part of the KDC). If successful, the AS issues a **Ticket Granting Ticket (TGT)**. The user then presents this TGT to the **Ticket Granting Service (TGS)** to obtain specific service tickets. **Why A is wrong**: The **Service Ticket** is the second ticket in the process, used for specific resources. **Why C is wrong**: The **Session Key** is used for encryption but is not the ticket itself. **Why D is wrong**: 'Granting Token' is not standard Kerberos terminology, and the **PAC** is a field within the ticket containing user rights, not the ticket itself.",
-    "category": "IAM, Access Control"
+    "category": "Kerberos Protocol, TGT, Authentication Service"
   },
   {
     "question": "An organization is implementing Single Sign-On (SSO) using SAML 2.0. When a user attempts to access a cloud-based payroll application, the application redirects the user to the corporate login page. In this SAML flow, what roles do the payroll application and the corporate login system play, respectively?",
@@ -45,7 +45,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: In SAML 2.0, the **Service Provider (SP)** is the resource or application the user wants to access (the payroll app). The **Identity Provider (IdP)** is the system that authenticates the user and issues the identity assertion (the corporate login system). **Why A is wrong**: This reverses the standard SAML roles. **Why C is wrong**: While 'Relying Party' is a term used in other federations (like OIDC), SAML specifically uses SP and IdP. **Why D is wrong**: These are OAuth 2.0 roles, which deal with authorization and API access rather than identity federation.",
-    "category": "IAM, Access Control"
+    "category": "SAML 2.0, Identity Provider, Service Provider"
   },
   {
     "question": "A security auditor discovers that several employees who changed departments months ago still retain administrative access to their old department's file shares. Which IAM process has MOST likely failed?",
@@ -57,7 +57,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: **Entitlement Review** (or access recertification) is the periodic process where managers or resource owners verify that users still require the access they have. Failure to perform these reviews regularly leads to **privilege creep**, where users accumulate unnecessary permissions over time. **Why A is wrong**: **Identification** is just the claim of identity. **Why B is wrong**: **Provisioning** is the initial granting of access; while the initial grant might have been correct, the failure was in not removing it later. **Why D is wrong**: **Authentication** is the verification of identity; the users are still who they say they are, they just have too much access.",
-    "category": "IAM, Access Control"
+    "category": "IAM Lifecycle, Entitlement Review, Access Recertification"
   },
   {
     "question": "Which access control model is MOST appropriate for a military environment where data is classified by sensitivity levels (e.g., Secret, Top Secret) and users are granted access based on their formal clearance and 'need to know'?",
@@ -69,7 +69,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: **Mandatory Access Control (MAC)** is the model used in high-security/government environments. It uses sensitivity labels for objects and clearances for subjects. The system (not the user) enforces access based on these labels, often following the Bell-LaPadula model for confidentiality. **Why A is wrong**: **DAC** allows the data owner to decide who has access, which is too decentralized for strict military classification. **Why B is wrong**: **RBAC** uses job functions, which is common in commercial environments but doesn't natively handle the hierarchical sensitivity levels of MAC. **Why D is wrong**: **Rule-Based Access Control** (often a component of firewalls) uses global rules, not individual user clearances.",
-    "category": "IAM, Access Control"
+    "category": "Access Control Models, MAC, Mandatory Access Control"
   },
   {
     "question": "A security engineer is designing a new password storage system. To protect against offline brute-force and rainbow table attacks, which combination of techniques is the BEST choice?",
@@ -81,7 +81,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: Modern password security relies on **slow hashing algorithms** (like Argon2, bcrypt, or PBKDF2) to make brute-force computationally expensive, and **salts** to prevent rainbow table attacks. **Argon2** is specifically designed to be memory-hard, resisting GPU-based cracking. **Why A is wrong**: Encryption is reversible and requires secure key management; if the key is stolen, all passwords are exposed. **Why B is wrong**: SHA-256 is a fast hash, making it easy for attackers to test millions of combinations per second on modern hardware. **Why D is wrong**: This is a severe security failure.",
-    "category": "IAM, Access Control"
+    "category": "Password Security, Argon2, Hashing Algorithms"
   },
   {
     "question": "In a Mandatory Access Control (MAC) environment, the Bell-LaPadula model is used to ensure confidentiality. Which property of this model prevents a user with 'Secret' clearance from writing information to a 'Top Secret' document?",
@@ -93,7 +93,7 @@
     ],
     "correct": 3,
     "explanation": "**Why D is correct**: This is a trick question. The ***-Property** (star property) in Bell-LaPadula prohibits **writing down** (from a higher level to a lower level) to prevent data leakage. It actually **permits** writing up (from Secret to Top Secret), though this is rarely useful in practice. The goal of Bell-LaPadula is to protect **confidentiality** by preventing 'read up' and 'write down'. **Why A is wrong**: The **Simple Security Property** prevents 'reading up'. **Why B is wrong**: The *-Property prevents 'writing down', but the question asks about writing *up*. **Why C is wrong**: The **Tranquility Property** means security labels don't change during system operation.",
-    "category": "IAM, Access Control"
+    "category": "Security Models, Bell-LaPadula, Confidentiality"
   },
   {
     "question": "A bank requires two different employees to be involved in the process of issuing a high-value wire transfer — one to initiate the request and another to approve it. Which security principle does this BEST exemplify?",
@@ -105,7 +105,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **Separation of Duties (SoD)** ensures that no single individual has enough power to complete a critical task from start to finish. This prevents fraud and errors by requiring collusion between two or more people. **Why A is wrong**: **Least Privilege** means users only have the minimum access they need. **Why C is wrong**: **Two-Person Integrity** (or Two-Person Control) is a more specific term often used for physical tasks (like turning two keys simultaneously for a missile launch), while SoD is the broader administrative concept for workflows. **Why D is wrong**: **Need to Know** restricts access to information to only those who require it for their jobs.",
-    "category": "IAM, Access Control"
+    "category": "IAM Principles, Separation of Duties, Fraud Prevention"
   },
   {
     "question": "Which authentication factor category does a hardware-based 'Push' notification sent to a mobile app belong to?",
@@ -117,7 +117,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: A mobile device or a physical token used to receive a push notification or code is a **'Something you have'** (possession) factor. **Why A is wrong**: Passwords and PINs are 'Something you know'. **Why C is wrong**: Biometrics are 'Something you are'. **Why D is wrong**: Location-based authentication is 'Somewhere you are', but the push notification itself is tied to the physical device possession.",
-    "category": "IAM, Access Control"
+    "category": "Multi-Factor Authentication, Something You Have, Possession Factors"
   },
   {
     "question": "An organization is moving away from long-lived administrative passwords. They implement a system where an IT administrator must request elevated rights for a specific server, which are granted for only two hours and then automatically revoked. Which term BEST describes this approach?",
@@ -129,7 +129,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **Just-in-Time (JIT)** access is a core component of modern **Privileged Access Management (PAM)**. It minimizes the 'standing privilege' (the window of time an account is highly privileged) by granting access only when needed and for a limited duration. **Why A is wrong**: **Discovery** is the process of finding existing privileged accounts. **Why C is wrong**: **MAC** is a classification-based model. **Why D is wrong**: **Account Lockout** is a defense against brute force.",
-    "category": "IAM, Access Control"
+    "category": "Privileged Access Management, JIT, Just-in-Time Access"
   },
   {
     "question": "An organization uses an Identity Provider (IdP) that allows users to authenticate once and then access multiple independent Service Providers (SPs) without being prompted for credentials again. What is the PRIMARY security risk associated with this Single Sign-On (SSO) environment?",
@@ -141,7 +141,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: The **PRIMARY risk** of SSO is that the central identity store (the IdP) is a high-value target. If the IdP is compromised, every connected service is also at risk. Similarly, if the IdP goes down, users cannot access any of their applications. **Why A is wrong**: While true, it is not the primary *security* risk. **Why C is wrong**: SSO usually *decreases* administrative overhead. **Why D is wrong**: SAML assertions should be (and usually are) digitally signed and encrypted.",
-    "category": "IAM, Access Control"
+    "category": "Single Sign-On, Identity Provider, SSO Vulnerabilities"
   },
   {
     "question": "Which of the following is the MOST significant advantage of using an Attribute-Based Access Control (ABAC) model over a Role-Based Access Control (RBAC) model?",
@@ -153,7 +153,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: The main advantage of **ABAC** is its ability to use 'environmental' attributes (like time, IP address, or device health) in addition to user and resource attributes. RBAC is typically static, whereas ABAC can be highly dynamic and context-aware. **Why A is wrong**: ABAC is generally **more complex** to implement than RBAC. **Why C is wrong**: Sensitivity labels are characteristic of **MAC**, not ABAC. **Why D is wrong**: ABAC still requires identification and authentication of the subject.",
-    "category": "IAM, Access Control"
+    "category": "Access Control Models, ABAC, Dynamic Policy"
   },
   {
     "question": "A security team is implementing a multi-factor authentication system. They decide to use a combination of a password and a fingerprint scan. Which types of factors have they implemented?",
@@ -165,7 +165,7 @@
     ],
     "correct": 0,
     "explanation": "**Why A is correct**: A password is a **knowledge** factor (something you know). A fingerprint scan is an **inherence** factor (something you are). **Why B is wrong**: Possession is 'something you have'. **Why C is wrong**: This combination misses the knowledge factor (password). **Why D is wrong**: Using two passwords is 'single-factor' authentication, even if it's two separate things you know.",
-    "category": "IAM, Access Control"
+    "category": "Multi-Factor Authentication, Knowledge and Inherence, Biometrics"
   },
   {
     "question": "Which identity standard is specifically designed to allow a user to grant a third-party application limited access to their resources (e.g., photos or contact list) without sharing their actual credentials?",
@@ -177,7 +177,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **OAuth 2.0** is an **authorization** framework (not authentication) that allows 'delegated access'. It uses tokens to grant a third party permission to access resources on the user's behalf. **Why A is wrong**: **SAML** is primarily for identity federation and SSO. **Why C is wrong**: **Kerberos** is for on-premises network authentication. **Why D is wrong**: **LDAP** is a directory access protocol.",
-    "category": "IAM, Access Control"
+    "category": "OAuth 2.0, Delegated Authorization, Access Tokens"
   },
   {
     "question": "An organization implements a policy requiring employees to take at least five consecutive days of leave every year, during which their system access is completely disabled. What is the PRIMARY security goal of this 'mandatory vacation' policy?",
@@ -189,7 +189,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **Mandatory vacation** is an administrative control used to **detect fraud**. If an employee has been performing unauthorized activities that require their constant attention to conceal, their absence during a vacation may cause the activity to be discovered by others. **Why A is wrong**: While a benefit, it's not the primary *security* goal. **Why C is wrong**: This is not a security objective. **Why D is wrong**: Cross-training is a related benefit, but the specific security driver is fraud detection.",
-    "category": "IAM, Access Control"
+    "category": "Administrative Controls, Mandatory Vacation, Fraud Detection"
   },
   {
     "question": "When configuring a biometric system, the security manager adjusts the sensitivity threshold to be extremely high. What is the MOST likely result of this change?",
@@ -201,7 +201,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: Increasing the sensitivity (making the system more 'strict') means the system is more likely to reject legitimate users whose biometric data doesn't perfectly match the template. This leads to a higher **False Rejection Rate (FRR)**. **Why B is wrong**: Increasing sensitivity **decreases** the FAR (making it harder for intruders to get in). **Why A is wrong**: The CER is a benchmark for the system's overall quality and doesn't necessarily change just because you move the threshold, though it's where you'd find the balance. **Why D is wrong**: Higher FRR means more legitimate users are rejected, which is **less** user-friendly.",
-    "category": "IAM, Access Control"
+    "category": "Biometrics, FRR, Biometric Tuning"
   },
   {
     "question": "A developer is building an application that needs to verify the identity of a user coming from an external social media site. Which protocol, which builds on top of OAuth 2.0, is the BEST choice for this authentication task?",
@@ -213,7 +213,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **OpenID Connect (OIDC)** is an identity layer built on top of the OAuth 2.0 protocol. It allows clients to verify the identity of an end-user based on the authentication performed by an Authorization Server. **Why A is wrong**: **SAML** is an older, XML-based protocol; while it does authentication, it doesn't build on OAuth. **Why C is wrong**: **RADIUS** is for network access authentication. **Why D is wrong**: **TACACS+** is also for network access and device administration.",
-    "category": "IAM, Access Control"
+    "category": "OpenID Connect, OIDC, Identity Federation"
   },
   {
     "question": "An employee is terminated for cause. Which IAM action is the MOST critical to perform immediately to prevent retaliatory data theft?",
@@ -225,7 +225,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: Timely **deprovisioning** (disabling accounts) is critical when an employee leaves, especially under hostile circumstances. This prevents them from accessing systems remotely or locally to cause damage or steal data. **Why A is wrong**: You typically want to **disable** rather than delete accounts initially to preserve audit trails and ownership of data. **Why C is wrong**: While important, it is a secondary action; preventing access is the immediate priority. **Why D is wrong**: This is an administrative task, not a technical access control.",
-    "category": "IAM, Access Control"
+    "category": "IAM Lifecycle, Deprovisioning, Termination Procedures"
   },
   {
     "question": "A system uses a centralized database of users and their corresponding permissions for various objects. When a user attempts to access a file, the system checks this database to see if the user has the required permission. What is the name of this access control mechanism?",
@@ -237,7 +237,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: An **ACL** is a list of permissions attached to an object. It specifies which users or system processes are granted access to objects, as well as what operations are allowed on given objects. **Why A is wrong**: A **Capability Table** is the opposite; it is a list of permissions attached to a *user* (subject) rather than an object. **Why C is wrong**: An **Access Control Matrix** is the conceptual table that shows the relationship between all subjects and all objects; ACLs and Capability Tables are practical implementations of this matrix. **Why D is wrong**: **Content-dependent control** bases access on the actual data within the object, which is not described here.",
-    "category": "IAM, Access Control"
+    "category": "Access Control Mechanisms, ACL, Access Control Matrix"
   },
   {
     "question": "Which of the following describes the PRIMARY goal of 'Identity Governance and Administration' (IGA) in a large enterprise?",
@@ -249,7 +249,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **IGA** focuses on the governance (policy, compliance, and auditing) and administration (provisioning and lifecycle management) of identities. It helps organizations manage 'who has access to what' across the entire enterprise. **Why A is wrong**: Password encryption is a basic security function, not the goal of IGA. **Why C is wrong**: This is physical security. **Why D is wrong**: This is the role of an IDS/IPS.",
-    "category": "IAM, Access Control"
+    "category": "Identity Governance, IGA, Access Governance"
   },
   {
     "question": "An attacker captures a user's login credentials and then attempts to use them to log into multiple other popular websites, hoping the user has reused the same password. Which type of attack is this?",
@@ -261,7 +261,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: **Credential Stuffing** is the automated injection of stolen username/password pairs into website login forms. It exploits the common practice of password reuse across different services. **Why A is wrong**: **Brute Force** is systematically trying all possible combinations. **Why B is wrong**: A **Dictionary Attack** uses a list of common words or passwords. **Why D is wrong**: **MitM** involves intercepting communication between two parties.",
-    "category": "IAM, Access Control"
+    "category": "IAM Attacks, Credential Stuffing, Password Reuse"
   },
   {
     "question": "A security policy states that 'No user should have more permissions than are absolutely necessary to perform their assigned job functions.' Which principle is being described?",
@@ -273,7 +273,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **Least Privilege** is the practice of limiting access rights for users to the bare minimum permissions they need to perform their work. **Why A is wrong**: **Need to Know** is similar but more focused on specific data/information access rather than general system permissions. **Why C is wrong**: **Separation of Duties** is about splitting a task among multiple people. **Why D is wrong**: **Implicit Deny** means that if access isn't explicitly granted, it is denied, which is a related but different technical concept.",
-    "category": "IAM, Access Control"
+    "category": "IAM Principles, Least Privilege, Access Rights"
   },
   {
     "question": "A user is required to enter a code from a hardware token that changes every 30 seconds based on the current time. Which type of password system is this?",
@@ -285,7 +285,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: **TOTP** generates a one-time password that is valid for a short window of time, based on a shared secret and the current time. **Why B is wrong**: **HOTP** is based on a counter (each button press increments the counter) rather than the clock. **Why A is wrong**: Static passwords do not change automatically. **Why D is wrong**: KBA involves answering questions about personal facts.",
-    "category": "IAM, Access Control"
+    "category": "Multi-Factor Authentication, TOTP, Time-Based OTP"
   },
   {
     "question": "Which of the following is an example of an **administrative** access control?",
@@ -297,7 +297,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: **Administrative (or Management) controls** are policies, procedures, and personnel-related actions. Background checks are a procedural part of the hiring process. **Why A is wrong**: Firewall rules are **technical (logical)** controls. **Why B is wrong**: Biometrics are **technical** (though they involve physical hardware). **Why D is wrong**: Encryption is a **technical** control.",
-    "category": "IAM, Access Control"
+    "category": "Security Controls, Administrative Controls, Background Checks"
   },
   {
     "question": "In the Biba integrity model, which property prevents a user at a 'Low Integrity' level from modifying a 'High Integrity' document?",
@@ -309,7 +309,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: The ***-Integrity Property** (no write up) in the Biba model prevents a subject from writing to an object at a higher integrity level. This ensures that 'low' data cannot corrupt 'high' data. **Why A is wrong**: The **Simple Integrity Property** prevents 'reading down' (to avoid being contaminated by low-integrity data). **Why C is wrong**: The **Invocation Property** prevents a subject from requesting service from a higher-integrity subject. **Why D is wrong**: This is a Bell-LaPadula (confidentiality) term.",
-    "category": "IAM, Access Control"
+    "category": "Security Models, Biba Model, Integrity"
   },
   {
     "question": "A security analyst is concerned about 'pass-the-hash' attacks in their Windows environment. Which technical mitigation is the MOST effective at preventing an attacker from using a stolen hash to authenticate?",
@@ -321,7 +321,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: **Pass-the-hash** attacks primarily target NTLM authentication. By **disabling NTLM** and forcing the use of **Kerberos** (which uses tickets rather than hashes for authentication), the organization significantly reduces the risk. **Why A is wrong**: Hash complexity doesn't matter if the attacker steals the hash itself. **Why B is wrong**: While MFA helps overall, it doesn't always stop pass-the-hash at the protocol level for service-to-service communication. **Why D is wrong**: Lockout doesn't stop hash reuse.",
-    "category": "IAM, Access Control"
+    "category": "IAM Attacks, Pass-the-Hash, Kerberos Security"
   },
   {
     "question": "Which phase of the IAM lifecycle involves ensuring that a new employee's access is aligned with their specific job role and that they have been granted only the necessary entitlements?",
@@ -333,7 +333,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **Provisioning** is the process of creating user accounts and assigning the appropriate permissions (entitlements) based on the user's role and responsibilities. **Why A is wrong**: Identification is the claim of identity. **Why C is wrong**: Deprovisioning is the removal of access. **Why D is wrong**: Authentication is the verification of identity.",
-    "category": "IAM, Access Control"
+    "category": "IAM Lifecycle, Provisioning, User Entitlements"
   },
   {
     "question": "An organization wants to allow users to use their existing Facebook or Google accounts to log into a new company web application. Which term BEST describes this arrangement?",
@@ -345,7 +345,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **Identity Federation** is a system that links a person's electronic identity and attributes, stored across multiple distinct identity management systems. This allows for 'bring your own identity' (BYOI) and cross-domain SSO. **Why A is wrong**: Not a standard term for this. **Why C is wrong**: Mutual authentication is when both parties (client and server) authenticate to each other. **Why D is wrong**: PAM is for managing administrative accounts.",
-    "category": "IAM, Access Control"
+    "category": "Identity Federation, Social Identity, BYOI"
   },
   {
     "question": "A user's access is determined by a system that checks the user's IP address, the security posture of their device, and the time of day. Access is only granted if the device is patched and the user is connecting from a known branch office. Which access control model is MOST likely in use?",
@@ -357,6 +357,6 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: **ABAC** is the model that can evaluate multiple attributes, including those of the subject (user), the object, and the **environment** (IP address, device health, time of day). **Why A is wrong**: MAC is based on labels and clearance. **Why B is wrong**: RBAC is based on job roles. **Why D is wrong**: DAC is based on owner discretion.",
-    "category": "IAM, Access Control"
+    "category": "Access Control Models, ABAC, Context-Aware Access"
   }
 ]

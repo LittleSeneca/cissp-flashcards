@@ -9,7 +9,7 @@
     ],
     "correct": 1,
     "explanation": "**Why PLC description is correct**: PLCs are ruggedized computers designed for real-time control of machinery and industrial processes. **Why others are wrong**: SCADA systems are higher-level; HMIs are the interfaces; and protocols like Modbus or DNP3 are the communication methods.",
-    "category": "ICS/SCADA, IoT"
+    "category": "ICS/SCADA, PLC, Industrial Automation"
   },
   {
     "question": "What is the primary difference between Operational Technology (OT) and Information Technology (IT) in terms of security priorities?",
@@ -21,7 +21,7 @@
     ],
     "correct": 1,
     "explanation": "**Why OT priorities are correct**: In OT environments (like power plants or factories), the primary concern is the continuous and safe operation of the system (Availability and Safety). In IT, Confidentiality of data is often the top priority. **Why others are wrong**: IT usually prioritizes Confidentiality over Availability compared to OT.",
-    "category": "ICS/SCADA, IoT"
+    "category": "ICS/SCADA, OT Security, Security Priorities"
   },
   {
     "question": "Which communication protocol is commonly used in the electric utility industry for communication between master stations and Remote Terminal Units (RTUs)?",
@@ -33,7 +33,7 @@
     ],
     "correct": 2,
     "explanation": "**Why DNP3 is correct**: Distributed Network Protocol version 3 (DNP3) is a set of communications protocols used between components in process automation systems, highly common in the electric and water utilities. **Why others are wrong**: HTTP, SSH, and SMTP are standard IT protocols not specifically designed for industrial process control.",
-    "category": "ICS/SCADA, IoT"
+    "category": "ICS/SCADA, Protocols, DNP3"
   },
   {
     "question": "A company is implementing 'Fog Computing' for their IoT deployment. What is the main benefit of this architecture?",
@@ -45,7 +45,7 @@
     ],
     "correct": 1,
     "explanation": "**Why Fog Computing is correct**: Fog computing extends cloud computing to the edge of an enterprise's network, reducing latency by processing data locally before sending it to the cloud. **Why others are wrong**: Centralizing data is the opposite of Fog computing. It doesn't necessarily increase device storage or simplify encryption.",
-    "category": "ICS/SCADA, IoT"
+    "category": "IoT Security, Fog Computing, Edge Computing"
   },
   {
     "question": "What is a major security challenge with the Modbus protocol, traditionally used in ICS?",
@@ -57,7 +57,7 @@
     ],
     "correct": 1,
     "explanation": "**Why Modbus challenge is correct**: Traditional Modbus was designed for isolated serial networks and lacks security features like authentication or encryption, making it vulnerable if exposed to modern networks. **Why others are wrong**: Modbus is very efficient (low bandwidth), OS-agnostic, and runs on standard cables.",
-    "category": "ICS/SCADA, IoT"
+    "category": "ICS/SCADA, Protocols, Modbus"
   },
   {
     "question": "In a SCADA system, what is the role of the Human-Machine Interface (HMI)?",
@@ -69,7 +69,7 @@
     ],
     "correct": 1,
     "explanation": "**Why HMI role is correct**: The HMI allows operators to monitor and interact with the industrial process through a graphical interface. **Why others are wrong**: Patching, firewalling, and data historization are handled by other components (though a Historian often works with an HMI).",
-    "category": "ICS/SCADA, IoT"
+    "category": "ICS/SCADA, HMI, Supervisory Control"
   },
   {
     "question": "Which term describes the concept of processing data directly on the IoT device itself?",
@@ -81,7 +81,7 @@
     ],
     "correct": 2,
     "explanation": "**Why Edge Computing is correct**: Edge computing refers to data processing at the 'edge'—often directly on the device or sensor that collects the data. **Why others are wrong**: Fog computing is usually done at a local gateway/node. Cloud is centralized. Grid is distributed across many high-performance nodes.",
-    "category": "ICS/SCADA, IoT"
+    "category": "IoT Security, Edge Computing, Architecture"
   },
   {
     "question": "Which of the following represents a 'Cyber-Physical System'?",
@@ -93,7 +93,7 @@
     ],
     "correct": 1,
     "explanation": "**Why Cyber-Physical is correct**: Cyber-physical systems (CPS) integrate sensing, computation, control, and networking into physical objects and infrastructure (like a smart thermostat or an autonomous vehicle). **Why others are wrong**: The other options are purely digital/IT systems.",
-    "category": "ICS/SCADA, IoT"
+    "category": "IoT Security, Cyber-Physical Systems, CPS"
   },
   {
     "question": "What is the primary security risk when an IoT device reaches its 'End of Life' (EoL)?",
@@ -105,7 +105,7 @@
     ],
     "correct": 1,
     "explanation": "**Why EoL risk is correct**: Once a device is EoL, vulnerabilities discovered in its software/firmware will likely go unpatched, leaving it exposed. **Why others are wrong**: Devices often continue to function but are insecure.",
-    "category": "ICS/SCADA, IoT"
+    "category": "IoT Security, Lifecycle Management, Patch Management"
   },
   {
     "question": "The 'Purdue Model' is primarily used for:",
@@ -117,7 +117,7 @@
     ],
     "correct": 1,
     "explanation": "**Why Purdue Model is correct**: The Purdue Enterprise Reference Architecture (PERA) is a model for ICS network segmentation, separating the OT levels (0-3) from the IT levels (4-5). **Why others are wrong**: It is not used for web apps, database performance, or mobile encryption.",
-    "category": "ICS/SCADA, IoT"
+    "category": "ICS/SCADA, Purdue Model, Network Segmentation"
   },
   {
     "question": "An industrial plant uses a central server to collect and store large volumes of time-series data from sensors across the facility for long-term trend analysis. What is this component called?",
@@ -129,7 +129,7 @@
     ],
     "correct": 2,
     "explanation": "**Why Historian is correct**: A **Historian** is a specialized database used in industrial environments to collect and store time-series data (e.g., temperature, pressure, flow rate) for reporting and analysis. **Why A and B are wrong**: RTUs and PLCs are field devices that control processes in real-time. **Why D is wrong**: The HMI is for real-time visualization, not long-term storage.",
-    "category": "ICS/SCADA, IoT"
+    "category": "ICS/SCADA, Historian, Data Logging"
   },
   {
     "question": "Which of the following is the MOST critical security layer in an industrial plant, designed to prevent catastrophic failures even if the main control system is compromised?",
@@ -141,7 +141,7 @@
     ],
     "correct": 2,
     "explanation": "**Why SIS is correct**: A **Safety Instrumented System (SIS)** is an independent control layer designed to take the process to a safe state if specified conditions are violated. It is the last line of defense against physical disaster. **Why A and B are wrong**: SCADA and DCS are for operational control, not specifically for safety shutdowns. **Why D is wrong**: A firewall is a network control, not a physical process safety control.",
-    "category": "ICS/SCADA, IoT"
+    "category": "ICS/SCADA, Safety Systems, SIS"
   },
   {
     "question": "A utility company needs to monitor and control water pumps across a wide geographic area spanning hundreds of miles. Which system is BEST suited for this requirement?",
@@ -153,7 +153,7 @@
     ],
     "correct": 1,
     "explanation": "**Why SCADA is correct**: **SCADA** systems are designed for wide-area monitoring and control, often using long-range communication links (radio, satellite, cellular) to connect to remote sites. **Why A is wrong**: DCS is typically used for high-speed, localized control within a single plant. **Why C and D are wrong**: These are components or subsystems, not the overall wide-area architecture.",
-    "category": "ICS/SCADA, IoT"
+    "category": "ICS/SCADA, SCADA, Wide Area Control"
   },
   {
     "question": "Which device acts as a hardware-based gateway that allows data to flow from a high-security OT network to a lower-security IT network, but physically prevents any traffic from flowing in the opposite direction?",
@@ -165,7 +165,7 @@
     ],
     "correct": 2,
     "explanation": "**Why Data Diode is correct**: A **Data Diode** (or unidirectional gateway) uses hardware (often fiber optics with only one transmitter and one receiver) to ensure that data can only move in one direction, providing a physical air-gap-like isolation for the return path. **Why A, B, and D are wrong**: These are software-based controls that allow bidirectional traffic to some degree.",
-    "category": "ICS/SCADA, IoT"
+    "category": "ICS/SCADA, Data Diode, Unidirectional Gateway"
   },
   {
     "question": "What is the primary security benefit of using Elliptic Curve Cryptography (ECC) over RSA for securing low-power IoT devices?",
@@ -177,7 +177,7 @@
     ],
     "correct": 1,
     "explanation": "**Why ECC benefit is correct**: **ECC** is highly efficient, providing strong security with significantly shorter keys than RSA (e.g., a 256-bit ECC key is roughly equivalent to a 3072-bit RSA key), making it ideal for **constrained IoT devices**. **Why A is wrong**: RSA is older. **Why C is wrong**: Neither RSA nor standard ECC are quantum-resistant. **Why D is wrong**: Both typically use CAs in a PKI.",
-    "category": "ICS/SCADA, IoT"
+    "category": "IoT Security, Cryptography, ECC"
   },
   {
     "question": "In the Purdue Model (PERA), where would the 'Industrial DMZ' (IDMZ) be placed to BEST protect the OT environment from IT-based threats?",
@@ -189,7 +189,7 @@
     ],
     "correct": 2,
     "explanation": "**Why IDMZ location is correct**: The **Industrial DMZ (Level 3.5)** is a critical security buffer that sits between the industrial operations network (Level 3) and the corporate enterprise network (Level 4). All traffic between IT and OT should be terminated in the IDMZ. **Why others are wrong**: Levels 0-2 are deep inside the OT environment. Level 5 is the external internet/enterprise layer.",
-    "category": "ICS/SCADA, IoT"
+    "category": "ICS/SCADA, Purdue Model, IDMZ"
   },
   {
     "question": "A building automation system uses a protocol where devices 'publish' their status to a broker, and other devices 'subscribe' to specific topics to receive updates. Which protocol is being used?",
@@ -201,7 +201,7 @@
     ],
     "correct": 2,
     "explanation": "**Why MQTT is correct**: **MQTT (Message Queuing Telemetry Transport)** is a lightweight **Publish/Subscribe** protocol designed for constrained devices and low-bandwidth, high-latency networks, making it the de-facto standard for IoT. **Why A and B are wrong**: These are request/response protocols. **Why D is wrong**: BACnet is for building automation but is not primarily a pub/sub protocol like MQTT.",
-    "category": "ICS/SCADA, IoT"
+    "category": "IoT Security, Protocols, MQTT"
   },
   {
     "question": "What is the primary challenge when attempting to apply traditional IT patch management processes to an Operational Technology (OT) environment?",
@@ -213,7 +213,7 @@
     ],
     "correct": 2,
     "explanation": "**Why OT patching challenge is correct**: In OT, **Availability** is paramount. Many systems run 24/7 and cannot be rebooted for patches without risking physical safety or massive production losses. Testing patches in an OT context is also much more complex due to hardware dependencies. **Why A is wrong**: OT systems are often highly vulnerable. **Why B and D are wrong**: These are not the primary drivers of the patching challenge.",
-    "category": "ICS/SCADA, IoT"
+    "category": "ICS/SCADA, OT Security, Patch Management"
   },
   {
     "question": "An attacker exploits a vulnerability in a smart light bulb to gain access to the rest of a home's Wi-Fi network. This is an example of which IoT-specific risk?",
@@ -225,7 +225,7 @@
     ],
     "correct": 2,
     "explanation": "**Why Pivot is correct**: IoT devices are often the 'weakest link' in a network. Once compromised, they can be used as a **pivot point** to attack more sensitive systems on the same network. **Why others are wrong**: While related, the scenario specifically describes the move from one device to the network.",
-    "category": "ICS/SCADA, IoT"
+    "category": "IoT Security, Lateral Movement, Pivot Attack"
   },
   {
     "question": "Which of the following wireless protocols is commonly used for low-power, short-range home automation (IoT) and uses a 'Mesh Network' topology?",
@@ -237,7 +237,7 @@
     ],
     "correct": 2,
     "explanation": "**Why Zigbee is correct**: **Zigbee** (based on IEEE 802.15.4) is a low-power wireless mesh network standard widely used for IoT devices like smart bulbs and sensors. **Why A is wrong**: Wi-Fi is high power and usually star topology. **Why B is wrong**: Standard Bluetooth is short range but not natively mesh in the same way (though BT Mesh exists). **Why D is wrong**: NFC is extremely short range (centimeters).",
-    "category": "ICS/SCADA, IoT"
+    "category": "IoT Security, Protocols, Zigbee"
   },
   {
     "question": "A Remote Terminal Unit (RTU) differs from a Programmable Logic Controller (PLC) PRIMARILY because:",
@@ -249,7 +249,7 @@
     ],
     "correct": 1,
     "explanation": "**Why RTU/PLC difference is correct**: **RTUs** are optimized for long-distance, remote communication (like a pipeline in the desert) and can handle low-power/solar and intermittent links. **PLCs** are usually for high-speed, localized control (like a production line). **Why others are wrong**: Both are digital and programmable.",
-    "category": "ICS/SCADA, IoT"
+    "category": "ICS/SCADA, RTU, PLC"
   },
   {
     "question": "Which security concept ensures that only authorized firmware can be loaded and executed on an ICS controller during the boot process?",
@@ -261,7 +261,7 @@
     ],
     "correct": 1,
     "explanation": "**Why Secure Boot is correct**: **Secure Boot** uses digital signatures and a **Hardware Root of Trust** (like a TPM) to verify the integrity and authenticity of the firmware before allowing the device to start. **Why others are wrong**: These do not protect the integrity of the boot sequence.",
-    "category": "ICS/SCADA, IoT"
+    "category": "IoT Security, Secure Boot, Root of Trust"
   },
   {
     "question": "What is a 'Historian' in an ICS environment?",
@@ -273,7 +273,7 @@
     ],
     "correct": 1,
     "explanation": "**Why Historian is correct**: In ICS, a **Historian** is a specialized server/database that logs all process data (tags) over time, allowing for auditing, troubleshooting, and efficiency analysis. **Why others are wrong**: These do not describe the technical function of an ICS Historian.",
-    "category": "ICS/SCADA, IoT"
+    "category": "ICS/SCADA, Historian, Data Analysis"
   },
   {
     "question": "An organization is concerned about the security of third-party libraries (like OpenSSL) embedded in their IoT devices. This is a concern related to:",
@@ -285,7 +285,7 @@
     ],
     "correct": 1,
     "explanation": "**Why Supply Chain is correct**: **Supply Chain Risk** includes the vulnerabilities inherited from third-party hardware, software, and libraries that make up the final product. **Why others are wrong**: These are different domains of risk.",
-    "category": "ICS/SCADA, IoT"
+    "category": "IoT Security, Supply Chain Risk, Software Security"
   },
   {
     "question": "What is the primary function of a 'Remote Terminal Unit' (RTU) in a SCADA system?",
@@ -297,6 +297,6 @@
     ],
     "correct": 1,
     "explanation": "**Why RTU function is correct**: The RTU sits at the remote site, collects data from sensors/actuators, and communicates it back to the **Master Terminal Unit (MTU)**. **Why others are wrong**: HMIs provide interfaces; Historians store records; domain controllers are IT infrastructure.",
-    "category": "ICS/SCADA, IoT"
+    "category": "ICS/SCADA, RTU, SCADA"
   }
 ]

@@ -1,6 +1,6 @@
 ---
 tier: 2
-exam_weight: "13%"
+exam_weight: 13%
 ---
 
 # Zero Trust Architecture (ZTA)

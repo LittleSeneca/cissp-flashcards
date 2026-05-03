@@ -9,7 +9,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: **Common Criteria** (ISO/IEC 15408) is the current international standard for evaluating the security properties of IT products. It allows for mutual recognition of evaluations between participating countries. **Why A is wrong**: TCSEC is a legacy US-only standard (the Orange Book) that was superseded by Common Criteria. **Why B is wrong**: ITSEC was a European predecessor to Common Criteria. **Why D is wrong**: PCI DSS is a private industry standard for protecting credit card data, not a general framework for evaluating IT product security functions.",
-    "category": "Evaluation Criteria"
+    "category": "Evaluation Criteria, Common Criteria, Standards"
   },
   {
     "question": "A vendor is submitting a product for Common Criteria evaluation. Which document describes the security requirements for a specific category of products (e.g., all firewalls), allowing users to compare different vendors' offerings against the same baseline?",
@@ -21,7 +21,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: A **Protection Profile (PP)** defines a standard set of security requirements for a specific category of products. It allows different vendors to build products that meet a common baseline, which users can then use for comparison. **Why A is wrong**: A Security Target (ST) is vendor-specific; it describes the security properties of one specific product. **Why C is wrong**: The Target of Evaluation (TOE) is the actual product or system being evaluated. **Why D is wrong**: EAL is the numeric rating (1-7) that indicates the depth of the evaluation performed.",
-    "category": "Evaluation Criteria"
+    "category": "Evaluation Criteria, Common Criteria, Protection Profile"
   },
   {
     "question": "An organization requires a product that has undergone 'methodically designed, tested, and reviewed' evaluation under the Common Criteria. Which Evaluation Assurance Level (EAL) is the MOST appropriate choice?",
@@ -33,7 +33,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: **EAL 4** is defined as 'Methodically Designed, Tested, and Reviewed'. It is generally considered the highest level that is commercially viable for most vendors to achieve for an existing product line. **Why A is wrong**: EAL 1 is 'Functionally Tested' (minimal assurance). **Why B is wrong**: EAL 2 is 'Structurally Tested'. **Why D is wrong**: EAL 7 is 'Formally Verified Design and Tested', which requires high-cost mathematical proof of the design and is reserved for extremely high-security niche products.",
-    "category": "Evaluation Criteria"
+    "category": "Evaluation Criteria, Common Criteria, EAL"
   },
   {
     "question": "Under the legacy TCSEC (Orange Book) framework, which classification was reserved for systems that were evaluated but failed to meet the requirements for any higher security class?",
@@ -45,7 +45,7 @@
     ],
     "correct": 3,
     "explanation": "**Why D is correct**: In TCSEC, **Class D (Minimal Protection)** is for systems that have been evaluated but failed to meet the requirements of any higher security category. **Why A, B, and C are wrong**: Classes A (Verified Protection), B (Mandatory Protection), and C (Discretionary Protection) all represent successful evaluations at varying levels of increasing security rigor.",
-    "category": "Evaluation Criteria"
+    "category": "Evaluation Criteria, TCSEC, Orange Book"
   },
   {
     "question": "Which of the following is the PRIMARY difference between the Security Target (ST) and the Protection Profile (PP) in a Common Criteria evaluation?",
@@ -57,7 +57,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: This is the fundamental distinction: the **PP** is a generic set of requirements for a *class* of products (like firewalls), while the **ST** is the specific set of claims made by a *vendor* for a *particular* product being evaluated. **Why A is wrong**: Vendors usually write the ST, and either vendors or user groups (like a government agency) write PPs. **Why C is wrong**: Both documents are used across all EAL levels. **Why D is wrong**: Both documents address the functional and assurance requirements of the IT product, which are primarily logical.",
-    "category": "Evaluation Criteria"
+    "category": "Evaluation Criteria, Common Criteria, Security Target"
   },
   {
     "question": "A system is undergoing an evaluation where the design and implementation are subjected to formal mathematical verification. Which Common Criteria level does this represent?",
@@ -69,7 +69,7 @@
     ],
     "correct": 3,
     "explanation": "**Why D is correct**: **EAL 7** (Formally Verified Design and Tested) is the highest level of assurance in the Common Criteria, requiring formal mathematical methods to verify the security properties of the product. **Why A, B, and C are wrong**: These represent lower levels of assurance that rely on increasing levels of rigorous testing and semi-formal analysis, but not full formal mathematical verification of the entire implementation.",
-    "category": "Evaluation Criteria"
+    "category": "Evaluation Criteria, Common Criteria, EAL"
   },
   {
     "question": "An organization is migrating from a TCSEC B1 system to a modern equivalent. Which feature was FIRST introduced at the TCSEC B1 level?",
@@ -81,7 +81,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: **TCSEC B1 (Labeled Security Protection)** was the first level to require **Mandatory Access Control (MAC)** using sensitivity labels for all subjects and objects. **Why A is wrong**: DAC was introduced at lower levels (Class C). **Why B is wrong**: Audit and object reuse were introduced at Class C2. **Why D is wrong**: A formal model was required at higher levels like B2 and above.",
-    "category": "Evaluation Criteria"
+    "category": "Evaluation Criteria, TCSEC, MAC"
   },
   {
     "question": "When a vendor specifies the 'Target of Evaluation' (TOE) for a Common Criteria certification, what are they defining?",
@@ -93,7 +93,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: The **Target of Evaluation (TOE)** is the specific product (or part of a product) and its version/configuration that is being submitted for evaluation. Any change to the TOE may require a re-evaluation. **Why A is wrong**: The lab is the evaluator, not the TOE. **Why B is wrong**: The threats are part of the Security Target (ST), but the TOE itself is the product. **Why D is wrong**: Market regions are irrelevant to the technical evaluation of the product's security.",
-    "category": "Evaluation Criteria"
+    "category": "Evaluation Criteria, Common Criteria, TOE"
   },
   {
     "question": "The Common Criteria (ISO 15408) is designed to separate which two concepts during a security evaluation?",
@@ -105,7 +105,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: Common Criteria separates **Functional requirements** (what the product does, e.g., 'it logs all admin actions') from **Assurance requirements** (how well it was built/vetted, e.g., 'EAL 4'). This allows for flexible evaluations. **Why A, C, and D are wrong**: While these are all important security concepts, they are not the primary conceptual split that defines the Common Criteria evaluation structure.",
-    "category": "Evaluation Criteria"
+    "category": "Evaluation Criteria, Common Criteria, Evaluation Concepts"
   },
   {
     "question": "Which Evaluation Assurance Level (EAL) is the FIRST to require the developer to provide a low-level design and a vulnerability analysis based on the implementation, rather than just the high-level design?",
@@ -117,7 +117,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: **EAL 4** is the level where the evaluation deepens significantly, requiring **low-level design** documentation and a more thorough independent vulnerability analysis by the evaluator. **Why A and B are wrong**: These levels rely primarily on high-level designs and functional testing. **Why D is wrong**: EAL 5 (Semi-formally Designed and Tested) adds more rigor, but the transition to low-level design requirements starts at EAL 4.",
-    "category": "Evaluation Criteria"
+    "category": "Evaluation Criteria, Common Criteria, EAL"
   },
   {
     "question": "A cryptographic module is being evaluated for use by a U.S. federal agency. Which standard specifies the security requirements for the hardware and software components of that module?",
@@ -129,7 +129,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **FIPS 140-3** (and its predecessor 140-2) is the U.S. government standard that defines security requirements for **cryptographic modules**, including physical security, key management, and algorithm integrity. **Why A is wrong**: Common Criteria (ISO 15408) is for general IT products, not specifically crypto modules. **Why C is wrong**: ISO 27001 is for organizational management systems. **Why D is wrong**: NIST 800-53 is a catalog of security controls for entire information systems.",
-    "category": "Evaluation Criteria"
+    "category": "Evaluation Criteria, FIPS 140, Cryptographic Modules"
   },
   {
     "question": "What is the primary benefit of the Common Criteria Recognition Arrangement (CCRA)?",
@@ -141,7 +141,7 @@
     ],
     "correct": 0,
     "explanation": "**Why A is correct**: The **CCRA** is an international agreement where participating nations agree to recognize the results of Common Criteria evaluations performed by other member nations (typically up to EAL 2 or EAL 4), reducing the need for redundant testing. **Why B, C, and D are wrong**: These are not features of the CCRA; evaluations still happen in many labs, PPs vary, and vendors still bear the cost of evaluation.",
-    "category": "Evaluation Criteria"
+    "category": "Evaluation Criteria, Common Criteria, CCRA"
   },
   {
     "question": "A security professional is comparing an EAL 2 product with an EAL 4 product. What is the MOST accurate conclusion to draw about these two products?",
@@ -153,7 +153,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: EAL levels measure **assurance**—the depth and rigor of the evaluation. They do not measure the absolute level of security or the absence of bugs, although higher assurance often correlates with better quality. **Why A is wrong**: High assurance doesn't guarantee a product is bug-free or 'more secure' in all contexts. **Why C is wrong**: Both can be used in any sector depending on the risk. **Why D is wrong**: EAL is independent of specific security functions like encryption.",
-    "category": "Evaluation Criteria"
+    "category": "Evaluation Criteria, Common Criteria, EAL"
   },
   {
     "question": "Which level of the legacy TCSEC (Orange Book) was the first to require 'Strict' Mandatory Access Control and introduced the concept of 'Trusted Paths' for secure communication between the user and the TCB?",
@@ -165,7 +165,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: **TCSEC B2 (Structured Protection)** introduced the requirement for a **Trusted Path**, as well as more stringent MAC and covert channel analysis. **Why A is wrong**: C2 is Discretionary. **Why B is wrong**: B1 introduced MAC but not Trusted Paths. **Why D is wrong**: B3 (Security Domains) added more requirements like the separation of administrative roles and high-integrity recovery.",
-    "category": "Evaluation Criteria"
+    "category": "Evaluation Criteria, TCSEC, Trusted Path"
   },
   {
     "question": "A vendor's 'Security Target' (ST) for a Common Criteria evaluation is very narrow, excluding several complex features of the product from the 'Target of Evaluation' (TOE). What is the LIKELY impact on the customer?",
@@ -177,7 +177,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: An evaluation only covers the **Target of Evaluation (TOE)**. If a vendor excludes complex or buggy features from the TOE to pass the evaluation more easily, the customer has NO assurance regarding the security of those excluded features. **Why A is wrong**: Assurance is limited to the TOE. **Why C and D are wrong**: Narrowing the scope simplifies the evaluation but doesn't change the EAL requirements or provide future exemptions.",
-    "category": "Evaluation Criteria"
+    "category": "Evaluation Criteria, Common Criteria, Security Target"
   },
   {
     "question": "Which evaluation framework was the first to allow for 'Functionality' and 'Assurance' to be evaluated separately, a concept that was later refined in the Common Criteria?",
@@ -189,7 +189,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **ITSEC** (Information Technology Security Evaluation Criteria), the European predecessor to Common Criteria, was the first to separate functionality (F1-F10) from assurance (E1-E6). TCSEC bundled them into single ratings (e.g., C2). **Why A is wrong**: TCSEC ratings were hierarchical and bundled. **Why C and D are wrong**: These are not general evaluation frameworks for IT products in this historical context.",
-    "category": "Evaluation Criteria"
+    "category": "Evaluation Criteria, ITSEC, Historical Standards"
   },
   {
     "question": "In the context of the Orange Book, what does the 'Trusted Computing Base' (TCB) represent?",
@@ -201,7 +201,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: The **TCB** is the complete set of all security-relevant portions of a system. If the TCB is compromised, the security of the entire system is at risk. **Why A is wrong**: The TCB is the 'trusted' part. **Why C is wrong**: TCB is a logical/system concept, not just physical. **Why D is wrong**: This is just one small part of what the TCB manages.",
-    "category": "Evaluation Criteria"
+    "category": "Evaluation Criteria, TCSEC, TCB"
   },
   {
     "question": "A FIPS 140-3 Level 3 evaluation requires which of the following features that Level 2 does NOT?",
@@ -213,7 +213,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **FIPS 140 Level 3** adds requirements for **identity-based authentication** and stronger **physical tamper-resistance** (e.g., hard epoxy coatings). Level 2 only requires role-based authentication and tamper-evident seals. **Why C is wrong**: Tamper-response (zeroizing keys if the box is opened) is a hallmark of Level 4. **Why D is wrong**: Mathematical proof is not a FIPS 140 requirement.",
-    "category": "Evaluation Criteria"
+    "category": "Evaluation Criteria, FIPS 140, Tamper Resistance"
   },
   {
     "question": "What happens to a Common Criteria certification when a vendor releases a minor security patch for the product?",
@@ -225,7 +225,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: **Assurance Maintenance** is the process where a vendor proves to the evaluator that minor changes (like patches) haven't compromised the security properties, allowing the certification to be extended to the new version without a full re-evaluation. **Why A is wrong**: It is not automatic. **Why B is wrong**: Customers need assurance for the version they are actually running. **Why D is wrong**: Re-evaluation or maintenance is the path forward, not permanent revocation.",
-    "category": "Evaluation Criteria"
+    "category": "Evaluation Criteria, Common Criteria, Lifecycle"
   },
   {
     "question": "Which security concept is PRIMARILY concerned with ensuring that the Target of Evaluation (TOE) cannot be bypassed by an attacker?",
@@ -237,6 +237,6 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: The **Reference Monitor** concept requires three things: it must be **Always Invoked** (non-bypassable), it must be **Tamper-proof**, and it must be **Small enough to be verified**. **Why A, C, and D are wrong**: These are important security principles but don't specifically describe the requirement that the security enforcement mechanism itself cannot be bypassed.",
-    "category": "Evaluation Criteria"
+    "category": "Evaluation Criteria, Security Architecture, Reference Monitor"
   }
 ]

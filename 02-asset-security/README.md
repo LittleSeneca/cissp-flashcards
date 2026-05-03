@@ -1,3 +1,7 @@
+---
+exam_weight: 10%
+---
+
 # Domain 2: Asset Security
 
 **Exam Weighting: ~10% of the CISSP exam.**

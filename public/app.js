@@ -1210,11 +1210,14 @@ function renderStudy() {
   const { tag } = studyState;
   const filterPill = (filter !== 'all' || tag)
     ? `${filter !== 'all' ? `<span class="filter-pill">${esc(getFilter(filter).label)}</span>` : ''}
-       ${tag ? `<span class="filter-pill tag-pill">#${esc(tag)}</span>` : ''}`
+       ${tag ? `<a href="#/tag/${encodeURIComponent(tag)}" class="filter-pill tag-pill">#${esc(tag)}</a>` : ''}`
     : '';
-
-  const sourceBadge = isTagStudy && card.setId
-    ? `<div class="fc-source">${esc(setLabel(card.setId))}</div>`
+  const firstCat = card.category ? card.category.split(',')[0].trim() : '';
+  const catPill = firstCat && (!tag || firstCat.toLowerCase() !== tag.toLowerCase())
+    ? `<a href="#/tag/${encodeURIComponent(firstCat)}" class="filter-pill cat-pill">${esc(firstCat)}</a>`
+    : '';
+  const sourceChip = isTagStudy && card.setId
+    ? `<span class="filter-pill source-pill">${esc(setLabel(card.setId))}</span>`
     : '';
 
   appEl.innerHTML = `
@@ -1222,7 +1225,7 @@ function renderStudy() {
       <div class="study-main">
         <div class="study-top">
           <a href="${backHref}" class="btn btn-outline btn-sm">${backLabel}</a>
-          <span class="progress-label">${filterPill}Card ${index + 1} of ${cards.length}</span>
+          <span class="progress-label">${filterPill}${catPill}${sourceChip}Card ${index + 1} of ${cards.length}</span>
         </div>
         <div class="progress-track">
           <div class="progress-fill" style="width:${pct}%"></div>
@@ -1232,15 +1235,12 @@ function renderStudy() {
           <div class="fc ${flipped ? 'is-flipped' : ''}" id="fc">
             <div class="fc-face fc-front">
               ${seenTag(stats?.lastSeen)}
-              ${sourceBadge}
-              ${card.category ? `<div class="fc-cat"><span class="badge">${esc(card.category)}</span></div>` : ''}
               <div class="fc-text">${card.questionHtml}</div>
               ${statsHtml}
               <div class="fc-nudge">tap to reveal</div>
             </div>
             <div class="fc-face fc-back">
               <div class="fc-role">Answer</div>
-              ${card.category ? `<div class="fc-cat"><span class="badge">${esc(card.category)}</span></div>` : ''}
               <div class="fc-text fc-text-answer">${card.answerHtml}</div>
             </div>
           </div>
@@ -1490,6 +1490,10 @@ function renderQuiz() {
   const filterPill  = quizState.filter && quizState.filter !== 'all'
     ? `<span class="filter-pill">${esc(MCQ_FILTER_LABELS[quizState.filter] ?? quizState.filter)}</span> `
     : '';
+  const qFirstCat = q.category ? q.category.split(',')[0].trim() : '';
+  const catPill = qFirstCat
+    ? `<a href="#/tag/${encodeURIComponent(qFirstCat)}" class="filter-pill cat-pill">${esc(qFirstCat)}</a>`
+    : '';
 
   const optionsHtml = q.options.map((_, i) => {
     let cls = 'qz-option';
@@ -1520,7 +1524,7 @@ function renderQuiz() {
       <div class="study-main">
         <div class="study-top">
           <a href="#/domain/${domainId}/set/${setId}" class="btn btn-outline btn-sm">← Back</a>
-          <span class="progress-label">${filterPill}Question ${index + 1} of ${questions.length}</span>
+          <span class="progress-label">${filterPill}${catPill}Question ${index + 1} of ${questions.length}</span>
         </div>
         <div class="progress-track">
           <div class="progress-fill" style="width:${pct}%"></div>
@@ -1528,7 +1532,6 @@ function renderQuiz() {
 
         <div class="qz-card">
           ${seenTag(quizState.mcqProgress?.[q.originalIndex ?? index]?.lastSeen)}
-          ${q.category ? `<div class="fc-cat"><span class="badge">${esc(q.category)}</span></div>` : ''}
           <div class="qz-question">${q.questionHtml}</div>
         </div>
 

@@ -9,7 +9,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **SAST** (Static Application Security Testing) is a 'white box' method that analyzes code 'at rest.' **Why A is wrong**: **DAST** requires the code to be running ('black box'). **Why C is wrong**: **IAST** uses agents in a running application. **Why D is wrong**: **Fuzzing** is a dynamic technique that provides random inputs to a running program.",
-    "category": "Software Testing"
+    "category": "SAST, Static Analysis, White-box Testing, SDLC"
   },
   {
     "question": "Which of the following is a key advantage of Static Application Security Testing (SAST)?",
@@ -21,7 +21,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: SAST can be performed as soon as code is written, allowing for 'shifting left' in the security lifecycle. **Why A is wrong**: This is a benefit of DAST. **Why C is wrong**: SAST is known for having a *high* false positive rate. **Why D is wrong**: SAST *requires* access to source code or binaries.",
-    "category": "Software Testing"
+    "category": "SAST, Shift Left, SDLC, Vulnerability Discovery"
   },
   {
     "question": "A security analyst is testing a web application by sending malformed and unexpected data to the input fields of the running application to trigger a crash. Which technique is being used?",
@@ -33,7 +33,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: **Fuzzing** (or fuzz testing) involves providing invalid, unexpected, or random data as input to a computer program to find software flaws. **Why A is wrong**: Static analysis doesn't run the code. **Why B is wrong**: Fagan is a formal code review process. **Why D is wrong**: Regression testing ensures old bugs don't return.",
-    "category": "Software Testing"
+    "category": "Fuzz Testing, Dynamic Analysis, Software Quality, Testing"
   },
   {
     "question": "Which methodology uses an agent-based approach to monitor an application's internal execution while it is being tested by a dynamic scanner?",
@@ -45,7 +45,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: **IAST** (Interactive Application Security Testing) combines the strengths of SAST and DAST by using agents/instrumentation to see inside the running app. **Why A/B are wrong**: These are purely static or purely dynamic. **Why D is wrong**: **SCA** analyzes third-party dependencies.",
-    "category": "Software Testing"
+    "category": "IAST, Hybrid Analysis, Instrumentation, SDLC"
   },
   {
     "question": "What is the PRIMARY focus of a 'Fagan Inspection'?",
@@ -57,7 +57,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: A **Fagan Inspection** is the most formal type of peer review, involving specific roles (Moderator, Author, Reader, Recorder) and six defined steps. **Why A/C/D are wrong**: These describe DAST/scanning, Stress Testing, and UAT respectively.",
-    "category": "Software Testing"
+    "category": "Fagan Inspection, Code Review, Formal Review, Static Analysis"
   },
   {
     "question": "Which type of testing is performed after a bug fix or code change to ensure that the new code has not negatively impacted existing, previously working functionality?",
@@ -69,7 +69,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: **Regression testing** is specifically aimed at ensuring that changes (patches, fixes) didn't break existing features. **Why A/B/D are wrong**: These have different objectives in the testing lifecycle.",
-    "category": "Software Testing"
+    "category": "Regression Testing, Maintenance Testing, Software Quality, Testing"
   },
   {
     "question": "In a formal code review like a Fagan Inspection, who is responsible for managing the process and ensuring the team follows the defined steps?",
@@ -81,7 +81,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: The **Moderator** leads the inspection process. **Why A is wrong**: The **Author** wrote the code. **Why C is wrong**: The **Reader** explains the code's intent. **Why D is wrong**: The **Recorder** (or Scribe) documents the findings.",
-    "category": "Software Testing"
+    "category": "Fagan Inspection, Moderator, Code Review, Roles"
   },
   {
     "question": "Which tool would be MOST effective for identifying that a project is using a version of the 'log4j' library with a known critical vulnerability?",
@@ -93,7 +93,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: **SCA** tools specialize in identifying third-party libraries and comparing them against databases of known vulnerabilities (like CVEs). **Why A/B are wrong**: While they might find the *effect* of the bug, they don't explicitly track library versions. **Why D is wrong**: This scans the network, not the software build.",
-    "category": "Software Testing"
+    "category": "SCA, Software Composition Analysis, Dependency Scanning, Third-party Risk"
   },
   {
     "question": "A 'Black Box' testing approach is most closely associated with which methodology?",
@@ -105,7 +105,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **DAST** is 'Black Box' because it tests the application from the outside without knowledge of the internal code. **Why A/C/D are wrong**: These are 'White Box' because they involve direct analysis of the source code.",
-    "category": "Software Testing"
+    "category": "Black-box Testing, DAST, Realism, Testing"
   },
   {
     "question": "What is the correct sequence of the six steps in a Fagan Inspection?",
@@ -117,7 +117,7 @@
     ],
     "correct": 0,
     "explanation": "**Why A is correct**: The standard order is **Planning** (scheduling), **Overview** (education), **Preparation** (individual review), **Inspection** (meeting), **Rework** (fixing), and **Follow-up** (verification). **Why B/C/D are wrong**: These have the steps in the incorrect order.",
-    "category": "Software Testing"
+    "category": "Fagan Inspection, Review Process, Methodology, Static Analysis"
   },
   {
     "question": "An organization wants to evaluate how well their testing suite identifies bugs by intentionally introducing small errors into the code and then running the tests. What is this technique called?",
@@ -129,7 +129,7 @@
     ],
     "correct": 1,
     "explanation": "**Why Mutation Testing is correct**: Mutation testing involves making small changes (mutants) to the code to see if the existing test suite can detect the changes. **Why others are wrong**: Fuzzing uses random inputs. Regression testing checks for old bugs. Integration testing checks component interaction.",
-    "category": "Software Testing"
+    "category": "Mutation Testing, Test Suite Quality, Metrics, Testing"
   },
   {
     "question": "A tester is creating test cases based on how an attacker might intentionally subvert the application's intended logic or security controls. This is an example of:",
@@ -141,7 +141,7 @@
     ],
     "correct": 1,
     "explanation": "**Why Misuse Case is correct**: Misuse cases (or abuse cases) describe how a system can be misused to cause harm or bypass security. **Why others are wrong**: Use cases describe normal functionality. Unit and performance testing are technical verification steps.",
-    "category": "Software Testing"
+    "category": "Misuse Case, Abuse Case, Requirements Analysis, Security Design"
   },
   {
     "question": "Which monitoring technique involves capturing and analyzing every transaction of every user on a website or application in real-time?",
@@ -153,7 +153,7 @@
     ],
     "correct": 1,
     "explanation": "**Why RUM is correct**: Real User Monitoring (RUM) is a passive monitoring technology that records all user interaction with a website or client. **Why A is wrong**: Synthetic monitoring uses scripts to simulate user behavior. **Why C/D are wrong**: These are different analysis methods.",
-    "category": "Software Testing"
+    "category": "RUM, Real User Monitoring, Passive Monitoring, Operations"
   },
   {
     "question": "A developer is using a dynamic analysis tool to identify why an application's memory usage continues to grow over time without being released. What is the tool detecting?",
@@ -165,7 +165,7 @@
     ],
     "correct": 1,
     "explanation": "**Why Memory Leak is correct**: A memory leak occurs when a program fails to release memory it no longer needs. **Why others are wrong**: Buffer overflow is writing past boundaries. Race condition is a timing issue. Integer overflow is a numeric error.",
-    "category": "Software Testing"
+    "category": "Memory Leak, Dynamic Analysis, Resource Management, Software Defects"
   },
   {
     "question": "Which level of testing focuses on the communication and data exchange between different software modules or systems?",
@@ -177,7 +177,7 @@
     ],
     "correct": 1,
     "explanation": "**Why Interface Testing is correct**: Interface testing verifies that the connections between components (like APIs or GUIs) work correctly. **Why A is wrong**: Unit testing is for isolated modules. **Why C is wrong**: Acceptance testing is for business requirements.",
-    "category": "Software Testing"
+    "category": "Interface Testing, API Testing, Integration Testing, Communication"
   },
   {
     "question": "After the development team has finished a new feature, the final users of the system perform testing to ensure it meets their business needs and is ready for production. What is this called?",
@@ -189,7 +189,7 @@
     ],
     "correct": 1,
     "explanation": "**Why UAT is correct**: UAT is the final phase of testing to ensure the system meets business requirements. **Why C is wrong**: OAT (or Production Acceptance Testing) focuses on operational readiness (backups, recovery, etc.).",
-    "category": "Software Testing"
+    "category": "UAT, User Acceptance Testing, Business Requirements, Testing"
   },
   {
     "question": "Which metric is used to determine what percentage of a program's source code has been executed by a test suite?",
@@ -201,7 +201,7 @@
     ],
     "correct": 1,
     "explanation": "**Why Code Coverage is correct**: Code coverage measures the extent to which source code is tested. **Why others are wrong**: Defect density is bugs per line. Complexity measures logic paths. MTTR is a maintenance metric.",
-    "category": "Software Testing"
+    "category": "Code Coverage, Testing Metrics, Software Quality, White-box Testing"
   },
   {
     "question": "What is the primary difference between 'Regression Testing' and 'Retesting'?",
@@ -213,7 +213,7 @@
     ],
     "correct": 0,
     "explanation": "**Why A is correct**: Retesting is focused on verifying a specific fix. Regression testing is broad, ensuring the fix didn't break other parts of the system. **Why others are wrong**: Both can be automated or manual and are usually done by testers or developers.",
-    "category": "Software Testing"
+    "category": "Regression Testing, Retesting, Maintenance Testing, Software Quality"
   },
   {
     "question": "Which type of code coverage ensures that every decision point in the code (e.g., every 'if' and 'else' branch) has been executed at least once?",
@@ -225,7 +225,7 @@
     ],
     "correct": 1,
     "explanation": "**Why Branch Coverage is correct**: Branch (or Decision) coverage ensures that every possible branch of each control structure is executed. **Why A is wrong**: Statement coverage only ensures each line is run. **Why C is wrong**: Path coverage is much more rigorous, testing every possible combination of branches.",
-    "category": "Software Testing"
+    "category": "Branch Coverage, Decision Coverage, Code Coverage, Metrics"
   },
   {
     "question": "A 'Mutation-based' fuzzer differs from a 'Protocol-based' fuzzer because it:",
@@ -237,7 +237,7 @@
     ],
     "correct": 0,
     "explanation": "**Why Mutation-based is correct**: Mutation fuzzers take valid inputs and 'mutate' them (flip bits, change characters). **Why B is wrong**: Generation-based (protocol-based) fuzzers understand the protocol structure and build inputs from scratch.",
-    "category": "Software Testing"
+    "category": "Fuzz Testing, Mutation-based, Generation-based, Testing"
   },
   {
     "question": "Which testing methodology involves analyzing the logical paths of a program without executing it to identify potential unreachable code or infinite loops?",
@@ -249,7 +249,7 @@
     ],
     "correct": 1,
     "explanation": "**Why Control Flow is correct**: Control Flow Analysis is a static technique that diagrams the paths code can take during execution. **Why others are wrong**: Dynamic analysis and fuzzing require execution. Stress testing is for performance.",
-    "category": "Software Testing"
+    "category": "Control Flow Analysis, Static Analysis, Logic Paths, Code Review"
   },
   {
     "question": "Which static analysis technique tracks the flow of data from inputs (sources) to potentially dangerous functions (sinks) to identify vulnerabilities like XSS or SQLi?",
@@ -261,7 +261,7 @@
     ],
     "correct": 0,
     "explanation": "**Why Data Flow is correct**: Data Flow Analysis tracks how data is handled throughout the program. **Why others are wrong**: Unit testing is dynamic. Synthetic monitoring is for performance. Boundary Value is a test case design technique.",
-    "category": "Software Testing"
+    "category": "Data Flow Analysis, Static Analysis, Taint Analysis, Code Review"
   },
   {
     "question": "What is the focus of 'Operational Acceptance Testing' (OAT)?",
@@ -273,7 +273,7 @@
     ],
     "correct": 1,
     "explanation": "**Why OAT is correct**: OAT (or Operational Readiness Testing) checks the non-functional requirements needed for production support. **Why others are wrong**: These are the focus of UAT or UI/UX testing.",
-    "category": "Software Testing"
+    "category": "OAT, Operational Acceptance Testing, Operational Readiness, Testing"
   },
   {
     "question": "Which software testing principle states that as more bugs are found in a specific module, the probability of finding more undiscovered bugs in that same module increases?",
@@ -285,7 +285,7 @@
     ],
     "correct": 1,
     "explanation": "**Why Defect Clustering is correct**: Defect clustering suggests that a small number of modules usually contain most of the defects found during pre-release testing. **Why others are wrong**: Pesticide paradox is about tests becoming ineffective. Absence-of-errors is about meeting user needs.",
-    "category": "Software Testing"
+    "category": "Defect Clustering, Software Quality, Principles, Testing"
   },
   {
     "question": "In a 'Combinatorial' software testing approach, what is the goal?",
@@ -297,6 +297,6 @@
     ],
     "correct": 1,
     "explanation": "**Why Combinatorial is correct**: Combinatorial testing (like All-Pairs testing) is a method to test all possible pairs of input parameters, which is more efficient than exhaustive testing. **Why others are wrong**: Exhaustive testing is usually impossible. IAST combines SAST/DAST.",
-    "category": "Software Testing"
+    "category": "Combinatorial Testing, Pairwise Testing, Testing Efficiency, Methodology"
   }
 ]

@@ -1,21 +1,21 @@
 Question	Answer	Category
-What is the core mantra of Zero Trust?	**Never Trust, Always Verify.**	Zero Trust, Principles
-What is the name of the NIST publication for Zero Trust?	**NIST SP 800-207.**	Zero Trust, Frameworks
-What is the Policy Decision Point (PDP)?	The combination of the **Policy Engine** and **Policy Administrator** that decides whether to grant access.	Zero Trust, ZT Architecture, PDP
-What is the Policy Enforcement Point (PEP)?	The component that **executes (enforces)** the decision made by the PDP, such as a gateway or agent.	Zero Trust, ZT Architecture, PEP
-What is the Policy Engine (PE)?	The part of the PDP that **evaluates the request** against security policies and context to make a decision.	Zero Trust, ZT Architecture, PDP
-What is the Policy Administrator (PA)?	The part of the PDP that **communicates with the PEP** to allow or deny the connection.	Zero Trust, ZT Architecture, PDP
-What is a Policy Information Point (PIP)?	An external source of data (e.g., IDM, SIEM, Threat Intel) that **provides context** for the PDP's decision.	Zero Trust, ZT Architecture, PIP
-What is "Identity-Centric" security?	A model where access is granted based on **who/what is requesting**, rather than their network location.	Zero Trust, Identity-Centric, IAM
-What is the "Protect Surface"?	The specific **Data, Assets, Applications, or Services (DAAS)** that a Zero Trust architecture is designed to protect.	Zero Trust, Protect Surface, Strategy
-What is Continuous Verification?	The Zero Trust requirement to **re-evaluate trust** throughout a session, not just at initial login.	Zero Trust, Continuous Verification, Principles
-What is ZTNA?	**Zero Trust Network Access.** A technology that provides granular, application-level access to users, replacing the broad network-level access of traditional VPNs.	Zero Trust, ZTNA, Network Access
-What is Adaptive Authentication?	A risk-based approach that requires **step-up authentication** (like MFA) only when the context of a request (location, device, behavior) deviates from the norm.	Zero Trust, Adaptive Authentication, IAM
-What is an Implicit Trust Zone?	The area behind a PEP where the system can no longer control or differentiate traffic; the goal of ZT is to minimize this to a single resource.	Zero Trust, ZT Architecture
-What are the 5 steps to implement Zero Trust?	1. Define the **Protect Surface**\n2. Map the **Transaction Flows**\n3. Build a **Zero Trust Architecture**\n4. Create the **Zero Trust Policy**\n5. **Monitor and Maintain**	Zero Trust, Strategy, Implementation
-What is a Micro-perimeter?	A granular security boundary placed as close as possible to the protected resource (e.g., a single workload or data set).	Zero Trust, Microsegmentation, Network Access
-What is the ZT Control Plane?	The layer where security decisions are made (PDP) and coordinated (PAP/PIP), separated from where data actually flows.	Zero Trust, ZT Architecture, Control Plane
-What is the ZT Data Plane?	The layer where the actual application data flows between the user and the resource, once authorized by the Control Plane.	Zero Trust, ZT Architecture, Control Plane
-What is a Trust Algorithm?	The logic used by the Policy Engine to weigh various attributes (identity, device health, threat intel) to reach an access decision.	Zero Trust, ZT Architecture, PDP
-What is the Policy Administration Point (PAP)?	The interface where security administrators **define and manage** the policies that the Policy Engine evaluates.	Zero Trust, ZT Architecture, PDP
-What is JIT/JEA in Zero Trust?	**Just-In-Time (JIT)** and **Just-Enough-Administration (JEA)** ensure that access is granted only when needed and with the minimum permissions required.	Zero Trust, Privileged Access, IAM
+What is the core mantra of Zero Trust?	**Never Trust, Always Verify.**	Zero Trust Architecture, ZT Principles, Continuous Verification
+What is the name of the NIST publication for Zero Trust?	**NIST SP 800-207.**	Zero Trust Architecture, NIST SP 800-207, ZT Frameworks
+What is the Policy Decision Point (PDP)?	The combination of the **Policy Engine** and **Policy Administrator** that decides whether to grant access.	Zero Trust Architecture, Policy Decision Point, PDP Components
+What is the Policy Enforcement Point (PEP)?	The component that **executes (enforces)** the decision made by the PDP, such as a gateway or agent.	Zero Trust Architecture, Policy Enforcement Point, ZT Controls
+What is the Policy Engine (PE)?	The part of the PDP that **evaluates the request** against security policies and context to make a decision.	Zero Trust Architecture, Policy Engine, Policy Decision Point
+What is the Policy Administrator (PA)?	The part of the PDP that **communicates with the PEP** to allow or deny the connection.	Zero Trust Architecture, Policy Administrator, Control Plane
+What is a Policy Information Point (PIP)?	An external source of data (e.g., IDM, SIEM, Threat Intel) that **provides context** for the PDP's decision.	Zero Trust Architecture, Policy Information Point, Contextual Attributes
+What is "Identity-Centric" security?	A model where access is granted based on **who/what is requesting**, rather than their network location.	Zero Trust Architecture, Identity-Centric Security, IAM
+What is the "Protect Surface"?	The specific **Data, Assets, Applications, or Services (DAAS)** that a Zero Trust architecture is designed to protect.	Zero Trust Implementation, Protect Surface, DAAS
+What is Continuous Verification?	The Zero Trust requirement to **re-evaluate trust** throughout a session, not just at initial login.	Zero Trust Architecture, Continuous Verification, Posture Assessment
+What is ZTNA?	**Zero Trust Network Access.** A technology that provides granular, application-level access to users, replacing the broad network-level access of traditional VPNs.	Zero Trust Architecture, ZTNA, Remote Access VPN
+What is Adaptive Authentication?	A risk-based approach that requires **step-up authentication** (like MFA) only when the context of a request (location, device, behavior) deviates from the norm.	Zero Trust Architecture, Adaptive Authentication, Risk-Based Access
+What is an Implicit Trust Zone?	The area behind a PEP where the system can no longer control or differentiate traffic; the goal of ZT is to minimize this to a single resource.	Zero Trust Architecture, Implicit Trust Zone, Micro-Perimeters
+What are the 5 steps to implement Zero Trust?	1. Define the **Protect Surface**\n2. Map the **Transaction Flows**\n3. Build a **Zero Trust Architecture**\n4. Create the **Zero Trust Policy**\n5. **Monitor and Maintain**	Zero Trust Implementation, ZT Strategy, Implementation Methodology
+What is a Micro-perimeter?	A granular security boundary placed as close as possible to the protected resource (e.g., a single workload or data set).	Zero Trust Architecture, Microsegmentation, Micro-Perimeters
+What is the ZT Control Plane?	The layer where security decisions are made (PDP) and coordinated (PAP/PIP), separated from where data actually flows.	Zero Trust Architecture, Control Plane, ZT Management
+What is the ZT Data Plane?	The layer where the actual application data flows between the user and the resource, once authorized by the Control Plane.	Zero Trust Architecture, Data Plane, ZT Traffic
+What is a Trust Algorithm?	The logic used by the Policy Engine to weigh various attributes (identity, device health, threat intel) to reach an access decision.	Zero Trust Architecture, Trust Algorithm, Decision Logic
+What is the Policy Administration Point (PAP)?	The interface where security administrators **define and manage** the policies that the Policy Engine evaluates.	Zero Trust Architecture, Policy Administration Point, Policy Management
+What is JIT/JEA in Zero Trust?	**Just-In-Time (JIT)** and **Just-Enough-Administration (JEA)** ensure that access is granted only when needed and with the minimum permissions required.	Zero Trust Architecture, Least Privilege, Just-In-Time Access

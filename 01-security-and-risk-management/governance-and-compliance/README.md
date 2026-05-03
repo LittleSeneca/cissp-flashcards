@@ -1,6 +1,6 @@
 ---
 tier: 2
-exam_weight: "16%"
+exam_weight: 16%
 ---
 
 # Security Governance & Compliance Frameworks for the CISSP Exam

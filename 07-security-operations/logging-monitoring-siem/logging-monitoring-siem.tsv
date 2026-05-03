@@ -1,25 +1,25 @@
-Normalization	Converting disparate log formats into a standardized, common schema for SIEM analysis.	SIEM, SIEM Functions, Log Processing
-Aggregation	The collection of logs from many different sources into one centralized location.	SIEM, SIEM Functions, Log Processing
-Correlation	Linking related events across different sources to identify complex attack patterns.	SIEM, SIEM Functions, Detection
-Enrichment	Adding additional context (e.g., geolocation, asset info) to logs during ingestion.	SIEM, SIEM Functions, Log Processing
-Alert Fatigue	Analyst desensitization caused by a high volume of false positive alerts.	SIEM, Alert Management
-SIEM Tuning	The process of refining correlation rules to reduce noise and false positives.	SIEM, Alert Management
-NTP (Network Time Protocol)	Protocol used to synchronize clocks across a network, essential for log timeline reconstruction.	SIEM, Log Integrity, Time Synchronization
-WORM (Write Once Read Many)	Storage technology that prevents logs from being modified or deleted after creation.	SIEM, Log Integrity, Data Retention
-UEBA (User and Entity Behavior Analytics)	Detection based on identifying anomalous deviations from established behavioral baselines.	SIEM, UEBA, Behavioral Analytics
-SOAR (Security Orchestration, Automation, and Response)	Technology used to automate responses to security alerts via playbooks.	SIEM, SOAR, Automation
-Log Management Lifecycle	The phases of log handling: Generation, Transmission, Storage, Analysis, and Disposal.	SIEM, Log Management
-Syslog Facility	The code that identifies the subsystem or application that generated the log message.	SIEM, Syslog, Log Management
-Syslog Severity	The code that identifies the importance or urgency of a log message (0-7).	SIEM, Syslog, Log Management
-NetFlow / IPFIX	Network protocols used to export traffic metadata (flows) for volume and pattern analysis.	SIEM, Network Monitoring
-Tiered Storage	A cost-management strategy using different media (Hot, Warm, Cold) for log retention.	SIEM, Data Retention
-False Positive (Type I)	An alert that incorrectly identifies a benign event as malicious.	SIEM, Detection Accuracy
-False Negative (Type II)	A security event that occurs but is not detected by the monitoring system.	SIEM, Detection Accuracy
-EDR (Endpoint Detection and Response)	Solution focusing on real-time endpoint monitoring and forensic recording.	SIEM, EDR, Endpoint Detection
-NDR (Network Detection and Response)	Solution focusing on identifying threats based on network traffic patterns and anomalies.	SIEM, NDR, Network Detection
-XDR (Extended Detection and Response)	A platform that integrates telemetry from endpoints, networks, and cloud for unified response.	SIEM, XDR, Detection
-Event ID 4624	The Windows Security Log event code for a successful logon.	SIEM, Windows Events
-Event ID 4625	The Windows Security Log event code for a failed logon.	SIEM, Windows Events
-Event ID 4740	The Windows Security Log event code for an account lockout.	SIEM, Windows Events
-Impossible Travel	A behavioral alert triggered when a user logs in from distant locations in an impossible timeframe.	SIEM, UEBA, Behavioral Analytics
-Log Signing	Using digital signatures to ensure the integrity and non-repudiation of log entries.	SIEM, Log Integrity
+Normalization	Converting disparate log formats into a standardized, common schema for SIEM analysis.	SIEM, Normalization, Log Processing, Data Integration
+Aggregation	The collection of logs from many different sources into one centralized location.	SIEM, Aggregation, Log Processing, Log Collection
+Correlation	Linking related events across different sources to identify complex attack patterns.	SIEM, Correlation, Detection, Pattern Matching
+Enrichment	Adding additional context (e.g., geolocation, asset info) to logs during ingestion.	SIEM, Enrichment, Log Processing, Contextualization
+Alert Fatigue	Analyst desensitization caused by a high volume of false positive alerts.	SIEM, Alert Management, Tuning, Human Factors
+SIEM Tuning	The process of refining correlation rules to reduce noise and false positives.	SIEM, Alert Management, Tuning, Signal-to-noise
+NTP (Network Time Protocol)	Protocol used to synchronize clocks across a network, essential for log timeline reconstruction.	SIEM, Log Integrity, Time Synchronization, NTP
+WORM (Write Once Read Many)	Storage technology that prevents logs from being modified or deleted after creation.	SIEM, Log Integrity, Immutable Storage, WORM
+UEBA (User and Entity Behavior Analytics)	Detection based on identifying anomalous deviations from established behavioral baselines.	SIEM, UEBA, Behavioral Analytics, Anomaly Detection
+SOAR (Security Orchestration, Automation, and Response)	Technology used to automate responses to security alerts via playbooks.	SIEM, SOAR, Automation, Incident Response
+Log Management Lifecycle	The phases of log handling: Generation, Transmission, Storage, Analysis, and Disposal.	SIEM, Log Management, NIST SP 800-92, Lifecycle
+Syslog Facility	The code that identifies the subsystem or application that generated the log message.	SIEM, Syslog, Facility Codes, Log Management
+Syslog Severity	The code that identifies the importance or urgency of a log message (0-7).	SIEM, Syslog, Severity Levels, Log Management
+NetFlow / IPFIX	Network protocols used to export traffic metadata (flows) for volume and pattern analysis.	SIEM, Network Monitoring, NetFlow, Metadata
+Tiered Storage	A cost-management strategy using different media (Hot, Warm, Cold) for log retention.	SIEM, Data Retention, Tiered Storage, Archiving
+False Positive (Type I)	An alert that incorrectly identifies a benign event as malicious.	SIEM, Detection Accuracy, False Positive, Type I Error
+False Negative (Type II)	A security event that occurs but is not detected by the monitoring system.	SIEM, Detection Accuracy, False Negative, Type II Error
+EDR (Endpoint Detection and Response)	Solution focusing on real-time endpoint monitoring and forensic recording.	SIEM, EDR, Endpoint Detection, Forensic Recording
+NDR (Network Detection and Response)	Solution focusing on identifying threats based on network traffic patterns and anomalies.	SIEM, NDR, Network Detection, Anomaly Detection
+XDR (Extended Detection and Response)	A platform that integrates telemetry from endpoints, networks, and cloud for unified response.	SIEM, XDR, Extended Detection, Integrated Response
+Event ID 4624	The Windows Security Log event code for a successful logon.	SIEM, Windows Events, Logon Success, Event Logs
+Event ID 4625	The Windows Security Log event code for a failed logon.	SIEM, Windows Events, Logon Failure, Event Logs
+Event ID 4740	The Windows Security Log event code for an account lockout.	SIEM, Windows Events, Account Lockout, Event Logs
+Impossible Travel	A behavioral alert triggered when a user logs in from distant locations in an impossible timeframe.	SIEM, UEBA, Behavioral Analytics, Impossible Travel
+Log Signing	Using digital signatures to ensure the integrity and non-repudiation of log entries.	SIEM, Log Integrity, Digital Signatures, Non-repudiation

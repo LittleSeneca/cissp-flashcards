@@ -1,6 +1,6 @@
 ---
 tier: 2
-exam_weight: "13%"
+exam_weight: 13%
 ---
 
 # Security Evaluation and Assurance Criteria for the CISSP Exam

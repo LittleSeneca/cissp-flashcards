@@ -1,25 +1,25 @@
-Data Owner	The person ultimately accountable for data, responsible for defining classification and authorizing access.
-Data Custodian	The person responsible for technical implementation of security controls and day-to-day data maintenance.
-Top Secret	US Government classification for information whose disclosure causes "exceptionally grave damage."
-Secret	US Government classification for information whose disclosure causes "serious damage."
-Confidential (Gov)	US Government classification for information whose disclosure causes "damage."
-Replacement Cost	The cost to replace an asset at current market prices; used in BCP/DR planning.
-Consequential Loss	The indirect loss (revenue, reputation) resulting from an asset's failure.
-Shadow IT	Unauthorized hardware or software used within an organization without IT's knowledge.
-Data Steward	Role focused on data quality, metadata, and consistency across the organization.
-High-Water Mark	Principle stating a system must be protected at the level of its most sensitive data component.
-Scoping	Removing inapplicable controls from a security baseline.
-Tailoring	Refining and adjusting baseline controls to meet specific organizational needs.
-Marking	The physical labeling of media (folders, CDs) to indicate its classification.
-Labeling	The digital metadata applied to files to indicate their classification.
-Asset Inventory	A comprehensive list of assets, including owner, criticality, and classification.
-CUI	Controlled Unclassified Information; a US government label for sensitive but unclassified data.
-Intangible Asset	An asset without physical substance, such as brand reputation or intellectual property.
-Declassification	The process of moving data to a lower classification level when its sensitivity decreases.
-Proprietary Data	Commercial data containing trade secrets or sensitive business information.
-Need-to-Know	The principle that users should only have access to data required for their specific tasks.
-Data Subject	The individual to whom the personal data refers.
-Data Processor	An entity that processes data on behalf of a Data Controller.
-Public Data	Information intended for unrestricted distribution with no impact if disclosed.
-Internal Use Only	Commercial classification for data not for public release but with low impact if lost.
-Asset Valuation	The process of assigning a value to an asset to determine appropriate protection levels.
+Data Owner	The person ultimately accountable for data, responsible for defining classification and authorizing access.	Data Roles, Accountability, Data Ownership
+Data Custodian	The person responsible for technical implementation of security controls and day-to-day data maintenance.	Data Roles, Technical Controls, Data Custodianship
+Top Secret	US Government classification for information whose disclosure causes "exceptionally grave damage."	US Government Classification, Exceptional Grave Damage, Top Secret
+Secret	US Government classification for information whose disclosure causes "serious damage."	US Government Classification, Serious Damage, Secret
+Confidential (Gov)	US Government classification for information whose disclosure causes "damage."	US Government Classification, Damage, Confidential
+Replacement Cost	The cost to replace an asset at current market prices; used in BCP/DR planning.	Asset Valuation, BCP/DR, Replacement Cost
+Consequential Loss	The indirect loss (revenue, reputation) resulting from an asset's failure.	Asset Valuation, BIA, Consequential Loss
+Shadow IT	Unauthorized hardware or software used within an organization without IT's knowledge.	Asset Management, Shadow IT, Unauthorized Systems
+Data Steward	Role focused on data quality, metadata, and consistency across the organization.	Data Roles, Data Quality, Data Stewardship
+High-Water Mark	Principle stating a system must be protected at the level of its most sensitive data component.	Data Classification, High-Water Mark, System Security
+Scoping	Removing inapplicable controls from a security baseline.	Security Baselines, Scoping, Control Selection
+Tailoring	Refining and adjusting baseline controls to meet specific organizational needs.	Security Baselines, Tailoring, Control Refinement
+Marking	The physical labeling of media (folders, CDs) to indicate its classification.	Data Marking, Physical Security, Media Handling
+Labeling	The digital metadata applied to files to indicate their classification.	Data Labeling, Digital Metadata, Data Handling
+Asset Inventory	A comprehensive list of assets, including owner, criticality, and classification.	Asset Management, Inventory, Risk Management
+CUI	Controlled Unclassified Information; a US government label for sensitive but unclassified data.	US Government Classification, CUI, Controlled Unclassified Information
+Intangible Asset	An asset without physical substance, such as brand reputation or intellectual property.	Asset Valuation, Intangible Assets, Intellectual Property
+Declassification	The process of moving data to a lower classification level when its sensitivity decreases.	Data Lifecycle, Declassification, Data Sensitivity
+Proprietary Data	Commercial data containing trade secrets or sensitive business information.	Commercial Classification, Trade Secrets, Proprietary
+Need-to-Know	The principle that users should only have access to data required for their specific tasks.	Access Control, Need-to-Know, Least Privilege
+Data Subject	The individual to whom the personal data refers.	Privacy, Data Subject, PII
+Data Processor	An entity that processes data on behalf of a Data Controller.	Privacy, Data Roles, Data Processor
+Public Data	Information intended for unrestricted distribution with no impact if disclosed.	Commercial Classification, Public Data, Unrestricted
+Internal Use Only	Commercial classification for data not for public release but with low impact if lost.	Commercial Classification, Internal Use, Low Impact
+Asset Valuation	The process of assigning a value to an asset to determine appropriate protection levels.	Asset Management, Asset Valuation, Risk Assessment

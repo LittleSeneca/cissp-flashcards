@@ -1,3 +1,7 @@
+---
+exam_weight: 13%
+---
+
 # Domain 7: Security Operations
 
 **Exam Weighting: ~13% of the CISSP exam**

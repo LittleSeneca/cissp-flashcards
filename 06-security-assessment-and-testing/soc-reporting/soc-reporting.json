@@ -9,7 +9,7 @@
     ],
     "correct": 0,
     "explanation": "**Why A is correct**: **SOC 1** reports (based on SSAE 18) are focused on controls relevant to the user entities' financial statements. **Why B is wrong**: **SOC 2** is for security and operational controls. **Why C is wrong**: **SOC 3** is a public summary of SOC 2. **Why D is wrong**: **SOC for Cybersecurity** is a different, broader framework.",
-    "category": "SOC Reporting, SOC 1"
+    "category": "SOC 1, SSAE 18, Financial Reporting, ICFR"
   },
   {
     "question": "A security manager needs to review the detailed test results of a cloud provider's security and availability controls over the last 12 months. Which report should they request?",
@@ -21,7 +21,7 @@
     ],
     "correct": 3,
     "explanation": "**Why D is correct**: A **SOC 2 Type II** report covers security/operational controls (SOC 2) and evaluates their operating effectiveness over a period (Type II). **Why B is wrong**: **Type I** is only a point-in-time design assessment. **Why A/C are wrong**: **SOC 1** is for financial reporting, not general security/availability.",
-    "category": "SOC Reporting, SOC 2, Audit Process"
+    "category": "SOC 2 Type II, Operating Effectiveness, Third-party Audit, Cloud Security"
   },
   {
     "question": "What is the PRIMARY difference between a SOC 2 Type I and a SOC 2 Type II report?",
@@ -33,7 +33,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **Type I** assesses the design of controls at a specific point in time. **Type II** assesses the design *and* operating effectiveness over a duration (e.g., 6 months). **Why A is wrong**: Both include details, but Type II includes the auditor's testing of effectiveness. **Why C/D are wrong**: These do not describe Type I vs Type II.",
-    "category": "SOC Reporting, SOC 2, Audit Types"
+    "category": "SOC Type I, SOC Type II, Design vs Effectiveness, Audit Process"
   },
   {
     "question": "Which of the following is one of the five Trust Services Criteria (TSC) used in a SOC 2 examination?",
@@ -45,7 +45,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **Processing Integrity** is one of the five TSCs (Security, Availability, Confidentiality, Privacy, and Processing Integrity). **Why A/C are wrong**: These are security concepts but not specific SOC 2 TSC categories. **Why D is wrong**: This is the focus of SOC 1.",
-    "category": "SOC Reporting, SOC 2, Trust Services Criteria"
+    "category": "SOC 2, Trust Services Criteria, Processing Integrity, Audit"
   },
   {
     "question": "An organization wants to display a 'seal' on their website to show they have passed a security audit, without revealing confidential internal details. Which report is intended for this public use?",
@@ -57,7 +57,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: **SOC 3** is a general-use report that summarizes the SOC 2 results for a public audience. **Why A/B are wrong**: These are restricted-use reports containing sensitive internal data. **Why D is wrong**: **SAS 70** is an obsolete standard replaced by SSAE 16 and now SSAE 18.",
-    "category": "SOC Reporting, SOC 3"
+    "category": "SOC 3, Public Reporting, Marketing, Audit Assurance"
   },
   {
     "question": "The 'Common Criteria' in a SOC 2 report refers to which Trust Services Category?",
@@ -69,7 +69,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: In SOC 2, the **Security** category is known as the **'Common Criteria'** because many of its requirements are shared across the other four categories. **Why A/B/D are wrong**: These are additional, specific categories.",
-    "category": "SOC Reporting, SOC 2, Trust Services Criteria"
+    "category": "SOC 2, Trust Services Criteria, Security, Common Criteria"
   },
   {
     "question": "Under which standard are SOC 1 reports performed?",
@@ -81,7 +81,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **SSAE 18** (Statement on Standards for Attestation Engagements no. 18) is the auditing standard used for SOC 1 reports. **Why A/C/D are wrong**: These are other security frameworks or standards but not the basis for SOC 1.",
-    "category": "SOC Reporting, SOC 1, Standards"
+    "category": "SOC 1, SSAE 18, Auditing Standards, Compliance"
   },
   {
     "question": "When reviewing a SOC 2 Type II report, which section contains the auditor's formal opinion on whether the controls were fairly presented and effective?",
@@ -93,7 +93,7 @@
     ],
     "correct": 0,
     "explanation": "**Why A is correct**: **Section I** contains the Auditor's Report and Opinion. **Why B is wrong**: **Section II** is the organization's own claim. **Why C is wrong**: **Section III** is the technical description. **Why D is wrong**: **Section IV** contains the granular test data.",
-    "category": "SOC Reporting, SOC 2, Audit Types, Audit Opinions, Audit Process"
+    "category": "SOC Reporting, Audit Report, Auditor Opinion, Audit Process"
   },
   {
     "question": "Which SOC 2 category focuses on protecting information designated as sensitive throughout its lifecycle, from collection to disposal?",
@@ -105,7 +105,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **Confidentiality** focuses on protecting information that is restricted to a specific set of users. **Why C is wrong**: **Privacy** specifically deals with Personal Identifiable Information (PII) and its handling. **Why A/D are wrong**: These have different focuses.",
-    "category": "SOC Reporting, SOC 2"
+    "category": "SOC 2, Trust Services Criteria, Confidentiality, Information Lifecycle"
   },
   {
     "question": "What does a 'Qualified Opinion' in a SOC report indicate?",
@@ -117,7 +117,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: A **Qualified Opinion** means the auditor found specific issues (exceptions) that prevented a 'clean' (unqualified) opinion, though the system wasn't a total failure. **Why A is wrong**: This would be an Unqualified Opinion. **Why B is wrong**: This would be a Disclaimer of Opinion. **Why D is wrong**: This is not what the term refers to in an audit context.",
-    "category": "SOC Reporting, Audit Opinions"
+    "category": "Audit Opinions, Qualified Opinion, Audit Exceptions, Audit Process"
   },
   {
     "question": "A service organization's SOC 2 report mentions that the user entity is responsible for managing its own user access reviews. What is the technical term for these requirements in the report?",
@@ -129,7 +129,7 @@
     ],
     "correct": 1,
     "explanation": "**Why CUECs is correct**: Complementary User Entity Controls (CUECs) are controls that the service organization assumes the user entity has implemented to achieve the specified control objectives. **Why others are wrong**: Objectives are broad goals. Assertions are management claims. SLAs are contractual performance metrics.",
-    "category": "SOC Reporting, SOC 2, Shared Responsibility"
+    "category": "SOC 2, CUECs, Shared Responsibility, Shared Controls"
   },
   {
     "question": "A customer is reviewing a cloud provider's SOC 2 Type II report that ended on December 31st. It is now June, and the customer needs assurance for the intervening months. What document should they request from the provider?",
@@ -141,7 +141,7 @@
     ],
     "correct": 1,
     "explanation": "**Why Bridge Letter is correct**: A Bridge Letter is a document from the service organization's management stating that there have been no material changes in the control environment since the last SOC report ended. **Why others are wrong**: A new report takes time to produce. ISO and Pen tests provide different types of assurance.",
-    "category": "SOC Reporting, SOC 2, Audit Types"
+    "category": "SOC Reporting, Bridge Letter, Audit Gap, Audit Process"
   },
   {
     "question": "When a service organization uses a data center provider (subservice organization) to host its servers, they can choose to either include or exclude the data center's controls in their own SOC 2 report. What is the term for EXCLUDING the subservice organization's controls?",
@@ -153,7 +153,7 @@
     ],
     "correct": 1,
     "explanation": "**Why Carve-out is correct**: The Carve-out Method excludes the subservice organization's relevant controls from the report, though it must still describe the services provided and the CUECs expected from the subservice organization. **Why A is wrong**: The Inclusive Method includes the subservice organization's controls in the scope of the audit.",
-    "category": "SOC Reporting, SOC 2, Subservice Organizations"
+    "category": "SOC 2, Carve-out Method, Subservice Organizations, Audit Scope"
   },
   {
     "question": "Which of the following would result in an 'Adverse Opinion' in a SOC report?",
@@ -165,7 +165,7 @@
     ],
     "correct": 2,
     "explanation": "**Why Adverse Opinion is correct**: An Adverse Opinion is the most negative result, indicating that the controls are not effective or the description is materially misstated. **Why A is wrong**: A minor exception might lead to a Qualified Opinion. **Why B is wrong**: This leads to a Disclaimer of Opinion.",
-    "category": "SOC Reporting, Audit Opinions"
+    "category": "Audit Opinions, Adverse Opinion, Material Misstatement, Audit Process"
   },
   {
     "question": "In a SOC 2 report, which Trust Services Category specifically addresses the collection, use, retention, disclosure, and disposal of personal information (PII) in conformity with the organization's notice and GAPP?",
@@ -177,7 +177,7 @@
     ],
     "correct": 1,
     "explanation": "**Why Privacy is correct**: The Privacy category is unique because it focuses on personal information and its lifecycle. **Why A is wrong**: Confidentiality focuses on sensitive business information, not specifically PII. **Why C/D are wrong**: These focus on system operations.",
-    "category": "SOC Reporting, SOC 2, Trust Services Criteria"
+    "category": "SOC 2, Trust Services Criteria, Privacy, GAPP"
   },
   {
     "question": "An organization wants a report that specifically evaluates its cybersecurity risk management program against the AICPA's cybersecurity criteria. Which report should they choose?",
@@ -189,7 +189,7 @@
     ],
     "correct": 2,
     "explanation": "**Why SOC for Cybersecurity is correct**: This is a market-driven, flexible reporting framework for any organization to communicate about its cybersecurity risk management efforts. **Why A/B are wrong**: SOC 2/3 are for service organizations. **Why D is wrong**: That is for manufacturers and distributors.",
-    "category": "SOC Reporting, Report Types"
+    "category": "SOC for Cybersecurity, Cyber Risk Management, AICPA, Audit Assurance"
   },
   {
     "question": "A manufacturer wants to provide assurance to its customers about the controls it has in place to manage risks in its production and distribution network. Which AICPA report is tailored for this?",
@@ -201,7 +201,7 @@
     ],
     "correct": 2,
     "explanation": "**Why SOC for Supply Chain is correct**: This report is designed to provide information about a system and its controls for managing supply chain risks. **Why others are wrong**: They have different target audiences or scopes.",
-    "category": "SOC Reporting"
+    "category": "SOC for Supply Chain, Supply Chain Risk, Manufacturing, Audit Assurance"
   },
   {
     "question": "Before undergoing a formal SOC 2 examination, many organizations perform a 'dry run' to identify control gaps. What is this called?",
@@ -213,7 +213,7 @@
     ],
     "correct": 1,
     "explanation": "**Why Readiness Assessment is correct**: A Readiness Assessment is a non-attest consulting engagement to help an organization prepare for a SOC audit by identifying weaknesses. **Why others are wrong**: There is no such thing as a 'Type 0' audit in this framework.",
-    "category": "SOC Reporting, SOC 2, Audit Process"
+    "category": "Readiness Assessment, Pre-audit, Gap Analysis, Consulting"
   },
   {
     "question": "Which section of a SOC 2 report is typically the LONGEST and contains the granular details of the auditor's tests and the results of those tests?",
@@ -225,7 +225,7 @@
     ],
     "correct": 3,
     "explanation": "**Why Section IV is correct**: Section IV (or similar depending on layout) contains the detailed mapping of controls, the tests performed by the auditor, and any exceptions found. **Why others are wrong**: The other sections are summary opinions or high-level descriptions.",
-    "category": "SOC Reporting, SOC 2, Audit Process"
+    "category": "SOC 2, Audit Report, Test Results, Audit Process"
   },
   {
     "question": "What is the difference between 'Management's Assertion' and the 'Auditor's Opinion' in a SOC report?",
@@ -237,6 +237,6 @@
     ],
     "correct": 0,
     "explanation": "**Why Assertion vs Opinion is correct**: Management asserts that their controls were designed and/or operating effectively; the Auditor (CPA) then provides their independent opinion on whether that assertion is fair. **Why others are wrong**: Both are significant parts of the attestation engagement.",
-    "category": "SOC Reporting, Audit Opinions, Audit Process"
+    "category": "Audit Opinions, Management Assertion, Auditor Opinion, Audit Process"
   }
 ]

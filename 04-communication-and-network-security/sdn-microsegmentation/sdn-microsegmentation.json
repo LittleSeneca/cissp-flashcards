@@ -9,7 +9,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: The **Control plane** is the 'brain' of the SDN architecture; it makes decisions about routing and switching. **Why A is wrong**: The **Data plane** (or Forwarding plane) simply executes the decisions made by the control plane. **Why C is wrong**: The **Management plane** is used for configuration and monitoring. **Why D is wrong**: The **Application plane** contains the services and applications that define network behavior.",
-    "category": "SDN, Microsegmentation"
+    "category": "SDN Architecture, Control Plane, Data Plane"
   },
   {
     "question": "Which SDN interface is typically used by a network controller to communicate with the underlying physical or virtual switching hardware?",
@@ -21,7 +21,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: The **Southbound API** (e.g., OpenFlow) is used for communication between the SDN controller and the data plane devices. **Why A is wrong**: **Northbound APIs** are used for communication between the controller and the application layer. **Why B/D are wrong**: These typically refer to communication between different SDN controllers or domains.",
-    "category": "SDN, Microsegmentation"
+    "category": "SDN Architecture, Southbound API, OpenFlow"
   },
   {
     "question": "An organization wants to implement granular security policies that isolate individual workloads within the same VLAN to prevent lateral movement. Which technology is BEST suited for this?",
@@ -33,7 +33,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **Microsegmentation** allows for security policies to be applied at the virtual machine or container level, regardless of the network topology. **Why A is wrong**: **VLANs** provide segment-level isolation but often allow unrestricted lateral movement within the segment. **Why C is wrong**: **Air-gapping** is too restrictive for most data center environments. **Why D is wrong**: **NAT** is for IP address translation, not isolation.",
-    "category": "SDN, Microsegmentation"
+    "category": "Microsegmentation, Lateral Movement, Zero Trust"
   },
   {
     "question": "Which technology is commonly used in SDN environments to provide a Layer 2 overlay on top of a Layer 3 infrastructure, supporting up to 16 million segments?",
@@ -45,7 +45,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: **VXLAN** (Virtual Extensible LAN) uses a 24-bit VNI to support up to 16 million segments and encapsulates L2 frames in L3 UDP packets. **Why A is wrong**: **VLANs** use a 12-bit ID, limiting them to 4,096 segments. **Why B is wrong**: **IPsec** is for encryption/VPNs. **Why D is wrong**: **MPLS** is a wide-area networking technology.",
-    "category": "SDN, Microsegmentation"
+    "category": "Overlay Networks, VXLAN, Layer 2 Overlay"
   },
   {
     "question": "In the context of SDN, where does the 'Northbound API' reside?",
@@ -57,7 +57,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **Northbound APIs** connect the SDN controller (Control Plane) to the business applications and network services (Application Plane). **Why A is wrong**: The interface between Data and Control is the Southbound API. **Why C/D are wrong**: These do not describe the Northbound API position.",
-    "category": "SDN, Microsegmentation"
+    "category": "SDN Architecture, Northbound API, Application Plane"
   },
   {
     "question": "A network administrator uses a centralized dashboard to configure the entire network fabric without logging into individual switches. Which SDN plane is being interacted with directly?",
@@ -69,7 +69,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: The **Management plane** is used for administrative tasks, configuration, and monitoring of the SDN infrastructure. **Why B is wrong**: The **Control plane** handles the routing/switching logic, not the administrative interface. **Why A is wrong**: The **Data plane** handles traffic forwarding.",
-    "category": "SDN, Microsegmentation"
+    "category": "SDN Architecture, Management Plane, Network Orchestration"
   },
   {
     "question": "Which of the following is a PRIMARY security benefit of microsegmentation in a modern data center?",
@@ -81,7 +81,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: Microsegmentation limits the 'blast radius' of a breach by restricting communication between workloads (East-West traffic) based on zero-trust principles. **Why A/D are wrong**: While possible, these are not the primary security benefits. **Why B is wrong**: Microsegmentation does not replace the need for encryption.",
-    "category": "SDN, Microsegmentation"
+    "category": "Microsegmentation, East-West Traffic, Blast Radius"
   },
   {
     "question": "What is the function of the 'Data Plane' in a network device?",
@@ -93,7 +93,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: The **Data plane** (or Forwarding plane) is responsible for moving packets from an input interface to an output interface based on the forwarding table. **Why A is wrong**: This is a Control plane function. **Why B is wrong**: This is a Management plane function. **Why D is wrong**: DHCP is a service typically running on the control/application layer.",
-    "category": "SDN, Microsegmentation"
+    "category": "SDN Architecture, Data Plane, Packet Forwarding"
   },
   {
     "question": "Which SDN concept allows for the programmatic control of network resources through software applications?",
@@ -105,7 +105,7 @@
     ],
     "correct": 3,
     "explanation": "**Why D is correct**: **Programmability** is a core SDN tenet that allows network behavior to be defined and changed through software. **Why A is wrong**: **NFV** focuses on virtualizing network appliances (firewalls, balancers). **Why B/C are wrong**: While SDN uses abstraction and centralization, 'programmability' specifically refers to the programmatic control.",
-    "category": "SDN, Microsegmentation"
+    "category": "SDN Core Principles, Programmability, Network Abstraction"
   },
   {
     "question": "An organization deploys an SD-WAN solution. What is a key security advantage of SD-WAN over traditional WAN architectures?",
@@ -117,7 +117,7 @@
     ],
     "correct": 0,
     "explanation": "**Why A is correct**: **SD-WAN** provides centralized orchestration of security policies and typically includes automated, end-to-end encryption (VPNs) across various transport links. **Why B is wrong**: Local firewalls (or cloud-delivered ones) are still necessary. **Why C/D are wrong**: These are not relevant to SD-WAN security.",
-    "category": "SDN, Microsegmentation"
+    "category": "SD-WAN, Network Virtualization, End-to-End Encryption"
   },
   {
     "question": "Which of the following BEST describes the relationship between 'Network Function Virtualization' (NFV) and SDN?",
@@ -129,7 +129,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **SDN** focuses on the separation of the control and data planes to manage network traffic. **NFV** focuses on replacing physical network appliances (firewalls, IDS/IPS, load balancers) with virtual machines running on generic hardware. They are complementary. **Why A, C, and D are wrong**: These are inaccurate descriptions of the relationship or use cases.",
-    "category": "SDN, Microsegmentation"
+    "category": "NFV, SDN, Network Service Virtualization"
   },
   {
     "question": "In a Software-Defined Data Center (SDDC), a 'VXLAN' is used to create a virtual network on top of a physical IP network. In this context, what is the physical network called?",
@@ -141,7 +141,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: The **Underlay network** is the physical infrastructure (switches, routers, cables) that provides the L3 connectivity. The **Overlay network** (like VXLAN) is the virtual L2 network built on top of it. **Why A is wrong**: VXLAN is the overlay. **Why C and D are wrong**: These are operational concepts, not the physical transport layer.",
-    "category": "SDN, Microsegmentation"
+    "category": "SDN Architecture, Underlay Network, Physical Infrastructure"
   },
   {
     "question": "What is the GREATEST security risk introduced by the centralization of the SDN control plane?",
@@ -153,7 +153,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: Because the **SDN controller** manages the entire network, compromising it gives an attacker total control over the network fabric. It also creates a **Single Point of Failure (SPOF)** for network availability. **Why A is wrong**: While possible, it's not the greatest security risk. **Why C and D are wrong**: SDN generally increases visibility and supports L2/L3 abstractions better than traditional methods.",
-    "category": "SDN, Microsegmentation"
+    "category": "SDN Security, Centralized Controller, Single Point of Failure"
   },
   {
     "question": "A security architect is designing a network where communication between microservices is restricted by a 'Service Mesh' (e.g., Istio). Which layer of the OSI model is this microsegmentation PRIMARILY operating at?",
@@ -165,7 +165,7 @@
     ],
     "correct": 3,
     "explanation": "**Why D is correct**: A **Service Mesh** operates at the **Application layer (Layer 7)**, allowing for granular control based on service identities, HTTP paths, and application-level metrics. **Why A, B, and C are wrong**: Traditional microsegmentation often operates at Layers 3/4, but a service mesh is specifically designed for L7 microservices communication.",
-    "category": "SDN, Microsegmentation"
+    "category": "Service Mesh, Layer 7 Microsegmentation, Microservices Security"
   },
   {
     "question": "Traffic flowing between servers within the same data center is typically referred to as:",
@@ -177,7 +177,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **East-West traffic** describes lateral communication between servers or workloads inside the data center. **North-South traffic** describes traffic entering or leaving the data center. **Why C and D are wrong**: These refer to directionality relative to a specific boundary.",
-    "category": "SDN, Microsegmentation"
+    "category": "Network Traffic Patterns, East-West Traffic, Lateral Movement"
   },
   {
     "question": "Which of the following is a core requirement for implementing an effective Zero Trust architecture using SDN?",
@@ -189,7 +189,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **Zero Trust** relies on the principle of 'never trust, always verify'. SDN enables this by allowing policies to be based on **identity** (users, services, workloads) rather than static and easily spoofed IP addresses. **Why A and D are wrong**: These are contrary to security best practices. **Why C is wrong**: Zero Trust can be implemented on-premises or in the cloud.",
-    "category": "SDN, Microsegmentation"
+    "category": "Zero Trust Architecture, SDN Security, Identity-Based Access"
   },
   {
     "question": "An SDN controller uses the 'OpenFlow' protocol. To which part of the SDN architecture does this protocol belong?",
@@ -201,7 +201,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **OpenFlow** is the most well-known **Southbound interface** protocol, used by the controller to manage the forwarding tables of switches. **Why A, C, and D are wrong**: These interfaces use different protocols (like REST for Northbound).",
-    "category": "SDN, Microsegmentation"
+    "category": "SDN Protocols, OpenFlow, Southbound Interface"
   },
   {
     "question": "Which SDN-related technology allows for the creation of 'Intent-Based Networks' (IBN)?",
@@ -213,7 +213,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **Intent-Based Networking (IBN)** builds on SDN by allowing administrators to define the *intent* (e.g., 'Ensure HR cannot talk to Engineering') and having the software automatically calculate and apply the necessary configurations. **Why others are wrong**: Manual CLI is the opposite of IBN. Air-gapping and wireless mesh are unrelated to the IBN concept.",
-    "category": "SDN, Microsegmentation"
+    "category": "Intent-Based Networking, Network Automation, Policy Abstraction"
   },
   {
     "question": "A company is using Kubernetes and wants to implement network policies to isolate namespaces. Which component is responsible for implementing these SDN-like network rules?",
@@ -225,7 +225,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: The **CNI plugin** (e.g., Calico, Flannel, Cilium) is responsible for the networking and security policies within a Kubernetes cluster, effectively acting as the SDN layer for containers. **Why A, C, and D are wrong**: These are core Kubernetes components but do not handle the network policy enforcement.",
-    "category": "SDN, Microsegmentation"
+    "category": "Container Security, CNI, Kubernetes Networking"
   },
   {
     "question": "Which of the following represents a 'Logical Network' in a public cloud environment implemented via SDN?",
@@ -237,6 +237,6 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **VPCs and VNets** are logical, isolated network segments created using SDN on top of the cloud provider's physical infrastructure. **Why others are wrong**: These are physical or low-level components that the cloud customer does not interact with as a logical network.",
-    "category": "SDN, Microsegmentation"
+    "category": "Cloud Networking, VPC, Virtual Networking"
   }
 ]

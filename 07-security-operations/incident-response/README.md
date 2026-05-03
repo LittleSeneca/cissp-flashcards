@@ -1,6 +1,6 @@
 ---
 tier: 2
-exam_weight: "13%"
+exam_weight: 13%
 ---
 
 # Incident Response & Breach Handling for the CISSP Exam

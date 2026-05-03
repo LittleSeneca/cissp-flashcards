@@ -9,7 +9,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: The **Bell-LaPadula** model is focused on confidentiality. Its two main properties are the Simple Security Property (No Read Up) and the *-Property (No Write Down). **Why A is wrong**: Biba is focused on integrity and uses 'No Read Down' and 'No Write Up' rules. **Why C is wrong**: Clark-Wilson is a commercial integrity model based on well-formed transactions. **Why D is wrong**: Brewer-Nash is designed to prevent conflicts of interest.",
-    "category": "Security Models"
+    "category": "Security Models, Bell-LaPadula, Confidentiality"
   },
   {
     "question": "A financial system is designed to ensure that data can only be modified through authorized programs, and that those modifications are performed by authenticated users in a controlled manner. Which model is the BEST fit for this requirement?",
@@ -21,7 +21,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: The **Clark-Wilson** model is specifically designed for commercial applications to maintain data integrity. It uses 'Transformation Procedures' (TPs) to ensure data is modified only through authorized, well-formed transactions. **Why A is wrong**: Bell-LaPadula focuses on confidentiality, not integrity. **Why B is wrong**: Biba is a hierarchical integrity model, but it doesn't incorporate the concept of well-formed transactions or TPs as centrally as Clark-Wilson. **Why D is wrong**: Graham-Denning focuses on the delegation and transfer of access rights.",
-    "category": "Security Models"
+    "category": "Security Models, Clark-Wilson, Integrity"
   },
   {
     "question": "In a multilevel security environment, a user with a 'Secret' clearance is trying to read a 'Top Secret' document. Which property of the Bell-LaPadula model prevents this action?",
@@ -33,7 +33,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: The **Simple Security Property** of the Bell-LaPadula model states that a subject at a given security level cannot read data at a higher security level (No Read Up). **Why A is wrong**: The *-Property prevents writing to a lower security level (No Write Down). **Why B is wrong**: This is a property of the Biba model, not Bell-LaPadula. **Why D is wrong**: While BLP includes a discretionary property (using an access matrix), the primary rule preventing 'reading up' is the Simple Security Property.",
-    "category": "Security Models"
+    "category": "Security Models, Bell-LaPadula, MAC"
   },
   {
     "question": "Which of the following describes the PRIMARY goal of the Brewer-Nash (Chinese Wall) model?",
@@ -45,7 +45,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: The **Brewer-Nash** model is unique because it is dynamic. It restricts a subject's access based on what they have already accessed, specifically to prevent **conflicts of interest** (e.g., an analyst cannot access data from two competing companies). **Why A is wrong**: This is the goal of Biba. **Why C is wrong**: This is the goal of the State Machine model. **Why D is wrong**: This is an assurance activity, not a goal of the Brewer-Nash model.",
-    "category": "Security Models"
+    "category": "Security Models, Brewer-Nash, Chinese Wall"
   },
   {
     "question": "In the Biba integrity model, which property ensures that a subject at a 'Medium' integrity level cannot write data to a 'High' integrity object?",
@@ -57,7 +57,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: The **Star (*-Integrity) Property** of Biba states that a subject at a given integrity level cannot write to an object at a higher integrity level (No Write Up). This prevents low-integrity data from corrupting high-integrity objects. **Why A is wrong**: The Simple Integrity Property states 'No Read Down'. **Why C is wrong**: The Invocation Property prevents a subject from invoking (requesting service from) a subject at a higher integrity level. **Why D is wrong**: This is a property of the Bell-LaPadula model.",
-    "category": "Security Models"
+    "category": "Security Models, Biba, Integrity"
   },
   {
     "question": "Which formal security concept represents the totality of protection mechanisms within a computer system — including hardware, firmware, and software — that are responsible for enforcing a security policy?",
@@ -69,7 +69,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: The **Trusted Computing Base (TCB)** is the combination of all hardware, firmware, and software elements of a system that are trusted to enforce the security policy. **Why A is wrong**: The Security Kernel is the actual hardware and software elements that implement the Reference Monitor concept (it is a subset of the TCB). **Why B is wrong**: The Reference Monitor is an abstract concept (a mediator of all access), not the 'totality of mechanisms'. **Why D is wrong**: A Protection Domain is the set of objects that a subject can access.",
-    "category": "Security Models"
+    "category": "Security Models, TCB, Trusted Computing"
   },
   {
     "question": "For a security mechanism to be considered a 'Reference Monitor,' it must satisfy three requirements. Which of the following is NOT one of those requirements?",
@@ -81,7 +81,7 @@
     ],
     "correct": 3,
     "explanation": "**Why D is correct**: A **Reference Monitor** must be tamper-proof, always invoked, and small enough to be verifiable. It does **not** have to be implemented entirely in hardware; it is typically a combination of hardware and software (the Security Kernel). **Why A, B, and C are wrong**: These are the three core requirements for a Reference Monitor as defined in the Anderson Report.",
-    "category": "Security Models"
+    "category": "Security Models, Reference Monitor, TCB"
   },
   {
     "question": "Which security model is considered a 'hybrid' because it incorporates both confidentiality (Bell-LaPadula) and integrity (Biba) lattices, and was specifically designed for commercial use?",
@@ -93,7 +93,7 @@
     ],
     "correct": 0,
     "explanation": "**Why A is correct**: The **Lipner Model** was the first to show how confidentiality (BLP) and integrity (Biba) could be combined to meet the needs of a commercial environment, including separation of duties. **Why B is wrong**: Graham-Denning is focused on access right management (creation/deletion of subjects/objects). **Why C is wrong**: HRU is a mathematical model focused on the decidability of safety in access control systems. **Why D is wrong**: Take-Grant is a model used to analyze the distribution of rights in a system.",
-    "category": "Security Models"
+    "category": "Security Models, Lipner Model, Hybrid Model"
   },
   {
     "question": "A security model that defines a set of eight primitive protection rules for managing the relationship between subjects and objects (such as 'Create Object' or 'Grant Access Right') is known as:",
@@ -105,7 +105,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: The **Graham-Denning** model focuses on how rights are created, deleted, and transferred between subjects and objects, using a set of eight specific rules. **Why A and C are wrong**: These focus on the properties of information flow based on levels (classification/integrity). **Why D is wrong**: This focuses on preventing conflicts of interest through dynamic access rules.",
-    "category": "Security Models"
+    "category": "Security Models, Graham-Denning, Access Control"
   },
   {
     "question": "The concept of 'Lattice-Based Access Control' is MOST closely associated with which of the following?",
@@ -117,7 +117,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **Lattice-based** access control uses a mathematical structure (a lattice) to define a set of levels and the rules for information flow between them. This is the foundation for MAC models like Bell-LaPadula and Biba. **Why A is wrong**: DAC is based on user identity and owner discretion. **Why C is wrong**: RBAC is based on organizational roles. **Why D is wrong**: Content-dependent control is based on the specific data being accessed.",
-    "category": "Security Models"
+    "category": "Security Models, Lattice-Based, MAC"
   },
   {
     "question": "A high-security system is designed such that the actions of high-level users are completely unobservable to low-level users, thereby closing potential covert timing and storage channels. Which model is being described?",
@@ -129,7 +129,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: The **Non-Interference** model (Goguen-Meseguer) ensures that the actions of high-security subjects do not interfere with or affect what lower-level subjects can observe, which effectively prevents covert channels. **Why A is wrong**: BLP regulates access but does not explicitly prevent all covert channels. **Why C is wrong**: Sutherland focuses on preventing inference. **Why D is wrong**: Information Flow is a general category of models.",
-    "category": "Security Models"
+    "category": "Security Models, Non-Interference, Covert Channel"
   },
   {
     "question": "Which mathematical property of an access control model is the Harrison-Ruzzo-Ullman (HRU) model MOST famous for proving to be 'undecidable' in the general case?",
@@ -141,7 +141,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: The **HRU model** proved that determining if a specific access right can ever leak to an unauthorized subject (the **Safety Problem**) is undecidable for an arbitrary protection system. **Why A/C are wrong**: These are BLP properties. **Why D is wrong**: Lattice operations are decidable.",
-    "category": "Security Models"
+    "category": "Security Models, HRU, Safety Problem"
   },
   {
     "question": "In the Take-Grant model, if a subject has the 'Take' right on another subject, what can it do?",
@@ -153,7 +153,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: In the **Take-Grant** model, the 'Take' right allows a subject to acquire rights that another subject possesses. **Why A is wrong**: That is the 'Grant' right. **Why C/D are wrong**: These are not the primary functions of the Take-Grant operations.",
-    "category": "Security Models"
+    "category": "Security Models, Take-Grant, Access Rights"
   },
   {
     "question": "Which information flow model is primarily concerned with preventing unauthorized users from making inferences about data they are not allowed to access?",
@@ -165,7 +165,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: The **Sutherland model** is an information flow model that specifically addresses preventing unauthorized information flow and inference. **Why A/C/D are wrong**: Biba is for integrity. Clark-Wilson is for well-formed transactions. Graham-Denning is for rights management.",
-    "category": "Security Models"
+    "category": "Security Models, Sutherland, Inference"
   },
   {
     "question": "A security engineer is using the State Machine model to evaluate a new system. What is the fundamental requirement for the system to be considered 'secure' under this model?",
@@ -177,7 +177,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: The **State Machine model** defines a secure system as one that always transitions from one secure state to another secure state. **Why A/C/D are wrong**: These are specific technical or assurance requirements, not the definition of the State Machine model.",
-    "category": "Security Models"
+    "category": "Security Models, State Machine, State Transition"
   },
   {
     "question": "When a system combines data from a 'Secret' object and a 'Confidential' object, a lattice-based model uses which operation to determine the security label of the resulting object?",
@@ -189,7 +189,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: The **Least Upper Bound (LUB)**, or 'join', is the lowest label in the lattice that dominates both input labels. It ensures the resulting data is protected at a level sufficient for both sources. **Why A is wrong**: GLB (meet) is the highest label dominated by both, used for different purposes. **Why C/D are wrong**: These are graph/set theory terms, not primary lattice operations for labeling.",
-    "category": "Security Models"
+    "category": "Security Models, Lattice-Based, LUB"
   },
   {
     "question": "Which of the following is a key difference between the Clark-Wilson model and the Biba model?",
@@ -201,7 +201,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: **Clark-Wilson** is a commercial model focused on TPs and IVPs to ensure integrity through controlled transactions. **Biba** is a lattice-based model using simple read/write rules based on integrity levels. **Why A is wrong**: Both are integrity models. **Why B is wrong**: The descriptions are swapped.",
-    "category": "Security Models"
+    "category": "Security Models, Clark-Wilson, Biba, Integrity"
   },
   {
     "question": "In the Biba model, the 'Simple Integrity Property' is often summarized as:",
@@ -213,7 +213,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: The **Simple Integrity Property** of Biba is **No Read Down**. It prevents a subject from reading data from a lower integrity level, which could corrupt the subject's own integrity. **Why D is wrong**: That is the *-Integrity Property (No Write Up). **Why A/B are wrong**: These are BLP properties.",
-    "category": "Security Models"
+    "category": "Security Models, Biba, Integrity"
   },
   {
     "question": "The 'Access Matrix' model can be implemented in several ways. Which implementation is characterized by storing access rights with the SUBJECT?",
@@ -225,7 +225,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: A **Capability List** is a row-wise slice of the access matrix, where each subject holds a 'ticket' or 'capability' for each object they can access. **Why A is wrong**: An ACL is a column-wise slice stored with the object. **Why C/D are wrong**: These are higher-level access control methods.",
-    "category": "Security Models"
+    "category": "Security Models, Access Matrix, Capability List"
   },
   {
     "question": "Which of the following models specifically addresses the 'Invocation Property,' which prevents a subject from requesting service from a subject at a higher integrity level?",
@@ -237,7 +237,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: The **Biba model** includes the **Invocation Property**, which is an additional rule to prevent integrity corruption through service requests to higher-integrity subjects. **Why A/C/D are wrong**: These models do not feature an 'Invocation Property'.",
-    "category": "Security Models"
+    "category": "Security Models, Biba, Invocation Property"
   },
   {
     "question": "What is the primary reason the 'Chinese Wall' (Brewer-Nash) model is considered 'dynamic' compared to Bell-LaPadula?",
@@ -249,7 +249,7 @@
     ],
     "correct": 1,
     "explanation": "**Why dynamic access is correct**: In **Brewer-Nash**, the 'wall' is built around the data a user has already seen. Once they access data from one company, they are dynamically blocked from accessing data from a competitor. **Why A/C/D are wrong**: These are not the reasons for the 'dynamic' label.",
-    "category": "Security Models"
+    "category": "Security Models, Brewer-Nash, Dynamic Access"
   },
   {
     "question": "In the Graham-Denning model, which rule allows a subject to provide an access right they possess to another subject?",
@@ -261,7 +261,7 @@
     ],
     "correct": 0,
     "explanation": "**Why Grant is correct**: The **Grant** rule is used when a subject gives a right to another subject. **Why B is wrong**: Transfer typically implies moving the right or a subset of it. **Why C/D are wrong**: These are different rules in the eight-rule set.",
-    "category": "Security Models"
+    "category": "Security Models, Graham-Denning, Access Rights"
   },
   {
     "question": "The 'Lipner Model' is unique because it assigns subjects to roles. Which of the following is a role defined in the original Lipner model to ensure integrity and confidentiality?",
@@ -273,7 +273,7 @@
     ],
     "correct": 2,
     "explanation": "**Why System Control Quartermaster is correct**: The **Lipner Model** uses specific roles like 'System Control Quartermaster' and 'Research Modification' to implement separation of duties and manage the transition of code from development to production. **Why others are wrong**: These are modern job titles, not specific roles in the formal Lipner model.",
-    "category": "Security Models"
+    "category": "Security Models, Lipner Model, Roles"
   },
   {
     "question": "Which of the following models is BEST suited for a system where 'separation of duties' must be enforced through the use of intermediate programs to modify data?",
@@ -285,7 +285,7 @@
     ],
     "correct": 2,
     "explanation": "**Why Clark-Wilson is correct**: **Clark-Wilson** ensures integrity and separation of duties by requiring that users (subjects) only modify data (Constrained Data Items) via authorized programs (Transformation Procedures). **Why A/B/D are wrong**: These do not natively enforce separation of duties through program-based mediation as their primary mechanism.",
-    "category": "Security Models"
+    "category": "Security Models, Clark-Wilson, SoD"
   },
   {
     "question": "The 'Simple Security Property' of the Bell-LaPadula model is colloquially known as:",
@@ -297,6 +297,6 @@
     ],
     "correct": 0,
     "explanation": "**Why A is correct**: The **Simple Security Property** prevents a subject from reading an object at a higher security level (**No Read Up**). **Why B is wrong**: That is the *-Property. **Why C/D are wrong**: These are Biba properties.",
-    "category": "Security Models"
+    "category": "Security Models, Bell-LaPadula, Simple Security"
   }
 ]

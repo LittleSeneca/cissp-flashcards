@@ -755,7 +755,9 @@ main {
   color: var(--primary);
   margin-right: 0.5rem;
   vertical-align: middle;
+  text-decoration: none;
 }
+a.filter-pill:hover { opacity: 0.8; }
 
 /* ── Empty filter state ──────────────────────────── */
 .empty-filter {
@@ -867,11 +869,6 @@ main {
   margin-bottom: 0.75rem;
 }
 
-.fc-cat {
-  position: absolute;
-  top: 1rem;
-  right: 1.25rem;
-}
 
 .fc-stats {
   position: absolute;
@@ -1567,6 +1564,20 @@ main {
   background: #ede9fe;
   color: #5b21b6;
   border: 1px solid #c4b5fd;
+}
+
+/* ── Category pill in study header ───────────────── */
+.filter-pill.cat-pill {
+  background: var(--bg);
+  color: var(--muted);
+  border: 1px solid var(--border);
+}
+
+/* ── Source set pill in study header (tag study) ─── */
+.filter-pill.source-pill {
+  background: #f0f4ff;
+  color: #3b5bdb;
+  border: 1px solid #bac8ff;
 }
 
 /* ── Tag hub page ─────────────────────────────────── */

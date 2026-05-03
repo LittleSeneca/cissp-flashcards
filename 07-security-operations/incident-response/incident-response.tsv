@@ -1,25 +1,25 @@
-Alert	A notification triggered by a specific event or pattern that requires review (pre-incident).	Incident Response
-Incident	A confirmed violation of security policies or unauthorized activity.	Incident Response, Definitions
-Event	Any observable occurrence in a system or network.	Incident Response, Definitions
-Order of Volatility	The sequence in which evidence should be collected, from most transient (cache/RAM) to most persistent (disk).	Incident Response, Forensics, Evidence Collection
-Write Blocker	A tool used to prevent any modification to a drive during forensic imaging.	Incident Response, Forensics
-GDPR Breach Notification	Requirement to notify the supervisory authority within **72 hours** of awareness.	Incident Response, Breach Notification, Legal
-Containment	The phase of IR focused on limiting the scope and impact of an ongoing attack.	Incident Response, IR Lifecycle
-Lessons Learned	The post-incident phase focused on identifying gaps and improving future response.	Incident Response, IR Lifecycle, Post-Incident
-Recovery Time Objective (RTO)	The targeted duration within which a business process must be restored after failure.	Incident Response, BCP/DR, Metrics
-MITRE ATT&CK	A globally-accessible knowledge base of adversary tactics and techniques (TTPs).	Incident Response, Threat Intelligence, MITRE ATT&CK
-Diamond Model of Intrusion Analysis	A model analyzing intrusions based on: Adversary, Infrastructure, Capability, and Victim.	Incident Response, Threat Intelligence
-Cyber Kill Chain	A model describing the seven stages of a cyberattack, from Reconnaissance to Actions on Objectives.	Incident Response, Threat Intelligence, Kill Chain
-Incident Triage	The initial assessment and prioritization of alerts based on impact and urgency.	Incident Response, IR Lifecycle
-Eradication	The phase of IR focused on identifying and removing the root cause and all traces of the threat.	Incident Response, IR Lifecycle
-Root Cause Analysis (RCA)	A systematic process for identifying the fundamental reason for an incident to prevent recurrence.	Incident Response, Post-Incident
-Centralized CSIRT	A single team that handles all incident response for an entire organization.	Incident Response, CSIRT
-Distributed CSIRT	A model where incident response is handled by staff across various departments or locations as needed.	Incident Response, CSIRT
-Short-term Containment	Immediate, often temporary, actions to stop the spread of an attack (e.g., isolating a host).	Incident Response, IR Lifecycle, Containment
-Long-term Containment	More permanent fixes (e.g., patching) that allow business to continue while preparing for full recovery.	Incident Response, IR Lifecycle, Containment
-SOAR Playbook	An automated, standardized workflow for responding to specific types of security alerts.	Incident Response, SOAR, Automation
-Strategic Threat Intelligence	High-level intelligence about adversary motivations and long-term trends for executive decision-makers.	Incident Response, Threat Intelligence
-Tactical Threat Intelligence	Intelligence focusing on adversary TTPs (Tactics, Techniques, and Procedures).	Incident Response, Threat Intelligence
-Operational Threat Intelligence	Intelligence about specific, imminent attack campaigns or threat actor activity.	Incident Response, Threat Intelligence
-Technical Threat Intelligence	Intelligence consisting of specific Indicators of Compromise (IOCs) like hashes and IPs.	Incident Response, Threat Intelligence
-Maximum Tolerable Downtime (MTD)	The total amount of time a business process can be disrupted without causing irreparable harm.	Incident Response, BCP/DR, Metrics
+Alert	A notification triggered by a specific event or pattern that requires review (pre-incident).	Incident Response, IR Lifecycle, Alerting, Event Management
+Incident	A confirmed violation of security policies or unauthorized activity.	Incident Response, IR Lifecycle, Definitions, Compliance
+Event	Any observable occurrence in a system or network.	Incident Response, IR Lifecycle, Definitions, Monitoring
+Order of Volatility	The sequence in which evidence should be collected, from most transient (cache/RAM) to most persistent (disk).	Incident Response, Forensics, Evidence Collection, Order of Volatility
+Write Blocker	A tool used to prevent any modification to a drive during forensic imaging.	Incident Response, Forensics, Evidence Integrity, Write Blocker
+GDPR Breach Notification	Requirement to notify the supervisory authority within **72 hours** of awareness.	Incident Response, Breach Notification, GDPR, Compliance
+Containment	The phase of IR focused on limiting the scope and impact of an ongoing attack.	Incident Response, IR Lifecycle, Containment, NIST SP 800-61
+Lessons Learned	The post-incident phase focused on identifying gaps and improving future response.	Incident Response, IR Lifecycle, Post-Incident, Lessons Learned
+Recovery Time Objective (RTO)	The targeted duration within which a business process must be restored after failure.	Incident Response, BCP/DR, Metrics, RTO
+MITRE ATT&CK	A globally-accessible knowledge base of adversary tactics and techniques (TTPs).	Incident Response, Threat Intelligence, MITRE ATT&CK, TTPs
+Diamond Model of Intrusion Analysis	A model analyzing intrusions based on: Adversary, Infrastructure, Capability, and Victim.	Incident Response, Threat Intelligence, Diamond Model, Intrusion Analysis
+Cyber Kill Chain	A model describing the seven stages of a cyberattack, from Reconnaissance to Actions on Objectives.	Incident Response, Threat Intelligence, Kill Chain, Methodology
+Incident Triage	The initial assessment and prioritization of alerts based on impact and urgency.	Incident Response, IR Lifecycle, Triage, Prioritization
+Eradication	The phase of IR focused on identifying and removing the root cause and all traces of the threat.	Incident Response, IR Lifecycle, Eradication, Root Cause Analysis
+Root Cause Analysis (RCA)	A systematic process for identifying the fundamental reason for an incident to prevent recurrence.	Incident Response, Post-Incident, Root Cause Analysis, Prevention
+Centralized CSIRT	A single team that handles all incident response for an entire organization.	Incident Response, CSIRT, Organizational Models, Centralized CSIRT
+Distributed CSIRT	A model where incident response is handled by staff across various departments or locations as needed.	Incident Response, CSIRT, Organizational Models, Distributed CSIRT
+Short-term Containment	Immediate, often temporary, actions to stop the spread of an attack (e.g., isolating a host).	Incident Response, IR Lifecycle, Containment, Isolation
+Long-term Containment	More permanent fixes (e.g., patching) that allow business to continue while preparing for full recovery.	Incident Response, IR Lifecycle, Containment, Hardening
+SOAR Playbook	An automated, standardized workflow for responding to specific types of security alerts.	Incident Response, SOAR, Automation, Playbook
+Strategic Threat Intelligence	High-level intelligence about adversary motivations and long-term trends for executive decision-makers.	Incident Response, Threat Intelligence, Strategic Intelligence, Decision Making
+Tactical Threat Intelligence	Intelligence focusing on adversary TTPs (Tactics, Techniques, and Procedures).	Incident Response, Threat Intelligence, Tactical Intelligence, TTPs
+Operational Threat Intelligence	Intelligence about specific, imminent attack campaigns or threat actor activity.	Incident Response, Threat Intelligence, Operational Intelligence, Campaigns
+Technical Threat Intelligence	Intelligence consisting of specific Indicators of Compromise (IOCs) like hashes and IPs.	Incident Response, Threat Intelligence, Technical Intelligence, IOCs
+Maximum Tolerable Downtime (MTD)	The total amount of time a business process can be disrupted without causing irreparable harm.	Incident Response, BCP/DR, Metrics, MTD

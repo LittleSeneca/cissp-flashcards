@@ -1,3 +1,7 @@
+---
+exam_weight: 16%
+---
+
 # Domain 1: Security and Risk Management
 
 **Exam Weighting: ~15% — the largest single domain on the CISSP exam.**

@@ -1,6 +1,6 @@
 ---
 tier: 2
-exam_weight: "10%"
+exam_weight: 10%
 ---
 
 # Privacy Protection and Compliance (Domain 2.3)

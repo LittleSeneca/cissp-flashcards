@@ -9,7 +9,7 @@
     ],
     "correct": 1,
     "explanation": "**Why IdP is correct**: The Identity Provider (IdP) is the system that manages user identities and provides authentication services to the federation. **Why others are wrong**: The Service Provider (SP) (also known as the Relying Party) consumes the assertion to provide the service. An Authorization Server is an OAuth term.",
-    "category": "IAM, Federation, SAML"
+    "category": "Identity Federation, SAML 2.0, Identity Provider"
   },
   {
     "question": "Which protocol is primarily designed for delegated AUTHORIZATION, allowing a third-party application to access resources without the user's password?",
@@ -21,7 +21,7 @@
     ],
     "correct": 2,
     "explanation": "**Why OAuth 2.0 is correct**: OAuth 2.0 is specifically an authorization framework that uses tokens to grant access to resources. **Why others are wrong**: SAML is for XML-based authentication/authorization. OIDC is an authentication layer on top of OAuth. RADIUS is for centralized AAA.",
-    "category": "IAM, Federation"
+    "category": "Identity Federation, OAuth 2.0, Delegated Authorization"
   },
   {
     "question": "OpenID Connect (OIDC) provides an AUTHENTICATION layer on top of which underlying framework?",
@@ -33,7 +33,7 @@
     ],
     "correct": 1,
     "explanation": "**Why OAuth 2.0 is correct**: OIDC uses OAuth 2.0 for transport and adds an ID Token to provide identity information, making it an authentication protocol. **Why others are wrong**: It is not built on SAML, Kerberos, or LDAP.",
-    "category": "IAM, Federation, OIDC"
+    "category": "Identity Federation, OpenID Connect, OIDC"
   },
   {
     "question": "What is the primary purpose of 'Just-In-Time' (JIT) Provisioning in a federated environment?",
@@ -45,7 +45,7 @@
     ],
     "correct": 1,
     "explanation": "**Why JIT is correct**: JIT provisioning automates the creation of user profiles in the target application (SP) based on the attributes sent in the SAML assertion or OIDC token. **Why others are wrong**: It is not for encryption, background checks, or revocation (though it helps keep accounts in sync).",
-    "category": "IAM, Federation, Provisioning"
+    "category": "IAM Lifecycle, JIT Provisioning, Federated Provisioning"
   },
   {
     "question": "A user logs into their corporate portal once and is then granted access to several different cloud-based SaaS applications without being prompted for credentials again. This is an example of:",
@@ -57,7 +57,7 @@
     ],
     "correct": 1,
     "explanation": "**Why SSO is correct**: Single Sign-On allows a user to authenticate once and access multiple related but independent software systems. **Why others are wrong**: MFA is about multiple factors. Identity proofing is the initial verification. MAC is an access control model based on labels.",
-    "category": "IAM, Federation"
+    "category": "Single Sign-On, SSO, Web SSO"
   },
   {
     "question": "In the context of SAML, what is an 'Assertion'?",
@@ -69,7 +69,7 @@
     ],
     "correct": 1,
     "explanation": "**Why Assertion is correct**: SAML assertions are the XML-based messages sent from the IdP to the SP that 'assert' that a user has been authenticated. **Why others are wrong**: It is not a password reset, a certificate, or a log entry.",
-    "category": "IAM, Federation, SAML"
+    "category": "Identity Federation, SAML 2.0, SAML Assertion"
   },
   {
     "question": "Which of the following is a common security risk associated with OAuth 2.0 implementations?",
@@ -81,7 +81,7 @@
     ],
     "correct": 1,
     "explanation": "**Why Redirect URI is correct**: If an OAuth implementation doesn't strictly validate the redirect URI, an attacker can steal authorization codes by redirecting them to a malicious site. **Why others are wrong**: While other risks exist, redirect URI validation is a specific and common OAuth-related vulnerability.",
-    "category": "IAM, Federation, OAuth, SSO"
+    "category": "Identity Federation, OAuth 2.0, OAuth Vulnerabilities"
   },
   {
     "question": "What is the role of a 'Service Provider' (SP) in a SAML federation?",
@@ -93,7 +93,7 @@
     ],
     "correct": 1,
     "explanation": "**Why SP role is correct**: The SP (or Relying Party) is the application that trusts the IdP to authenticate users and provides the requested service. **Why others are wrong**: The IdP stores passwords and issues tokens.",
-    "category": "IAM, Federation, SAML"
+    "category": "Identity Federation, SAML 2.0, Service Provider"
   },
   {
     "question": "Federation differs from traditional SSO because it:",
@@ -105,7 +105,7 @@
     ],
     "correct": 1,
     "explanation": "**Why federation difference is correct**: Federation extends the concept of SSO to allow users to use their credentials across different organizational boundaries. **Why others are wrong**: It actually reduces the number of passwords and is generally more secure and flexible than isolated silos.",
-    "category": "IAM, Federation, SSO"
+    "category": "Identity Federation, Identity Management, Cross-Domain SSO"
   },
   {
     "question": "Which token type is specifically introduced by OpenID Connect to provide user identity information?",
@@ -117,7 +117,7 @@
     ],
     "correct": 2,
     "explanation": "**Why ID Token is correct**: OIDC introduces the ID Token (typically a JWT) to convey identity information about the authenticated user. **Why others are wrong**: Access and Refresh tokens are part of standard OAuth 2.0 for authorization.",
-    "category": "IAM, Federation, OIDC"
+    "category": "Identity Federation, OpenID Connect, ID Token"
   },
   {
     "question": "An organization wants to automate the exchange of user identity information between its identity provider and multiple SaaS applications to simplify onboarding and offboarding. Which standard is BEST suited for this purpose?",
@@ -129,7 +129,7 @@
     ],
     "correct": 1,
     "explanation": "**Why SCIM is correct**: System for Cross-domain Identity Management (SCIM) is an HTTP-based protocol specifically designed to automate user provisioning and deprovisioning in cloud environments. **Why others are wrong**: SAML is for auth/authz exchange. XACML is for access control policy. SPML is an older, more complex provisioning standard now largely replaced by SCIM.",
-    "category": "IAM, Federation, SAML"
+    "category": "IAM Lifecycle, SCIM, User Provisioning"
   },
   {
     "question": "In a SAML flow, which binding is typically used to send the SAML response from the Identity Provider (IdP) to the Service Provider (SP) via the user's browser using an HTML form?",
@@ -141,7 +141,7 @@
     ],
     "correct": 1,
     "explanation": "**Why HTTP POST is correct**: The HTTP POST Binding is commonly used for SAML Responses because assertions can be large, exceeding URL length limits of Redirect bindings. **Why others are wrong**: Redirect binding is often used for AuthNRequests. Artifact binding sends a reference instead of the full assertion. SOAP is used for back-channel communication.",
-    "category": "IAM, Federation, SAML"
+    "category": "Identity Federation, SAML 2.0, SAML Bindings"
   },
   {
     "question": "To establish a trust relationship between an IdP and an SP in a SAML federation, what is typically exchanged between the two parties beforehand?",
@@ -153,7 +153,7 @@
     ],
     "correct": 1,
     "explanation": "**Why Metadata is correct**: SAML Metadata is an XML file containing configuration info like entity IDs, endpoints, and public keys needed to establish trust. **Why others are wrong**: Passwords and private keys should never be shared. Database strings are internal to the systems.",
-    "category": "IAM, Federation, SAML"
+    "category": "Identity Federation, SAML 2.0, Trust Relationships"
   },
   {
     "question": "A mobile application uses OpenID Connect for authentication. To prevent 'Authorization Code Injection' attacks, which extension should the developer implement?",
@@ -165,7 +165,7 @@
     ],
     "correct": 1,
     "explanation": "**Why PKCE is correct**: PKCE was originally designed for mobile/public clients to secure the authorization code exchange by ensuring the party that requested the code is the same party that redeems it. **Why others are wrong**: MFA adds a factor but doesn't fix this protocol flow issue. TLS/HSTS protect the transport but not the logic of the code exchange.",
-    "category": "IAM, Federation, OAuth, OIDC"
+    "category": "Identity Federation, OAuth 2.0, PKCE"
   },
   {
     "question": "When configuring an OIDC client, you need to request specific user details like name and email. How is this requested in the OIDC flow?",
@@ -177,7 +177,7 @@
     ],
     "correct": 0,
     "explanation": "**Why Scopes is correct**: OIDC uses standard 'scopes' (like profile, email, address, phone) to request specific sets of claims about the user. **Why others are wrong**: OIDC doesn't use SAML. Clients shouldn't have direct LDAP or SQL access to the IdP's backend.",
-    "category": "IAM, Federation, OIDC"
+    "category": "Identity Federation, OpenID Connect, OIDC Scopes"
   },
   {
     "question": "Which OIDC endpoint is used by the client application to obtain additional claims about the authenticated user after receiving an access token?",
@@ -189,7 +189,7 @@
     ],
     "correct": 2,
     "explanation": "**Why UserInfo is correct**: The UserInfo Endpoint is a protected resource that returns claims about the authenticated user when presented with a valid access token. **Why others are wrong**: Authorization and Token endpoints are for the initial login/token exchange. Registration is for client setup.",
-    "category": "IAM, Federation, OIDC"
+    "category": "Identity Federation, OpenID Connect, UserInfo Endpoint"
   },
   {
     "question": "A large enterprise uses a central 'Identity Hub' that allows employees to log in using their corporate credentials and then access services in partner organizations. The partners trust the central hub, not the individual corporate IdPs. This model is called:",
@@ -201,7 +201,7 @@
     ],
     "correct": 1,
     "explanation": "**Why Identity Brokering is correct**: Identity Brokering (or a hub-and-spoke model) uses a central broker to mediate trust between multiple IdPs and SPs. **Why others are wrong**: Direct trust would require every SP to trust every IdP. Provisioning and mapping are about account creation, not trust mediation.",
-    "category": "IAM, Federation, SAML, SSO"
+    "category": "Identity Federation, Identity Brokering, Hub-and-Spoke Model"
   },
   {
     "question": "In SAML, what is the purpose of the 'SubjectConfirmation' element in an assertion?",
@@ -213,7 +213,7 @@
     ],
     "correct": 1,
     "explanation": "**Why SubjectConfirmation is correct**: It establishes how the SP can 'confirm' that the bearer of the assertion is the actual subject mentioned in the assertion (e.g., via 'bearer' or 'holder-of-key' methods). **Why others are wrong**: It is not for attributes, pictures, or passwords.",
-    "category": "IAM, Federation, SAML"
+    "category": "Identity Federation, SAML 2.0, Subject Confirmation"
   },
   {
     "question": "Which OAuth 2.0 grant type is MOST appropriate for a server-side web application that can securely store a 'client secret'?",
@@ -225,7 +225,7 @@
     ],
     "correct": 1,
     "explanation": "**Why Authorization Code is correct**: The Authorization Code Grant is the most secure flow for confidential clients (server-side apps) because the tokens are exchanged on a back-channel. **Why others are wrong**: Implicit is for public clients and is less secure. Client Credentials is for machine-to-machine. Password grant is highly discouraged.",
-    "category": "IAM, Federation, OAuth"
+    "category": "Identity Federation, OAuth 2.0, Authorization Code Grant"
   },
   {
     "question": "Which OAuth 2.0 grant type is designed for machine-to-machine (M2M) communication where no user is involved?",
@@ -237,7 +237,7 @@
     ],
     "correct": 2,
     "explanation": "**Why Client Credentials is correct**: The Client Credentials Grant is used when the application itself is the resource owner (e.g., a background service sync). **Why others are wrong**: The others involve user interaction or browser redirects.",
-    "category": "IAM, Federation, OAuth"
+    "category": "Identity Federation, OAuth 2.0, Machine-to-Machine"
   },
   {
     "question": "An attacker intercepts a SAML assertion and attempts to modify the user's 'Role' attribute from 'User' to 'Admin' without breaking the digital signature. If the signature only covers the 'Subject' and not the 'AttributeStatement', which attack is being attempted?",
@@ -249,7 +249,7 @@
     ],
     "correct": 1,
     "explanation": "**Why XSW is correct**: XML Signature Wrapping involves manipulating the XML structure so that the signature still validates against one part of the document while the application logic processes a different, malicious part. **Why others are wrong**: Replay is about reusing a valid message. MITM is a general position. DoS is about availability.",
-    "category": "IAM, Federation, SAML, Attack"
+    "category": "Identity Federation, SAML 2.0, XML Signature Wrapping"
   },
   {
     "question": "A user logs out of the corporate portal and expects to be logged out of all federated SaaS applications automatically. This functionality is known as:",
@@ -261,7 +261,7 @@
     ],
     "correct": 1,
     "explanation": "**Why SLO is correct**: Single Logout (SLO) is a SAML profile that allows a user to terminate all sessions across all SPs by logging out once. **Why others are wrong**: Revocation is about account disabling. Session management is internal. Forced re-auth is the opposite.",
-    "category": "IAM, Federation"
+    "category": "Identity Federation, SAML 2.0, Single Logout"
   },
   {
     "question": "Why is the 'Implicit Grant' flow in OAuth 2.0 now deprecated in favor of 'Authorization Code with PKCE'?",
@@ -273,7 +273,7 @@
     ],
     "correct": 1,
     "explanation": "**Why Implicit is deprecated is correct**: The Implicit flow returns the access token in the URI fragment, which is insecure as it can be leaked in logs, referer headers, or browser history. **Why others are wrong**: It's actually fast, but the security trade-off is no longer acceptable.",
-    "category": "IAM, Federation, OAuth, OIDC"
+    "category": "Identity Federation, OAuth 2.0, Deprecated Flows"
   },
   {
     "question": "In a federated environment, what is 'Identity Proofing'?",
@@ -285,7 +285,7 @@
     ],
     "correct": 0,
     "explanation": "**Why Identity Proofing is correct**: Identity Proofing (or Identity Vetting) is the initial check (e.g., checking government ID) to ensure a person is who they say they are before they are given a digital identity. **Why others are wrong**: Login is authentication. JWT encryption is a technical detail. Account creation is provisioning.",
-    "category": "IAM, Federation, Identity Proofing"
+    "category": "IAM Fundamentals, Identity Proofing, Identity Vetting"
   },
   {
     "question": "Which component of a JWT (JSON Web Token) contains the actual claims (like user ID and expiration time)?",
@@ -297,6 +297,6 @@
     ],
     "correct": 1,
     "explanation": "**Why Payload is correct**: The Payload section of a JWT contains the 'claims' or data being transmitted. **Why others are wrong**: The Header contains metadata (algorithm). The Signature is for integrity. JWTs do not have a Footer.",
-    "category": "IAM, Federation, OIDC, JWT"
+    "category": "Identity Federation, OIDC, JSON Web Token"
   }
 ]

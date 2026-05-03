@@ -9,7 +9,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **Purging** makes data recovery infeasible even using laboratory-level forensic techniques, while leaving the media physically intact for reuse. **Why A is wrong**: **Clearing** protects against simple non-technical recovery but not laboratory forensic analysis. **Why C is wrong**: **Destruction** prevents reuse. **Why D is wrong**: **Degaussing** often renders modern hard drives unusable due to destruction of timing tracks.",
-    "category": "Data Lifecycle"
+    "category": "Media Sanitization, Purging, NIST 800-88"
   },
   {
     "question": "An organization receives a notice of pending litigation. According to the data lifecycle, which action should the organization take **FIRST** regarding relevant data currently scheduled for destruction?",
@@ -21,7 +21,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: A **legal hold** (or litigation hold) is the first step to ensure potentially relevant evidence is preserved. **Why A is wrong**: This is spoliation of evidence and is illegal. **Why B is wrong**: Minimization cannot be used to justify destroying data once a hold is required. **Why D is wrong**: Re-classification does not address preservation.",
-    "category": "Data Lifecycle"
+    "category": "Data Lifecycle, Legal Hold, E-discovery"
   },
   {
     "question": "After decommissioning a server that held Top Secret military data, the security officer mandates physical destruction of the storage media. Which factor **BEST** justifies this decision over software-based overwriting?",
@@ -33,7 +33,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **Data Remanence** is the residual representation of data. For Top Secret data, the risk of residual recovery is unacceptable, making physical destruction necessary. **Why A, C, and D are wrong**: These factors do not outweigh the security requirement of preventing data recovery for high-classification assets.",
-    "category": "Data Lifecycle"
+    "category": "Media Sanitization, Physical Destruction, Data Remanence"
   },
   {
     "question": "A backup tape containing unencrypted PII is discovered in an unlocked storage cabinet. In which phase of the data lifecycle is the **MOST** significant control gap occurring?",
@@ -45,7 +45,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: The **Store** phase involves protecting data at rest. Failure to encrypt and secure the physical media represents a breakdown in storage phase controls. **Why A is wrong**: The data was created for a purpose; the failure is in storage. **Why B is wrong**: Archive is a form of storage, but 'Store' is the standard lifecycle phase name. **Why D is wrong**: The data was not yet ready for destruction.",
-    "category": "Data Lifecycle"
+    "category": "Data Lifecycle, Store Phase, Data at Rest"
   },
   {
     "question": "In a multi-tenant cloud environment where physical destruction of hardware is not feasible for an individual customer, which sanitization method is the **BEST** choice for a customer terminating their service?",
@@ -57,7 +57,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **Cryptographic Erasure** involves destroying the encryption keys, rendering the data on the provider's shared media unrecoverable. **Why A is wrong**: Overwriting is unreliable in virtualized/cloud storage layers. **Why C and D are wrong**: Customers lack physical access to cloud hardware.",
-    "category": "Data Lifecycle"
+    "category": "Media Sanitization, Crypto-shredding, Cloud Security"
   },
   {
     "question": "A software company wants to use a copy of its production database for application testing. The database contains millions of real customer names and credit card numbers. Which technique is the **BEST** way to provide realistic test data while protecting the actual PII?",
@@ -69,7 +69,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: **Data Masking** (or Obfuscation) replaces sensitive data with realistic but fictitious data, maintaining utility for testing without exposing real PII. **Why A is wrong**: Developers would still have access to real PII if they have keys. **Why B is wrong**: Tokenization is for transaction surrogates. **Why D is wrong**: Full anonymization often removes too much utility.",
-    "category": "Data Lifecycle"
+    "category": "Data Lifecycle, Data Masking, Test Data"
   },
   {
     "question": "When decommissioning Solid State Drives (SSDs), why is traditional multi-pass overwriting considered **LESS** effective than on magnetic hard drives?",
@@ -81,7 +81,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: SSDs use **wear-leveling** and **overprovisioning**, meaning software-based overwriting (which targets logical addresses) may miss data in retired or overprovisioned physical blocks. **Why A is wrong**: Magnets are for degaussing, not overwriting. **Why C and D are wrong**: These are technically incorrect or not the primary reason.",
-    "category": "Data Lifecycle"
+    "category": "Media Sanitization, SSD, Data Remanence"
   },
   {
     "question": "A security analyst is investigating a DLP alert triggered when an employee attached a spreadsheet of customer IDs to an outbound email. Which data state is **MOST** directly involved in the trigger of this alert?",
@@ -93,7 +93,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **Data in Transit** (or Motion) refers to data being transmitted over a network (like an email). DLP alerts on outbound traffic are transit controls. **Why A is wrong**: At rest refers to stored data. **Why C is wrong**: In use refers to data in RAM/active processing. **Why D is wrong**: Archive is a sub-state of at rest.",
-    "category": "Data Lifecycle"
+    "category": "Data States, Data in Transit, DLP"
   },
   {
     "question": "A security consultant notes that an organization's media disposal vendor shreds hard drives into 1-inch fragments. Why might this be considered **INSUFFICIENT** for high-security data?",
@@ -105,7 +105,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: Modern high-density platters can contain readable sectors even in 1-inch fragments. High-security standards (like NSA) require much smaller particles (e.g., 2mm). **Why A, C, and D are wrong**: These do not reflect the security risk associated with particle size.",
-    "category": "Data Lifecycle"
+    "category": "Media Sanitization, Physical Destruction, Shredding"
   },
   {
     "question": "What is the correct sequence of the data lifecycle phases according to the CISSP CBK?",
@@ -117,7 +117,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: The standard lifecycle is **Create** (generation), **Store** (at rest), **Use** (processing), **Share** (transmission/transit), **Archive** (long-term storage), and **Destroy** (sanitization). **Why A, C, and D are wrong**: These are either out of order or describe different processes.",
-    "category": "Data Lifecycle"
+    "category": "Data Lifecycle, Lifecycle Phases, CISSP CBK"
   },
   {
     "question": "During which phase of the data lifecycle is **Data Loss Prevention (DLP)** technology **MOST** commonly deployed to monitor and block unauthorized transfers?",
@@ -129,7 +129,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: While DLP can protect data at rest (Store), it is most frequently used in the **Share** (Transit) phase to prevent sensitive data from leaving the organization via email, web, or USB. **Why A is wrong**: DLP doesn't usually monitor initial creation. **Why B is wrong**: Storage-based DLP exists but is less common than transit-based. **Why D is wrong**: Archiving is an internal process.",
-    "category": "Data Lifecycle"
+    "category": "Data Lifecycle, Share Phase, DLP"
   },
   {
     "question": "An organization is moving sensitive data to a long-term storage facility. The data is not expected to be accessed for years but must be kept for legal reasons. What is the **BEST** term for this lifecycle phase?",
@@ -141,7 +141,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **Archiving** is the phase where data is moved to a separate, often lower-cost, storage system for long-term retention when it is no longer in active use. **Why A is wrong**: Storage is a broader term. **Why C is wrong**: Backups are for disaster recovery and are usually short-term. **Why D is wrong**: Retention is the policy/timeframe, not the phase itself.",
-    "category": "Data Lifecycle"
+    "category": "Data Lifecycle, Archive Phase, Archiving"
   },
   {
     "question": "Which security control is **MOST** effective for protecting the confidentiality of data in the **Use** phase (e.g., while it is being processed in RAM)?",
@@ -153,7 +153,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: Protecting data 'in use' is the most difficult. **TEEs** (Enclaves) or **Homomorphic Encryption** allow for processing data while it remains protected in memory. **Why A is wrong**: Disk encryption only protects data at rest. **Why B is wrong**: TLS only protects data in transit.",
-    "category": "Data Lifecycle"
+    "category": "Data States, Data in Use, TEE"
   },
   {
     "question": "What is the **PRIMARY** risk associated with data in the **Share** phase of the lifecycle?",
@@ -165,7 +165,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: The **Share** phase involves moving data between systems or entities. The primary risk is that the data will be intercepted or sent to an unauthorized recipient. **Why A is wrong**: This is a risk for the Archive/Store phase. **Why C is wrong**: This is a risk for the Store phase. **Why D is wrong**: This can happen in any phase.",
-    "category": "Data Lifecycle"
+    "category": "Data Lifecycle, Share Phase, Data in Transit"
   },
   {
     "question": "Which NIST publication provides the standard guidelines for **Media Sanitization**?",
@@ -177,7 +177,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: **NIST SP 800-88** Rev. 1 is the 'Guidelines for Media Sanitization.' **Why A is wrong**: 800-53 covers security controls. **Why B is wrong**: 800-30 covers risk assessments. **Why D is wrong**: 800-37 covers the Risk Management Framework (RMF).",
-    "category": "Data Lifecycle"
+    "category": "Media Sanitization, NIST 800-88, Standards"
   },
   {
     "question": "An organization uses **Full Disk Encryption (FDE)** on all corporate laptops. Which threat does this **MOST** directly mitigate?",
@@ -189,7 +189,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: FDE protects **data at rest**. If the laptop is stolen while powered off, the data on the drive remains unreadable without the decryption key. **Why A and C are wrong**: FDE does not protect against transit-based attacks or malware. **Why D is wrong**: Once the user is logged in, the drive is 'unlocked' for the system.",
-    "category": "Data Lifecycle"
+    "category": "Data Security, FDE, Data at Rest"
   },
   {
     "question": "A cloud customer is concerned about the provider's administrators accessing their data. Which technology allows the customer to maintain control over their encryption keys and ensures the provider cannot decrypt their data?",
@@ -201,7 +201,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: **BYOK** or **CMK** allows the customer to manage the keys used by the cloud provider, providing a layer of control and ensuring the provider cannot access the data without the customer's involvement. **Why B is wrong**: A CASB is a visibility and policy enforcement point, but not necessarily the key manager.",
-    "category": "Data Lifecycle"
+    "category": "Cloud Security, BYOK, Key Management"
   },
   {
     "question": "What is the difference between **Clearing** and **Purging** according to NIST 800-88?",
@@ -213,7 +213,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: **Clearing** typically uses software to overwrite data, protecting against simple recovery. **Purging** uses more advanced methods (like Secure Erase or Degaussing) to protect against state-of-the-art laboratory recovery techniques. **Why B is wrong**: Purging is not physical destruction.",
-    "category": "Data Lifecycle"
+    "category": "Media Sanitization, Clearing, Purging"
   },
   {
     "question": "An organization is required to keep financial records for 7 years due to tax regulations. This is an example of which data management concept?",
@@ -225,7 +225,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: A **Retention Policy** defines how long data must be kept to meet business, legal, and regulatory requirements. **Why A is wrong**: Classification is about sensitivity. **Why C is wrong**: Sovereignty is about jurisdiction. **Why D is wrong**: Minimization is about collecting only what is needed.",
-    "category": "Data Lifecycle"
+    "category": "Data Lifecycle, Retention Policy, Compliance"
   },
   {
     "question": "When disposing of **Optical Media** (like CDs or DVDs) containing sensitive information, what is the **BEST** method of destruction?",
@@ -237,7 +237,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: Optical media is not magnetic, so degaussing is ineffective. **Shredding, pulverizing, or incineration** are the only effective ways to destroy the data. **Why A is wrong**: Degaussing only works on magnetic media. **Why D is wrong**: You cannot 'overwrite' a standard CD/DVD like a hard drive.",
-    "category": "Data Lifecycle"
+    "category": "Media Sanitization, Physical Destruction, Optical Media"
   },
   {
     "question": "A security team uses a **CASB** to monitor for sensitive data being uploaded to personal cloud storage accounts. Which lifecycle phase and state are they monitoring?",
@@ -249,7 +249,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: An upload to a cloud service is **Data in Transit** (moving from the endpoint to the cloud). Monitoring this is part of the **Share** phase of the lifecycle.",
-    "category": "Data Lifecycle"
+    "category": "Cloud Security, CASB, Data in Transit"
   },
   {
     "question": "Which of the following is a primary concern during the **Archive** phase of the data lifecycle?",
@@ -261,7 +261,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: A major risk in archiving is **media obsolescence** (e.g., having tapes but no tape drive) or **format obsolescence** (having the file but no software that can open it). **Why A is wrong**: Archived data is typically read-only. **Why C is wrong**: Archived data should be encrypted.",
-    "category": "Data Lifecycle"
+    "category": "Data Lifecycle, Archive Phase, Media Obsolescence"
   },
   {
     "question": "What is the **BEST** way to ensure that data on a lost or stolen mobile device cannot be recovered by an attacker?",
@@ -273,7 +273,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **Remote wipe** (or 'kill switch') allows the organization to sanitize the device over-the-air as soon as it is reported lost, which is the most effective defense against data recovery from the device. **Why A is wrong**: 4 digits can be brute-forced. **Why C and D are wrong**: These are not relevant to data recovery.",
-    "category": "Data Lifecycle"
+    "category": "Mobile Security, Remote Wipe, Data Security"
   },
   {
     "question": "An organization is performing **E-discovery** as part of a lawsuit. Which model provides a standard framework for the steps involved, from identification to production of data?",
@@ -285,7 +285,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: The **EDRM** is the industry-standard framework for the e-discovery process. **Why A is wrong**: SDLC is for software development. **Why C is wrong**: OWASP is for web security. **Why D is wrong**: NIST RMF is for risk management.",
-    "category": "Data Lifecycle"
+    "category": "Data Lifecycle, EDRM, E-discovery"
   },
   {
     "question": "Why should **backups** be stored offsite and in a separate 'failure domain' from the primary data?",
@@ -297,6 +297,6 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: Storing backups **offsite** protects against a single disaster destroying both the production systems and the backups. This is a critical control for the **Store** phase of the lifecycle.",
-    "category": "Data Lifecycle"
+    "category": "Data Lifecycle, Store Phase, Availability"
   }
 ]

@@ -9,7 +9,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: An **Alert** is a notification triggered by a specific event or pattern that requires review. While the failed logins are **events** (observable occurrences), the notification itself is an alert. It does not become an **incident** until it is triaged and confirmed as a harmful or unauthorized activity. **Why A is wrong**: An **incident** is a confirmed violation of security policies. **Why B is wrong**: An **event** is any observable change in state; the notification is a result of these events. **Why D is wrong**: A **breach** specifically refers to the unauthorized disclosure or loss of sensitive data.",
-    "category": "Incident Response, Threat Intelligence, Kill Chain"
+    "category": "Incident Response, IR Lifecycle, Alerting, Event Management"
   },
   {
     "question": "A forensic investigator is tasked with collecting evidence from a running server. According to the 'Order of Volatility' (RFC 3227), which source of evidence should be captured FIRST to ensure it is not lost?",
@@ -21,7 +21,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: The **Order of Volatility** dictates that the most transient data must be collected first. **CPU registers and cache** are the most volatile, followed by routing tables/ARP cache, then RAM, then temporary files, and finally the hard drive. **Why A is wrong**: Hard drives are non-volatile and are collected last. **Why B is wrong**: Swap space is on the disk and is less volatile than CPU cache or RAM. **Why D is wrong**: While volatile, routing tables are generally considered slightly less transient than the internal CPU state.",
-    "category": "Incident Response, Forensics, Evidence Collection"
+    "category": "Incident Response, Forensics, Evidence Collection, Order of Volatility"
   },
   {
     "question": "An investigator connects a hard drive to a workstation to create a bit-stream image. Which device is MOST critical to use to ensure that the original evidence is not inadvertently modified during the process?",
@@ -33,7 +33,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: A **Write Blocker** (hardware or software) intercepts any write commands sent from the OS to the evidence drive, ensuring the drive's contents remain unchanged. This is essential for maintaining evidence integrity. **Why A is wrong**: A **Forensic Duplicator** is used to make the copy, and while many have built-in write blocking, the write blocker itself is the specific tool that ensures the 'no modification' requirement. **Why C is wrong**: A **Protocol Analyzer** is for network traffic. **Why D is wrong**: This is just a hardware interface.",
-    "category": "Incident Response, Forensics"
+    "category": "Incident Response, Forensics, Evidence Integrity, Write Blocker"
   },
   {
     "question": "A digital forensic analyst creates a cryptographic hash of a suspect's hard drive before beginning the imaging process and then hashes the resulting image file. The two hashes are identical. What does this result BEST demonstrate?",
@@ -45,7 +45,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: Matching hashes confirm that the data in the copy is a bit-for-bit match of the original, proving its **integrity**. **Why A is wrong**: **Admissibility** is a legal determination based on multiple factors, not just hashing. **Why B is wrong**: **Chain of Custody** is the documentation of who handled the evidence, not a technical check. **Why D is wrong**: **Relevance** means the evidence actually relates to the case.",
-    "category": "Incident Response, Forensics"
+    "category": "Incident Response, Forensics, Evidence Integrity, Hashing"
   },
   {
     "question": "An employee testifies in court that they personally saw an attacker enter the server room and plug a USB device into a workstation. Which category of evidence does this BEST represent?",
@@ -57,7 +57,7 @@
     ],
     "correct": 0,
     "explanation": "**Why A is correct**: **Direct Evidence** is testimony or other evidence that proves a fact without requiring an inference. Eyewitness testimony of an event is a classic example. **Why B is wrong**: **Circumstantial Evidence** requires an inference (e.g., finding the attacker's fingerprints in the room implies they were there, but doesn't prove it directly). **Why C is wrong**: **Hearsay** is a statement made out of court offered for its truth. **Why D is wrong**: **Demonstrative Evidence** is used to illustrate or explain (e.g., a map or a diagram).",
-    "category": "Incident Response"
+    "category": "Incident Response, Evidence Types, Direct Evidence, Testimony"
   },
   {
     "question": "Under the GDPR, what is the MAXIMUM timeframe for an organization to notify the relevant supervisory authority after becoming aware of a personal data breach that poses a risk to individuals?",
@@ -69,7 +69,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: **GDPR** mandates notification to the supervisory authority within **72 hours** of becoming aware of the breach. **Why A, B, and D are wrong**: These do not match the specific GDPR requirement.",
-    "category": "Incident Response, Breach Notification, Legal"
+    "category": "Incident Response, Breach Notification, GDPR, Compliance"
   },
   {
     "question": "An incident response team is working to limit the impact and scope of an ongoing ransomware attack by disconnecting affected servers from the network. Which phase of the incident response lifecycle does this BEST describe?",
@@ -81,7 +81,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: Disconnecting systems to stop the spread of an attack is part of the **Containment** step, which falls within this phase of the NIST/ISC2 lifecycle. **Why A is wrong**: Detection is the initial discovery. **Why C is wrong**: Post-incident involves lessons learned. **Why D is wrong**: Preparation happens before an incident occurs.",
-    "category": "Incident Response"
+    "category": "Incident Response, IR Lifecycle, Containment, NIST SP 800-61"
   },
   {
     "question": "A CISO wants to ensure that the organization learns from a recent security breach. Which activity is the MOST effective for identifying process gaps and improving future response capabilities?",
@@ -93,7 +93,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: The **Lessons Learned** phase is the most critical step for continuous improvement. It allows the team to review what happened, what went well, and what needs to change in the incident response plan. **Why A is wrong**: Punitive action often discourages honest reporting. **Why C and D are wrong**: While these may be outcomes of the lessons learned process, the meeting/report itself is the primary activity for identification and improvement.",
-    "category": "Incident Response"
+    "category": "Incident Response, IR Lifecycle, Post-Incident, Lessons Learned"
   },
   {
     "question": "An organization's BCP states that its primary website must be back online within 2 hours of a failure to avoid significant financial loss. What is the BEST term for this 2-hour requirement?",
@@ -105,7 +105,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: The **RTO** is the targeted duration of time and a service level within which a business process must be restored after a disaster. **Why A is wrong**: **MTD** is the absolute maximum time the business can survive without the process. **Why C is wrong**: **RPO** is the maximum amount of data loss measured in time. **Why D is wrong**: **WRT** is the time needed to configure systems and verify data after they are back online.",
-    "category": "Incident Response, BCP/DR, Metrics"
+    "category": "Incident Response, BCP/DR, Metrics, RTO"
   },
   {
     "question": "During an investigation, a security analyst finds that an attacker used a legitimate administrative tool to move laterally through the network. This 'living off the land' technique is MOST likely to be documented in which framework?",
@@ -117,7 +117,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: **MITRE ATT&CK** is a globally-accessible knowledge base of adversary tactics and techniques based on real-world observations. **Why A and B are wrong**: These are control frameworks, not threat actor behavior databases. **Why D is wrong**: This focuses on web application vulnerabilities.",
-    "category": "Incident Response, Threat Intelligence, MITRE ATT&CK"
+    "category": "Incident Response, Threat Intelligence, MITRE ATT&CK, TTPs"
   },
   {
     "question": "A security team is using a model that analyzes the relationship between four core elements of an intrusion: Adversary, Infrastructure, Capability, and Victim. Which model is being used?",
@@ -129,7 +129,7 @@
     ],
     "correct": 1,
     "explanation": "**Why Diamond Model is correct**: The Diamond Model of Intrusion Analysis focuses on the relationships between these four vertices. **Why others are wrong**: Kill Chain is linear. ATT&CK is a matrix of techniques. STRIDE is a threat modeling framework.",
-    "category": "Incident Response, Threat Intelligence"
+    "category": "Incident Response, Threat Intelligence, Diamond Model, Intrusion Analysis"
   },
   {
     "question": "An organization is categorizing a detected security event. They determine that the event has a high impact on the confidentiality of sensitive data but low urgency because the affected server is already isolated. How should they prioritize the incident?",
@@ -141,7 +141,7 @@
     ],
     "correct": 1,
     "explanation": "**Why Medium is correct**: Incident prioritization is typically a function of **Impact** (damage) and **Urgency** (how quickly it must be fixed). While impact is high, the low urgency (due to isolation) often results in a 'Medium' or 'High' depending on the specific matrix, but 'Medium' is a standard result of high/low mix. **Why others are wrong**: It cannot be low because data was compromised.",
-    "category": "Incident Response, IR Lifecycle"
+    "category": "Incident Response, IR Lifecycle, Prioritization, Impact vs Urgency"
   },
   {
     "question": "Which phase of the Cyber Kill Chain describes the attacker establishing a persistent communication channel from the victim's network to an external server?",
@@ -153,7 +153,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C2 is correct**: Command and Control is the stage where the attacker takes control of the compromised system from a remote location. **Why others are wrong**: Exploitation is the initial breach. Installation is placing the malware. Actions on Objectives is the final goal (e.g., data theft).",
-    "category": "Incident Response, Threat Intelligence, Kill Chain"
+    "category": "Incident Response, Threat Intelligence, Kill Chain, Command and Control"
   },
   {
     "question": "What is the PRIMARY goal of the 'Eradication' phase of incident response?",
@@ -165,7 +165,7 @@
     ],
     "correct": 1,
     "explanation": "**Why Eradication goal is correct**: Eradication focuses on identifying and removing all traces of the attacker and their malware, and fixing the vulnerabilities that allowed the breach. **Why A is wrong**: Restoration is part of the 'Recovery' phase. **Why C/D are wrong**: These are supporting or external activities.",
-    "category": "Incident Response, IR Lifecycle"
+    "category": "Incident Response, IR Lifecycle, Eradication, Root Cause Analysis"
   },
   {
     "question": "After an incident, the team performs a 'Root Cause Analysis' (RCA). What is the main objective of this activity?",
@@ -177,7 +177,7 @@
     ],
     "correct": 2,
     "explanation": "**Why RCA objective is correct**: RCA aims to identify the fundamental cause of a problem so that effective solutions can be implemented to prevent recurrence. **Why A is wrong**: RCA should be 'blameless' to encourage honesty. **Why B/D are wrong**: These may be side benefits but are not the primary goal.",
-    "category": "Incident Response, Post-Incident"
+    "category": "Incident Response, Post-Incident, Root Cause Analysis, Prevention"
   },
   {
     "question": "A company chooses a 'Distributed' CSIRT model. What does this mean for the organization?",
@@ -189,7 +189,7 @@
     ],
     "correct": 1,
     "explanation": "**Why Distributed is correct**: In a distributed model, the organization utilizes existing staff across various departments or locations to form the IR team when needed. **Why A is wrong**: This is the Centralized model. **Why C is wrong**: This is the Outsourced model.",
-    "category": "Incident Response, CSIRT"
+    "category": "Incident Response, CSIRT, Organizational Models, Distributed CSIRT"
   },
   {
     "question": "When should an organization typically involve Law Enforcement during an incident?",
@@ -201,7 +201,7 @@
     ],
     "correct": 2,
     "explanation": "**Why involve LE is correct**: The decision to involve Law Enforcement should be made by management and legal counsel based on the nature of the crime and the potential impact on the business. **Why others are wrong**: Involving LE for every alert is impractical. Waiting until the end might lose evidence. 'Never' is too restrictive for major crimes.",
-    "category": "Incident Response, Legal"
+    "category": "Incident Response, Legal, External Communication, Law Enforcement"
   },
   {
     "question": "An incident responder is deciding between 'Short-term' and 'Long-term' containment. Which of the following is an example of 'Long-term' containment?",
@@ -213,7 +213,7 @@
     ],
     "correct": 2,
     "explanation": "**Why Long-term is correct**: Long-term containment involves more permanent fixes like patching or system hardening while allowing business to continue. **Why others are wrong**: Disconnecting, isolating, and shutting down are typically short-term, immediate actions to stop the spread.",
-    "category": "Incident Response, IR Lifecycle, Containment"
+    "category": "Incident Response, IR Lifecycle, Containment, Hardening"
   },
   {
     "question": "What is the role of a 'Playbook' in a SOAR (Security Orchestration, Automation, and Response) platform?",
@@ -225,7 +225,7 @@
     ],
     "correct": 2,
     "explanation": "**Why Playbook is correct**: Playbooks in SOAR automate the response steps for common incidents, ensuring consistency and speed. **Why others are wrong**: They do not describe the technical function of a SOAR playbook.",
-    "category": "Incident Response, SOAR, Automation"
+    "category": "Incident Response, SOAR, Automation, Playbook"
   },
   {
     "question": "An organization is restoring a server from backups after a malware infection. Before putting it back into production, they run it in a 'sandbox' for 24 hours to monitor for any signs of reinfection. Which phase is this?",
@@ -237,7 +237,7 @@
     ],
     "correct": 1,
     "explanation": "**Why Recovery is correct**: Recovery involves restoring systems to normal and verifying that they are functioning correctly and are free of threats. **Why others are wrong**: Eradication is removing the threat. Post-incident is lessons learned. Containment is stopping the spread.",
-    "category": "Incident Response"
+    "category": "Incident Response, IR Lifecycle, Recovery, Validation"
   },
   {
     "question": "Which type of threat intelligence provides high-level information about the 'who' and 'why' behind an attack, intended for executive decision-makers?",
@@ -249,7 +249,7 @@
     ],
     "correct": 2,
     "explanation": "**Why Strategic is correct**: Strategic intelligence focuses on long-term trends and adversary motivations. **Why A is wrong**: Tactical is about TTPs. **Why B is wrong**: Operational is about specific upcoming attacks. **Why D is wrong**: Technical is about IOCs (hashes, IPs).",
-    "category": "Incident Response, Threat Intelligence"
+    "category": "Incident Response, Threat Intelligence, Strategic Intelligence, Decision Making"
   },
   {
     "question": "During an incident, the public relations (PR) team is tasked with communicating with the media. This is an example of which type of communication?",
@@ -261,7 +261,7 @@
     ],
     "correct": 1,
     "explanation": "**Why External is correct**: External communication involves parties outside the organization, such as customers, partners, the media, and regulators. **Why A is wrong**: Internal communication is within the company (e.g., to employees or board).",
-    "category": "Incident Response, Communication"
+    "category": "Incident Response, Communication, Public Relations, External Communication"
   },
   {
     "question": "What is 'Triage' in the context of incident response?",
@@ -273,7 +273,7 @@
     ],
     "correct": 1,
     "explanation": "**Why Triage is correct**: Triage is the step where incoming alerts are sorted and prioritized so that the most critical issues are handled first. **Why others are wrong**: It is not the fix, the final report, or the hiring process.",
-    "category": "Incident Response, IR Lifecycle"
+    "category": "Incident Response, IR Lifecycle, Triage, Prioritization"
   },
   {
     "question": "A company is hit by a massive DDoS attack. The primary goal of the response team is to keep the website available for customers. Which side of the 'Security Triad' is the focus of this effort?",
@@ -285,7 +285,7 @@
     ],
     "correct": 2,
     "explanation": "**Why Availability is correct**: DDoS attacks target availability. The response aims to restore or maintain service. **Why others are wrong**: While important, they are not the primary target of a DDoS.",
-    "category": "Incident Response, BCP/DR"
+    "category": "Incident Response, BCP/DR, Availability, DDoS"
   },
   {
     "question": "What is the difference between a 'Hot Site' and a 'Cold Site' in disaster recovery planning?",
@@ -297,6 +297,6 @@
     ],
     "correct": 0,
     "explanation": "**Why Hot/Cold site is correct**: Hot sites have all equipment and current data ready. Cold sites require days or weeks to set up. **Why others are wrong**: These do not describe the DR terminology.",
-    "category": "Incident Response, BCP/DR"
+    "category": "Incident Response, BCP/DR, Recovery Sites, Resilience"
   }
 ]

@@ -1,25 +1,25 @@
-What is SAST?	**Static Application Security Testing.** A "White Box" method that analyzes source code or binaries without executing them.	Software Testing, Testing Types
-What is DAST?	**Dynamic Application Security Testing.** A "Black Box" method that tests the running application from the outside.	Software Testing, Testing Types
-What is IAST?	**Interactive Application Security Testing.** Uses agents inside the running app to provide more context than DAST alone.	Software Testing, Testing Types
-What is SCA?	**Software Composition Analysis.** Identifying and managing vulnerabilities in third-party libraries and dependencies.	Software Testing, Testing Types
-What is Fuzzing?	A dynamic testing technique that sends **random or malformed inputs** to an application to find crashes or flaws.	Software Testing, Testing Types
-What is a Fagan Inspection?	A **highly formal and structured** manual code review process with specific roles and six stages.	Software Testing, Code Review
-Name the 6 stages of Fagan Inspection.	**Planning, Overview, Preparation, Inspection, Rework, and Follow-up.**	Software Testing, Code Review
-Who is the "Moderator" in a Fagan Inspection?	The person who **manages the process**, leads the meeting, and ensures the steps are followed.	Software Testing, Code Review
-What is Regression Testing?	Testing performed after a change to ensure that **existing functionality still works** correctly.	Software Testing, Testing Types
-What is Unit Testing?	Testing the **smallest possible component** or function of an application in isolation.	Software Testing, Testing Types
-Mutation Testing	A technique where **small errors (mutants)** are intentionally added to code to test the effectiveness of a test suite.	Software Testing, Testing Types
-Misuse Case (Abuse Case)	A test scenario that describes how an attacker might **intentionally subvert** or misuse the system.	Software Testing, Testing Types
-Real User Monitoring (RUM)	A **passive monitoring** technique that records all real user interactions with an application in real-time.	Software Testing, Monitoring
-Synthetic Performance Monitoring	A technique that uses **scripts to simulate** user behavior to monitor application performance and availability.	Software Testing, Monitoring
-Memory Leak	A condition where an application fails to release memory it no longer needs, leading to **depletion of resources** over time.	Software Testing, Defects
-User Acceptance Testing (UAT)	Testing performed by **end users** to ensure the system meets business requirements and is ready for use.	Software Testing, Testing Types
-Operational Acceptance Testing (OAT)	Testing that verifies the system is **operationally ready** (backups, disaster recovery, maintainability).	Software Testing, Testing Types
-Code Coverage	A metric that measures the **percentage of source code** executed during testing.	Software Testing, Metrics
-Branch Coverage (Decision Coverage)	A metric ensuring that **every possible path** of a control structure (e.g., if/else) is executed.	Software Testing, Metrics
-Mutation-based Fuzzing	A fuzzing technique that **modifies (mutates)** existing valid data samples to create test inputs.	Software Testing, Testing Types
-Protocol-based Fuzzing	A fuzzing technique that **generates data from scratch** based on a defined protocol or format specification.	Software Testing, Testing Types
-Control Flow Analysis	A static analysis technique that maps the **logical paths** (branches, loops) that code can take.	Software Testing, Code Review
-Data Flow Analysis	A static analysis technique that tracks how **data is handled and moved** from inputs to outputs.	Software Testing, Code Review
-Defect Clustering	The principle that a **small number of modules** usually contain the majority of defects in a system.	Software Testing, Principles
-Combinatorial Testing (e.g., Pairwise)	A method that tests **subsets of input combinations** to achieve broad coverage with fewer test cases.	Software Testing, Testing Types
+What is SAST?	**Static Application Security Testing.** A "White Box" method that analyzes source code or binaries without executing them.	SAST, Static Analysis, White-box Testing, SDLC
+What is DAST?	**Dynamic Application Security Testing.** A "Black Box" method that tests the running application from the outside.	DAST, Dynamic Analysis, Black-box Testing, SDLC
+What is IAST?	**Interactive Application Security Testing.** Uses agents inside the running app to provide more context than DAST alone.	IAST, Hybrid Analysis, Instrumentation, SDLC
+What is SCA?	**Software Composition Analysis.** Identifying and managing vulnerabilities in third-party libraries and dependencies.	SCA, Dependency Scanning, Open Source Security, SDLC
+What is Fuzzing?	A dynamic testing technique that sends **random or malformed inputs** to an application to find crashes or flaws.	Fuzz Testing, Dynamic Analysis, Software Quality, Testing
+What is a Fagan Inspection?	A **highly formal and structured** manual code review process with specific roles and six stages.	Fagan Inspection, Code Review, Formal Review, Static Analysis
+Name the 6 stages of Fagan Inspection.	**Planning, Overview, Preparation, Inspection, Rework, and Follow-up.**	Fagan Inspection, Review Process, Methodology, Static Analysis
+Who is the "Moderator" in a Fagan Inspection?	The person who **manages the process**, leads the meeting, and ensures the steps are followed.	Fagan Inspection, Moderator, Code Review, Roles
+What is Regression Testing?	Testing performed after a change to ensure that **existing functionality still works** correctly.	Regression Testing, Maintenance Testing, Software Quality, Testing
+What is Unit Testing?	Testing the **smallest possible component** or function of an application in isolation.	Unit Testing, Component Testing, SDLC, Development
+Mutation Testing	A technique where **small errors (mutants)** are intentionally added to code to test the effectiveness of a test suite.	Mutation Testing, Test Suite Quality, Metrics, Testing
+Misuse Case (Abuse Case)	A test scenario that describes how an attacker might **intentionally subvert** or misuse the system.	Misuse Case, Abuse Case, Requirements Analysis, Security Design
+Real User Monitoring (RUM)	A **passive monitoring** technique that records all real user interactions with an application in real-time.	RUM, Real User Monitoring, Passive Monitoring, Operations
+Synthetic Performance Monitoring	A technique that uses **scripts to simulate** user behavior to monitor application performance and availability.	Synthetic Monitoring, Performance Monitoring, Operations, Testing
+Memory Leak	A condition where an application fails to release memory it no longer needs, leading to **depletion of resources** over time.	Memory Leak, Dynamic Analysis, Resource Management, Software Defects
+User Acceptance Testing (UAT)	Testing performed by **end users** to ensure the system meets business requirements and is ready for use.	UAT, User Acceptance Testing, Business Requirements, Testing
+Operational Acceptance Testing (OAT)	Testing that verifies the system is **operationally ready** (backups, disaster recovery, maintainability).	OAT, Operational Acceptance Testing, Operational Readiness, Testing
+Code Coverage	A metric that measures the **percentage of source code** executed during testing.	Code Coverage, Testing Metrics, Software Quality, White-box Testing
+Branch Coverage (Decision Coverage)	A metric ensuring that **every possible path** of a control structure (e.g., if/else) is executed.	Branch Coverage, Decision Coverage, Code Coverage, Metrics
+Mutation-based Fuzzing	A fuzzing technique that **modifies (mutates)** existing valid data samples to create test inputs.	Fuzz Testing, Mutation-based, Software Quality, Testing
+Protocol-based Fuzzing	A fuzzing technique that **generates data from scratch** based on a defined protocol or format specification.	Fuzz Testing, Generation-based, Protocol Testing, Testing
+Control Flow Analysis	A static analysis technique that maps the **logical paths** (branches, loops) that code can take.	Control Flow Analysis, Static Analysis, Logic Paths, Code Review
+Data Flow Analysis	A static analysis technique that tracks how **data is handled and moved** from inputs to outputs.	Data Flow Analysis, Static Analysis, Taint Analysis, Code Review
+Defect Clustering	The principle that a **small number of modules** usually contain the majority of defects in a system.	Defect Clustering, Software Quality, Principles, Testing
+Combinatorial Testing (e.g., Pairwise)	A method that tests **subsets of input combinations** to achieve broad coverage with fewer test cases.	Combinatorial Testing, Pairwise Testing, Testing Efficiency, Methodology

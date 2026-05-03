@@ -1,3 +1,7 @@
+---
+exam_weight: 12%
+---
+
 # Domain 6: Security Assessment and Testing
 
 **Exam Weight: ~12% | Approximately 14–18 questions on a 125-question exam**

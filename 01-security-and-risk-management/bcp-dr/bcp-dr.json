@@ -9,7 +9,7 @@
     ],
     "correct": 0,
     "explanation": "**Why A is correct**: **Maximum Tolerable Downtime (MTD)** is the longest period an organization can survive without a critical business function before the impact becomes unacceptable or survivability is threatened. The 6-hour figure represents this absolute upper limit. **Why B is wrong**: **Recovery Point Objective (RPO)** defines how much data loss is acceptable, expressed as a point in time, not a duration of downtime tolerance. **Why C is wrong**: **Work Recovery Time (WRT)** is the time needed to restore data and validate the recovered system after it is technically back online. **Why D is wrong**: **Recovery Time Objective (RTO)** is the target time within which a system must be restored after a disruption; it must be less than or equal to MTD.",
-    "category": "BCP/DR"
+    "category": "BIA, MTD, RTO"
   },
   {
     "question": "After a ransomware attack encrypts production databases, the incident response team restores from a backup that is 4 hours old. Consequently, 4 hours of transaction data is permanently lost. Which BIA metric did the organization fail to meet if its defined threshold for data loss was 1 hour?",
@@ -21,7 +21,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: **Recovery Point Objective (RPO)** defines the maximum acceptable amount of data loss measured in time. If the RPO is 1 hour but 4 hours of data was lost, the RPO was violated. **Why A is wrong**: **MTD** measures how long an organization can survive without a system; it concerns downtime duration, not data loss. **Why B is wrong**: **MTO** is essentially synonymous with MTD and does not measure data loss volume. **Why D is wrong**: **RTO** is the target time to restore a system to operation, measuring recovery speed rather than data loss magnitude.",
-    "category": "BCP/DR"
+    "category": "BIA, RPO, Data Loss"
   },
   {
     "question": "A disaster recovery planner is selecting an alternate processing site. The chosen site maintains fully mirrored, real-time copies of all systems and can assume production load within minutes of a failover command. Which type of alternate site BEST describes this facility?",
@@ -33,7 +33,7 @@
     ],
     "correct": 3,
     "explanation": "**Why D is correct**: A **hot site** is a fully equipped alternate facility with live, synchronized systems that can assume production operations within minutes to hours. Real-time data mirroring and near-instant failover are defining characteristics. **Why A is wrong**: A **mobile site** is a transportable facility (trailer, van) and is not typically a permanent mirrored facility. **Why B is wrong**: A **warm site** has hardware pre-installed but requires data restoration and configuration, typically taking hours to days. **Why C is wrong**: A **cold site** is a bare facility requiring hardware acquisition and installation, taking days to weeks.",
-    "category": "BCP/DR"
+    "category": "Alternate Sites, Hot Site, DR"
   },
   {
     "question": "During a BCP exercise, a team gathers to verbally walk through a scenario where a disaster destroys the primary data center. No systems are activated, no actual failover occurs, and the team reviews the plan document step-by-step. Which type of exercise is this?",
@@ -45,7 +45,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: A **tabletop exercise** (or structured walkthrough) is a discussion-based exercise where key personnel talk through response procedures against a hypothetical scenario without activating real systems. **Why A is wrong**: A **simulation test** is more advanced and may activate some systems or involve actual recovery procedures. **Why B is wrong**: A **parallel test** activates the alternate site while keeping the primary site running. **Why D is wrong**: A **full interruption test** shuts down the primary site to run entirely from the alternate site, which is far beyond a verbal walkthrough.",
-    "category": "BCP/DR"
+    "category": "BCP Testing, Tabletop Exercise"
   },
   {
     "question": "A company activates its alternate data center and runs production operations from it simultaneously with the primary site during a DR test. After validating the alternate site can handle full load, they cut back. Which test type was conducted?",
@@ -57,7 +57,7 @@
     ],
     "correct": 0,
     "explanation": "**Why A is correct**: A **parallel test** activates the alternate processing site and runs it concurrently with the primary site to validate that the alternate can sustain operations without disrupting live production. **Why B is wrong**: A **checklist review** is a simple review of plan documents. **Why C is wrong**: A **tabletop exercise** is purely discussion-based with no system activation. **Why D is wrong**: A **full interruption test** requires shutting down the primary site entirely, which did not happen here.",
-    "category": "BCP/DR"
+    "category": "BCP Testing, Parallel Test"
   },
   {
     "question": "A hospital's BCP team identifies that the electronic health records (EHR) system, pharmacy dispensing, and billing platform all depend on a shared LDAP directory for authentication. Which of the following BEST describes what the LDAP directory represents in the BIA?",
@@ -69,7 +69,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: During a BIA, identifying systems that multiple critical functions depend on reveals **single points of failure (SPOF)** and critical dependencies. If LDAP fails, it disrupts all dependent systems. **Why A is wrong**: A **critical success factor** is a management goal, not an infrastructure dependency. **Why C is wrong**: **RTO** is a time-based recovery target, not a component label. **Why D is wrong**: **MTD** is a time metric for survivability, not a label for a shared service.",
-    "category": "BCP/DR"
+    "category": "BIA, SPOF, Critical Dependency"
   },
   {
     "question": "Which statement MOST accurately distinguishes Business Continuity Planning (BCP) from Disaster Recovery Planning (DRP)?",
@@ -81,7 +81,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **BCP** is the broader framework ensuring critical business functions continue during and after a disruption. **DRP** is a subset focused specifically on restoring IT systems and infrastructure. BCP is proactive/strategic; DRP is reactive/tactical. **Why A is wrong**: This swaps the definitions. **Why C is wrong**: This also swaps the definitions. **Why D is wrong**: BCP and DRP have distinct scopes; treating them as identical is an architectural error.",
-    "category": "BCP/DR"
+    "category": "BCP, DRP, Strategy vs Tactics"
   },
   {
     "question": "Which activity is the FIRST step in the Business Continuity Planning (BCP) process according to standard frameworks?",
@@ -93,7 +93,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **Project initiation and scope definition** (or Project Management and Initiation) is the first phase. It establishes objectives, resources, and management commitment. **Why A is wrong**: The **BIA** is typically the second phase, following initiation and scoping. **Why C is wrong**: **Testing and maintenance** is the final, ongoing phase. **Why D is wrong**: **Strategy development** occurs after the BIA findings are available.",
-    "category": "BCP/DR"
+    "category": "BCP Lifecycle, Project Initiation"
   },
   {
     "question": "A crisis management team is responding to a fire that destroyed the primary call center. Which individual or role is BEST suited to hold the authority to declare a formal disaster and activate the DRP?",
@@ -105,7 +105,7 @@
     ],
     "correct": 0,
     "explanation": "**Why A is correct**: Disaster declaration authority should be vested in **pre-designated senior leadership** or a named Recovery Coordinator to ensure decisive action and prevent unauthorized, costly activations. **Why B is wrong**: The Help Desk Manager lacks the enterprise-wide authority to trigger a formal disaster response. **Why C is wrong**: Authority must be pre-assigned by role, not by who arrives first. **Why D is wrong**: Allowing any department head to declare a disaster leads to chaos and uncoordinated resource expenditure.",
-    "category": "BCP/DR"
+    "category": "DRP Activation, Crisis Management"
   },
   {
     "question": "A bank's BIA determines that its core system has an MTD of 4 hours and an RPO of 30 minutes. The current backup strategy performs nightly full backups and differentials every 4 hours. Which statement BEST describes the gap in this strategy?",
@@ -117,7 +117,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: An **RPO of 30 minutes** means no more than 30 minutes of data loss is acceptable. A 4-hour backup frequency allows for up to 4 hours of data loss, violating the RPO. **Why A is wrong**: The 4-hour cycle clearly fails the 30-minute RPO. **Why B is wrong**: The strategy fails the RPO. **Why D is wrong**: Backup frequency is the primary determinant for whether an RPO can be met.",
-    "category": "BCP/DR"
+    "category": "BIA, RPO, Backup Strategy"
   },
   {
     "question": "A VP of Operations is the only person authorized to activate the alternate site. A BCP planner recommends adding a named backup authority. This recommendation BEST addresses which planning concern?",
@@ -129,7 +129,7 @@
     ],
     "correct": 3,
     "explanation": "**Why D is correct**: Having a single individual as the sole authority creates a **single point of failure (SPOF)**. If they are unavailable, recovery cannot proceed. Succession planning ensures a chain of authority. **Why A is wrong**: This is an authority gap, not a missing BIA. **Why B is wrong**: RPO concerns data loss, not decision-making authority. **Why C is wrong**: Alternate site capacity is a technical resource issue, not a governance issue.",
-    "category": "BCP/DR"
+    "category": "SPOF, Succession Planning, BCP"
   },
   {
     "question": "The time required to restore data, test systems, and validate recovery after the hardware is back online at a cold site is BEST represented by which metric?",
@@ -141,7 +141,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: **Work Recovery Time (WRT)** is the 'last mile' of recovery, covering data restoration and validation after systems are technically online but before they are released to users. **Why A is wrong**: **RTO** is the total target time from disaster to operational status (including WRT). **Why B is wrong**: **RPO** measures data loss (time-based), not the time to perform recovery activities. **Why D is wrong**: **MTD** is the absolute maximum downtime allowed, not a duration of a specific recovery phase.",
-    "category": "BCP/DR"
+    "category": "WRT, RTO, MTD"
   },
   {
     "question": "A BIA assigns each business process a Maximum Tolerable Downtime (MTD). System A has an MTD of 1 hour, System B has 24 hours, and System C has 72 hours. Which of the following is the BEST recovery priority order?",
@@ -153,7 +153,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: Processes with the **shortest MTD** must be recovered first because they reach their threshold of unacceptability soonest. **Why A is wrong**: Recovering C first would allow A to breach its 1-hour limit. **Why C is wrong**: Simultaneous recovery is often impossible due to resource constraints; MTD provides the logical sequence. **Why D is wrong**: Priority must flow from most time-critical (shortest MTD) to least.",
-    "category": "BCP/DR"
+    "category": "BIA, MTD, Recovery Priority"
   },
   {
     "question": "A DR test reveals that the alternate site's network bandwidth is insufficient for peak volumes, causing significant degradation. Which of the following is the PRIMARY value provided by this test?",
@@ -165,7 +165,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: The primary goal of DR testing is to **identify gaps** (like insufficient bandwidth) in a controlled environment so they can be remediated before a real disaster. **Why A is wrong**: A failed test should lead to plan improvement, not abandonment. **Why C is wrong**: The test revealed a gap, so the plan is not yet validated for archiving. **Why D is wrong**: Compliance requires remediation of findings, not just the act of testing.",
-    "category": "BCP/DR"
+    "category": "DRP Testing, Gap Analysis"
   },
   {
     "question": "A BCP manager proposes a reciprocal agreement for an alternate site. Which of the following is the MOST valid concern regarding this arrangement?",
@@ -177,7 +177,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: **Reciprocal agreements** suffer from regional dependency (both parties hit by same disaster) and 'double-booking' risk where neither has capacity to host the other during a crisis. **Why A is wrong**: Reciprocal agreements are typically the cheapest (often $0) option. **Why B is wrong**: They are not prohibited, just recognized as high-risk. **Why D is wrong**: NIST recognizes them but notes their significant limitations.",
-    "category": "BCP/DR"
+    "category": "Alternate Sites, Reciprocal Agreement"
   },
   {
     "question": "A database backup strategy requires a full backup on Sunday, with daily backups of only the files changed since the previous day. Restoring on Friday requires the Sunday set plus Monday, Tuesday, Wednesday, and Thursday sets. Which backup strategy is BEST described here?",
@@ -189,7 +189,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: An **incremental backup** captures changes since the last backup of any type. Restoration requires the full backup plus *every* subsequent incremental set. **Why A is wrong**: A **mirror backup** is a real-time replica. **Why B is wrong**: A **differential backup** captures all changes since the last *full* backup; restoration would only need the Sunday full and the Thursday differential. **Why D is wrong**: A **synthetic full backup** creates a new full backup from previous sets, but the described restoration sequence is a classic incremental pattern.",
-    "category": "BCP/DR"
+    "category": "Backup Strategy, Incremental Backup"
   },
   {
     "question": "Compared to a traditional physical warm site, which of the following is the PRIMARY advantage of cloud-based disaster recovery (Cloud DR)?",
@@ -201,7 +201,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **Cloud DR** converts CapEx (owning hardware) into OpEx (pay-as-you-go) and allows the organization to scale resources only when needed for a disaster. **Why A is wrong**: Cloud DR does not guarantee zero RTO; bandwidth and data volume still affect recovery time. **Why C is wrong**: BIA and RPO remain essential for configuring the Cloud DR strategy. **Why D is wrong**: Accountability remains with the controller under the shared responsibility model.",
-    "category": "BCP/DR"
+    "category": "Cloud DR, CapEx vs OpEx, Scalability"
   },
   {
     "question": "Option A commits a database transaction only after it is written to both the primary and remote DR sites. Option B commits to the primary immediately and propagates it to the DR site afterward. Which option BEST satisfies a near-zero RPO, and what is its PRIMARY trade-off?",
@@ -213,7 +213,7 @@
     ],
     "correct": 0,
     "explanation": "**Why A is correct**: **Synchronous replication** (Option A) ensures the DR site is always in sync (near-zero RPO) but at the cost of **write latency** because the primary must wait for confirmation from the remote site. **Why B is wrong**: Asynchronous replication (Option B) has an RPO gap due to propagation lag. **Why C is wrong**: Asynchronous replication minimizes latency but risks data loss (RPO gap). **Why D is wrong**: Synchronous replication always adds some latency due to network transit and remote I/O.",
-    "category": "BCP/DR"
+    "category": "Synchronous Replication, RPO, Write Latency"
   },
   {
     "question": "Only one senior engineer knows how to configure the core trading platform, and no runbooks exist. Which continuity planning element does this scenario BEST highlight?",
@@ -225,7 +225,7 @@
     ],
     "correct": 0,
     "explanation": "**Why A is correct**: This is a classic **key person dependency**. Succession planning and cross-training (plus documentation) are the required BCP mitigations. **Why B is wrong**: The issue is knowledge and personnel, not the physical facility. **Why C is wrong**: RPO concerns data loss intervals, not configuration knowledge. **Why D is wrong**: A reciprocal agreement won't solve the lack of internal knowledge.",
-    "category": "BCP/DR"
+    "category": "Succession Planning, Key Person Dependency"
   },
   {
     "question": "Which of the following sub-plans BEST addresses how an organization communicates with employees, media, and regulators during a disruptive event?",
@@ -237,7 +237,7 @@
     ],
     "correct": 3,
     "explanation": "**Why D is correct**: A **Crisis Communications Plan** defines spokespersons, contact lists, and messaging for all stakeholders during a crisis. **Why A is wrong**: **DRP** is focused on technical restoration of IT services. **Why B is wrong**: **IRP** focuses on technical containment and eradication of security incidents. **Why C is wrong**: **BIA** is an analytical process to set recovery targets, not a communication procedure.",
-    "category": "BCP/DR"
+    "category": "Crisis Communications, DRP"
   },
   {
     "question": "A BCP was last updated three years ago. Since then, the organization has migrated to the cloud and changed critical vendors. Which of the following BEST describes the recommended maintenance for this plan?",
@@ -249,7 +249,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: BCP is an iterative process. Plans must be updated on a **periodic schedule** AND whenever **significant changes** (new systems, vendors, or facilities) occur. **Why A is wrong**: Waiting for an annual review when major changes have occurred leaves the plan dangerously outdated. **Why B is wrong**: This is reactive and defeats the purpose of being prepared. **Why D is wrong**: Testing validates the plan at a point in time; maintenance ensures it stays relevant.",
-    "category": "BCP/DR"
+    "category": "BCP Maintenance, Change Management"
   },
   {
     "question": "A single overseas supplier provides 90% of a critical component. A disaster at their facility would halt production within two weeks. Which BCP domain does this risk BEST fall under?",
@@ -261,7 +261,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: This is a **supply chain continuity** risk. Mitigation involves qualifying secondary suppliers and maintaining safety stock. **Why A is wrong**: Facilities continuity covers the organization's own buildings. **Why B is wrong**: Personnel continuity covers staff availability. **Why D is wrong**: IT DR covers technology system restoration.",
-    "category": "BCP/DR"
+    "category": "Supply Chain Continuity, BCP"
   },
   {
     "question": "Purchasing a cyber insurance policy to offset financial losses from a disaster BEST represents which risk treatment or recovery strategy?",
@@ -273,7 +273,7 @@
     ],
     "correct": 0,
     "explanation": "**Why A is correct**: **Risk transference** shifts the financial impact of a risk to a third party (an insurer). It does not prevent the event but provides financial recovery. **Why B is wrong**: **Avoidance** means stopping the activity that creates the risk. **Why C is wrong**: **Mitigation** involves reducing the likelihood or impact through controls (e.g., firewalls). **Why D is wrong**: **Acceptance** means absorbing the loss without any external financial or technical help.",
-    "category": "BCP/DR"
+    "category": "Risk Transference, Cyber Insurance"
   },
   {
     "question": "Which of the following BEST defines the overarching management system framework for business continuity, as described in ISO 22301?",
@@ -285,7 +285,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: A **Business Continuity Management System (BCMS)** is the governance framework (policies, leadership, audit) that manages the overall BCP program. **Why A is wrong**: A **BCP** is an individual plan document, not the management system. **Why B is wrong**: A **BIA** is an analysis process used as an input. **Why D is wrong**: A **DRP** is a technical subset of the broader BCP.",
-    "category": "BCP/DR"
+    "category": "BCMS, ISO 22301, Governance"
   },
   {
     "question": "An alternate site is 15 miles from the primary data center. Which of the following is the PRIMARY concern regarding this geographic selection?",
@@ -297,7 +297,7 @@
     ],
     "correct": 3,
     "explanation": "**Why D is correct**: The primary concern is **regional disaster overlap**. A single earthquake, flood, or power grid failure could easily impact both sites if they are only 15 miles apart. **Why A is wrong**: EMI is not a concern at this distance. **Why B is wrong**: This is a distance issue, not a cross-border legal issue. **Why C is wrong**: 15 miles is a short distance for modern fiber; latency for replication would be minimal.",
-    "category": "BCP/DR"
+    "category": "Alternate Sites, Geographic Diversity"
   },
   {
     "question": "A DR team discovers that the last successful backup restore test was 18 months ago, before software upgrades. Which critical practice does this scenario BEST illustrate a failure of?",
@@ -309,7 +309,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: Backups are not proven recovery assets until they are **verified through restore testing**. Upgrading software without re-testing restoration creates a high risk of unrecoverable data. **Why A is wrong**: The issue is recoverability, not storage space. **Why C is wrong**: Replication is a different strategy; the failure here is in backup management. **Why D is wrong**: This is a process/technical failure, not a personnel succession issue.",
-    "category": "BCP/DR"
+    "category": "Backup Verification, Restore Testing"
   },
   {
     "question": "Interviewing department heads to map business functions to revenue impact and regulatory obligations is the core of which BIA methodology step?",
@@ -321,7 +321,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **Criticality ranking** involves identifying what the business does and determining how important those functions are to survival. This must precede setting RTOs. **Why A is wrong**: Site selection happens after recovery requirements are defined. **Why C is wrong**: RTO assignment follows the identification of critical functions. **Why D is wrong**: Control gap analysis is a general risk activity, not the specific BIA step described.",
-    "category": "BCP/DR"
+    "category": "BIA, Criticality Ranking"
   },
   {
     "question": "Downtime costs $500,000/hour and MTD is 4 hours. A hot site costs $3M/year, while a warm site costs $800,000/year but adds 12 hours to RTO. Which principle BEST guides the recovery strategy selection?",
@@ -333,7 +333,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: CISSP principles dictate that **countermeasures (strategies) must be cost-effective**. If the warm site's 12-hour delay breaches the 4-hour MTD, it's not a valid option, but the hot site must also be justified by the potential loss. **Why A is wrong**: This ignores the cost-benefit requirement. **Why B is wrong**: Cost is always a factor in enterprise risk management. **Why D is wrong**: The cheapest option is invalid if it fails to meet the RTO/MTD requirements.",
-    "category": "BCP/DR"
+    "category": "Recovery Strategy, Cost-Benefit Analysis"
   },
   {
     "question": "An agreement between two private entities to provide each other with temporary office space during a disaster, without guaranteed service levels or legal obligations, is BEST described as a:",
@@ -345,7 +345,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: A **reciprocal agreement** is an informal, non-binding arrangement between peers. It is the least reliable alternate site strategy. **Why A is wrong**: **Mutual aid agreements** are typically between government agencies or utilities. **Why C is wrong**: A **hot site contract** is a commercial, binding agreement with a provider. **Why D is wrong**: Reciprocal agreements usually lack enforceable SLAs.",
-    "category": "BCP/DR"
+    "category": "Reciprocal Agreement, Alternate Sites"
   },
   {
     "question": "Which of the following is the PRIMARY reason for requiring a BCP update after a declared disaster or DR test?",
@@ -357,6 +357,6 @@
     ],
     "correct": 3,
     "explanation": "**Why D is correct**: The **lessons learned** process is critical. Any gap found during a real disaster or a test (e.g., a wrong phone number or insufficient bandwidth) must be fixed to ensure the plan works next time. **Why A is wrong**: Ownership should stay with the business/BCM function. **Why B is wrong**: Audit is a driver, but operational effectiveness is the primary goal. **Why C is wrong**: RTOs and MTDs are validated or adjusted, not reset to zero.",
-    "category": "BCP/DR"
+    "category": "BCP Lifecycle, Lessons Learned"
   }
 ]

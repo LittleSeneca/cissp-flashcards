@@ -9,7 +9,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: The fundamental tenet of Zero Trust is **'Never trust, always verify'**, meaning no user or device is trusted by default, regardless of its location. **Why A is wrong**: 'Trust but verify' is a traditional approach that Zero Trust replaces. **Why C/D are wrong**: These represent the 'castle and moat' model that Zero Trust moves away from.",
-    "category": "Zero Trust, Principles"
+    "category": "Zero Trust Architecture, ZT Principles, Continuous Verification"
   },
   {
     "question": "In the NIST SP 800-207 framework, which component is responsible for the actual 'pass' or 'deny' decision for a resource request?",
@@ -21,7 +21,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: The **Policy Decision Point (PDP)** (comprised of the Policy Engine and Policy Administrator) is responsible for deciding whether to grant access. **Why A is wrong**: The **Policy Enforcement Point (PEP)** is responsible for *executing* the decision (e.g., a gateway or agent). **Why C/D are wrong**: PAP manages policies; PIP provides attributes (context) for the decision.",
-    "category": "Zero Trust, Frameworks"
+    "category": "Zero Trust Architecture, NIST SP 800-207, Policy Decision Point"
   },
   {
     "question": "Zero Trust shifts security focus away from network segments (VLANs/subnets) and towards which of the following?",
@@ -33,7 +33,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: Zero Trust is **identity-centric** and **resource-centric**, focusing on protecting individual assets (data, services, devices) based on authenticated identity and context. **Why A/B/D are wrong**: While important, they are not the primary shift in focus for Zero Trust.",
-    "category": "Zero Trust, Principles, Network Access"
+    "category": "Zero Trust Architecture, Identity-Centric Security, Resource-Centric Security"
   },
   {
     "question": "Which component of the Zero Trust Control Plane is responsible for communicating with the Policy Enforcement Point (PEP) to open or close the 'gate' to a resource?",
@@ -45,7 +45,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: The **Policy Administrator** is the component that executes the decision by sending commands to the PEP. **Why A is wrong**: The **Policy Engine** makes the ultimate decision but doesn't communicate with the PEP directly. **Why C/D are wrong**: These are external data sources (PIPs) that inform the decision.",
-    "category": "Zero Trust, ZT Architecture, PEP"
+    "category": "Zero Trust Architecture, Policy Administrator, Control Plane"
   },
   {
     "question": "According to NIST SP 800-207, which of the following is a tenet of Zero Trust?",
@@ -57,7 +57,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: A key tenet is that **all data sources and computing services are considered resources** that must be protected. **Why A/D are wrong**: Zero Trust eliminates implicit trust based on location or IP. **Why C is wrong**: Verification must be **continuous**.",
-    "category": "Zero Trust, Principles, Frameworks"
+    "category": "Zero Trust Architecture, NIST SP 800-207, ZT Tenets"
   },
   {
     "question": "An organization wants to implement Zero Trust. Which of the following should be their FIRST step?",
@@ -69,7 +69,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: The first step in any Zero Trust journey is identifying what you are trying to protect—the **'Protect Surface'** (DAAS: Data, Assets, Applications, Services). **Why A/B/D are wrong**: These are implementation details that follow identification and strategy.",
-    "category": "Zero Trust, Protect Surface, Strategy"
+    "category": "Zero Trust Implementation, Protect Surface, ZT Strategy"
   },
   {
     "question": "In a Zero Trust environment, 'context-aware access' might consider which of the following when deciding to grant access?",
@@ -81,7 +81,7 @@
     ],
     "correct": 3,
     "explanation": "**Why D is correct**: Zero Trust decisions are **dynamic** and consider multiple attributes, including identity, device posture, location, and behavior. **Why A/B/C are wrong**: Each is only a partial list of the context used.",
-    "category": "Zero Trust"
+    "category": "Zero Trust Architecture, Context-Aware Access, Dynamic Policy"
   },
   {
     "question": "Which of the following technologies is MOST commonly associated with implementing a Policy Enforcement Point (PEP) in a Zero Trust architecture?",
@@ -93,7 +93,7 @@
     ],
     "correct": 3,
     "explanation": "**Why D is correct**: PEPs can be implemented in various ways, including gateways (NGFW/CASB), proxies, or agents on the endpoint. **Why A/B/C are wrong**: Each is only one possible implementation.",
-    "category": "Zero Trust, ZT Architecture, PEP"
+    "category": "Zero Trust Architecture, Policy Enforcement Point, ZT Controls"
   },
   {
     "question": "What is the primary role of the 'Policy Engine' in a Zero Trust Decision Point?",
@@ -105,7 +105,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: The **Policy Engine** is the 'brain' that evaluates the request using policy and context (from PIPs) to reach a decision. **Why A/C/D are wrong**: These are functions of other components (IdP, PEP, or EDR).",
-    "category": "Zero Trust, ZT Architecture, PDP"
+    "category": "Zero Trust Architecture, Policy Engine, PDP"
   },
   {
     "question": "Which Zero Trust concept ensures that an attacker who compromises one device cannot easily access other resources on the network?",
@@ -117,7 +117,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **Microsegmentation** (and the related concept of Micro-perimeters) isolates resources so that access must be verified for each one, preventing lateral movement. **Why A/D are wrong**: These facilitate rather than prevent lateral movement. **Why C is wrong**: VPNs often grant broad access once connected.",
-    "category": "Zero Trust"
+    "category": "Zero Trust Architecture, Microsegmentation, Lateral Movement"
   },
   {
     "question": "In a Zero Trust Architecture, what happens if a user's device health changes (e.g., a critical patch is missing) AFTER the initial access to a resource was granted?",
@@ -129,7 +129,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **Continuous Verification** is a core Zero Trust principle. Access is not a one-time decision; the system must monitor context and adjust access dynamically if the risk profile changes. **Why A, C, and D are wrong**: These describe static, 'perimeter-style' session management that Zero Trust aims to eliminate.",
-    "category": "Zero Trust, Continuous Verification, Principles"
+    "category": "Zero Trust Architecture, Continuous Verification, Posture Assessment"
   },
   {
     "question": "Zero Trust Network Access (ZTNA) is PRIMARILY intended to replace which legacy technology for remote work?",
@@ -141,7 +141,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **ZTNA** provides granular, identity-based access to specific applications, whereas traditional **VPNs** often grant broad, network-level access to an entire segment, which violates the principle of least privilege. **Why A, C, and D are wrong**: ZTNA does not replace these; it may even use PKI for its own security.",
-    "category": "Zero Trust, ZTNA, Network Access"
+    "category": "Zero Trust Architecture, ZTNA, Remote Access VPN"
   },
   {
     "question": "Which component of the Zero Trust architecture provides the necessary 'attributes' (e.g., threat intelligence, HR records, device state) for the Policy Engine to make an informed decision?",
@@ -153,7 +153,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: The **Policy Information Point (PIP)** acts as the source of truth for the context (attributes) used in the trust algorithm. **Why A is wrong**: PAP manages the policies themselves. **Why B is wrong**: PEP enforces the decision. **Why D is wrong**: The Data Plane is where the actual traffic flows.",
-    "category": "Zero Trust, ZT Architecture, PDP"
+    "category": "Zero Trust Architecture, Policy Information Point, Contextual Attributes"
   },
   {
     "question": "What is meant by an 'Implicit Trust Zone' in a Zero Trust environment?",
@@ -165,7 +165,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: An **Implicit Trust Zone** is the area behind a Policy Enforcement Point (PEP) where the PEP can no longer differentiate or control traffic. The goal of Zero Trust is to make these zones as small as possible (e.g., a single resource). **Why A and B are wrong**: Zero Trust seeks to eliminate default trust. **Why D is wrong**: The internet is considered untrusted.",
-    "category": "Zero Trust, ZT Architecture"
+    "category": "Zero Trust Architecture, Implicit Trust Zone, Micro-Perimeters"
   },
   {
     "question": "When implementing Zero Trust, what is the purpose of 'Mapping the Transaction Flows'?",
@@ -177,7 +177,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: Mapping flows is the second step in implementation (after identifying the protect surface). You cannot secure what you don't understand; knowing how data flows allows you to place PEPs and write policies correctly. **Why A, C, and D are wrong**: These are unrelated to the ZT implementation methodology.",
-    "category": "Zero Trust, Strategy, Implementation"
+    "category": "Zero Trust Implementation, Transaction Flow Mapping, ZT Methodology"
   },
   {
     "question": "Which of the following is the BEST example of 'Adaptive Authentication' in a Zero Trust context?",
@@ -189,7 +189,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **Adaptive (or Risk-based) Authentication** adjusts the security requirements based on the risk level of the request's context. **Why A is wrong**: This is the opposite of adaptive. **Why C and D are wrong**: These do not describe adaptive risk-based logic.",
-    "category": "Zero Trust, Adaptive Authentication, IAM"
+    "category": "Zero Trust Architecture, Adaptive Authentication, Risk-Based Access"
   },
   {
     "question": "A company has legacy mainframes that do not support modern identity protocols or MFA. How can Zero Trust be applied to these systems?",
@@ -201,7 +201,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: You can wrap legacy systems in a **Zero Trust 'wrapper'** (a proxy or gateway) that handles the authentication and authorization, only passing traffic to the legacy system once the request is verified. **Why A is wrong**: ZT is an architecture that can be applied to almost any system. **Why C is wrong**: Not always feasible. **Why D is wrong**: This violates least privilege.",
-    "category": "Zero Trust, Implementation"
+    "category": "Zero Trust Implementation, ZT Proxy, Legacy System Security"
   },
   {
     "question": "In the NIST SP 800-207 Zero Trust model, which of the following is NOT an external source used by the Policy Information Point (PIP)?",
@@ -213,7 +213,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: The **physical power supply** is not a source of identity or security context used for access decisions. **Why A, B, and D are wrong**: These are all valid examples of information sources that a PIP uses to inform the Policy Engine.",
-    "category": "Zero Trust, ZT Architecture, PIP, Frameworks"
+    "category": "Zero Trust Architecture, Policy Information Point, NIST SP 800-207"
   },
   {
     "question": "What is the primary difference between Zero Trust and traditional 'Castle and Moat' security?",
@@ -225,7 +225,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: Traditional security relies on a **trusted internal network**. **Zero Trust** eliminates the concept of 'internal' vs 'external' trust, requiring verification for every request regardless of origin. **Why A is wrong**: ZT uses different controls, not just 'more firewalls'. **Why B is wrong**: The roles are reversed. **Why D is wrong**: ZT is for any environment.",
-    "category": "Zero Trust, Principles, Network Access"
+    "category": "Zero Trust Architecture, ZT Principles, Perimeter-Less Security"
   },
   {
     "question": "Which principle ensures that a user only has access to the specific resources required to perform their job, and only for the duration needed?",
@@ -237,6 +237,6 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **Dynamic Least Privilege** (or Just-in-Time access) is a core ZT principle that ensures permissions are as narrow as possible and granted only when needed. **Why A, C, and D are wrong**: While important, they don't specifically describe the dynamic, narrow access required by ZT.",
-    "category": "Zero Trust"
+    "category": "Zero Trust Architecture, Least Privilege, Just-In-Time Access"
   }
 ]

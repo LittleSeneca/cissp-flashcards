@@ -9,7 +9,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: 'Shift Left' refers to moving security activities (testing, analysis, etc.) earlier in the SDLC. Early detection significantly reduces the cost and effort required to fix vulnerabilities. **Why A is wrong**: While it may optimize workflows, it doesn't necessarily reduce the total headcount. **Why C is wrong**: Manual review of all code is a bottleneck and contrary to the automation goals of DevSecOps. **Why D is wrong**: DAST is still necessary to find runtime issues that SAST might miss.",
-    "category": "DevSecOps"
+    "category": "DevSecOps, Shift Left, SDLC"
   },
   {
     "question": "A security engineer is configuring 'Security as Code' within a CI/CD pipeline. Which of the following BEST describes this practice?",
@@ -21,7 +21,7 @@
     ],
     "correct": 0,
     "explanation": "**Why A is correct**: Security as Code involves defining security policies, compliance checks, and tests in code (e.g., YAML, Python), allowing them to be versioned and automated within the pipeline. **Why B is wrong**: This is a training/personnel security measure, not 'as code'. **Why C is wrong**: This is a standard infrastructure security control. **Why D is wrong**: Standard languages are used to implement security as code.",
-    "category": "DevSecOps"
+    "category": "DevSecOps, Security as Code, CI/CD"
   },
   {
     "question": "During a pipeline execution, a secret scanning tool identifies a hardcoded AWS access key in a configuration file. What is the BEST immediate action the DevSecOps team should take?",
@@ -33,7 +33,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: Once a secret is committed to a repository, it must be considered compromised. Revocation and rotation are the only ways to ensure the secret cannot be used by an attacker. **Why A is wrong**: Removing it from the current commit doesn't remove it from the git history. **Why B is wrong**: Private repositories can still be accessed by unauthorized users or insiders. **Why D is wrong**: Development keys often have permissions that can be leveraged for lateral movement.",
-    "category": "DevSecOps"
+    "category": "DevSecOps, Secret Scanning, Credential Management"
   },
   {
     "question": "Which of the following pipeline hardening techniques BEST prevents unauthorized changes to the build process?",
@@ -45,7 +45,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: Ephemeral and hardened runners ensure a clean state for every build, minimizing the risk of persistent malware or 'poisoned' environments. **Why A is wrong**: Principle of Least Privilege should be applied; root is rarely needed. **Why C is wrong**: Pipeline configurations (e.g., Jenkinsfile) should be subject to code review. **Why D is wrong**: This violates confidentiality and integrity.",
-    "category": "DevSecOps"
+    "category": "DevSecOps, Pipeline Security, Hardening"
   },
   {
     "question": "When integrating Static Application Security Testing (SAST) into a CI/CD pipeline, what is the MOST common challenge faced by development teams?",
@@ -57,7 +57,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: SAST tools often flag many potential issues that are not actually exploitable, which can overwhelm developers if not properly tuned. **Why A is wrong**: Modern tools support most common languages. **Why C is wrong**: DAST requires a running app; SAST analyzes source code or binaries. **Why D is wrong**: Software Composition Analysis (SCA) handles dependencies; SAST handles custom code.",
-    "category": "DevSecOps"
+    "category": "DevSecOps, SAST, False Positives"
   },
   {
     "question": "An organization wants to ensure that only approved containers are deployed to production. Which control is the MOST effective for this goal?",
@@ -69,7 +69,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: Image signing (e.g., using Notary or Cosign) ensures the integrity and provenance of the image. The deployment controller can be configured to only allow signed images. **Why A is wrong**: Scanning is important but doesn't guarantee the image hasn't been tampered with after scanning. **Why C is wrong**: This is a resource management control. **Why D is wrong**: WAF protects at the application layer, not the deployment layer.",
-    "category": "DevSecOps"
+    "category": "DevSecOps, Container Security, Image Signing"
   },
   {
     "question": "Which of the following BEST describes 'Immutable Infrastructure' in a cloud-native environment?",
@@ -81,7 +81,7 @@
     ],
     "correct": 0,
     "explanation": "**Why A is correct**: Immutable infrastructure means that instead of making changes (like patching) to live servers, you replace them with a new image that has the changes. This ensures consistency and prevents configuration drift. **Why B is wrong**: It can be changed, but only by replacement. **Why C is wrong**: Cloud-native usually relies on virtualization/containers. **Why D is wrong**: This is the opposite of the automated, code-based approach of immutability.",
-    "category": "DevSecOps"
+    "category": "DevSecOps, Immutable Infrastructure, Cloud Native"
   },
   {
     "question": "In a DevSecOps environment, who is PRIMARILY responsible for the security of the application code?",
@@ -93,7 +93,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: DevSecOps emphasizes 'shared responsibility,' but the development team is primarily responsible for writing secure code and remediating vulnerabilities found during development. **Why A is wrong**: The security team provides tools and guidance but cannot be the sole owner of all code security. **Why C is wrong**: Operations focuses on the infrastructure and pipeline. **Why D is wrong**: Auditors verify controls but do not implement them.",
-    "category": "DevSecOps"
+    "category": "DevSecOps, Shared Responsibility, Culture"
   },
   {
     "question": "A CI/CD pipeline uses a 'Quality Gate'. What is the function of this gate?",
@@ -104,8 +104,8 @@
       "To automatically fix all bugs found during the testing phase"
     ],
     "correct": 1,
-    "explanation": "**Why B is correct**: Quality Gates are automated checks (e.g., 'no high vulnerabilities', 'unit test coverage > 80%') that must pass for the code to proceed to the next stage. **Why A is wrong**: This is a transport security measure. **Why C is wrong**: DevSecOps favors automation over manual high-level approvals for every release. **Why D is wrong**: Tools identify bugs; they rarely fix them automatically in a reliable way.",
-    "category": "DevSecOps"
+    "explanation": "**Why B is correct**: Quality Gates are automated checks (e.g., 'no high vulnerabilities', 'unit test coverage > 80%') that must pass for the code to proceed to the next stage. **Why A is wrong**: This is a transport security measure. **Why C is wrong**: DevSecOps favors automation over manual gates for every release. **Why D is wrong**: Tools identify bugs; they rarely fix them automatically in a reliable way.",
+    "category": "DevSecOps, CI/CD, Quality Gate"
   },
   {
     "question": "Which tool is BEST suited for identifying vulnerable open-source libraries in a project's dependency tree?",
@@ -117,7 +117,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: SCA tools specifically analyze third-party libraries and dependencies for known vulnerabilities (CVEs) and licensing issues. **Why A is wrong**: SAST analyzes custom code. **Why B is wrong**: DAST tests the running application from the outside. **Why D is wrong**: RASP is a security agent that runs inside the application during execution.",
-    "category": "DevSecOps"
+    "category": "DevSecOps, SCA, Supply Chain Security"
   },
   {
     "question": "An organization is adopting 'Policy as Code' to automate compliance checks. Which tool or framework is MOST commonly used for this purpose in cloud-native environments?",
@@ -129,7 +129,7 @@
     ],
     "correct": 0,
     "explanation": "**Why A is correct**: **Open Policy Agent (OPA)** is a widely used engine for 'Policy as Code' that allows organizations to define and enforce fine-grained policies across the stack (Kubernetes, Terraform, APIs). **Why B and C are wrong**: These are network analysis and penetration testing tools. **Why D is wrong**: Jenkins is a CI/CD orchestrator, not a policy engine.",
-    "category": "DevSecOps"
+    "category": "DevSecOps, Policy as Code, OPA"
   },
   {
     "question": "A DevSecOps team wants to prevent developers from accidentally committing cleartext secrets to the git repository. Which mechanism is BEST for catching this BEFORE the code leaves the developer's machine?",
@@ -141,7 +141,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **Pre-commit hooks** run locally on the developer's machine and can block a 'git commit' if they detect patterns matching API keys or passwords. **Why A is wrong**: Manual reviews are too slow and infrequent. **Why C is wrong**: By the time it's scanned after deployment, the secret is already in the history. **Why D is wrong**: This doesn't address the content of the commits.",
-    "category": "DevSecOps"
+    "category": "DevSecOps, Pre-commit Hooks, Secrets Management"
   },
   {
     "question": "Which deployment strategy involves running two identical production environments and shifting traffic from the old version to the new version using a load balancer or DNS change?",
@@ -153,7 +153,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **Blue-Green Deployment** reduces risk by having two environments; if 'Green' (new) fails, you quickly switch traffic back to 'Blue' (old). **Why A is wrong**: Rolling updates replace instances one by one. **Why C is wrong**: Canary deployment sends a small percentage of traffic to the new version first. **Why D is wrong**: A/B testing is for feature comparison, not primarily for deployment safety.",
-    "category": "DevSecOps"
+    "category": "DevSecOps, Deployment Strategies, Blue-Green"
   },
   {
     "question": "A security engineer is implementing 'Drift Detection' for the production environment. What is the PRIMARY goal of this capability?",
@@ -165,7 +165,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **Drift Detection** alerts the team when the actual state of the infrastructure differs from the desired state defined in code, helping to prevent 'snowflake' servers and unauthorized manual changes. **Why A, C, and D are wrong**: These do not describe the concept of infrastructure drift.",
-    "category": "DevSecOps"
+    "category": "DevSecOps, Drift Detection, IaC"
   },
   {
     "question": "What is the PRIMARY security benefit of using 'Distroless' container images?",
@@ -177,7 +177,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **Distroless** images contain only the application and its runtime dependencies. By removing shells (like bash) and package managers (like apt), an attacker who gains execution has fewer tools to use for lateral movement. **Why A is wrong**: This is a performance benefit, not the primary *security* benefit. **Why C and D are wrong**: These are technically incorrect statements about containers.",
-    "category": "DevSecOps"
+    "category": "DevSecOps, Container Security, Distroless"
   },
   {
     "question": "An organization uses 'GitOps' to manage its Kubernetes clusters. Where is the 'Single Source of Truth' for the desired state of the infrastructure located?",
@@ -189,7 +189,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: In **GitOps**, the entire system state is described in Git. Automated operators then ensure the live environment matches the state defined in the repository. **Why A, C, and D are wrong**: These do not reflect the GitOps philosophy of declarative infrastructure in version control.",
-    "category": "DevSecOps"
+    "category": "DevSecOps, GitOps, Kubernetes"
   },
   {
     "question": "Which of the following describes 'Chaos Engineering' in the context of security (Security Chaos Engineering)?",
@@ -201,7 +201,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **Security Chaos Engineering** involves experiments (like 'what happens if this security group is deleted?') to ensure that security controls and monitoring work as expected under stress. **Why A and C are wrong**: These are just bad practices. **Why D is wrong**: This is illegal; penetration testing requires authorization.",
-    "category": "DevSecOps"
+    "category": "DevSecOps, Chaos Engineering, Resilience"
   },
   {
     "question": "In a CI/CD pipeline, what is the role of an 'Artifact Repository' (like Artifactory or Nexus) from a security perspective?",
@@ -213,7 +213,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: An **Artifact Repository** allows for the management of built software. Security teams can scan these artifacts for vulnerabilities and sign them to ensure integrity before they are deployed. **Why A is wrong**: Git stores source code; repositories store artifacts. **Why C and D are wrong**: These are unrelated functions.",
-    "category": "DevSecOps"
+    "category": "DevSecOps, Artifact Repository, Supply Chain"
   },
   {
     "question": "Which of the following is a key characteristic of the 'DevSecOps Culture'?",
@@ -225,7 +225,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **DevSecOps** breaks down silos and encourages all teams to take ownership of security throughout the lifecycle. **Why A is wrong**: This is the traditional 'siloed' model. **Why C is wrong**: DevSecOps aims for security *at* speed. **Why D is wrong**: DevSecOps favors automation over manual gates.",
-    "category": "DevSecOps"
+    "category": "DevSecOps, Culture, Shared Responsibility"
   },
   {
     "question": "A security engineer is configuring 'Runtime Application Self-Protection' (RASP) for a critical web application. What is the PRIMARY advantage of RASP over a traditional WAF?",
@@ -237,6 +237,6 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **RASP** runs inside the application and can see data flow and function calls, allowing it to distinguish between legitimate requests and actual attacks more accurately than an external WAF. **Why A is wrong**: RASP can be more complex to deploy. **Why C is wrong**: RASP is Layer 7. **Why D is wrong**: RASP and encryption serve different purposes.",
-    "category": "DevSecOps"
+    "category": "DevSecOps, RASP, Layer 7 Security"
   }
 ]

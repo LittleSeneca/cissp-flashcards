@@ -1,6 +1,6 @@
 ---
 tier: 1
-exam_weight: "13%"
+exam_weight: 13%
 ---
 
 # Formal Security Models for the CISSP Exam

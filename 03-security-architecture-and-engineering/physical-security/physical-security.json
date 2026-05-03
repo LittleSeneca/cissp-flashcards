@@ -9,7 +9,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **Defense-in-Depth** involves layering multiple independent security controls so that if one fails, others remain to protect the asset. The combination of a fence (perimeter), lobby access (internal), and mantraps (restricted area) represents this layered approach. **Why A is wrong**: CCTV is a single detective control, not a layered defense. **Why C is wrong**: A single control, no matter how strong, represents a single point of failure. **Why D is wrong**: Guards are a single layer of defense.",
-    "category": "Physical Security"
+    "category": "Physical Security, Defense-in-Depth, Layered Security"
   },
   {
     "question": "An organization is landscaping its new headquarters to improve security. They decide to use low-lying shrubs and ensure clear lines of sight from the building to the parking lot. Which CPTED principle are they PRIMARILY applying?",
@@ -21,7 +21,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: **Natural Surveillance** involves designing the environment to maximize visibility, making it difficult for intruders to act without being seen. Clear lines of sight and low landscaping are classic examples. **Why A is wrong**: Access control focuses on guiding people to specific entry points. **Why B is wrong**: Territorial reinforcement uses physical markers (like fences or pavement changes) to define ownership. **Why D is wrong**: Target hardening involves physical barriers like locks or reinforced doors.",
-    "category": "Physical Security"
+    "category": "Physical Security, CPTED, Natural Surveillance"
   },
   {
     "question": "Which of the following physical security controls is MOST effective at preventing tailgating or piggybacking into a high-security area?",
@@ -33,7 +33,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: A **mantrap** is a small space with two interlocked doors; the first must close before the second can open. This physically limits entry to one person at a time and is the most effective way to prevent tailgating. **Why A is wrong**: Proximity cards are easily bypassed if an authorized person holds the door open. **Why C is wrong**: CCTV is a detective control; it might record the tailgating but won't prevent it. **Why D is wrong**: While a turnstile helps, a mantrap provides a higher level of physical assurance and is more difficult to circumvent.",
-    "category": "Physical Security"
+    "category": "Physical Security, Access Control, Mantrap, Tailgating"
   },
   {
     "question": "A data center needs a fire suppression system that is safe for both sensitive electronic equipment and human occupants. Which of the following is the BEST choice?",
@@ -45,7 +45,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: **Clean Agents** like FM-200 or Novec 1230 are gaseous suppressants that do not leave residue, are non-conductive (safe for electronics), and are generally safe for humans at design concentrations. **Why A and D are wrong**: Water-based systems (wet or dry pipe) can cause significant damage to electronic equipment. **Why B is wrong**: CO2 systems are lethal to humans because they displace oxygen; they are not used in normally occupied spaces.",
-    "category": "Physical Security"
+    "category": "Physical Security, Fire Suppression, Clean Agent, Data Center"
   },
   {
     "question": "To prevent vehicle-ramming attacks while still allowing pedestrian flow into a building, which of the following should a security manager install?",
@@ -57,7 +57,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **Bollards** are sturdy, short vertical posts designed to stop vehicles while allowing pedestrians to pass between them. They are the standard for protecting building perimeters from vehicle attacks. **Why A is wrong**: Jersey barriers are large concrete blocks that also block pedestrian flow. **Why C is wrong**: Fences don't stop the momentum of a vehicle effectively and block pedestrians. **Why D is wrong**: Speed bumps only slow vehicles; they don't stop them from ramming a building.",
-    "category": "Physical Security"
+    "category": "Physical Security, Perimeter Security, Bollards"
   },
   {
     "question": "A security guard is evaluating a fire involving energized electrical equipment. According to the standard classification, which class of fire is this, and what is the MOST appropriate suppression agent?",
@@ -69,7 +69,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: **Class C** fires involve energized electrical equipment. The suppression agent must be non-conductive to avoid electrocuting the operator or causing further damage. **Why A is wrong**: Class A is for ordinary combustibles (wood/paper); water is conductive and dangerous for electrical fires. **Why B is wrong**: Class B is for flammable liquids. **Why D is wrong**: Class D is for combustible metals.",
-    "category": "Physical Security"
+    "category": "Physical Security, Fire Suppression, Class C Fire"
   },
   {
     "question": "Which of the following CPTED principles uses features like fences, pavement textures, and signage to clearly differentiate between public and private spaces?",
@@ -81,7 +81,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **Territorial Reinforcement** is the CPTED principle that uses physical design to create a sense of ownership and clearly define the boundaries of a property, discouraging unauthorized entry. **Why A is wrong**: Surveillance focuses on visibility. **Why C is wrong**: Access control focuses on the flow of people. **Why D is wrong**: Target hardening is about the physical strength of barriers.",
-    "category": "Physical Security"
+    "category": "Physical Security, CPTED, Territorial Reinforcement"
   },
   {
     "question": "A facility uses a 'Passive Infrared' (PIR) sensor as part of its intrusion detection system. What is the PRIMARY disadvantage of a PIR sensor?",
@@ -93,7 +93,7 @@
     ],
     "correct": 3,
     "explanation": "**Why D is correct**: **PIR sensors** detect changes in infrared (heat) signatures. They require a clear line of sight and can be triggered by non-human heat sources, such as sunlight or HVAC vents, leading to false alarms. **Why A is wrong**: PIR sensors are passive; they don't emit anything. **Why B is wrong**: They detect heat, not visible light. **Why C is wrong**: While they are more sensitive to lateral motion, the primary operational challenge is environmental heat interference.",
-    "category": "Physical Security"
+    "category": "Physical Security, IDS, PIR Sensor"
   },
   {
     "question": "A security team is reviewing their 'Delay' controls in the physical security program. Which of the following is the BEST example of a delay control?",
@@ -105,7 +105,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: Physical security aims to Detect, Delay, and Respond. **Delay** controls, like reinforced doors or fences, are intended to slow down an intruder long enough for a response team to arrive. **Why A and B are wrong**: These are detective controls. **Why D is wrong**: This is a response or deterrent control.",
-    "category": "Physical Security"
+    "category": "Physical Security, Control Types, Delay Control"
   },
   {
     "question": "When designing a server room, where is the MOST appropriate location for it within a building to minimize environmental and physical threats?",
@@ -117,7 +117,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: Placing the server room in the **core of the building** provides natural protection from exterior threats (explosions, vehicle ramming, weather) and reduces the risk of unauthorized entry through windows. **Why A is wrong**: Basements are at high risk for flooding. **Why B is wrong**: Top floors are vulnerable to roof leaks and external aerial threats. **Why D is wrong**: Loading docks are high-traffic areas with lower security control over personnel movement.",
-    "category": "Physical Security"
+    "category": "Physical Security, Data Center Design, Site Selection"
   },
   {
     "question": "An organization is installing a new fence around its perimeter. They choose a fence that is 8 feet high and topped with three strands of barbed wire angled at 45 degrees. What level of intruder is this fence designed to deter?",
@@ -129,7 +129,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: Fences 8 feet or higher with barbed/concertina wire are intended to be a serious obstacle for **determined intruders**. **Why A is wrong**: Casual trespassers are deterred by much lower fences (3-4 feet). **Why C is wrong**: Fences do not stop vehicles. **Why D is wrong**: Fences do not stop drones.",
-    "category": "Physical Security"
+    "category": "Physical Security, Perimeter Security, Fencing"
   },
   {
     "question": "A security manager is selecting a lock for a high-security cabinet. They choose a 'Medeco' lock which uses both pin tumblers and rotating pins to provide a high level of pick resistance. Which class of lock is this?",
@@ -141,7 +141,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: Modern high-security locks often use sophisticated **tumbler** mechanisms (like pin and sidebar) to resist picking and drilling. **Why A is wrong**: Warded locks are the simplest and least secure. **Why B is wrong**: Combination locks use a dial. **Why D is wrong**: Cipher locks use a keypad.",
-    "category": "Physical Security"
+    "category": "Physical Security, Locks, Access Control"
   },
   {
     "question": "Which of the following describes a 'Fail-Safe' electronic lock on a server room door?",
@@ -153,7 +153,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **Fail-Safe** means the device defaults to an 'open' or 'safe' state (unlocked) during a failure (like power loss), prioritizing human life over asset security. **Why A is wrong**: That is 'Fail-Secure'. **Why C is wrong**: That is 'Dual Control'. **Why D is wrong**: No lock is immune to all forms of picking.",
-    "category": "Physical Security"
+    "category": "Physical Security, Access Control, Life Safety"
   },
   {
     "question": "In a data center, what is the primary security reason for maintaining 'Positive Air Pressure' in the server room?",
@@ -165,7 +165,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **Positive air pressure** means air flows *out* of the room when a door is opened, preventing contaminants from being sucked *in*. **Why A/C/D are wrong**: These are not the primary reasons for positive air pressure in this context.",
-    "category": "Physical Security"
+    "category": "Physical Security, HVAC, Environmental Controls"
   },
   {
     "question": "An organization is concerned about electromagnetic emanations from their secure terminals being intercepted by an attacker in a nearby van. Which standard and shielding technique are MOST relevant to this threat?",
@@ -177,7 +177,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: **TEMPEST** is the standard for protecting against compromising emanations. A **Faraday Cage** (shielding) is a physical control used to block these signals. **Why A/B/D are wrong**: These are regulatory/logical standards that do not address EM emanations.",
-    "category": "Physical Security"
+    "category": "Physical Security, TEMPEST, Faraday Cage, Emanations"
   },
   {
     "question": "A security guard is monitoring a 'Vibration' sensor attached to a perimeter fence. Which type of intrusion detection system (IDS) is this?",
@@ -189,7 +189,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: **Vibration sensors** are typically electromechanical or piezoelectric devices that detect the physical movement of a barrier. **Why A is wrong**: Photoelectric uses light beams. **Why B is wrong**: Proximity uses magnetic/electric fields. **Why D is wrong**: Acoustic uses sound.",
-    "category": "Physical Security"
+    "category": "Physical Security, IDS, Perimeter Security"
   },
   {
     "question": "Which of the following lighting types is BEST suited for illuminating a large perimeter area where a broad, uniform light is needed to assist CCTV cameras at night?",
@@ -201,7 +201,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **Floodlights** produce a broad, high-intensity beam suitable for large areas. **Why A is wrong**: Fresnel lights produce a long, narrow, lighthouse-like beam. **Why C is wrong**: Searchlights are highly focused and mobile. **Why D is wrong**: Strobes are for alarms/disorientation.",
-    "category": "Physical Security"
+    "category": "Physical Security, Lighting, Surveillance"
   },
   {
     "question": "A data center experiences a sustained low-voltage condition from the utility provider that lasts for several hours. This is known as a:",
@@ -213,7 +213,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: A **Brownout** is a prolonged drop in voltage. **Why A is wrong**: Blackout is total loss. **Why C is wrong**: Sag is a short-duration dip. **Why D is wrong**: Spike is a short-duration increase.",
-    "category": "Physical Security"
+    "category": "Physical Security, Power, Environmental Controls"
   },
   {
     "question": "When implementing fire suppression in a server room, why is a 'Pre-Action' system preferred over a standard 'Wet-Pipe' system?",
@@ -225,7 +225,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **Pre-action** systems provide a 'second chance' to stop an accidental discharge by requiring a detection event before even allowing water into the pipes. **Why A/C/D are wrong**: These are not the primary reasons for choosing pre-action in a data center.",
-    "category": "Physical Security"
+    "category": "Physical Security, Fire Suppression, Pre-Action System"
   },
   {
     "question": "A security manager is applying the 'Broken Windows Theory' to their facility's physical security. Which CPTED principle are they MOST directly supporting?",
@@ -237,7 +237,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: The 'Broken Windows Theory' suggests that visible signs of disorder and lack of **maintenance** (like broken windows or graffiti) encourage more crime. Maintaining a clean, orderly facility is a key CPTED deterrent. **Why A/B/D are wrong**: These are different principles of design.",
-    "category": "Physical Security"
+    "category": "Physical Security, CPTED, Maintenance"
   },
   {
     "question": "In the context of 'Key Management,' what is the primary risk of using a 'Master Key' system in a large office building?",
@@ -249,7 +249,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: While convenient, **master key** systems create a significant single point of failure. A single lost master key compromises the entire facility. **Why A/C/D are wrong**: These are not the primary security risks.",
-    "category": "Physical Security"
+    "category": "Physical Security, Locks, Key Management"
   },
   {
     "question": "A facility uses an 'Uninterruptible Power Supply' (UPS) that continuously converts AC power to DC to charge batteries, and then back to AC to power the load. Which type of UPS is this?",
@@ -261,7 +261,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: **Online (Double-Conversion) UPS** systems provide the highest level of protection because the load is always running off the battery/inverter, meaning there is zero transfer time during a power failure. **Why A/B are wrong**: These have a brief transfer time. **Why D is wrong**: Rotary uses a flywheel.",
-    "category": "Physical Security"
+    "category": "Physical Security, Power, UPS"
   },
   {
     "question": "Which of the following environmental factors is MOST likely to lead to 'Static Electricity' buildup in a server room, potentially damaging sensitive components?",
@@ -273,7 +273,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **Low humidity** makes it easier for static charges to build up. ASHRAE recommends maintaining humidity around 40-60% to mitigate this. **Why A is wrong**: High humidity causes corrosion and condensation. **Why C/D are wrong**: These do not cause static buildup.",
-    "category": "Physical Security"
+    "category": "Physical Security, Environmental Controls, Static Electricity"
   },
   {
     "question": "An organization is selecting a new site for a disaster recovery data center. Which of the following 'Topography' features is the MOST desirable for security and resilience?",
@@ -285,7 +285,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: Avoiding **flood plains** and selecting high ground is a fundamental site selection criteria for data centers. **Why A/C are wrong**: These significantly increase the risk of water damage. **Why D is wrong**: Forests can be fire hazards and can obscure surveillance.",
-    "category": "Physical Security"
+    "category": "Physical Security, Site Selection, Resilience"
   },
   {
     "question": "A security professional is using an 'Asset Tag' that uses 'Radio Frequency Identification' (RFID) to track the movement of laptops within a building. Which type of control is this?",
@@ -297,6 +297,6 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **RFID tracking** allows the organization to *detect* when an asset has been moved or has left a certain area. It doesn't physically prevent the theft in the same way a cable lock would. **Why A/C/D are wrong**: While it may have some deterrent effect, its primary function is detection/tracking.",
-    "category": "Physical Security"
+    "category": "Physical Security, Asset Management, RFID, Detective Control"
   }
 ]

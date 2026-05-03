@@ -1,3 +1,7 @@
+---
+exam_weight: 13%
+---
+
 # Domain 5: Identity and Access Management
 
 **Exam Weight: ~13% | Approximately 15–19 questions on a 125-question exam**

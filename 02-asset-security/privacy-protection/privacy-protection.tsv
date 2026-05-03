@@ -1,25 +1,25 @@
-PII	Personally Identifiable Information; any data that can identify an individual.
-PHI	Protected Health Information; sensitive medical data linked to an individual (HIPAA).
-GDPR	General Data Protection Regulation; comprehensive EU law for data protection and privacy.
-Data Controller	The entity that determines the "purposes and means" of data processing.
-Data Processor	An entity that processes data on behalf of a Data Controller.
-Privacy by Design	Framework ensuring privacy is built into systems from the initial design phase.
-Data Minimization	Principle of collecting only the minimum amount of data required for a specific purpose.
-Purpose Limitation	Principle stating data should only be used for the reason it was originally collected.
-Storage Limitation	Principle stating data should be kept no longer than necessary for its purpose.
-Anonymization	The irreversible process of removing identifiers from a dataset.
-Pseudonymization	Replacing identifiers with aliases; reversible using a separate key or mapping.
-Tokenization	Replacing sensitive data (like credit card numbers) with a non-sensitive surrogate (token).
-Data Masking	Obfuscating sensitive data fields with realistic but fake values for testing/dev.
-Differential Privacy	A technique that adds statistical noise to a dataset to protect individual records.
-k-anonymity	Privacy property where each record is indistinguishable from at least k-1 others.
-l-diversity	An extension of k-anonymity that ensures sensitive attributes have sufficient variety.
-Aggregation	Combining non-sensitive data points to reveal more sensitive information.
-Inference	Deducing sensitive information by analyzing patterns in non-sensitive data.
-Data Sovereignty	The concept that data is subject to the laws of the country where it is physically located.
-DSAR	Data Subject Access Request; an individual's request to see what data a company holds on them.
-Right to be Forgotten	The right of a data subject to request the deletion of their personal data.
-OECD Privacy Guidelines	Foundational principles for fair information practices and data protection.
-HIPAA Security Rule	US standard for protecting electronic PHI (ePHI).
-GLBA	US law requiring financial institutions to safeguard customer information.
-COPPA	US law governing the online collection of data from children under 13.
+PII	Personally Identifiable Information; any data that can identify an individual.	Privacy, PII, Identification
+PHI	Protected Health Information; sensitive medical data linked to an individual (HIPAA).	Privacy, PHI, HIPAA
+GDPR	General Data Protection Regulation; comprehensive EU law for data protection and privacy.	Privacy, GDPR, EU Regulation
+Data Controller	The entity that determines the "purposes and means" of data processing.	Privacy, Data Roles, Data Controller
+Data Processor	An entity that processes data on behalf of a Data Controller.	Privacy, Data Roles, Data Processor
+Privacy by Design	Framework ensuring privacy is built into systems from the initial design phase.	Privacy, Privacy by Design, SDLC
+Data Minimization	Principle of collecting only the minimum amount of data required for a specific purpose.	Privacy, Data Minimization, Data Collection
+Purpose Limitation	Principle stating data should only be used for the reason it was originally collected.	Privacy, Purpose Limitation, Data Usage
+Storage Limitation	Principle stating data should be kept no longer than necessary for its purpose.	Privacy, Storage Limitation, Data Retention
+Anonymization	The irreversible process of removing identifiers from a dataset.	Privacy, Anonymization, Irreversibility
+Pseudonymization	Replacing identifiers with aliases; reversible using a separate key or mapping.	Privacy, Pseudonymization, Reversibility
+Tokenization	Replacing sensitive data (like credit card numbers) with a non-sensitive surrogate (token).	Privacy, Tokenization, PCI DSS
+Data Masking	Obfuscating sensitive data fields with realistic but fake values for testing/dev.	Privacy, Data Masking, Obfuscation
+Differential Privacy	A technique that adds statistical noise to a dataset to protect individual records.	Privacy, Differential Privacy, Statistical Noise
+k-anonymity	Privacy property where each record is indistinguishable from at least k-1 others.	Privacy, k-anonymity, De-identification
+l-diversity	An extension of k-anonymity that ensures sensitive attributes have sufficient variety.	Privacy, l-diversity, De-identification
+Aggregation	Combining non-sensitive data points to reveal more sensitive information.	Privacy, Aggregation, Inference
+Inference	Deducing sensitive information by analyzing patterns in non-sensitive data.	Privacy, Inference, Data Analysis
+Data Sovereignty	The concept that data is subject to the laws of the country where it is physically located.	Privacy, Data Sovereignty, Jurisdiction
+DSAR	Data Subject Access Request; an individual's request to see what data a company holds on them.	Privacy, DSAR, Data Subject Rights
+Right to be Forgotten	The right of a data subject to request the deletion of their personal data.	Privacy, Data Erasure, Data Subject Rights
+OECD Privacy Guidelines	Foundational principles for fair information practices and data protection.	Privacy, OECD, Standards
+HIPAA Security Rule	US standard for protecting electronic PHI (ePHI).	Privacy, HIPAA, ePHI
+GLBA	US law requiring financial institutions to safeguard customer information.	Privacy, GLBA, Financial Data
+COPPA	US law governing the online collection of data from children under 13.	Privacy, COPPA, Children's Privacy

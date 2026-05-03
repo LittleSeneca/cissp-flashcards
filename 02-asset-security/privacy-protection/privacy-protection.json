@@ -9,7 +9,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: Combining **PHI and PII** creates the highest risk as it links identifiable individuals to sensitive medical information, triggering strict compliance (HIPAA, GDPR). **Why A is wrong**: Anonymized data has identifiers removed. **Why B is wrong**: HR data is sensitive but usually lower regulatory risk than PHI. **Why D is wrong**: Public information carries minimal risk.",
-    "category": "Privacy Protection"
+    "category": "Privacy Protection, PHI, HIPAA"
   },
   {
     "question": "An organization keeps customer transaction records for 10 years, even though its own policy and local regulations only require 5 years. Which privacy principle is **MOST** directly violated?",
@@ -21,7 +21,7 @@
     ],
     "correct": 0,
     "explanation": "**Why A is correct**: **Storage Limitation** requires that personal data be kept no longer than necessary for its purpose. **Why B is wrong**: Purpose limitation is about using data only for the original reason. **Why C is wrong**: Data minimization is about not collecting more than needed. **Why D is wrong**: Accuracy is about correctness.",
-    "category": "Privacy Protection"
+    "category": "Privacy Protection, Storage Limitation, Compliance"
   },
   {
     "question": "A data scientist discovers that by combining a 'de-identified' list of hospital visits with a public voter registration list, they can re-identify the medical records of specific individuals. Which security/privacy concept does this **BEST** illustrate?",
@@ -33,7 +33,7 @@
     ],
     "correct": 0,
     "explanation": "**Why A is correct**: The **Aggregation Problem** (or Inference/Mosaic Effect) occurs when non-sensitive information is combined to reveal sensitive secrets or re-identify individuals. **Why B, C, and D are wrong**: These do not describe the mechanism of re-identification through data combination.",
-    "category": "Privacy Protection"
+    "category": "Privacy Protection, Aggregation, Inference"
   },
   {
     "question": "An organization wants to reduce its PCI DSS compliance scope. Which technique is the **BEST** choice for protecting Primary Account Numbers (PANs) so that most of the organization's internal systems no longer 'handle' cardholder data?",
@@ -45,7 +45,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: **Tokenization** replaces the PAN with a surrogate 'token.' Systems that only store the token are often moved out of PCI scope. **Why A is wrong**: With encryption, the system is still 'handling' card data. **Why B is wrong**: Hashing is for passwords/integrity. **Why D is wrong**: Truncation doesn't support full processing utility.",
-    "category": "Privacy Protection"
+    "category": "Privacy Protection, Tokenization, PCI DSS"
   },
   {
     "question": "A global organization is moving its customer data to a multi-region cloud architecture. What is the **MOST** significant challenge for maintaining compliance with data residency and sovereignty laws?",
@@ -57,7 +57,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: **Automated replication** for high availability may move data into jurisdictions with different privacy laws, potentially violating data residency requirements. **Why A is wrong**: Latency is performance, not compliance. **Why B is wrong**: Providers use standard protocols. **Why D is wrong**: Access is a general cloud trait.",
-    "category": "Privacy Protection"
+    "category": "Privacy Protection, Data Sovereignty, Cloud Security"
   },
   {
     "question": "When releasing a dataset for public research, an organization applies **k-anonymity** with k=10. What is the **PRIMARY** guarantee this provides?",
@@ -69,7 +69,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **k-anonymity** ensures that each record is indistinguishable from at least **k-1** others in the dataset, providing a 'crowd' to hide in. **Why A is wrong**: It's a de-identification technique, not encryption. **Why C is wrong**: It's a data state, not a process. **Why D is wrong**: Risk depends on many factors.",
-    "category": "Privacy Protection"
+    "category": "Privacy Protection, k-anonymity, De-identification"
   },
   {
     "question": "A marketing department combines its internal customer database with a purchased list of social media interests to create more targeted ads. Which privacy risk is **MOST** significantly increased by this action?",
@@ -81,7 +81,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **Aggregation** (combining data) and **Inference** (deducing new info like leanings/status) are core privacy risks when merging datasets. **Why A, C, and D are wrong**: These do not reflect the primary privacy risk of combining customer data with external interests.",
-    "category": "Privacy Protection"
+    "category": "Privacy Protection, Aggregation, Inference"
   },
   {
     "question": "Under the GDPR, what is the **MAIN** difference between Pseudonymization and Anonymization?",
@@ -93,7 +93,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **Pseudonymization** (like hashing with a salt) can be reversed if you have the salt/key. **Anonymization** must render the data subject unidentifiable in a way that is irreversible. **Why A is wrong**: It reverses the definitions. **Why C is wrong**: Both apply to any data type.",
-    "category": "Privacy Protection"
+    "category": "Privacy Protection, GDPR, De-identification"
   },
   {
     "question": "According to the OECD Privacy Guidelines, which principle states that personal data should be relevant to the purposes for which they are to be used, and should be accurate, complete, and kept up-to-date?",
@@ -105,7 +105,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: The **Data Quality Principle** focuses on the relevance, accuracy, and completeness of the data. **Why A is wrong**: Collection Limitation is about how much you collect. **Why C is wrong**: Purpose Specification is about stating the reason for collection. **Why D is wrong**: Security Safeguards is about protection.",
-    "category": "Privacy Protection"
+    "category": "Privacy Protection, OECD, Data Quality"
   },
   {
     "question": "Which of the following is considered 'Sensitive PII' in most jurisdictions and requires higher levels of protection?",
@@ -117,7 +117,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: **Biometric data** is almost always categorized as sensitive or 'special category' data because it is unique and cannot be changed if compromised. **Why A, B, and D are wrong**: These are 'Non-sensitive' PII that are often publicly available or less impactful if disclosed alone.",
-    "category": "Privacy Protection"
+    "category": "Privacy Protection, PII, Biometrics"
   },
   {
     "question": "An organization is designing a new system and decides to implement privacy features by default, ensuring only the minimum necessary data is collected. Which concept does this **BEST** represent?",
@@ -129,7 +129,7 @@
     ],
     "correct": 0,
     "explanation": "**Why A is correct**: **Privacy by Design** (specifically 'Privacy as the Default') ensures that privacy is built into the system from the start and that the most restrictive settings apply automatically. **Why B and C are wrong**: Obscurity is not a valid security/privacy strategy. **Why D is wrong**: Defense in Depth is about layered security controls.",
-    "category": "Privacy Protection"
+    "category": "Privacy Protection, Privacy by Design, SDLC"
   },
   {
     "question": "Who is responsible for determining the purposes and means of the processing of personal data under the GDPR?",
@@ -141,7 +141,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: The **Data Controller** is the entity that makes the decisions about why and how data is processed. **Why A is wrong**: The Processor acts on behalf of the controller. **Why B is wrong**: The DPO monitors compliance. **Why D is wrong**: The Subject is the person the data is about.",
-    "category": "Privacy Protection"
+    "category": "Privacy Protection, Data Roles, Data Controller"
   },
   {
     "question": "Which privacy technique involves adding 'noise' or mathematical uncertainty to a dataset so that individual records cannot be identified, but the overall statistical utility remains?",
@@ -153,7 +153,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **Differential Privacy** is a modern technique used by companies like Apple and Google to collect statistics without learning individual facts about specific users. **Why A, C, and D are wrong**: These are deterministic obfuscation techniques that do not use statistical noise.",
-    "category": "Privacy Protection"
+    "category": "Privacy Protection, Differential Privacy, De-identification"
   },
   {
     "question": "A US-based company wants to transfer personal data from the EU to the US. Since the 'Privacy Shield' was invalidated, which mechanism is **MOST** commonly used to provide a legal basis for this transfer?",
@@ -165,7 +165,7 @@
     ],
     "correct": 0,
     "explanation": "**Why A is correct**: **SCCs** are standardized contracts approved by the European Commission that ensure appropriate data protection safeguards for transfers outside the EEA. **Why B is wrong**: Verbal agreements have no legal standing. **Why C is wrong**: Moving servers *away* from the EU is the reason the transfer mechanism is needed.",
-    "category": "Privacy Protection"
+    "category": "Privacy Protection, GDPR, SCCs"
   },
   {
     "question": "Which US regulation specifically governs the privacy of children's information online?",
@@ -177,7 +177,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: **COPPA** (Children's Online Privacy Protection Act) applies to the online collection of personal information from children under 13. **Why A is wrong**: HIPAA is for healthcare. **Why B is wrong**: GLBA is for financial institutions. **Why D is wrong**: SOX is for corporate financial reporting.",
-    "category": "Privacy Protection"
+    "category": "Privacy Protection, COPPA, Children's Privacy"
   },
   {
     "question": "What is the primary purpose of a **Privacy Impact Assessment (PIA)**?",
@@ -189,7 +189,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: A **PIA** is a process used to identify and reduce the privacy risks of new projects or systems that handle personal information. **Why A, C, and D are wrong**: These are not the goals of a PIA.",
-    "category": "Privacy Protection"
+    "category": "Privacy Protection, PIA, Risk Management"
   },
   {
     "question": "A customer contacts a company and asks for a copy of all the personal data the company holds about them. What is this request called?",
@@ -201,7 +201,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: A **DSAR** is the mechanism by which individuals exercise their right to access their personal data. **Why A is wrong**: Portability is about moving the data to another provider. **Why C is wrong**: 'Right to be Forgotten' is for deletion. **Why D is wrong**: Litigation hold is for legal preservation.",
-    "category": "Privacy Protection"
+    "category": "Privacy Protection, DSAR, Data Subject Rights"
   },
   {
     "question": "Which principle of the 'Privacy by Design' framework states that the interests of the user should be the primary concern?",
@@ -213,7 +213,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: The **User-Centric** principle dictates that architects and operators must keep the interests of the individual uppermost. **Why A, B, and D are wrong**: These are other principles of the 7 foundational principles of Privacy by Design.",
-    "category": "Privacy Protection"
+    "category": "Privacy Protection, Privacy by Design, User Centricity"
   },
   {
     "question": "A financial institution must protect non-public personal information (NPI) of its customers. Which US law is **MOST** applicable?",
@@ -225,7 +225,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **GLBA** (also known as the Financial Services Modernization Act) requires financial institutions to explain their information-sharing practices and to safeguard sensitive data. **Why A is wrong**: PCI DSS is a private industry standard, not a law. **Why C is wrong**: HIPAA is for healthcare.",
-    "category": "Privacy Protection"
+    "category": "Privacy Protection, GLBA, Financial Data"
   },
   {
     "question": "An organization uses a technique where 'John Smith' is replaced with 'User_9921' in a research database. The mapping key is kept in a separate secure location. This is an example of:",
@@ -237,7 +237,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **Pseudonymization** replaces identifiers with aliases (pseudonyms) while allowing re-identification if the mapping key is accessed. **Why A is wrong**: Anonymization would be irreversible.",
-    "category": "Privacy Protection"
+    "category": "Privacy Protection, Pseudonymization, De-identification"
   },
   {
     "question": "Which concept describes the right of a data subject to have their personal data transferred from one controller to another in a structured, commonly used, and machine-readable format?",
@@ -249,7 +249,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: **Data Portability** (GDPR Article 20) allows subjects to move their data between services easily. **Why A, B, and D are wrong**: These are other distinct data subject rights.",
-    "category": "Privacy Protection"
+    "category": "Privacy Protection, Data Portability, Data Subject Rights"
   },
   {
     "question": "What is the **PRIMARY** difference between a Privacy Notice and a Privacy Policy?",
@@ -261,7 +261,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: A **Privacy Notice** is an external-facing document that tells subjects how their data is used. A **Privacy Policy** is an internal-facing document that tells employees how they must handle data. **Why A and B are wrong**: They reverse the standard usage.",
-    "category": "Privacy Protection"
+    "category": "Privacy Protection, Privacy Notice, Privacy Policy"
   },
   {
     "question": "In the context of data de-identification, what is **l-diversity**?",
@@ -273,7 +273,7 @@
     ],
     "correct": 0,
     "explanation": "**Why A is correct**: **l-diversity** solves the 'homogeneity attack' in k-anonymity by ensuring that the sensitive attribute (e.g., medical diagnosis) has enough variety within each group so that an attacker cannot infer the exact value. **Why B, C, and D are wrong**: These are not the definition of l-diversity.",
-    "category": "Privacy Protection"
+    "category": "Privacy Protection, l-diversity, De-identification"
   },
   {
     "question": "Which HIPAA rule sets the national standards for the protection of individually identifiable health information in **electronic** form (ePHI)?",
@@ -285,7 +285,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: The **HIPAA Security Rule** specifically focuses on safeguarding **ePHI** (electronic PHI). The **Privacy Rule** covers PHI in all forms (paper, oral, electronic). **Why C and D are wrong**: These cover breach reporting and penalties respectively.",
-    "category": "Privacy Protection"
+    "category": "Privacy Protection, HIPAA, ePHI"
   },
   {
     "question": "An AI system is used to profile customers based on their shopping habits. Which privacy risk is **MOST** unique to this scenario?",
@@ -297,6 +297,6 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: AI and machine learning often involve **automated decision-making** and profiling that can be difficult for data subjects to understand or contest, leading to a loss of transparency and agency. This is a major modern privacy concern.",
-    "category": "Privacy Protection"
+    "category": "Privacy Protection, AI Privacy, Transparency"
   }
 ]
