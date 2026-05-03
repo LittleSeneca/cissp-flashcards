@@ -9,7 +9,7 @@
     ],
     "correct": 3,
     "explanation": "**Why D is correct**: **Legitimate interest** (Article 6(1)(f)) can support direct marketing to existing customers, provided the company passes the three-part balancing test and honors opt-out rights. Recital 47 explicitly mentions direct marketing as a legitimate interest. **Why A is wrong**: **Consent** is one lawful basis but is not the only one; marketing does not automatically require consent when legitimate interest applies. **Why B is wrong**: **Legal obligation** covers compliance with laws that mandate processing, not commercial marketing. **Why C is wrong**: **Contract performance** covers processing needed to fulfill the specific contract (e.g., shipping), not downstream marketing.",
-    "category": "GDPR"
+    "category": "GDPR, Privacy"
   },
   {
     "question": "A data subject submits a Subject Access Request (SAR) on March 1. The controller discovers it on March 3. Which of the following is the LATEST date by which the response must be provided?",
@@ -21,7 +21,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: Under Article 12(3), the **one-month period** runs from the date the request was received (March 1), not when it was discovered internally. The deadline is April 1. **Why A is wrong**: The clock is not paused for internal discovery or processing delays. **Why C is wrong**: A **three-month extension** is only for complex or numerous requests, and the subject must be notified within the first month. **Why D is wrong**: The rule is one calendar month from receipt, not the end of the current month.",
-    "category": "GDPR"
+    "category": "GDPR, Privacy"
   },
   {
     "question": "An employee accidentally emails a spreadsheet with names and medical diagnoses of 4,000 patients to the wrong recipient. Which of the following BEST describes the organization's notification obligation under GDPR Article 33?",
@@ -33,7 +33,7 @@
     ],
     "correct": 3,
     "explanation": "**Why D is correct**: Article 33 requires notification to the supervisory authority **within 72 hours** of awareness for breaches likely to result in risk. Health data is **special category data**, making the risk threshold likely high. **Why A is wrong**: Confirmed deletion reduces risk but does not eliminate the original exposure or notification duty. **Why B is wrong**: Accidental vs. intentional status does not change the 72-hour requirement. **Why C is wrong**: The 72-hour clock for the supervisory authority is the primary obligation; individual notification follows if the risk is 'high'.",
-    "category": "GDPR"
+    "category": "GDPR, Privacy"
   },
   {
     "question": "A SaaS company processes customer personal data strictly on documented instructions from its clients and never determines the purposes or means. Which GDPR classification BEST applies to this company?",
@@ -45,7 +45,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: A **processor** is an entity that processes data on behalf of a controller and does not determine the purposes or means of processing. **Why A is wrong**: A **controller** is the entity that determines the 'why' and 'how' (purposes and means). **Why C is wrong**: A **DPO** is a specific role/person, not an organizational classification. **Why D is wrong**: **Joint controllers** jointly determine the purposes and means, which is not the case here.",
-    "category": "GDPR"
+    "category": "GDPR, Privacy"
   },
   {
     "question": "A controller plans to collect date of birth for birthday greetings, but an internal review finds this exceeds the actual need for age confirmation. Which action BEST aligns with 'data protection by design and by default'?",
@@ -57,7 +57,7 @@
     ],
     "correct": 3,
     "explanation": "**Why D is correct**: **Data protection by design and by default** (Article 25) requires **data minimization**. Collecting only a boolean 'is over 18' is more proportionate than collecting a full date of birth. **Why A is wrong**: A **DPIA** is an assessment, not a minimization action. **Why B is wrong**: Consent does not override the requirement to minimize data collection. **Why C is wrong**: Encryption protects data but does not fulfill the minimization requirement.",
-    "category": "GDPR"
+    "category": "GDPR, Privacy"
   },
   {
     "question": "A multinational company headquartered in the EU wants to transfer data to a provider in a country without an adequacy decision. Which mechanism is MOST commonly used to make this transfer lawful?",
@@ -69,7 +69,7 @@
     ],
     "correct": 0,
     "explanation": "**Why A is correct**: **Standard Contractual Clauses (SCCs)** are the most common mechanism. Following Schrems II, they must be paired with a **TIA** to ensure adequate protection in the destination country. **Why B is wrong**: **Derogations** are for occasional, non-repetitive transfers, not routine operations. **Why C is wrong**: **Privacy Shield** was invalidated in 2020 and is no longer valid. **Why D is wrong**: **BCRs** are typically for intra-group transfers and require lengthy regulatory approval.",
-    "category": "GDPR"
+    "category": "GDPR, Privacy"
   },
   {
     "question": "A hospital plans to implement an AI tool that processes genetic data and mental health records at a large scale. Which GDPR requirement MUST be met before the system goes live?",
@@ -81,7 +81,7 @@
     ],
     "correct": 0,
     "explanation": "**Why A is correct**: Article 35 requires a **DPIA** before processing that is likely to result in high risk, such as large-scale processing of **special category data**. **Why B is wrong**: DPOs are usually organizational-level roles, not project-specific appointments. **Why C is wrong**: Other Article 9 conditions (like healthcare delivery) may apply. **Why D is wrong**: EDPB authorization is not a standard requirement for this scenario.",
-    "category": "GDPR"
+    "category": "GDPR, Privacy"
   },
   {
     "question": "A user requests erasure of all personal data, but the company must retain transaction records for seven years for tax compliance. Which of the following is the BEST response?",
@@ -93,7 +93,7 @@
     ],
     "correct": 0,
     "explanation": "**Why A is correct**: The **right to erasure** (Article 17) is not absolute and is exempt when processing is necessary for compliance with a **legal obligation** (Article 17(3)(b)). **Why B is wrong**: The right is not absolute. **Why C is wrong**: Blanket denial is not permitted; the organization must fulfill the request for all data not subject to the legal exception. **Why D is wrong**: Controllers are responsible for applying GDPR exceptions without needing prior regulatory approval.",
-    "category": "GDPR"
+    "category": "GDPR, Privacy"
   },
   {
     "question": "To be valid under GDPR, which combination of characteristics MUST consent possess?",
@@ -105,7 +105,7 @@
     ],
     "correct": 3,
     "explanation": "**Why D is correct**: GDPR Article 7 and Recital 32 require consent to be **freely given, specific, informed, and unambiguous**, requiring a **clear affirmative act**. **Why A is wrong**: **Pre-ticked checkboxes** are explicitly prohibited. **Why B is wrong**: Consent does not need to be notarized. **Why C is wrong**: Legitimate interest is a separate lawful basis from consent; they are mutually exclusive for the same processing activity.",
-    "category": "GDPR"
+    "category": "GDPR, Privacy"
   },
   {
     "question": "Which of the following BEST describes the role of a Data Protection Officer (DPO) under GDPR?",
@@ -117,7 +117,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: The **DPO** is an independent advisor and monitor. They inform the organization of its obligations and cooperate with the regulator. **Why A is wrong**: The **controller** determines the purposes and means (including lawful basis), not the DPO. **Why C is wrong**: Fines are imposed on controllers/processors, not the DPO personally. **Why D is wrong**: DPOs can be internal or external and have no statutory two-year term limit.",
-    "category": "GDPR"
+    "category": "GDPR, Privacy"
   },
   {
     "question": "A platform wants to process data for a user under 16 for an information society service. Which of the following is REQUIRED under GDPR Article 8?",
@@ -129,7 +129,7 @@
     ],
     "correct": 3,
     "explanation": "**Why D is correct**: For children under the digital age of consent (16, though states can lower it to 13), the controller must obtain **verifiable parental consent**. **Why A is wrong**: Written/witnessed consent is not a GDPR requirement. **Why B is wrong**: Article 8 specifically mandates parental consent for children below the threshold. **Why C is wrong**: Children are allowed to use services; they just require additional safeguards.",
-    "category": "GDPR"
+    "category": "GDPR, Privacy"
   },
   {
     "question": "A data subject requests a copy of their personal data, the purposes of processing, and the recipients shared with. Which GDPR right is being exercised?",
@@ -141,7 +141,7 @@
     ],
     "correct": 0,
     "explanation": "**Why A is correct**: The **Right of Access** (Article 15) entitles the subject to a copy of their data and specific information about how it is used. **Why B is wrong**: **Rectification** is for correcting inaccurate data. **Why C is wrong**: **Restriction** is for pausing processing. **Why D is wrong**: **Portability** is for transferring data in a machine-readable format.",
-    "category": "GDPR"
+    "category": "GDPR, Privacy"
   },
   {
     "question": "A manager claims that the company's legitimate interest in profiling for advertising means no further steps are needed. What is the MOST significant flaw in this reasoning?",
@@ -153,7 +153,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: **Legitimate interest** requires a **three-part balancing test** (purpose, necessity, and the balancing check against the subject's rights). Profiling is specifically flagged as requiring a careful balance. **Why A is wrong**: Legitimate interest applies to general personal data. **Why B is wrong**: Profiling is allowed with safeguards. **Why D is wrong**: Adequacy decisions relate to international transfers, not lawful bases.",
-    "category": "GDPR"
+    "category": "GDPR, Privacy"
   },
   {
     "question": "Under GDPR Article 20, which condition MUST be met for the right to data portability to apply?",
@@ -165,7 +165,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: **Data portability** (Article 20) only applies when processing is based on **consent** or **contract** and is **automated**. **Why A is wrong**: No proof of harm is required. **Why B is wrong**: It does not apply to data processed under 'legal obligation' or 'public task'. **Why D is wrong**: It applies to any personal data meeting the criteria, not just health data.",
-    "category": "GDPR"
+    "category": "GDPR, Privacy"
   },
   {
     "question": "Following a ransomware attack where availability was lost but exfiltration is unconfirmed, which of the following is the correct GDPR breach response sequence?",
@@ -177,7 +177,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: Article 33 requires notification **within 72 hours** of awareness for risk-likely breaches. All breaches must also be recorded in the **internal register**. **Why A is wrong**: Uncertainty does not pause the 72-hour clock; notifications can be phased. **Why C is wrong**: Loss of availability is still a breach. **Why D is wrong**: Regulators are usually notified first, then individuals if the risk is 'high'.",
-    "category": "GDPR"
+    "category": "GDPR, Privacy"
   },
   {
     "question": "When a data subject withdraws consent for direct marketing, which of the following is REQUIRED under GDPR Article 7(3)?",
@@ -189,7 +189,7 @@
     ],
     "correct": 0,
     "explanation": "**Why A is correct**: **Withdrawal of consent** must be as easy as giving it, and the specific processing must stop. Withdrawal does not affect the lawfulness of past processing. **Why B is wrong**: There is no 30-day grace period. **Why C is wrong**: Withdrawal is an unconditional right. **Why D is wrong**: Other data may be retained under different lawful bases (e.g., tax law).",
-    "category": "GDPR"
+    "category": "GDPR, Privacy"
   },
   {
     "question": "A data subject requests 'restriction of processing' while contesting data accuracy. Which of the following BEST describes what this means in practice?",
@@ -201,7 +201,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: **Restriction** (Article 18) means the data is kept but its use is suspended. It can only be processed for limited reasons like legal defense or with consent. **Why A is wrong**: Restriction is the opposite of deletion; it preserves the data while a dispute is settled. **Why B is wrong**: Headcount-based access control is not the definition of restriction. **Why D is wrong**: Anonymization is permanent and would prevent resolving the accuracy dispute.",
-    "category": "GDPR"
+    "category": "GDPR, Privacy"
   },
   {
     "question": "An insurance company uses a fully automated algorithm to reject applications, producing legal effects. Which statement BEST describes the requirements under Article 22?",
@@ -213,7 +213,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: For solely **automated decisions** with legal/significant effects, controllers must provide the right to **human intervention**, to express a point of view, and to contest. **Why A is wrong**: It is permitted with consent, contract necessity, or legal authorization. **Why C is wrong**: The right applies to all significant automated decisions. **Why D is wrong**: General notice is insufficient; operational human review must be available.",
-    "category": "GDPR"
+    "category": "GDPR, Privacy"
   },
   {
     "question": "Two organizations co-determine the purposes and means of a customer loyalty program. Which of the following is REQUIRED under GDPR Article 26?",
@@ -225,7 +225,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **Joint controllers** must enter into an arrangement defining who handles which GDPR duties (like rights requests). The 'essence' of this must be available to subjects. **Why A is wrong**: If both determine purposes, they are joint controllers, not a controller-processor pair. **Why C is wrong**: No prior regulatory approval is required for joint control. **Why D is wrong**: Jointly determining purposes mandates the joint controller framework.",
-    "category": "GDPR"
+    "category": "GDPR, Privacy"
   },
   {
     "question": "Which of the following MUST be in place before a controller engages a new cloud processor?",
@@ -237,7 +237,7 @@
     ],
     "correct": 0,
     "explanation": "**Why A is correct**: Article 28(3) requires a **binding contract (DPA)** that specifies the subject matter, duration, and obligations of both parties. **Why B is wrong**: A DPIA is only for high-risk processing, not every processor engagement. **Why C is wrong**: Certifications are voluntary. **Why D is wrong**: Engaging processors does not require regulatory notification.",
-    "category": "GDPR"
+    "category": "GDPR, Privacy"
   },
   {
     "question": "An authority finds a company processed data without any lawful basis for a profiling operation. Which of the following is the MAXIMUM fine under Article 83(5)?",
@@ -249,7 +249,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: Violations of basic principles (like lawful basis) fall under the **higher tier** of fines: **EUR 20M or 4% of global turnover**. **Why C is wrong**: The 2% tier is for administrative/technical violations (like RoPA or DPO issues). **Why A is wrong**: There is no fixed EUR 100M cap. **Why D is wrong**: Fines are capped by the statutory maximums.",
-    "category": "GDPR"
+    "category": "GDPR, Privacy"
   },
   {
     "question": "A research organization removes direct identifiers from a dataset but keeps a separately stored mapping table for re-identification. How is this dataset BEST classified?",
@@ -261,7 +261,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: **Pseudonymization** involves removing identifiers but keeping the ability to re-identify with 'additional information' (the mapping table). It remains **personal data** under GDPR. **Why A/B are wrong**: Anonymization is irreversible; if a mapping table exists, it is not anonymous. **Why D is wrong**: Pseudonymization is a security measure, not a data category (like health or race).",
-    "category": "GDPR"
+    "category": "GDPR, Privacy"
   },
   {
     "question": "A controller experiences a breach with NO likely risk to individuals. Which of the following is the PRIMARY GDPR obligation?",
@@ -273,7 +273,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: All breaches must be **documented internally** under Article 33(5), even if they don't meet the 'risk' threshold for reporting to regulators. **Why A/B are wrong**: External notification is only required if there is likely risk (to authority) or high risk (to individuals). **Why D is wrong**: Accountability requires documenting all breaches, even no-risk ones.",
-    "category": "GDPR"
+    "category": "GDPR, Privacy"
   },
   {
     "question": "Which situation MOST clearly violates the requirement for DPO independence under Article 38?",
@@ -285,7 +285,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: A **conflict of interest** occurs when a DPO holds a role that determines the 'purposes and means' of processing. A CISO who makes operational security decisions cannot independently monitor those same decisions. **Why A is wrong**: Reporting to highest management is a requirement. **Why B is wrong**: External DPOs are permitted. **Why D is wrong**: Access to records is necessary for the role.",
-    "category": "GDPR"
+    "category": "GDPR, Privacy"
   },
   {
     "question": "A visitor objects to behavioral profiling conducted under legitimate interest. Which of the following is the controller's PRIMARY obligation under Article 21?",
@@ -297,7 +297,7 @@
     ],
     "correct": 0,
     "explanation": "**Why A is correct**: Upon an **objection** to legitimate interest processing, the burden shifts to the controller to prove **compelling legitimate grounds** that override the subject's interests. **Why B is wrong**: There is no 30-day evaluation delay permitted for stopping the processing. **Why C is wrong**: No proof of harm is needed. **Why D is wrong**: The right to object explicitly applies to profiling.",
-    "category": "GDPR"
+    "category": "GDPR, Privacy"
   },
   {
     "question": "An organization wants to use 'explicit consent' as the primary mechanism for all routine international data transfers. Which of the following is the MOST significant problem with this approach?",
@@ -309,7 +309,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **Derogations** (Article 49) are exception mechanisms. They are intended for **occasional and non-repetitive** transfers and should not be used as a systematic solution for routine data flows. **Why A is wrong**: Wet signatures are not required. **Why C is wrong**: It is a valid derogation, just not for routine use. **Why D is wrong**: Consent is always withdrawable.",
-    "category": "GDPR"
+    "category": "GDPR, Privacy"
   },
   {
     "question": "A Legitimate Interest Assessment (LIA) consists of which three steps?",
@@ -321,7 +321,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: The **LIA** requires identifying a **legitimate purpose**, confirming the processing is **necessary**, and ensuring the controller's interest is not **overridden** by the subject's rights (the balancing test). **Why A, C, D are wrong**: These are other compliance activities but do not form the LIA three-part test.",
-    "category": "GDPR"
+    "category": "GDPR, Privacy"
   },
   {
     "question": "A data subject submits a portability request. Which of the following MUST be provided by the controller?",
@@ -333,7 +333,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **Portability** applies to data 'provided' by the subject, which includes **observed** data (activity logs). It does **not** include **inferred or derived** data created by the controller (like an AI-generated preference profile). **Why A is wrong**: It's not limited to form-inputs. **Why C is wrong**: Inferred data is excluded. **Why D is wrong**: Browsing history is considered 'observed' and thus portable.",
-    "category": "GDPR"
+    "category": "GDPR, Privacy"
   },
   {
     "question": "Which of the following organizations is generally EXEMPT from the Article 30 Record of Processing Activities (RoPA) obligation?",
@@ -345,7 +345,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: The **exemption** for organizations under 250 employees is **conditional**. It does not apply if the processing is regular, involves risk, or includes **special category data**. **Why A is wrong**: Non-profits are not automatically exempt. **Why B is wrong**: The size-based exemption is not blanket; it has strict conditions. **Why D is wrong**: Article 30(5) explicitly provides this conditional exemption.",
-    "category": "GDPR"
+    "category": "GDPR, Privacy"
   },
   {
     "question": "Following Schrems II, what additional step MUST a controller take when using SCCs for a transfer to a country with surveillance laws?",
@@ -357,6 +357,6 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: **Schrems II** requires controllers to assess whether the destination country's laws undermine the SCCs. A **TIA** must be performed, and **supplementary measures** (like encryption) added to protect the data. **Why A is wrong**: BCRs are also subject to the same assessment. **Why B is wrong**: Transfers are not automatically banned but require assessment. **Why D is wrong**: Only the Commission can issue adequacy decisions for whole countries.",
-    "category": "GDPR"
+    "category": "GDPR, Privacy"
   }
 ]

@@ -1,10 +1,25 @@
-Supply Chain Risk Management (SCRM)	The process of identifying, assessing, and mitigating risks to the integrity and availability of products and services.
-Software Bill of Materials (SBOM)	A nested inventory of software components, libraries, and dependencies.
-Service Level Agreement (SLA)	Contractual commitment defining service performance metrics (e.g., 99.9% uptime) and penalties.
-Master Service Agreement (MSA)	A foundational contract that governs future transactions and work orders between parties.
-Upstream Risk	Risks originating from suppliers or providers earlier in the supply chain (e.g., component manufacturers).
-Downstream Risk	Risks associated with the distribution and delivery of a product/service to the end customer.
-SOC 1 Report	Focuses on controls relevant to a user entity's internal control over financial reporting (ICFR).
-SOC 2 Report	Focuses on Trust Services Criteria: Security, Availability, Processing Integrity, Confidentiality, and Privacy.
-Right to Audit Clause	A contract provision that allows a customer to verify a vendor's compliance through inspections or audits.
-Counterfeit Parts	Unauthorized or fraudulent hardware components that can introduce vulnerabilities or failures.
+Supply Chain Risk Management (SCRM)	The process of identifying, assessing, and mitigating risks to the integrity and availability of products and services.	Supply Chain Risk, Risk Management, C-SCRM, Lifecycle
+Software Bill of Materials (SBOM)	A nested inventory of software components, libraries, and dependencies.	Supply Chain Risk, SBOM, Software Integrity, Transparency
+Service Level Agreement (SLA)	Contractual commitment defining service performance metrics (e.g., 99.9% uptime) and penalties.	Supply Chain Risk, Contracts, SLA, Performance Metrics
+Master Service Agreement (MSA)	A foundational contract that governs future transactions and work orders between parties.	Supply Chain Risk, Contracts, MSA, Vendor Management
+Upstream Risk	Risks originating from suppliers or providers earlier in the supply chain (e.g., component manufacturers).	Supply Chain Risk, Vendor Risk, Upstream Risk, Supply Chain Integrity
+Downstream Risk	Risks associated with the distribution and delivery of a product/service to the end customer.	Supply Chain Risk, Vendor Risk, Downstream Risk, Distribution
+SOC 1 Report	Focuses on controls relevant to a user entity's internal control over financial reporting (ICFR).	Supply Chain Risk, SOC Reporting, ICFR, Financial Controls
+SOC 2 Report	Focuses on Trust Services Criteria: Security, Availability, Processing Integrity, Confidentiality, and Privacy.	Supply Chain Risk, SOC Reporting, Trust Services Criteria, Auditing
+Right to Audit Clause	A contract provision that allows a customer to verify a vendor's compliance through inspections or audits.	Supply Chain Risk, Auditing, Contracts, Compliance
+Counterfeit Parts	Unauthorized or fraudulent hardware components that can introduce vulnerabilities or failures.	Supply Chain Risk, Hardware Security, Counterfeit Parts, Quality Assurance
+Fourth-party (Nth-party) Risk	Risk introduced by the **vendors of your vendors** (sub-contractors).	Supply Chain Risk, Vendor Risk, Fourth-party Risk, Sub-contractor Risk
+Vendor Offboarding	Critical phase where **data must be returned or securely destroyed** and access revoked.	Supply Chain Risk, Vendor Lifecycle, Offboarding, Data Sanitization
+NIST SP 800-161	The primary NIST publication for **Cybersecurity Supply Chain Risk Management (C-SCRM)**.	Supply Chain Risk, NIST 800-161, Frameworks, C-SCRM
+Software Composition Analysis (SCA)	Tools used to identify **vulnerabilities and license risks** in third-party/open-source libraries.	Supply Chain Risk, SCA, SBOM, Open Source Security
+Hardware Root of Trust	A secure, immutable foundation (like a **TPM**) used to verify system integrity from boot-up.	Supply Chain Risk, Hardware Security, TPM, Root of Trust
+Vendor Lock-in	The risk of becoming **dependent on a single provider** and unable to move without high costs/effort.	Supply Chain Risk, Vendor Management, Cloud Portability, Open Standards
+SOC 2 Type I vs Type II	Type I is a **point-in-time** design review; Type II tests **operating effectiveness** over a period (6+ months).	Supply Chain Risk, SOC Reporting, Control Effectiveness, Audit Period
+Conflict Minerals (3TG)	Regulatory concern (Dodd-Frank) regarding minerals that **fund armed conflict** (Tin, Tantalum, Tungsten, Gold).	Supply Chain Risk, Compliance, Conflict Minerals, 3TG
+Island Hopping	An attack where a **service provider is compromised** to pivot into their downstream clients.	Supply Chain Risk, Supply Chain Attacks, Island Hopping, Lateral Movement
+IaaS Shared Responsibility	The provider manages the **infra/hypervisor**; the customer manages the **OS/Apps/Data**.	Supply Chain Risk, Cloud Security, IaaS, Shared Responsibility
+Prudent Man Rule	The legal standard for **Due Care**—acting as a reasonable person would in similar circumstances.	Supply Chain Risk, Due Care, Prudent Man Rule, Governance
+Vendor Site Visit	A physical inspection to **verify controls** that cannot be fully assessed via remote questionnaires.	Supply Chain Risk, Vendor Management, Physical Security, On-site Audit
+Software Integrity Verification	Using **cryptographic hashes (SHA-256)** to ensure a download hasn't been tampered with.	Supply Chain Risk, Software Integrity, Cryptographic Hashes, SHA-256
+Supply Chain Resilience	Prioritizing **recovery and redundancy** (e.g., multi-sourcing) over extreme efficiency (JIT).	Supply Chain Risk, Resilience, BCP, Multi-sourcing
+Vendor Risk Scoring	Automated services (e.g., BitSight) that provide a **dynamic, outside-in view** of vendor security.	Supply Chain Risk, Vendor Risk Monitoring, Risk Scoring, OSINT

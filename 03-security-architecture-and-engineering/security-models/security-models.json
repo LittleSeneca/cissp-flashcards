@@ -118,5 +118,185 @@
     "correct": 1,
     "explanation": "**Why B is correct**: **Lattice-based** access control uses a mathematical structure (a lattice) to define a set of levels and the rules for information flow between them. This is the foundation for MAC models like Bell-LaPadula and Biba. **Why A is wrong**: DAC is based on user identity and owner discretion. **Why C is wrong**: RBAC is based on organizational roles. **Why D is wrong**: Content-dependent control is based on the specific data being accessed.",
     "category": "Security Models"
+  },
+  {
+    "question": "A high-security system is designed such that the actions of high-level users are completely unobservable to low-level users, thereby closing potential covert timing and storage channels. Which model is being described?",
+    "options": [
+      "Bell-LaPadula",
+      "Non-Interference Model",
+      "Sutherland Model",
+      "Information Flow Model"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: The **Non-Interference** model (Goguen-Meseguer) ensures that the actions of high-security subjects do not interfere with or affect what lower-level subjects can observe, which effectively prevents covert channels. **Why A is wrong**: BLP regulates access but does not explicitly prevent all covert channels. **Why C is wrong**: Sutherland focuses on preventing inference. **Why D is wrong**: Information Flow is a general category of models.",
+    "category": "Security Models"
+  },
+  {
+    "question": "Which mathematical property of an access control model is the Harrison-Ruzzo-Ullman (HRU) model MOST famous for proving to be 'undecidable' in the general case?",
+    "options": [
+      "The Star Property",
+      "The Safety Problem",
+      "The Simple Security Property",
+      "The Decidability of Lattice Joins"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: The **HRU model** proved that determining if a specific access right can ever leak to an unauthorized subject (the **Safety Problem**) is undecidable for an arbitrary protection system. **Why A/C are wrong**: These are BLP properties. **Why D is wrong**: Lattice operations are decidable.",
+    "category": "Security Models"
+  },
+  {
+    "question": "In the Take-Grant model, if a subject has the 'Take' right on another subject, what can it do?",
+    "options": [
+      "It can grant its own rights to the other subject",
+      "It can take any of the other subject's rights for itself",
+      "It can delete the other subject",
+      "It can change the other subject's security level"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: In the **Take-Grant** model, the 'Take' right allows a subject to acquire rights that another subject possesses. **Why A is wrong**: That is the 'Grant' right. **Why C/D are wrong**: These are not the primary functions of the Take-Grant operations.",
+    "category": "Security Models"
+  },
+  {
+    "question": "Which information flow model is primarily concerned with preventing unauthorized users from making inferences about data they are not allowed to access?",
+    "options": [
+      "Biba",
+      "Sutherland",
+      "Clark-Wilson",
+      "Graham-Denning"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: The **Sutherland model** is an information flow model that specifically addresses preventing unauthorized information flow and inference. **Why A/C/D are wrong**: Biba is for integrity. Clark-Wilson is for well-formed transactions. Graham-Denning is for rights management.",
+    "category": "Security Models"
+  },
+  {
+    "question": "A security engineer is using the State Machine model to evaluate a new system. What is the fundamental requirement for the system to be considered 'secure' under this model?",
+    "options": [
+      "It must be implemented in a Trusted Platform Module (TPM)",
+      "It must start in a secure state and every state transition must result in a secure state",
+      "It must use 256-bit AES encryption for all transitions",
+      "It must have a security kernel that is less than 1000 lines of code"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: The **State Machine model** defines a secure system as one that always transitions from one secure state to another secure state. **Why A/C/D are wrong**: These are specific technical or assurance requirements, not the definition of the State Machine model.",
+    "category": "Security Models"
+  },
+  {
+    "question": "When a system combines data from a 'Secret' object and a 'Confidential' object, a lattice-based model uses which operation to determine the security label of the resulting object?",
+    "options": [
+      "Greatest Lower Bound (GLB)",
+      "Least Upper Bound (LUB)",
+      "Transitive Closure",
+      "Reflexive Join"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: The **Least Upper Bound (LUB)**, or 'join', is the lowest label in the lattice that dominates both input labels. It ensures the resulting data is protected at a level sufficient for both sources. **Why A is wrong**: GLB (meet) is the highest label dominated by both, used for different purposes. **Why C/D are wrong**: These are graph/set theory terms, not primary lattice operations for labeling.",
+    "category": "Security Models"
+  },
+  {
+    "question": "Which of the following is a key difference between the Clark-Wilson model and the Biba model?",
+    "options": [
+      "Clark-Wilson protects confidentiality, while Biba protects integrity",
+      "Clark-Wilson is hierarchical, while Biba is based on transactions",
+      "Clark-Wilson uses 'well-formed transactions' and 'separation of duties,' while Biba uses hierarchical levels and read/write rules",
+      "There is no difference; they are the same model"
+    ],
+    "correct": 2,
+    "explanation": "**Why C is correct**: **Clark-Wilson** is a commercial model focused on TPs and IVPs to ensure integrity through controlled transactions. **Biba** is a lattice-based model using simple read/write rules based on integrity levels. **Why A is wrong**: Both are integrity models. **Why B is wrong**: The descriptions are swapped.",
+    "category": "Security Models"
+  },
+  {
+    "question": "In the Biba model, the 'Simple Integrity Property' is often summarized as:",
+    "options": [
+      "No Read Up",
+      "No Write Down",
+      "No Read Down",
+      "No Write Up"
+    ],
+    "correct": 2,
+    "explanation": "**Why C is correct**: The **Simple Integrity Property** of Biba is **No Read Down**. It prevents a subject from reading data from a lower integrity level, which could corrupt the subject's own integrity. **Why D is wrong**: That is the *-Integrity Property (No Write Up). **Why A/B are wrong**: These are BLP properties.",
+    "category": "Security Models"
+  },
+  {
+    "question": "The 'Access Matrix' model can be implemented in several ways. Which implementation is characterized by storing access rights with the SUBJECT?",
+    "options": [
+      "Access Control List (ACL)",
+      "Capability List",
+      "Role-Based Access Control",
+      "Content-Dependent Control"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: A **Capability List** is a row-wise slice of the access matrix, where each subject holds a 'ticket' or 'capability' for each object they can access. **Why A is wrong**: An ACL is a column-wise slice stored with the object. **Why C/D are wrong**: These are higher-level access control methods.",
+    "category": "Security Models"
+  },
+  {
+    "question": "Which of the following models specifically addresses the 'Invocation Property,' which prevents a subject from requesting service from a subject at a higher integrity level?",
+    "options": [
+      "Bell-LaPadula",
+      "Biba",
+      "Lipner",
+      "Brewer-Nash"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: The **Biba model** includes the **Invocation Property**, which is an additional rule to prevent integrity corruption through service requests to higher-integrity subjects. **Why A/C/D are wrong**: These models do not feature an 'Invocation Property'.",
+    "category": "Security Models"
+  },
+  {
+    "question": "What is the primary reason the 'Chinese Wall' (Brewer-Nash) model is considered 'dynamic' compared to Bell-LaPadula?",
+    "options": [
+      "It requires a faster processor to run",
+      "A subject's access rights change based on their previous actions and the data they have already accessed",
+      "It is updated by the vendor every 24 hours",
+      "It uses AI to determine access rights"
+    ],
+    "correct": 1,
+    "explanation": "**Why dynamic access is correct**: In **Brewer-Nash**, the 'wall' is built around the data a user has already seen. Once they access data from one company, they are dynamically blocked from accessing data from a competitor. **Why A/C/D are wrong**: These are not the reasons for the 'dynamic' label.",
+    "category": "Security Models"
+  },
+  {
+    "question": "In the Graham-Denning model, which rule allows a subject to provide an access right they possess to another subject?",
+    "options": [
+      "Grant Access Right",
+      "Transfer Access Right",
+      "Create Access Right",
+      "Read Access Right"
+    ],
+    "correct": 0,
+    "explanation": "**Why Grant is correct**: The **Grant** rule is used when a subject gives a right to another subject. **Why B is wrong**: Transfer typically implies moving the right or a subset of it. **Why C/D are wrong**: These are different rules in the eight-rule set.",
+    "category": "Security Models"
+  },
+  {
+    "question": "The 'Lipner Model' is unique because it assigns subjects to roles. Which of the following is a role defined in the original Lipner model to ensure integrity and confidentiality?",
+    "options": [
+      "System Administrator",
+      "Database Auditor",
+      "System Control Quartermaster",
+      "Cloud Security Architect"
+    ],
+    "correct": 2,
+    "explanation": "**Why System Control Quartermaster is correct**: The **Lipner Model** uses specific roles like 'System Control Quartermaster' and 'Research Modification' to implement separation of duties and manage the transition of code from development to production. **Why others are wrong**: These are modern job titles, not specific roles in the formal Lipner model.",
+    "category": "Security Models"
+  },
+  {
+    "question": "Which of the following models is BEST suited for a system where 'separation of duties' must be enforced through the use of intermediate programs to modify data?",
+    "options": [
+      "Bell-LaPadula",
+      "Biba",
+      "Clark-Wilson",
+      "Access Matrix"
+    ],
+    "correct": 2,
+    "explanation": "**Why Clark-Wilson is correct**: **Clark-Wilson** ensures integrity and separation of duties by requiring that users (subjects) only modify data (Constrained Data Items) via authorized programs (Transformation Procedures). **Why A/B/D are wrong**: These do not natively enforce separation of duties through program-based mediation as their primary mechanism.",
+    "category": "Security Models"
+  },
+  {
+    "question": "The 'Simple Security Property' of the Bell-LaPadula model is colloquially known as:",
+    "options": [
+      "No Read Up",
+      "No Write Down",
+      "No Read Down",
+      "No Write Up"
+    ],
+    "correct": 0,
+    "explanation": "**Why A is correct**: The **Simple Security Property** prevents a subject from reading an object at a higher security level (**No Read Up**). **Why B is wrong**: That is the *-Property. **Why C/D are wrong**: These are Biba properties.",
+    "category": "Security Models"
   }
 ]

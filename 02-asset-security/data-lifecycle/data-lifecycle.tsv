@@ -1,0 +1,25 @@
+Create Phase	The first phase of the data lifecycle; involves generation or acquisition of new data.
+Store Phase	Lifecycle phase for data at rest; involves encryption and physical protection.
+Use Phase	Lifecycle phase where data is actively processed in memory or on screen.
+Share Phase	Lifecycle phase where data is transmitted (data in transit); protected by TLS or DLP.
+Archive Phase	Long-term storage of data no longer in active use; addresses media obsolescence.
+Destroy Phase	The final phase involving sanitization to prevent data remanence.
+Clearing	Sanitization level using software to overwrite data; protects against simple recovery.
+Purging	Advanced sanitization (e.g., Secure Erase) protecting against laboratory recovery.
+Destruction	Physical destruction (shredding, incineration) of media; the most secure method.
+Degaussing	Using strong magnets to destroy data on magnetic media (ineffective for SSDs/CDs).
+Crypto-shredding	De-identifying data by destroying its encryption keys; essential for cloud data.
+Data Remanence	The residual representation of data remaining on media after sanitization attempts.
+Legal Hold	Requirement to suspend data destruction when litigation is anticipated.
+DLP (Data Loss Prevention)	System that monitors and blocks unauthorized transfers of sensitive data.
+CASB	Cloud Access Security Broker; enforces security policies for cloud-based data.
+IRM (Information Rights Management)	Persistent protection that controls file usage (copy/paste, print) regardless of location.
+HSM	Hardware Security Module; a physical device that manages and stores encryption keys.
+Data at Rest	Data stored on persistent media (hard drives, tapes).
+Data in Transit	Data moving across a network (email, web traffic, SFTP).
+Data in Use	Data being actively processed in RAM or CPU caches.
+SSD Overprovisioning	SSD feature that can hide data from software-based overwriting tools.
+NIST SP 800-88	The primary US government guideline for media sanitization.
+E-discovery	The process of identifying, collecting, and producing electronic data for legal cases.
+EDRM	Electronic Discovery Reference Model; the standard framework for e-discovery.
+Remote Wipe	Capability to remotely sanitize a lost or stolen mobile device.

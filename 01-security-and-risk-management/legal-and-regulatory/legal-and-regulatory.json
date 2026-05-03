@@ -1,72 +1,302 @@
 [
   {
     "question": "Which type of law is primarily concerned with the punishment of individuals who commit acts that are considered harmful to society as a whole?",
-    "options": ["Civil Law", "Administrative Law", "Criminal Law", "Common Law"],
+    "options": [
+      "Civil Law",
+      "Administrative Law",
+      "Criminal Law",
+      "Common Law"
+    ],
     "correct": 2,
     "explanation": "**Why Criminal Law is correct**: Criminal law deals with conduct that is considered harmful to social order and is prohibited by statute. Punishments can include imprisonment and fines. **Why others are wrong**: Civil law (Tort law) deals with disputes between individuals or organizations. Administrative (Regulatory) law is enacted by government agencies. Common law is based on judicial decisions.",
-    "category": "Legal, Regulatory, and IP"
+    "category": "Legal & Regulatory, Criminal Law, Statutory Law, Social Order"
   },
   {
     "question": "A software company wants to protect a unique algorithm that provides a significant competitive advantage but does not want to disclose the details to the public. Which form of intellectual property protection is BEST suited for this requirement?",
-    "options": ["Patent", "Copyright", "Trademark", "Trade Secret"],
+    "options": [
+      "Patent",
+      "Copyright",
+      "Trademark",
+      "Trade Secret"
+    ],
     "correct": 3,
     "explanation": "**Why Trade Secret is correct**: Trade secrets protect proprietary information that provides a competitive edge and is kept secret. Unlike patents, they do not require public disclosure. **Why others are wrong**: Patents require public disclosure. Copyright protects the expression of an idea, not the algorithm itself. Trademarks protect brand identifiers.",
-    "category": "Legal, Regulatory, and IP"
+    "category": "Legal & Regulatory, Intellectual Property, Trade Secret, Competitive Advantage"
   },
   {
     "question": "Under U.S. copyright law, what is the standard duration of protection for a work created by an individual author?",
-    "options": ["20 years from the date of creation", "70 years from the date of creation", "The life of the author plus 70 years", "95 years from the date of publication"],
+    "options": [
+      "20 years from the date of creation",
+      "70 years from the date of creation",
+      "The life of the author plus 70 years",
+      "95 years from the date of publication"
+    ],
     "correct": 2,
     "explanation": "**Why 'Life + 70' is correct**: For individual authors, copyright lasts for the life of the author plus 70 years. **Why others are wrong**: 20 years is the standard term for a utility patent. 95 years from publication applies to works made for hire (corporate authorship).",
-    "category": "Legal, Regulatory, and IP"
+    "category": "Legal & Regulatory, Intellectual Property, Copyright, Life + 70"
   },
   {
     "question": "A utility patent in the United States generally provides protection for how many years from the date of application?",
-    "options": ["10 years", "14 years", "20 years", "50 years"],
+    "options": [
+      "10 years",
+      "14 years",
+      "20 years",
+      "50 years"
+    ],
     "correct": 2,
     "explanation": "**Why 20 years is correct**: Utility patents provide protection for 20 years from the filing date. **Why others are wrong**: 14 years is for design patents. 10 years and 50 years are not standard patent terms for utility inventions.",
-    "category": "Legal, Regulatory, and IP"
+    "category": "Legal & Regulatory, Intellectual Property, Utility Patent, 20-Year Term"
   },
   {
     "question": "Which regulation specifically mandates the protection of Personal Health Information (PHI) within the United States?",
-    "options": ["SOX", "GLBA", "HIPAA", "PCI DSS"],
+    "options": [
+      "SOX",
+      "GLBA",
+      "HIPAA",
+      "PCI DSS"
+    ],
     "correct": 2,
     "explanation": "**Why HIPAA is correct**: The Health Insurance Portability and Accountability Act (HIPAA) regulates the security and privacy of PHI. **Why others are wrong**: SOX (Sarbanes-Oxley) focuses on financial reporting and corporate governance. GLBA (Gramm-Leach-Bliley) focuses on financial institutions and PII. PCI DSS is a contractual standard for credit card data, not a federal law.",
-    "category": "Legal, Regulatory, and IP"
+    "category": "Legal & Regulatory, HIPAA, PHI, Healthcare Privacy"
   },
   {
     "question": "The Gramm-Leach-Bliley Act (GLBA) primarily affects which type of organizations?",
-    "options": ["Healthcare providers", "Financial institutions", "Publicly traded companies", "Government contractors"],
+    "options": [
+      "Healthcare providers",
+      "Financial institutions",
+      "Publicly traded companies",
+      "Government contractors"
+    ],
     "correct": 1,
     "explanation": "**Why Financial institutions is correct**: GLBA requires financial institutions to explain their information-sharing practices to customers and to safeguard sensitive data. **Why others are wrong**: Healthcare is HIPAA. Publicly traded companies are SOX. Government contractors often fall under FISMA or CMMC.",
-    "category": "Legal, Regulatory, and IP"
+    "category": "Legal & Regulatory, GLBA, Financial Institutions, Privacy Rule"
   },
   {
     "question": "Which legislative act was passed in response to major corporate and accounting scandals, requiring strict financial record-keeping and internal controls?",
-    "options": ["FISMA", "SOX", "GLBA", "ECPA"],
+    "options": [
+      "FISMA",
+      "SOX",
+      "GLBA",
+      "ECPA"
+    ],
     "correct": 1,
     "explanation": "**Why SOX is correct**: The Sarbanes-Oxley Act (SOX) was enacted to protect investors from fraudulent financial reporting by corporations. **Why others are wrong**: FISMA applies to federal agencies. GLBA applies to financial institutions. ECPA (Electronic Communications Privacy Act) governs wiretapping and electronic communication access.",
-    "category": "Legal, Regulatory, and IP"
+    "category": "Legal & Regulatory, SOX, Corporate Governance, Internal Controls"
   },
   {
     "question": "The California Consumer Privacy Act (CCPA) provides California residents with which of the following rights?",
-    "options": ["The right to be forgotten in all jurisdictions", "The right to opt-out of the sale of their personal information", "The right to a free computer security audit", "The right to sue for any data breach regardless of negligence"],
+    "options": [
+      "The right to be forgotten in all jurisdictions",
+      "The right to opt-out of the sale of their personal information",
+      "The right to a free computer security audit",
+      "The right to sue for any data breach regardless of negligence"
+    ],
     "correct": 1,
     "explanation": "**Why opt-out is correct**: CCPA grants California residents the right to know what personal data is being collected and the right to opt-out of its sale. **Why others are wrong**: The 'right to be forgotten' is more strictly defined in GDPR. CCPA does not mandate free audits or provide an absolute right to sue for any breach without specific criteria.",
-    "category": "Legal, Regulatory, and IP"
+    "category": "Legal & Regulatory, CCPA, Privacy Rights, Opt-out"
   },
   {
     "question": "The OECD Privacy Guidelines are significant because they:",
-    "options": ["Provide a legally binding global privacy law", "Establish a framework for the protection of privacy and transborder flows of personal data", "Mandate the use of AES-256 for all data at rest", "Define the technical specifications for SSL/TLS"],
+    "options": [
+      "Provide a legally binding global privacy law",
+      "Establish a framework for the protection of privacy and transborder flows of personal data",
+      "Mandate the use of AES-256 for all data at rest",
+      "Define the technical specifications for SSL/TLS"
+    ],
     "correct": 1,
     "explanation": "**Why OECD framework is correct**: The OECD Guidelines on the Protection of Privacy and Transborder Flows of Personal Data provide a non-binding but highly influential framework for international privacy. **Why others are wrong**: They are not legally binding as a global law. They do not specify technical encryption algorithms or protocol specifications.",
-    "category": "Legal, Regulatory, and IP"
+    "category": "Legal & Regulatory, OECD Guidelines, Transborder Data Flow, Privacy Principles"
   },
   {
     "question": "Which intellectual property concept protects 'original works of authorship' including software code, music, and literature?",
-    "options": ["Patent", "Trademark", "Copyright", "Trade Secret"],
+    "options": [
+      "Patent",
+      "Trademark",
+      "Copyright",
+      "Trade Secret"
+    ],
     "correct": 2,
     "explanation": "**Why Copyright is correct**: Copyright protects the expression of ideas in original works of authorship, which includes software source code. **Why others are wrong**: Patents protect inventions. Trademarks protect brands. Trade secrets protect confidential business information.",
-    "category": "Legal, Regulatory, and IP"
+    "category": "Legal & Regulatory, Intellectual Property, Copyright, Works of Authorship"
+  },
+  {
+    "question": "Under the General Data Protection Regulation (GDPR), if a data breach occurs that is likely to result in a risk to the rights and freedoms of individuals, the data controller must notify the supervisory authority within how many hours?",
+    "options": [
+      "24 hours",
+      "48 hours",
+      "72 hours",
+      "7 days"
+    ],
+    "correct": 2,
+    "explanation": "**Why 72 hours is correct**: GDPR Article 33 requires notification to the supervisory authority without undue delay and, where feasible, not later than 72 hours after having become aware of it. **Why others are wrong**: These do not match the specific GDPR requirement.",
+    "category": "Legal & Regulatory, GDPR, Breach Notification, 72-Hour Rule"
+  },
+  {
+    "question": "A company collects data for the purpose of processing payroll but then uses that same data to sell marketing leads to third parties without additional consent. Which GDPR principle does this MOST directly violate?",
+    "options": [
+      "Data Minimization",
+      "Purpose Limitation",
+      "Storage Limitation",
+      "Accuracy"
+    ],
+    "correct": 1,
+    "explanation": "**Why Purpose Limitation is correct**: Purpose limitation means data must be collected for specified, explicit, and legitimate purposes and not further processed in a manner that is incompatible with those purposes. **Why others are wrong**: Data minimization is about only collecting what is necessary. Storage limitation is about not keeping data longer than needed. Accuracy is about keeping data correct.",
+    "category": "Legal & Regulatory, GDPR, Privacy Principles, Purpose Limitation"
+  },
+  {
+    "question": "Which U.S. law is the primary statute used to prosecute individuals for unauthorized access to computers, including 'exceeding authorized access' to a protected computer?",
+    "options": [
+      "ECPA",
+      "CFAA",
+      "FISMA",
+      "DMCA"
+    ],
+    "correct": 1,
+    "explanation": "**Why CFAA is correct**: The Computer Fraud and Abuse Act (CFAA) is the primary federal anti-hacking law. **Why others are wrong**: ECPA governs wiretapping and electronic communication access. FISMA applies to federal agencies' security programs. DMCA deals with copyright and DRM circumvention.",
+    "category": "Legal & Regulatory, CFAA, Cybercrime, Unauthorized Access"
+  },
+  {
+    "question": "A security researcher develops a tool that bypasses the Content Scramble System (CSS) on DVDs to allow users to play them on unauthorized devices. Which law is the researcher MOST likely in violation of?",
+    "options": [
+      "Computer Fraud and Abuse Act (CFAA)",
+      "Economic Espionage Act",
+      "Digital Millennium Copyright Act (DMCA)",
+      "Privacy Act of 1974"
+    ],
+    "correct": 2,
+    "explanation": "**Why DMCA is correct**: The DMCA contains anti-circumvention provisions that prohibit bypassing technological protection measures (DRM) used to control access to copyrighted works. **Why others are wrong**: CFAA is about unauthorized access to computers. Economic Espionage Act is about trade secret theft. Privacy Act applies to federal government handling of PII.",
+    "category": "Legal & Regulatory, DMCA, Intellectual Property, Anti-circumvention"
+  },
+  {
+    "question": "In the context of legal liability, what is the difference between 'Due Care' and 'Due Diligence'?",
+    "options": [
+      "Due Care is the research, and Due Diligence is the action",
+      "Due Care is the legal minimum, and Due Diligence is the professional standard",
+      "Due Diligence is the research/investigation, and Due Care is the implementation of correct actions",
+      "There is no difference; they are interchangeable terms"
+    ],
+    "correct": 2,
+    "explanation": "**Why Diligence vs Care is correct**: **Due Diligence** is the act of investigating and understanding the risks (research). **Due Care** is taking the necessary steps to protect the organization based on that knowledge (action). **Why others are wrong**: They are distinct concepts; skipping either can lead to a finding of negligence.",
+    "category": "Legal & Regulatory, Due Care, Due Diligence, Liability"
+  },
+  {
+    "question": "Which legislative act requires federal agencies in the United States to develop and implement an agency-wide information security program?",
+    "options": [
+      "GLBA",
+      "SOX",
+      "FISMA",
+      "HIPAA"
+    ],
+    "correct": 2,
+    "explanation": "**Why FISMA is correct**: The Federal Information Security Management Act (FISMA) mandates that federal agencies protect their information and systems. **Why others are wrong**: GLBA is for financial institutions. SOX is for public companies. HIPAA is for healthcare.",
+    "category": "Legal & Regulatory, FISMA, Federal Information Security, NIST RMF"
+  },
+  {
+    "question": "A website that targets children under the age of 13 is found to be collecting names and email addresses without obtaining verifiable parental consent. Which law is being violated?",
+    "options": [
+      "GDPR",
+      "CCPA",
+      "COPPA",
+      "FERPA"
+    ],
+    "correct": 2,
+    "explanation": "**Why COPPA is correct**: The Children's Online Privacy Protection Act (COPPA) regulates the collection of personal information from children under 13 in the U.S. **Why others are wrong**: FERPA is for educational records. CCPA and GDPR are general privacy laws with higher age thresholds for consent.",
+    "category": "Legal & Regulatory, COPPA, Children's Privacy, Parental Consent"
+  },
+  {
+    "question": "Which international agreement establishes export controls for dual-use goods and technologies, including high-performance computers and cryptographic products?",
+    "options": [
+      "Budapest Convention",
+      "Wassenaar Arrangement",
+      "Safe Harbor",
+      "The Madrid Protocol"
+    ],
+    "correct": 1,
+    "explanation": "**Why Wassenaar is correct**: The Wassenaar Arrangement is an international regime that controls the export of conventional arms and dual-use goods, including encryption technology. **Why others are wrong**: Budapest Convention is on cybercrime. Safe Harbor (now defunct) was for data privacy. Madrid Protocol is for trademarks.",
+    "category": "Legal & Regulatory, Wassenaar Arrangement, Export Controls, Dual-use Technology"
+  },
+  {
+    "question": "Which U.S. Constitutional Amendment provides the primary legal basis for protecting citizens against 'unreasonable searches and seizures' by the government, which applies to digital evidence?",
+    "options": [
+      "First Amendment",
+      "Fourth Amendment",
+      "Fifth Amendment",
+      "Sixth Amendment"
+    ],
+    "correct": 1,
+    "explanation": "**Why Fourth Amendment is correct**: The Fourth Amendment protects individuals from unreasonable search and seizure, requiring law enforcement to obtain a warrant based on probable cause for most digital searches. **Why others are wrong**: First is speech/religion. Fifth is self-incrimination. Sixth is right to a speedy trial.",
+    "category": "Legal & Regulatory, Fourth Amendment, Search and Seizure, Digital Forensics"
+  },
+  {
+    "question": "What is the primary purpose of the 'Budapest Convention on Cybercrime'?",
+    "options": [
+      "To mandate a global 256-bit encryption standard",
+      "To harmonize national laws on cybercrime and improve investigative techniques",
+      "To establish a global internet police force",
+      "To provide a framework for taxing international e-commerce"
+    ],
+    "correct": 1,
+    "explanation": "**Why Budapest Convention is correct**: It is the first international treaty seeking to address Internet and computer crime by harmonizing national laws and increasing cooperation among nations. **Why others are wrong**: It does not mandate specific technical standards or establish a global police force.",
+    "category": "Legal & Regulatory, Budapest Convention, Cybercrime, International Treaties"
+  },
+  {
+    "question": "An organization is found liable for a data breach because they failed to implement basic security patches that had been available for over a year. This failure to act as a 'reasonable person' or organization is known as:",
+    "options": [
+      "Strict Liability",
+      "Negligence",
+      "Vicarious Liability",
+      "Prudent Man Rule"
+    ],
+    "correct": 1,
+    "explanation": "**Why Negligence is correct**: Negligence occurs when an organization fails to exercise the level of care (Due Care) that a 'reasonable person' would under similar circumstances. **Why others are wrong**: Strict liability is liability without regard to fault. Vicarious liability is when an employer is liable for an employee's actions. The Prudent Man Rule is the standard used to judge if someone acted reasonably.",
+    "category": "Legal & Regulatory, Liability, Negligence, Due Care"
+  },
+  {
+    "question": "Which U.S. law prohibits the interception of oral, wire, and electronic communications unless a specific exception applies?",
+    "options": [
+      "CFAA",
+      "ECPA",
+      "DMCA",
+      "COPPA"
+    ],
+    "correct": 1,
+    "explanation": "**Why ECPA is correct**: The Electronic Communications Privacy Act (ECPA) extended government restrictions on wire taps from telephone calls to include transmissions of electronic data by computer. **Why others are wrong**: CFAA is hacking. DMCA is copyright. COPPA is children's privacy.",
+    "category": "Legal & Regulatory, ECPA, Wiretapping, Electronic Communications"
+  },
+  {
+    "question": "A cloud provider stores customer data in a data center located in France. The data is owned by a German company and relates to Spanish citizens. Which concept dictates that the data is subject to the laws of France because it is physically located there?",
+    "options": [
+      "Data Portability",
+      "Data Residency",
+      "Data Sovereignty",
+      "Transborder Data Flow"
+    ],
+    "correct": 2,
+    "explanation": "**Why Data Sovereignty is correct**: Data sovereignty is the idea that data is subject to the laws of the country in which it is physically located. **Why others are wrong**: Data residency refers to the physical location. Data portability is a GDPR right to move data.",
+    "category": "Legal & Regulatory, Data Sovereignty, Data Residency, Jurisdictional Law"
+  },
+  {
+    "question": "Which legislative act was specifically designed to protect against the theft of trade secrets, particularly when the theft is intended to benefit a foreign power?",
+    "options": [
+      "Economic Espionage Act",
+      "Computer Fraud and Abuse Act",
+      "Digital Millennium Copyright Act",
+      "Sarbanes-Oxley Act"
+    ],
+    "correct": 0,
+    "explanation": "**Why Economic Espionage Act is correct**: This 1996 act makes the theft of trade secrets a federal crime, with harsher penalties if the theft benefits a foreign government. **Why others are wrong**: These acts address different areas of law (hacking, copyright, financial reporting).",
+    "category": "Legal & Regulatory, Intellectual Property, Economic Espionage, Trade Secrets"
+  },
+  {
+    "question": "Regarding the EU-U.S. Data Privacy Framework (the successor to Privacy Shield), what is its primary purpose?",
+    "options": [
+      "To mandate that all EU data be stored in the U.S.",
+      "To provide a legal mechanism for the transfer of personal data from the EU to the U.S. while ensuring adequate protection",
+      "To eliminate the need for GDPR compliance for U.S. companies",
+      "To establish a joint EU-U.S. cyber warfare task force"
+    ],
+    "correct": 1,
+    "explanation": "**Why Data Privacy Framework is correct**: It provides U.S. companies with a reliable mechanism for personal data transfers from the EU while ensuring the data is protected to a standard equivalent to the GDPR. **Why others are wrong**: It does not eliminate GDPR requirements or mandate U.S. storage.",
+    "category": "Legal & Regulatory, EU-US Data Transfer, GDPR Adequacy, Privacy Framework"
   }
 ]

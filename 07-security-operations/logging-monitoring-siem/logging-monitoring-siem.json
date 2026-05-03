@@ -9,7 +9,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **Normalization** is the process of converting disparate log formats from different sources into a standardized, common format. This allows the SIEM to compare and correlate data across the entire enterprise. **Why A is wrong**: **Aggregation** is the collection of logs from many sources into one location. **Why C is wrong**: **Correlation** is the logical linking of related events to detect patterns. **Why D is wrong**: **Enrichment** is adding additional context (like threat intelligence or asset info) to a normalized log.",
-    "category": "Logging, Monitoring, and SIEM"
+    "category": "SIEM, SIEM Functions, Log Processing"
   },
   {
     "question": "An organization is experiencing 'alert fatigue' in its Security Operations Center (SOC). Which strategy is the MOST effective for reducing noise while ensuring critical security events are still detected?",
@@ -21,7 +21,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **Tuning** involves refining the rules that trigger alerts to ensure they are accurate and relevant, which directly reduces the volume of **false positives** (Type I errors). Combined with risk-based prioritization, this ensures analysts focus on the most critical events. **Why A is wrong**: Simply disabling alerts can lead to **false negatives** (Type II errors) where real attacks are missed. **Why C is wrong**: Adding more analysts treats the symptom, not the cause. **Why D is wrong**: **SOAR** automates response but doesn't necessarily reduce initial alert noise; it helps manage it more efficiently.",
-    "category": "Logging, Monitoring, and SIEM"
+    "category": "SIEM, Alert Management"
   },
   {
     "question": "A security analyst is investigating a potential breach but finds that the timestamps on logs from the web server, database server, and firewall are out of sync by several minutes. Which protocol should have been implemented to prevent this issue?",
@@ -33,7 +33,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **NTP (Network Time Protocol)** ensures that all devices on a network have synchronized clocks. This is critical for **event correlation** and forensic timeline reconstruction. **Why A, C, and D are wrong**: These protocols serve other functions (management, email, and name resolution) and do not provide time synchronization.",
-    "category": "Logging, Monitoring, and SIEM"
+    "category": "SIEM, Log Integrity, Time Synchronization"
   },
   {
     "question": "To ensure the integrity of security logs and prevent an attacker from deleting evidence of their activities, where should logs be MOST securely stored?",
@@ -45,7 +45,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: Storing logs on a **centralized server** using **Write-Once, Read-Many (WORM)** media or immutable storage ensures that once a log is written, it cannot be modified or deleted, preserving the audit trail even if the originating system is compromised. **Why A is wrong**: Local logs are easily cleared by an attacker with administrative rights. **Why B is wrong**: Network shares are also susceptible to modification. **Why D is wrong**: Standard cloud storage is not inherently immutable unless specific 'object lock' features are enabled.",
-    "category": "Logging, Monitoring, and SIEM"
+    "category": "SIEM, Log Integrity"
   },
   {
     "question": "A SIEM correlation rule is triggered when a single user account fails to log in 10 times in one minute from an external IP, followed immediately by a successful login. Which type of attack does this pattern MOST likely indicate?",
@@ -57,7 +57,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: Multiple failed login attempts (indicating guessing) followed by a successful login is a classic signature of a **successful brute-force attack**. **Why A is wrong**: A DoS attack would focus on crashing the service or flooding it, not necessarily logging in. **Why C is wrong**: Privilege escalation happens *after* a successful initial login. **Why D is wrong**: While an insider could do this, the 'external IP' makes it more likely to be an external attacker.",
-    "category": "Logging, Monitoring, and SIEM"
+    "category": "SIEM, SIEM Functions, Detection"
   },
   {
     "question": "Which of the following describes the difference between 'In-band' and 'Out-of-band' (OOB) monitoring in a network security context?",
@@ -69,7 +69,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **Out-of-band (OOB)** management/monitoring is more secure and resilient because it does not share the same bandwidth or attack surface as the production network. If the production network is congested or compromised, OOB access remains available. **Why A, C, and D are wrong**: These are incorrect characterizations of the two approaches.",
-    "category": "Logging, Monitoring, and SIEM"
+    "category": "SIEM, Network Monitoring"
   },
   {
     "question": "An organization is implementing a 'User and Entity Behavior Analytics' (UEBA) solution. What is the PRIMARY advantage of UEBA over traditional signature-based detection?",
@@ -81,7 +81,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **UEBA** uses machine learning to establish a 'normal' baseline for users and entities. This allows it to detect unknown threats (zero-days) or malicious insider activity that doesn't match a known malware signature. **Why A is wrong**: UEBA is often more complex and expensive. **Why C is wrong**: UEBA requires a 'learning' period to establish baselines. **Why D is wrong**: UEBA specifically monitors user and entity behavior, often across multiple log sources.",
-    "category": "Logging, Monitoring, and SIEM"
+    "category": "SIEM, UEBA, Behavioral Analytics"
   },
   {
     "question": "A SOC analyst is reviewing logs and sees an 'Event ID 4624' in the Windows Security Log. What does this specific event ID signify?",
@@ -93,7 +93,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: In Windows environments, **Event ID 4624** is the standard event for a **successful logon**. **Why A is wrong**: Failed logins are Event ID 4625. **Why B is wrong**: User creation is Event ID 4720. **Why D is wrong**: Account lockout is Event ID 4740.",
-    "category": "Logging, Monitoring, and SIEM"
+    "category": "SIEM, Log Integrity, Windows Events"
   },
   {
     "question": "Which syslog severity level, according to RFC 5424, represents 'Critical conditions' (level 2)?",
@@ -105,7 +105,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: The syslog levels are: 0 (Emergency), 1 (Alert), 2 (**Critical**), 3 (Error), 4 (Warning), 5 (Notice), 6 (Informational), 7 (Debug). **Why A, B, and D are wrong**: These correspond to levels 0, 1, and 3 respectively.",
-    "category": "Logging, Monitoring, and SIEM"
+    "category": "SIEM, Syslog, Log Management"
   },
   {
     "question": "An organization wants to automate its response to security alerts, such as automatically isolating a compromised host or blocking a malicious IP at the firewall. Which technology is BEST suited for this?",
@@ -117,6 +117,186 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: **SOAR (Security Orchestration, Automation, and Response)** is designed to take inputs from a SIEM and execute 'playbooks' that automate the response across various security tools. **Why A is wrong**: **SIEM** is primarily for detection and log management. **Why B is wrong**: **DLP** is for preventing data loss. **Why D is wrong**: **IDS** is for detection only.",
-    "category": "Logging, Monitoring, and SIEM"
+    "category": "SIEM, SOAR, Automation"
+  },
+  {
+    "question": "According to NIST SP 800-92, what is the correct order of the log management lifecycle?",
+    "options": [
+      "Generation, Storage, Analysis, Transmission, Disposal",
+      "Generation, Transmission, Storage, Analysis, Disposal",
+      "Analysis, Generation, Transmission, Storage, Disposal",
+      "Storage, Generation, Transmission, Analysis, Disposal"
+    ],
+    "correct": 1,
+    "explanation": "**Why Generation -> Transmission is correct**: Logs are first generated at the source, then transmitted to a central store, where they are stored, analyzed, and eventually disposed of. **Why others are wrong**: They represent the phases in the incorrect logical order.",
+    "category": "SIEM, Log Management"
+  },
+  {
+    "question": "In a syslog message, what does the 'Facility' code represent?",
+    "options": [
+      "The importance of the message (e.g., Error vs Info)",
+      "The subsystem or application that generated the message (e.g., mail, auth, kernel)",
+      "The IP address of the sender",
+      "The time the message was sent"
+    ],
+    "correct": 1,
+    "explanation": "**Why Facility is correct**: The facility code helps categorize which part of the system the log came from. **Why A is wrong**: This is the 'Severity' code. **Why C/D are wrong**: These are parts of the header but not the facility code.",
+    "category": "SIEM, Syslog, Log Management"
+  },
+  {
+    "question": "A security administrator needs to monitor the volume of traffic between two subnets but does not need to see the content of the packets. Which technology is MOST efficient for this task?",
+    "options": [
+      "Full Packet Capture (PCAP)",
+      "NetFlow / IPFIX",
+      "Deep Packet Inspection (DPI)",
+      "Endpoint Detection and Response (EDR)"
+    ],
+    "correct": 1,
+    "explanation": "**Why NetFlow is correct**: NetFlow provides metadata (source/destination, ports, byte count) which is perfect for volume monitoring without the overhead of PCAP. **Why others are wrong**: PCAP and DPI are too resource-intensive for simple volume monitoring. EDR is for endpoints, not network flow.",
+    "category": "SIEM, Network Monitoring"
+  },
+  {
+    "question": "To prevent an attacker from 'clearing the tracks' by deleting local logs after a compromise, which architecture should be implemented?",
+    "options": [
+      "Local log rotation with 90-day retention",
+      "Centralized logging where logs are forwarded in real-time to a secure server",
+      "Encrypted local logs",
+      "Hidden log files"
+    ],
+    "correct": 1,
+    "explanation": "**Why Centralized is correct**: Forwarding logs in real-time ensures that even if the attacker gains root access and wipes the local disk, the record of their entry has already been sent to a separate, secure system. **Why others are wrong**: Local logs, even if encrypted or hidden, can still be deleted by an administrator-level attacker.",
+    "category": "SIEM, Log Integrity"
+  },
+  {
+    "question": "An organization is required by law to keep all security-related logs for 7 years. Which storage strategy BEST ensures this requirement is met while managing costs?",
+    "options": [
+      "Keeping 7 years of logs on the SIEM's high-speed SSD storage",
+      "A tiered storage approach: 3 months on 'hot' storage, 9 months on 'warm' storage, and 6 years on 'cold' archive storage",
+      "Deleting logs after 1 year to save space",
+      "Storing logs on paper printouts"
+    ],
+    "correct": 1,
+    "explanation": "**Why Tiered is correct**: Tiered storage allows for fast searching of recent events while moving older, less-frequently accessed data to cheaper storage media. **Why A is wrong**: This is extremely expensive. **Why C is wrong**: This violates the 7-year mandate.",
+    "category": "SIEM"
+  },
+  {
+    "question": "A SIEM correlation rule fails to trigger during a real SQL injection attack because the rule was too specific. This is an example of a:",
+    "options": [
+      "False Positive (Type I Error)",
+      "False Negative (Type II Error)",
+      "True Positive",
+      "True Negative"
+    ],
+    "correct": 1,
+    "explanation": "**Why False Negative is correct**: A False Negative occurs when a real security event happens but is not detected by the system. **Why A is wrong**: A False Positive is when the system alerts on a benign event.",
+    "category": "SIEM, SIEM Functions, Detection"
+  },
+  {
+    "question": "Which technology goes beyond traditional antivirus by monitoring endpoint behavior in real-time and providing 'flight recorder' capabilities for forensic investigation?",
+    "options": [
+      "IDS",
+      "EDR (Endpoint Detection and Response)",
+      "DLP",
+      "Firewall"
+    ],
+    "correct": 1,
+    "explanation": "**Why EDR is correct**: EDR tools provide deep visibility into endpoint activities (processes, file changes, network connections) and allow for remote response. **Why others are wrong**: They have different primary focuses (network, data loss, etc.).",
+    "category": "SIEM, EDR, Endpoint Detection"
+  },
+  {
+    "question": "When a SIEM adds the geographical location of an IP address or the 'department' of a user to a log entry as it is ingested, what is this called?",
+    "options": [
+      "Normalization",
+      "Aggregation",
+      "Enrichment",
+      "Filtering"
+    ],
+    "correct": 2,
+    "explanation": "**Why Enrichment is correct**: Enrichment is the process of adding external context to logs to make them more useful for analysts. **Why A is wrong**: Normalization is about format. **Why B is wrong**: Aggregation is about collection.",
+    "category": "SIEM, SIEM Functions, Log Processing"
+  },
+  {
+    "question": "A security team is 'tuning' their SIEM by suppressing alerts from a known-safe vulnerability scanner. What is the PRIMARY goal of this activity?",
+    "options": [
+      "To save disk space",
+      "To reduce alert fatigue and improve the signal-to-noise ratio",
+      "To hide vulnerabilities from the board",
+      "To make the SIEM run faster"
+    ],
+    "correct": 1,
+    "explanation": "**Why Tuning goal is correct**: Tuning ensures that analysts are not overwhelmed by expected or benign alerts, allowing them to focus on real threats. **Why others are wrong**: These are not the primary drivers of alert suppression.",
+    "category": "SIEM, Alert Management"
+  },
+  {
+    "question": "Which type of monitoring solution provides a 'unified' view by natively integrating telemetry from endpoints, networks, and cloud workloads into a single detection and response platform?",
+    "options": [
+      "SIEM",
+      "XDR (Extended Detection and Response)",
+      "IDS",
+      "DLP"
+    ],
+    "correct": 1,
+    "explanation": "**Why XDR is correct**: XDR is designed to break down silos between different security products to provide more holistic detection and response. **Why A is wrong**: While SIEM also aggregates data, XDR is typically more tightly integrated and response-focused within a vendor's ecosystem.",
+    "category": "SIEM, EDR, Endpoint Detection"
+  },
+  {
+    "question": "A user account is locked out after three failed attempts. Which Windows Event ID should an analyst search for in the Security log to find the lockout event?",
+    "options": [
+      "4624",
+      "4625",
+      "4740",
+      "4720"
+    ],
+    "correct": 2,
+    "explanation": "**Why 4740 is correct**: Event ID 4740 is the specific code for 'A user account was locked out'. **Why A is wrong**: 4624 is success. **Why B is wrong**: 4625 is failure. **Why D is wrong**: 4720 is user creation.",
+    "category": "SIEM, Windows Events"
+  },
+  {
+    "question": "Which protocol is the industry standard for transmitting log messages from a device to a central server?",
+    "options": [
+      "Syslog (RFC 5424)",
+      "SNMP",
+      "HTTP",
+      "FTP"
+    ],
+    "correct": 0,
+    "explanation": "**Why Syslog is correct**: Syslog is the universal standard for logging. **Why B is wrong**: SNMP is for management/monitoring but less efficient for detailed logs. **Why C/D are wrong**: These are for web and file transfer.",
+    "category": "SIEM"
+  },
+  {
+    "question": "An analyst wants to see if a specific server is communicating with a known-malicious Command and Control (C2) domain. Which log source is BEST for this investigation?",
+    "options": [
+      "Windows System Log",
+      "DNS Logs or Firewall Logs",
+      "Application Error Logs",
+      "CPU Performance Logs"
+    ],
+    "correct": 1,
+    "explanation": "**Why DNS/Firewall is correct**: DNS logs show domain name resolutions, and firewall logs show outbound connections to IP addresses. **Why others are wrong**: They wouldn't typically record network destination info.",
+    "category": "SIEM, Network Monitoring, Threat Hunting"
+  },
+  {
+    "question": "What is 'Impossible Travel' detection in a UEBA system?",
+    "options": [
+      "A user trying to access a blocked website",
+      "A user logging in from two geographically distant locations within a timeframe that is physically impossible to travel",
+      "A user logging in during their vacation",
+      "A user logging in from a new laptop"
+    ],
+    "correct": 1,
+    "explanation": "**Why Impossible Travel is correct**: It's a behavioral detection that suggests credential sharing or compromise. **Why others are wrong**: These do not fit the 'impossible' travel criteria.",
+    "category": "SIEM, UEBA, Behavioral Analytics"
+  },
+  {
+    "question": "In the context of log integrity, what is the value of 'Log Signing'?",
+    "options": [
+      "It encrypts the log for privacy",
+      "It uses a digital signature to prove that the log entry has not been altered since it was created",
+      "It allows the log to be read by anyone",
+      "It identifies the person who read the log"
+    ],
+    "correct": 1,
+    "explanation": "**Why Log Signing is correct**: Digital signatures provide non-repudiation and integrity for log entries. **Why A is wrong**: Signing is not encryption. **Why D is wrong**: It identifies the *creator* (sender), not the reader.",
+    "category": "SIEM, Log Integrity"
   }
 ]

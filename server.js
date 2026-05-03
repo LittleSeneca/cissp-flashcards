@@ -416,6 +416,204 @@ app.post('/api/domains/:domain/sets/:set/mcq-progress', (req, res) => {
   } catch (e) { res.status(500).json({ error: e.message }); }
 });
 
+// ── Tag helpers ───────────────────────────────────────────────────────────────
+
+function parseTags(str) {
+  return (str || '').split(',').map(t => t.trim()).filter(Boolean);
+}
+function parseTagsLower(str) {
+  return parseTags(str).map(t => t.toLowerCase());
+}
+
+function extractTagsForSet(domainId, setId) {
+  const sp = safe(domainId, setId);
+  if (!fs.existsSync(sp)) return {};
+  const counts = {};
+  fs.readdirSync(sp).filter(f => f.endsWith('.tsv')).forEach(f => {
+    const lines = fs.readFileSync(path.join(sp, f), 'utf8').trim().split('\n');
+    lines.slice(1).forEach(line => {
+      const parts = line.split('\t');
+      if (parts.length >= 3) parseTags(parts[2]).forEach(t => { counts[t] = (counts[t] || 0) + 1; });
+    });
+  });
+  fs.readdirSync(sp).filter(f => f.endsWith('.json')).forEach(f => {
+    try {
+      const data = JSON.parse(fs.readFileSync(path.join(sp, f), 'utf8'));
+      if (Array.isArray(data)) data.forEach(q => parseTags(q.category).forEach(t => { counts[t] = (counts[t] || 0) + 1; }));
+    } catch {}
+  });
+  return counts;
+}
+
+function computeTagPerf(domainId, setId) {
+  const sp = safe(domainId, setId);
+  if (!fs.existsSync(sp)) return {};
+  const key = `${domainId}/${setId}`;
+  const fcProg  = loadAllProgress()[key]  || {};
+  const mcqProg = loadMcqProgress()[key]  || {};
+  const perf = {};
+  const add = (tag, r, w) => {
+    if (!perf[tag]) perf[tag] = { right: 0, wrong: 0 };
+    perf[tag].right += r; perf[tag].wrong += w;
+  };
+  // Flashcards
+  fs.readdirSync(sp).filter(f => f.endsWith('.tsv')).forEach(f => {
+    const lines = fs.readFileSync(path.join(sp, f), 'utf8').trim().split('\n');
+    lines.slice(1).forEach(line => {
+      const parts = line.split('\t');
+      if (parts.length >= 2) {
+        const p = fcProg[parts[0].trim()];
+        if (p) parseTags(parts[2]).forEach(t => add(t, p.right || 0, p.wrong || 0));
+      }
+    });
+  });
+  // MCQ
+  let idx = 0;
+  fs.readdirSync(sp).filter(f => f.endsWith('.json')).sort().forEach(f => {
+    try {
+      const data = JSON.parse(fs.readFileSync(path.join(sp, f), 'utf8'));
+      if (Array.isArray(data)) data.forEach(q => {
+        const p = mcqProg[idx++];
+        if (p) parseTags(q.category).forEach(t => add(t, p.right || 0, p.wrong || 0));
+      });
+    } catch {}
+  });
+  return perf;
+}
+
+// GET /api/domains/:domain/sets/:set/tags
+app.get('/api/domains/:domain/sets/:set/tags', (req, res) => {
+  try {
+    const { domain, set } = req.params;
+    const counts = extractTagsForSet(domain, set);
+    const perf   = computeTagPerf(domain, set);
+    const tags = Object.entries(counts)
+      .sort((a, b) => b[1] - a[1])
+      .map(([name, count]) => ({ name, count, ...(perf[name] || { right: 0, wrong: 0 }) }));
+    res.json(tags);
+  } catch { res.status(400).end(); }
+});
+
+// GET /api/tags — aggregated across every domain and set (global)
+app.get('/api/tags', (req, res) => {
+  try {
+    const tagCounts = {};
+    const tagPerf   = {};
+    fs.readdirSync(ROOT, { withFileTypes: true })
+      .filter(e => e.isDirectory() && isDomain(e.name))
+      .forEach(e => {
+        const dp = path.join(ROOT, e.name);
+        fs.readdirSync(dp, { withFileTypes: true })
+          .filter(s => s.isDirectory())
+          .forEach(s => {
+            const counts = extractTagsForSet(e.name, s.name);
+            const perf   = computeTagPerf(e.name, s.name);
+            Object.entries(counts).forEach(([tag, count]) => {
+              tagCounts[tag] = (tagCounts[tag] || 0) + count;
+            });
+            Object.entries(perf).forEach(([tag, p]) => {
+              if (!tagPerf[tag]) tagPerf[tag] = { right: 0, wrong: 0 };
+              tagPerf[tag].right += p.right;
+              tagPerf[tag].wrong += p.wrong;
+            });
+          });
+      });
+    const tags = Object.entries(tagCounts)
+      .sort((a, b) => b[1] - a[1])
+      .map(([name, count]) => ({ name, count, ...(tagPerf[name] || { right: 0, wrong: 0 }) }));
+    res.json(tags);
+  } catch { res.status(400).end(); }
+});
+
+// GET /api/domains/:domain/tags — aggregated across all sets in the domain
+app.get('/api/domains/:domain/tags', (req, res) => {
+  try {
+    const domain = req.params.domain;
+    const dp = safe(domain);
+    if (!fs.existsSync(dp)) return res.json([]);
+    const tagCounts = {};
+    const tagPerf   = {};
+    fs.readdirSync(dp, { withFileTypes: true })
+      .filter(e => e.isDirectory())
+      .forEach(s => {
+        const counts = extractTagsForSet(domain, s.name);
+        const perf   = computeTagPerf(domain, s.name);
+        Object.entries(counts).forEach(([tag, count]) => {
+          tagCounts[tag] = (tagCounts[tag] || 0) + count;
+        });
+        Object.entries(perf).forEach(([tag, p]) => {
+          if (!tagPerf[tag]) tagPerf[tag] = { right: 0, wrong: 0 };
+          tagPerf[tag].right += p.right;
+          tagPerf[tag].wrong += p.wrong;
+        });
+      });
+    const tags = Object.entries(tagCounts)
+      .sort((a, b) => b[1] - a[1])
+      .map(([name, count]) => ({ name, count, ...(tagPerf[name] || { right: 0, wrong: 0 }) }));
+    res.json(tags);
+  } catch { res.status(400).end(); }
+});
+
+// GET /api/search?q=term
+app.get('/api/search', (req, res) => {
+  const q = (req.query.q || '').trim().toLowerCase();
+  if (q.length < 2) return res.json({ domains: [], sets: [], tags: [] });
+  const domains = [], sets = [], tagMap = {};
+  fs.readdirSync(ROOT, { withFileTypes: true })
+    .filter(e => e.isDirectory() && isDomain(e.name))
+    .forEach(e => {
+      if (domainLabel(e.name).toLowerCase().includes(q)) domains.push({ id: e.name, name: domainLabel(e.name) });
+      const dp = path.join(ROOT, e.name);
+      fs.readdirSync(dp, { withFileTypes: true }).filter(s => s.isDirectory()).forEach(s => {
+        if (setLabel(s.name).toLowerCase().includes(q)) sets.push({ domainId: e.name, id: s.name, name: setLabel(s.name) });
+        try {
+          Object.entries(extractTagsForSet(e.name, s.name)).forEach(([tag, cnt]) => {
+            if (tag.toLowerCase().includes(q)) tagMap[tag] = (tagMap[tag] || 0) + cnt;
+          });
+        } catch {}
+      });
+    });
+  const tags = Object.entries(tagMap).sort((a, b) => b[1] - a[1]).slice(0, 10).map(([name, count]) => ({ name, count }));
+  res.json({ domains: domains.slice(0, 4), sets: sets.slice(0, 6), tags });
+});
+
+// GET /api/tag/:tagname/cards  — all flashcards across the app with this tag
+app.get('/api/tag/:tagname/cards', (req, res) => {
+  try {
+    const tag = req.params.tagname.toLowerCase();  // compare lowercase
+    const results = [];
+    fs.readdirSync(ROOT, { withFileTypes: true })
+      .filter(e => e.isDirectory() && isDomain(e.name))
+      .forEach(e => {
+        const dp = path.join(ROOT, e.name);
+        fs.readdirSync(dp, { withFileTypes: true }).filter(s => s.isDirectory()).forEach(s => {
+          const sp = path.join(dp, s.name);
+          if (!fs.existsSync(sp)) return;
+          // Flashcards from TSV
+          fs.readdirSync(sp).filter(f => f.endsWith('.tsv')).forEach(f => {
+            const lines = fs.readFileSync(path.join(sp, f), 'utf8').trim().split('\n');
+            lines.slice(1).forEach(line => {
+              const parts = line.split('\t');
+              if (parts.length >= 2 && parseTagsLower(parts[2]).includes(tag)) {
+                const q = parts[0].trim();
+                const a = parts[1].trim();
+                const unescape = str => str.replace(/\\n/g, '\n');
+                results.push({
+                  domainId: e.name, setId: s.name,
+                  question: q,
+                  questionHtml: marked.parse(unescape(q)),
+                  answerHtml:   marked.parse(unescape(a)),
+                  category: (parts[2] || '').trim(),
+                });
+              }
+            });
+          });
+        });
+      });
+    res.json(results);
+  } catch (e) { res.status(400).json({ error: e.message }); }
+});
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`\nCISSP Flashcards → http://localhost:${PORT}\n`);

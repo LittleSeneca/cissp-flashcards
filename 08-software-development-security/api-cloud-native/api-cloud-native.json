@@ -1,0 +1,242 @@
+[
+  {
+    "question": "An organization is moving from a monolithic architecture to a microservices architecture using REST APIs. Which of the following is a security advantage of using JSON Web Tokens (JWT) for authentication in this environment?",
+    "options": [
+      "JWTs are inherently encrypted and cannot be read by the client",
+      "JWTs are stateless, allowing the service to verify the user without a central session store",
+      "JWTs automatically prevent Cross-Site Request Forgery (CSRF) attacks",
+      "JWTs use SOAP-based envelopes to ensure XML-level integrity"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: JWTs contain all the necessary user information and a digital signature, allowing services to authenticate requests independently (stateless), which is ideal for scaling microservices. **Why A is wrong**: JWTs are typically encoded (Base64Url) and signed, but NOT encrypted (JWE) unless specifically configured. **Why C is wrong**: JWTs stored in local storage are susceptible to XSS, and those in cookies still require CSRF protection. **Why D is wrong**: JWT is a JSON-based standard (RFC 7519), not SOAP.",
+    "category": "API Security, Cloud-Native"
+  },
+  {
+    "question": "Which of the following BEST describes the security function of Linux 'Namespaces' in containerization?",
+    "options": [
+      "Limiting the amount of CPU and memory a container can consume",
+      "Automatically scanning container images for vulnerabilities during runtime",
+      "Providing isolation of system resources such as the network stack, process ID space, and mount points",
+      "Encrypting the communication between the container and the host kernel"
+    ],
+    "correct": 2,
+    "explanation": "**Why C is correct**: Namespaces provide the isolation layer that makes a process 'think' it has its own private instance of system resources (like its own PID 1 or its own network interface). **Why A is wrong**: Resource limiting is the function of **cgroups** (Control Groups). **Why B is wrong**: Scanning is a separate process. **Why D is wrong**: Namespaces don't provide encryption.",
+    "category": "API Security, Cloud-Native, Containers"
+  },
+  {
+    "question": "A developer is choosing between REST and SOAP for a new API. From a security perspective, what is a key characteristic of SOAP that distinguishes it from REST?",
+    "options": [
+      "SOAP has built-in support for WS-Security, allowing for message-level security",
+      "SOAP only supports JSON, making it more modern and secure",
+      "SOAP is inherently faster and less prone to Man-in-the-Middle attacks",
+      "SOAP does not require TLS for secure communication"
+    ],
+    "correct": 0,
+    "explanation": "**Why A is correct**: SOAP (Simple Object Access Protocol) supports the WS-Security standard, which allows for advanced security features like digital signatures and encryption at the message level, rather than just the transport level (TLS). **Why B is wrong**: SOAP uses XML. **Why C is wrong**: SOAP is generally slower due to XML overhead. **Why D is wrong**: TLS is still highly recommended for SOAP.",
+    "category": "API Security, Cloud-Native"
+  },
+  {
+    "question": "In a Serverless (Function-as-a-Service) environment, which aspect of security is the PRIMARILY responsibility of the cloud service provider?",
+    "options": [
+      "Securing the application code and logic",
+      "Configuring the appropriate IAM roles for the function",
+      "Validating user input to prevent SQL injection",
+      "Managing and patching the underlying host operating system and runtime"
+    ],
+    "correct": 3,
+    "explanation": "**Why D is correct**: In Serverless, the provider manages the entire infrastructure stack. The customer is only responsible for the code and its configuration (IAM, triggers). **Why A, B, and C are wrong**: These are all the responsibility of the customer (user) under the Shared Responsibility Model.",
+    "category": "API Security, Cloud-Native"
+  },
+  {
+    "question": "An attacker is attempting to exploit a 'JWT Null Signature' vulnerability. What is the goal of this attack?",
+    "options": [
+      "To brute-force the secret key used to sign the token",
+      "To trick the server into accepting a token with an 'alg' header of 'none'",
+      "To intercept the token in transit using a rogue proxy",
+      "To fill the server's disk space with invalid tokens"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: The 'none' algorithm vulnerability occurs when a server accepts a JWT where the signature has been removed and the algorithm header is set to 'none', effectively bypassing authentication. **Why A is wrong**: This is a different type of attack. **Why C is wrong**: This is a MitM attack. **Why D is wrong**: This is a DoS attack.",
+    "category": "API Security, Cloud-Native"
+  },
+  {
+    "question": "Which of the following is the BEST way to secure sensitive configuration data (like database passwords) in a containerized application?",
+    "options": [
+      "Hardcoding the passwords in the application's source code",
+      "Including the passwords in the Dockerfile as ENV variables",
+      "Storing the passwords in a text file inside the container image",
+      "Using a dedicated secret management service (e.g., Kubernetes Secrets, HashiCorp Vault)"
+    ],
+    "correct": 3,
+    "explanation": "**Why D is correct**: Secret management services provide encryption at rest, audit logging, and dynamic rotation, which are far more secure than static storage methods. **Why A, B, and C are wrong**: These methods expose secrets in plain text in logs, image history, or source control.",
+    "category": "API Security, Cloud-Native, Containers"
+  },
+  {
+    "question": "What is the PRIMARY security risk associated with 'Broken Object Level Authorization' (BOLA) in APIs?",
+    "options": [
+      "An attacker can gain access to another user's data by manipulating the ID in the request URL",
+      "The API server is susceptible to a Distributed Denial of Service (DDoS) attack",
+      "The API documentation is public, allowing attackers to learn the system structure",
+      "The API uses weak encryption algorithms for its TLS connection"
+    ],
+    "correct": 0,
+    "explanation": "**Why A is correct**: BOLA (formerly IDOR) occurs when an API doesn't properly check if the user requesting a specific resource ID (e.g., /api/users/123) actually has permission to access that specific object. **Why B, C, and D are wrong**: These are different security concerns (Availability, Information Disclosure, and Transport Security).",
+    "category": "API Security, Cloud-Native"
+  },
+  {
+    "question": "Which Linux kernel feature is used by container engines to limit the hardware resources (CPU, Memory, Disk I/O) available to a container?",
+    "options": [
+      "Namespaces",
+      "AppArmor",
+      "Control Groups (cgroups)",
+      "SELinux"
+    ],
+    "correct": 2,
+    "explanation": "**Why C is correct**: **cgroups** are the kernel feature that manages resource allocation and limiting. **Why A is wrong**: Namespaces provide isolation (visibility). **Why B and D are wrong**: These are Mandatory Access Control (MAC) systems for security labeling.",
+    "category": "API Security, Cloud-Native, Containers"
+  },
+  {
+    "question": "When securing a microservices architecture, what is 'Mutual TLS' (mTLS) primarily used for?",
+    "options": [
+      "To encrypt data at rest in the database",
+      "To ensure that both the client and the server authenticate each other via certificates",
+      "To provide load balancing between multiple instances of a service",
+      "To compress network traffic to reduce latency"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: mTLS requires both parties (e.g., two microservices) to present certificates, ensuring that both identity and confidentiality are maintained for service-to-service communication. **Why A is wrong**: This is for data in transit, not at rest. **Why C and D are wrong**: These are performance/availability features.",
+    "category": "API Security, Cloud-Native"
+  },
+  {
+    "question": "Which of the following represents a 'Serverless' security challenge that is LESS prevalent in traditional VM-based environments?",
+    "options": [
+      "The underlying OS being unpatched",
+      "Loss of visibility and traditional network monitoring perimeters",
+      "SQL injection in the application layer",
+      "Weak administrative passwords for the console"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: Because the infrastructure is ephemeral and managed by the provider, traditional network-based security tools (like IDPS or firewalls) often lack the visibility into function-to-function communication. **Why A is wrong**: This is the provider's responsibility. **Why C and D are wrong**: These are equally prevalent in both environments.",
+    "category": "API Security, Cloud-Native"
+  },
+  {
+    "question": "A developer is implementing an API that allows third-party applications to access a user's data with their permission, but without the user sharing their password with the third-party. Which protocol is BEST for this delegated authorization?",
+    "options": [
+      "SAML 2.0",
+      "OAuth 2.0",
+      "RADIUS",
+      "LDAP"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: **OAuth 2.0** is the industry-standard protocol for delegated authorization, allowing applications to obtain limited access to user accounts. **Why A is wrong**: SAML is primarily for XML-based web SSO. **Why C and D are wrong**: These are older authentication and directory protocols.",
+    "category": "API Security, Cloud-Native"
+  },
+  {
+    "question": "An organization is using a 'Service Mesh' (like Istio) in their Kubernetes cluster. Which security feature is PRIMARILY provided by the mesh's control plane to secure communication between services?",
+    "options": [
+      "Automatic encryption at rest for all databases",
+      "Automatic management and rotation of mTLS certificates for service-to-service communication",
+      "Scanning source code for vulnerabilities",
+      "Providing a physical firewall for each container"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: A **Service Mesh** simplifies the implementation of mutual TLS (mTLS) by automatically issuing and rotating certificates for all services in the mesh, ensuring secure 'in-transit' communication. **Why A is wrong**: This is a database/storage function. **Why C is wrong**: This is a SAST function. **Why D is wrong**: Service meshes use virtual proxies (sidecars), not physical firewalls.",
+    "category": "API Security, Cloud-Native"
+  },
+  {
+    "question": "Which of the following GraphQL-specific attacks involve an attacker sending a deeply nested query that consumes excessive server resources, leading to a Denial of Service (DoS)?",
+    "options": [
+      "SQL Injection",
+      "Query Depth Attack",
+      "Insecure Direct Object Reference (IDOR)",
+      "Cross-Site Scripting (XSS)"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: **Query Depth Attacks** exploit the flexible nature of GraphQL to request nested data (e.g., author -> posts -> author -> posts...) that can overwhelm the server's CPU or memory. **Why A, C, and D are wrong**: While these can still occur in GraphQL APIs, they are not specific to the query structure itself.",
+    "category": "API Security, Cloud-Native"
+  },
+  {
+    "question": "A security architect is configuring a Kubernetes 'Network Policy'. What is the PRIMARY purpose of this control?",
+    "options": [
+      "To assign IP addresses to new pods",
+      "To restrict network traffic between pods or groups of pods (microsegmentation)",
+      "To encrypt the traffic between the cluster and the internet",
+      "To monitor the physical network switches in the data center"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: **Network Policies** act as a firewall for pods, allowing you to define which pods can talk to each other, effectively implementing microsegmentation. **Why A is wrong**: This is a CNI (Container Network Interface) function. **Why C and D are wrong**: These are not the primary function of Network Policies.",
+    "category": "API Security, Cloud-Native, Containers"
+  },
+  {
+    "question": "When using OpenID Connect (OIDC), what is the name of the token that contains the user's identity information (claims)?",
+    "options": [
+      "Access Token",
+      "ID Token",
+      "Refresh Token",
+      "SAML Assertion"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: In **OIDC**, the **ID Token** is a JWT that contains information about the authenticated user. **Why A is wrong**: The Access Token is for authorization to resources. **Why C is wrong**: The Refresh Token is for obtaining new tokens. **Why D is wrong**: SAML is a different standard.",
+    "category": "API Security, Cloud-Native"
+  },
+  {
+    "question": "An organization wants to prevent 'API Scraping' where competitors use automated scripts to download large amounts of public data from their API. Which control is MOST effective?",
+    "options": [
+      "Enforcing TLS 1.3",
+      "Implementing Rate Limiting and Quotas at the API Gateway",
+      "Using complex XML schemas",
+      "Encrypting the API documentation"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: **Rate Limiting** (e.g., max 100 requests per minute) and **Quotas** (e.g., max 10,000 per day) are the primary defenses against automated scraping and abuse. **Why A is wrong**: TLS protects transit but not against high-volume legitimate-looking requests. **Why C and D are wrong**: These are ineffective 'security by obscurity' measures.",
+    "category": "API Security, Cloud-Native"
+  },
+  {
+    "question": "In a Kubernetes environment, what is the risk of allowing 'HostPath' mounts in a pod's configuration?",
+    "options": [
+      "The pod will run too slowly",
+      "A compromised container could access or modify sensitive files on the underlying host node's file system",
+      "The pod will be unable to communicate with other pods",
+      "The pod's data will be automatically deleted when it restarts"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: **HostPath** allows a container to mount a directory from the host node. If a container is compromised, the attacker can use this mount to escape the container and compromise the entire node. **Why A, C, and D are wrong**: These are not the primary security risks of HostPath.",
+    "category": "API Security, Cloud-Native, Containers"
+  },
+  {
+    "question": "Which of the following represents a 'Sidecar' security pattern?",
+    "options": [
+      "Running a security agent as a separate process on the host OS",
+      "Deploying a specialized container alongside the application container in the same pod to handle security functions like mTLS or logging",
+      "Using a separate physical machine to monitor the application",
+      "Implementing all security logic directly in the application's source code"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: The **Sidecar pattern** involves a helper container that shares the same network and storage namespace as the main application container, allowing it to provide services (like a security proxy) without modifying the application code. **Why A, C, and D are wrong**: These describe different architectural approaches.",
+    "category": "API Security, Cloud-Native, Containers"
+  },
+  {
+    "question": "What is 'SPIFFE' (Secure Production Identity Framework for Everyone) primarily used for?",
+    "options": [
+      "Encrypting hard drives in a cloud environment",
+      "Providing a standardized, platform-agnostic identity for software services (workload identity)",
+      "Managing user passwords in a web application",
+      "Scanning container images for malware"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: **SPIFFE** provides a framework for issuing identities to workloads in dynamic, heterogeneous environments, allowing services to authenticate to each other regardless of where they are running. **Why A, C, and D are wrong**: These are different security functions.",
+    "category": "API Security, Cloud-Native"
+  },
+  {
+    "question": "An API returns a '401 Unauthorized' status code. What does this PRIMARILY indicate?",
+    "options": [
+      "The user is authenticated but does not have permission for the resource",
+      "The user has not provided valid authentication credentials",
+      "The server is currently down for maintenance",
+      "The request was malformed and could not be understood"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: **401 Unauthorized** actually means 'Unauthenticated'. The user needs to log in. **Why A is wrong**: This is **403 Forbidden** (authenticated but not authorized). **Why C is wrong**: This is a 5xx error. **Why D is wrong**: This is a 400 Bad Request.",
+    "category": "API Security, Cloud-Native"
+  }
+]

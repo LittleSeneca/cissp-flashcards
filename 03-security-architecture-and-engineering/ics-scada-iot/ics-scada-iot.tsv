@@ -1,10 +1,26 @@
-ICS (Industrial Control System)	General term for systems that monitor and control industrial processes (e.g., SCADA, DCS).
-SCADA (Supervisory Control and Data Acquisition)	High-level system for large-scale, geographically distributed industrial monitoring and control.
-PLC (Programmable Logic Controller)	Ruggedized computer used for real-time control of specific machinery in OT.
-RTU (Remote Terminal Unit)	Electronic device that connects sensors/actuators to a SCADA master station.
-OT (Operational Technology)	Hardware/software that detects or causes change through direct monitoring/control of physical devices.
-Modbus	Commonly used ICS serial protocol; lacks native authentication and encryption.
-DNP3 (Distributed Network Protocol)	Protocol used in utilities (electric/water) for communication between master and outstations.
-Fog Computing	Architecture extending cloud computing to the edge; processing at a local gateway/node.
-Edge Computing	Data processing performed at the immediate source of data (e.g., on the IoT device itself).
-HMI (Human-Machine Interface)	The graphical interface used by operators to interact with and monitor an industrial process.
+Question	Answer	Category
+What is an ICS?	**Industrial Control System.** A general term that encompasses several types of control systems, including SCADA, DCS, and PLCs, used in industrial production and infrastructure.	Foundational
+What is SCADA?	**Supervisory Control and Data Acquisition.** A system used for high-level, geographically distributed monitoring and control (e.g., water distribution, oil pipelines).	Foundational
+What is a PLC?	**Programmable Logic Controller.** A ruggedized, real-time computer used to control specific industrial processes or machinery (e.g., a factory assembly line).	Foundational
+What is an RTU?	**Remote Terminal Unit.** A device that sits at a remote site, collects data from sensors, and transmits it back to a central Master Terminal Unit (MTU) in a SCADA system.	Foundational
+What is the primary difference between IT and OT priorities?	- **IT (Information Technology)** prioritizes **Confidentiality** (CIA triad).\n- **OT (Operational Technology)** prioritizes **Availability and Safety**.	Strategy
+What is a Historian in ICS?	A specialized database used to collect and store large volumes of time-stamped process data (tags) for long-term trend analysis and auditing.	Components
+What is a Safety Instrumented System (SIS)?	A dedicated, independent control system designed to take a process to a safe state (shutdown) in the event of a dangerous condition; it is the final layer of protection.	Components
+What is a DCS?	**Distributed Control System.** Used for localized, high-speed control of a complex process within a single facility or plant (e.g., a power plant or refinery).	Foundational
+What is the Purdue Model (PERA)?	A framework for segmenting ICS networks into levels (0-5) to separate industrial processes from corporate business networks.	Architecture
+What is Level 3.5 in the Purdue Model?	The **Industrial DMZ (IDMZ)**; the critical buffer where all traffic between the IT (Enterprise) and OT (Plant) networks is terminated and inspected.	Architecture
+What is a Data Diode?	A hardware-based unidirectional gateway that physically ensures data can only flow from a high-security network to a lower-security one, preventing any return path.	Components
+What is MQTT?	**Message Queuing Telemetry Transport.** A lightweight **Publish/Subscribe** protocol that is the de-facto standard for IoT communication over high-latency networks.	Protocols
+What is Zigbee?	A low-power, short-range wireless mesh network protocol (802.15.4) commonly used in home automation IoT devices.	Protocols
+Why is ECC preferred over RSA for IoT?	**Elliptic Curve Cryptography** provides equivalent security with much smaller key sizes, which reduces the compute, memory, and power requirements for constrained devices.	IoT Security
+What is Secure Boot in ICS?	A mechanism that uses digital signatures and a hardware root of trust to verify that only authorized firmware is loaded during a device's startup.	IoT Security
+What is the primary challenge of OT patch management?	The requirement for **high availability (24/7 operations)** and the risk that a patch might cause an unstable process state or unsafe physical condition.	Strategy
+What is IIoT?	**Industrial Internet of Things.** The application of IoT technologies (sensors, connectivity) to industrial settings to improve efficiency and data visibility.	Foundational
+What is a Cyber-Physical System (CPS)?	An integration of computation, networking, and physical processes; systems where software interacts directly with the physical world (e.g., medical implants, smart grids).	Foundational
+What is a Device Shadow in IoT?	A persistent, virtual representation of an IoT device in the cloud that allows applications to interact with it even when the device is offline.	IoT Security
+What is the security risk of 'Shadow OT'?	The introduction of connected industrial devices or sensors by personnel without IT/Security approval, bypassing the organization's governance and visibility.	Strategy
+What is a constrained device?	An IoT device with limited processing power, memory, and battery life that cannot support traditional, resource-heavy security controls.	Foundational
+What is Modbus?	A legacy ICS serial protocol that is widely used but lacks any native security features like authentication or encryption.	Protocols
+What is DNP3?	**Distributed Network Protocol.** A standard protocol used primarily in the electric and water utility industries for communication between master stations and RTUs.	Protocols
+What is Fog Computing?	An architecture where data processing is distributed between the cloud and the edge, typically at a local gateway or node, to reduce latency.	Architecture
+What is Edge Computing?	Processing data directly on the device or sensor that collects it, rather than sending it to a central server or cloud for processing.	Architecture

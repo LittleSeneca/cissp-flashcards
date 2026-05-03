@@ -1,3 +1,8 @@
+---
+tier: 2
+exam_weight: "10%"
+---
+
 # Secure SDLC & OWASP for the CISSP Exam
 
 > **Tier:** 2  

@@ -1,72 +1,302 @@
 [
   {
     "question": "Which of the following is the BEST way to ensure that a third-party vendor maintains the required security posture throughout the life of a contract?",
-    "options": ["Conducting a one-time security audit at the start of the contract", "Including a 'Right to Audit' clause and requiring periodic SOC 2 Type II reports", "Relying on the vendor's reputation and size", "Requiring the vendor to sign a Non-Disclosure Agreement (NDA)"],
+    "options": [
+      "Conducting a one-time security audit at the start of the contract",
+      "Including a 'Right to Audit' clause and requiring periodic SOC 2 Type II reports",
+      "Relying on the vendor's reputation and size",
+      "Requiring the vendor to sign a Non-Disclosure Agreement (NDA)"
+    ],
     "correct": 1,
     "explanation": "**Why Right to Audit/SOC 2 is correct**: Continuous monitoring and the right to verify security controls are essential for managing third-party risk. A SOC 2 Type II report provides evidence of control effectiveness over a period of time. **Why others are wrong**: One-time audits are insufficient for ongoing assurance. Reputation is not a substitute for verification. An NDA protects confidentiality but doesn't ensure security posture.",
-    "category": "Supply Chain Risk Management"
+    "category": "Supply Chain Risk, Vendor Management, SOC 2, Right to Audit"
   },
   {
     "question": "What is the primary purpose of a Software Bill of Materials (SBOM)?",
-    "options": ["To list the price of each software component", "To provide a formal list of all components, libraries, and dependencies in a software package", "To serve as a user manual for the software", "To encrypt the source code of the application"],
+    "options": [
+      "To list the price of each software component",
+      "To provide a formal list of all components, libraries, and dependencies in a software package",
+      "To serve as a user manual for the software",
+      "To encrypt the source code of the application"
+    ],
     "correct": 1,
     "explanation": "**Why formal list is correct**: An SBOM provides transparency into the software supply chain by identifying all components, which helps in vulnerability management and license compliance. **Why others are wrong**: It is not a pricing list, a user manual, or an encryption mechanism.",
-    "category": "Supply Chain Risk Management"
+    "category": "Supply Chain Risk, SBOM, Software Integrity, Dependency Management"
   },
   {
     "question": "An organization is concerned about counterfeit microchips being introduced into their high-security servers. This is an example of what type of risk?",
-    "options": ["Upstream Supply Chain Risk", "Downstream Supply Chain Risk", "Internal Process Risk", "Operational Risk"],
+    "options": [
+      "Upstream Supply Chain Risk",
+      "Downstream Supply Chain Risk",
+      "Internal Process Risk",
+      "Operational Risk"
+    ],
     "correct": 0,
     "explanation": "**Why Upstream is correct**: Upstream risk refers to risks associated with suppliers and the components they provide before they reach the organization. **Why others are wrong**: Downstream risk relates to the distribution and delivery of the final product to customers. Internal and operational risks are broader categories.",
-    "category": "Supply Chain Risk Management"
+    "category": "Supply Chain Risk, Hardware Security, Counterfeit Parts, Upstream Risk"
   },
   {
     "question": "Which document establishes the minimum acceptable service levels and the penalties for failing to meet them between a customer and a provider?",
-    "options": ["Non-Disclosure Agreement (NDA)", "Master Service Agreement (MSA)", "Service Level Agreement (SLA)", "Business Impact Analysis (BIA)"],
+    "options": [
+      "Non-Disclosure Agreement (NDA)",
+      "Master Service Agreement (MSA)",
+      "Service Level Agreement (SLA)",
+      "Business Impact Analysis (BIA)"
+    ],
     "correct": 2,
     "explanation": "**Why SLA is correct**: The SLA defines specific performance metrics and expectations. **Why others are wrong**: An NDA is for confidentiality. An MSA is a governing document for general terms. A BIA is a planning document for disaster recovery.",
-    "category": "Supply Chain Risk Management"
+    "category": "Supply Chain Risk, Contracts, SLA, Performance Metrics"
   },
   {
     "question": "A company is selecting a cloud provider and wants to ensure that the provider's internal controls over financial reporting are sound. Which report should they request?",
-    "options": ["SOC 1", "SOC 2", "SOC 3", "ISO 27001"],
+    "options": [
+      "SOC 1",
+      "SOC 2",
+      "SOC 3",
+      "ISO 27001"
+    ],
     "correct": 0,
     "explanation": "**Why SOC 1 is correct**: SOC 1 reports focus on controls relevant to the user entity's internal control over financial reporting (ICFR). **Why others are wrong**: SOC 2 and SOC 3 focus on security, availability, processing integrity, confidentiality, and privacy. ISO 27001 is a certification, not a report focused on ICFR.",
-    "category": "Supply Chain Risk Management"
+    "category": "Supply Chain Risk, SOC Reporting, ICFR, Financial Controls"
   },
   {
     "question": "What is the primary risk associated with 'Just-in-Time' (JIT) manufacturing from a security and resilience perspective?",
-    "options": ["Increased storage costs", "Vulnerability to supply chain disruptions", "Higher probability of insider threat", "Reduced product quality"],
+    "options": [
+      "Increased storage costs",
+      "Vulnerability to supply chain disruptions",
+      "Higher probability of insider threat",
+      "Reduced product quality"
+    ],
     "correct": 1,
     "explanation": "**Why supply chain disruptions is correct**: JIT minimizes inventory, meaning any disruption in the supply chain can immediately stop production, reducing resilience. **Why others are wrong**: JIT actually decreases storage costs. It does not inherently increase insider threats or reduce quality.",
-    "category": "Supply Chain Risk Management"
+    "category": "Supply Chain Risk, Resilience, JIT Manufacturing, BCP"
   },
   {
     "question": "When managing third-party risk, which phase of the vendor lifecycle is MOST critical for establishing security requirements?",
-    "options": ["Offboarding", "Operational Monitoring", "Selection and Onboarding", "Contract Renewal"],
+    "options": [
+      "Offboarding",
+      "Operational Monitoring",
+      "Selection and Onboarding",
+      "Contract Renewal"
+    ],
     "correct": 2,
     "explanation": "**Why Selection/Onboarding is correct**: Security requirements must be established during selection and baked into the contract during onboarding. **Why others are wrong**: While other phases are important, the foundation is laid during onboarding.",
-    "category": "Supply Chain Risk Management"
+    "category": "Supply Chain Risk, Vendor Lifecycle, Onboarding, Risk Assessment"
   },
   {
     "question": "Which term describes the process of ensuring that hardware components are authentic and have not been tampered with during transit?",
-    "options": ["Chain of Custody", "Hardware Root of Trust", "Supply Chain Integrity", "Secure Boot"],
+    "options": [
+      "Chain of Custody",
+      "Hardware Root of Trust",
+      "Supply Chain Integrity",
+      "Secure Boot"
+    ],
     "correct": 2,
     "explanation": "**Why Supply Chain Integrity is correct**: This refers to the overall assurance that the products are genuine and unaltered. **Why others are wrong**: Chain of Custody is more specific to evidence. Hardware Root of Trust and Secure Boot are technical mechanisms within the device.",
-    "category": "Supply Chain Risk Management"
+    "category": "Supply Chain Risk, Supply Chain Integrity, Hardware Security, Chain of Custody"
   },
   {
     "question": "A 'Master Service Agreement' (MSA) is typically used to:",
-    "options": ["Detail specific technical configurations", "Provide a framework for future contracts and work orders", "Specify the daily tasks of a contractor", "List the software versions used by a vendor"],
+    "options": [
+      "Detail specific technical configurations",
+      "Provide a framework for future contracts and work orders",
+      "Specify the daily tasks of a contractor",
+      "List the software versions used by a vendor"
+    ],
     "correct": 1,
     "explanation": "**Why framework is correct**: An MSA simplifies the negotiation process for future transactions by defining the general terms and conditions that will govern all future work. **Why others are wrong**: It usually doesn't include granular technical details or daily task lists.",
-    "category": "Supply Chain Risk Management"
+    "category": "Supply Chain Risk, Contracts, MSA, Vendor Management"
   },
   {
     "question": "Which of the following is a DOWNSTREAM supply chain risk?",
-    "options": ["A component manufacturer goes bankrupt", "A software library has a known vulnerability", "A distributor of the final product experiences a data breach involving customer shipping info", "A raw material supplier increases prices"],
+    "options": [
+      "A component manufacturer goes bankrupt",
+      "A software library has a known vulnerability",
+      "A distributor of the final product experiences a data breach involving customer shipping info",
+      "A raw material supplier increases prices"
+    ],
     "correct": 2,
     "explanation": "**Why distributor breach is correct**: Downstream refers to the path from the organization to the customer. A distributor breach is a downstream risk. **Why others are wrong**: Component manufacturers and library vulnerabilities are upstream risks. Raw material price increases are also upstream (cost) risks.",
-    "category": "Supply Chain Risk Management"
+    "category": "Supply Chain Risk, Downstream Risk, Distribution, Customer Privacy"
+  },
+  {
+    "question": "An organization's primary cloud vendor uses a third-party data center provider for their physical infrastructure. From the organization's perspective, what type of risk does this data center provider represent?",
+    "options": [
+      "Primary Vendor Risk",
+      "Fourth-party (or Nth-party) Risk",
+      "Internal Infrastructure Risk",
+      "Regulatory Compliance Risk"
+    ],
+    "correct": 1,
+    "explanation": "**Why Fourth-party is correct**: Fourth-party risk (or Nth-party) refers to the risk introduced by your vendor's own vendors (sub-contractors). **Why others are wrong**: The cloud vendor is the third-party. The organization's own gear is internal. Regulatory risk is a separate category.",
+    "category": "Supply Chain Risk, Fourth-party Risk, Sub-contractor Risk, Nth-party Risk"
+  },
+  {
+    "question": "When offboarding a cloud service provider at the end of a contract, which of the following is the MOST important security consideration?",
+    "options": [
+      "Updating the company's website to remove the vendor's logo",
+      "Ensuring all organizational data is returned and securely wiped from the provider's systems",
+      "Negotiating a discount for future services",
+      "Performing a final vulnerability scan of the provider's website"
+    ],
+    "correct": 1,
+    "explanation": "**Why data return/wipe is correct**: To prevent data remnants or unauthorized access after the relationship ends, the organization must ensure data is recovered and the provider securely destroys their copies. **Why others are wrong**: Logo removal and discounts are not primary security concerns. A scan of their website is less critical than the security of your own data.",
+    "category": "Supply Chain Risk, Vendor Lifecycle, Offboarding, Data Sanitization"
+  },
+  {
+    "question": "Which NIST Special Publication provides the primary guidance for 'Cybersecurity Supply Chain Risk Management (C-SCRM) Practices for Systems and Organizations'?",
+    "options": [
+      "NIST SP 800-30",
+      "NIST SP 800-37",
+      "NIST SP 800-53",
+      "NIST SP 800-161"
+    ],
+    "correct": 3,
+    "explanation": "**Why 800-161 is correct**: NIST SP 800-161 is the definitive guide for managing cybersecurity risks in the supply chain. **Why others are wrong**: 800-30 is for general risk assessment. 800-37 is the Risk Management Framework (RMF). 800-53 is the catalog of security controls.",
+    "category": "Supply Chain Risk, NIST 800-161, Frameworks, C-SCRM"
+  },
+  {
+    "question": "A software developer wants to ensure that the open-source libraries they are using do not have known vulnerabilities or restrictive licenses. Which type of tool should they use?",
+    "options": [
+      "Static Application Security Testing (SAST)",
+      "Dynamic Application Security Testing (DAST)",
+      "Software Composition Analysis (SCA)",
+      "Interactive Application Security Testing (IAST)"
+    ],
+    "correct": 2,
+    "explanation": "**Why SCA is correct**: SCA tools specifically analyze the inventory of third-party and open-source components in a project to identify vulnerabilities and license issues. **Why others are wrong**: SAST/DAST/IAST focus on the custom code or the running application, not the inventory of dependencies.",
+    "category": "Supply Chain Risk, SCA, SBOM, Open Source Security"
+  },
+  {
+    "question": "What is the primary security benefit of integrating a 'Hardware Root of Trust' (such as a TPM) into the supply chain for server hardware?",
+    "options": [
+      "It makes the hardware cheaper to manufacture",
+      "It provides a hardware-based foundation to verify that the boot process and system firmware have not been tampered with",
+      "It automatically encrypts all network traffic",
+      "It replaces the need for a traditional firewall"
+    ],
+    "correct": 1,
+    "explanation": "**Why Root of Trust is correct**: A Hardware Root of Trust provides a secure, immutable foundation for verifying the integrity of the system from the moment it powers on. **Why others are wrong**: It does not lower cost, encrypt all traffic, or replace firewalls.",
+    "category": "Supply Chain Risk, Hardware Security, TPM, Root of Trust"
+  },
+  {
+    "question": "An organization is concerned about 'Vendor Lock-in' when choosing a cloud provider. Which of the following strategies BEST mitigates this risk?",
+    "options": [
+      "Using the provider's proprietary APIs for all development",
+      "Ensuring that data and applications are portable and using open standards",
+      "Signing a 10-year contract to get the best price",
+      "Relying on a single vendor for all IT services to simplify management"
+    ],
+    "correct": 1,
+    "explanation": "**Why portability/standards is correct**: Using open standards and ensuring data portability allows the organization to move to another provider if necessary, reducing lock-in. **Why others are wrong**: Proprietary APIs and 10-year contracts increase lock-in. Single-vendor strategies are the definition of lock-in risk.",
+    "category": "Supply Chain Risk, Vendor Management, Cloud Portability, Open Standards"
+  },
+  {
+    "question": "Regarding SOC 2 reports, what is the key difference between a Type I and a Type II report?",
+    "options": [
+      "Type I is for financial controls, Type II is for security",
+      "Type I is more expensive than Type II",
+      "Type I reports on the design of controls at a point in time; Type II reports on the design and operating effectiveness over a period of time",
+      "Type I is public, Type II is confidential"
+    ],
+    "correct": 2,
+    "explanation": "**Why Type II period is correct**: Type II reports are much more valuable for security assurance because they test if controls actually worked over a period (usually 6-12 months). **Why others are wrong**: SOC 1 is for finance. Type II is usually more expensive. Both are typically restricted-use reports.",
+    "category": "Supply Chain Risk, SOC Reporting, Control Effectiveness, Audit Period"
+  },
+  {
+    "question": "Which of the following describes a 'conflict mineral' concern in the electronics supply chain?",
+    "options": [
+      "Minerals that are difficult to mine",
+      "Minerals such as Tantalum, Tin, Tungsten, and Gold (3TG) that may finance armed conflict in certain regions",
+      "Minerals that are prone to static discharge",
+      "Minerals that are highly toxic to employees"
+    ],
+    "correct": 1,
+    "explanation": "**Why 3TG conflict is correct**: Section 1502 of the Dodd-Frank Act requires companies to disclose the use of conflict minerals that may fund violence in the DRC or surrounding countries. **Why others are wrong**: These are physical or environmental concerns, not the 'conflict mineral' regulatory concern.",
+    "category": "Supply Chain Risk, Compliance, Conflict Minerals, 3TG"
+  },
+  {
+    "question": "A Managed Service Provider (MSP) that provides IT support to 500 small businesses is compromised. This is an example of what type of supply chain attack?",
+    "options": [
+      "Watering Hole Attack",
+      "Island Hopping / Pivot Attack",
+      "Direct Phishing",
+      "Physical Theft"
+    ],
+    "correct": 1,
+    "explanation": "**Why Island Hopping is correct**: Attackers target a service provider to 'hop' or 'pivot' into the systems of their many downstream clients. **Why others are wrong**: A watering hole targets a website frequented by victims. Phishing is a vector. This is a strategic supply chain pivot.",
+    "category": "Supply Chain Risk, Supply Chain Attacks, Island Hopping, Lateral Movement"
+  },
+  {
+    "question": "In the 'Shared Responsibility Model' for Infrastructure as a Service (IaaS), which of the following is typically the responsibility of the CUSTOMER?",
+    "options": [
+      "Physical security of the data center",
+      "Maintenance of the hypervisor",
+      "Patching the guest Operating System and securing applications",
+      "Managing the physical network switches"
+    ],
+    "correct": 2,
+    "explanation": "**Why guest OS/App is correct**: In IaaS, the provider manages the physical infra and virtualization layer; the customer is responsible for everything from the OS up. **Why others are wrong**: These are provider responsibilities in IaaS.",
+    "category": "Supply Chain Risk, Cloud Security, IaaS, Shared Responsibility"
+  },
+  {
+    "question": "The 'Prudent Man Rule' is often applied to supply chain management to determine if executives:",
+    "options": [
+      "Followed the lowest cost path",
+      "Acted with the same care and diligence that a person of ordinary prudence would exercise under similar circumstances",
+      "Memorized the entire NIST 800-161 document",
+      "Personally inspected every component from every supplier"
+    ],
+    "correct": 1,
+    "explanation": "**Why reasonable care is correct**: The Prudent Man Rule (or Prudent Person Rule) is a legal standard for 'Due Care'. **Why others are wrong**: It is not about cost-cutting or unrealistic levels of personal inspection.",
+    "category": "Supply Chain Risk, Due Care, Prudent Man Rule, Governance"
+  },
+  {
+    "question": "Which of the following is the BEST reason to conduct a physical site visit of a high-risk vendor?",
+    "options": [
+      "To enjoy a business lunch at their location",
+      "To verify that physical security controls described in a questionnaire are actually in place and effective",
+      "To help their employees with their daily tasks",
+      "Because it is required by law for all vendors regardless of risk"
+    ],
+    "correct": 1,
+    "explanation": "**Why verify controls is correct**: For critical vendors, remote questionnaires (SOC reports) may not provide enough assurance; a site visit allows for direct observation of controls. **Why others are wrong**: Lunches and helping with tasks are not security objectives. Site visits are risk-based, not mandatory for all.",
+    "category": "Supply Chain Risk, Vendor Management, Physical Security, On-site Audit"
+  },
+  {
+    "question": "A company wants to verify the integrity of a software update they just downloaded from a vendor's website. What is the BEST method to do this?",
+    "options": [
+      "Checking the file size against the website description",
+      "Comparing the cryptographic hash (e.g., SHA-256) of the downloaded file to the hash provided by the vendor over a secure channel",
+      "Running the software and seeing if it crashes",
+      "Asking a colleague if they have used that version before"
+    ],
+    "correct": 1,
+    "explanation": "**Why hash is correct**: Cryptographic hashes provide a way to verify that a file has not been altered (Integrity). **Why others are wrong**: File size is easily faked. Crashing doesn't indicate integrity. Colleagues' opinions are not technical verification.",
+    "category": "Supply Chain Risk, Software Integrity, Cryptographic Hashes, SHA-256"
+  },
+  {
+    "question": "What is the primary goal of Supply Chain 'Resilience' compared to Supply Chain 'Efficiency'?",
+    "options": [
+      "Resilience focuses on reducing the cost per unit",
+      "Resilience focuses on the ability to recover from disruptions, even if it requires extra cost or redundancy",
+      "Efficiency is always better than resilience in security",
+      "There is no difference between the two"
+    ],
+    "correct": 1,
+    "explanation": "**Why recovery/redundancy is correct**: Resilience often requires 'slack' or 'redundancy' (like multi-sourcing) which is the opposite of extreme efficiency (like single-sourcing JIT). **Why others are wrong**: Reducing cost is efficiency. Efficiency often decreases resilience.",
+    "category": "Supply Chain Risk, Resilience, BCP, Multi-sourcing"
+  },
+  {
+    "question": "Which of the following describes 'Vendor Risk Scoring'?",
+    "options": [
+      "Paying a vendor based on their security performance",
+      "Using automated services to provide a continuous, outside-in view of a vendor's security posture based on observable data",
+      "Asking the vendor to rate themselves on a scale of 1-10",
+      "A method for encrypting vendor contracts"
+    ],
+    "correct": 1,
+    "explanation": "**Why automated view is correct**: Services like BitSight or SecurityScorecard provide 'scores' based on leaked data, open ports, and other telemetry to provide a dynamic risk view. **Why others are wrong**: It's not about payment or self-rating.",
+    "category": "Supply Chain Risk, Vendor Risk Monitoring, Risk Scoring, OSINT"
   }
 ]

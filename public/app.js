@@ -39,26 +39,333 @@ let progressSummary     = null;
 let mcqProgressSummary  = null;
 
 // ── DOM refs ──────────────────────────────────────────────────────────────────
-const appEl    = document.getElementById('app');
-const bcEl     = document.getElementById('breadcrumb');
+const appEl     = document.getElementById('app');
+const bcEl      = document.getElementById('breadcrumb');
 const leftNavEl = document.getElementById('left-nav');
+const searchInputEl  = document.getElementById('search-input');
+const searchWrapEl   = document.getElementById('search-wrap');
+const searchDropEl   = document.getElementById('search-results');
+
+// ── Search ────────────────────────────────────────────────────────────────────
+let _searchTimer  = null;
+let _searchOpen   = false;
+
+function openSearch() {
+  _searchOpen = true;
+  searchWrapEl.classList.add('is-open');
+}
+function closeSearch() {
+  _searchOpen = false;
+  searchWrapEl.classList.remove('is-open');
+  searchDropEl.hidden = true;
+  searchInputEl.value = '';
+  searchInputEl.blur();
+}
+
+searchInputEl.addEventListener('focus', () => {
+  openSearch();
+  if (searchInputEl.value.trim().length >= 2) doSearch(searchInputEl.value);
+});
+searchInputEl.addEventListener('input', () => {
+  clearTimeout(_searchTimer);
+  _searchTimer = setTimeout(() => doSearch(searchInputEl.value), 160);
+});
+searchInputEl.addEventListener('keydown', e => {
+  if (e.key === 'Escape') { closeSearch(); return; }
+  if (e.key === 'Enter') {
+    const first = searchDropEl.querySelector('a.search-result');
+    if (first) { first.click(); }
+  }
+});
+document.addEventListener('keydown', e => {
+  if (e.key === '/' && document.activeElement !== searchInputEl &&
+      !['INPUT','TEXTAREA'].includes(document.activeElement?.tagName)) {
+    e.preventDefault();
+    searchInputEl.focus();
+    openSearch();
+  }
+  if (e.key === 'Escape' && _searchOpen) closeSearch();
+});
+document.addEventListener('click', e => {
+  if (_searchOpen && !searchWrapEl.contains(e.target)) closeSearch();
+});
+
+async function doSearch(q) {
+  if (q.trim().length < 2) { searchDropEl.hidden = true; return; }
+  try {
+    const data = await api(`/api/search?q=${encodeURIComponent(q.trim())}`);
+    if (!_searchOpen) return;
+    renderSearchResults(data, q.trim());
+  } catch { searchDropEl.hidden = true; }
+}
+
+function renderSearchResults({ domains, sets, tags }, q) {
+  const total = domains.length + sets.length + tags.length;
+  if (total === 0) {
+    searchDropEl.innerHTML = `<div class="search-empty">No results for "<strong>${esc(q)}</strong>"</div>`;
+    searchDropEl.hidden = false;
+    return;
+  }
+  let html = '';
+  if (domains.length) {
+    html += `<div class="search-group-label">Domains</div>`;
+    html += domains.map(d => `
+      <a class="search-result" href="#/domain/${enc(d.id)}" onclick="closeSearch()">
+        ${ICONS.domain}
+        <span class="sr-name">${esc(d.name)}</span>
+      </a>`).join('');
+  }
+  if (sets.length) {
+    html += `<div class="search-group-label">Sets</div>`;
+    html += sets.map(s => `
+      <a class="search-result" href="#/domain/${enc(s.domainId)}/set/${enc(s.id)}" onclick="closeSearch()">
+        ${ICONS.set}
+        <span class="sr-name">${esc(s.name)}</span>
+        <span class="sr-sub">${esc(domainLabel(s.domainId))}</span>
+      </a>`).join('');
+  }
+  if (tags.length) {
+    html += `<div class="search-group-label">Tags</div>`;
+    html += tags.map(t => `
+      <a class="search-result search-result-tag" href="#/tag/${encodeURIComponent(t.name)}" onclick="closeSearch()">
+        <span class="sr-tag-hash">#</span>
+        <span class="sr-name">${esc(t.name)}</span>
+        <span class="sr-count">${t.count} card${t.count !== 1 ? 's' : ''}</span>
+      </a>`).join('');
+  }
+  searchDropEl.innerHTML = html;
+  searchDropEl.hidden = false;
+}
+
+// ── Tag word cloud ─────────────────────────────────────────────────────────────
+// Canvas-based spiral word cloud. Tags sized by frequency, coloured by performance.
+function tagColor(tag) {
+  const seen = tag.right + tag.wrong;
+  if (seen === 0) return '#9ca3af';
+  const score = tag.right / seen;
+  if (score >= 0.7) return '#16a34a';   // green  — mastered
+  if (score >= 0.4) return '#d97706';   // amber  — shaky
+  return '#dc2626';                      // red    — struggling
+}
+
+function renderWordCloud(canvas, tags, onTagClick) {
+  const dpr = window.devicePixelRatio || 1;
+  const W   = canvas.clientWidth  || 600;
+  const H   = canvas.clientHeight || 260;
+  canvas.width  = W * dpr;
+  canvas.height = H * dpr;
+  const ctx = canvas.getContext('2d');
+  ctx.scale(dpr, dpr);
+  ctx.clearRect(0, 0, W, H);
+
+  if (!tags.length) return;
+  const maxCnt = tags[0].count;
+  const minCnt = tags[tags.length - 1].count;
+  const sizeOf = c => Math.round(13 + ((maxCnt === minCnt ? 0.5 : (c - minCnt) / (maxCnt - minCnt)) * 24));
+
+  // Pixel-level occupancy grid (4 px cells) for collision detection
+  const CELL = 4;
+  const gW = Math.ceil(W / CELL);
+  const gH = Math.ceil(H / CELL);
+  const grid = new Uint8Array(gW * gH);
+  const occupied = (x, y, w, h) => {
+    const x0 = Math.max(0, Math.floor(x / CELL));
+    const x1 = Math.min(gW - 1, Math.ceil((x + w) / CELL));
+    const y0 = Math.max(0, Math.floor(y / CELL));
+    const y1 = Math.min(gH - 1, Math.ceil((y + h) / CELL));
+    for (let gy = y0; gy <= y1; gy++)
+      for (let gx = x0; gx <= x1; gx++)
+        if (grid[gy * gW + gx]) return true;
+    return false;
+  };
+  const markGrid = (x, y, w, h) => {
+    const PAD = 3;
+    const x0 = Math.max(0, Math.floor((x - PAD) / CELL));
+    const x1 = Math.min(gW - 1, Math.ceil((x + w + PAD) / CELL));
+    const y0 = Math.max(0, Math.floor((y - PAD) / CELL));
+    const y1 = Math.min(gH - 1, Math.ceil((y + h + PAD) / CELL));
+    for (let gy = y0; gy <= y1; gy++)
+      for (let gx = x0; gx <= x1; gx++)
+        grid[gy * gW + gx] = 1;
+  };
+
+  const placed = [];
+  const cx = W / 2, cy = H / 2;
+
+  for (const tag of tags) {
+    const fs = sizeOf(tag.count);
+    const weight = (tag.right + tag.wrong > 0) ? 'bold' : '500';
+    ctx.font = `${weight} ${fs}px system-ui, sans-serif`;
+    const tw = ctx.measureText(tag.name).width;
+    const th = fs * 1.3;
+
+    let px = null, py = null;
+    let angle = Math.random() * Math.PI * 2;
+    let r = 0;
+    for (let i = 0; i < 8000; i++) {
+      const tx = cx + r * Math.cos(angle) - tw / 2;
+      const ty = cy + r * Math.sin(angle) - th / 2;
+      if (tx >= 2 && ty >= 2 && tx + tw <= W - 2 && ty + th <= H - 2 && !occupied(tx, ty, tw, th)) {
+        px = tx; py = ty; break;
+      }
+      angle += 0.25;
+      r     += 0.18;
+    }
+    if (px === null) continue;
+
+    markGrid(px, py, tw, th);
+    placed.push({ tag, x: px, y: py, w: tw, h: th, fs });
+    ctx.fillStyle = tagColor(tag);
+    ctx.font = `${weight} ${fs}px system-ui, sans-serif`;
+    ctx.fillText(tag.name, px, py + fs);
+  }
+
+  canvas._placed = placed;
+
+  // Click / hover handlers
+  canvas.onclick = e => {
+    const r = canvas.getBoundingClientRect();
+    const sx = (e.clientX - r.left);
+    const sy = (e.clientY - r.top);
+    const hit = (canvas._placed || []).find(p =>
+      sx >= p.x && sx <= p.x + p.w && sy >= p.y && sy <= p.y + p.h);
+    if (hit) onTagClick(hit.tag.name);
+  };
+  canvas.onmousemove = e => {
+    const r = canvas.getBoundingClientRect();
+    const sx = e.clientX - r.left, sy = e.clientY - r.top;
+    const hit = (canvas._placed || []).find(p =>
+      sx >= p.x && sx <= p.x + p.w && sy >= p.y && sy <= p.y + p.h);
+    canvas.style.cursor = hit ? 'pointer' : 'default';
+    canvas.title = hit ? `Study #${hit.tag.name}` : '';
+  };
+}
+
+// Inject and render the tag cloud for a set (called after showSet sets innerHTML)
+function tagCloudInnerHtml() {
+  return `
+    <h3 class="tag-cloud-title">Topic Cloud <span class="tag-cloud-hint">click a topic to study it</span></h3>
+    <div class="tag-cloud-legend">
+      <span class="tcl-dot tcl-green"></span><span>Mastered</span>
+      <span class="tcl-dot tcl-amber"></span><span>Shaky</span>
+      <span class="tcl-dot tcl-red"></span><span>Struggling</span>
+      <span class="tcl-dot tcl-gray"></span><span>Unseen</span>
+    </div>
+    <canvas class="tag-cloud-canvas" id="tag-cloud-canvas"></canvas>`;
+}
+
+function mountTagCloud(tags) {
+  const mount = document.getElementById('tag-cloud-mount');
+  if (!mount) return;
+  mount.innerHTML = `<div class="tag-cloud-section">${tagCloudInnerHtml()}</div>`;
+  const canvas = document.getElementById('tag-cloud-canvas');
+  requestAnimationFrame(() => {
+    renderWordCloud(canvas, tags, name => {
+      location.hash = `#/tag/${encodeURIComponent(name)}`;
+    });
+  });
+}
+
+async function loadAndRenderTagCloud(domainId, setId) {
+  try {
+    const tags = await api(`/api/domains/${enc(domainId)}/sets/${enc(setId)}/tags`);
+    if (tags.length) mountTagCloud(tags);
+  } catch { /* tag cloud is non-critical */ }
+}
+
+async function loadAndRenderDomainTagCloud(domainId) {
+  try {
+    const tags = await api(`/api/domains/${enc(domainId)}/tags`);
+    if (tags.length) mountTagCloud(tags);
+  } catch { /* non-critical */ }
+}
+
+async function loadAndRenderGlobalTagCloud() {
+  try {
+    const tags = await api('/api/tags');
+    if (tags.length) mountTagCloud(tags);
+  } catch { /* non-critical */ }
+}
+
+// ── Cross-domain tag study ────────────────────────────────────────────────────
+async function showTagStudy(tagName) {
+  crumbs([{ label: `#${tagName}` }]);
+  appEl.innerHTML = '<p class="loading">Loading…</p>';
+  try {
+    const allCards = await api(`/api/tag/${encodeURIComponent(tagName)}/cards`);
+    if (!allCards.length) {
+      appEl.innerHTML = `<div class="empty-filter">
+        <p>No cards tagged <strong>#${esc(tagName)}</strong>.</p>
+        <p class="empty-filter-hint">Tags come from the category field on flashcards.</p>
+        <a class="btn" href="#/">Back to Home</a>
+      </div>`;
+      return;
+    }
+
+    // Load progress for every unique domain/set combination in parallel
+    const sourceKeys = [...new Set(allCards.map(c => c.domainId + '/' + c.setId))];
+    const progressMap = {};
+    await Promise.all(sourceKeys.map(async key => {
+      const [domainId, setId] = key.split('/');
+      try {
+        progressMap[key] = await api(`/api/domains/${enc(domainId)}/sets/${enc(setId)}/progress`);
+      } catch { progressMap[key] = {}; }
+    }));
+
+    studyState = {
+      allCards,
+      cards: allCards,           // all cards are already tag-filtered
+      progressMap,
+      progress: null,            // unused — progressMap is used instead
+      index: 0, flipped: false, done: false,
+      isTagStudy: true,
+      tag: tagName,
+      domainId: null, setId: null, filter: 'all',
+    };
+    renderStudy();
+  } catch (e) {
+    appEl.innerHTML = `<p class="error">Could not load tag: ${esc(e.message)}</p>`;
+  }
+}
+
+// ── Tag filter helper ─────────────────────────────────────────────────────────
+function applyTagFilter(cards, tag) {
+  if (!tag) return cards;
+  const t = tag.toLowerCase();
+  return cards.filter(c =>
+    (c.category || '').split(',').map(x => x.trim().toLowerCase()).includes(t)
+  );
+}
+
+// ── Progress helpers for cross-domain study ───────────────────────────────────
+// Cross-domain sessions store progress in a nested map keyed by "domainId/setId".
+// Single-set sessions use the flat `state.progress` map keyed by question.
+function getCardProgress(state, card) {
+  if (state.progressMap) {
+    const key = (card.domainId || state.domainId) + '/' + (card.setId || state.setId);
+    return state.progressMap[key]?.[card.question];
+  }
+  return state.progress[card.question];
+}
 
 // ── Router ────────────────────────────────────────────────────────────────────
 function route() {
   const hash = (location.hash || '#/').slice(1);
   const parts = hash.split('/');
-  // ['', view, domainId, 'set', setId, 'study', filter]
+  // ['', view, domainId, 'set', setId, 'study'|'quiz', filter, tag]
   const view     = parts[1] || '';
   const domainId = parts[2] || '';
   const setId    = parts[4] || '';
   const action   = parts[5] || '';
   const filter   = parts[6] || 'all';
+  const tag      = parts[7] ? decodeURIComponent(parts[7]) : null;
 
   if (!view)                                                        return showHome();
+  if (view === 'tag' && domainId)                                   return showTagStudy(decodeURIComponent(domainId));
   if (view === 'domain' && domainId && !setId)                      return showDomain(domainId);
   if (view === 'domain' && domainId && setId && !action)            return showSet(domainId, setId);
-  if (view === 'domain' && domainId && setId && action === 'study') return showStudy(domainId, setId, filter);
-  if (view === 'domain' && domainId && setId && action === 'quiz')  return showQuiz(domainId, setId, filter);
+  if (view === 'domain' && domainId && setId && action === 'study') return showStudy(domainId, setId, filter, tag);
+  if (view === 'domain' && domainId && setId && action === 'quiz')  return showQuiz(domainId, setId, filter, tag);
   showHome();
 }
 
@@ -327,11 +634,11 @@ function wrongShade(n) {
 }
 
 function buildSidebarHtml(state) {
-  const { allCards, cards: filtered, progress, index, done } = state;
+  const { allCards, cards: filtered, index, done } = state;
   const currentQ = !done ? filtered[index]?.question : null;
 
   const dots = allCards.map((card, allIdx) => {
-    const p         = progress[card.question];
+    const p         = getCardProgress(state, card);
     const r         = p?.right ?? 0;
     const w         = p?.wrong ?? 0;
     const filtIdx   = filtered.findIndex(c => c.question === card.question);
@@ -538,7 +845,10 @@ async function showHome() {
     const activityCard = buildActivityCard(activityDays, gAgg);
 
     appEl.innerHTML = `
-      ${activityCard}
+      <div class="home-top-row">
+        ${activityCard}
+        <div id="tag-cloud-mount" class="home-top-aside"></div>
+      </div>
       <div class="domain-list">
         ${domains.map(d => {
           const [num, ...rest] = d.name.split(': ');
@@ -562,6 +872,7 @@ async function showHome() {
           </a>`;
         }).join('')}
       </div>`;
+    loadAndRenderGlobalTagCloud();
   } catch (e) {
     appEl.innerHTML = `<p class="error">Could not load domains: ${esc(e.message)}</p>`;
   }
@@ -618,7 +929,10 @@ async function showDomain(domainId) {
         </div>
       </div>`;
     appEl.innerHTML = `
-      ${domOverview}
+      <div class="domain-top-row">
+        ${domOverview}
+        <div id="tag-cloud-mount" class="domain-top-aside"></div>
+      </div>
       <div class="domain-list">
         ${sets.length === 0
           ? '<p class="empty">No sections yet.</p>'
@@ -658,6 +972,7 @@ async function showDomain(domainId) {
       </div>
       ${readmeData?.html ? `<div class="domain-guide readme">${readmeData.html}</div>` : ''}`;
   renderMermaid();
+  loadAndRenderDomainTagCloud(domainId);
   } catch (e) {
     appEl.innerHTML = `<p class="error">Could not load domain: ${esc(e.message)}</p>`;
   }
@@ -759,54 +1074,59 @@ async function showSet(domainId, setId) {
 
     appEl.innerHTML = `
       ${tierRow}
-      ${hasCards || hasMcq ? `
-        <div class="mode-cards">
-          ${hasCards ? `
-            <div class="mode-card">
-              <div class="mode-card-header">
-                <span class="mode-card-title">Flashcards</span>
-                <span class="mode-card-count">${cards.length} card${cards.length !== 1 ? 's' : ''}</span>
-              </div>
-              <div class="mode-card-body">
-                <div class="pie-section">
-                  <div class="pie-svg-wrap">${pieSVG}</div>
-                  <div class="pie-legend">${fcLegend || '<span class="legend-none">No answers yet</span>'}</div>
+      <div class="set-top-row">
+        ${hasCards || hasMcq ? `
+          <div class="mode-cards">
+            ${hasCards ? `
+              <div class="mode-card">
+                <div class="mode-card-header">
+                  <span class="mode-card-title">Flashcards</span>
+                  <span class="mode-card-count">${cards.length} card${cards.length !== 1 ? 's' : ''}</span>
                 </div>
-                <div class="filter-grid">${fcFilterCards}</div>
-              </div>
-            </div>` : ''}
-          ${hasMcq ? `
-            <div class="mode-card">
-              <div class="mode-card-header">
-                <span class="mode-card-title">Multiple Choice</span>
-                <span class="mode-card-count">${mcqTotal} question${mcqTotal !== 1 ? 's' : ''}</span>
-              </div>
-              <div class="mode-card-body">
-                <div class="pie-section">
-                  <div class="pie-svg-wrap">${mcqPieSVG}</div>
-                  <div class="pie-legend">${mcqLegend || '<span class="legend-none">No answers yet</span>'}</div>
+                <div class="mode-card-body">
+                  <div class="pie-section">
+                    <div class="pie-svg-wrap">${pieSVG}</div>
+                    <div class="pie-legend">${fcLegend || '<span class="legend-none">No answers yet</span>'}</div>
+                  </div>
+                  <div class="filter-grid">${fcFilterCards}</div>
                 </div>
-                <div class="filter-grid">${mcqFilterCards}</div>
-              </div>
-            </div>` : ''}
-        </div>` : ''}
+              </div>` : ''}
+            ${hasMcq ? `
+              <div class="mode-card">
+                <div class="mode-card-header">
+                  <span class="mode-card-title">Multiple Choice</span>
+                  <span class="mode-card-count">${mcqTotal} question${mcqTotal !== 1 ? 's' : ''}</span>
+                </div>
+                <div class="mode-card-body">
+                  <div class="pie-section">
+                    <div class="pie-svg-wrap">${mcqPieSVG}</div>
+                    <div class="pie-legend">${mcqLegend || '<span class="legend-none">No answers yet</span>'}</div>
+                  </div>
+                  <div class="filter-grid">${mcqFilterCards}</div>
+                </div>
+              </div>` : ''}
+          </div>` : ''}
+        <div id="tag-cloud-mount" class="set-top-aside"></div>
+      </div>
       ${readmeData.html
         ? `<div class="readme">${readmeData.html}</div>`
         : '<p class="empty">No study guide for this set yet.</p>'}`;
   renderMermaid();
+  loadAndRenderTagCloud(domainId, setId);
   } catch (e) {
     appEl.innerHTML = `<p class="error">Could not load set: ${esc(e.message)}</p>`;
   }
 }
 
-async function showStudy(domainId, setId, filter = 'all') {
+async function showStudy(domainId, setId, filter = 'all', tag = null) {
   const domLabel = domainLabel(domainId);
   const sLabel   = setLabel(setId);
   const fLabel   = getFilter(filter).label;
+  const tagLabel = tag ? `#${tag}` : null;
   crumbs([
     { href: `#/domain/${domainId}`, label: domLabel },
     { href: `#/domain/${domainId}/set/${setId}`, label: sLabel },
-    { label: `Study · ${fLabel}` }
+    { label: tagLabel ? `Study · ${tagLabel}` : `Study · ${fLabel}` }
   ]);
   appEl.innerHTML = '<p class="loading">Loading…</p>';
   try {
@@ -814,19 +1134,20 @@ async function showStudy(domainId, setId, filter = 'all') {
       api(`/api/domains/${enc(domainId)}/sets/${enc(setId)}/cards`),
       api(`/api/domains/${enc(domainId)}/sets/${enc(setId)}/progress`)
     ]);
-    const cards = applyFilter(allCards, progress, filter);
+    const tagFiltered = applyTagFilter(allCards, tag);
+    const cards       = applyFilter(tagFiltered, progress, filter);
 
     if (!cards.length) {
       appEl.innerHTML = `
         <div class="empty-filter">
-          <p>No cards match <strong>${esc(fLabel)}</strong>.</p>
+          <p>No cards match ${tagLabel ? `<strong>${esc(tagLabel)}</strong>` : `<strong>${esc(fLabel)}</strong>`}.</p>
           <p class="empty-filter-hint">Study some cards in All mode first, then come back.</p>
           <a class="btn" href="#/domain/${domainId}/set/${setId}/study/all">Study All Cards</a>
         </div>`;
       return;
     }
 
-    studyState = { allCards, cards, progress, index: 0, flipped: false, done: false, domainId, setId, filter };
+    studyState = { allCards, cards, progress, index: 0, flipped: false, done: false, domainId, setId, filter, tag };
     renderStudy();
   } catch (e) {
     appEl.innerHTML = `<p class="error">Could not load cards: ${esc(e.message)}</p>`;
@@ -840,17 +1161,24 @@ function renderStudy() {
   const { cards, progress, index, flipped, done, domainId, setId, filter } = studyState;
   const sidebar = `<aside class="card-sidebar">${buildSidebarHtml(studyState)}</aside>`;
 
+  const { tag: _tag, isTagStudy } = studyState;
+  const backHref  = isTagStudy ? `#/tag/${encodeURIComponent(_tag)}` : `#/domain/${domainId}/set/${setId}`;
+  const backLabel = isTagStudy ? `← #${_tag}` : '← Back';
+
   if (done) {
+    const modeDesc = _tag ? `#${esc(_tag)}` : esc(getFilter(filter).label);
     appEl.innerHTML = `
       <div class="study-wrap">
         <div class="study-main">
           <div class="done-wrap">
             <div class="done-icon">✓</div>
-            <h2>Set complete!</h2>
-            <p>You reviewed all ${cards.length} card${cards.length !== 1 ? 's' : ''} in <em>${esc(getFilter(filter).label)}</em> mode.</p>
+            <h2>Session complete!</h2>
+            <p>You reviewed all ${cards.length} card${cards.length !== 1 ? 's' : ''} tagged <em>${modeDesc}</em>.</p>
             <div class="done-actions">
               <button class="btn btn-outline" onclick="restartStudy()">Start Over</button>
-              <a class="btn" href="#/domain/${domainId}/set/${setId}">Back to Set</a>
+              <a class="btn" href="${isTagStudy ? '#/' : `#/domain/${domainId}/set/${setId}`}">
+                ${isTagStudy ? 'Back to Home' : 'Back to Set'}
+              </a>
             </div>
           </div>
         </div>
@@ -863,7 +1191,7 @@ function renderStudy() {
   const pct     = Math.round((index / cards.length) * 100);
   const isFirst = index === 0;
   const isLast  = index === cards.length - 1;
-  const stats   = progress[card.question];
+  const stats   = getCardProgress(studyState, card);
 
   const statsHtml = stats
     ? `<div class="fc-stats">
@@ -879,15 +1207,21 @@ function renderStudy() {
        </div>`
     : '';
 
-  const filterPill = filter !== 'all'
-    ? `<span class="filter-pill">${esc(getFilter(filter).label)}</span>`
+  const { tag } = studyState;
+  const filterPill = (filter !== 'all' || tag)
+    ? `${filter !== 'all' ? `<span class="filter-pill">${esc(getFilter(filter).label)}</span>` : ''}
+       ${tag ? `<span class="filter-pill tag-pill">#${esc(tag)}</span>` : ''}`
+    : '';
+
+  const sourceBadge = isTagStudy && card.setId
+    ? `<div class="fc-source">${esc(setLabel(card.setId))}</div>`
     : '';
 
   appEl.innerHTML = `
     <div class="study-wrap">
       <div class="study-main">
         <div class="study-top">
-          <a href="#/domain/${domainId}/set/${setId}" class="btn btn-outline btn-sm">← Back</a>
+          <a href="${backHref}" class="btn btn-outline btn-sm">${backLabel}</a>
           <span class="progress-label">${filterPill}Card ${index + 1} of ${cards.length}</span>
         </div>
         <div class="progress-track">
@@ -898,6 +1232,7 @@ function renderStudy() {
           <div class="fc ${flipped ? 'is-flipped' : ''}" id="fc">
             <div class="fc-face fc-front">
               ${seenTag(stats?.lastSeen)}
+              ${sourceBadge}
               ${card.category ? `<div class="fc-cat"><span class="badge">${esc(card.category)}</span></div>` : ''}
               <div class="fc-text">${card.questionHtml}</div>
               ${statsHtml}
@@ -968,16 +1303,28 @@ function navCard(dir) {
 
 function judgeCard(result) {
   if (!studyState || studyState.done) return;
-  const { cards, index, domainId, setId } = studyState;
+  const { cards, index } = studyState;
   const card = cards[index];
 
-  // Update local state immediately so stats refresh on next card
-  const p = studyState.progress[card.question] ??= { right: 0, wrong: 0, lastSeen: '' };
-  if (result === 'right') p.right++; else p.wrong++;
-  p.lastSeen = new Date().toISOString().slice(0, 10);
+  // Resolve the source domain/set for this card (cross-domain cards carry their own)
+  const cardDomain = card.domainId || studyState.domainId;
+  const cardSet    = card.setId    || studyState.setId;
 
-  // Persist asynchronously
-  post(`/api/domains/${enc(domainId)}/sets/${enc(setId)}/progress`, {
+  // Update local progress immediately so stats refresh on next card
+  if (studyState.progressMap) {
+    const key = cardDomain + '/' + cardSet;
+    studyState.progressMap[key] ??= {};
+    const p = studyState.progressMap[key][card.question] ??= { right: 0, wrong: 0, lastSeen: '' };
+    if (result === 'right') p.right++; else p.wrong++;
+    p.lastSeen = new Date().toISOString().slice(0, 10);
+  } else {
+    const p = studyState.progress[card.question] ??= { right: 0, wrong: 0, lastSeen: '' };
+    if (result === 'right') p.right++; else p.wrong++;
+    p.lastSeen = new Date().toISOString().slice(0, 10);
+  }
+
+  // Persist to the card's source set
+  post(`/api/domains/${enc(cardDomain)}/sets/${enc(cardSet)}/progress`, {
     question: card.question, result
   }).catch(() => {});
 

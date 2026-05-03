@@ -1,10 +1,25 @@
-Federation	A system that allows for the sharing of identity information across multiple independent security domains or organizations.
-Identity Provider (IdP)	The entity in a federation that authenticates the user and issues identity assertions/tokens.
-Service Provider (SP)	The entity in a federation that provides the service or resource, relying on the IdP's authentication.
-SAML (Security Assertion Markup Language)	An XML-based framework for exchanging authentication and authorization data between an IdP and SP.
-SAML Assertion	The XML document sent from an IdP to an SP containing statements about a user's identity and permissions.
-OAuth 2.0	An industry-standard protocol for delegated authorization (uses Access Tokens).
-OpenID Connect (OIDC)	An authentication layer built on top of OAuth 2.0 (uses ID Tokens).
-Single Sign-On (SSO)	A mechanism allowing a user to authenticate once and gain access to multiple systems without re-authenticating.
-Just-In-Time (JIT) Provisioning	The automatic creation of a user account in a service provider the first time a user logs in via federation.
-JSON Web Token (JWT)	A compact, URL-safe means of representing claims to be transferred between two parties; commonly used in OIDC.
+Federation	A system that allows for the sharing of identity information across multiple independent security domains or organizations.	IAM, Federation
+Identity Provider (IdP)	The entity in a federation that authenticates the user and issues identity assertions/tokens.	IAM, Federation, SAML
+Service Provider (SP)	The entity in a federation that provides the service or resource, relying on the IdP's authentication.	IAM, Federation, SAML
+SAML (Security Assertion Markup Language)	An XML-based framework for exchanging authentication and authorization data between an IdP and SP.	IAM, Federation, SAML
+SAML Assertion	The XML document sent from an IdP to an SP containing statements about a user's identity and permissions.	IAM, Federation, SAML
+OAuth 2.0	An industry-standard protocol for delegated authorization (uses Access Tokens).	IAM, Federation, OAuth
+OpenID Connect (OIDC)	An authentication layer built on top of OAuth 2.0 (uses ID Tokens).	IAM, Federation, OIDC
+Single Sign-On (SSO)	A mechanism allowing a user to authenticate once and gain access to multiple systems without re-authenticating.	IAM, Federation, SSO
+Just-In-Time (JIT) Provisioning	The automatic creation of a user account in a service provider the first time a user logs in via federation.	IAM, Federation, Provisioning
+JSON Web Token (JWT)	A compact, URL-safe means of representing claims to be transferred between two parties; commonly used in OIDC.	IAM, Federation, OIDC, JWT
+SCIM (System for Cross-domain Identity Management)	An HTTP-based protocol designed to automate user provisioning and deprovisioning in cloud environments.	IAM, Federation, Provisioning
+SAML Metadata	An XML file containing configuration info (endpoints, keys) used to establish trust between IdPs and SPs.	IAM, Federation, SAML
+PKCE (Proof Key for Code Exchange)	An extension to OAuth 2.0/OIDC that protects the authorization code flow against interception and injection attacks.	IAM, Federation, OAuth, OIDC
+OIDC Scopes	Parameters used in OIDC to request specific sets of user claims (e.g., profile, email).	IAM, Federation, OIDC
+OIDC UserInfo Endpoint	A protected resource that returns claims about the authenticated user when presented with a valid access token.	IAM, Federation, OIDC
+Identity Brokering	A model where a central hub mediates trust between multiple identity providers and service providers.	IAM, Federation, SSO
+SAML HTTP POST Binding	A mechanism for sending SAML messages within the body of an HTML form using the POST method.	IAM, Federation, SAML
+SAML HTTP Redirect Binding	A mechanism for sending SAML messages as URL parameters in a GET request.	IAM, Federation, SAML
+SAML SubjectConfirmation	An element in an assertion that defines how a relying party can verify that the presenter is the subject.	IAM, Federation, SAML
+SAML Single Logout (SLO)	A profile that allows a user to terminate all sessions across all service providers by logging out once.	IAM, Federation, SAML, SSO
+XML Signature Wrapping (XSW)	An attack that manipulates the XML structure to bypass signature validation or change application logic.	IAM, Federation, SAML, Attack
+Identity Proofing	The process of verifying a person's real-world identity before issuing digital credentials.	IAM, Federation, Identity Proofing
+Authorization Code Grant	The most secure OAuth 2.0 flow for confidential clients, involving a back-channel token exchange.	IAM, Federation, OAuth
+Client Credentials Grant	An OAuth 2.0 flow used for machine-to-machine communication where no user is present.	IAM, Federation, OAuth
+Implicit Grant	A deprecated OAuth 2.0 flow that returns tokens directly in the URL fragment; replaced by Auth Code + PKCE.	IAM, Federation, OAuth

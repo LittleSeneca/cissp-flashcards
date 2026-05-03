@@ -1,3 +1,8 @@
+---
+tier: 2
+exam_weight: "16%"
+---
+
 # GDPR for the CISSP Exam
 
 > **Tier:** 1  

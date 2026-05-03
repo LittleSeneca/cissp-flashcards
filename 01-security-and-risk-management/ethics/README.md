@@ -1,3 +1,8 @@
+---
+tier: 2
+exam_weight: "16%"
+---
+
 # Domain 1: Professional Ethics
 
 Ethics is a critical component of Domain 1 and the foundation of the CISSP certification. ISC2 requires all members to adhere to a specific Code of Ethics, and violations can lead to revocation of the credential.

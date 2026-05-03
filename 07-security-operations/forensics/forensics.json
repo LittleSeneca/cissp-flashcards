@@ -1,72 +1,302 @@
 [
   {
     "question": "When collecting evidence from a compromised system, which of the following represents the CORRECT 'Order of Volatility' (from most volatile to least volatile)?",
-    "options": ["Disk -> RAM -> Cache -> Registers", "Registers -> RAM -> Disk -> Backup Tapes", "RAM -> Cache -> Disk -> Registers", "Backup Tapes -> Disk -> RAM -> Cache"],
+    "options": [
+      "Disk -> RAM -> Cache -> Registers",
+      "Registers -> RAM -> Disk -> Backup Tapes",
+      "RAM -> Cache -> Disk -> Registers",
+      "Backup Tapes -> Disk -> RAM -> Cache"
+    ],
     "correct": 1,
     "explanation": "**Why Registers -> RAM -> Disk is correct**: The order of volatility dictates that the most transient data (registers, cache) must be collected first, followed by RAM, then persistent storage like disks and tapes. **Why others are wrong**: Disk is less volatile than RAM. Backup tapes are the least volatile.",
-    "category": "Digital Forensics"
+    "category": "Forensics, Evidence Collection, Order of Volatility"
   },
   {
     "question": "What is the primary purpose of maintaining a 'Chain of Custody' for evidence?",
-    "options": ["To ensure the evidence is encrypted", "To document every person who handled the evidence and ensure it has not been tampered with", "To provide a list of all potential suspects", "To calculate the hash value of the disk image"],
+    "options": [
+      "To ensure the evidence is encrypted",
+      "To document every person who handled the evidence and ensure it has not been tampered with",
+      "To provide a list of all potential suspects",
+      "To calculate the hash value of the disk image"
+    ],
     "correct": 1,
     "explanation": "**Why Chain of Custody is correct**: It provides a chronological record of the seizure, custody, control, transfer, and analysis of evidence, which is essential for its admissibility in court. **Why others are wrong**: Encryption and hashing are technical controls; the chain of custody is a procedural control for integrity and accountability.",
-    "category": "Digital Forensics"
+    "category": "Forensics, Evidence Handling, Chain of Custody"
   },
   {
     "question": "According to the 'Best Evidence Rule', what should be presented in court whenever possible?",
-    "options": ["A credible witness statement", "The original document or object", "A high-quality photocopy of the evidence", "A summary of the evidence created by an expert"],
+    "options": [
+      "A credible witness statement",
+      "The original document or object",
+      "A high-quality photocopy of the evidence",
+      "A summary of the evidence created by an expert"
+    ],
     "correct": 1,
     "explanation": "**Why Best Evidence Rule is correct**: The rule prefers the original evidence over copies or oral testimony about its contents. In digital forensics, the 'original' is often considered the bit-stream image of the source. **Why others are wrong**: Witnesses and summaries are secondary to the original evidence itself.",
-    "category": "Digital Forensics"
+    "category": "Forensics, Evidence Handling, Legal Standards"
   },
   {
     "question": "Which of the following is NOT one of the 'Five Rules of Evidence'?",
-    "options": ["Authentic", "Complete", "Confidential", "Admissible"],
+    "options": [
+      "Authentic",
+      "Complete",
+      "Confidential",
+      "Admissible"
+    ],
     "correct": 2,
     "explanation": "**Why Confidential is correct**: The five rules of evidence are Authentic, Accurate, Complete, Convincing, and Admissible. 'Confidential' is not one of these five rules. **Why others are wrong**: Authentic, Complete, and Admissible are all part of the five rules.",
-    "category": "Digital Forensics"
+    "category": "Forensics, Evidence Handling"
   },
   {
     "question": "What type of evidence is generally considered 'Hearsay' in a court of law?",
-    "options": ["Evidence collected directly by a forensic investigator", "A statement made outside of court that is offered to prove the truth of the matter asserted", "A bit-by-bit copy of a hard drive", "A signed confession from a suspect"],
+    "options": [
+      "Evidence collected directly by a forensic investigator",
+      "A statement made outside of court that is offered to prove the truth of the matter asserted",
+      "A bit-by-bit copy of a hard drive",
+      "A signed confession from a suspect"
+    ],
     "correct": 1,
     "explanation": "**Why Hearsay is correct**: Hearsay is an out-of-court statement offered in court to prove the truth of whatever it asserts. In many legal systems, it is generally inadmissible unless an exception applies (like the Business Records Exception for computer logs). **Why others are wrong**: Investigator observations and drive images are direct evidence.",
-    "category": "Digital Forensics"
+    "category": "Forensics, Evidence Handling, Legal Standards"
   },
   {
     "question": "During the forensic process, why is it critical to create a cryptographic hash (e.g., SHA-256) of the original evidence disk immediately after imaging?",
-    "options": ["To encrypt the evidence for privacy", "To prove that the image is an exact, unaltered copy of the original", "To speed up the analysis process", "To identify the user of the computer"],
+    "options": [
+      "To encrypt the evidence for privacy",
+      "To prove that the image is an exact, unaltered copy of the original",
+      "To speed up the analysis process",
+      "To identify the user of the computer"
+    ],
     "correct": 1,
     "explanation": "**Why hashing is correct**: Hashing provides a mathematical proof of integrity. If the hash of the copy matches the hash of the original, it proves the copy has not been altered. **Why others are wrong**: It doesn't encrypt, speed up analysis, or identify the user.",
-    "category": "Digital Forensics"
+    "category": "Forensics, Evidence Integrity"
   },
   {
     "question": "A forensic investigator is examining 'Slack Space' on a hard drive. What are they looking for?",
-    "options": ["Chat logs from the Slack application", "Data left over in the unused portion of a disk cluster", "Encrypted files in the root directory", "Network traffic logs"],
+    "options": [
+      "Chat logs from the Slack application",
+      "Data left over in the unused portion of a disk cluster",
+      "Encrypted files in the root directory",
+      "Network traffic logs"
+    ],
     "correct": 1,
     "explanation": "**Why Slack Space is correct**: Slack space is the area between the end of a file and the end of the last cluster assigned to that file. It can contain remnants of deleted files or hidden data. **Why others are wrong**: It has nothing to do with the Slack messaging app or network traffic.",
-    "category": "Digital Forensics"
+    "category": "Forensics, Disk Forensics, Data Recovery"
   },
   {
     "question": "Which type of law/evidence system relies heavily on the 'preponderance of evidence' as the standard of proof?",
-    "options": ["Criminal Law", "Civil Law", "Administrative Law", "Common Law"],
+    "options": [
+      "Criminal Law",
+      "Civil Law",
+      "Administrative Law",
+      "Common Law"
+    ],
     "correct": 1,
     "explanation": "**Why Civil Law is correct**: In civil cases, the standard of proof is usually the 'preponderance of evidence' (more likely than not). **Why others are wrong**: Criminal law requires a much higher standard: 'beyond a reasonable doubt'.",
-    "category": "Digital Forensics"
+    "category": "Forensics, Legal Standards"
   },
   {
     "question": "In the context of the 'Five Rules of Evidence', what does 'Authentic' mean?",
-    "options": ["The evidence was collected using expensive tools", "The evidence is relevant to the case and relates to the incident in a meaningful way", "The evidence can be proven to have come from where it is claimed to have come from", "The evidence is sufficient to convince a jury"],
+    "options": [
+      "The evidence was collected using expensive tools",
+      "The evidence is relevant to the case and relates to the incident in a meaningful way",
+      "The evidence can be proven to have come from where it is claimed to have come from",
+      "The evidence is sufficient to convince a jury"
+    ],
     "correct": 2,
     "explanation": "**Why Authentic is correct**: Authenticity means the evidence is what it purports to be. **Why others are wrong**: Relevance is different from authenticity. 'Convincing' is a separate rule.",
-    "category": "Digital Forensics"
+    "category": "Forensics, Evidence Handling"
   },
   {
     "question": "What is the very FIRST step an incident responder should take when they encounter a powered-on computer at a crime scene?",
-    "options": ["Turn it off immediately to preserve the disk", "Photograph the screen and the surrounding area", "Start running a virus scan", "Remove the hard drive"],
+    "options": [
+      "Turn it off immediately to preserve the disk",
+      "Photograph the screen and the surrounding area",
+      "Start running a virus scan",
+      "Remove the hard drive"
+    ],
     "correct": 1,
     "explanation": "**Why Photographing is correct**: Documentation is the first step. You must capture the state of the system as found before any intervention. **Why others are wrong**: Turning it off may destroy volatile evidence (RAM). Running a scan or removing the drive modifies the state of the evidence.",
-    "category": "Digital Forensics"
+    "category": "Forensics, Evidence Collection, Volatile Evidence"
+  },
+  {
+    "question": "A forensic team is investigating a live server suspected of hosting malware. They choose to perform 'Live Response' rather than 'Dead Imaging'. What is the PRIMARY advantage of this approach?",
+    "options": [
+      "It is easier to document the chain of custody",
+      "It allows for the collection of volatile data such as RAM and network connections",
+      "It guarantees that no data on the disk will be changed",
+      "It is faster to perform than dead imaging"
+    ],
+    "correct": 1,
+    "explanation": "**Why Live Response is correct**: Live response allows investigators to capture highly volatile information that would be lost if the system were powered down. **Why C is wrong**: Live response *always* modifies the state of the system slightly, which is its main drawback.",
+    "category": "Forensics, Evidence Collection, Volatile Evidence"
+  },
+  {
+    "question": "Law enforcement agents set up a 'honeypot' with a known vulnerability and then actively encourage a specific person, who had no prior intent to commit a crime, to hack into it. This is an example of:",
+    "options": [
+      "Enticement",
+      "Entrapment",
+      "Due Diligence",
+      "Active Defense"
+    ],
+    "correct": 1,
+    "explanation": "**Why Entrapment is correct**: Entrapment occurs when law enforcement induces a person to commit a crime they were not otherwise predisposed to commit. This is generally illegal. **Why A is wrong**: Enticement is providing an opportunity for a person *already* looking to commit a crime (which is legal).",
+    "category": "Forensics, Legal Standards"
+  },
+  {
+    "question": "During a trial, a witness is called to explain how a specific piece of forensic software works and why its results are scientifically valid. What type of witness is this?",
+    "options": [
+      "Fact Witness",
+      "Expert Witness",
+      "Character Witness",
+      "Material Witness"
+    ],
+    "correct": 1,
+    "explanation": "**Why Expert Witness is correct**: An expert witness is allowed to offer opinions and explain complex technical concepts based on their specialized knowledge. **Why A is wrong**: A fact witness can only testify about what they personally observed.",
+    "category": "Forensics"
+  },
+  {
+    "question": "Which legal standard is used in U.S. federal courts to determine whether an expert witness's scientific testimony is based on reasoning or methodology that is scientifically valid?",
+    "options": [
+      "Frye Standard",
+      "Daubert Standard",
+      "Graham Standard",
+      "Miranda Standard"
+    ],
+    "correct": 1,
+    "explanation": "**Why Daubert is correct**: The Daubert Standard requires that scientific evidence be relevant and reliable, based on factors like peer review and error rates. **Why A is wrong**: Frye is an older standard focusing only on 'general acceptance' in the scientific community.",
+    "category": "Forensics, Legal Standards"
+  },
+  {
+    "question": "An investigator is searching for hidden data within a digital image file that doesn't appear to be there upon first glance. Which technique are they likely investigating?",
+    "options": [
+      "Symmetric Encryption",
+      "Steganography",
+      "Data Deduplication",
+      "Hashing"
+    ],
+    "correct": 1,
+    "explanation": "**Why Steganography is correct**: Steganography is the practice of concealing a message or data within another non-secret file (like an image or audio file). **Why others are wrong**: Encryption hides the *meaning* but not the *existence* of data.",
+    "category": "Forensics, Anti-Forensics, Data Hiding"
+  },
+  {
+    "question": "What is the PRIMARY challenge of performing digital forensics in a cloud environment compared to a traditional local server?",
+    "options": [
+      "Cloud data is never encrypted",
+      "Lack of physical access to the underlying hardware and the shared responsibility model",
+      "Cloud servers do not keep logs",
+      "Cloud data is always stored in a single location"
+    ],
+    "correct": 1,
+    "explanation": "**Why Cloud challenge is correct**: In the cloud, the investigator often cannot physically seize the hardware and must rely on the cloud provider to provide logs or snapshots, which can complicate the chain of custody. **Why others are wrong**: Logs exist, but access varies; data is often distributed.",
+    "category": "Forensics, Cloud Forensics"
+  },
+  {
+    "question": "A digital forensic tool identifies that several files have been deleted but their contents are still present in the 'Unallocated Space' of the drive. What does this mean?",
+    "options": [
+      "The data has been securely wiped",
+      "The file system pointers have been removed, but the actual data blocks remain on the disk until overwritten",
+      "The disk is physically damaged",
+      "The files were encrypted before deletion"
+    ],
+    "correct": 1,
+    "explanation": "**Why Unallocated Space is correct**: When a file is deleted normally, the OS just marks the space as 'free' (unallocated) for future use. The data stays there until a new file is written over it. **Why others are wrong**: Secure wiping involves overwriting.",
+    "category": "Forensics, Disk Forensics, Data Recovery"
+  },
+  {
+    "question": "Which phase of the Electronic Discovery Reference Model (EDRM) focuses on ensuring that potentially relevant data is protected against alteration or destruction?",
+    "options": [
+      "Identification",
+      "Preservation",
+      "Collection",
+      "Processing"
+    ],
+    "correct": 1,
+    "explanation": "**Why Preservation is correct**: Preservation (often triggered by a 'Legal Hold') is the critical step of ensuring data is not deleted or changed once litigation is anticipated. **Why others are wrong**: Identification is finding the data. Collection is gathering it.",
+    "category": "Forensics, eDiscovery, EDRM"
+  },
+  {
+    "question": "What is the purpose of a 'Legal Hold' notice?",
+    "options": [
+      "To inform employees that the company is being sued",
+      "To legally mandate the preservation of all data relevant to a specific case",
+      "To seize the personal laptops of all staff",
+      "To stop all business operations immediately"
+    ],
+    "correct": 1,
+    "explanation": "**Why Legal Hold is correct**: A legal hold is a process that an organization uses to preserve all forms of relevant information when litigation is reasonably anticipated. **Why others are wrong**: It is a data preservation mandate, not a business shutdown.",
+    "category": "Forensics, eDiscovery"
+  },
+  {
+    "question": "In network forensics, what is the value of 'Full Packet Capture' (PCAP) data compared to 'NetFlow' data?",
+    "options": [
+      "PCAP is smaller and easier to store",
+      "PCAP contains the actual payload (content) of the communication, whereas NetFlow only contains metadata",
+      "NetFlow provides the MAC addresses, while PCAP does not",
+      "There is no difference"
+    ],
+    "correct": 1,
+    "explanation": "**Why PCAP vs NetFlow is correct**: PCAP records every bit of the traffic, allowing investigators to see exactly what was sent (e.g., the content of an email). NetFlow only shows the 'who, when, and where'. **Why A is wrong**: PCAP is much larger than NetFlow.",
+    "category": "Forensics, Network Forensics"
+  },
+  {
+    "question": "An investigator is attempting to recover data from a mobile device. They use a technique that extracts a bit-for-bit copy of the entire flash memory, including deleted data. What is this called?",
+    "options": [
+      "Logical Extraction",
+      "Physical Extraction",
+      "Manual Extraction",
+      "Cloud Extraction"
+    ],
+    "correct": 1,
+    "explanation": "**Why Physical Extraction is correct**: Physical extraction bypasses the OS to read the memory chips directly, capturing everything including unallocated space. **Why A is wrong**: Logical extraction only captures what the OS/API allows (visible files).",
+    "category": "Forensics, Disk Forensics, Data Recovery, Mobile Forensics"
+  },
+  {
+    "question": "To securely decommission a hard drive that contained highly sensitive top-secret data, which method provides the HIGHEST level of assurance against data remanence?",
+    "options": [
+      "Formatting the drive",
+      "Deleting all partitions",
+      "Degaussing (for magnetic media) or Physical Destruction",
+      "Running a 'Standard' file deletion"
+    ],
+    "correct": 2,
+    "explanation": "**Why Degaussing/Destruction is correct**: Degaussing uses a strong magnetic field to scramble the data on magnetic drives. Physical destruction (shredding) is the only way to be 100% sure for SSDs. **Why others are wrong**: Formatting and deleting leave data recoverable.",
+    "category": "Forensics, Media Sanitization"
+  },
+  {
+    "question": "Which forensic software suite is a widely used open-source collection of command-line tools for analyzing disk images?",
+    "options": [
+      "EnCase",
+      "FTK (Forensic Toolkit)",
+      "The Sleuth Kit (TSK)",
+      "Wireshark"
+    ],
+    "correct": 2,
+    "explanation": "**Why TSK is correct**: The Sleuth Kit is a famous open-source forensic library and collection of tools. **Why A/B are wrong**: These are expensive commercial suites. **Why D is wrong**: Wireshark is for network analysis.",
+    "category": "Forensics, Tools, Disk Forensics"
+  },
+  {
+    "question": "What is the PRIMARY purpose of the 'Processing' phase in the EDRM model?",
+    "options": [
+      "To delete unwanted data",
+      "To reduce the volume of data and convert it into a format more suitable for review and analysis",
+      "To encrypt the data for court",
+      "To identify the attacker's name"
+    ],
+    "correct": 1,
+    "explanation": "**Why Processing is correct**: Processing involves 'culling' the data (removing duplicates and irrelevant files) and preparing it for the review team. **Why others are wrong**: It's about efficiency and format conversion.",
+    "category": "Forensics, eDiscovery, EDRM"
+  },
+  {
+    "question": "A forensic analyst is reviewing the 'Metadata' of a file. What information are they MOST likely to find?",
+    "options": [
+      "The actual text content of the document",
+      "The file's creation date, last modified date, and author",
+      "The user's password",
+      "A list of all other files on the computer"
+    ],
+    "correct": 1,
+    "explanation": "**Why Metadata is correct**: Metadata is 'data about data', providing context like timestamps and ownership. **Why others are wrong**: It doesn't contain the content, passwords, or the entire file system list.",
+    "category": "Forensics, Evidence Collection"
   }
 ]

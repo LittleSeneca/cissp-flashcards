@@ -1,3 +1,8 @@
+---
+tier: 1
+exam_weight: "13%"
+---
+
 # Physical & Environmental Security for the CISSP Exam
 
 > **Tier:** 3  

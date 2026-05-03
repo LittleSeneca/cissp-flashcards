@@ -1,10 +1,26 @@
-Criminal Law	Laws that address public offenses against the state or society; results in jail/fines.
-Civil Law (Tort)	Laws dealing with disputes between individuals or organizations; results in financial compensation.
-Administrative/Regulatory Law	Law enacted by government agencies (e.g., FCC, SEC) to enforce compliance.
-Patent	Legal protection for inventions (utility/design); utility patents typically last 20 years.
-Copyright	Protects expression of ideas (e.g., books, software); lasts life of author + 70 years.
-Trademark	Protects words, slogans, and logos used to identify goods or services.
-Trade Secret	Proprietary information that provides a competitive edge and is kept confidential.
-HIPAA	U.S. law protecting the privacy and security of health information (PHI).
-Sarbanes-Oxley (SOX)	U.S. law requiring strict financial reporting and internal controls for public companies.
-Gramm-Leach-Bliley Act (GLBA)	U.S. law requiring financial institutions to protect customer PII and share privacy practices.
+Criminal Law	Laws that address public offenses against the state or society; results in jail/fines.	Legal & Regulatory, Criminal Law, Statutory Law, Social Order
+Civil Law (Tort)	Laws dealing with disputes between individuals or organizations; results in financial compensation.	Legal & Regulatory, Civil Law, Tort Law, Financial Compensation
+Administrative/Regulatory Law	Law enacted by government agencies (e.g., FCC, SEC) to enforce compliance.	Legal & Regulatory, Regulatory Law, Administrative Law, Compliance
+Patent	Legal protection for inventions (utility/design); utility patents typically last 20 years.	Legal & Regulatory, Intellectual Property, Utility Patent, 20-Year Term
+Copyright	Protects expression of ideas (e.g., books, software); lasts life of author + 70 years.	Legal & Regulatory, Intellectual Property, Copyright, Life + 70
+Trademark	Protects words, slogans, and logos used to identify goods or services.	Legal & Regulatory, Intellectual Property, Trademark, Brand Identity
+Trade Secret	Proprietary information that provides a competitive edge and is kept confidential.	Legal & Regulatory, Intellectual Property, Trade Secret, Competitive Advantage
+HIPAA	U.S. law protecting the privacy and security of health information (PHI).	Legal & Regulatory, HIPAA, PHI, Healthcare Privacy
+Sarbanes-Oxley (SOX)	U.S. law requiring strict financial reporting and internal controls for public companies.	Legal & Regulatory, SOX, Corporate Governance, Internal Controls
+Gramm-Leach-Bliley Act (GLBA)	U.S. law requiring financial institutions to protect customer PII and share privacy practices.	Legal & Regulatory, GLBA, Financial Institutions, Privacy Rule
+GDPR Breach Notification	Controllers must notify the supervisory authority within **72 hours** of becoming aware of a high-risk breach.	Legal & Regulatory, GDPR, Breach Notification, 72-Hour Rule
+GDPR Purpose Limitation	The principle that data must be collected for **specified, explicit, and legitimate purposes** only.	Legal & Regulatory, GDPR, Privacy Principles, Purpose Limitation
+Computer Fraud and Abuse Act (CFAA)	The primary U.S. federal **anti-hacking law** (unauthorized access).	Legal & Regulatory, CFAA, Cybercrime, Unauthorized Access
+DMCA Anti-Circumvention	Prohibits bypassing **Technological Protection Measures (TPM)** or DRM.	Legal & Regulatory, DMCA, Intellectual Property, Anti-circumvention
+Due Diligence	The act of **researching and investigating** risks before taking action.	Legal & Regulatory, Due Care, Due Diligence, Liability
+Due Care	The act of **implementing** the correct actions to protect an organization (acting as a reasonable person).	Legal & Regulatory, Due Care, Due Diligence, Liability
+FISMA	U.S. law requiring **federal agencies** to implement information security programs.	Legal & Regulatory, FISMA, Federal Information Security, NIST RMF
+COPPA	U.S. law protecting the privacy of **children under 13** online.	Legal & Regulatory, COPPA, Children's Privacy, Parental Consent
+Wassenaar Arrangement	International treaty for **export controls** on dual-use technologies, including encryption.	Legal & Regulatory, Wassenaar Arrangement, Export Controls, Dual-use Technology
+Fourth Amendment	U.S. Constitutional protection against **unreasonable search and seizure** (applies to digital evidence).	Legal & Regulatory, Fourth Amendment, Search and Seizure, Digital Forensics
+Budapest Convention	The first international treaty aimed at **harmonizing cybercrime laws**.	Legal & Regulatory, Budapest Convention, Cybercrime, International Treaties
+Negligence	The failure to exercise **Due Care** (not acting as a reasonable person would).	Legal & Regulatory, Liability, Negligence, Due Care
+Electronic Communications Privacy Act (ECPA)	U.S. law governing the **interception** of electronic communications.	Legal & Regulatory, ECPA, Wiretapping, Electronic Communications
+Data Sovereignty	The concept that data is subject to the **laws of the country** where it is physically located.	Legal & Regulatory, Data Sovereignty, Data Residency, Jurisdictional Law
+Economic Espionage Act	U.S. law making it a federal crime to steal **trade secrets**, especially for foreign entities.	Legal & Regulatory, Intellectual Property, Economic Espionage, Trade Secrets
+EU-U.S. Data Privacy Framework	The legal mechanism for transferring personal data from the **EU to the U.S.** securely.	Legal & Regulatory, EU-US Data Transfer, GDPR Adequacy, Privacy Framework

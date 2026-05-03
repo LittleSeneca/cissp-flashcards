@@ -1,3 +1,8 @@
+---
+tier: 1
+exam_weight: "12%"
+---
+
 # Security Testing Methodologies for the CISSP Exam
 
 > **Tier:** 2  

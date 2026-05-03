@@ -1,0 +1,302 @@
+[
+  {
+    "question": "An organization is processing information that, if disclosed without authorization, could reasonably be expected to cause **serious damage** to national security. According to the U.S. government classification scheme, which label is the **MOST** appropriate?",
+    "options": [
+      "Confidential",
+      "Secret",
+      "Top Secret",
+      "Sensitive But Unclassified (SBU)"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: Under Executive Order 13526, **Secret** is explicitly defined as information whose unauthorized disclosure could reasonably be expected to cause **serious damage** to national security. **Why A is wrong**: **Confidential** applies to information that could cause **damage** (not serious damage). **Why C is wrong**: **Top Secret** is for **exceptionally grave damage**. **Why D is wrong**: **SBU** is for information requiring safeguarding but not formal classification.",
+    "category": "Asset Classification"
+  },
+  {
+    "question": "A commercial organization is classifying its internal data. Marketing materials intended for broad distribution, press releases, and public product documentation are assigned to the lowest classification tier. Which label is **MOST** commonly used in commercial classification schemes for this category?",
+    "options": [
+      "Internal",
+      "Proprietary",
+      "Public",
+      "Private"
+    ],
+    "correct": 2,
+    "explanation": "**Why C is correct**: In commercial schemes, **Public** is for information intended for unrestricted distribution. **Why A is wrong**: **Internal** is for data not intended for the public but not highly sensitive. **Why B is wrong**: **Proprietary** refers to sensitive business secrets. **Why D is wrong**: **Private** is often used for PII.",
+    "category": "Asset Classification"
+  },
+  {
+    "question": "During a security audit, the auditor asks who is **ULTIMATELY ACCOUNTABLE** for determining the classification of a specific dataset and ensuring it is protected according to policy. Which data role is the **BEST** answer?",
+    "options": [
+      "Data Custodian",
+      "Data Owner",
+      "Data Steward",
+      "Data Processor"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: The **Data Owner** (or Business Owner) is ultimately accountable for the data, including its classification and protection requirements. **Why A is wrong**: The **Data Custodian** implements technical controls as directed. **Why C is wrong**: The **Data Steward** focuses on data quality and day-to-day governance. **Why D is wrong**: A **Data Processor** processes data on behalf of a controller.",
+    "category": "Asset Classification"
+  },
+  {
+    "question": "A licensed user attempts to copy a sensitive chart from a protected research report into a personal document, but the application blocks the action. This control persists regardless of where the file is stored. What is the **BEST** term for this type of persistent protection?",
+    "options": [
+      "Information Rights Management (IRM)",
+      "Data Loss Prevention (DLP)",
+      "Data Masking",
+      "Encryption at Rest"
+    ],
+    "correct": 0,
+    "explanation": "**Why A is correct**: **IRM** provides persistent, policy-based protection that stays with the data, controlling usage like copying or printing. **Why B is wrong**: **DLP** usually monitors data moving across boundaries. **Why C is wrong**: **Data Masking** obscures sensitive values. **Why D is wrong**: **Encryption at rest** doesn't control actions within an application once the file is open.",
+    "category": "Asset Classification"
+  },
+  {
+    "question": "Which set of security controls is **MOST** appropriate for protecting data at rest classified at the highest commercial level (e.g., 'Restricted' or 'Highly Confidential')?",
+    "options": [
+      "Watermarking and department-level password sharing",
+      "AES-256 encryption, individual access based on need-to-know, and full audit logging",
+      "Storing data on encrypted mobile devices only",
+      "Standard NTFS permissions and weekly backups"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: High-sensitivity data requires defense-in-depth: strong encryption, granular access (need-to-know), and audit logging. **Why A is wrong**: Watermarking is not an access control. **Why C is wrong**: Mobile devices are high risk for theft. **Why D is wrong**: These are basic operational controls, not sufficient for 'Restricted' data.",
+    "category": "Asset Classification"
+  },
+  {
+    "question": "To support effective risk-based security management, which set of attributes is **ESSENTIAL** to record in an information asset inventory?",
+    "options": [
+      "Asset ID, Data Owner, Classification Level, and Business Criticality",
+      "Purchase Price, Vendor Name, and Warranty Expiration",
+      "IP Address, Operating System, and MAC Address",
+      "Department Name, Number of Users, and Office Location"
+    ],
+    "correct": 0,
+    "explanation": "**Why A is correct**: For security management, inventory must include accountability (Owner), sensitivity (Classification), and impact (Criticality). **Why B is wrong**: These are financial details. **Why C is wrong**: These are configuration management (CMDB) details. **Why D is wrong**: These are administrative details.",
+    "category": "Asset Classification"
+  },
+  {
+    "question": "A security manager is updating the Business Continuity Plan (BCP). Which asset valuation method is the **MOST** relevant for ensuring the organization can restore operations after a total loss of a data center?",
+    "options": [
+      "Historical Cost",
+      "Fair Market Value",
+      "Replacement Cost",
+      "Net Present Value"
+    ],
+    "correct": 2,
+    "explanation": "**Why C is correct**: **Replacement Cost** ensures you have the funds/planning to replace an asset with similar functionality at current prices. **Why A is wrong**: **Historical Cost** is outdated. **Why B is wrong**: **Fair Market Value** is often too low for replacement. **Why D is wrong**: **NPV** is for investment analysis.",
+    "category": "Asset Classification"
+  },
+  {
+    "question": "Employees are using an unapproved consumer-grade cloud storage service to share project files because the internal systems are too slow. What is the **BEST** term for this phenomenon and its primary risk?",
+    "options": [
+      "Data Exfiltration and Malicious Intent",
+      "Rogue Access Point and Network Intrusion",
+      "Shadow IT and Asset Management Blind Spots",
+      "Social Engineering and Credential Theft"
+    ],
+    "correct": 2,
+    "explanation": "**Why C is correct**: **Shadow IT** refers to unauthorized IT systems. The risk is that data is processed on unvetted systems, creating a management blind spot. **Why A is wrong**: Exfiltration usually implies malice. **Why B is wrong**: Rogue access points are hardware-specific. **Why D is wrong**: This is a convenience choice, not an attack.",
+    "category": "Asset Classification"
+  },
+  {
+    "question": "According to the NIST SP 800-88 guidelines for media sanitization, what is the **FIRST** step an organization should take when determining how to sanitize a specific piece of media?",
+    "options": [
+      "Select a shredding vendor",
+      "Categorize the confidentiality of the information on the media",
+      "Apply a degausser to ensure immediate erasure",
+      "Check the remaining book value of the hardware"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: The first step is to **categorize the information**. The sanitization level is driven by the data's sensitivity. **Why A is wrong**: You can't select a method until you know the requirements. **Why C is wrong**: Degaussing is a method, not a planning step. **Why D is wrong**: Security is driven by data risk, not hardware value.",
+    "category": "Asset Classification"
+  },
+  {
+    "question": "An organization is struggling to maintain an accurate inventory of its 'smart' building systems (HVAC, lighting, security cameras). What is the **MOST** significant technical challenge these IoT assets present for asset management?",
+    "options": [
+      "They are too small to be physically labeled",
+      "They often lack standard management interfaces and cannot run security agents",
+      "They consume too much bandwidth for network scanners to detect",
+      "They are typically owned by the facilities department rather than IT"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: IoT devices often use proprietary OSs that don't support standard management agents or protocols (like SNMP), making them difficult to inventory. **Why A is wrong**: Physical labeling is a minor issue. **Why C is wrong**: IoT usually uses low bandwidth. **Why D is wrong**: This is an organizational silo, not a technical challenge.",
+    "category": "Asset Classification"
+  },
+  {
+    "question": "An organization is reviewing its data classification policy. Which factor should be the **PRIMARY** driver for determining the classification level of a specific data asset?",
+    "options": [
+      "The cost to create the data",
+      "The age of the data",
+      "The potential impact of unauthorized disclosure or loss",
+      "The number of users who require access"
+    ],
+    "correct": 2,
+    "explanation": "**Why C is correct**: Classification is primarily based on the **impact** (to the organization or individuals) if the confidentiality, integrity, or availability of the data is compromised. **Why A is wrong**: Cost of creation is a valuation metric, but classification is about risk. **Why B is wrong**: While data can be declassified over time, age is not the primary driver. **Why D is wrong**: Access needs (need-to-know) follow classification; they don't determine it.",
+    "category": "Asset Classification"
+  },
+  {
+    "question": "Which role is responsible for the day-to-day maintenance of data, including ensuring that backups are performed and access control lists (ACLs) are correctly applied?",
+    "options": [
+      "Data Owner",
+      "Data Custodian",
+      "Data Subject",
+      "Data Controller"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: The **Data Custodian** (often IT or a system admin) is responsible for the technical tasks required to protect data as directed by the owner. **Why A is wrong**: The Owner is accountable but delegates tasks to the custodian. **Why C is wrong**: The Data Subject is the person the data is about. **Why D is wrong**: Data Controller is a GDPR term for the entity that determines the 'why and how' of processing.",
+    "category": "Asset Classification"
+  },
+  {
+    "question": "What is the **MAIN** difference between 'scoping' and 'tailoring' when applying security controls from a standard like NIST SP 800-53?",
+    "options": [
+      "Scoping is for hardware; tailoring is for software",
+      "Scoping removes inapplicable controls; tailoring adjusts the remaining controls to the specific environment",
+      "Scoping is mandatory; tailoring is optional",
+      "Scoping is done by the Data Owner; tailoring is done by the Custodian"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: **Scoping** involves reviewing a baseline and removing controls that don't apply to the environment. **Tailoring** is the further refinement, such as selecting specific parameters or adding compensating controls. **Why A, C, and D are wrong**: These do not accurately describe the relationship between these two processes in the NIST risk management framework.",
+    "category": "Asset Classification"
+  },
+  {
+    "question": "An organization classifies its trade secrets as 'Proprietary.' After 10 years, the technology is obsolete and publicly known. What process should the organization perform regarding this data?",
+    "options": [
+      "Destruction",
+      "Declassification",
+      "Archiving",
+      "Anonymization"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: **Declassification** is the process of moving data to a lower or public classification level when it no longer meets the criteria for its original level. **Why A is wrong**: The data might still have historical value and doesn't necessarily need to be destroyed. **Why C is wrong**: Archiving is about storage, not classification status. **Why D is wrong**: Anonymization is for PII.",
+    "category": "Asset Classification"
+  },
+  {
+    "question": "Which of the following is an example of an **intangible** asset that must be considered during asset valuation?",
+    "options": [
+      "Proprietary Source Code",
+      "Data Center Cooling Units",
+      "Company Reputation and Brand Equity",
+      "Customer Database Servers"
+    ],
+    "correct": 2,
+    "explanation": "**Why C is correct**: **Intangible assets** lack physical substance but have significant value (e.g., reputation, intellectual property, brand recognition). **Why A, B, and D are wrong**: While source code and databases are digital, they are often categorized as 'information assets.' Cooling units and servers are physical (tangible) assets.",
+    "category": "Asset Classification"
+  },
+  {
+    "question": "A government agency uses the label 'FOR OFFICIAL USE ONLY' (FOUO) for certain documents. In the context of the modern U.S. government scheme, FOUO is now categorized under which broad umbrella?",
+    "options": [
+      "Secret",
+      "Controlled Unclassified Information (CUI)",
+      "Top Secret",
+      "Proprietary"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: The **CUI** program was established to standardize the way the executive branch handles unclassified information that requires safeguarding or dissemination controls (replacing FOUO, SBU, etc.). **Why A and C are wrong**: These are 'Classified' levels. **Why D is wrong**: Proprietary is a commercial term.",
+    "category": "Asset Classification"
+  },
+  {
+    "question": "What is the **PRIMARY** purpose of data labeling and marking?",
+    "options": [
+      "To assist in data deduplication",
+      "To ensure users and systems know how to handle the data according to its sensitivity",
+      "To provide metadata for search engine optimization (SEO)",
+      "To satisfy software licensing requirements"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: **Labeling** (digital) and **marking** (physical) provide clear indicators of the data's classification, ensuring that everyone who handles it is aware of the required security controls. **Why A, C, and D are wrong**: These are not the primary security objectives of labeling.",
+    "category": "Asset Classification"
+  },
+  {
+    "question": "A Data Steward is typically responsible for which aspect of asset management?",
+    "options": [
+      "Approving access requests for individual users",
+      "Ensuring data quality, metadata consistency, and adherence to data standards",
+      "Buying the insurance for the data center",
+      "Performing physical destruction of hard drives"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: The **Data Steward** focuses on the 'business' side of data management: quality, meaning, and consistency across the organization. **Why A is wrong**: Access approval is usually a Data Owner responsibility. **Why C is wrong**: This is a risk management/financial task. **Why D is wrong**: This is a Custodian task.",
+    "category": "Asset Classification"
+  },
+  {
+    "question": "When classifying software assets, which concern is **MOST** unique to this asset type compared to hardware or data?",
+    "options": [
+      "Physical theft",
+      "Licensing compliance and version control",
+      "Degaussing requirements",
+      "Data remanence in flash memory"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: Software asset management (SAM) uniquely focuses on **licensing** (e.g., EULAs, seat counts) and ensuring versions are patched and supported. **Why A and C are wrong**: These apply primarily to physical hardware. **Why D is wrong**: This applies to storage media.",
+    "category": "Asset Classification"
+  },
+  {
+    "question": "An organization is performing a Business Impact Analysis (BIA) and needs to value its assets. Which valuation metric reflects the **loss of income** resulting from an asset being unavailable?",
+    "options": [
+      "Book Value",
+      "Replacement Cost",
+      "Business Continuity Value",
+      "Consequential Loss"
+    ],
+    "correct": 3,
+    "explanation": "**Why D is correct**: **Consequential Loss** (or Indirect Loss) accounts for the lost revenue, productivity, and reputation that results from an asset's failure, beyond the cost of the asset itself. **Why A and B are wrong**: These are direct asset values. **Why C is wrong**: This is not a standard valuation term.",
+    "category": "Asset Classification"
+  },
+  {
+    "question": "Which of the following describes **Tailoring** in the context of security baselines?",
+    "options": [
+      "Selecting a subset of controls that apply to a specific system",
+      "Modifying the parameters of a control to meet specific organizational needs",
+      "Removing all controls from a baseline to start from scratch",
+      "Applying the same controls to every system regardless of risk"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: **Tailoring** is the process of fine-tuning the controls (e.g., setting 'password length' to 14 instead of the baseline 8) to fit the organization's risk profile. **Why A is wrong**: This is 'scoping.' **Why C and D are wrong**: These do not reflect the standard definition of tailoring.",
+    "category": "Asset Classification"
+  },
+  {
+    "question": "When physical media (like a folder or a CD) is marked with a classification label, where should the mark **IDEALLY** be placed?",
+    "options": [
+      "Only on the inside cover",
+      "On the top and bottom of every page and on the exterior of the media",
+      "On a separate sticky note attached to the item",
+      "In a hidden metadata field"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: Physical marking must be **conspicuous**. Standard practice is to mark the top and bottom of every page and clearly label the exterior/cover of the media. **Why A and C are wrong**: These can be easily missed or removed. **Why D is wrong**: Physical media doesn't have 'hidden metadata fields' readable by humans without tools.",
+    "category": "Asset Classification"
+  },
+  {
+    "question": "Who is responsible for defining the **retention periods** for a dataset?",
+    "options": [
+      "Data Custodian",
+      "Legal/Compliance Department",
+      "Data Owner",
+      "External Auditor"
+    ],
+    "correct": 2,
+    "explanation": "**Why C is correct**: The **Data Owner** is ultimately responsible for the lifecycle of the data, including how long it is kept (based on business needs and advice from Legal/Compliance). **Why A is wrong**: The Custodian implements the retention but doesn't set the policy. **Why B is wrong**: Legal provides the 'requirements,' but the Owner makes the decision. **Why D is wrong**: Auditors verify compliance with the policy.",
+    "category": "Asset Classification"
+  },
+  {
+    "question": "A company is categorizing its internal HR portal. The portal contains employee names (Public) but also bank account details (Restricted). According to the principle of **High-Water Mark**, what should be the classification of the portal as a whole?",
+    "options": [
+      "Public",
+      "Restricted",
+      "Internal",
+      "Mixed"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: The **High-Water Mark** principle dictates that a system or aggregate dataset must be protected at the level of the **most sensitive** data it contains. **Why A and C are wrong**: These would under-protect the restricted data. **Why D is wrong**: 'Mixed' is not a classification level.",
+    "category": "Asset Classification"
+  },
+  {
+    "question": "What is the **PRIMARY** security risk associated with poor asset inventory management?",
+    "options": [
+      "Increased hardware procurement costs",
+      "The existence of 'blind spots' where unmanaged assets can be compromised without detection",
+      "Difficulty in performing software updates",
+      "Violation of environmental disposal regulations"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: You cannot protect what you don't know you have. Unmanaged assets (Shadow IT, forgotten servers) are often unpatched and unmonitored, providing an easy entry point for attackers. **Why A, C, and D are wrong**: While these are risks, the **primary security** risk is the lack of visibility and control.",
+    "category": "Asset Classification"
+  }
+]

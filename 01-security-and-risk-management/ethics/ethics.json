@@ -9,7 +9,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: Canon I is the highest priority: **Protect society, the common good, necessary public trust and confidence, and the infrastructure**. Public safety and the integrity of infrastructure take precedence over the desires of an employer or principal. **Why A is wrong**: While duty to principals (Canon III) is important, the canons are ordered, and the safety of society (Canon I) takes precedence. **Why B is wrong**: Actively hiding a public risk may also violate the 'honestly and legally' canon, but Canon I is the primary driver for public infrastructure. **Why D is wrong**: Canon IV is the lowest priority in this conflict.",
-    "category": "Ethics"
+    "category": "ISC2 Code of Ethics, Canon I, Public Infrastructure, Vulnerability Disclosure"
   },
   {
     "question": "According to the ISC2 Code of Ethics, when two canons appear to be in conflict, how should a certified professional determine which one takes precedence?",
@@ -21,7 +21,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: The ISC2 Code of Ethics canons are **ordered**. In cases of conflict, the earlier canon takes precedence over the later ones. Canon I > II > III > IV. **Why A/C/D are wrong**: Personal career, employer interests, and update frequency are not the criteria for resolving ethical conflicts under the ISC2 code.",
-    "category": "Ethics"
+    "category": "ISC2 Code of Ethics, Canon Priority, Ethical Decision Making, Conflict Resolution"
   },
   {
     "question": "A security professional is asked to provide a reference for a colleague's CISSP certification. The professional knows the colleague has exaggerated their years of experience on the application. What is the BEST course of action according to the Code of Ethics?",
@@ -33,7 +33,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: Canon IV requires professionals to **advance and protect the profession**. Allowing an unqualified individual to gain certification through fraud devalues the certification and harms the profession. Reporting the matter is part of acting honorably and protecting the trust of the community. **Why A is wrong**: This violates Canon II (honesty) and Canon IV. **Why C/D are wrong**: These actions are passive and fail to protect the integrity of the profession or the trust of the public.",
-    "category": "Ethics"
+    "category": "ISC2 Code of Ethics, Canon IV, Professional Integrity, Certification Fraud"
   },
   {
     "question": "Which ISC2 Code of Ethics canon is MOST directly violated if a consultant knowingly performs a security assessment in an area where they lack the necessary technical expertise, leading to a false sense of security for the client?",
@@ -45,7 +45,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: Canon III states: **Provide diligent and competent service to principals**. Performing work without the required competency is a direct violation of this duty to the client. **Why A/B/D are wrong**: While these canons may be indirectly involved (honesty about one's skills), the primary failure is in the 'competent service' requirement of Canon III.",
-    "category": "Ethics"
+    "category": "ISC2 Code of Ethics, Canon III, Professional Competence, Fiduciary Duty"
   },
   {
     "question": "An ISC2 member is convicted of a felony that does not involve information technology or security. According to the ISC2 Code of Ethics and bylaws, what is the MOST likely consequence for their certification?",
@@ -57,7 +57,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: Canon II requires members to **act legally**. Any felony conviction must be reported. The ISC2 ethics committee reviews such cases to determine if the behavior violates the high standards of the profession. **Why A is wrong**: Legal violations are ethical violations. **Why B/D are wrong**: Revocation or suspension is not always 'automatic' but follows a review process, and it is certainly not 'no action'.",
-    "category": "Ethics"
+    "category": "ISC2 Code of Ethics, Canon II, ISC2 Bylaws, Membership Requirements"
   },
   {
     "question": "RFC 1087 (Ethics and the Internet) and the IAB consider which of the following activities to be UNACCEPTABLE and unethical behavior?",
@@ -69,7 +69,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: RFC 1087 (and the IAB) specifically defines **purposely seeking to gain unauthorized access** as unethical behavior. Other prohibited acts include disrupting the intended use of the internet, wasting resources, or compromising privacy. **Why A/C/D are wrong**: These are not listed as unethical by RFC 1087; research, open-source, and encryption are generally supported in the spirit of internet development.",
-    "category": "Ethics"
+    "category": "IAB Ethics, RFC 1087, Internet Ethics, Unauthorized Access"
   },
   {
     "question": "A security professional discovers that their employer's logging practices violate local privacy laws. The professional brings this to management's attention, but management refuses to change the practice. What is the BEST next step for the professional under Canon II?",
@@ -81,7 +81,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: Canon II requires acting **legally**. The professional must first try to resolve the issue internally (due diligence). If the illegality continues, they have a duty to ensure the organization complies or potentially report it to authorities, depending on the severity and specific legal requirements. **Why A/D are wrong**: These are extreme first steps and may themselves violate Canon II or IV (acting honorably/protecting the profession). **Why B is wrong**: Knowingly participating in illegal activity violates the code.",
-    "category": "Ethics"
+    "category": "ISC2 Code of Ethics, Canon II, Whistleblowing, Legal Compliance"
   },
   {
     "question": "Which canon is MOST likely to be prioritized when a CISSP is asked to testify as an expert witness in a court of law?",
@@ -93,7 +93,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: When acting as an expert witness, the professional's primary duty under the Code of Ethics is to **act honorably, honestly, and justly** (Canon II). This includes providing truthful and unbiased testimony, even if it does not favor the 'principal' (the party that hired them). **Why A/C/D are wrong**: While other canons apply, the integrity of legal testimony is the core of Canon II's 'honestly and justly' requirement.",
-    "category": "Ethics"
+    "category": "ISC2 Code of Ethics, Canon II, Expert Witness, Legal Testimony"
   },
   {
     "question": "An organization is facing a lawsuit, and a CISSP is tasked with the e-discovery process. They discover evidence that is damaging to their employer. According to the ISC2 Code of Ethics, what is the professional's primary obligation?",
@@ -105,7 +105,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: Canon II (acting legally and honestly) and Canon III (service to principals) both require the professional to follow the law. Withholding or destroying evidence (spoliation) is illegal. **Why A/C are wrong**: These are illegal acts and violate Canon II. **Why D is wrong**: Leaking to the media violates the duty of confidentiality to the principal (Canon III) and doesn't follow the legal process.",
-    "category": "Ethics"
+    "category": "ISC2 Code of Ethics, Canon II, E-discovery, Legal Evidence"
   },
   {
     "question": "What is the primary stakeholders' order for a CISSP to protect, according to the Code of Ethics Preamble?",
@@ -117,6 +117,186 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: The Preamble states: 'The safety and welfare of **society and the common good**, duty to our **principals**, and to **each other** require that we adhere...'. This establishes the hierarchy of concerns. **Why A/B/D are wrong**: These do not reflect the specific phrasing and hierarchy of the ISC2 Preamble.",
-    "category": "Ethics"
+    "category": "ISC2 Code of Ethics, Preamble, Stakeholder Hierarchy, Public Safety"
+  },
+  {
+    "question": "A security consultant is offered a significant financial bonus by a vendor if they convince their client to purchase the vendor's specific software. The consultant knows a competitor's software is better suited for the client. Which canon is MOST directly violated if the consultant accepts the bonus?",
+    "options": [
+      "Protect society, the common good, and the infrastructure",
+      "Act honorably, honestly, justly, responsibly, and legally",
+      "Provide diligent and competent service to principals",
+      "Advance and protect the profession"
+    ],
+    "correct": 2,
+    "explanation": "**Why C is correct**: Canon III requires providing **diligent and competent service to principals**. Accepting a kickback to recommend an inferior product is a breach of the fiduciary duty and diligent service owed to the client (the principal). **Why B is wrong**: While it is also dishonest (Canon II), the 'service to principals' canon specifically addresses the conflict of interest in client-consultant relationships. **Why A/D are wrong**: These are less direct than the duty to the principal in this scenario.",
+    "category": "ISC2 Code of Ethics, Canon III, Conflict of Interest, Professional Integrity"
+  },
+  {
+    "question": "The Computer Ethics Institute's 'Ten Commandments of Computer Ethics' states that one should not use a computer to 'bear false witness.' Which ISC2 Code of Ethics canon does this command MOST closely align with?",
+    "options": [
+      "Canon I: Protect society",
+      "Canon II: Act honorably, honestly, justly, responsibly, and legally",
+      "Canon III: Provide diligent and competent service to principals",
+      "Canon IV: Advance and protect the profession"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: 'Bearing false witness' is a form of dishonesty. Canon II explicitly mandates that professionals **act honestly**. **Why A/C/D are wrong**: While honesty supports all canons, Canon II is the direct mandate for truthful behavior.",
+    "category": "Computer Ethics, Ten Commandments, ISC2 Canon II, Honesty"
+  },
+  {
+    "question": "A CISSP is performing a penetration test and discovers evidence of child exploitation material on a server. The engagement contract has a strict non-disclosure agreement (NDA). What is the BEST course of action?",
+    "options": [
+      "Follow the NDA and ignore the material to protect the principal's privacy",
+      "Delete the material to protect the organization from legal liability",
+      "Report the discovery to the appropriate law enforcement authorities immediately, regardless of the NDA",
+      "Inform the client's CEO and let them decide whether to involve the police"
+    ],
+    "correct": 2,
+    "explanation": "**Why C is correct**: Canon I (Protect society) and Canon II (Act legally) take precedence over Canon III (Service to principals/NDA). Crimes of this nature involve public safety and legal mandates that override private contracts. **Why A is wrong**: An NDA cannot legally or ethically bind a professional to conceal a serious crime. **Why B is wrong**: This is destruction of evidence. **Why D is wrong**: The CEO may be involved or may attempt to hide the crime; law enforcement is the necessary contact for this level of illegal activity.",
+    "category": "ISC2 Code of Ethics, Canon I, Legal Reporting, Ethical Prioritization"
+  },
+  {
+    "question": "A member of ISC2 is found to be using the CISSP logo on a personal website to sell unauthorized 'brain dumps' of exam questions. Which canon is this member MOST directly violating?",
+    "options": [
+      "Protect society and the common good",
+      "Act honorably, honestly, justly, responsibly, and legally",
+      "Provide diligent and competent service to principals",
+      "Advance and protect the profession"
+    ],
+    "correct": 3,
+    "explanation": "**Why D is correct**: Canon IV requires professionals to **advance and protect the profession**. Selling 'brain dumps' devalues the certification and harms the integrity of the profession. Misusing the ISC2 trademark also falls under this canon. **Why B is wrong**: While it is also a legal/honesty issue (Canon II), protecting the profession's integrity and trademarks is the core of Canon IV. **Why A/C are wrong**: These are not the primary focus of this specific violation.",
+    "category": "ISC2 Code of Ethics, Canon IV, Intellectual Property, Exam Integrity"
+  },
+  {
+    "question": "During a massive DDoS attack against their company, a security engineer suggests 'hacking back' at the source of the attack to disable the botnet. According to the IAB's RFC 1087, why is this action considered unethical?",
+    "options": [
+      "It costs the company too much in computing resources",
+      "It constitutes a waste of resources or purposely disrupting the intended use of the Internet",
+      "It is only unethical if the 'hack back' fails",
+      " Hacking back is actually encouraged by RFC 1087 as a form of self-defense"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: RFC 1087 defines **purposely disrupting the intended use of the Internet** as unethical behavior. 'Hacking back' often involves unauthorized access to intermediary systems and disrupts network traffic, which violates the spirit of the Internet's cooperative nature. **Why A is wrong**: The ethical concern is about the Internet as a whole, not just internal company costs. **Why C/D are wrong**: RFC 1087 does not support hacking back, regardless of success.",
+    "category": "IAB Ethics, RFC 1087, Hacking Back, Internet Resilience"
+  },
+  {
+    "question": "A CISSP is asked by their employer to develop a software feature that intentionally bypasses privacy regulations in a foreign jurisdiction where the company operates. What should the professional do to remain compliant with the ISC2 Code of Ethics?",
+    "options": [
+      "Follow the employer's instructions because the duty to the principal is paramount",
+      "Refuse the task and explain that it violates the requirement to act legally (Canon II)",
+      "Implement the feature but include a 'backdoor' for law enforcement",
+      "Resign immediately without explaining the reason to avoid conflict"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: Canon II requires professionals to **act legally**. Intentionally bypassing regulations is a violation of this canon. Canon II (Legality) takes precedence over Canon III (Service to principals). **Why A is wrong**: Duty to principals does not include performing illegal acts. **Why C is wrong**: Adding a backdoor may also be illegal or unethical. **Why D is wrong**: The professional should first attempt to guide the employer toward ethical/legal behavior.",
+    "category": "ISC2 Code of Ethics, Canon II, Regulatory Compliance, Ethical Duty"
+  },
+  {
+    "question": "Which of the following is a REQUIRED step in the ISC2 ethics complaint process after a formal complaint has been received?",
+    "options": [
+      "The complaint must be posted on a public forum for community comment",
+      "The accused member is automatically suspended until the investigation ends",
+      "A preliminary review is conducted to determine if the complaint is 'prima facie' a violation",
+      "The complainant must pay a fee to cover the costs of the Ethics Committee"
+    ],
+    "correct": 2,
+    "explanation": "**Why C is correct**: The ISC2 Ethics Committee first determines if the complaint, on its face (**prima facie**), represents a violation of the Code. If it does, a formal investigation follows. **Why A/B/D are wrong**: Complains are kept confidential during investigation, suspension is not automatic, and there is no fee for filing a complaint.",
+    "category": "ISC2 Code of Ethics, Ethics Committee, Complaint Process, Prima Facie"
+  },
+  {
+    "question": "A CISSP is mentoring a group of students and provides them with a set of old, but still relevant, practice questions they wrote themselves. Which canon is the professional MOST directly fulfilling?",
+    "options": [
+      "Protect society, the common good, and the infrastructure",
+      "Act honorably, honestly, justly, responsibly, and legally",
+      "Provide diligent and competent service to principals",
+      "Advance and protect the profession"
+    ],
+    "correct": 3,
+    "explanation": "**Why D is correct**: Canon IV includes the responsibility to **advance the profession**. Mentoring, sharing knowledge, and helping others enter the field are key components of this canon. **Why A/B/C are wrong**: While these are good acts, mentoring is the classic example of advancing and protecting the profession.",
+    "category": "ISC2 Code of Ethics, Canon IV, Professional Development, Mentorship"
+  },
+  {
+    "question": "A security researcher finds a bug in a popular open-source library. Instead of reporting it, they sell the exploit to a 'gray market' broker who sells to unknown third parties. Which ISC2 canon is MOST likely violated?",
+    "options": [
+      "Protect society, the common good, and the infrastructure",
+      "Act honorably, honestly, justly, responsibly, and legally",
+      "Provide diligent and competent service to principals",
+      "Advance and protect the profession"
+    ],
+    "correct": 0,
+    "explanation": "**Why A is correct**: Selling exploits to unknown parties who may use them to harm public systems violates the duty to **protect society and the infrastructure** (Canon I). This is the highest priority. **Why B/D are wrong**: While also potentially dishonorable or harmful to the profession, the primary impact is the threat to public safety and infrastructure trust.",
+    "category": "ISC2 Code of Ethics, Canon I, Vulnerability Disclosure, Gray Market"
+  },
+  {
+    "question": "A CISO (who is a CISSP) is aware that their company's product has a flaw that could leak customer data. The CISO recommends a recall, but the board of directors refuses. The CISO decides to stay and work quietly to fix the flaw in the next version. Does this satisfy the Code of Ethics?",
+    "options": [
+      "Yes, because the CISO is providing diligent service to the principal",
+      "Yes, as long as the fix is eventually released",
+      "No, because the CISO has a primary duty to protect society and the public trust (Canon I)",
+      "No, because the CISO must immediately report the board to the press"
+    ],
+    "correct": 2,
+    "explanation": "**Why C is correct**: If there is an active risk to the public (Canon I), simply working quietly while the risk persists may not be enough. The professional has an obligation to protect the public trust, which may require further escalation or disclosure if the risk is significant. **Why A/B are wrong**: Service to principals is secondary to public safety. **Why D is wrong**: 'Immediately' reporting to the press is a last resort after exhausting other legal and professional channels.",
+    "category": "ISC2 Code of Ethics, Canon I, Corporate Governance, Public Safety"
+  },
+  {
+    "question": "An organization is hiring a new security manager. A CISSP on the hiring committee realizes that one of the top candidates is a personal friend. What is the MOST ethical course of action under Canon II?",
+    "options": [
+      "Say nothing and use their influence to help their friend get the job",
+      "Disclose the conflict of interest to the committee and follow the organization's policy",
+      "Resign from the committee to avoid any appearance of impropriety",
+      "Intentionally rate the friend lower to prove they are being unbiased"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: Acting **honorably and justly** (Canon II) requires disclosing potential conflicts of interest. Following the organization's policy (which might involve recusal or simply transparency) is the professional approach. **Why A is wrong**: This is dishonest and unjust. **Why C is wrong**: Recusal might be necessary, but immediate resignation from the committee without disclosure doesn't resolve the ethics of the situation. **Why D is wrong**: This is also unjust, just in the opposite direction.",
+    "category": "ISC2 Code of Ethics, Canon II, Conflict of Interest, Fairness"
+  },
+  {
+    "question": "Which of the following activities is specifically cited as UNETHICAL by the 'IAB Ethics and the Internet' (RFC 1087)?",
+    "options": [
+      "Using anonymizing proxies to browse the web",
+      "Compromising the privacy of users",
+      "Running a network sniffer on your own private network",
+      "Creating a website that criticizes government policy"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: RFC 1087 explicitly lists **compromising the privacy of users** as unacceptable and unethical. Other items include unauthorized access, disrupting use, and wasting resources. **Why A/C/D are wrong**: These are not listed as unethical by the RFC; they are generally legal and acceptable uses of technology in many contexts.",
+    "category": "IAB Ethics, RFC 1087, User Privacy, Data Ethics"
+  },
+  {
+    "question": "A CISSP is asked to perform a forensic investigation on a computer. They realize they have never used the specific forensic tool required by the lab's SOP. What should the professional do to comply with Canon III?",
+    "options": [
+      "Attempt to use the tool anyway, as forensics is a general skill",
+      "Inform the supervisor that they lack the specific competence and seek training or assistance",
+      "Use a different tool they are familiar with and not tell anyone",
+      "Delegate the task to an intern and sign off on the results"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: Canon III requires **competent service**. Operating a tool one is not trained in for a critical task like forensics violates this duty. Admitting the limitation and seeking competence is the ethical path. **Why A/C/D are wrong**: These involve lack of diligence, dishonesty, or incompetence.",
+    "category": "ISC2 Code of Ethics, Canon III, Professional Competence, Digital Forensics"
+  },
+  {
+    "question": "A security professional discovers a 'zero-day' vulnerability in a widely used encryption protocol. They decide to release the details publicly on their blog without notifying the vendors first to gain fame. Which canon is MOST likely questioned here?",
+    "options": [
+      "Protect society, the common good, and the infrastructure",
+      "Act honorably, honestly, justly, responsibly, and legally",
+      "Provide diligent and competent service to principals",
+      "Advance and protect the profession"
+    ],
+    "correct": 0,
+    "explanation": "**Why A is correct**: Full disclosure without coordination can harm **society and the infrastructure** (Canon I) by giving attackers an advantage before a patch is ready. Acting 'responsibly' (Canon II) also points toward coordinated disclosure. **Why B/D are wrong**: While 'acting responsibly' is Canon II, the primary goal of responsible disclosure is the protection of the infrastructure (Canon I).",
+    "category": "ISC2 Code of Ethics, Canon I, Responsible Disclosure, Public Trust"
+  },
+  {
+    "question": "According to the ISC2 Code of Ethics, what is the professional's responsibility regarding their own certification status if they fail to earn enough CPEs?",
+    "options": [
+      "Continue to use the CISSP title but work harder the next year",
+      "Immediately stop using the CISSP title and notify their employer",
+      "Wait for ISC2 to send a letter before making any changes",
+      "Claim they have the CPEs and hope they aren't audited"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: Canon II (Act honestly) and Canon IV (Protect the profession) require that you do not represent yourself as certified if you are not in good standing. **Why A/C/D are wrong**: These are dishonest or fail to protect the integrity of the certification.",
+    "category": "ISC2 Code of Ethics, Canon IV, Professional Standing, CPE Requirements"
   }
 ]

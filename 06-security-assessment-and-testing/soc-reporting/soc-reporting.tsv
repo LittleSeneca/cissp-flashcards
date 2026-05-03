@@ -1,0 +1,20 @@
+What is the primary focus of a SOC 1 report?	**Internal Controls over Financial Reporting (ICFR).**	SOC Reporting, Auditing, Report Types
+What is the primary focus of a SOC 2 report?	**Security, Availability, Processing Integrity, Confidentiality, and Privacy** (Trust Services Criteria).	SOC Reporting, SOC 2, Trust Services Criteria
+What is a SOC 3 report?	A **publicly available summary** of a SOC 2 report, intended for a general audience.	SOC Reporting, SOC 3, Report Types
+What is a Type I SOC report?	An audit at a **point in time** focusing on the **design** of controls.	SOC Reporting, Audit Types, Report Types
+What is a Type II SOC report?	An audit over a **period of time** (e.g., 6 months) focusing on **design and operating effectiveness.**	SOC Reporting, Audit Types, Report Types
+Which standard is used for SOC 1 reports?	**SSAE 18** (Statement on Standards for Attestation Engagements no. 18).	SOC Reporting, SOC 1, Standards
+What are the five Trust Services Criteria (TSC)?	**Security, Availability, Processing Integrity, Confidentiality, and Privacy.**	SOC Reporting, SOC 2, Trust Services Criteria
+What is the "Common Criteria" in SOC 2?	The **Security** category, which forms the baseline for all SOC 2 reports.	SOC Reporting, SOC 2, Trust Services Criteria
+What is an "Unqualified Opinion"?	A **"clean" audit report** where the auditor found no material issues with the controls.	SOC Reporting, Audit Opinions
+What is a "Qualified Opinion"?	A report where the auditor found **specific exceptions or issues**, but the overall system is not a failure.	SOC Reporting, Audit Opinions
+Complementary User Entity Controls (CUECs)	Controls that the service organization assumes the **user entity (customer)** has implemented to achieve specific goals.	SOC Reporting, SOC 2, Shared Responsibility
+Bridge Letter (Gap Letter)	A document from management covering the **gap period** between the end of a SOC report and the current date.	SOC Reporting, Audit Process
+Carve-out Method	A method where a subservice organization's controls are **excluded** from the service organization's SOC report.	SOC Reporting, Subservice Organizations
+Inclusive Method	A method where a subservice organization's controls are **included** in the scope of the service organization's SOC report.	SOC Reporting, Subservice Organizations
+Adverse Opinion	The most negative audit result, stating the controls are **not effective** or the description is materially misstated.	SOC Reporting, Audit Opinions
+Disclaimer of Opinion	A statement that the auditor **cannot form an opinion**, usually due to a lack of sufficient evidence.	SOC Reporting, Audit Opinions
+SOC for Cybersecurity	A reporting framework for communicating about an organization's **cybersecurity risk management program.**	SOC Reporting, Report Types
+SOC for Supply Chain	A report focused on controls for managing risks in a **manufacturing or distribution** supply chain.	SOC Reporting, Report Types, Supply Chain Risk
+Readiness Assessment	A **consulting engagement (non-audit)** to identify control gaps before a formal SOC examination.	SOC Reporting, Audit Process
+Trust Services Criteria (TSC): Privacy	The criteria focusing on the lifecycle of **Personal Identifiable Information (PII)**.	SOC Reporting, SOC 2, Trust Services Criteria, Privacy

@@ -118,5 +118,185 @@
     "correct": 2,
     "explanation": "**Why C is correct**: Placing the server room in the **core of the building** provides natural protection from exterior threats (explosions, vehicle ramming, weather) and reduces the risk of unauthorized entry through windows. **Why A is wrong**: Basements are at high risk for flooding. **Why B is wrong**: Top floors are vulnerable to roof leaks and external aerial threats. **Why D is wrong**: Loading docks are high-traffic areas with lower security control over personnel movement.",
     "category": "Physical Security"
+  },
+  {
+    "question": "An organization is installing a new fence around its perimeter. They choose a fence that is 8 feet high and topped with three strands of barbed wire angled at 45 degrees. What level of intruder is this fence designed to deter?",
+    "options": [
+      "A casual trespasser",
+      "A determined intruder",
+      "A vehicle-borne threat",
+      "A high-altitude aerial drone"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: Fences 8 feet or higher with barbed/concertina wire are intended to be a serious obstacle for **determined intruders**. **Why A is wrong**: Casual trespassers are deterred by much lower fences (3-4 feet). **Why C is wrong**: Fences do not stop vehicles. **Why D is wrong**: Fences do not stop drones.",
+    "category": "Physical Security"
+  },
+  {
+    "question": "A security manager is selecting a lock for a high-security cabinet. They choose a 'Medeco' lock which uses both pin tumblers and rotating pins to provide a high level of pick resistance. Which class of lock is this?",
+    "options": [
+      "Warded lock",
+      "Combination lock",
+      "Tumbler lock (Pin and Sidebar)",
+      "Cipher lock"
+    ],
+    "correct": 2,
+    "explanation": "**Why C is correct**: Modern high-security locks often use sophisticated **tumbler** mechanisms (like pin and sidebar) to resist picking and drilling. **Why A is wrong**: Warded locks are the simplest and least secure. **Why B is wrong**: Combination locks use a dial. **Why D is wrong**: Cipher locks use a keypad.",
+    "category": "Physical Security"
+  },
+  {
+    "question": "Which of the following describes a 'Fail-Safe' electronic lock on a server room door?",
+    "options": [
+      "The door remains locked when power is lost to protect the server assets",
+      "The door automatically unlocks when power is lost to ensure life safety and egress",
+      "The door requires two different keys to open",
+      "The door is immune to all forms of picking"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: **Fail-Safe** means the device defaults to an 'open' or 'safe' state (unlocked) during a failure (like power loss), prioritizing human life over asset security. **Why A is wrong**: That is 'Fail-Secure'. **Why C is wrong**: That is 'Dual Control'. **Why D is wrong**: No lock is immune to all forms of picking.",
+    "category": "Physical Security"
+  },
+  {
+    "question": "In a data center, what is the primary security reason for maintaining 'Positive Air Pressure' in the server room?",
+    "options": [
+      "To keep the room at a comfortable temperature for humans",
+      "To prevent dust and contaminants from entering the room when a door is opened",
+      "To help the fire suppression system work faster",
+      "To prevent eavesdropping via acoustic sensors"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: **Positive air pressure** means air flows *out* of the room when a door is opened, preventing contaminants from being sucked *in*. **Why A/C/D are wrong**: These are not the primary reasons for positive air pressure in this context.",
+    "category": "Physical Security"
+  },
+  {
+    "question": "An organization is concerned about electromagnetic emanations from their secure terminals being intercepted by an attacker in a nearby van. Which standard and shielding technique are MOST relevant to this threat?",
+    "options": [
+      "HIPAA; AES encryption",
+      "PCI DSS; Tokenization",
+      "TEMPEST; Faraday Cage",
+      "SOX; Internal Controls"
+    ],
+    "correct": 2,
+    "explanation": "**Why C is correct**: **TEMPEST** is the standard for protecting against compromising emanations. A **Faraday Cage** (shielding) is a physical control used to block these signals. **Why A/B/D are wrong**: These are regulatory/logical standards that do not address EM emanations.",
+    "category": "Physical Security"
+  },
+  {
+    "question": "A security guard is monitoring a 'Vibration' sensor attached to a perimeter fence. Which type of intrusion detection system (IDS) is this?",
+    "options": [
+      "Photoelectric sensor",
+      "Proximity/Capacitance sensor",
+      "Electromechanical sensor",
+      "Acoustic sensor"
+    ],
+    "correct": 2,
+    "explanation": "**Why C is correct**: **Vibration sensors** are typically electromechanical or piezoelectric devices that detect the physical movement of a barrier. **Why A is wrong**: Photoelectric uses light beams. **Why B is wrong**: Proximity uses magnetic/electric fields. **Why D is wrong**: Acoustic uses sound.",
+    "category": "Physical Security"
+  },
+  {
+    "question": "Which of the following lighting types is BEST suited for illuminating a large perimeter area where a broad, uniform light is needed to assist CCTV cameras at night?",
+    "options": [
+      "Fresnel lens light",
+      "Floodlight",
+      "Searchlight",
+      "Strobe light"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: **Floodlights** produce a broad, high-intensity beam suitable for large areas. **Why A is wrong**: Fresnel lights produce a long, narrow, lighthouse-like beam. **Why C is wrong**: Searchlights are highly focused and mobile. **Why D is wrong**: Strobes are for alarms/disorientation.",
+    "category": "Physical Security"
+  },
+  {
+    "question": "A data center experiences a sustained low-voltage condition from the utility provider that lasts for several hours. This is known as a:",
+    "options": [
+      "Blackout",
+      "Brownout",
+      "Sag",
+      "Spike"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: A **Brownout** is a prolonged drop in voltage. **Why A is wrong**: Blackout is total loss. **Why C is wrong**: Sag is a short-duration dip. **Why D is wrong**: Spike is a short-duration increase.",
+    "category": "Physical Security"
+  },
+  {
+    "question": "When implementing fire suppression in a server room, why is a 'Pre-Action' system preferred over a standard 'Wet-Pipe' system?",
+    "options": [
+      "It is much cheaper to install",
+      "It requires two separate events (smoke detection and a fused head) before water is released into the pipes, reducing the risk of accidental water damage",
+      "It uses a gas that is better for the environment",
+      "It doesn't require a pump"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: **Pre-action** systems provide a 'second chance' to stop an accidental discharge by requiring a detection event before even allowing water into the pipes. **Why A/C/D are wrong**: These are not the primary reasons for choosing pre-action in a data center.",
+    "category": "Physical Security"
+  },
+  {
+    "question": "A security manager is applying the 'Broken Windows Theory' to their facility's physical security. Which CPTED principle are they MOST directly supporting?",
+    "options": [
+      "Natural Surveillance",
+      "Target Hardening",
+      "Maintenance",
+      "Natural Access Control"
+    ],
+    "correct": 2,
+    "explanation": "**Why C is correct**: The 'Broken Windows Theory' suggests that visible signs of disorder and lack of **maintenance** (like broken windows or graffiti) encourage more crime. Maintaining a clean, orderly facility is a key CPTED deterrent. **Why A/B/D are wrong**: These are different principles of design.",
+    "category": "Physical Security"
+  },
+  {
+    "question": "In the context of 'Key Management,' what is the primary risk of using a 'Master Key' system in a large office building?",
+    "options": [
+      "It makes it too easy for employees to open their own doors",
+      "If the master key is lost or stolen, the entire facility must be re-keyed, as the key can open every door",
+      "Master keys are physically heavier than normal keys",
+      "Master keys do not work in the dark"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: While convenient, **master key** systems create a significant single point of failure. A single lost master key compromises the entire facility. **Why A/C/D are wrong**: These are not the primary security risks.",
+    "category": "Physical Security"
+  },
+  {
+    "question": "A facility uses an 'Uninterruptible Power Supply' (UPS) that continuously converts AC power to DC to charge batteries, and then back to AC to power the load. Which type of UPS is this?",
+    "options": [
+      "Standby (Offline) UPS",
+      "Line-Interactive UPS",
+      "Online (Double-Conversion) UPS",
+      "Rotary UPS"
+    ],
+    "correct": 2,
+    "explanation": "**Why C is correct**: **Online (Double-Conversion) UPS** systems provide the highest level of protection because the load is always running off the battery/inverter, meaning there is zero transfer time during a power failure. **Why A/B are wrong**: These have a brief transfer time. **Why D is wrong**: Rotary uses a flywheel.",
+    "category": "Physical Security"
+  },
+  {
+    "question": "Which of the following environmental factors is MOST likely to lead to 'Static Electricity' buildup in a server room, potentially damaging sensitive components?",
+    "options": [
+      "Extremely high humidity (>80%)",
+      "Extremely low humidity (<40%)",
+      "Excessive noise levels",
+      "High levels of ultraviolet light"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: **Low humidity** makes it easier for static charges to build up. ASHRAE recommends maintaining humidity around 40-60% to mitigate this. **Why A is wrong**: High humidity causes corrosion and condensation. **Why C/D are wrong**: These do not cause static buildup.",
+    "category": "Physical Security"
+  },
+  {
+    "question": "An organization is selecting a new site for a disaster recovery data center. Which of the following 'Topography' features is the MOST desirable for security and resilience?",
+    "options": [
+      "At the bottom of a steep hill to hide it from view",
+      "On a high-ground area that is not in a designated 100-year flood plain",
+      "Immediately adjacent to a major river for cooling water access",
+      "In a densely forested area to provide natural camouflage"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: Avoiding **flood plains** and selecting high ground is a fundamental site selection criteria for data centers. **Why A/C are wrong**: These significantly increase the risk of water damage. **Why D is wrong**: Forests can be fire hazards and can obscure surveillance.",
+    "category": "Physical Security"
+  },
+  {
+    "question": "A security professional is using an 'Asset Tag' that uses 'Radio Frequency Identification' (RFID) to track the movement of laptops within a building. Which type of control is this?",
+    "options": [
+      "Preventive Control",
+      "Detective Control",
+      "Deterrent Control",
+      "Administrative Control"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: **RFID tracking** allows the organization to *detect* when an asset has been moved or has left a certain area. It doesn't physically prevent the theft in the same way a cable lock would. **Why A/C/D are wrong**: While it may have some deterrent effect, its primary function is detection/tracking.",
+    "category": "Physical Security"
   }
 ]

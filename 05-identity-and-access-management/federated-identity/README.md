@@ -1,3 +1,8 @@
+---
+tier: 2
+exam_weight: "13%"
+---
+
 # Federated Identity and Third-Party ID
 
 ## Exam Relevance

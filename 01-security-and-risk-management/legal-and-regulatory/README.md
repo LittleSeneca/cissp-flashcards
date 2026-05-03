@@ -1,3 +1,8 @@
+---
+tier: 2
+exam_weight: "16%"
+---
+
 # Legal, Regulatory, and Intellectual Property
 
 ## Exam Relevance

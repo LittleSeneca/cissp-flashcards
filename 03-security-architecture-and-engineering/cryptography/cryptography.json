@@ -118,5 +118,245 @@
     "correct": 1,
     "explanation": "**Why B is correct**: A **Collision** occurs when two different inputs produce the same hash output. A collision attack specifically looks for these occurrences to undermine the integrity of a hashing algorithm. **Why A is wrong**: A replay attack involves resending a valid transmission. **Why C is wrong**: A known-plaintext attack involves having access to both the plaintext and its corresponding ciphertext to derive the key. **Why D is wrong**: A Man-in-the-Middle attack involves intercepting communication between two parties.",
     "category": "Cryptography"
+  },
+  {
+    "question": "A financial institution is exploring technologies that would allow them to perform data analytics on encrypted customer records without ever decrypting them. Which cryptographic concept enables this functionality?",
+    "options": [
+      "Steganography",
+      "Quantum Key Distribution (QKD)",
+      "Homomorphic Encryption",
+      "Visual Cryptography"
+    ],
+    "correct": 2,
+    "explanation": "**Why C is correct**: **Homomorphic Encryption** is a form of encryption that allows computations to be performed on ciphertext, generating an encrypted result which, when decrypted, matches the result of the operations as if they had been performed on the plaintext. **Why A is wrong**: Steganography is hiding data. **Why B is wrong**: QKD is for secure key exchange. **Why D is wrong**: Visual cryptography is a specialized form of secret sharing.",
+    "category": "Cryptography"
+  },
+  {
+    "question": "Which of the following is a 'post-quantum' cryptographic algorithm currently being evaluated by NIST to replace current asymmetric algorithms like RSA and ECC?",
+    "options": [
+      "AES-GCM",
+      "SHA-3",
+      "Kyber (ML-KEM)",
+      "Diffie-Hellman"
+    ],
+    "correct": 2,
+    "explanation": "**Why C is correct**: **Kyber** (now standardized as ML-KEM) is one of the lattice-based algorithms selected by NIST for its Post-Quantum Cryptography (PQC) project. **Why A/B are wrong**: These are symmetric and hashing algorithms, which are already relatively resistant to quantum attacks (requiring only larger key/output sizes). **Why D is wrong**: DH is easily broken by Shor's algorithm on a quantum computer.",
+    "category": "Cryptography"
+  },
+  {
+    "question": "An organization wants to implement 'Perfect Forward Secrecy' (PFS) for their web servers. Which mechanism is required to achieve this?",
+    "options": [
+      "Using a single static RSA key for all sessions",
+      "Using Ephemeral Diffie-Hellman (DHE) or Elliptic Curve Ephemeral Diffie-Hellman (ECDHE)",
+      "Mandating the use of AES-256 for bulk encryption",
+      "Implementing a 72-hour key rotation policy"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: **PFS** ensures that even if the server's long-term private key is compromised, past sessions cannot be decrypted. This is achieved by using **ephemeral** keys (keys that exist only for one session) for the key exchange. **Why A is wrong**: Static keys mean a single compromise can unlock all recorded history. **Why C/D are wrong**: These do not natively provide forward secrecy.",
+    "category": "Cryptography"
+  },
+  {
+    "question": "A system administrator needs to ensure that no single person can recover a master encryption key alone. Instead, they require at least three out of five designated senior managers to be present. This is an example of:",
+    "options": [
+      "Dual Control",
+      "M of N Control (Secret Sharing)",
+      "Separation of Duties",
+      "Key Escrow"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: **M of N Control** (a form of secret sharing, like Shamir's Secret Sharing) requires a minimum number of 'shares' (M) out of a total number of participants (N) to reconstruct a secret. **Why A is wrong**: Dual control usually refers to exactly two people. **Why C is wrong**: Separation of duties is a broader organizational control. **Why D is wrong**: Key escrow is about third-party storage.",
+    "category": "Cryptography"
+  },
+  {
+    "question": "What is the PRIMARY purpose of 'Key Stretching' algorithms like PBKDF2, bcrypt, or Argon2?",
+    "options": [
+      "To make the encryption key physically longer",
+      "To increase the computational cost of hashing a password, making brute-force and rainbow table attacks more difficult",
+      "To compress the password so it takes up less space in the database",
+      "To allow multiple users to share the same password"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: **Key stretching** works by repeatedly applying a cryptographic function, which slows down the hashing process for an attacker, multiplying the time required for a brute-force or dictionary attack. **Why A is wrong**: It doesn't change the physical length of the final hash in a way that matters for storage, but it increases the 'work' needed. **Why C/D are wrong**: These are not the goals of key stretching.",
+    "category": "Cryptography"
+  },
+  {
+    "question": "An attacker uses a high-speed camera and sensitive microphones to analyze the power consumption and electromagnetic emissions of a smart card while it performs an RSA operation. What type of attack is this?",
+    "options": [
+      "Meet-in-the-middle attack",
+      "Birthday attack",
+      "Side-channel attack",
+      "Fault injection attack"
+    ],
+    "correct": 2,
+    "explanation": "**Why C is correct**: **Side-channel attacks** exploit physical information leaked by the implementation of a cryptographic system (like timing, power consumption, or EM radiation) rather than attacking the algorithm's mathematics directly. **Why A/B are wrong**: These are mathematical/logical attacks. **Why D is wrong**: Fault injection involves intentionally causing errors to observe the result.",
+    "category": "Cryptography"
+  },
+  {
+    "question": "In a Public Key Infrastructure (PKI), which model is used when two independent CAs establish a trust relationship to allow their respective users to communicate securely?",
+    "options": [
+      "Root CA model",
+      "Bridge CA model",
+      "Mesh model",
+      "Cross-Certification"
+    ],
+    "correct": 3,
+    "explanation": "**Why Cross-Certification is correct**: **Cross-certification** (or a Bridge CA) is used to link two different PKI hierarchies by having the CAs sign each other's certificates. **Why A is wrong**: Root CA is a single hierarchy. **Why B/C are wrong**: While related, cross-certification is the general process for establishing this trust.",
+    "category": "Cryptography"
+  },
+  {
+    "question": "A security professional is hiding sensitive text inside the 'Least Significant Bits' (LSB) of a high-resolution JPEG image. Which technique is being used?",
+    "options": [
+      "Symmetric Encryption",
+      "Asymmetric Encryption",
+      "Steganography",
+      "Digital Watermarking"
+    ],
+    "correct": 2,
+    "explanation": "**Why C is correct**: **Steganography** is the art of hiding data within another medium (the 'carrier') such that the existence of the secret data is not apparent. LSB modification is a common method. **Why D is wrong**: Watermarking is used to prove ownership or track a file, not necessarily to hide data for secret communication.",
+    "category": "Cryptography"
+  },
+  {
+    "question": "Which cryptographic primitive is used in IPsec to provide 'Perfect Forward Secrecy' (PFS) during the IKE Phase 2 negotiation?",
+    "options": [
+      "RSA",
+      "Diffie-Hellman (DH) Group",
+      "AES-CBC",
+      "SHA-256"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: By performing an additional **Diffie-Hellman** exchange during Phase 2, IPsec can ensure that the session keys used for data transfer are not derived from the Phase 1 keys, providing PFS. **Why A is wrong**: RSA is typically for authentication. **Why C/D are wrong**: These are used for encryption/integrity but do not provide the key exchange needed for PFS.",
+    "category": "Cryptography"
+  },
+  {
+    "question": "What is the key difference between 'Key Escrow' and 'Key Recovery'?",
+    "options": [
+      "Key escrow is for symmetric keys; key recovery is for asymmetric keys",
+      "Key escrow involves a third party holding a copy of the key for potential law enforcement access; key recovery is an internal process for restoring lost keys",
+      "There is no difference; they are synonymous",
+      "Key escrow is illegal under the GDPR"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: **Key Escrow** is often associated with external access (like government), while **Key Recovery** is usually an internal organizational requirement to ensure data isn't lost if an employee leaves or loses a password. **Why A/C/D are wrong**: These do not capture the semantic and operational differences.",
+    "category": "Cryptography"
+  },
+  {
+    "question": "Which of the following is a 'Zero-Knowledge Proof' (ZKP) protocol used to prove that a prover knows a secret without revealing the secret itself?",
+    "options": [
+      "Fiat-Shamir",
+      "Diffie-Hellman",
+      "ElGamal",
+      "Knapsack"
+    ],
+    "correct": 0,
+    "explanation": "**Why A is correct**: The **Fiat-Shamir** identification scheme is a classic example of a zero-knowledge proof. **Why B/C/D are wrong**: DH is key exchange. ElGamal is an asymmetric algorithm. Knapsack is an early (and broken) asymmetric algorithm.",
+    "category": "Cryptography"
+  },
+  {
+    "question": "A hardware device that is specifically designed to securely generate, store, and manage cryptographic keys, and which is often tamper-resistant, is known as a:",
+    "options": [
+      "Trusted Platform Module (TPM)",
+      "Hardware Security Module (HSM)",
+      "Smart Card",
+      "Security Token"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: An **HSM** is a high-performance, dedicated hardware device for cryptographic operations. **Why A is wrong**: A TPM is a smaller, slower chip integrated into a motherboard, primarily for platform integrity. **Why C/D are wrong**: These are user-level devices, not for high-volume enterprise key management.",
+    "category": "Cryptography"
+  },
+  {
+    "question": "In the context of blockchain technology, which cryptographic primitive is PRIMARILY used to link blocks together in a chain?",
+    "options": [
+      "Asymmetric Encryption",
+      "Symmetric Encryption",
+      "Cryptographic Hashing",
+      "Zero-Knowledge Proofs"
+    ],
+    "correct": 2,
+    "explanation": "**Why C is correct**: Each block in a **blockchain** contains the **cryptographic hash** of the previous block, creating an immutable link. **Why A/B/D are wrong**: While these may be used for other features (signatures, privacy), the 'chain' itself is formed by hashes.",
+    "category": "Cryptography"
+  },
+  {
+    "question": "An organization is concerned about a 'Meet-in-the-Middle' attack. Which algorithm was this attack specifically designed to break by exploiting the way multiple keys are used?",
+    "options": [
+      "AES-256",
+      "RSA-2048",
+      "Double DES (2DES)",
+      "Triple DES (3DES)"
+    ],
+    "correct": 2,
+    "explanation": "**Why C is correct**: The **Meet-in-the-middle** attack reduces the effective security of **2DES** (two layers of DES with different keys) from 112 bits down to only 57 bits, which is why 3DES (three layers) was preferred instead. **Why A/B/D are wrong**: These are not the primary targets of the classic meet-in-the-middle attack in this context.",
+    "category": "Cryptography"
+  },
+  {
+    "question": "Which of the following describes 'Digital Watermarking'?",
+    "options": [
+      "Hiding a secret message inside an image for covert communication",
+      "Embedding a hidden signal into a digital file to identify the owner or verify the authenticity of the media",
+      "Encrypting a file so it can only be opened by authorized users",
+      "The process of cleaning a hard drive with magnetized water"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: **Digital watermarking** is about marking a file (often for copyright or provenance) rather than hiding a secret message for another person to read. **Why A is wrong**: That is steganography. **Why C is wrong**: That is encryption. **Why D is wrong**: This is nonsense.",
+    "category": "Cryptography"
+  },
+  {
+    "question": "A developer adds a unique, secret, and non-random value to a password hash that is the same for ALL users in the database, in addition to a unique random salt per user. What is this 'global' value called?",
+    "options": [
+      "Initialization Vector (IV)",
+      "Nonce",
+      "Pepper",
+      "Entropy"
+    ],
+    "correct": 2,
+    "explanation": "**Why C is correct**: A **pepper** is a secret value added to passwords before hashing. Unlike a salt (which is stored in the database), a pepper is usually stored separately (e.g., in a HSM or config file) to provide an extra layer of security if the database is leaked. **Why A/B/D are wrong**: These are different cryptographic terms.",
+    "category": "Cryptography"
+  },
+  {
+    "question": "Which TLS 1.3 feature significantly improves performance and security compared to TLS 1.2?",
+    "options": [
+      "Support for the MD5 hashing algorithm",
+      "Removal of older, weaker cipher suites (like those using CBC mode or static RSA)",
+      "Allowing the use of 56-bit DES keys",
+      "Enabling unencrypted handshakes for faster connection"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: **TLS 1.3** simplified the protocol by removing legacy and insecure algorithms, mandating Perfect Forward Secrecy, and streamlining the handshake. **Why A/C/D are wrong**: These would decrease security.",
+    "category": "Cryptography"
+  },
+  {
+    "question": "What is the 'discrete logarithm problem' primarily used for in modern cryptography?",
+    "options": [
+      "It is the basis for the security of symmetric algorithms like AES",
+      "It is the mathematical foundation for algorithms like Diffie-Hellman and ElGamal",
+      "It is a method for compressing large encrypted files",
+      "It is used to generate random numbers from atmospheric noise"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: The **discrete logarithm problem** (and its elliptic curve variant) is a 'one-way' mathematical problem that provides the security for several major asymmetric protocols. **Why A/C/D are wrong**: These do not rely on discrete logarithms.",
+    "category": "Cryptography"
+  },
+  {
+    "question": "Which of the following is an example of 'Certificate Pinning'?",
+    "options": [
+      "Printing a physical copy of a certificate and pinning it to a wall",
+      "Configuring a mobile app to only trust a specific, pre-defined certificate or public key, rather than any certificate issued by a trusted CA",
+      "Using a very long expiration date for a certificate",
+      "Sharing a private key with all users in an organization"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: **Certificate pinning** (or public key pinning) mitigates the risk of a compromised or rogue CA issuing a fraudulent certificate for a domain. **Why A/C/D are wrong**: These are not security practices.",
+    "category": "Cryptography"
+  },
+  {
+    "question": "An organization wants to use 'Differential Cryptanalysis' to evaluate the strength of their custom-built cipher. What does this technique primarily involve?",
+    "options": [
+      "Analyzing the time it takes for the cipher to run on different CPUs",
+      "Studying how differences in plaintext input affect the resulting differences in ciphertext output",
+      "Asking different experts for their opinion on the cipher",
+      "Trying every possible key until the plaintext is found"
+    ],
+    "correct": 1,
+    "explanation": "**Why B is correct**: **Differential cryptanalysis** is a form of cryptanalysis that looks for non-random behavior in the way inputs relate to outputs across many pairs of data. **Why A is wrong**: That is a timing attack. **Why C/D are wrong**: These are not differential cryptanalysis.",
+    "category": "Cryptography"
   }
 ]

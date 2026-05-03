@@ -146,10 +146,10 @@
   {
     "question": "A BIA assigns each business process a Maximum Tolerable Downtime (MTD). System A has an MTD of 1 hour, System B has 24 hours, and System C has 72 hours. Which of the following is the BEST recovery priority order?",
     "options": [
-      "C \u2192 B \u2192 A",
-      "A \u2192 B \u2192 C",
+      "C → B → A",
+      "A → B → C",
       "All systems should be recovered simultaneously regardless of MTD",
-      "B \u2192 A \u2192 C"
+      "B → A → C"
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: Processes with the **shortest MTD** must be recovered first because they reach their threshold of unacceptability soonest. **Why A is wrong**: Recovering C first would allow A to breach its 1-hour limit. **Why C is wrong**: Simultaneous recovery is often impossible due to resource constraints; MTD provides the logical sequence. **Why D is wrong**: Priority must flow from most time-critical (shortest MTD) to least.",

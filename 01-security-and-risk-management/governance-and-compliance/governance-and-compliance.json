@@ -9,7 +9,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: A **security policy** is a high-level, board-approved document that expresses management's intent, goals, and direction for information security. It is mandatory and sets the tone but does not contain technical specifics. **Why A is wrong**: A **procedure** is a step-by-step operational document ('how-to'). **Why B is wrong**: A **standard** provides specific, mandatory, and measurable requirements (the 'what'). **Why D is wrong**: **Guidelines** are non-mandatory recommendations.",
-    "category": "Governance and Compliance"
+    "category": "Security Governance, Security Policy, Policy vs Standard, Board Oversight"
   },
   {
     "question": "A security manager discovers that developers have been granting themselves administrative access to production databases to resolve urgent bugs. Which two foundational security control principles does this activity simultaneously violate?",
@@ -21,7 +21,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **Separation of duties** (SoD) is violated because developers should not have administrative control over the production environment. **Least privilege** is violated because granting production admin rights to developers exceeds the minimum access required for their defined role. **Why A is wrong**: Two-person integrity requires two people for a single action, which is not the core issue here. **Why C is wrong**: Due care and diligence are management/legal concepts, not technical access control principles. **Why D is wrong**: Need-to-know is about data access, whereas this is about functional role boundary violations.",
-    "category": "Governance and Compliance"
+    "category": "Security Governance, Separation of Duties, Least Privilege, Access Control"
   },
   {
     "question": "An ISO 27001 surveillance audit is conducted by an accredited certification body hired by the organization. Which of the following BEST describes this type of audit?",
@@ -33,7 +33,7 @@
     ],
     "correct": 0,
     "explanation": "**Why A is correct**: A **third-party audit** is performed by an independent body with no vested interest in the organization (e.g., an accredited registrar/certification body). **Why B/C are wrong**: A **first-party (internal)** audit is performed by the organization on itself. **Why D is wrong**: A **second-party** audit is performed by one party on another where a contract or specific interest exists (e.g., a customer auditing a supplier).",
-    "category": "Governance and Compliance"
+    "category": "Security Auditing, Third-party Audit, ISO 27001, External Assurance"
   },
   {
     "question": "A board approves an expensive SIEM investment, but the tool is never tuned and its alerts are ignored. Which concept BEST describes this failure by the organization's leadership?",
@@ -45,7 +45,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **Due care** is the 'doing' component of security management—taking reasonable steps to protect assets. Approving a tool but failing to operate it effectively is a failure of due care. **Why A is wrong**: Compliance refers to meeting external requirements, not internal operational effectiveness. **Why C is wrong**: **Due diligence** is the investigative/verification component (e.g., researching the tool before buying). **Why D is wrong**: While related to governance, the specific failure to act reasonably is a due care violation.",
-    "category": "Governance and Compliance"
+    "category": "Security Governance, Due Care, Operational Effectiveness, Accountability"
   },
   {
     "question": "Which framework is BEST described as a scalable, industry-agnostic model organized into the functions: Govern, Identify, Protect, Detect, Respond, and Recover?",
@@ -57,7 +57,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **NIST CSF 2.0** uses these specific functions and is designed to be adaptable to any industry. The 'Govern' function was added in the 2.0 update. **Why A is wrong**: COBIT is a governance framework with different domains (EDM, APO, etc.). **Why C is wrong**: ITIL focuses on service management lifecycles. **Why D is wrong**: ISO 27001 is a certifiable ISMS standard based on clauses and Annex A controls.",
-    "category": "Governance and Compliance"
+    "category": "Security Frameworks, NIST CSF 2.0, Security Governance, Lifecycle Functions"
   },
   {
     "question": "Which IT security control is MOST directly relevant to ensuring compliance with Sarbanes-Oxley (SOX) Section 404 regarding financial reporting integrity?",
@@ -69,7 +69,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: **SOX 404** focuses on the reliability of financial reporting. **Access control and segregation of duties** (SoD) are critical to ensure that no single individual can manipulate financial records without oversight. **Why A is wrong**: Encryption provides confidentiality but doesn't prevent fraudulent data entry. **Why B/D are wrong**: These are broader security practices but are less central to the SOX 404 'internal controls over financial reporting' mandate.",
-    "category": "Governance and Compliance"
+    "category": "Regulatory Compliance, SOX 404, Internal Controls, Financial Integrity"
   },
   {
     "question": "A committee of senior leaders from security, IT, finance, and legal meets to prioritize investments and align security with business goals. Which of the following is the BEST name for this body?",
@@ -81,7 +81,7 @@
     ],
     "correct": 0,
     "explanation": "**Why A is correct**: A **security steering committee** provides cross-functional oversight and ensures that security strategy supports the business objectives. **Why B is wrong**: A risk committee focuses on broader enterprise risk. **Why C is wrong**: An audit committee oversees financial reporting and audit functions. **Why D is wrong**: A CAB reviews technical IT changes to minimize operational disruption.",
-    "category": "Governance and Compliance"
+    "category": "Security Governance, Steering Committee, Strategic Alignment, Stakeholder Management"
   },
   {
     "question": "An IT department publishes a document specifying that all VPN clients must use AES-256, MFA, and a 30-minute timeout. Which type of document is this?",
@@ -93,7 +93,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: A **standard** provides specific, measurable, and mandatory requirements (e.g., specific encryption algorithms and timeout values) to implement a policy. **Why A is wrong**: A **procedure** provides step-by-step instructions. **Why C is wrong**: A **policy** is a high-level directive. **Why D is wrong**: A **guideline** is non-mandatory advice.",
-    "category": "Governance and Compliance"
+    "category": "Security Governance, Security Standard, Technical Controls, Mandatory Requirements"
   },
   {
     "question": "Which statement BEST distinguishes ISO 27001 from ISO 27002?",
@@ -105,7 +105,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **ISO 27001** contains the 'shall' requirements for certification. **ISO 27002** is a code of practice providing implementation details for the controls mentioned in ISO 27001's Annex A. **Why A, C, D are wrong**: These statements misrepresent the relationship and purpose of the two standards.",
-    "category": "Governance and Compliance"
+    "category": "Security Frameworks, ISO 27001, ISO 27002, ISMS"
   },
   {
     "question": "An organization documents its security controls for an audit but fails to verify if they are actually working as intended. Which concept BEST describes this failure?",
@@ -117,7 +117,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: **Due diligence** is the act of verifying, investigating, and confirming that controls are actually effective (the 'checking' component). **Why A is wrong**: **Due care** is the 'doing' component (acting responsibly). **Why B/D are wrong**: While related, the specific lack of verification is a due diligence failure.",
-    "category": "Governance and Compliance"
+    "category": "Security Auditing, Due Diligence, Control Assessment, Verification"
   },
   {
     "question": "Which of the following BEST reflects the primary responsibilities of a Chief Information Security Officer (CISO)?",
@@ -129,7 +129,7 @@
     ],
     "correct": 3,
     "explanation": "**Why D is correct**: The **CISO** role is a leadership and governance role focused on strategy, risk management, and compliance alignment with the business. **Why A is wrong**: **Data owners** (business leaders) own the data, not the CISO. **Why B is wrong**: This is an IT operations/CIO responsibility. **Why C is wrong**: This is an operational task for the SOC/IR teams.",
-    "category": "Governance and Compliance"
+    "category": "Security Governance, CISO Role, Strategic Management, Risk Oversight"
   },
   {
     "question": "In the COBIT framework, which statement BEST distinguishes governance from management?",
@@ -141,7 +141,7 @@
     ],
     "correct": 0,
     "explanation": "**Why A is correct**: COBIT separates **governance** (EDM domain: Evaluate, Direct, Monitor) from **management** (APO, BAI, DSS, MEA domains) to ensure clear accountability at different organizational levels. **Why B, C, D are wrong**: These misstate the COBIT methodology and organizational structure.",
-    "category": "Governance and Compliance"
+    "category": "Security Frameworks, COBIT, Governance vs Management, Accountability"
   },
   {
     "question": "A cloud vendor stores PII in a jurisdiction that violates a company's specific agreement with its own clients. Which compliance category is MOST directly failed in this scenario?",
@@ -153,7 +153,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **Contractual compliance** involves meeting obligations defined in agreements with customers and partners. The company failed to uphold its specific residency commitments to its clients. **Why C is wrong**: While related to regulations, the breach of a specific client agreement is primarily a contractual failure. **Why A/D are wrong**: These refer to internal governance or technical configuration standards.",
-    "category": "Governance and Compliance"
+    "category": "Contractual Compliance, Data Residency, PII Protection, Third-party Risk"
   },
   {
     "question": "Which action by a board of directors BEST demonstrates effective security governance?",
@@ -165,7 +165,7 @@
     ],
     "correct": 0,
     "explanation": "**Why A is correct**: Effective governance requires **informed oversight**. Boards should review metrics that connect security posture to business risk to fulfill their fiduciary duties. **Why B is wrong**: Total delegation is a failure of oversight. **Why C is wrong**: Budget approval must be risk-informed. **Why D is wrong**: This is micromanagement and creates operational bottlenecks.",
-    "category": "Governance and Compliance"
+    "category": "Security Governance, Board Oversight, Risk Metrics, Fiduciary Duty"
   },
   {
     "question": "A security manager wants to add a leading indicator to their dashboard. Which of the following is a LEADING indicator?",
@@ -177,7 +177,7 @@
     ],
     "correct": 0,
     "explanation": "**Why A is correct**: A **leading indicator** is forward-looking and predicts future outcomes. Tracking unmitigated vulnerabilities predicts the likelihood of future breaches. **Why B, C, D are wrong**: These are **lagging indicators** that measure historical performance or events that have already occurred.",
-    "category": "Governance and Compliance"
+    "category": "Security Metrics, Leading Indicators, KRI, Vulnerability Management"
   },
   {
     "question": "According to the (ISC)2 Code of Ethics, what is a security professional's HIGHEST priority when a conflict occurs?",
@@ -189,7 +189,7 @@
     ],
     "correct": 0,
     "explanation": "**Why A is correct**: The (ISC)2 canons are in **priority order**. The first canon (Protect society, etc.) takes precedence over all others, including loyalty to the employer. **Why B, C, D are wrong**: These are lower-order canons that must yield to the first canon in case of a conflict.",
-    "category": "Governance and Compliance"
+    "category": "ISC2 Code of Ethics, Canon I, Ethical Prioritization, Public Safety"
   },
   {
     "question": "Which approach BEST supports a risk-based budget justification for a new security control to a CFO?",
@@ -201,7 +201,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: CFOs respond to financial logic. An **ALE (Annualized Loss Expectancy)** analysis quantifies risk in dollars, allowing for a clear **Return on Security Investment (ROSI)** calculation. **Why A, D are wrong**: These are arguments from convention/peer pressure, not risk-based logic. **Why B is wrong**: Lack of incidents doesn't prove future safety.",
-    "category": "Governance and Compliance"
+    "category": "Security Governance, Risk-Based Budgeting, ALE, ROSI"
   },
   {
     "question": "Which concept BEST protects an employee from retaliation when they report unethical behavior through an internal hotline?",
@@ -213,7 +213,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **Whistleblower protection** statutes shield employees who report illegal or unethical conduct from adverse actions like termination or harassment. **Why A is wrong**: Due process is a government-related legal right. **Why C is wrong**: NDAs cannot be used to legally suppress the reporting of illegal acts. **Why D is wrong**: At-will employment does not override statutory whistleblower protections.",
-    "category": "Governance and Compliance"
+    "category": "Legal & Regulatory, Whistleblower Protection, Ethics, Employee Rights"
   },
   {
     "question": "How should an organization BEST manage an interim gap between current practice and a new regulatory requirement?",
@@ -225,7 +225,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: A formal **exception management process** ensures accountability by documenting the gap, assessing the residual risk, applying compensating controls, and committing to a remediation timeline. **Why A is wrong**: This is fraudulent documentation. **Why B is wrong**: This would likely cause an unacceptable business disruption. **Why D is wrong**: Regulators rarely grant indefinite waivers for standard requirements.",
-    "category": "Governance and Compliance"
+    "category": "Security Governance, Exception Management, Regulatory Compliance, Risk Acceptance"
   },
   {
     "question": "Which of the following is the PRIMARY criticism of a purely compliance-based security program?",
@@ -237,7 +237,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: **Compliance-based** programs often follow a 'checkbox' mentality, which may meet the regulatory minimum but fails to address the organization's unique threat landscape or emerging risks. **Why A is wrong**: They are legal and very common. **Why B is wrong**: ISO standards incorporate compliance. **Why D is wrong**: Cost varies and is not the primary security-based criticism.",
-    "category": "Governance and Compliance"
+    "category": "Security Governance, Risk-Based Security, Compliance vs Security, Framework Selection"
   },
   {
     "question": "In the third-party vendor risk management lifecycle, when should a security assessment of a new critical vendor occur?",
@@ -249,7 +249,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: Assessment must happen **before contract signing** to ensure the organization understands the risk and can negotiate necessary security terms into the contract. **Why A is wrong**: After signing, the organization has lost its primary leverage. **Why B is wrong**: Assessments should be tiered based on risk. **Why D is wrong**: This is reactive and dangerous.",
-    "category": "Governance and Compliance"
+    "category": "Third-party Risk, TPRM, Vendor Assessment, Procurement Lifecycle"
   },
   {
     "question": "Which statement BEST describes the potential application of the Computer Fraud and Abuse Act (CFAA) to unauthorized vulnerability research?",
@@ -261,7 +261,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: The **CFAA** prohibits unauthorized access to protected computers. While the Supreme Court's *Van Buren* ruling narrowed the scope, unauthorized testing can still trigger legal risk under the 'without authorization' clause. **Why A is wrong**: There is no statutory exemption for researchers. **Why C is wrong**: It applies to virtually any internet-connected computer. **Why D is wrong**: Many provisions do not require a high financial damage threshold.",
-    "category": "Governance and Compliance"
+    "category": "Legal & Regulatory, CFAA, Cybercrime Law, Vulnerability Research"
   },
   {
     "question": "Which scenario BEST illustrates contractual compliance as distinct from regulatory compliance?",
@@ -273,7 +273,7 @@
     ],
     "correct": 0,
     "explanation": "**Why A is correct**: **PCI DSS** is a private contractual requirement between merchants and card brands—it is not a government law. **Why B, C, D are wrong**: HIPAA, GDPR, and SOX are all government regulations/statutes (regulatory compliance).",
-    "category": "Governance and Compliance"
+    "category": "Contractual Compliance, PCI DSS, Industry Standards, Self-Regulation"
   },
   {
     "question": "Which of the following BEST explains the primary purpose of a security program charter?",
@@ -285,7 +285,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: A **security program charter** provides the CISO and the security function with the formal authority and legitimacy needed to implement and enforce security across the organization. **Why A is wrong**: It is an internal governance document. **Why C is wrong**: It provides the *authority* for policies, but doesn't replace them. **Why D is wrong**: Its primary audience is internal leadership.",
-    "category": "Governance and Compliance"
+    "category": "Security Governance, Program Charter, Strategic Authority, Management Mandate"
   },
   {
     "question": "Employees follow security policies only when being watched and bypass controls when unsupervised. Which approach is MOST likely to improve this culture?",
@@ -297,7 +297,7 @@
     ],
     "correct": 0,
     "explanation": "**Why A is correct**: Building a **values-driven culture** requires leadership buy-in, clear communication of rationale, and reducing friction for secure behaviors. **Why B, C, D are wrong**: These are punitive or surveillance-based approaches that lead to 'compliance-only' mindsets and do not build a genuine security culture.",
-    "category": "Governance and Compliance"
+    "category": "Security Governance, Security Culture, Awareness and Training, Values-Driven Security"
   },
   {
     "question": "Which describes the correct methodology for conducting an ISO 27001 gap analysis?",
@@ -309,6 +309,6 @@
     ],
     "correct": 3,
     "explanation": "**Why D is correct**: A true **gap analysis** requires a structured, point-by-point comparison of the organization's current state against the requirements of the standard to identify missing or incomplete controls. **Why A, B are wrong**: These are narrow assessments that do not cover the full management system scope. **Why C is wrong**: Past audit success does not guarantee current compliance.",
-    "category": "Governance and Compliance"
+    "category": "Security Auditing, Gap Analysis, ISO 27001, Compliance Assessment"
   }
 ]

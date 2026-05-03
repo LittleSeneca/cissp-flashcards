@@ -1,0 +1,21 @@
+Question	Answer	Category
+What is a JSON Web Token (JWT)?	A compact, URL-safe means of representing **claims** to be transferred between two parties. Typically used for **stateless authentication** in APIs.	API Security, Cloud-Native
+What is the difference between REST and SOAP?	**REST** is an architectural style using HTTP methods and JSON/XML; it is lightweight. **SOAP** is a protocol using XML and supports advanced **WS-Security** standards.	API Security, Cloud-Native
+What are Linux Namespaces?	A kernel feature that provides **isolation** of system resources (PID, Network, Mount, etc.), allowing a container to have its own view of the system.	API Security, Cloud-Native, Containers
+What are Linux Control Groups (cgroups)?	A kernel feature used to **limit, police, and account** for resource usage (CPU, RAM, Disk I/O) of a group of processes (containers).	API Security, Cloud-Native, Containers
+What is Broken Object Level Authorization (BOLA)?	An API vulnerability where an attacker accesses data by changing an **ID value** in a request because the server fails to verify ownership of the object.	API Security, Cloud-Native
+What is 'Mutual TLS' (mTLS)?	A security protocol where **both the client and server** authenticate each other using digital certificates, commonly used for service-to-service security.	API Security, Cloud-Native
+Define 'Serverless' (FaaS) Security.	A model where the **provider** secures the infrastructure and runtime, while the **customer** is responsible for code, data, IAM, and function triggers.	API Security, Cloud-Native
+What is a 'Sidecar' pattern in containers?	Deploying a separate container (the sidecar) alongside the main application container to handle tasks like **logging, monitoring, or security proxying** (e.g., Envoy in a Service Mesh).	API Security, Cloud-Native, Containers
+What is the risk of a 'Privileged Container'?	A container with **root access** to the host system. If compromised, the attacker can easily escape to the host and gain full control of the node.	API Security, Cloud-Native, Containers
+What is the 'none' algorithm attack in JWT?	A vulnerability where an attacker modifies the JWT header to **"alg": "none"** and removes the signature, hoping the server will accept the unverified token.	API Security, Cloud-Native
+What is OAuth 2.0 used for?	A protocol for **delegated authorization**, allowing third-party applications to access resources without the user sharing their credentials.	API Security, Cloud-Native
+How does a Service Mesh help with mTLS?	The service mesh control plane **automatically issues, distributes, and rotates** digital certificates to all service proxies (sidecars) to enable mTLS.	API Security, Cloud-Native
+What is a GraphQL Query Depth attack?	A Denial of Service (DoS) attack where an attacker sends a **deeply nested query** that consumes excessive server resources to resolve.	API Security, Cloud-Native
+What are Kubernetes Network Policies?	A resource that controls **pod-to-pod network traffic** within a cluster, acting as a virtual firewall for microsegmentation.	API Security, Cloud-Native, Containers
+In OIDC, what is an ID Token?	A **JSON Web Token (JWT)** that contains claims about the identity of the authenticated user.	API Security, Cloud-Native
+How do API Gateways prevent scraping?	By enforcing **rate limits and quotas**, restricting the number of requests a client can make within a specific time period.	API Security, Cloud-Native
+What is the security risk of 'HostPath' mounts?	If a container is compromised, the attacker can access the **host node's file system**, potentially leading to a container escape and host compromise.	API Security, Cloud-Native, Containers
+Define the 'Sidecar' security pattern.	Running a **secondary container** in the same pod as the application to provide security services like mTLS, logging, or proxying without changing app code.	API Security, Cloud-Native, Containers
+What is SPIFFE?	**Secure Production Identity Framework for Everyone** — a set of open-source standards for providing platform-agnostic identities to workloads.	API Security, Cloud-Native
+What is the difference between 401 and 403 HTTP codes?	**401 Unauthorized** means the user is unauthenticated (needs to log in). **403 Forbidden** means the user is authenticated but lacks permission.	API Security, Cloud-Native

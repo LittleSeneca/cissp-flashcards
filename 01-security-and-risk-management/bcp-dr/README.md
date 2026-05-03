@@ -1,3 +1,8 @@
+---
+tier: 2
+exam_weight: "16%"
+---
+
 # BCP/DR Metrics & Lifecycle for the CISSP Exam
 
 > **Tier:** 1  

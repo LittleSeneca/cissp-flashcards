@@ -1,3 +1,8 @@
+---
+tier: 2
+exam_weight: "13%"
+---
+
 # Logging, Monitoring & SIEM for the CISSP Exam
 
 > **Tier:** 3  

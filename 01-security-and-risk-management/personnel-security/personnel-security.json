@@ -9,7 +9,7 @@
     ],
     "correct": 3,
     "explanation": "**Why D is correct**: For roles with access to sensitive intellectual property, a **criminal background check** and **employment history verification** are essential to validate honesty and ensure the candidate has not been terminated for integrity-related issues. **Why A is wrong**: Drug screening addresses impairment but not the honesty or technical suitability for the role. **Why B is wrong**: Social media reviews can provide context but are not a structured or verified screening method. **Why C is wrong**: Credit checks are a useful indicator of insider threat risk (financial stress) but are less critical than verifying criminal history and past performance.",
-    "category": "Personnel Security"
+    "category": "Personnel Security, Hiring, Background Checks, Employee Screening"
   },
   {
     "question": "A manager requests account deactivation 'when convenient' on an employee's last day, resulting in a three-day delay in revocation. Which personnel security control has PRIMARY responsibility for this failure?",
@@ -21,7 +21,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: A formal **offboarding procedure** must define strict timelines for access revocation. The failure to disable accounts immediately upon separation is a direct failure of the offboarding process. **Why A is wrong**: Separation of duties prevents a single person from completing a sensitive task alone; it is not the issue here. **Why B is wrong**: Background checks are a pre-employment control. **Why D is wrong**: Least privilege refers to the amount of access during employment, not the timing of its revocation.",
-    "category": "Personnel Security"
+    "category": "Personnel Security, Offboarding, Access Revocation, Termination Procedures"
   },
   {
     "question": "An analyst observes a colleague working unusual hours, downloading large data volumes to personal devices, and expressing anger about a promotion. Which of the following BEST describes these observations?",
@@ -33,7 +33,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: These are classic **insider threat indicators**. Behavioral signs (anger/grievance) combined with technical signs (abnormal data movement) collectively suggest a heightened risk of malicious activity. **Why A is wrong**: This scenario doesn't describe one person performing incompatible roles. **Why B is wrong**: There is no indication the user has gained higher-level permissions than they were authorized. **Why D is wrong**: Social engineering is the manipulation of others; this is about an individual's own suspicious behavior.",
-    "category": "Personnel Security"
+    "category": "Personnel Security, Insider Threat, UEBA, Behavioral Monitoring"
   },
   {
     "question": "Which of the following is the PRIMARY security value provided by a signed Acceptable Use Policy (AUP)?",
@@ -45,7 +45,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: The primary value of an **AUP** is establishing **documented notice**. If an employee violates the rules, the organization can prove the employee was aware of and agreed to the acceptable use standards. **Why A is wrong**: An AUP is a policy (administrative control), not a technical control (like a web filter). **Why B is wrong**: Data classification is handled by its own specific policy. **Why D is wrong**: An AUP does not shield the organization from liability for breaches.",
-    "category": "Personnel Security"
+    "category": "Personnel Security, Administrative Controls, Acceptable Use Policy, Legal Evidence"
   },
   {
     "question": "What is the PRIMARY security purpose of a mandatory vacation policy for employees in sensitive financial roles?",
@@ -57,7 +57,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: **Mandatory vacation** is a detective control. When the employee is away, others must perform their duties, which can expose irregularities or fraud that the employee was hiding. **Why A is wrong**: This is an HR compliance issue, not a security one. **Why B is wrong**: Knowledge is limited by compartmentalization, not leave. **Why D is wrong**: While a benefit, detection of fraud is the primary security justification for the policy.",
-    "category": "Personnel Security"
+    "category": "Personnel Security, Detection Controls, Mandatory Vacation, Fraud Prevention"
   },
   {
     "question": "A single administrator is the only person who understands a critical firewall's configuration. Which of the following is the MOST significant security risk in this scenario?",
@@ -69,7 +69,7 @@
     ],
     "correct": 3,
     "explanation": "**Why D is correct**: This is a **single point of failure (SPOF)**. If the admin leaves, the organization loses its ability to manage the device. It also lacks **oversight**, as no one else can review the configuration for errors or malice. **Why A/B/C are wrong**: These are secondary concerns compared to the fundamental risk of having only one person capable of managing a critical security asset.",
-    "category": "Personnel Security"
+    "category": "Personnel Security, Risk Management, SPOF, Separation of Duties"
   },
   {
     "question": "Phishing simulation failure rates remain high six months after a one-hour onboarding training session. What is the MOST likely reason for the program's ineffectiveness?",
@@ -81,7 +81,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: Effective awareness requires **continuous reinforcement**. A one-time session is quickly forgotten; periodic micro-training and simulated phishing with feedback are needed to change behavior. **Why A is wrong**: Baselines help measurement but don't cause the training to fail. **Why C is wrong**: Technical filters are never 100% effective; human awareness is a necessary layer. **Why D is wrong**: Phishing training should be behavioral, not just compliance-focused.",
-    "category": "Personnel Security"
+    "category": "Personnel Security, Security Awareness, Behavioral Change, Phishing"
   },
   {
     "question": "Which principle is violated if an HR employee is authorized to both initiate payroll changes and approve the final payroll run?",
@@ -93,7 +93,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: **Separation of duties** (SoD) requires that no single person can complete a sensitive process from start to finish. Allowing one person to both enter and approve payroll creates a high risk of undetected fraud. **Why A is wrong**: Least privilege is about the amount of access; here the problem is the *combination* of roles. **Why B is wrong**: Need-to-know is about data access. **Why D is wrong**: Job rotation is a detective control, not the structural violation being described.",
-    "category": "Personnel Security"
+    "category": "Personnel Security, Separation of Duties, Fraud Prevention, Payroll Controls"
   },
   {
     "question": "A help desk technician resets a password for a caller who claims to be a new employee, without verifying their identity. Which attack type is this, and what would have BEST prevented it?",
@@ -105,7 +105,7 @@
     ],
     "correct": 3,
     "explanation": "**Why D is correct**: **Pretexting** is a form of social engineering where an attacker creates a scenario (the 'pretext') to manipulate the victim. Help desk staff must be trained to verify identity via a second, out-of-band channel. **Why A is wrong**: Shoulder surfing is observing someone physically. **Why B/C are wrong**: Phishing is usually email-based; vishing is the phone equivalent, but the best defense is procedural training, not technical call tracing.",
-    "category": "Personnel Security"
+    "category": "Personnel Security, Social Engineering, Pretexting, Identity Verification"
   },
   {
     "question": "An employee joins a competitor and takes a proprietary customer list. The organization's NDA was three years old and did not include the newer product line. What is the MOST significant limitation of the NDA here?",
@@ -117,7 +117,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: An **NDA's scope** must be regularly reviewed to ensure it covers all current proprietary information. If the agreement was not updated to include new product lines, the legal protection may not apply to that data. **Why A is wrong**: Customer lists are often protected as trade secrets. **Why B is wrong**: NDAs are specifically designed to survive termination. **Why D is wrong**: Notarization is not a standard requirement for an NDA's validity.",
-    "category": "Personnel Security"
+    "category": "Personnel Security, Legal Agreements, NDA, Intellectual Property"
   },
   {
     "question": "Which of the following is the PRIMARY security benefit of a job rotation program in an IT department?",
@@ -129,7 +129,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: **Job rotation** is a detective and deterrent control. It prevents a single person from maintaining long-term, unreviewed control over a system, making it harder to hide fraud or backdoors. **Why A is wrong**: There is no universal one-year regulatory limit. **Why C is wrong**: Skill development is an HR benefit, not the primary security driver. **Why D is wrong**: Job rotation and SoD are complementary; one does not replace the other.",
-    "category": "Personnel Security"
+    "category": "Personnel Security, Job Rotation, Fraud Prevention, Knowledge Transfer"
   },
   {
     "question": "A departing employee retains access to SaaS accounts and a personal device enrolled in MDM. Which of the following is the MOST significant risk from this offboarding gap?",
@@ -141,7 +141,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: The primary risk is that the former employee can still **access corporate data** via SaaS platforms or their own device, allowing for sabotage or exfiltration after they have left. **Why A/B are wrong**: These are secondary compliance/audit issues. **Why D is wrong**: This is a data loss risk, but the *intentional* access by the former employee is the more direct threat in offboarding.",
-    "category": "Personnel Security"
+    "category": "Personnel Security, Offboarding, SaaS Security, Residual Access"
   },
   {
     "question": "Granting all engineers access to a shared drive with all company projects, regardless of their current assignments, violates which principle?",
@@ -153,7 +153,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: **Need-to-know** requires that access be granted only for information needed to perform specific job duties. Accessing projects an engineer is not assigned to violates this. **Why A is wrong**: SoD is about incompatible roles, not data access scope. **Why B is wrong**: Least privilege is about the *level* of technical permission (e.g., read vs. write). **Why D is wrong**: Job rotation is a different control entirely.",
-    "category": "Personnel Security"
+    "category": "Personnel Security, Access Control, Need-to-Know, Least Privilege"
   },
   {
     "question": "Which approach BEST reflects current best practices for an effective security awareness program?",
@@ -165,7 +165,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: Modern best practices emphasize **continuous, multi-format training**. Phishing simulations and frequent, short lessons are more effective at changing behavior than a single annual event. **Why A is wrong**: All employees are an attack surface and must be trained. **Why B is wrong**: Frequency is more important than the classroom vs. online format. **Why D is wrong**: Gamification is a supplement, not a replacement for content.",
-    "category": "Personnel Security"
+    "category": "Personnel Security, Security Awareness, Continuous Training, Metrics"
   },
   {
     "question": "An employee cleared at the 'Secret' level requests access to a Secret-level compartmented program. What additional requirement MUST be satisfied before access is granted?",
@@ -177,7 +177,7 @@
     ],
     "correct": 0,
     "explanation": "**Why A is correct**: Clearance level (eligibility) and **need-to-know** are independent requirements. Even with a clearance, the individual must have a specific job-related reason to access the data. **Why B is wrong**: If the program is Secret-level, a Top Secret clearance is not required. **Why D is wrong**: Clearance is not a blanket authorization; it only establishes a person's maximum eligible access level.",
-    "category": "Personnel Security"
+    "category": "Personnel Security, Security Clearances, Need-to-Know, Access Eligibility"
   },
   {
     "question": "Which combination of controls is MOST important to include in a secure BYOD policy?",
@@ -189,7 +189,7 @@
     ],
     "correct": 3,
     "explanation": "**Why D is correct**: A secure **BYOD policy** relies on **MDM and containerization** to isolate corporate data from personal data, allowing for remote wiping of only the corporate container and enforcement of OS security levels. **Why A is wrong**: Authentication alone doesn't protect the data on the device itself. **Why B/C are wrong**: These are not BYOD policies; they are prohibitions or corporate-owned device programs.",
-    "category": "Personnel Security"
+    "category": "Personnel Security, BYOD, Mobile Device Management, Containerization"
   },
   {
     "question": "Two employees cooperate to bypass a dual-control requirement by approving each other's transactions. Which concept and detection method BEST apply to this scenario?",
@@ -201,7 +201,7 @@
     ],
     "correct": 3,
     "explanation": "**Why D is correct**: **Collusion** occurs when multiple people work together to defeat a security control. It is best detected by **mandatory vacation** or **job rotation**, which disrupts the coordination between the colluding parties. **Why A is wrong**: The SoD control was in place (dual approval), but it was circumvented. **Why B/C are wrong**: These do not describe the coordinated misuse of legitimate authority.",
-    "category": "Personnel Security"
+    "category": "Personnel Security, Collusion, Detection Controls, Internal Fraud"
   },
   {
     "question": "Which principle requires two separate individuals to each provide unique authentication simultaneously to execute a critical action?",
@@ -213,7 +213,7 @@
     ],
     "correct": 3,
     "explanation": "**Why D is correct**: **Dual control** (the 'two-person rule') requires two people to be present and authorizing an action at the same time. **Why A is wrong**: **Split knowledge** involves dividing a secret (like a key) into parts so no one person knows the whole. **Why B is wrong**: SoD is about dividing a process into sequential steps. **Why C is wrong**: 2FA is two types of credentials for *one* person.",
-    "category": "Personnel Security"
+    "category": "Personnel Security, Dual Control, Two-Person Integrity, Authentication"
   },
   {
     "question": "Which requirement should be included in an engagement agreement for a contractor with access to production source code?",
@@ -225,7 +225,7 @@
     ],
     "correct": 0,
     "explanation": "**Why A is correct**: **Contractors** with sensitive access should be subject to the same vetting and training standards as employees (NDA, background checks, awareness training) to mitigate insider threat risk. **Why B is wrong**: Speed does not justify bypassing security. **Why C is wrong**: Firm reputation does not substitute for individual vetting. **Why D is wrong**: Unmanaged personal devices are a high risk for source code access.",
-    "category": "Personnel Security"
+    "category": "Personnel Security, Third-Party Risk, Contractor Management, Vetting"
   },
   {
     "question": "From a security perspective, what is the MOST important goal of an exit interview for a voluntarily departing system administrator?",
@@ -237,7 +237,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: The **exit interview** is the final chance to ensure the admin understands their ongoing **NDA obligations**, to verify that all **credentials/assets** are returned, and to transfer **system knowledge** that only they might hold. **Why A is wrong**: This is likely illegal and ethically wrong. **Why C is wrong**: Exit interviews have high security value. **Why D is wrong**: This would be inappropriate for a standard voluntary departure.",
-    "category": "Personnel Security"
+    "category": "Personnel Security, Offboarding, Exit Interview, IP Protection"
   },
   {
     "question": "A system administrator is terminated for cause. Which of the following is the correct approach to their access revocation?",
@@ -249,7 +249,7 @@
     ],
     "correct": 0,
     "explanation": "**Why A is correct**: For **terminations for cause**, all access must be revoked **immediately**. The risk of sabotage or theft by a hostile ex-employee is far too high to allow lingering access for any reason. **Why B/C/D are wrong**: Any delay in revocation for an involuntary termination creates an unacceptable risk to the organization's infrastructure and data.",
-    "category": "Personnel Security"
+    "category": "Personnel Security, Hostile Termination, Access Revocation, Physical Security"
   },
   {
     "question": "An organization has an AUP notifying employees that corporate assets are monitored. Which statement BEST describes the status of an employee's privacy when using a corporate laptop for personal browsing?",
@@ -261,7 +261,7 @@
     ],
     "correct": 1,
     "explanation": "**Why B is correct**: When an organization provides **notice via an AUP** that corporate assets are monitored, employees have a **reduced expectation of privacy** on those assets, even for personal use. **Why A is wrong**: Court orders are for government wiretapping, not employer monitoring with consent. **Why C is wrong**: The nature of the asset (corporate laptop) is what determines the monitoring right, not the time of day. **Why D is wrong**: The Fourth Amendment (privacy) applies to government action, not private-sector employers.",
-    "category": "Personnel Security"
+    "category": "Personnel Security, Privacy, Acceptable Use Policy, Employee Monitoring"
   },
   {
     "question": "A manager's performance evaluation of their reports includes no mention of security behaviors. What component is MOST likely missing from the security program?",
@@ -273,7 +273,7 @@
     ],
     "correct": 0,
     "explanation": "**Why A is correct**: Security must be part of the organization's **accountability structure**. If employees are not evaluated on security, it is signaled as a low priority. Performance management must include security as a key metric. **Why B is wrong**: Enforcement teams cannot replace line-management accountability. **Why C is wrong**: Automation can assist but can never fully remove the need for human judgment and behavior. **Why D is wrong**: Certifications prove knowledge but don't create daily accountability.",
-    "category": "Personnel Security"
+    "category": "Personnel Security, Governance, Performance Management, Accountability"
   },
   {
     "question": "What is the correct sequence of actions when an employee reports a lost physical access badge?",
@@ -285,7 +285,7 @@
     ],
     "correct": 0,
     "explanation": "**Why A is correct**: A lost badge is a **compromised credential**. It must be **deactivated immediately** to prevent unauthorized entry. Logs should be reviewed to see if it was used between the loss and the report. **Why B is wrong**: Delaying deactivation creates an unnecessary window of vulnerability. **Why C is wrong**: Any badge can be used for tailgating or social engineering. **Why D is wrong**: Reusing numbers creates a forensic hazard in the access logs.",
-    "category": "Personnel Security"
+    "category": "Personnel Security, Credential Management, Physical Security, Incident Response"
   },
   {
     "question": "Which combination of controls is MOST appropriate for an employee traveling to a high-risk country for business?",
@@ -297,7 +297,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: Travel to high-risk areas requires **loaner devices** (to minimize data loss if seized), **briefings** (to prepare the traveler for espionage tactics), and **return inspections** (to detect malware/implants). **Why A is wrong**: Personal devices often have weaker security and contain personal data. **Why B is wrong**: A total ban is usually not a viable business option. **Why D is wrong**: Public kiosks are high-risk environments for credential theft.",
-    "category": "Personnel Security"
+    "category": "Personnel Security, Travel Security, Loaner Devices, Counter-espionage"
   },
   {
     "question": "An employee posts internal project details on a personal social media profile. What is the PRIMARY security concern with this behavior?",
@@ -309,7 +309,7 @@
     ],
     "correct": 3,
     "explanation": "**Why D is correct**: Publicly sharing internal details provides **OSINT** for attackers. They can use the technology stack, project names, and challenges to craft highly convincing spear-phishing or technical attacks. **Why A is wrong**: Unprofessionalism is an HR concern, not a security threat. **Why B/C are wrong**: These are legal/brand concerns, not the direct operational security risk of intelligence disclosure.",
-    "category": "Personnel Security"
+    "category": "Personnel Security, OSINT, Social Media Policy, OpSec"
   },
   {
     "question": "A candidate has a 12-year-old conviction for wire fraud but a clean record since. Which approach BEST reflects security best practices for their background check?",
@@ -321,7 +321,7 @@
     ],
     "correct": 2,
     "explanation": "**Why C is correct**: Security and legal best practices (like EEOC guidance) require an **individualized assessment**. The organization must weigh the relevance of the fraud conviction to the specific job duties. **Why A is wrong**: Blanket disqualifications can be legally discriminatory and security-unsound. **Why B is wrong**: Age is a factor, but the conviction is still relevant for an access-sensitive role. **Why D is wrong**: Hiring without a risk assessment ignores the candidate's history.",
-    "category": "Personnel Security"
+    "category": "Personnel Security, Hiring, Risk Assessment, Employee Vetting"
   },
   {
     "question": "What is the PRIMARY cryptographic concern when splitting a sensitive key into two equal halves for different custodians?",
@@ -333,6 +333,6 @@
     ],
     "correct": 0,
     "explanation": "**Why A is correct**: Naively **splitting a key in half** means each half contains direct information about the whole. An attacker with one half only needs to brute-force the remaining half (e.g., 128 bits of a 256-bit key). Proper implementation should use **Shamir's Secret Sharing**, where a single share reveals nothing. **Why B is wrong**: There is no three-custodian rule. **Why C is wrong**: This is a personnel risk, not a cryptographic one.",
-    "category": "Personnel Security"
+    "category": "Personnel Security, Split Knowledge, Cryptography, Key Management"
   }
 ]

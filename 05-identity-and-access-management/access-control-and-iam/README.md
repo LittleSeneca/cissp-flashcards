@@ -1,3 +1,8 @@
+---
+tier: 2
+exam_weight: "13%"
+---
+
 # Access Control Models & IAM Workflow for the CISSP Exam
 
 > **Tier:** 1  

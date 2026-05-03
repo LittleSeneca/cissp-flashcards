@@ -1,10 +1,25 @@
-Order of Volatility	The sequence in which evidence must be collected: Registers, Cache, RAM, Swap, Disk, Tapes.
-Chain of Custody	The chronological documentation showing who handled the evidence at all times to ensure integrity.
-Authentic (Rule of Evidence)	The evidence is what it purports to be and its origin can be verified.
-Admissible (Rule of Evidence)	The evidence must be relevant and gathered in a legally acceptable manner.
-Hearsay	An out-of-court statement offered to prove the truth of the matter; generally inadmissible in court.
-Best Evidence Rule	Preference for the original evidence (or an exact bit-stream image) over copies or summaries.
-Slack Space	The unused space in a disk cluster between the end of a file and the end of the cluster.
-Bit-stream Image	A bit-by-bit copy of a storage medium, including deleted files and slack space.
-Write Blocker	A hardware or software tool that prevents any data from being written to a disk during the imaging process.
-Standard of Proof (Criminal)	The requirement that evidence must prove guilt 'beyond a reasonable doubt'.
+Order of Volatility	The sequence of evidence collection (Registers -> RAM -> Disk -> Backup).	Forensics
+Chain of Custody	Procedural record documenting who handled evidence and when.	Forensics, Evidence Handling, Chain of Custody
+Best Evidence Rule	The requirement to present the original evidence or its bit-stream image in court.	Forensics, Evidence Handling, Legal Standards
+Five Rules of Evidence	Authentic, Accurate, Complete, Convincing, Admissible.	Forensics, Evidence Handling
+Hearsay	An out-of-court statement offered for its truth; generally inadmissible.	Forensics, Evidence Handling, Legal Standards
+Hashing	Use of algorithms (MD5, SHA) to prove the integrity of evidence.	Forensics, Evidence Integrity
+Slack Space	Unused space between the end of a file and the end of the disk cluster.	Forensics, Disk Forensics, Data Recovery
+Standard of Proof (Civil)	"Preponderance of evidence" (more likely than not).	Forensics, Legal Standards
+Authenticity	The evidence is what it purports to be and comes from where it is claimed.	Forensics, Evidence Handling
+Live Response	Collecting data from a running system (includes RAM and network connections).	Forensics, Evidence Collection, Volatile Evidence
+Entrapment	Law enforcement inducing a person to commit a crime they weren't predisposed to.	Forensics, Legal Standards
+Enticement	Providing an opportunity for a person already looking to commit a crime (legal).	Forensics, Legal Standards
+Expert Witness	A witness allowed to offer opinions based on specialized knowledge.	Forensics, Legal Standards
+Daubert Standard	The legal rule for determining the validity and reliability of scientific evidence.	Forensics, Legal Standards
+Steganography	The practice of hiding data within another non-secret file (like an image).	Forensics, Anti-Forensics, Data Hiding
+Unallocated Space	Disk space marked as 'free' where deleted file data may still reside.	Forensics, Disk Forensics, Data Recovery
+EDRM: Preservation	The phase of e-discovery focused on protecting data from being changed or deleted.	Forensics, eDiscovery, EDRM
+Legal Hold	A mandate to preserve all data relevant to anticipated litigation.	Forensics, eDiscovery
+Full Packet Capture (PCAP)	Network forensic data containing the full content/payload of communications.	Forensics, Network Forensics
+Physical Extraction	Bit-for-bit copy of a mobile device's flash memory, including deleted data.	Forensics, Mobile Forensics
+Degaussing	Using a strong magnetic field to securely erase magnetic storage media.	Forensics, Media Sanitization
+The Sleuth Kit (TSK)	A widely used open-source suite of command-line forensic tools.	Forensics, Tools, Disk Forensics
+EDRM: Processing	Reducing data volume and converting it for review and analysis.	Forensics, eDiscovery, EDRM
+Metadata	"Data about data" (e.g., file creation date, author, modified timestamps).	Forensics, Evidence Collection
+Anti-forensics	Techniques used to thwart forensic investigation (e.g., wiping, encryption).	Forensics, Anti-Forensics
