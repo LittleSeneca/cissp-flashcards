@@ -1,14 +1,10 @@
 ---
-tier: 2
-exam_weight: 13%
+tier: 1
+exam_weight: "~13%"
 ---
 
 # Cryptography Fundamentals for the CISSP Exam
 
-> **Tier:** 1  
-> **Domain:** Security Architecture and Engineering (Domain 3)  
-> **Exam Weight:** ~13%  
-> **Status:** Built
 
 A study-oriented overview of the cryptography question family on the CISSP. Cryptography is the largest topic inside Domain 3 (Security Architecture and Engineering) and gets tested broadly across algorithm classification, PKI, digital signatures, key management, attacks, and protocols. Use alongside `cryptography.tsv` in this folder.
 

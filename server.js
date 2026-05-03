@@ -60,7 +60,13 @@ function parseFrontMatter(filePath) {
     for (const line of m[1].split(/\r?\n/)) {
       const colon = line.indexOf(':');
       if (colon < 0) continue;
-      fm[line.slice(0, colon).trim()] = line.slice(colon + 1).trim();
+      const key = line.slice(0, colon).trim();
+      let val = line.slice(colon + 1).trim();
+      // Strip leading/trailing quotes if present
+      if ((val.startsWith('"') && val.endsWith('"')) || (val.startsWith("'") && val.endsWith("'"))) {
+        val = val.slice(1, -1);
+      }
+      fm[key] = val;
     }
     return fm;
   } catch { return {}; }
@@ -209,7 +215,10 @@ app.get('/api/domains/:domain/readme', (req, res) => {
   try {
     const p = safe(req.params.domain, 'README.md');
     if (!fs.existsSync(p)) return res.json({ html: null });
-    res.json({ html: marked(fs.readFileSync(p, 'utf8')) });
+    let content = fs.readFileSync(p, 'utf8');
+    // Strip frontmatter: everything from the first --- to the second ---
+    content = content.replace(/^---\r?\n[\s\S]*?\r?\n---\r?\n?/, '');
+    res.json({ html: marked(content) });
   } catch { res.status(400).end(); }
 });
 
@@ -241,7 +250,10 @@ app.get('/api/domains/:domain/sets/:set/readme', (req, res) => {
   try {
     const p = safe(req.params.domain, req.params.set, 'README.md');
     if (!fs.existsSync(p)) return res.json({ html: null });
-    res.json({ html: marked(fs.readFileSync(p, 'utf8')) });
+    let content = fs.readFileSync(p, 'utf8');
+    // Strip frontmatter
+    content = content.replace(/^---\r?\n[\s\S]*?\r?\n---\r?\n?/, '');
+    res.json({ html: marked(content) });
   } catch { res.status(400).end(); }
 });
 

@@ -1,5 +1,5 @@
 ---
-exam_weight: 10%
+exam_weight: "10%"
 ---
 
 # Domain 8: Software Development Security
@@ -257,4 +257,3 @@ flowchart LR
 - **Threat modeling belongs in the design phase** — not after the code is written. CISSP questions about when to perform threat modeling have one right answer.
 - **DevSecOps is increasingly tested** — know that it integrates security into CI/CD pipelines and emphasizes shared responsibility, not a separate security team reviewing releases at the end.
 - **Supply chain and SBOM** are emerging topic areas — questions may describe a scenario where an attacker compromised a software vendor. The CISSP answer involves SCA tooling, vendor assessment, and artifact integrity verification.
-

@@ -1,14 +1,10 @@
 ---
-tier: 1
-exam_weight: 13%
+tier: 3
+exam_weight: "~5-7% across both domains"
 ---
 
 # Physical & Environmental Security for the CISSP Exam
 
-> **Tier:** 3  
-> **Domain:** Security Architecture and Engineering (Domain 3) + Security Operations (Domain 7)  
-> **Exam Weight:** ~5-7% across both domains  
-> **Status:** Built
 
 A study-oriented overview of the physical and environmental security question family on the CISSP. This material spans Domain 3 (Security Architecture and Engineering — "Apply security principles to site and facility design" and "Implement site and facility security controls") and Domain 7 (Security Operations — operational physical safeguards). Use alongside `physical-security.tsv` in this folder.
 

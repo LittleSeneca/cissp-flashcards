@@ -1,14 +1,10 @@
 ---
-tier: 2
-exam_weight: 13%
+tier: 3
+exam_weight: "~4-6% within Domain 7"
 ---
 
 # Logging, Monitoring & SIEM for the CISSP Exam
 
-> **Tier:** 3  
-> **Domain:** Security Operations (Domain 7)  
-> **Exam Weight:** ~4-6% within Domain 7  
-> **Status:** Built
 
 A study-oriented overview of the logging, monitoring, and SIEM question family on the CISSP. This material lives primarily in Domain 7 (Security Operations) under "Conduct logging and monitoring activities," with crossover into Domain 6 (Security Assessment and Testing) for continuous monitoring. Use alongside `logging-monitoring-siem.tsv` in this folder.
 

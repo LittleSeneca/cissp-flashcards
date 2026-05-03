@@ -1,14 +1,10 @@
 ---
-tier: 2
-exam_weight: 16%
+tier: 3
+exam_weight: "~5-7% within Domain 1"
 ---
 
 # Security Governance & Compliance Frameworks for the CISSP Exam
 
-> **Tier:** 3  
-> **Domain:** Security and Risk Management (Domain 1)  
-> **Exam Weight:** ~5-7% within Domain 1  
-> **Status:** Built
 
 A study-oriented overview of the governance and compliance question family on the CISSP. This material lives in Domain 1 (Security and Risk Management) and is foundational connective tissue for the rest of the exam — frameworks like NIST CSF, NIST RMF, ISO 27001, and COBIT show up in scenario and definitional questions across multiple domains. Use alongside `governance-and-compliance.tsv` in this folder.
 

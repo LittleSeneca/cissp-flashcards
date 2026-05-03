@@ -1,14 +1,10 @@
 ---
-tier: 1
-exam_weight: 12%
+tier: 2
+exam_weight: "~12%"
 ---
 
 # Security Testing Methodologies for the CISSP Exam
 
-> **Tier:** 2  
-> **Domain:** Security Assessment and Testing (Domain 6)  
-> **Exam Weight:** ~12%  
-> **Status:** Built
 
 A study-oriented overview of the security testing question family on the CISSP. This is Domain 6 (Security Assessment and Testing), weighted at roughly 12% of the exam. Use alongside `security-testing.tsv` in this folder.
 

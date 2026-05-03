@@ -1566,12 +1566,6 @@ a.filter-pill:hover { opacity: 0.8; }
   border: 1px solid #c4b5fd;
 }
 
-/* ── Category pill in study header ───────────────── */
-.filter-pill.cat-pill {
-  background: var(--bg);
-  color: var(--muted);
-  border: 1px solid var(--border);
-}
 
 /* ── Source set pill in study header (tag study) ─── */
 .filter-pill.source-pill {

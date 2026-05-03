@@ -1,14 +1,10 @@
 ---
 tier: 2
-exam_weight: 16%
+exam_weight: "cross-cutting (~5-8% effective)"
 ---
 
 # Threat Modeling for the CISSP Exam
 
-> **Tier:** 2  
-> **Domain:** Security and Risk Management (Domain 1) + Security Architecture and Engineering (Domain 3) + Software Development Security (Domain 8)  
-> **Exam Weight:** cross-cutting (~5-8% effective)  
-> **Status:** Built
 
 A study-oriented overview of the threat modeling question family on the CISSP. Threat modeling is a cross-cutting topic — it appears in Domain 1 (under risk management and threat identification), Domain 3 (under secure design), and Domain 8 (under secure software development). Use alongside `threat-modeling.tsv` in this folder.
 

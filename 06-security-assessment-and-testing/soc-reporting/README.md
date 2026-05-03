@@ -1,6 +1,6 @@
 ---
 tier: 2
-exam_weight: 12%
+exam_weight: "12%"
 ---
 
 # SOC Reporting

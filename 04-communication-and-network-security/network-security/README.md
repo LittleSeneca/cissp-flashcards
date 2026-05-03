@@ -1,14 +1,10 @@
 ---
-tier: 1
-exam_weight: 13%
+tier: 2
+exam_weight: "~13%"
 ---
 
 # Network Security Fundamentals for the CISSP Exam
 
-> **Tier:** 2  
-> **Domain:** Communication and Network Security (Domain 4)  
-> **Exam Weight:** ~13%  
-> **Status:** Built
 
 A study-oriented overview of the network security question family on the CISSP. This is Domain 4 (Communication and Network Security), one of the core technical domains, weighted at roughly 13% of the exam. Use alongside `network-security.tsv` in this folder.
 

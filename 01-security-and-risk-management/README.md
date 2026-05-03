@@ -1,5 +1,5 @@
 ---
-exam_weight: 16%
+exam_weight: "16%"
 ---
 
 # Domain 1: Security and Risk Management

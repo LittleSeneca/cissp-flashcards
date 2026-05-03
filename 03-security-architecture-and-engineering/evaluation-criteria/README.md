@@ -1,14 +1,10 @@
 ---
 tier: 2
-exam_weight: 13%
+exam_weight: "~13%"
 ---
 
 # Security Evaluation and Assurance Criteria for the CISSP Exam
 
-> **Tier:** 2  
-> **Domain:** Security Architecture and Engineering (Domain 3)  
-> **Exam Weight:** ~13%  
-> **Status:** Built
 
 A focused drill set for the named, formal evaluation and assurance frameworks in CISSP Domain 3 — TCSEC (Orange Book), ITSEC, the Common Criteria (ISO/IEC 15408), and FIPS 140-3. These are the "named acronyms with numbered levels" family that examiners pair against each other in question stems. Use alongside `evaluation-criteria.tsv` in this folder.
 

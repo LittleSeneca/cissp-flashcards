@@ -1,5 +1,5 @@
 ---
-exam_weight: 10%
+exam_weight: "10%"
 ---
 
 # Domain 2: Asset Security

@@ -1,5 +1,5 @@
 ---
-exam_weight: 13%
+exam_weight: "13%"
 ---
 
 # Domain 5: Identity and Access Management

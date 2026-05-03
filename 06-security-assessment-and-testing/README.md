@@ -1,5 +1,5 @@
 ---
-exam_weight: 12%
+exam_weight: "12%"
 ---
 
 # Domain 6: Security Assessment and Testing

@@ -1212,10 +1212,6 @@ function renderStudy() {
     ? `${filter !== 'all' ? `<span class="filter-pill">${esc(getFilter(filter).label)}</span>` : ''}
        ${tag ? `<a href="#/tag/${encodeURIComponent(tag)}" class="filter-pill tag-pill">#${esc(tag)}</a>` : ''}`
     : '';
-  const firstCat = card.category ? card.category.split(',')[0].trim() : '';
-  const catPill = firstCat && (!tag || firstCat.toLowerCase() !== tag.toLowerCase())
-    ? `<a href="#/tag/${encodeURIComponent(firstCat)}" class="filter-pill cat-pill">${esc(firstCat)}</a>`
-    : '';
   const sourceChip = isTagStudy && card.setId
     ? `<span class="filter-pill source-pill">${esc(setLabel(card.setId))}</span>`
     : '';
@@ -1225,7 +1221,7 @@ function renderStudy() {
       <div class="study-main">
         <div class="study-top">
           <a href="${backHref}" class="btn btn-outline btn-sm">${backLabel}</a>
-          <span class="progress-label">${filterPill}${catPill}${sourceChip}Card ${index + 1} of ${cards.length}</span>
+          <span class="progress-label">${filterPill}${sourceChip}Card ${index + 1} of ${cards.length}</span>
         </div>
         <div class="progress-track">
           <div class="progress-fill" style="width:${pct}%"></div>
@@ -1490,10 +1486,6 @@ function renderQuiz() {
   const filterPill  = quizState.filter && quizState.filter !== 'all'
     ? `<span class="filter-pill">${esc(MCQ_FILTER_LABELS[quizState.filter] ?? quizState.filter)}</span> `
     : '';
-  const qFirstCat = q.category ? q.category.split(',')[0].trim() : '';
-  const catPill = qFirstCat
-    ? `<a href="#/tag/${encodeURIComponent(qFirstCat)}" class="filter-pill cat-pill">${esc(qFirstCat)}</a>`
-    : '';
 
   const optionsHtml = q.options.map((_, i) => {
     let cls = 'qz-option';
@@ -1524,7 +1516,7 @@ function renderQuiz() {
       <div class="study-main">
         <div class="study-top">
           <a href="#/domain/${domainId}/set/${setId}" class="btn btn-outline btn-sm">← Back</a>
-          <span class="progress-label">${filterPill}${catPill}Question ${index + 1} of ${questions.length}</span>
+          <span class="progress-label">${filterPill}Question ${index + 1} of ${questions.length}</span>
         </div>
         <div class="progress-track">
           <div class="progress-fill" style="width:${pct}%"></div>

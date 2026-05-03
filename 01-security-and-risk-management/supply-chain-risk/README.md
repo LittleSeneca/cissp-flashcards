@@ -1,6 +1,6 @@
 ---
 tier: 2
-exam_weight: 16%
+exam_weight: "16%"
 ---
 
 # Supply Chain Risk Management (SCRM)

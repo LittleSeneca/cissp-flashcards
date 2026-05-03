@@ -1,5 +1,5 @@
 ---
-exam_weight: 13%
+exam_weight: "13%"
 ---
 
 # Domain 7: Security Operations
