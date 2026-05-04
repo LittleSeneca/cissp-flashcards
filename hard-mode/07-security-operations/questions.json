@@ -1,0 +1,98 @@
+[
+  {
+    "question": "A SOC analyst receives an alert indicating that a domain controller is making DNS queries to an external IP address that appears in threat intelligence as a known C2 endpoint. The analyst confirms the query pattern matches beacon behavior. The incident commander must decide between immediate isolation and continued monitoring. The domain controller authenticates 3,000 employees and is responsible for Group Policy distribution. What factor should MOST influence the isolation decision?",
+    "options": [
+      "The threat intelligence confidence rating for the C2 indicator — if confidence is below 90%, the domain controller should not be isolated based on a single indicator",
+      "Whether a warm standby domain controller exists and can be promoted within the organization's RTO, because isolating the primary DC without a failover plan could cause a broader authentication outage larger than the incident itself",
+      "Whether the IT director has approved the isolation, because domain controller changes require change management approval even during incident response",
+      "The time of day — isolation should only occur during maintenance windows to minimize user impact"
+    ],
+    "correct": 1,
+    "explanation": "This is the critical incident response tension: containment vs. business continuity. A domain controller is a tier-0 asset — its compromise is catastrophic, but so is its unplanned loss. Isolating it without a failover plan could cause a broader outage than the incident itself, potentially collapsing authentication for 3,000 users and blocking the response team's own access. The response plan must include: (1) Can we failover to another DC within RTO? (2) Is the standby DC itself clean? (3) Can we do a 'soft isolation' — block only external traffic while preserving internal authentication? Threat intelligence confidence (A) matters but a DC beaconing to known C2 is high confidence regardless. Change management (C) is suspended during active incidents under most IR frameworks. Maintenance window timing (D) is irrelevant for active compromise.",
+    "category": "Security Operations, Incident Response, Business Continuity, Containment"
+  },
+  {
+    "question": "A cloud engineer is reviewing CloudTrail logs after a suspected credential compromise. The logs show that `AssumeRole` calls were made from an unusual geographic region at 3 AM, followed by S3 GetObject requests for 40,000 objects in a sensitive bucket. The bucket contains customer PII. IAM access keys for a development role were the source. What should the incident responder do FIRST?",
+    "options": [
+      "Rotate the IAM access keys immediately to terminate the attacker's session",
+      "Revoke the compromised IAM credentials (disable or delete the access key), invalidate any active sessions using the `aws iam update-access-key --status Inactive` or attaching a deny-all policy, AND preserve all relevant CloudTrail logs before taking any other remediation action",
+      "Delete the S3 bucket contents to prevent further exfiltration of the PII data",
+      "Notify affected customers immediately because GDPR requires 72-hour notification from the time of discovery"
+    ],
+    "correct": 1,
+    "explanation": "The first responder priority is: contain (stop ongoing access) + preserve evidence simultaneously. Simply rotating keys (A) may not terminate existing sessions — short-lived credentials from AssumeRole may still be valid for their token duration. The correct action is to disable the access key AND attach an explicit deny policy to immediately revoke all outstanding sessions and tokens. Critically, CloudTrail logs must be preserved before remediation — if the bucket or log settings are changed, you may lose forensic evidence of what was accessed. Deleting bucket contents (C) is evidence destruction and doesn't stop the attacker. GDPR notification (D) requires first understanding whether the incident actually constitutes a reportable breach (what was accessed, is it regulated data?) — premature notification before scope is known creates legal risk.",
+    "category": "Security Operations, Cloud Security, Incident Response, AWS"
+  },
+  {
+    "question": "During a tabletop exercise simulating a ransomware attack, the incident response team discovers they don't know whether the organization has cyber insurance and who would authorize paying a ransom. The exercise facilitator identifies this as a significant gap. What does this finding MOST indicate about the organization's preparedness?",
+    "options": [
+      "The organization should purchase cyber insurance immediately, which automatically resolves the decision-authority gap",
+      "The incident response plan is incomplete — it does not address pre-authorized decision trees for crisis scenarios, does not identify who holds ransom payment authority, and has not integrated financial, legal, insurance, and executive stakeholders into incident response planning",
+      "The gap is acceptable because tabletop exercises are designed to surface unknown unknowns, and this finding can be addressed in the after-action report without immediate action",
+      "The security team should be given blanket authority to make all incident response decisions including ransom payments to eliminate authorization delays during active incidents"
+    ],
+    "correct": 1,
+    "explanation": "Tabletop exercises serve specifically to surface pre-decision gaps before a real incident forces rushed choices under pressure. Discovering that nobody knows about insurance coverage or ransom payment authority in a tabletop is exactly the kind of critical gap that must be remediated before a real incident — not treated as an 'acceptable unknown.' Ransomware response requires pre-decisions on: (1) What is the maximum ransom amount that can be approved at each authority level?, (2) Has legal and compliance assessed payment legality (OFAC sanctions screening)?, (3) What is the insurance policy's ransomware coverage and how are claims filed?, (4) Who is the insurance broker contact? These decisions made under a 48-hour ransomware clock lead to poor outcomes. Blanket authority for the security team (D) is inappropriate — ransom payments involve legal, financial, and regulatory dimensions beyond security's remit.",
+    "category": "Security Operations, Incident Response, Ransomware, Tabletop Exercise"
+  },
+  {
+    "question": "A SOC manager is reviewing mean time to detect (MTTD) metrics for the past quarter. The data shows MTTD of 4 hours for network-based attacks and 23 days for insider threat cases. The manager reports to the CISO that 'detection performance improved 15% from last quarter.' A senior analyst challenges this assessment. What critical measurement problem does the analyst MOST likely identify?",
+    "options": [
+      "MTTD is not a recognized metric in NIST SP 800-61 and should be replaced with Mean Time to Respond (MTTR) for CISO reporting",
+      "Averaging MTTD across attack categories with vastly different detection timelines produces a misleading single metric — the network attack and insider threat populations have fundamentally different detection dynamics and should be reported separately; a 15% improvement in network MTTD could be offset by deterioration in insider threat detection without appearing in the aggregate",
+      "The 23-day MTTD for insider threats is an industry benchmark figure and represents normal performance that should not be included in detection metrics",
+      "MTTD should only be measured from the first actionable alert, not from when the attack actually occurred, making the 23-day figure methodologically incorrect"
+    ],
+    "correct": 1,
+    "explanation": "Averaging heterogeneous populations into a single metric is a common measurement anti-pattern in security operations. Network-based attacks and insider threats are detected via completely different mechanisms, have different baseline timelines, and require different investments to improve. A 15% MTTD improvement in a well-monitored category could mask deterioration in a harder category. Effective security metrics should segment by attack category to show where performance is improving and where gaps exist. Additionally, 23-day MTTD for insiders may seem 'normal' against industry benchmarks (often cited at 77+ days historically), but presenting it averaged with 4-hour network detection obscures the severity of the insider threat gap to the CISO.",
+    "category": "Security Operations, Metrics, SOC Management, Insider Threat"
+  },
+  {
+    "question": "A forensic investigator receives a laptop potentially containing evidence of intellectual property theft. The laptop is powered on when received. The investigator immediately shuts it down and creates a forensic image of the hard drive. A defense attorney later challenges the forensic process. What is the MOST significant error the investigator made?",
+    "options": [
+      "The investigator should have used write-blocking hardware before imaging, which is required for all forensic acquisitions to maintain chain of custody",
+      "Shutting down the powered-on laptop destroyed volatile evidence — RAM contents, network connections, running processes, and encryption keys in memory are lost on shutdown. The investigator should have collected volatile data (memory image, network state, running processes) before shutdown",
+      "The hard drive image was taken before establishing chain of custody documentation, invalidating the evidence",
+      "Forensic imaging should always be performed at the original scene, not after transport, to maintain evidence integrity"
+    ],
+    "correct": 1,
+    "explanation": "The Order of Volatility principle (RFC 3227) defines the sequence for evidence collection: collect most volatile first. For a powered-on system: (1) RAM/memory — contains running processes, open network connections, decryption keys for encrypted volumes, credentials cached in memory, and malware that may only exist in memory. (2) Network connections/ARP cache. (3) Running processes. (4) Disk — least volatile. By shutting down immediately, the investigator irreversibly destroyed all volatile evidence. If the device uses full-disk encryption (FileVault, BitLocker), shutdown may also lock the encrypted volume, making disk evidence inaccessible. Memory forensics is increasingly critical for ransomware, fileless malware, and encryption investigations. Write-blocking (A) is important but is for the imaging step, not the shutdown error.",
+    "category": "Security Operations, Digital Forensics, Evidence Collection, Volatile Evidence"
+  },
+  {
+    "question": "An organization experiences a major security incident and the CISO must activate the incident response plan. During execution, two critical gaps emerge: (1) the IR plan references a security tool that was decommissioned 8 months ago, and (2) the on-call escalation tree includes two employees who left the company. What do these gaps MOST indicate about the organization's IR program?",
+    "options": [
+      "The employees who maintained the IR plan were negligent and should be held accountable for the outdated documentation",
+      "The IR plan lacks a maintenance and testing cadence — plans must be reviewed and updated after significant organizational changes (tool decommissions, staff departures) and validated through regular exercises, not just written once and stored",
+      "The organization needs a dedicated IR plan administrator role to maintain the documentation, which is not currently defined in the RACI matrix",
+      "The gaps are acceptable because no plan survives contact with a real incident, and IR teams should adapt in real-time regardless of plan accuracy"
+    ],
+    "correct": 1,
+    "explanation": "An IR plan that references decommissioned tools and departed staff is a plan that has never been maintained — and often never been tested. Plan maintenance requires: (1) Trigger-based updates — any significant change (tool decommission, key personnel change, architecture change) should trigger a plan review. (2) Scheduled reviews — at minimum annually, and after each exercise. (3) Regular exercises (tabletops, simulations) that would catch these gaps before a real incident. The discovery during an actual incident means the organization had an IR plan that provided false confidence without real capability. This is more of a governance and process failure than an individual accountability issue (A). A dedicated plan administrator (C) helps but doesn't solve the trigger-based update problem. Plans need structure to remain accurate regardless of who maintains them.",
+    "category": "Security Operations, Incident Response, Plan Maintenance, Governance"
+  },
+  {
+    "question": "A threat intelligence analyst receives a report indicating that a nation-state APT group has developed a new technique to bypass the organization's email security gateway by encoding malicious macro-laden documents in obscure archive formats. The analyst must determine how to act on this intelligence. What is the MOST operationally effective response?",
+    "options": [
+      "Share the intelligence with sector ISAC partners before implementing any internal controls, to maximize the benefit to the broader industry",
+      "Translate the intelligence into specific defensive actions: block or sandbox the identified archive formats at the email gateway, update detection rules with the technique's behavioral indicators, brief the SOC on what to look for, and assess whether the organization fits the APT's targeting profile",
+      "Classify the intelligence as sensitive and restrict it to the CISO and CTO to avoid alerting the APT group that the technique has been discovered",
+      "Wait for the vulnerability to be assigned a CVE number before deploying defenses, to ensure the intelligence is credible and the threat is confirmed"
+    ],
+    "correct": 1,
+    "explanation": "The intelligence cycle's ultimate purpose is to drive action. Threat intelligence that isn't operationalized provides no defensive value. The correct response is to translate TTPs into specific, immediate defensive controls: (1) Technical controls — block the specific archive formats at the email gateway or route to sandboxing, (2) Detection — create SIEM/EDR rules for the behavioral indicators described, (3) SOC enablement — brief analysts so they recognize the technique in alerts, (4) Threat modeling — assess whether the organization matches the APT's known targeting criteria. ISAC sharing (A) is valuable but secondary to protecting your own organization. Restricting intelligence (C) limits the defenders who need it. Waiting for CVE (D) is wrong — APT techniques are often never assigned CVEs and waiting for confirmation delays defense.",
+    "category": "Security Operations, Threat Intelligence, Incident Response, APT"
+  },
+  {
+    "question": "A security operations center is evaluating whether to implement a Security Orchestration, Automation and Response (SOAR) platform. The SOC manager argues that automating phishing triage will free analysts from repetitive tasks. A senior analyst expresses concern about automated response actions. What is the MOST significant risk the analyst is likely raising?",
+    "options": [
+      "SOAR platforms are expensive and the ROI cannot be demonstrated without a mature metrics program already in place",
+      "Automated response actions (blocking IPs, quarantining accounts, deleting emails) based on incorrect determinations can cause legitimate business disruption at machine speed — a false positive that would take an analyst 5 minutes to recognize could trigger automated containment affecting thousands of users before human review occurs",
+      "SOAR platforms require custom integrations with every security tool, which creates technical debt and increases maintenance burden over time",
+      "Automating phishing triage removes analyst skill development opportunities, leading to long-term capability degradation in the SOC"
+    ],
+    "correct": 1,
+    "explanation": "This is the 'automation at scale' risk. Manual processes are bounded by human speed — a false positive triggers one action. Automated responses operate at machine speed and scale: a misconfigured rule or false positive determination can simultaneously quarantine thousands of accounts, block a major business partner's IP range, or mass-delete legitimate emails before any analyst has time to review the action. The risk is not that automation is bad, but that automated RESPONSE actions (vs. automated TRIAGE/enrichment) must be carefully scoped with human-in-the-loop gates for high-impact actions. Best practice: automate enrichment and low-risk containment (isolating a single endpoint), but require human approval for actions with broad impact (blocking infrastructure, account suspension at scale). The analyst's concern reflects mature security engineering thinking.",
+    "category": "Security Operations, SOAR, Automation, SOC"
+  }
+]

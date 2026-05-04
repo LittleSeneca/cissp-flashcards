@@ -1,0 +1,98 @@
+[
+  {
+    "question": "A hospital acquires a medical device manufacturer and discovers during due diligence that MRI machines sold as 'refurbished' contain residual patient imaging data from pre-sale testing sessions stored on internal hard drives. These devices have been sold to 14 other hospitals over three years. The acquiring company's privacy officer must assess the situation. What is the MOST critical risk?",
+    "options": [
+      "The acquiring company will inherit the manufacturer's historical HIPAA compliance deficiencies and associated penalties",
+      "PHI is being transferred to other healthcare organizations without authorization, constituting an ongoing HIPAA breach affecting patients of all 14 receiving hospitals",
+      "The refurbished devices may not satisfy current FDA cybersecurity guidance for medical device software, creating patient safety risk",
+      "The manufacturer failed to implement an adequate data classification policy that identified internal device storage as a PHI repository"
+    ],
+    "correct": 1,
+    "explanation": "This is an active, multi-party HIPAA breach in progress. PHI (patient imaging data) is being transferred without patient authorization or business associate agreements to 14 healthcare entities. Each receiving hospital is now an unauthorized possessor of that PHI. The HIPAA Breach Notification Rule requires notification to affected patients, HHS, and potentially the media. While classification failures (D) and FDA concerns (C) are valid issues, they are secondary — the immediate critical risk is the active unauthorized PHI disclosure across 14 organizations.",
+    "category": "Asset Security, Privacy, HIPAA, Data Disposal"
+  },
+  {
+    "question": "An organization's data classification policy defines four tiers: Public, Internal, Confidential, and Restricted. A database containing employee compensation data is currently classified as Confidential. The HR director argues it should be elevated to Restricted. The IT security manager objects because Restricted classification requires expensive cryptographic controls that exceed the current budget. Who has the authority to make the final classification decision?",
+    "options": [
+      "The CISO, as the executive responsible for information security policy",
+      "A cross-functional committee with representation from HR, Legal, Finance, and IT Security, achieving consensus",
+      "The data owner — in this case the HR director or equivalent business unit owner — because classification authority belongs to the business, not IT",
+      "The CIO, because IT bears the operational burden of implementing the required controls"
+    ],
+    "correct": 2,
+    "explanation": "Under all major frameworks (NIST, ISO 27001), the data owner — the business unit accountable for the information — holds classification authority. IT's role is to implement appropriate controls for whatever classification the owner assigns, not to veto classification decisions based on cost. If implementing Restricted controls is cost-prohibitive, the appropriate response is to escalate the budget question — not to downgrade the classification. The CISO sets policy; the data owner applies it to their data.",
+    "category": "Asset Security, Data Classification, Data Ownership"
+  },
+  {
+    "question": "A cloud service provider announces it will shut down an object storage service in 90 days. An enterprise customer stores 40TB of proprietary research data in the service, with no local backup. The CISO must ensure data continuity and sovereignty. What should be the FIRST action?",
+    "options": [
+      "Negotiate extended service terms with the provider to allow additional migration time beyond 90 days",
+      "Evaluate alternative cloud providers for pricing, SLAs, and compliance certifications before committing to a migration destination",
+      "Conduct a complete inventory of all data stored in the service, verify its integrity, and begin immediate migration while still having provider access",
+      "Encrypt all stored data prior to migration to protect it during transit to the new environment"
+    ],
+    "correct": 2,
+    "explanation": "With a fixed 90-day window, the FIRST priority is knowing exactly what you have and beginning to move it — before any negotiation, evaluation, or other activity. Without a complete data inventory and integrity verification, you risk discovering missing or corrupted data too late to recover. Migration must start immediately because 90 days is short for 40TB. Negotiation (A) may never succeed. Alternative provider evaluation (B) is important but parallel to, not prior to, beginning migration. Encryption during transit (D) is a valid security control but not the first step.",
+    "category": "Asset Security, Cloud Security, Data Management, Business Continuity"
+  },
+  {
+    "question": "A database administrator is granted temporary read access to a production database containing full payment card numbers to diagnose a performance issue. The access was not revoked after the issue was resolved and persisted for 11 months. A PCI DSS audit discovers this access. Which combination of security principles was MOST directly violated?",
+    "options": [
+      "Separation of duties and dual control",
+      "Least privilege and need-to-know",
+      "Non-repudiation and accountability",
+      "Defense in depth and security by obscurity"
+    ],
+    "correct": 1,
+    "explanation": "Least privilege requires access be limited to the minimum necessary for a specific job function. Need-to-know requires access only to data the role specifically requires. A DBA diagnosing performance issues does not need access to actual cardholder data — anonymized or synthetic data would suffice for performance testing. The persistent un-revoked access also violates access recertification and user access review requirements under PCI DSS. Separation of duties (A) would apply if the DBA could also approve transactions — a different violation.",
+    "category": "Asset Security, Access Control, Least Privilege, PCI DSS"
+  },
+  {
+    "question": "A company is disposing of 200 decommissioned laptops that were used by the HR department to process compensation and benefits data. The IT manager proposes running a single-pass overwrite using the built-in Windows disk format tool, which the manager claims is 'good enough for non-classified data.' The security team disagrees. What is the MOST appropriate disposition method for these assets?",
+    "options": [
+      "The single-pass overwrite is sufficient — NIST SP 800-88 confirms one overwrite pass is adequate for modern hard drives",
+      "Perform three-pass overwriting using DoD 5220.22-M standard to ensure complete data destruction before surplus sale",
+      "Apply NIST SP 800-88 guidelines: cryptographic erase for self-encrypting drives, or full media destruction (shredding) for HDDs and SSDs containing sensitive HR data",
+      "Degauss all drives using an NSA-approved degausser before the standard format procedure"
+    ],
+    "correct": 2,
+    "explanation": "NIST SP 800-88 (Guidelines for Media Sanitization) is the current authoritative standard. For modern HDDs with sensitive data, it recommends Clear (overwrite), Purge (degauss or secure erase), or Destroy methods depending on sensitivity. For HR data, Purge-level sanitization is appropriate. For SSDs and flash media, NIST specifically recommends cryptographic erase or destruction because overwriting is unreliable due to wear leveling. The Windows format tool (A) performs a quick format that doesn't overwrite data sectors. The DoD 5220.22-M three-pass standard (B) is deprecated by NIST. Degaussing SSDs (D) is ineffective because SSDs are not magnetic.",
+    "category": "Asset Security, Data Disposal, Media Sanitization, NIST SP 800-88"
+  },
+  {
+    "question": "An organization implements a DRM (Digital Rights Management) system to control access to sensitive design documents after distribution to contractors. A contractor modifies their local system environment and successfully removes the DRM controls from the files, then shares unprotected copies. What is the FUNDAMENTAL limitation this situation exposes about DRM as a security control?",
+    "options": [
+      "The DRM system was poorly implemented and should have used stronger encryption algorithms",
+      "DRM controls cannot prevent a determined recipient who has authorized access from circumventing protections, because the decryption key must ultimately reach the end-user's system to render the content",
+      "The contractor violated their NDA, demonstrating that technical controls alone are insufficient without strong legal agreements",
+      "The organization should have used physical media instead of digital distribution to maintain better control"
+    ],
+    "correct": 1,
+    "explanation": "This is the fundamental 'trusted client' problem in DRM and cryptography: to display or use protected content, the decryption key must eventually reach the client's environment. A sufficiently motivated user with control over their own system can intercept the content at the point of decryption. No DRM implementation fully solves this problem — it raises the cost of circumvention but cannot eliminate it. This doesn't make DRM useless (it deters casual copying), but it means DRM should be paired with legal agreements, audit logging, and access controls rather than relied on exclusively.",
+    "category": "Asset Security, DRM, Data Loss Prevention, Cryptography"
+  },
+  {
+    "question": "A healthcare organization must determine the retention period for patient medical records. Federal HIPAA requirements specify a minimum of 6 years from creation or last use. State law requires 10 years for adult patients and until age 21 for minor patients. The organization's legal counsel recommends a policy that satisfies both. What retention period should the policy specify?",
+    "options": [
+      "6 years from creation or last use, as specified by HIPAA federal law, which preempts state law",
+      "10 years for adult records and until age 21 for minor records, applying the more stringent state requirement where it exceeds HIPAA",
+      "The average of both requirements: 8 years for adult records as a reasonable compromise",
+      "6 years for federally funded healthcare programs and 10 years for all other records, based on funding source"
+    ],
+    "correct": 1,
+    "explanation": "When federal and state law conflict on data retention, the organization must comply with whichever requirement is more stringent. HIPAA explicitly does not preempt more protective state laws — states can require longer retention. The policy must satisfy both: 10 years for adults (state > federal) and until age 21 for minors (state provision HIPAA doesn't specifically address this way). Applying a 'compromise' average (C) is not legally defensible. Basing retention on funding source (D) is incorrect.",
+    "category": "Asset Security, Data Retention, Legal and Regulatory, HIPAA"
+  },
+  {
+    "question": "A security architect is designing data handling procedures for a new analytics platform that will process both Personal Identifiable Information (PII) and aggregated statistical data. The privacy team requests that PII be 'anonymized' for use in analytics. A data scientist argues that 'removing names and SSNs is sufficient.' The security architect must evaluate this claim. What is the MOST accurate assessment?",
+    "options": [
+      "Removing direct identifiers (name, SSN, DOB) is sufficient anonymization for analytics purposes under GDPR",
+      "True anonymization requires that re-identification be impossible even when combined with external datasets — removing obvious identifiers often produces pseudonymized data that remains re-identifiable, not anonymized data",
+      "Tokenization of all PII fields before analytics processing achieves anonymization equivalent to full de-identification",
+      "Aggregating data to group sizes of 10 or more individuals automatically satisfies GDPR anonymization requirements"
+    ],
+    "correct": 1,
+    "explanation": "The data scientist's claim conflates de-identification/pseudonymization with true anonymization. Research consistently demonstrates that removing 'obvious' identifiers leaves data re-identifiable when combined with auxiliary datasets — a Netflix ratings study famously de-anonymized 'anonymous' movie ratings using public IMDb data. True anonymization under GDPR requires that re-identification be 'reasonably impossible,' which is a very high bar. Tokenization (C) creates pseudonymized data, not anonymized data — the mapping still exists. Fixed group size thresholds (D) don't address attribute inference attacks.",
+    "category": "Asset Security, Privacy, Data De-identification, GDPR, Anonymization"
+  }
+]

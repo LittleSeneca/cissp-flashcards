@@ -1,0 +1,122 @@
+[
+  {
+    "question": "A pharmaceutical company's CISO presents a risk treatment plan recommending acceptance of a known vulnerability in a legacy manufacturing control system. Patching requires a 72-hour production shutdown costing $4.2 million. The calculated ALE for a breach exploiting this vulnerability is $1.8 million. The board formally approves risk acceptance and documents the decision. Six months later, the system is compromised. The CISO's manager argues the CISO was negligent. Which statement BEST describes the CISO's liability in this situation?",
+    "options": [
+      "The CISO bears no liability because the board formally approved the risk treatment decision after receiving accurate risk information",
+      "The CISO is fully liable because accepting risk on operational technology systems is never appropriate under any circumstances",
+      "The CISO is liable because the ALE calculation was flawed — breach costs always exceed ALE estimates",
+      "The CISO shares equal liability with the board because risk acceptance is always a joint decision"
+    ],
+    "correct": 0,
+    "explanation": "Risk acceptance is a legitimate risk treatment strategy under all major frameworks (ISO 27005, NIST RMF). When the CISO presents accurate risk data and the board makes an informed documented decision, accountability rests with the decision-makers, not the advisor. The CISO fulfilled their professional duty. Options B and C reflect common misconceptions: risk acceptance IS appropriate for OT when costs justify it, and ALE is an expectation — breaches can occur above or below the estimate without invalidating the calculation.",
+    "category": "Risk Management, Risk Treatment, Governance"
+  },
+  {
+    "question": "A retail company's BIA identifies the following parameters for its e-commerce platform: RTO = 4 hours, RPO = 1 hour, MTD = 6 hours, MTTR = 8 hours. The DR team has hot standby capability in place. A consultant reviewing these figures immediately escalates a critical finding to the CISO. What is the MOST likely reason for the escalation?",
+    "options": [
+      "The RPO of 1 hour is too aggressive and creates unrealistic recovery expectations for the operations team",
+      "The hot standby creates a false sense of security without validated failover testing",
+      "The MTTR of 8 hours exceeds the MTD of 6 hours, meaning the system cannot be restored before operations reach a point of irreversible business impact",
+      "The RTO consumes two-thirds of the MTD window, leaving insufficient buffer for complications"
+    ],
+    "correct": 2,
+    "explanation": "The critical gap is MTTR > MTD. The MTD (6 hours) is the absolute maximum the business can survive without the system before catastrophic impact. The MTTR (8 hours) is the actual time to restore it. Since recovery takes longer than the maximum tolerable downtime, no DR capability — including hot standby — can prevent irreversible business impact. The hot standby only helps if its failover time is within RTO; the MTTR figure suggests full recovery still takes 8 hours. This gap requires immediate attention: either reduce MTTR through better recovery procedures or extend MTD through business process changes.",
+    "category": "BCP/DR, Business Impact Analysis, RTO, RPO, MTD"
+  },
+  {
+    "question": "During post-merger due diligence, the acquiring company's security team discovers the target organization has no formal risk management framework but does have compensating controls for known vulnerabilities. The CISO has 30 days to present a risk posture to the combined board. What should the security team do FIRST?",
+    "options": [
+      "Immediately deploy NIST SP 800-37 RMF across the target company to establish a defensible framework before the board presentation",
+      "Map the existing compensating controls to a recognized framework to establish a baseline risk posture and identify gaps",
+      "Conduct a full penetration test to replace the missing risk assessment before presenting any risk posture",
+      "Require the target company to achieve SOC 2 Type II certification before any risk posture can be formally assessed"
+    ],
+    "correct": 1,
+    "explanation": "Before you can report risk posture, you need a baseline understanding of existing controls relative to known risks. Mapping existing compensating controls to a framework (e.g., NIST CSF, ISO 27001) rapidly surfaces what protections exist, where gaps are, and what risk remains — all without requiring full framework implementation in 30 days. Deploying a full RMF (A) takes months and won't produce a board-ready picture in 30 days. A penetration test (C) identifies technical vulnerabilities, not overall risk posture. SOC 2 certification (D) takes 6–12 months minimum.",
+    "category": "Risk Management, Frameworks, Mergers and Acquisitions"
+  },
+  {
+    "question": "A security manager calculates ALE for a data center flood scenario. The data center and its contents are valued at $2,000,000. Historical records show that floods of sufficient severity to damage the data center occur approximately once every 10 years. Based on engineering assessments, a flood would render approximately 30% of assets unusable. What is the correct ALE?",
+    "options": [
+      "$600,000",
+      "$200,000",
+      "$60,000",
+      "$300,000"
+    ],
+    "correct": 2,
+    "explanation": "ALE = SLE × ARO. SLE (Single Loss Expectancy) = Asset Value × Exposure Factor = $2,000,000 × 0.30 = $600,000. ARO (Annualized Rate of Occurrence) = 1 event per 10 years = 0.10. ALE = $600,000 × 0.10 = $60,000. Option A is the SLE (not annualized). Option B incorrectly applies ARO to asset value before EF. Option D applies 15% EF instead of 30%.",
+    "category": "Risk Management, Quantitative Analysis, ALE, SLE, ARO"
+  },
+  {
+    "question": "A multinational company stores EU citizen data in US-based data centers. Following an invalidation of the previous transfer mechanism, the privacy officer must establish a lawful transfer basis under GDPR Chapter V. Legal counsel has identified two options: Standard Contractual Clauses (SCCs) with supplementary technical measures, and participation in a formal adequacy framework. The privacy officer asks which provides stronger long-term legal certainty. What is the MOST accurate guidance?",
+    "options": [
+      "SCCs with supplementary measures provide stronger protection because they are contractually binding on both parties",
+      "A formal adequacy decision provides the strongest legal basis but has historically been subject to legal challenge — SCCs with documented supplementary measures provide greater resilience because they don't depend on a single political instrument",
+      "Adequacy decisions are permanent and therefore provide unconditional legal certainty for all data transfers",
+      "GDPR Article 49 derogations are the preferred mechanism for ongoing commercial data transfers to non-adequate countries"
+    ],
+    "correct": 1,
+    "explanation": "Adequacy decisions are the simplest mechanism but are single points of failure — as demonstrated by the Schrems I and II decisions, they can be invalidated by the CJEU. SCCs with appropriate technical supplementary measures (encryption, pseudonymization, access controls) provide layered protection that doesn't rely on the political stability of a single adequacy instrument. Article 49 derogations (D) are explicitly for occasional, non-repetitive transfers — they are NOT appropriate for ongoing commercial data flows.",
+    "category": "Privacy, GDPR, Data Transfers, Legal and Regulatory"
+  },
+  {
+    "question": "A systems administrator with domain admin privileges submits their resignation. Standard offboarding procedures were executed on their last day, including access revocation. Three weeks later, the CISO discovers the former employee joined a direct competitor and suspects data exfiltration may have occurred before departure. What should be done FIRST?",
+    "options": [
+      "File a civil lawsuit against the former employee for breach of the non-disclosure agreement to begin legal discovery",
+      "Conduct a forensic review of all systems the employee accessed, examine DLP logs, USB activity, email forwarding rules, and cloud sync activity in the 90 days prior to resignation",
+      "Notify the competitor organization and request confirmation that no proprietary data was received",
+      "Issue new credentials to all shared service accounts that the administrator may have had access to"
+    ],
+    "correct": 1,
+    "explanation": "Before any legal action or external notification, the organization must understand what — if anything — was actually exfiltrated. A forensic investigation of the employee's activity prior to resignation produces the evidence needed for any subsequent legal action, breach notification, or competitive intelligence protection. Without this evidence, a lawsuit (A) lacks factual grounding. Notifying the competitor (C) without evidence is premature and potentially harmful. Re-credentialing shared accounts (D) is important but secondary to understanding the scope of potential exposure.",
+    "category": "Insider Threat, Incident Response, Forensics, Personnel Security"
+  },
+  {
+    "question": "An organization's incident response team discovers that an APT group has maintained persistent access to the network for approximately 90 days using a novel living-off-the-land technique. The CISO must decide whether to immediately eradicate the threat or continue monitoring. Which factor should MOST influence this decision?",
+    "options": [
+      "Whether the organization's cyber insurance policy covers the costs of extended threat monitoring operations",
+      "Whether the regulatory framework requires breach notification within 72 hours, which would be triggered by confirming the intrusion",
+      "The ongoing risk of further data loss or damage weighed against the intelligence value of continued monitoring — if active exfiltration is occurring, eradication takes immediate priority",
+      "Whether the APT group has demonstrated awareness of being monitored, which would reduce the intelligence value of continued observation"
+    ],
+    "correct": 2,
+    "explanation": "The monitoring versus eradication decision is fundamentally a risk calculus. If the attacker is actively exfiltrating sensitive data, causing damage, or escalating access, the harm of delay outweighs any intelligence value — eradicate immediately. If the attacker is dormant and monitoring provides attribution or TTP data useful for defense, limited monitoring may be justified. Regulatory notification timelines (B) are a consideration but don't override the immediate risk assessment. Insurance (A) is operationally irrelevant to this tactical decision. The attacker's awareness of monitoring (D) is a factor but secondary to ongoing harm.",
+    "category": "Incident Response, Threat Intelligence, APT"
+  },
+  {
+    "question": "A CISO proposes purchasing cyber liability insurance as part of the organization's risk treatment strategy. The CFO asks whether this approach eliminates the organization's residual cyber risk. The MOST accurate response is:",
+    "options": [
+      "Yes — cyber insurance is a risk transfer mechanism that shifts all financial, operational, and reputational consequences to the insurer",
+      "No — insurance transfers only the quantifiable financial impact of a breach; operational disruption, reputational damage, regulatory fines, and customer loss are not fully transferred and represent remaining residual risk",
+      "Yes — once insured, organizations typically reduce security control investments because the financial exposure is covered",
+      "No — cyber insurance is not recognized as a valid risk treatment strategy under NIST SP 800-30 or ISO 27005"
+    ],
+    "correct": 1,
+    "explanation": "Cyber insurance (risk transference) transfers the direct financial cost of a breach to the insurer — within policy limits and covered events. However, operational disruption, brand damage, loss of customer trust, regulatory sanctions, and executive liability are not transferred. Residual risk always remains after any risk treatment. Option C is the opposite of best practice. Option D is incorrect — both NIST and ISO frameworks explicitly recognize risk transfer as a legitimate treatment strategy.",
+    "category": "Risk Management, Risk Treatment, Cyber Insurance"
+  },
+  {
+    "question": "A legal hold notice is issued requiring preservation of all communications related to active litigation. The IT team is scheduled to execute routine tape rotation that would overwrite backup media containing 18 months of relevant emails. The IT manager argues that legal holds are a 'legal department issue' and the scheduled maintenance should proceed. What is the CORRECT response?",
+    "options": [
+      "Proceed with maintenance but document that legal was notified, shifting liability to the legal department",
+      "Immediately suspend all data destruction activities that could affect potentially relevant evidence, notify legal counsel, and implement a litigation hold on affected systems and media",
+      "Copy the emails to a separate system, then proceed with the scheduled tape rotation to maintain operational schedules",
+      "Request a court order explicitly identifying which specific emails must be preserved before taking any action that delays maintenance"
+    ],
+    "correct": 1,
+    "explanation": "Spoliation — the destruction of evidence relevant to litigation — creates severe legal consequences including adverse inference instructions, sanctions, and default judgments. Once a legal hold is issued, ALL potentially relevant data must be preserved, regardless of normal retention schedules. 'Legal's problem' is legally incorrect; IT is responsible for executing the hold. Option C risks inadvertently destroying relevant evidence during the copy process or missing some records. Option D is backwards — the duty to preserve arises from the hold notice, not from a court order defining specific items.",
+    "category": "Legal and Regulatory, E-Discovery, Data Retention, Legal Hold"
+  },
+  {
+    "question": "A regulated financial institution's security team identifies that a third-party payment processor they depend on has suffered a breach. The processor is not providing timely updates, and the institution's customers may be at risk. The CISO must decide on immediate actions. Which action should be taken FIRST under an effective third-party risk management program?",
+    "options": [
+      "Terminate the contract with the payment processor immediately and find an alternative provider",
+      "Notify regulators of the third-party breach to demonstrate proactive transparency",
+      "Invoke the incident response and business continuity clauses in the vendor contract, assess the scope of shared customer exposure, and determine whether breach notification obligations are triggered",
+      "Issue a public statement informing customers that their payment data may have been compromised"
+    ],
+    "correct": 2,
+    "explanation": "Third-party breach response begins with contractual rights: most vendor agreements include incident notification requirements, audit rights, and business continuity provisions that must be invoked. Simultaneously, the institution must assess whether its customers' data was involved (scope assessment) and whether this triggers its own regulatory notification obligations — which vary by jurisdiction and often have strict timelines. Contract termination (A) doesn't address immediate customer risk. Regulator notification (B) is premature without understanding scope. Public statements (D) before scope is understood risk over-disclosing and creating unnecessary panic.",
+    "category": "Third-Party Risk, Incident Response, Supply Chain, Legal and Regulatory"
+  }
+]

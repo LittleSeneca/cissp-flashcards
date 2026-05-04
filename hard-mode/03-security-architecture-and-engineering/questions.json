@@ -1,0 +1,98 @@
+[
+  {
+    "question": "A defense contractor is deploying a new software system that will process both classified and unclassified data. The system architecture uses a single database with row-level security to enforce classification boundaries between users. The contracting officer's technical representative (COTR) rejects this design. What is the MOST technically sound reason for this rejection?",
+    "options": [
+      "Row-level security is not approved under NIST SP 800-53 for classified systems and cannot be used regardless of implementation quality",
+      "A shared database with logical controls does not provide the mandatory access control isolation required for classified data — a software flaw, misconfiguration, or privileged account could collapse the boundary between classification levels",
+      "The system must use physical separation of databases, which is required by DoD 8500.01 for any system handling classified information at any level",
+      "Row-level security performs too slowly under load, creating unacceptable latency for classified data retrieval operations"
+    ],
+    "correct": 1,
+    "explanation": "The fundamental problem is that logical separation in a shared database is a trusted software control — if the row-level security code has a bug, the database administrator has excessive privileges, or there's a SQL injection vulnerability, the classification boundary collapses entirely. Classified systems require isolation mechanisms that cannot be bypassed through software flaws. True multilevel security (MLS) systems use formally verified reference monitors and mandatory access controls enforced by the OS/hardware — not application-layer row filtering. Performance (D) is irrelevant to a security architecture rejection. Option A overstates the rigidity of NIST guidance, and Option C overstates the physical separation requirement for all classified systems.",
+    "category": "Security Architecture, Multilevel Security, Access Control, Defense"
+  },
+  {
+    "question": "An organization deploys a Hardware Security Module (HSM) to protect private keys used for code signing. The HSM is FIPS 140-2 Level 3 validated. A new policy requires key ceremony procedures for all root CA keys. A junior security engineer suggests skipping the key ceremony for 'lower-risk' subordinate CA keys to save time. The security architect must evaluate this suggestion. Which response BEST addresses the risk?",
+    "options": [
+      "The engineer is correct — key ceremonies are only required for root CA keys by RFC 5280 and major browser CA/Browser Forum requirements",
+      "Subordinate CA keys should have a simplified key ceremony scaled to their trust level, but the ceremony cannot be eliminated entirely because subordinate CA compromise still enables issuance of trusted certificates",
+      "Key ceremonies are administrative theater with no technical security value — the FIPS 140-2 Level 3 HSM provides equivalent assurance through its physical tamper resistance",
+      "Skipping the subordinate CA ceremony is acceptable only if the subordinate CA's validity period is less than two years"
+    ],
+    "correct": 1,
+    "explanation": "A subordinate CA key compromise is nearly as damaging as root CA compromise — the attacker can issue trusted certificates for any domain, enabling MitM attacks, phishing, and malware signing. The difference is that revocation mechanisms (CRL, OCSP) and shorter validity periods reduce the blast radius compared to root CA compromise, but the risk is not eliminated. Key ceremonies document multi-party authorization, environmental controls, and provide auditability — all valuable for subordinate CAs. The FIPS 140-2 HSM protects the key once generated but doesn't address the generation ceremony's chain of custody and audit requirements.",
+    "category": "Security Architecture, PKI, Key Management, HSM"
+  },
+  {
+    "question": "A security architect is reviewing a proposed microservices architecture where each service communicates over a service mesh with mutual TLS (mTLS). The architect notices that the API gateway terminates TLS from external clients and re-establishes connections to backend services. A developer argues this is fine because 'everything inside is encrypted with mTLS.' What security concern should the architect raise?",
+    "options": [
+      "mTLS between microservices is redundant if the service mesh uses a trusted network segment — internal encryption adds latency without meaningful security benefit",
+      "At the API gateway, the traffic is decrypted in plaintext, creating a potential inspection point and requiring the gateway to be a trusted, hardened component — if the gateway is compromised, all internal service traffic can be read or modified before re-encryption",
+      "The API gateway should perform mTLS termination and re-origination simultaneously on the same connection to maintain end-to-end encryption without a break",
+      "The architecture is fundamentally sound because the CA issuing the internal mTLS certificates is separate from the external CA, providing isolation"
+    ],
+    "correct": 1,
+    "explanation": "TLS termination at a proxy or gateway creates a 'TLS inspection gap' where traffic exists in plaintext momentarily. This is by design for API gateways performing authentication and routing, but it means the gateway becomes a critical trust boundary — a compromise there exposes all traffic. This is the classic trade-off of TLS inspection proxies: they break end-to-end encryption guarantees. The architect should ensure the API gateway is treated with commensurate security controls (hardening, HSM-backed keys, privileged access), and ideally that the re-encrypted connections use separate certificates so the gateway cannot be impersonated as the final destination. The mTLS between microservices protects against lateral movement from compromised services, but not from gateway compromise.",
+    "category": "Security Architecture, TLS, Microservices, Zero Trust"
+  },
+  {
+    "question": "An organization implements a Trusted Platform Module (TPM) on all endpoints to support measured boot and platform attestation. Six months after deployment, the security team discovers that a supply chain attack compromised the firmware of 12 devices before TPM enrollment, resulting in pre-boot malware that runs before the TPM measurement chain begins. What does this incident MOST accurately reveal about TPM-based attestation?",
+    "options": [
+      "The TPM implementation was defective and should have been FIPS 140-2 validated to prevent this attack",
+      "TPM attestation is only as trustworthy as the initial measurement baseline — if the firmware was compromised before enrollment, the TPM faithfully attests to a compromised state, reporting it as legitimate",
+      "The incident indicates the organization should have used Secure Boot instead of TPM, since Secure Boot would have detected the firmware modification",
+      "TPM 2.0 prevents this class of attack through its Platform Configuration Register (PCR) chain of trust, suggesting the organization deployed outdated TPM 1.2 hardware"
+    ],
+    "correct": 1,
+    "explanation": "This exposes the 'enroll on compromise' problem in TPM attestation. TPM measures what IS on the system at enrollment time and verifies that subsequent boots match that baseline. If the baseline itself was captured with malware in place, the TPM will faithfully attest that nothing has changed — technically true but misleading. TPM attestation proves 'this device boots the same way it did at enrollment,' not 'this device boots safely.' Supply chain attacks that establish persistence before enrollment are specifically designed to exploit this trust boundary. Secure Boot (C) can help by verifying firmware signatures, but supply chain attackers may also compromise signing keys or replace hardware. Both controls working together provide defense in depth, but neither is foolproof.",
+    "category": "Security Architecture, TPM, Supply Chain, Platform Integrity"
+  },
+  {
+    "question": "A financial services firm is implementing a zero trust architecture. The security team proposes that all internal east-west traffic between application tiers be treated as untrusted and require identity verification on each request. The application owner objects that this will break their session-based authentication model and require a complete application rewrite. The architect must find a practical path forward. What approach BEST balances zero trust principles with operational reality?",
+    "options": [
+      "Exempt legacy applications from zero trust controls and only apply the policy to new applications going forward, creating a two-tier security posture",
+      "Implement a service mesh with sidecar proxies that enforce mTLS and policy-based access control at the network layer, without requiring application code changes",
+      "Accept the application owner's objection and maintain the trusted network perimeter for that application tier, documenting the exception in the risk register",
+      "Require the application team to rewrite the authentication model within 18 months as a condition of continued platform support"
+    ],
+    "correct": 1,
+    "explanation": "A service mesh with sidecar proxies (like Istio or Linkerd) can enforce zero trust controls — mutual TLS, identity-based authorization, traffic policy — at the infrastructure layer without requiring application code changes. The sidecar handles mTLS termination and re-origination transparently, so the application still sees plain HTTP. This is specifically why service meshes were designed: to add security and observability to existing applications without requiring them to implement these capabilities natively. Exempting legacy applications (A) creates permanent security debt. A blanket exception (C) accepts ongoing risk without mitigation. Forced rewrites (D) ignore engineering constraints and are often infeasible.",
+    "category": "Security Architecture, Zero Trust, Service Mesh, Network Security"
+  },
+  {
+    "question": "A cloud architect designs a multi-tenant SaaS application where all customers share the same database. Tenant isolation is enforced by including a `tenant_id` column in every table and filtering all queries with `WHERE tenant_id = :current_tenant`. A security review flags this design as insufficient. What is the MOST significant risk this architecture introduces?",
+    "options": [
+      "The architecture violates the principle of separation of duties because the database administrator can access all tenant data",
+      "A single query with a missing or incorrect WHERE clause, a ORM misconfiguration, or a SQL injection vulnerability could expose one tenant's data to another tenant, with no technical enforcement layer to catch the error",
+      "Performance degradation will occur as the tenant_id index becomes a hot spot under concurrent multi-tenant load",
+      "Compliance with SOC 2 Type II requires physical database separation for multi-tenant applications handling sensitive data"
+    ],
+    "correct": 1,
+    "explanation": "Logical multi-tenancy via a tenant_id column is an application-layer control. Any developer error — forgetting the WHERE clause, a buggy ORM join, a stored procedure that doesn't propagate the tenant context, or a SQL injection attack — can bypass it. Unlike row-level security enforced by the database engine (better), or separate schemas/databases per tenant (best isolation), the application-layer WHERE clause approach puts the entire isolation burden on developer correctness in every single query. This has been the root cause of numerous real-world multi-tenant data leaks. DBA access (A) is a valid concern but orthogonal. SOC 2 (C) does not mandate physical database separation.",
+    "category": "Security Architecture, Multi-tenant, Data Isolation, Application Security"
+  },
+  {
+    "question": "An organization is evaluating two approaches for protecting sensitive data at rest in a cloud database: (1) cloud provider-managed encryption with provider-managed keys, and (2) customer-managed encryption keys (CMEK) where the organization controls the key in a cloud HSM. The CISO asks which approach provides stronger data protection against the cloud provider itself. What is the MOST accurate assessment?",
+    "options": [
+      "Provider-managed encryption is stronger because the provider has specialized key management expertise and physical security infrastructure that most enterprises cannot match",
+      "CMEK provides stronger protection against the provider because the provider cannot decrypt data without the customer-held key — provider-managed encryption means the provider controls both the encryption and the keys, making the encryption hollow against provider-level threats",
+      "Both approaches provide equivalent protection because FIPS 140-2 validation of the HSM is the differentiating security factor, regardless of who manages the key",
+      "CMEK is unnecessary because cloud providers are contractually prohibited from accessing customer data, making the key ownership question legally irrelevant"
+    ],
+    "correct": 1,
+    "explanation": "Encryption is only meaningful as a control against a specific threat model. Provider-managed encryption (SSE) protects against physical media theft and unauthorized access by provider employees below the key management tier — but the provider holding the key means they technically can decrypt the data. This is sometimes called 'encryption theater' against provider-level threats. CMEK shifts key custody to the customer, so the provider must access the customer's HSM to decrypt — adding an explicit, auditable authorization step. This doesn't make CMEK perfect (the provider still runs the compute environment and could theoretically capture data in memory), but it is meaningfully stronger against the specific threat of provider-level unauthorized access. Contracts (D) are not technical controls.",
+    "category": "Security Architecture, Cloud Security, Encryption, Key Management"
+  },
+  {
+    "question": "A security architect is reviewing a proposed system that uses a deterministic encryption scheme (same plaintext always produces the same ciphertext) to protect credit card numbers stored in a database, enabling exact-match queries without decryption. A cryptographer flags this as problematic. What is the MOST significant cryptographic weakness?",
+    "options": [
+      "Deterministic encryption violates FIPS 140-2 requirements, which mandate probabilistic encryption for all PCI DSS-scoped systems",
+      "Deterministic encryption leaks information through ciphertext patterns — an attacker observing the ciphertext can perform frequency analysis and inference attacks, determine that two records share the same value, and potentially use known-plaintext attacks against the limited credit card number space",
+      "The scheme is vulnerable to replay attacks because the deterministic ciphertext can be reused in different contexts without detection",
+      "Deterministic encryption cannot satisfy PCI DSS Requirement 3.5 because it does not use AES-256"
+    ],
+    "correct": 1,
+    "explanation": "Deterministic encryption violates the security notion of semantic security (IND-CPA). Because identical plaintexts produce identical ciphertexts, an attacker can: (1) determine when two database records share the same card number without knowing the value, (2) conduct frequency analysis — a credit card number appearing in 500 transactions has a distinctive ciphertext frequency, (3) perform chosen-plaintext attacks by encrypting known card numbers and comparing ciphertexts. Credit card numbers have a constrained format (16 digits, Luhn-valid), making the plaintext space smaller than it appears. Solutions for searchable encrypted databases include order-preserving encryption variants with careful threat modeling, or application-layer token lookups. Format-preserving encryption (FPE) like FF3-1 is also common for PCI use cases but has different tradeoffs.",
+    "category": "Security Architecture, Cryptography, Encryption, PCI DSS"
+  }
+]

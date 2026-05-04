@@ -1,0 +1,98 @@
+[
+  {
+    "question": "An enterprise deploys federated identity using SAML 2.0 between an identity provider (IdP) and 23 service providers (SPs). A security review reveals that several SPs accept SAML assertions without validating the XML signature on the assertion itself — they only validate the TLS certificate of the IdP's HTTP connection. A penetration tester demonstrates a SAML assertion forgery attack. What is the root cause of this vulnerability?",
+    "options": [
+      "SAML 2.0 is an obsolete standard and should be replaced with OAuth 2.0 and OpenID Connect, which use simpler token validation mechanisms",
+      "The SPs are conflating transport-layer authentication (TLS certificate) with message-layer authentication (XML digital signature) — TLS ensures the connection originates from the IdP server, but does not prevent a compromised IdP server or a replay attack from delivering a forged assertion; XML signature validation on the assertion itself is mandatory",
+      "The identity provider should use RSA-4096 keys instead of RSA-2048 to provide sufficient signature strength for SAML assertions",
+      "SAML assertions should be encrypted with AES-256 to prevent forging attacks, because unsigned encrypted assertions cannot be replayed"
+    ],
+    "correct": 1,
+    "explanation": "This is a common SAML implementation vulnerability. TLS provides channel security — it authenticates that you're talking to the IdP server. But it doesn't authenticate the content of what the IdP sends. If an IdP is compromised, or if a man-in-the-middle scenario exists within the IdP infrastructure, forged assertions can be delivered over a valid TLS connection. SAML XML signatures authenticate the assertion content — proving it was signed by the IdP's private key — independently of transport security. Both layers are necessary: TLS for channel security, XML signature validation for message integrity and authentication. Encryption (D) provides confidentiality but not authenticity — encrypted-but-unsigned assertions don't prove origin.",
+    "category": "Identity Management, SAML, Federation, Authentication"
+  },
+  {
+    "question": "A company implements role-based access control (RBAC) and after two years of organic growth, the IAM team discovers that the most senior role has accumulated 847 unique permissions through role inheritance and granted exceptions. New employees in that role receive all 847 permissions by default. The IT director proposes simply 'documenting' the current state. What risk does this situation present and what should be done?",
+    "options": [
+      "The documentation approach is appropriate — understanding the current state is a prerequisite to any remediation and should take priority",
+      "This is a classic 'role explosion' or privilege accumulation problem — any compromise of an account in that role yields an attacker 847 permissions. The role must be decomposed through access recertification: review which permissions are still business-justified, remove accumulated grants that are no longer needed, and restructure into appropriately scoped sub-roles",
+      "The solution is to require MFA for all accounts in that role, which compensates for the excessive permissions by ensuring only authorized users access them",
+      "The company should migrate from RBAC to ABAC (attribute-based access control), which automatically prevents privilege accumulation through attribute evaluation"
+    ],
+    "correct": 1,
+    "explanation": "This is privilege accumulation (sometimes called 'permission creep') combined with role bloat — a well-documented failure mode in RBAC systems. Over time, exceptions are granted individually, roles inherit from other roles, and no one removes permissions when they're no longer needed. The risk: any account compromise in that role gives an attacker an enormous blast radius across 847 permission grants. Documentation alone (A) doesn't reduce the attack surface. MFA (C) reduces account compromise likelihood but doesn't address the excessive permissions — breached accounts, insider threats, and credential sharing still yield all 847 permissions. ABAC migration (D) doesn't solve accumulated permissions; you'd migrate the problem into ABAC policies. The remedy is access recertification: systematically review each permission for current business justification and remove what isn't justified.",
+    "category": "Identity Management, RBAC, Least Privilege, Access Governance"
+  },
+  {
+    "question": "An organization uses OAuth 2.0 with the authorization code flow for a public-facing web application. A security researcher reports that the application does not validate the `state` parameter returned by the authorization server. The developer argues that since the application uses HTTPS, CSRF attacks aren't possible. How should the security engineer respond?",
+    "options": [
+      "The developer is correct — HTTPS prevents CSRF attacks on OAuth flows because the authorization code is transmitted over an encrypted channel",
+      "The `state` parameter is optional in OAuth 2.0 and its absence is acceptable for public applications with a low risk profile",
+      "The `state` parameter provides CSRF protection for the OAuth callback — without it, an attacker can trick a user's browser into completing an OAuth flow with the attacker's authorization code, potentially linking the attacker's identity to the victim's account (login CSRF) or performing actions on the victim's behalf",
+      "The `state` parameter is only required for mobile applications using PKCE; web applications using server-side sessions are not vulnerable to this attack"
+    ],
+    "correct": 2,
+    "explanation": "HTTPS encrypts traffic in transit but does not prevent CSRF. The OAuth state parameter serves as a CSRF token: the client generates a random value, stores it in the user's session, includes it in the authorization request, and verifies the returned value matches before processing the callback. Without state validation, an attacker can craft an authorization URL with the attacker's own authorization code and trick a victim into completing it — the victim's session is then associated with the attacker's identity (login CSRF), or the attacker's app gains access to the victim's resources. This is a documented OAuth 2.0 security requirement in RFC 6749 Section 10.12. PKCE (D) is a separate protection for code interception attacks, not CSRF.",
+    "category": "Identity Management, OAuth, CSRF, Web Security"
+  },
+  {
+    "question": "A large enterprise grants third-party contractors temporary privileged access for a 6-month infrastructure project. The project completes, but access reviews run quarterly. During the next review — 4 months later — the team finds that 14 contractor accounts still have active privileged access and two of those contractors have joined a competitor. What does this finding MOST directly indicate about the organization's IAM program?",
+    "options": [
+      "The quarterly access review cycle is appropriate and the finding represents a normal operational lag that is acceptable under ISO 27001 controls",
+      "The organization lacks automated deprovisioning linked to HR/project completion events — access termination is dependent on periodic manual reviews rather than triggered by the lifecycle event that should drive it (project completion, contract end)",
+      "The contractors should have been placed on a separate privileged access workstation (PAW) network, which would have automatically revoked access when the project completed",
+      "The finding indicates the organization needs more frequent access reviews — monthly instead of quarterly — to reduce the window of undetected access"
+    ],
+    "correct": 1,
+    "explanation": "This is an access lifecycle management failure. The root cause is that access termination depends on periodic reviews rather than being triggered by the event that should drive it — project completion or contract end. Effective IAM links provisioning and deprovisioning to HR/procurement lifecycle events: contract expiry triggers automatic deprovisioning, project completion tickets close associated access. Reviews are a safety net for catching what automated processes miss, but they shouldn't be the primary mechanism. Increasing review frequency (D) treats the symptom (detection lag) without fixing the root cause (event-driven deprovisioning). PAWs (C) control how privileged access is exercised, not its duration.",
+    "category": "Identity Management, Access Lifecycle, Deprovisioning, Third-Party Risk"
+  },
+  {
+    "question": "An organization's security team discovers that their Active Directory environment has 23 service accounts with non-expiring passwords, some of which haven't been used for over 18 months. A threat intelligence report indicates an APT group is actively targeting Kerberoastable service accounts in the financial sector. What should the team prioritize FIRST?",
+    "options": [
+      "Enable password expiration on all 23 service accounts immediately, forcing password rotation within 30 days",
+      "Identify which service accounts have SPNs registered (making them Kerberoastable), audit their current privilege levels, rotate passwords to strong random values (25+ characters), and evaluate migration to Managed Service Accounts or Group Managed Service Accounts (gMSA)",
+      "Disable all unused service accounts immediately and require application owners to re-request access if needed",
+      "Deploy a honeypot service account with a weak password to detect Kerberoasting attempts against the environment"
+    ],
+    "correct": 1,
+    "explanation": "Kerberoasting targets service accounts with Service Principal Names (SPNs) — any authenticated domain user can request a Kerberos service ticket encrypted with the service account's password hash and crack it offline. The priority actions: (1) Identify SPN-registered accounts (directly Kerberoastable), (2) assess their privilege level (highly privileged Kerberoastable accounts are critical findings), (3) rotate passwords to 25+ character random strings (makes offline cracking computationally infeasible), (4) migrate to gMSAs where possible (240-character auto-rotating passwords, not Kerberoastable in the traditional sense). Blanket password expiration (A) forces rotation but doesn't address SPNs or privilege. Disabling unused accounts (C) is correct for stale accounts but doesn't address active Kerberoastable ones. A honeypot (D) is a detection, not a remediation control.",
+    "category": "Identity Management, Active Directory, Kerberoasting, Privileged Access"
+  },
+  {
+    "question": "A company implements a Zero Trust Network Access (ZTNA) solution that evaluates device health, user identity, and behavioral context before granting application access. After deployment, the security team discovers that an executive's BYOD iPhone is consistently being granted full access because it passes all device health checks despite not having corporate MDM enrolled. A security analyst argues the device is 'trusted.' What is the MOST accurate assessment?",
+    "options": [
+      "The analyst is correct — if the device passes all health checks, it meets the zero trust criteria regardless of MDM enrollment status",
+      "A BYOD device passing health checks but without MDM enrollment presents a gap: the organization cannot enforce security policies, perform remote wipe, or audit the device's full security posture — health checks are point-in-time snapshots, not continuous assurance of corporate policy compliance",
+      "BYOD devices should be entirely excluded from ZTNA access regardless of health check results, as they introduce unacceptable risk to enterprise applications",
+      "The executive's access should be granted because executive productivity requirements outweigh the marginal security risk of BYOD access to corporate applications"
+    ],
+    "correct": 1,
+    "explanation": "Health checks (device posture checks) assess the device's state at the time of access request — OS version, patch level, screen lock, etc. But without MDM enrollment: (1) The organization cannot enforce security policies (minimum patch level, app restrictions, certificate management), (2) cannot remotely wipe if the device is lost or the executive departs, (3) cannot continuously monitor for compliance drift between sessions, (4) cannot audit what data leaves the device (screenshots, copy-paste, cloud sync). ZTNA policies should differentiate between MDM-enrolled devices with full corporate posture visibility and unmanaged BYOD devices — granting the latter access only to less sensitive resources or through a browser-based application portal that limits data egress. Blanket exclusion (C) is often operationally infeasible; executive exceptions based on productivity (D) undermine zero trust principles.",
+    "category": "Identity Management, Zero Trust, ZTNA, BYOD"
+  },
+  {
+    "question": "An organization implements biometric authentication (fingerprint) for physical access to server rooms. An attacker obtains a high-resolution photograph of an executive's fingerprint from a public conference photo and successfully creates a gelatin replica that fools the fingerprint scanner. What fundamental characteristic of biometric systems does this attack exploit?",
+    "options": [
+      "The fingerprint scanner used a capacitive sensor instead of an optical sensor — optical sensors are resistant to gelatin replica attacks",
+      "Biometric identifiers, unlike passwords, cannot be changed once compromised — a compromised fingerprint remains compromised for life, and the system lacks liveness detection to distinguish live fingers from replicas",
+      "The photograph was taken in a public location, violating the organization's acceptable use policy, which is the root cause of the compromise",
+      "Multi-factor authentication was not implemented — a PIN combined with the fingerprint would have prevented the replay attack"
+    ],
+    "correct": 1,
+    "explanation": "This attack highlights two fundamental biometric limitations: (1) Irrevocability — unlike passwords, you cannot issue a new fingerprint. Once compromised, the biometric identifier is permanently compromised for any system using it. (2) Artifact attacks — without liveness detection (checking blood flow, pulse, 3D depth, or pressure patterns that distinguish live tissue from replicas), fingerprint systems are vulnerable to presentation attacks using lifted or photographed prints. Liveness detection (PAD — Presentation Attack Detection) is the specific technical control. Sensor type (A) matters for attack difficulty but doesn't address liveness detection or irrevocability. MFA (D) would help — a compromised biometric with a PIN backup is partially recovered — but the question asks what the attack exploits, not how to fix it.",
+    "category": "Identity Management, Biometrics, Authentication, Physical Security"
+  },
+  {
+    "question": "A cloud-native company uses workload identity (OIDC tokens issued by the Kubernetes cluster) to grant cloud API access to microservices, eliminating long-lived service account credentials. A security engineer discovers that the OIDC issuer URL is not properly validated by the cloud IAM service, allowing any OIDC-compliant token issuer to issue valid workload credentials. What class of vulnerability does this represent?",
+    "options": [
+      "A misconfigured service mesh that fails to enforce mTLS between workloads, allowing credential theft via lateral movement",
+      "An OAuth token substitution vulnerability — the cloud IAM service accepts tokens from unintended issuers, allowing an attacker who controls any OIDC-compliant issuer to forge workload identities and impersonate any service",
+      "A Kubernetes RBAC misconfiguration that grants excessive permissions to the OIDC service account provider",
+      "A certificate pinning failure that allows token interception during transmission from the OIDC issuer to the IAM service"
+    ],
+    "correct": 1,
+    "explanation": "This is a token issuer validation failure — a specific variant of confused deputy or token substitution attack. Workload identity federation (using OIDC tokens) works by establishing trust between the IAM service and a specific issuer (the cluster's OIDC issuer URL). The IAM service must cryptographically verify: (1) the token signature is valid per the issuer's public key, AND (2) the issuer claim matches the specifically trusted issuer. If issuer validation is skipped or misconfigured, any attacker who can operate an OIDC-compliant server can issue tokens with arbitrary subject claims (`kubernetes.io/serviceaccount`) that the IAM service will accept, granting cloud API access to any service identity. This type of vulnerability has been found in real-world cloud environments and represents a critical IAM failure.",
+    "category": "Identity Management, Workload Identity, OIDC, Cloud Security"
+  }
+]

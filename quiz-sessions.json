@@ -1,0 +1,482 @@
+[
+  {
+    "id": "1777931881988",
+    "createdAt": "2026-05-04T21:58:01.988Z",
+    "type": "quiz",
+    "totalQuestions": 30,
+    "answered": 30,
+    "correct": 25,
+    "score": 83,
+    "weightedScore": 83,
+    "byDomain": [
+      {
+        "domainId": "01-security-and-risk-management",
+        "name": "Security and Risk Management",
+        "examWeight": 15,
+        "right": 3,
+        "wrong": 1,
+        "answered": 4
+      },
+      {
+        "domainId": "02-asset-security",
+        "name": "Asset Security",
+        "examWeight": 10,
+        "right": 3,
+        "wrong": 0,
+        "answered": 3
+      },
+      {
+        "domainId": "03-security-architecture-and-engineering",
+        "name": "Security Architecture and Engineering",
+        "examWeight": 13,
+        "right": 2,
+        "wrong": 2,
+        "answered": 4
+      },
+      {
+        "domainId": "04-communication-and-network-security",
+        "name": "Communication and Network Security",
+        "examWeight": 13,
+        "right": 4,
+        "wrong": 0,
+        "answered": 4
+      },
+      {
+        "domainId": "05-identity-and-access-management",
+        "name": "Identity and Access Management",
+        "examWeight": 13,
+        "right": 3,
+        "wrong": 1,
+        "answered": 4
+      },
+      {
+        "domainId": "06-security-assessment-and-testing",
+        "name": "Security Assessment and Testing",
+        "examWeight": 12,
+        "right": 4,
+        "wrong": 0,
+        "answered": 4
+      },
+      {
+        "domainId": "07-security-operations",
+        "name": "Security Operations",
+        "examWeight": 13,
+        "right": 3,
+        "wrong": 1,
+        "answered": 4
+      },
+      {
+        "domainId": "08-software-development-security",
+        "name": "Software Development Security",
+        "examWeight": 11,
+        "right": 3,
+        "wrong": 0,
+        "answered": 3
+      }
+    ],
+    "byTag": [
+      {
+        "tag": "Cloud Security",
+        "right": 2,
+        "wrong": 1,
+        "answered": 3
+      },
+      {
+        "tag": "Zero Trust Architecture",
+        "right": 3,
+        "wrong": 0,
+        "answered": 3
+      },
+      {
+        "tag": "Secure SDLC",
+        "right": 2,
+        "wrong": 0,
+        "answered": 2
+      },
+      {
+        "tag": "DevSecOps",
+        "right": 2,
+        "wrong": 0,
+        "answered": 2
+      },
+      {
+        "tag": "SDLC",
+        "right": 2,
+        "wrong": 0,
+        "answered": 2
+      },
+      {
+        "tag": "SIEM",
+        "right": 1,
+        "wrong": 1,
+        "answered": 2
+      },
+      {
+        "tag": "Identity Federation",
+        "right": 1,
+        "wrong": 1,
+        "answered": 2
+      },
+      {
+        "tag": "Single Sign-On",
+        "right": 1,
+        "wrong": 0,
+        "answered": 1
+      },
+      {
+        "tag": "SSO",
+        "right": 1,
+        "wrong": 0,
+        "answered": 1
+      },
+      {
+        "tag": "Web SSO",
+        "right": 1,
+        "wrong": 0,
+        "answered": 1
+      },
+      {
+        "tag": "Agile",
+        "right": 1,
+        "wrong": 0,
+        "answered": 1
+      },
+      {
+        "tag": "Legal & Regulatory",
+        "right": 1,
+        "wrong": 0,
+        "answered": 1
+      },
+      {
+        "tag": "ECPA",
+        "right": 1,
+        "wrong": 0,
+        "answered": 1
+      },
+      {
+        "tag": "Wiretapping",
+        "right": 1,
+        "wrong": 0,
+        "answered": 1
+      },
+      {
+        "tag": "Electronic Communications",
+        "right": 1,
+        "wrong": 0,
+        "answered": 1
+      },
+      {
+        "tag": "SAST",
+        "right": 1,
+        "wrong": 0,
+        "answered": 1
+      },
+      {
+        "tag": "Static Analysis",
+        "right": 1,
+        "wrong": 0,
+        "answered": 1
+      },
+      {
+        "tag": "White-box Testing",
+        "right": 1,
+        "wrong": 0,
+        "answered": 1
+      },
+      {
+        "tag": "Log Integrity",
+        "right": 1,
+        "wrong": 0,
+        "answered": 1
+      },
+      {
+        "tag": "Immutable Storage",
+        "right": 1,
+        "wrong": 0,
+        "answered": 1
+      },
+      {
+        "tag": "WORM",
+        "right": 1,
+        "wrong": 0,
+        "answered": 1
+      },
+      {
+        "tag": "Incident Response",
+        "right": 1,
+        "wrong": 0,
+        "answered": 1
+      },
+      {
+        "tag": "SOAR",
+        "right": 1,
+        "wrong": 0,
+        "answered": 1
+      },
+      {
+        "tag": "Automation",
+        "right": 1,
+        "wrong": 0,
+        "answered": 1
+      },
+      {
+        "tag": "Playbook",
+        "right": 1,
+        "wrong": 0,
+        "answered": 1
+      },
+      {
+        "tag": "Encryption",
+        "right": 0,
+        "wrong": 1,
+        "answered": 1
+      },
+      {
+        "tag": "HYOK",
+        "right": 0,
+        "wrong": 1,
+        "answered": 1
+      },
+      {
+        "tag": "Privacy Protection",
+        "right": 1,
+        "wrong": 0,
+        "answered": 1
+      },
+      {
+        "tag": "Privacy by Design",
+        "right": 1,
+        "wrong": 0,
+        "answered": 1
+      },
+      {
+        "tag": "XSS",
+        "right": 1,
+        "wrong": 0,
+        "answered": 1
+      },
+      {
+        "tag": "Injection Attacks",
+        "right": 1,
+        "wrong": 0,
+        "answered": 1
+      },
+      {
+        "tag": "OpenID Connect",
+        "right": 0,
+        "wrong": 1,
+        "answered": 1
+      },
+      {
+        "tag": "OIDC Scopes",
+        "right": 0,
+        "wrong": 1,
+        "answered": 1
+      },
+      {
+        "tag": "Combinatorial Testing",
+        "right": 1,
+        "wrong": 0,
+        "answered": 1
+      },
+      {
+        "tag": "Pairwise Testing",
+        "right": 1,
+        "wrong": 0,
+        "answered": 1
+      },
+      {
+        "tag": "Testing Efficiency",
+        "right": 1,
+        "wrong": 0,
+        "answered": 1
+      },
+      {
+        "tag": "Methodology",
+        "right": 1,
+        "wrong": 0,
+        "answered": 1
+      },
+      {
+        "tag": "Security Metrics",
+        "right": 0,
+        "wrong": 1,
+        "answered": 1
+      },
+      {
+        "tag": "Leading Indicators",
+        "right": 0,
+        "wrong": 1,
+        "answered": 1
+      },
+      {
+        "tag": "KRI",
+        "right": 0,
+        "wrong": 1,
+        "answered": 1
+      },
+      {
+        "tag": "Vulnerability Management",
+        "right": 0,
+        "wrong": 1,
+        "answered": 1
+      },
+      {
+        "tag": "SAML 2.0",
+        "right": 1,
+        "wrong": 0,
+        "answered": 1
+      },
+      {
+        "tag": "Identity Provider",
+        "right": 1,
+        "wrong": 0,
+        "answered": 1
+      },
+      {
+        "tag": "Windows Events",
+        "right": 0,
+        "wrong": 1,
+        "answered": 1
+      },
+      {
+        "tag": "Logon Success",
+        "right": 0,
+        "wrong": 1,
+        "answered": 1
+      },
+      {
+        "tag": "Event Logs",
+        "right": 0,
+        "wrong": 1,
+        "answered": 1
+      },
+      {
+        "tag": "Physical Security",
+        "right": 1,
+        "wrong": 0,
+        "answered": 1
+      },
+      {
+        "tag": "Power",
+        "right": 1,
+        "wrong": 0,
+        "answered": 1
+      },
+      {
+        "tag": "Environmental Controls",
+        "right": 1,
+        "wrong": 0,
+        "answered": 1
+      },
+      {
+        "tag": "Forensics",
+        "right": 1,
+        "wrong": 0,
+        "answered": 1
+      },
+      {
+        "tag": "Legal Standards",
+        "right": 1,
+        "wrong": 0,
+        "answered": 1
+      },
+      {
+        "tag": "Entrapment",
+        "right": 1,
+        "wrong": 0,
+        "answered": 1
+      },
+      {
+        "tag": "Ethics",
+        "right": 1,
+        "wrong": 0,
+        "answered": 1
+      },
+      {
+        "tag": "CDN Security",
+        "right": 1,
+        "wrong": 0,
+        "answered": 1
+      },
+      {
+        "tag": "Content Delivery Network",
+        "right": 1,
+        "wrong": 0,
+        "answered": 1
+      },
+      {
+        "tag": "TLS Termination",
+        "right": 1,
+        "wrong": 0,
+        "answered": 1
+      },
+      {
+        "tag": "Penetration Testing",
+        "right": 1,
+        "wrong": 0,
+        "answered": 1
+      },
+      {
+        "tag": "Rules of Engagement",
+        "right": 1,
+        "wrong": 0,
+        "answered": 1
+      },
+      {
+        "tag": "Legal Authorization",
+        "right": 1,
+        "wrong": 0,
+        "answered": 1
+      },
+      {
+        "tag": "ICS/SCADA",
+        "right": 0,
+        "wrong": 1,
+        "answered": 1
+      }
+    ]
+  },
+  {
+    "id": "1777930980068",
+    "createdAt": "2026-05-04T21:43:00.068Z",
+    "type": "quiz",
+    "totalQuestions": 30,
+    "answered": 30,
+    "correct": 22,
+    "score": 73,
+    "weightedScore": 71,
+    "byDomain": [
+      {
+        "domainId": "01-security-and-risk-management",
+        "name": "Security and Risk Management",
+        "examWeight": 15,
+        "answered": 4,
+        "right": 3,
+        "wrong": 1
+      },
+      {
+        "domainId": "05-identity-and-access-management",
+        "name": "Identity and Access Management",
+        "examWeight": 13,
+        "answered": 4,
+        "right": 4,
+        "wrong": 0
+      }
+    ],
+    "byTag": [
+      {
+        "tag": "Risk Management",
+        "answered": 3,
+        "right": 2,
+        "wrong": 1
+      },
+      {
+        "tag": "Authentication",
+        "answered": 4,
+        "right": 4,
+        "wrong": 0
+      }
+    ]
+  }
+]

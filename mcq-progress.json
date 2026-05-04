@@ -38,9 +38,9 @@
   },
   "01-security-and-risk-management/bcp-dr": {
     "0": {
-      "right": 3,
+      "right": 4,
       "wrong": 2,
-      "lastSeen": "2026-05-02"
+      "lastSeen": "2026-05-04"
     }
   },
   "01-security-and-risk-management/governance-and-compliance": {
@@ -195,6 +195,317 @@
       "right": 1,
       "wrong": 0,
       "lastSeen": "2026-05-02"
+    }
+  },
+  "01-security-and-risk-management/ethics": {
+    "0": {
+      "right": 1,
+      "wrong": 0,
+      "lastSeen": "2026-05-04"
+    },
+    "1": {
+      "right": 1,
+      "wrong": 0,
+      "lastSeen": "2026-05-04"
+    },
+    "2": {
+      "right": 1,
+      "wrong": 0,
+      "lastSeen": "2026-05-04"
+    },
+    "3": {
+      "right": 1,
+      "wrong": 0,
+      "lastSeen": "2026-05-04"
+    },
+    "4": {
+      "right": 0,
+      "wrong": 1,
+      "lastSeen": "2026-05-04"
+    },
+    "5": {
+      "right": 1,
+      "wrong": 0,
+      "lastSeen": "2026-05-04"
+    },
+    "6": {
+      "right": 1,
+      "wrong": 0,
+      "lastSeen": "2026-05-04"
+    },
+    "7": {
+      "right": 1,
+      "wrong": 0,
+      "lastSeen": "2026-05-04"
+    },
+    "8": {
+      "right": 1,
+      "wrong": 0,
+      "lastSeen": "2026-05-04"
+    },
+    "9": {
+      "right": 0,
+      "wrong": 1,
+      "lastSeen": "2026-05-04"
+    },
+    "10": {
+      "right": 0,
+      "wrong": 1,
+      "lastSeen": "2026-05-04"
+    },
+    "11": {
+      "right": 1,
+      "wrong": 0,
+      "lastSeen": "2026-05-04"
+    },
+    "12": {
+      "right": 1,
+      "wrong": 0,
+      "lastSeen": "2026-05-04"
+    },
+    "13": {
+      "right": 1,
+      "wrong": 0,
+      "lastSeen": "2026-05-04"
+    },
+    "14": {
+      "right": 1,
+      "wrong": 0,
+      "lastSeen": "2026-05-04"
+    },
+    "15": {
+      "right": 1,
+      "wrong": 0,
+      "lastSeen": "2026-05-04"
+    },
+    "16": {
+      "right": 1,
+      "wrong": 0,
+      "lastSeen": "2026-05-04"
+    },
+    "17": {
+      "right": 1,
+      "wrong": 0,
+      "lastSeen": "2026-05-04"
+    },
+    "18": {
+      "right": 1,
+      "wrong": 0,
+      "lastSeen": "2026-05-04"
+    },
+    "19": {
+      "right": 1,
+      "wrong": 0,
+      "lastSeen": "2026-05-04"
+    },
+    "20": {
+      "right": 1,
+      "wrong": 0,
+      "lastSeen": "2026-05-04"
+    },
+    "21": {
+      "right": 1,
+      "wrong": 0,
+      "lastSeen": "2026-05-04"
+    },
+    "22": {
+      "right": 1,
+      "wrong": 0,
+      "lastSeen": "2026-05-04"
+    },
+    "23": {
+      "right": 1,
+      "wrong": 0,
+      "lastSeen": "2026-05-04"
+    },
+    "24": {
+      "right": 1,
+      "wrong": 0,
+      "lastSeen": "2026-05-04"
+    }
+  },
+  "01-security-and-risk-management/gdpr": {
+    "0": {
+      "right": 1,
+      "wrong": 0,
+      "lastSeen": "2026-05-04"
+    },
+    "1": {
+      "right": 1,
+      "wrong": 0,
+      "lastSeen": "2026-05-04"
+    },
+    "2": {
+      "right": 1,
+      "wrong": 0,
+      "lastSeen": "2026-05-04"
+    },
+    "3": {
+      "right": 1,
+      "wrong": 0,
+      "lastSeen": "2026-05-04"
+    },
+    "4": {
+      "right": 1,
+      "wrong": 0,
+      "lastSeen": "2026-05-04"
+    },
+    "5": {
+      "right": 1,
+      "wrong": 0,
+      "lastSeen": "2026-05-04"
+    },
+    "6": {
+      "right": 0,
+      "wrong": 1,
+      "lastSeen": "2026-05-04"
+    }
+  },
+  "08-software-development-security/secure-sdlc": {
+    "0": {
+      "right": 1,
+      "wrong": 0,
+      "lastSeen": "2026-05-04"
+    },
+    "1": {
+      "right": 1,
+      "wrong": 0,
+      "lastSeen": "2026-05-04"
+    },
+    "2": {
+      "right": 1,
+      "wrong": 0,
+      "lastSeen": "2026-05-04"
+    },
+    "3": {
+      "right": 1,
+      "wrong": 0,
+      "lastSeen": "2026-05-04"
+    },
+    "4": {
+      "right": 0,
+      "wrong": 1,
+      "lastSeen": "2026-05-04"
+    },
+    "5": {
+      "right": 1,
+      "wrong": 0,
+      "lastSeen": "2026-05-04"
+    },
+    "6": {
+      "right": 1,
+      "wrong": 0,
+      "lastSeen": "2026-05-04"
+    },
+    "7": {
+      "right": 1,
+      "wrong": 0,
+      "lastSeen": "2026-05-04"
+    },
+    "8": {
+      "right": 0,
+      "wrong": 1,
+      "lastSeen": "2026-05-04"
+    },
+    "9": {
+      "right": 1,
+      "wrong": 0,
+      "lastSeen": "2026-05-04"
+    },
+    "10": {
+      "right": 0,
+      "wrong": 1,
+      "lastSeen": "2026-05-04"
+    },
+    "11": {
+      "right": 1,
+      "wrong": 0,
+      "lastSeen": "2026-05-04"
+    },
+    "12": {
+      "right": 1,
+      "wrong": 0,
+      "lastSeen": "2026-05-04"
+    },
+    "13": {
+      "right": 1,
+      "wrong": 0,
+      "lastSeen": "2026-05-04"
+    },
+    "14": {
+      "right": 1,
+      "wrong": 0,
+      "lastSeen": "2026-05-04"
+    },
+    "15": {
+      "right": 1,
+      "wrong": 0,
+      "lastSeen": "2026-05-04"
+    },
+    "16": {
+      "right": 1,
+      "wrong": 0,
+      "lastSeen": "2026-05-04"
+    },
+    "17": {
+      "right": 0,
+      "wrong": 1,
+      "lastSeen": "2026-05-04"
+    },
+    "18": {
+      "right": 1,
+      "wrong": 0,
+      "lastSeen": "2026-05-04"
+    },
+    "19": {
+      "right": 1,
+      "wrong": 0,
+      "lastSeen": "2026-05-04"
+    },
+    "20": {
+      "right": 1,
+      "wrong": 0,
+      "lastSeen": "2026-05-04"
+    },
+    "21": {
+      "right": 0,
+      "wrong": 1,
+      "lastSeen": "2026-05-04"
+    },
+    "23": {
+      "right": 1,
+      "wrong": 0,
+      "lastSeen": "2026-05-04"
+    },
+    "24": {
+      "right": 1,
+      "wrong": 0,
+      "lastSeen": "2026-05-04"
+    },
+    "25": {
+      "right": 1,
+      "wrong": 0,
+      "lastSeen": "2026-05-04"
+    },
+    "26": {
+      "right": 1,
+      "wrong": 0,
+      "lastSeen": "2026-05-04"
+    },
+    "27": {
+      "right": 1,
+      "wrong": 0,
+      "lastSeen": "2026-05-04"
+    },
+    "28": {
+      "right": 0,
+      "wrong": 1,
+      "lastSeen": "2026-05-04"
+    },
+    "29": {
+      "right": 1,
+      "wrong": 0,
+      "lastSeen": "2026-05-04"
     }
   }
 }

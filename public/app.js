@@ -37,6 +37,7 @@ let quizState           = null;
 let navData             = null;
 let progressSummary     = null;
 let mcqProgressSummary  = null;
+let _examTimer          = null;
 
 // ── DOM refs ──────────────────────────────────────────────────────────────────
 const appEl     = document.getElementById('app');
@@ -350,6 +351,8 @@ function getCardProgress(state, card) {
 
 // ── Router ────────────────────────────────────────────────────────────────────
 function route() {
+  if (_examTimer) { clearInterval(_examTimer); _examTimer = null; }
+
   const hash = (location.hash || '#/').slice(1);
   const parts = hash.split('/');
   // ['', view, domainId, 'set', setId, 'study'|'quiz', filter, tag]
@@ -361,6 +364,11 @@ function route() {
   const tag      = parts[7] ? decodeURIComponent(parts[7]) : null;
 
   if (!view)                                                        return showHome();
+  if (view === 'quiz')                                              return showRandomQuiz(false);
+  if (view === 'exam')                                              return showRandomQuiz(true);
+  if (view === 'hard')                                              return showHardMode();
+  if (view === 'scores' && !domainId)                               return showScores();
+  if (view === 'scores' && domainId)                                return showSessionDetail(domainId);
   if (view === 'tag' && domainId)                                   return showTagStudy(decodeURIComponent(domainId));
   if (view === 'domain' && domainId && !setId)                      return showDomain(domainId);
   if (view === 'domain' && domainId && setId && !action)            return showSet(domainId, setId);
@@ -848,6 +856,46 @@ async function showHome() {
       <div class="home-top-row">
         ${activityCard}
         <div id="tag-cloud-mount" class="home-top-aside"></div>
+      </div>
+      <div class="practice-banner">
+        <div class="practice-modes">
+          <a class="practice-mode" href="#/quiz">
+            <div class="pm-icon-wrap">
+              <svg viewBox="0 0 20 20" fill="currentColor" width="22" height="22" aria-hidden="true"><path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/><path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd"/></svg>
+            </div>
+            <div class="pm-content">
+              <div class="pm-name">Practice Quiz</div>
+              <div class="pm-meta">30 questions · untimed · all 8 domains</div>
+            </div>
+          </a>
+          <a class="practice-mode" href="#/exam">
+            <div class="pm-icon-wrap">
+              <svg viewBox="0 0 20 20" fill="currentColor" width="22" height="22" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/></svg>
+            </div>
+            <div class="pm-content">
+              <div class="pm-name">Timed Exam</div>
+              <div class="pm-meta">130 questions · 130 min · exam-weighted</div>
+            </div>
+          </a>
+          <a class="practice-mode practice-mode--hard" href="#/hard">
+            <div class="pm-icon-wrap">
+              <svg viewBox="0 0 20 20" fill="currentColor" width="22" height="22" aria-hidden="true"><path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd"/></svg>
+            </div>
+            <div class="pm-content">
+              <div class="pm-name">Hard Mode</div>
+              <div class="pm-meta">scenario-based · all 8 domains</div>
+            </div>
+          </a>
+          <a class="practice-mode" href="#/scores">
+            <div class="pm-icon-wrap">
+              <svg viewBox="0 0 20 20" fill="currentColor" width="22" height="22" aria-hidden="true"><path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"/></svg>
+            </div>
+            <div class="pm-content">
+              <div class="pm-name">My Scores</div>
+              <div class="pm-meta">past quizzes &amp; exams</div>
+            </div>
+          </a>
+        </div>
       </div>
       <div class="domain-list">
         ${domains.map(d => {
@@ -1490,11 +1538,23 @@ function renderQuiz() {
   const { questions, answers, index, answered, done, domainId, setId } = quizState;
   const sidebar = `<aside class="card-sidebar">${buildQuizSidebarHtml(quizState)}</aside>`;
 
+  const backHref    = quizState.isRandomQuiz ? '#/' : `#/domain/${domainId}/set/${setId}`;
+  const backLabel   = quizState.isRandomQuiz ? '← Home' : '← Back';
+  const doneBtnHref = quizState.isRandomQuiz ? '#/' : `#/domain/${domainId}/set/${setId}`;
+  const doneBtnText = quizState.isRandomQuiz ? 'Back to Home' : 'Back to Set';
+  const retakeLabel = quizState.isHardMode ? 'Retake Hard Mode' : quizState.isExam ? 'Retake Exam' : 'Retake Quiz';
+
   if (done) {
+    if (quizState.isRandomQuiz && !quizState.sessionSaved) {
+      quizState.sessionSaved = true;
+      saveSession();
+    }
     const total   = questions.length;
     const correct = Object.values(answers).filter(a => a.correct).length;
     const pct     = Math.round((correct / total) * 100);
     const grade   = pct >= 80 ? 'Excellent' : pct >= 70 ? 'Good' : pct >= 60 ? 'Passing' : 'Needs Work';
+    const timeNote = quizState.isExam && quizState.timeRemaining === 0
+      ? '<p class="exam-timeout-note">Time expired</p>' : '';
     appEl.innerHTML = `
       <div class="study-wrap">
         <div class="study-main">
@@ -1502,9 +1562,10 @@ function renderQuiz() {
             <div class="done-icon">${pct >= 70 ? '✓' : '✗'}</div>
             <h2>${grade}</h2>
             <p class="quiz-score-big">${correct} / ${total} correct &nbsp;·&nbsp; ${pct}%</p>
+            ${timeNote}
             <div class="done-actions">
-              <button class="btn btn-outline" onclick="restartQuiz()">Retake Quiz</button>
-              <a class="btn" href="#/domain/${domainId}/set/${setId}">Back to Set</a>
+              <button class="btn btn-outline" onclick="restartQuiz()">${retakeLabel}</button>
+              <a class="btn" href="${doneBtnHref}">${doneBtnText}</a>
             </div>
           </div>
         </div>
@@ -1542,14 +1603,18 @@ function renderQuiz() {
 
   const isLast = index === questions.length - 1;
   const nextDisabled = prevAnswer === undefined ? 'disabled' : '';
-  const nextLabel    = isLast ? 'Finish Quiz' : 'Next Question →';
+  const nextLabel    = isLast ? (quizState.isExam ? 'Finish Exam' : 'Finish Quiz') : 'Next Question →';
+  const timerHtml    = quizState.isExam
+    ? `<div class="exam-timer-wrap"><span class="exam-timer-label">Time:</span><span class="exam-timer" id="exam-timer"></span></div>`
+    : '';
 
   appEl.innerHTML = `
     <div class="study-wrap">
       <div class="study-main">
         <div class="study-top">
-          <a href="#/domain/${domainId}/set/${setId}" class="btn btn-outline btn-sm">← Back</a>
+          <a href="${backHref}" class="btn btn-outline btn-sm">${backLabel}</a>
           <span class="progress-label">${filterPill}Question ${index + 1} of ${questions.length}</span>
+          ${timerHtml}
         </div>
         <div class="progress-track">
           <div class="progress-fill" style="width:${pct}%"></div>
@@ -1573,6 +1638,7 @@ function renderQuiz() {
       ${sidebar}
     </div>`;
   fitCardText();
+  if (quizState && quizState.isExam) updateExamTimer();
 }
 
 function selectOption(i) {
@@ -1592,10 +1658,12 @@ function selectOption(i) {
     quizState.mcqProgress[origIdx] = entry;
   }
 
-  // Persist to server
-  post(`/api/domains/${enc(domainId)}/sets/${enc(setId)}/mcq-progress`, {
-    questionIndex: origIdx, correct
-  }).catch(() => {});
+  // Persist to server (skipped for random quiz/exam — no canonical question index)
+  if (domainId && setId) {
+    post(`/api/domains/${enc(domainId)}/sets/${enc(setId)}/mcq-progress`, {
+      questionIndex: origIdx, correct
+    }).catch(() => {});
+  }
 
   renderQuiz();
 }
@@ -1615,10 +1683,15 @@ function nextQuestion() {
 
 function restartQuiz() {
   if (!quizState) return;
-  quizState.answers  = {};
-  quizState.index    = 0;
-  quizState.answered = false;
-  quizState.done     = false;
+  quizState.answers      = {};
+  quizState.index        = 0;
+  quizState.answered     = false;
+  quizState.done         = false;
+  quizState.sessionSaved = false;
+  if (quizState.isExam) {
+    quizState.timeRemaining = quizState.timeLimit;
+    startExamTimer();
+  }
   renderQuiz();
 }
 
@@ -1627,4 +1700,399 @@ function jumpToQuizQuestion(i) {
   quizState.index = i;
   if (quizState.done) quizState.done = false;
   renderQuiz();
+}
+
+// ── Random Quiz / Timed Exam ──────────────────────────────────────────────────
+
+async function showRandomQuiz(isExam = false) {
+  const count     = isExam ? 130 : 30;
+  const timeLimit = isExam ? 130 * 60 : null;
+  crumbs([{ label: isExam ? 'Timed Exam' : 'Practice Quiz' }]);
+  appEl.innerHTML = '<p class="loading">Loading questions…</p>';
+  try {
+    const questions = await api(`/api/quiz/random?count=${count}`);
+    if (!questions.length) {
+      appEl.innerHTML = '<p class="error">No questions available. Add MCQ files to get started.</p>';
+      return;
+    }
+    const indexed = questions.map((q, i) => ({ ...q, originalIndex: i }));
+    quizState = {
+      questions: indexed,
+      answers: {},
+      mcqProgress: {},
+      index: 0,
+      done: false,
+      domainId: null,
+      setId: null,
+      filter: null,
+      isRandomQuiz: true,
+      isExam,
+      timeLimit,
+      timeRemaining: timeLimit,
+    };
+    if (isExam) startExamTimer();
+    renderQuiz();
+  } catch (e) {
+    appEl.innerHTML = `<p class="error">Could not load questions: ${esc(e.message)}</p>`;
+  }
+}
+
+async function showHardMode() {
+  crumbs([{ label: 'Hard Mode' }]);
+  appEl.innerHTML = '<p class="loading">Loading questions…</p>';
+  try {
+    const questions = await api('/api/hard-mode/random?count=30');
+    if (!questions.length) {
+      appEl.innerHTML = '<p class="error">No hard mode questions available.</p>';
+      return;
+    }
+    const indexed = questions.map((q, i) => ({ ...q, originalIndex: i }));
+    quizState = {
+      questions: indexed,
+      answers: {},
+      mcqProgress: {},
+      index: 0,
+      done: false,
+      domainId: null,
+      setId: null,
+      filter: null,
+      isRandomQuiz: true,
+      isExam: false,
+      isHardMode: true,
+      timeLimit: null,
+      timeRemaining: null,
+    };
+    renderQuiz();
+  } catch (e) {
+    appEl.innerHTML = `<p class="error">Could not load questions: ${esc(e.message)}</p>`;
+  }
+}
+
+function startExamTimer() {
+  clearInterval(_examTimer);
+  _examTimer = setInterval(() => {
+    if (!quizState || !quizState.isExam) { clearInterval(_examTimer); _examTimer = null; return; }
+    quizState.timeRemaining = Math.max(0, quizState.timeRemaining - 1);
+    if (quizState.timeRemaining === 0) {
+      quizState.done = true;
+      clearInterval(_examTimer);
+      _examTimer = null;
+      renderQuiz();
+    } else {
+      updateExamTimer();
+    }
+  }, 1000);
+}
+
+// ── Session saving & scores pages ────────────────────────────────────────────
+
+const SESSION_DOMAIN_WEIGHTS = {
+  '01-security-and-risk-management': 15,
+  '02-asset-security': 10,
+  '03-security-architecture-and-engineering': 13,
+  '04-communication-and-network-security': 13,
+  '05-identity-and-access-management': 13,
+  '06-security-assessment-and-testing': 12,
+  '07-security-operations': 13,
+  '08-software-development-security': 11,
+};
+
+const SESSION_DOMAIN_NAMES = {
+  '01-security-and-risk-management': 'Security and Risk Management',
+  '02-asset-security': 'Asset Security',
+  '03-security-architecture-and-engineering': 'Security Architecture and Engineering',
+  '04-communication-and-network-security': 'Communication and Network Security',
+  '05-identity-and-access-management': 'Identity and Access Management',
+  '06-security-assessment-and-testing': 'Security Assessment and Testing',
+  '07-security-operations': 'Security Operations',
+  '08-software-development-security': 'Software Development Security',
+};
+
+function computeSessionStats() {
+  if (!quizState) return null;
+  const { questions, answers } = quizState;
+  const domainMap = {}, tagMap = {};
+
+  questions.forEach((q, i) => {
+    const ans = answers[i];
+    if (!ans) return;
+    if (q.domainId) {
+      if (!domainMap[q.domainId]) domainMap[q.domainId] = { right: 0, wrong: 0, answered: 0 };
+      domainMap[q.domainId].answered++;
+      if (ans.correct) domainMap[q.domainId].right++; else domainMap[q.domainId].wrong++;
+    }
+    (q.category || '').split(',').map(t => t.trim()).filter(Boolean).forEach(tag => {
+      if (!tagMap[tag]) tagMap[tag] = { right: 0, wrong: 0, answered: 0 };
+      tagMap[tag].answered++;
+      if (ans.correct) tagMap[tag].right++; else tagMap[tag].wrong++;
+    });
+  });
+
+  const byDomain = Object.entries(domainMap).map(([domainId, v]) => ({
+    domainId, name: SESSION_DOMAIN_NAMES[domainId] || domainId,
+    examWeight: SESSION_DOMAIN_WEIGHTS[domainId] || 0, ...v,
+  })).sort((a, b) => a.domainId.localeCompare(b.domainId));
+
+  const byTag = Object.entries(tagMap)
+    .map(([tag, v]) => ({ tag, ...v }))
+    .sort((a, b) => (b.right + b.wrong) - (a.right + a.wrong))
+    .slice(0, 60);
+
+  const answeredDomains = byDomain.filter(d => d.answered > 0);
+  const weightedScore = answeredDomains.length > 0
+    ? Math.round(
+        answeredDomains.reduce((s, d) => s + (d.right / (d.right + d.wrong)) * d.examWeight, 0) /
+        answeredDomains.reduce((s, d) => s + d.examWeight, 0) * 100
+      )
+    : null;
+
+  const totalAnswered = Object.keys(answers).length;
+  const totalCorrect  = Object.values(answers).filter(a => a.correct).length;
+
+  return {
+    totalQuestions: questions.length,
+    answered: totalAnswered,
+    correct: totalCorrect,
+    score: totalAnswered > 0 ? Math.round(totalCorrect / totalAnswered * 100) : 0,
+    weightedScore,
+    byDomain,
+    byTag,
+  };
+}
+
+async function saveSession() {
+  if (!quizState) return;
+  const stats = computeSessionStats();
+  if (!stats) return;
+  try {
+    const type = quizState.isHardMode ? 'hard' : quizState.isExam ? 'exam' : 'quiz';
+    await post('/api/sessions', { type, ...stats });
+  } catch (e) { /* non-critical */ }
+}
+
+async function showScores() {
+  crumbs([{ label: 'My Scores' }]);
+  appEl.innerHTML = '<p class="loading">Loading…</p>';
+  try {
+    const sessions = await api('/api/sessions');
+
+    if (!sessions.length) {
+      appEl.innerHTML = `
+        <div class="scores-empty">
+          <p class="scores-empty-msg">No sessions yet.</p>
+          <p class="scores-empty-hint">Complete a <a href="#/quiz">Practice Quiz</a> or <a href="#/exam">Timed Exam</a> to see your scores here.</p>
+        </div>`;
+      return;
+    }
+
+    const scoreColor = s => s >= 75 ? '#16a34a' : s >= 50 ? '#d97706' : '#dc2626';
+
+    const cards = sessions.map(s => {
+      const d    = new Date(s.createdAt);
+      const date = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+      const time = d.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
+      const pct  = s.score ?? 0;
+      const clr  = scoreColor(pct);
+      const typeLabel = s.type === 'exam' ? 'Timed Exam' : s.type === 'hard' ? 'Hard Mode' : 'Practice Quiz';
+      const wLine = s.weightedScore != null
+        ? `<div class="sc-wscore">Weighted: <strong>${s.weightedScore}%</strong></div>` : '';
+      return `<a class="session-card" href="#/scores/${s.id}">
+        <div class="sc-top">
+          <span class="sc-type">${typeLabel}</span>
+          <span class="sc-pct" style="color:${clr}">${pct}%</span>
+        </div>
+        <div class="sc-date">${date} · ${time}</div>
+        <div class="sc-detail">${s.correct} / ${s.answered} correct · ${s.totalQuestions} questions</div>
+        ${wLine}
+      </a>`;
+    }).join('');
+
+    appEl.innerHTML = `<div class="session-list">${cards}</div>`;
+  } catch (e) {
+    appEl.innerHTML = `<p class="error">Could not load scores: ${esc(e.message)}</p>`;
+  }
+}
+
+async function showSessionDetail(id) {
+  crumbs([{ href: '#/scores', label: 'My Scores' }, { label: 'Session' }]);
+  appEl.innerHTML = '<p class="loading">Loading…</p>';
+  try {
+    const s = await api(`/api/sessions/${enc(id)}`);
+
+    const d         = new Date(s.createdAt);
+    const dateStr   = d.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+    const timeStr   = d.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
+    const typeLabel = s.type === 'exam' ? 'Timed Exam' : s.type === 'hard' ? 'Hard Mode' : 'Practice Quiz';
+    const scoreColor = v => v >= 75 ? '#16a34a' : v >= 50 ? '#d97706' : '#dc2626';
+
+    const wsBanner = s.weightedScore != null
+      ? `<div class="wscore-banner">
+          <span class="wscore-val" style="color:${scoreColor(s.weightedScore)}">${s.weightedScore}%</span>
+          <div class="wscore-detail">Weighted score across domains<br>proportional to CISSP exam weights</div>
+        </div>`
+      : '';
+
+    const domainRows = (s.byDomain || []).map(d => {
+      const total = d.right + d.wrong;
+      const pct   = total > 0 ? Math.round(d.right / total * 100) : null;
+      const clr   = pct != null ? scoreColor(pct) : '';
+      return `<tr>
+        <td>${esc(d.name)}</td>
+        <td class="td-num">${d.examWeight}%</td>
+        <td class="td-num">${d.answered > 0 ? d.answered : '<span class="an-none">—</span>'}</td>
+        <td>${pct != null
+          ? `<div class="an-bar-row"><div class="an-bar-track"><div class="an-bar-fill" style="width:${pct}%;background:${clr}"></div></div><span class="an-pct" style="color:${clr}">${pct}%</span></div>`
+          : '<span class="an-none">—</span>'}</td>
+      </tr>`;
+    }).join('');
+
+    const tagRows = (s.byTag || []).map(t => {
+      const total = t.right + t.wrong;
+      const pct   = Math.round(t.right / total * 100);
+      const clr   = scoreColor(pct);
+      return `<tr>
+        <td>${esc(t.tag)}</td>
+        <td class="td-num">${t.answered}</td>
+        <td><div class="an-bar-row"><div class="an-bar-track"><div class="an-bar-fill" style="width:${pct}%;background:${clr}"></div></div><span class="an-pct" style="color:${clr}">${pct}%</span></div></td>
+      </tr>`;
+    }).join('');
+
+    appEl.innerHTML = `
+      <div class="session-detail">
+        <div class="sd-header">
+          <div>
+            <div class="sd-type">${typeLabel}</div>
+            <div class="sd-date">${dateStr} · ${timeStr}</div>
+          </div>
+          <div class="sd-score-wrap">
+            <span class="sd-score" style="color:${scoreColor(s.score)}">${s.score}%</span>
+            <span class="sd-score-sub">${s.correct}/${s.answered} correct</span>
+          </div>
+        </div>
+
+        ${wsBanner}
+
+        <div class="sd-section">
+          <div class="an-section-label">By Domain</div>
+          <table class="analytics-table">
+            <thead><tr><th>Domain</th><th class="td-num">Weight</th><th class="td-num">Questions</th><th>Score</th></tr></thead>
+            <tbody>${domainRows || '<tr><td colspan="4"><span class="an-none">No data</span></td></tr>'}</tbody>
+          </table>
+        </div>
+
+        ${tagRows ? `
+        <div class="sd-section">
+          <div class="an-section-label">By Topic / Tag</div>
+          <table class="analytics-table">
+            <thead><tr><th>Topic</th><th class="td-num">Questions</th><th>Score</th></tr></thead>
+            <tbody>${tagRows}</tbody>
+          </table>
+        </div>` : ''}
+      </div>`;
+  } catch (e) {
+    appEl.innerHTML = `<p class="error">Could not load session: ${esc(e.message)}</p>`;
+  }
+}
+
+// ── Analytics modal ───────────────────────────────────────────────────────────
+
+async function openAnalyticsModal() {
+  let data;
+  try { data = await api('/api/analytics'); }
+  catch (e) { appEl.innerHTML = `<p class="error">Could not load analytics: ${esc(e.message)}</p>`; return; }
+
+  document.getElementById('analytics-overlay')?.remove();
+
+  const { byDomain, byTag, weightedScore } = data;
+
+  const scoreColor = s => s >= 75 ? '#16a34a' : s >= 50 ? '#d97706' : '#dc2626';
+
+  const wsBanner = weightedScore !== null
+    ? `<div class="wscore-banner">
+        <span class="wscore-val" style="color:${scoreColor(weightedScore)}">${weightedScore}%</span>
+        <div class="wscore-detail">Weighted MCQ score across answered domains<br>proportional to CISSP exam weights</div>
+      </div>`
+    : `<div class="wscore-banner wscore-empty">
+        <span class="wscore-detail">Answer MCQ questions to see your weighted score.</span>
+      </div>`;
+
+  const domainRows = byDomain.map(d => {
+    const total = d.right + d.wrong;
+    const pct   = total > 0 ? Math.round(d.right / total * 100) : null;
+    const clr   = pct !== null ? scoreColor(pct) : '';
+    const shortName = esc(d.name.replace(/^Domain \d+:\s*/, ''));
+    return `<tr>
+      <td>${shortName}</td>
+      <td class="td-num">${d.examWeight}%</td>
+      <td class="td-num">${d.answered > 0 ? d.answered : '<span class="an-none">—</span>'}</td>
+      <td>${pct !== null
+        ? `<div class="an-bar-row"><div class="an-bar-track"><div class="an-bar-fill" style="width:${pct}%;background:${clr}"></div></div><span class="an-pct" style="color:${clr}">${pct}%</span></div>`
+        : '<span class="an-none">not started</span>'}</td>
+    </tr>`;
+  }).join('');
+
+  const tagRows = byTag.length === 0
+    ? `<tr><td colspan="3"><span class="an-none">No data yet — answer MCQ questions first.</span></td></tr>`
+    : byTag.map(t => {
+        const total = t.right + t.wrong;
+        const pct   = Math.round(t.right / total * 100);
+        const clr   = scoreColor(pct);
+        return `<tr>
+          <td>${esc(t.tag)}</td>
+          <td class="td-num">${t.answered}</td>
+          <td><div class="an-bar-row"><div class="an-bar-track"><div class="an-bar-fill" style="width:${pct}%;background:${clr}"></div></div><span class="an-pct" style="color:${clr}">${pct}%</span></div></td>
+        </tr>`;
+      }).join('');
+
+  const el = document.createElement('div');
+  el.id        = 'analytics-overlay';
+  el.className = 'analytics-overlay';
+  el.innerHTML = `
+    <div class="analytics-modal" role="dialog" aria-modal="true" aria-label="Performance">
+      <div class="analytics-header">
+        <h2 class="analytics-title">Performance</h2>
+        <button class="modal-close-btn" onclick="closeAnalyticsModal()" aria-label="Close">✕</button>
+      </div>
+      <div class="analytics-body">
+        ${wsBanner}
+        <div>
+          <div class="an-section-label">By Domain</div>
+          <table class="analytics-table">
+            <thead><tr><th>Domain</th><th class="td-num">Weight</th><th class="td-num">Questions</th><th>Score</th></tr></thead>
+            <tbody>${domainRows}</tbody>
+          </table>
+        </div>
+        <div>
+          <div class="an-section-label">By Topic / Tag</div>
+          <table class="analytics-table">
+            <thead><tr><th>Topic</th><th class="td-num">Questions</th><th>Score</th></tr></thead>
+            <tbody>${tagRows}</tbody>
+          </table>
+        </div>
+      </div>
+    </div>`;
+
+  el.addEventListener('click', e => { if (e.target === el) closeAnalyticsModal(); });
+  document.body.appendChild(el);
+
+  const onKey = e => { if (e.key === 'Escape') { closeAnalyticsModal(); document.removeEventListener('keydown', onKey); } };
+  document.addEventListener('keydown', onKey);
+}
+
+function closeAnalyticsModal() {
+  document.getElementById('analytics-overlay')?.remove();
+}
+
+function updateExamTimer() {
+  const el = document.getElementById('exam-timer');
+  if (!el || !quizState) return;
+  const rem = quizState.timeRemaining;
+  const h   = Math.floor(rem / 3600);
+  const m   = Math.floor((rem % 3600) / 60);
+  const s   = rem % 60;
+  el.textContent = h > 0
+    ? `${h}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`
+    : `${m}:${String(s).padStart(2, '0')}`;
+  el.classList.toggle('timer-warn', rem <= 600 && rem > 0);
+  el.classList.toggle('timer-crit', rem <= 60);
 }

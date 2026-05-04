@@ -1,0 +1,98 @@
+[
+  {
+    "question": "A network security engineer is reviewing firewall logs and discovers that a DMZ web server is initiating outbound connections to internal database servers on port 1433. The security policy specifies that DMZ servers should never initiate connections to internal network segments. This traffic pattern has existed for six weeks without triggering alerts. What does this finding MOST likely indicate, and what is the FIRST action?",
+    "options": [
+      "The web application is correctly configured to connect to its backend database; firewall policy documentation may be outdated and should be updated to reflect operational reality",
+      "This traffic pattern is consistent with a compromised DMZ server being used as a pivot point to attack internal systems — immediately isolate the web server and initiate forensic investigation before any other action",
+      "The firewall rules are misconfigured and allow traffic that should be blocked; update the ACLs to deny DMZ-to-internal traffic on 1433 without investigating the source",
+      "The application team likely deployed a new feature requiring direct database access; contact the application owner to confirm before taking any security action"
+    ],
+    "correct": 1,
+    "explanation": "A DMZ server initiating connections to internal systems violates the fundamental DMZ security principle: DMZ servers accept inbound requests but should never initiate connections into the internal network. This connection pattern is a classic indicator of compromise — attackers who gain a foothold in the DMZ use it as a pivot to attack internal systems. The six-week window without detection suggests the firewall rules were not properly enforced or monitored. The FIRST action is isolation and investigation, not firewall fixes or application owner queries — both of those would tip off an attacker or destroy evidence if the system is compromised.",
+    "category": "Network Security, DMZ, Firewall, Incident Response"
+  },
+  {
+    "question": "An organization deploys a next-generation firewall (NGFW) with SSL/TLS inspection to detect malware in encrypted traffic. The security team discovers that employees' banking sites, medical portals, and personal email are being decrypted and inspected. The legal team raises concerns. What is the MOST significant legal and ethical issue with this deployment?",
+    "options": [
+      "SSL/TLS inspection reduces network performance, which violates the organization's SLA commitments to employees for network access quality",
+      "The NGFW certificate will cause browser certificate errors on inspection, alerting employees and constituting technical deception",
+      "Intercepting and decrypting personal financial and medical communications may violate wiretapping laws, employee privacy expectations, banking confidentiality provisions, and HIPAA — even on corporate networks, without adequate notice and consent",
+      "The inspection creates a man-in-the-middle attack surface that could be exploited by attackers who compromise the NGFW certificate"
+    ],
+    "correct": 2,
+    "explanation": "TLS inspection is a powerful but legally complex control. In many jurisdictions, intercepting communications — even on corporate networks — requires: (1) clear notice to employees before deployment, (2) exclusion of certain categories of communications (banking, healthcare, legal correspondence) that carry confidentiality protections, and (3) compliance with wiretapping statutes that may not include a blanket 'employer network' exception. HIPAA creates specific concerns if employee-patient communications are intercepted. Best practice is to configure inspection bypass lists for financial institutions, medical providers, and legal services, deploy with written notice in acceptable use policies, and obtain legal review by jurisdiction. Option D (MitM attack surface) is a real technical concern but not the 'most significant' legal and ethical issue.",
+    "category": "Network Security, TLS Inspection, Privacy, Legal"
+  },
+  {
+    "question": "A senior network engineer proposes replacing all WPA2-Enterprise Wi-Fi infrastructure with WPA3-Enterprise to address known KRACK and Dragonblood vulnerabilities. The CISO asks whether this migration alone is sufficient to protect against all Wi-Fi attack vectors. What is the MOST accurate assessment?",
+    "options": [
+      "Yes — WPA3-Enterprise with 192-bit mode addresses all known Wi-Fi attack vectors through its use of GCMP-256 and HMAC-SHA-384",
+      "WPA3 eliminates the identified cryptographic vulnerabilities but does not address evil twin access point attacks, rogue AP deployments, or client misassociation — a wireless intrusion prevention system (WIPS) is still needed for these threats",
+      "The migration is unnecessary because KRACK requires physical proximity and is therefore a low-risk threat in enterprise environments with physical access controls",
+      "WPA3-Enterprise should be combined with certificate-based 802.1X authentication exclusively; removing password-based EAP methods is more important than upgrading the WPA version"
+    ],
+    "correct": 1,
+    "explanation": "WPA3 addresses the cryptographic weaknesses in WPA2 (KRACK targets the 4-way handshake, Dragonblood targets SAE). However, Wi-Fi security has multiple attack layers: (1) Evil twin attacks — an attacker sets up a rogue AP mimicking the legitimate SSID; clients may connect automatically, even with WPA3, if client profiles aren't properly managed. (2) Rogue AP attacks — unauthorized APs on the corporate network bypass authentication. (3) Client misassociation — clients connecting to wrong networks and bridging traffic. WPA3 does not address any of these. A WIPS monitors for rogue APs, detects evil twins, and alerts on misassociation — essential components of a complete wireless security program. Option D raises a valid point about certificate vs. password EAP but conflates the question.",
+    "category": "Network Security, Wi-Fi, WPA3, Wireless Security"
+  },
+  {
+    "question": "An organization uses BGP peering with two upstream ISPs for redundancy. A security engineer discovers that the organization's BGP router is accepting route advertisements for IP prefixes the organization does not own. Three weeks later, a BGP hijacking incident results in traffic to a critical SaaS application being redirected through a foreign network. What preventive control would MOST directly have prevented this incident?",
+    "options": [
+      "Implementing BFD (Bidirectional Forwarding Detection) on all BGP sessions to detect routing failures faster",
+      "Deploying RPKI (Resource Public Key Infrastructure) route origin validation to reject BGP advertisements for prefixes whose origin AS doesn't match the authorized resource holder",
+      "Using private BGP ASNs for internal routing and only advertising a default route to upstream providers",
+      "Enabling MD5 authentication on all BGP sessions to prevent unauthorized route injection from adjacent peers"
+    ],
+    "correct": 1,
+    "explanation": "RPKI addresses BGP route origin hijacking by cryptographically binding IP prefixes to their authorized origin Autonomous System (AS). Route Origin Authorizations (ROAs) are signed by the resource holder (via their Regional Internet Registry), and RPKI-validating routers reject 'invalid' announcements — where the origin AS doesn't match the ROA. MD5 authentication (D) only authenticates the BGP session peer — it doesn't validate the content of route advertisements (a legitimate but compromised peer could still advertise hijacked routes). BFD (A) detects link failures, not hijacking. Private ASNs (C) are an internal routing practice unrelated to external route hijacking prevention.",
+    "category": "Network Security, BGP, Routing Security, RPKI"
+  },
+  {
+    "question": "A penetration tester performing an authorized internal network assessment discovers that network switches throughout the organization have CDP (Cisco Discovery Protocol) and LLDP enabled on all ports, including user-facing switch ports. What risk does this configuration present?",
+    "options": [
+      "CDP and LLDP create excessive broadcast traffic that degrades network performance under high load conditions",
+      "An attacker with physical access to any network port can passively receive detailed topology information — switch model, software version, VLAN configuration, and IP addresses — enabling targeted attacks without active scanning",
+      "CDP and LLDP allow attackers to perform VLAN hopping attacks by advertising trunk port capabilities to user-facing ports",
+      "The protocols create a covert channel that malware can use to exfiltrate data by encoding information in discovery protocol frames"
+    ],
+    "correct": 1,
+    "explanation": "CDP and LLDP are network discovery protocols that share device identity, software version, port information, VLAN IDs, and management IP addresses. When enabled on access (user-facing) ports, any device plugged in — including an attacker's laptop — passively receives detailed network topology data without sending a single packet. This data significantly accelerates network reconnaissance. Best practice is to disable CDP/LLDP on access ports and enable them only on trunk ports between network devices where they serve an operational purpose. VLAN hopping (C) is a different attack class (DTP-based double tagging) not directly caused by CDP/LLDP.",
+    "category": "Network Security, Network Protocols, Information Disclosure, Hardening"
+  },
+  {
+    "question": "An organization implements network segmentation using VLANs to isolate sensitive systems. During a security review, the team discovers that the default native VLAN (VLAN 1) is active on all trunk links and that several user workstations share VLAN 1 with management interfaces. The network team argues that 'VLANs are just for traffic management, not security.' How should the security architect respond?",
+    "options": [
+      "The network team is correct — VLANs are Layer 2 logical constructs that provide no security guarantees and should not be relied upon for isolation",
+      "VLANs do provide meaningful security segmentation when properly configured, but the current configuration undermines isolation: native VLAN 1 shared with user workstations allows VLAN hopping attacks and exposes management interfaces — VLANs must be correctly configured to deliver security value",
+      "The solution is to replace VLANs with a dedicated management network using out-of-band (OOB) cabling, as VLANs cannot securely separate management and user traffic",
+      "Enabling port security (MAC address filtering) on all access ports eliminates the VLAN hopping risk without requiring VLAN reconfiguration"
+    ],
+    "correct": 1,
+    "explanation": "VLANs do provide security segmentation, but only when correctly implemented. The vulnerabilities here are: (1) Native VLAN 1 on trunk links is the default for 802.1Q untagged frames — a double-tagging VLAN hopping attack lets a workstation on VLAN 1 send frames that arrive on other VLANs. (2) Management interfaces on VLAN 1 with user workstations eliminates the isolation intent entirely. Proper VLAN security: change the native VLAN to an unused VLAN ID, explicitly tag all VLANs on trunks, separate management traffic to a dedicated management VLAN, and disable DTP. The network team's absolutist statement is incorrect — VLANs are a recognized security control when properly configured.",
+    "category": "Network Security, VLAN, Network Segmentation, Hardening"
+  },
+  {
+    "question": "A security operations team is analyzing a suspected data exfiltration incident. Traffic analysis shows sustained DNS queries from internal hosts to an external domain, each query having an unusually long subdomain label (e.g., `5468697320697320656e636f646564.malware-c2.example.com`). The queries are answered with legitimate-looking NXDOMAIN or minimal A records. What attack technique does this MOST likely represent?",
+    "options": [
+      "DNS cache poisoning — the attacker is attempting to corrupt the DNS resolver cache with malicious A records for the target domain",
+      "DNS tunneling — the attacker is encoding data (likely base64 or hex) in the subdomain labels of DNS queries to exfiltrate data through the DNS protocol, which is typically allowed through firewalls",
+      "DNS amplification DDoS — the attacker is using the organization's recursive resolver to amplify traffic toward an external victim",
+      "DNS rebinding — the attacker is attempting to circumvent same-origin policy by rapidly changing DNS TTLs for the malware-c2 domain"
+    ],
+    "correct": 1,
+    "explanation": "The pattern — sustained queries with unusually long, seemingly random subdomain labels — is the signature of DNS tunneling for data exfiltration. Data is encoded (often base64/hex) into the subdomain portion of queries; the attacker's authoritative nameserver decodes and collects the data. Because port 53 UDP is almost universally allowed through firewalls for DNS resolution, and many organizations don't inspect DNS content, this technique bypasses perimeter controls. Detection indicators: anomalously long FQDN labels (DNS labels max 63 chars, subdomains with random-looking high-entropy strings), high query volume to a single domain, queries returning NXDOMAIN or minimal data despite apparent persistence. Controls: DNS filtering with query length analysis, security-aware resolvers (e.g., DNSSEC + RPZ), and monitoring for high-entropy domain labels.",
+    "category": "Network Security, DNS, Data Exfiltration, Network Forensics"
+  },
+  {
+    "question": "An organization deploys an intrusion prevention system (IPS) inline on its internet edge to block malicious traffic. During a major attack campaign, the IPS misclassifies legitimate traffic from a business partner as malicious and blocks it, causing a 4-hour outage of a critical B2B integration. The security team proposes switching the IPS to 'monitor-only' mode permanently to prevent future false positives. The CISO must evaluate this proposal. What is the MOST appropriate response?",
+    "options": [
+      "Accept the proposal — the business risk of outages from false positives exceeds the security risk of not blocking traffic, and alerting provides equivalent security value",
+      "Reject the proposal — an IPS in monitor-only mode provides no blocking capability and reduces to IDS functionality; instead, tune the IPS signatures, create exception rules for known-good partner traffic, and establish a process for signature review before deployment",
+      "Accept the proposal for partner IP ranges only, maintaining inline blocking for all other traffic sources",
+      "Replace the IPS with a next-generation firewall that uses application-aware filtering, which eliminates the false positive problem inherent in signature-based IPS systems"
+    ],
+    "correct": 1,
+    "explanation": "Switching to monitor-only mode permanently converts the IPS to an IDS — it can detect but cannot block. This represents a significant security control degradation, especially at the internet edge. The correct response to a false positive incident is tuning, not disabling. Steps: (1) Add the partner's IP space to an allow-list or exception policy, (2) analyze the triggering signature and adjust its sensitivity or scope, (3) implement a signature staging process where new/updated signatures run in monitor mode on a time-bounded basis before going inline, (4) establish regular tuning reviews. Option C is partially reasonable as an interim measure but doesn't address the underlying tuning problem. Option D overstates NGFWs' false positive elimination — application-layer inspection still has false positives.",
+    "category": "Network Security, IPS/IDS, Tuning, Security Operations"
+  }
+]

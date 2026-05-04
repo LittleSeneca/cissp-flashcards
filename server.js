@@ -99,6 +99,15 @@ function countMcq(dir) {
 const PROGRESS_FILE     = path.join(ROOT, 'progress.json');
 const ACTIVITY_FILE     = path.join(ROOT, 'activity.json');
 const MCQ_PROGRESS_FILE = path.join(ROOT, 'mcq-progress.json');
+const SESSIONS_FILE     = path.join(ROOT, 'quiz-sessions.json');
+
+function loadSessions() {
+  try { return JSON.parse(fs.readFileSync(SESSIONS_FILE, 'utf8')); }
+  catch { return []; }
+}
+function saveSessions(data) {
+  fs.writeFileSync(SESSIONS_FILE, JSON.stringify(data, null, 2), 'utf8');
+}
 
 function loadAllProgress() {
   try { return JSON.parse(fs.readFileSync(PROGRESS_FILE, 'utf8')); }
@@ -425,6 +434,262 @@ app.post('/api/domains/:domain/sets/:set/mcq-progress', (req, res) => {
     saveMcqProgress(all);
     recordActivity(req.params.domain, correct === true);
     res.json({ ok: true, entry });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+// ── Random quiz endpoint ──────────────────────────────────────────────────────
+
+const DOMAIN_EXAM_WEIGHTS = {
+  '01-security-and-risk-management': 15,
+  '02-asset-security': 10,
+  '03-security-architecture-and-engineering': 13,
+  '04-communication-and-network-security': 13,
+  '05-identity-and-access-management': 13,
+  '06-security-assessment-and-testing': 12,
+  '07-security-operations': 13,
+  '08-software-development-security': 11,
+};
+
+function loadAllMcqForDomain(domainId) {
+  const dp = safe(domainId);
+  if (!fs.existsSync(dp)) return [];
+  const questions = [];
+  fs.readdirSync(dp, { withFileTypes: true })
+    .filter(e => e.isDirectory())
+    .forEach(s => {
+      const sp = path.join(dp, s.name);
+      fs.readdirSync(sp).filter(f => f.endsWith('.json')).sort().forEach(f => {
+        try {
+          const data = JSON.parse(fs.readFileSync(path.join(sp, f), 'utf8'));
+          if (Array.isArray(data)) {
+            data.forEach(q => questions.push({
+              question: q.question,
+              questionHtml: marked.parse(q.question || ''),
+              options: q.options || [],
+              optionsHtml: (q.options || []).map(o => marked.parse(o)),
+              correct: q.correct,
+              explanation: q.explanation || '',
+              explanationHtml: marked.parse(q.explanation || ''),
+              category: q.category || '',
+              domainId,
+              setId: s.name,
+            }));
+          }
+        } catch {}
+      });
+    });
+  return questions;
+}
+
+function distributeByWeight(weights, total) {
+  const domains  = Object.keys(weights);
+  const weightSum = domains.reduce((s, d) => s + weights[d], 0);
+  const exact    = domains.map(d => (weights[d] / weightSum) * total);
+  const floors   = exact.map(Math.floor);
+  const allocated = floors.reduce((s, v) => s + v, 0);
+  const order    = exact.map((v, i) => ({ i, frac: v - floors[i] })).sort((a, b) => b.frac - a.frac);
+  for (let k = 0; k < total - allocated; k++) floors[order[k].i]++;
+  const result = {};
+  domains.forEach((d, i) => { result[d] = floors[i]; });
+  return result;
+}
+
+function shuffleArr(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
+// GET /api/quiz/random?count=30
+app.get('/api/quiz/random', (req, res) => {
+  try {
+    const count = Math.max(1, Math.min(parseInt(req.query.count, 10) || 30, 500));
+    const domainDirs = fs.readdirSync(ROOT, { withFileTypes: true })
+      .filter(e => e.isDirectory() && isDomain(e.name))
+      .map(e => e.name)
+      .filter(d => DOMAIN_EXAM_WEIGHTS[d]);
+
+    const weights = {};
+    domainDirs.forEach(d => { weights[d] = DOMAIN_EXAM_WEIGHTS[d]; });
+    const dist = distributeByWeight(weights, count);
+
+    const selected = [];
+    for (const domainId of domainDirs) {
+      const needed = dist[domainId] || 0;
+      if (!needed) continue;
+      const pool = shuffleArr(loadAllMcqForDomain(domainId));
+      selected.push(...pool.slice(0, Math.min(needed, pool.length)));
+    }
+    res.json(shuffleArr(selected));
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+// ── Hard Mode endpoint ────────────────────────────────────────────────────────
+
+const HARD_MODE_DIR = path.join(ROOT, 'hard-mode');
+
+function loadAllHardModeQuestions() {
+  if (!fs.existsSync(HARD_MODE_DIR)) return [];
+  const questions = [];
+  fs.readdirSync(HARD_MODE_DIR, { withFileTypes: true })
+    .filter(e => e.isDirectory() && isDomain(e.name))
+    .sort((a, b) => a.name.localeCompare(b.name))
+    .forEach(e => {
+      const dp = path.join(HARD_MODE_DIR, e.name);
+      fs.readdirSync(dp).filter(f => f.endsWith('.json')).sort().forEach(f => {
+        try {
+          const data = JSON.parse(fs.readFileSync(path.join(dp, f), 'utf8'));
+          if (Array.isArray(data)) {
+            data.forEach(q => questions.push({
+              question: q.question,
+              questionHtml: marked.parse(q.question || ''),
+              options: q.options || [],
+              optionsHtml: (q.options || []).map(o => marked.parse(o)),
+              correct: q.correct,
+              explanation: q.explanation || '',
+              explanationHtml: marked.parse(q.explanation || ''),
+              category: q.category || '',
+              domainId: e.name,
+              setId: null,
+            }));
+          }
+        } catch {}
+      });
+    });
+  return questions;
+}
+
+// GET /api/hard-mode/random?count=30
+app.get('/api/hard-mode/random', (req, res) => {
+  try {
+    const count = Math.max(1, Math.min(parseInt(req.query.count, 10) || 30, 500));
+    const all = loadAllHardModeQuestions();
+    if (!all.length) return res.json([]);
+
+    // Group by domain and distribute by exam weight
+    const byDomain = {};
+    all.forEach(q => {
+      if (!byDomain[q.domainId]) byDomain[q.domainId] = [];
+      byDomain[q.domainId].push(q);
+    });
+
+    const availableDomains = Object.keys(byDomain).filter(d => DOMAIN_EXAM_WEIGHTS[d]);
+    const weights = {};
+    availableDomains.forEach(d => { weights[d] = DOMAIN_EXAM_WEIGHTS[d]; });
+    const dist = distributeByWeight(weights, Math.min(count, all.length));
+
+    const selected = [];
+    for (const domainId of availableDomains) {
+      const needed = dist[domainId] || 0;
+      if (!needed) continue;
+      const pool = shuffleArr([...byDomain[domainId]]);
+      selected.push(...pool.slice(0, Math.min(needed, pool.length)));
+    }
+    res.json(shuffleArr(selected));
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+// POST /api/sessions  — save a completed quiz/exam session
+app.post('/api/sessions', (req, res) => {
+  try {
+    const body = req.body;
+    if (!body || !body.type) return res.status(400).json({ error: 'type required' });
+    const sessions = loadSessions();
+    const id = Date.now().toString();
+    sessions.unshift({ id, createdAt: new Date().toISOString(), ...body });
+    saveSessions(sessions);
+    res.json({ ok: true, id });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+// GET /api/sessions  — list all sessions newest-first
+app.get('/api/sessions', (req, res) => {
+  try { res.json(loadSessions()); }
+  catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+// GET /api/sessions/:id  — single session detail
+app.get('/api/sessions/:id', (req, res) => {
+  try {
+    const session = loadSessions().find(s => s.id === req.params.id);
+    if (!session) return res.status(404).json({ error: 'not found' });
+    res.json(session);
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+// GET /api/analytics  — MCQ performance by domain and tag
+app.get('/api/analytics', (req, res) => {
+  try {
+    const mcqProg = loadMcqProgress();
+    const domainMap = {};
+    const tagMap    = {};
+
+    const domainDirs = fs.readdirSync(ROOT, { withFileTypes: true })
+      .filter(e => e.isDirectory() && isDomain(e.name))
+      .sort((a, b) => a.name.localeCompare(b.name))
+      .map(e => e.name);
+
+    for (const domainId of domainDirs) {
+      domainMap[domainId] = { right: 0, wrong: 0, answered: 0 };
+      const dp = safe(domainId);
+      const setDirs = fs.readdirSync(dp, { withFileTypes: true })
+        .filter(e => e.isDirectory()).map(e => e.name);
+
+      for (const setId of setDirs) {
+        const sp  = path.join(dp, setId);
+        const key = `${domainId}/${setId}`;
+        const prog = mcqProg[key] || {};
+        const files = fs.readdirSync(sp).filter(f => f.endsWith('.json')).sort();
+        let qi = 0;
+
+        for (const f of files) {
+          try {
+            const data = JSON.parse(fs.readFileSync(path.join(sp, f), 'utf8'));
+            if (!Array.isArray(data)) continue;
+            for (const q of data) {
+              const p = prog[qi];
+              if (p && (p.right || 0) + (p.wrong || 0) > 0) {
+                const r = p.right || 0, w = p.wrong || 0;
+                domainMap[domainId].right   += r;
+                domainMap[domainId].wrong   += w;
+                domainMap[domainId].answered++;
+                parseTags(q.category || '').forEach(tag => {
+                  if (!tagMap[tag]) tagMap[tag] = { right: 0, wrong: 0, answered: 0 };
+                  tagMap[tag].right   += r;
+                  tagMap[tag].wrong   += w;
+                  tagMap[tag].answered++;
+                });
+              }
+              qi++;
+            }
+          } catch {}
+        }
+      }
+    }
+
+    const byDomain = domainDirs.map(domainId => ({
+      domainId,
+      name: domainLabel(domainId),
+      examWeight: DOMAIN_EXAM_WEIGHTS[domainId] || 0,
+      ...domainMap[domainId],
+    }));
+
+    const byTag = Object.entries(tagMap)
+      .map(([tag, v]) => ({ tag, ...v }))
+      .sort((a, b) => (b.right + b.wrong) - (a.right + a.wrong))
+      .slice(0, 60);
+
+    const answered = byDomain.filter(d => d.answered > 0);
+    const weightedScore = answered.length > 0
+      ? Math.round(
+          answered.reduce((s, d) => s + (d.right / (d.right + d.wrong)) * d.examWeight, 0) /
+          answered.reduce((s, d) => s + d.examWeight, 0) * 100
+        )
+      : null;
+
+    res.json({ byDomain, byTag, weightedScore });
   } catch (e) { res.status(500).json({ error: e.message }); }
 });
 
